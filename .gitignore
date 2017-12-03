@@ -1,0 +1,12 @@
+/Client/Library
+/Client/Temp
+/Client/Assets/UnityVS
+/Client/Assets/UnityVS.meta
+/Client/Client.CSharp.csproj
+/Client/Client.sln
+/Client/Client.v12.suo
+/Server/myServer/myServer.v12.suo
+/Server/myServer/myServer.GameServer/bin
+/Server/myServer/myServer.GameServer/obj
+/Server/myServerFramework/myServerFramework.v12.suo
+/Server/myServerFramework/myServerFramework.Utility/obj
