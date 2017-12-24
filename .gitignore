@@ -10,3 +10,5 @@
 /Server/myServer/myServer.GameServer/obj
 /Server/myServerFramework/myServerFramework.v12.suo
 /Server/myServerFramework/myServerFramework.Utility/obj
+/Client/Client.csproj
+/Client/Client.CSharp.Editor.csproj
