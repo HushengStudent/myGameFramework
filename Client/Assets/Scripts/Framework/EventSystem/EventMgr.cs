@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2017/12/25 00:30:25
-** desc:  Lua管理
+** date:  2017/12/25 23:46:32
+** desc:  事件系统
 *********************************************************************************/
 
 using System.Collections;
@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace Framework
 {
-	public class LuaMgr : Singleton<LuaMgr> 
+	public class EventMgr : Singleton<EventMgr>
 	{
 		// Use this for initialization
 		void Start () {

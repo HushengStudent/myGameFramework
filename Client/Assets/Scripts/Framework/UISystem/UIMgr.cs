@@ -1,22 +1,26 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2017/12/25 00:30:02
-** desc:  #####
+** desc:  UIπ‹¿Ì
 *********************************************************************************/
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIMgr : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
+namespace Framework
+{
+	public class UIMgr : Singleton<UIMgr>
+	{
 	
-	// Update is called once per frame
-	void Update () {
+		// Use this for initialization
+		void Start () {
+			
+		}
 		
+		// Update is called once per frame
+		void Update () {
+			
+		}
 	}
 }

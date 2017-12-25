@@ -1,22 +1,26 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2017/12/25 00:31:02
-** desc:  #####
+** desc:  ”Œœ∑π‹¿Ì
 *********************************************************************************/
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameMgr : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+namespace Framework
+{
+	public class GameMgr : Singleton<GameMgr> 
+	{
+		// Use this for initialization
+		void Start () {
+			
+		}
 		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		// Update is called once per frame
+		void Update () {
+			
+		}
 	}
 }
