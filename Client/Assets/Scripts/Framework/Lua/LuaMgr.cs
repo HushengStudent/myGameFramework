@@ -13,14 +13,16 @@ namespace Framework
 {
 	public class LuaMgr : Singleton<LuaMgr> 
 	{
-		// Use this for initialization
-		void Start () {
-			
-		}
-		
-		// Update is called once per frame
-		void Update () {
-			
-		}
+        public override void Init()
+        {
+            base.Init();
+            //≥ı ºªØLuaMgr;
+
+        }
+
+        public void StartLuaMgr()
+        {
+            Debug.Log("");
+        }
 	}
 }
