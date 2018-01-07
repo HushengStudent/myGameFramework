@@ -13,28 +13,28 @@ namespace Common
 {
 	public static class AssetBundleEditor
 	{
-        [MenuItem("Game/AssetBundleTools/Build All", false, 0)]
+        [MenuItem("MGame/AssetBundleTools/Build All", false, 0)]
         private static void BuildAll()
         {
 
         }
-        [MenuItem("Game/AssetBundleTools/Build UI", false, 1)]
+        [MenuItem("MGame/AssetBundleTools/Build UI", false, 1)]
         private static void BuildUI()
         {
 
         }
 
-        [MenuItem("Game/AssetBundleTools/Build Shader", false, 2)]
+        [MenuItem("MGame/AssetBundleTools/Build Shader", false, 2)]
         private static void BuildShader()
         {
 
         }
-        [MenuItem("Game/AssetBundleTools/Build Model", false, 3)]
+        [MenuItem("MGame/AssetBundleTools/Build Model", false, 3)]
         private static void BuildModel()
         {
 
         }
-        [MenuItem("Game/AssetBundleTools/Build Scene", false, 4)]
+        [MenuItem("MGame/AssetBundleTools/Build Scene", false, 4)]
         private static void BuildScene()
         {
 
