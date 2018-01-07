@@ -16,7 +16,7 @@ namespace Framework
     {
         private static Dictionary<TKey, List<Delegate>> eventDict = new Dictionary<TKey, List<Delegate>>();
 
-        public static void RemoveEvent(TKey key)
+        public static void RemoveEventList(TKey key)
         {
             eventDict.Remove(key);
         }
@@ -229,7 +229,7 @@ namespace Framework
         /// </summary>
         /// <typeparam name="T1"></typeparam>
         /// <typeparam name="T2"></typeparam>
-        /// <param name="MessageKey"></param>
+        /// <param name="key"></param>
         /// <param name="arg1"></param>
         /// <param name="arg2"></param>
         public static void FireEvent<T1, T2>(TKey key, T1 arg1, T2 arg2)
