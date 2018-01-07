@@ -21,10 +21,6 @@ namespace Common
         private void StartGame()
         {
             LuaMgr.Instance.StartLuaMgr();
-            LogUtility.Print("test", LogColor.Non);
-            LogUtility.Print("test", LogColor.Red);
-            LogUtility.Print("test", LogColor.Green);
-            LogUtility.Print("test", LogColor.Yellow);
         }
     }
 }

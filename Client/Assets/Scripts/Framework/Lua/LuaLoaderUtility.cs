@@ -4,22 +4,27 @@
 ** desc:  Lua加载工具
 *********************************************************************************/
 
+using LuaInterface;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LuaLoaderUtility
+namespace Framework
 {
-
-    // Use this for initialization
-    void Start()
+    public class LuaLoaderUtility : LuaFileUtils
     {
+        /// <summary>
+        /// 构造函数;
+        /// </summary>
+        /// <param name="isBundles">是否使用AssetBundle加载</param>
+        public LuaLoaderUtility(bool isBundles = false)
+        {
+            beZip = isBundles;
+        }
 
-    }
+        public void AddBundle(string bundleName)
+        {
 
-    // Update is called once per frame
-    void Update()
-    {
-
+        }
     }
 }

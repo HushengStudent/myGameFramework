@@ -8,9 +8,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IComponent
+namespace Framework
 {
-    void Init();
-
-    void Dispose();
+	public interface IComponent
+	{
+	    void Init();
+	
+	    void Dispose();
+	}
 }

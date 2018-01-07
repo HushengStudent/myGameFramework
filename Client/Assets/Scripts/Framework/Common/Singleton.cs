@@ -20,14 +20,14 @@ namespace Framework
 	        {
 	            if (null == instance)
 	            {
-	                instance = new T(); //调用构造函数  
+	                instance = new T(); //调用构造函数;
 	            }
 	            return instance;
 	        }
 	    }
 	
 	    /// <summary>
-	    /// SingletonManager构造函数
+	    /// 构造函数;
 	    /// </summary>
 	    protected Singleton()
 	    {

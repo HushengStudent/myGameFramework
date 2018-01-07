@@ -1220,6 +1220,7 @@ public static class ToLuaMenu
     public static void ClearLuaFiles()
     {
         ClearAllLuaFiles();
+        AssetDatabase.Refresh();
     }
 
 

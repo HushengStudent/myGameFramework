@@ -9,15 +9,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LuaComponent : IComponent
+namespace Framework
 {
-    public void Dispose()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void Init()
-    {
-        throw new NotImplementedException();
-    }
+	public class LuaComponent : IComponent
+	{
+	    public void Dispose()
+	    {
+	        throw new NotImplementedException();
+	    }
+	
+	    public void Init()
+	    {
+	        throw new NotImplementedException();
+	    }
+	}
 }
