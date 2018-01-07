@@ -4,6 +4,7 @@
 ** desc:  Lua工具集
 *********************************************************************************/
 
+using LuaInterface;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -286,6 +287,28 @@ namespace Framework
         {
             if (LuaMgr.Instance == null) return null;
             return LuaMgr.Instance.CallFunction(module + "." + func, args);
+        }
+
+        /// <summary>
+        /// pbc/pblua函数回调;
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="func"></param>
+        public static void OnCallLuaFunc(LuaByteBuffer data, LuaFunction func)
+        {
+            if (func != null) func.Call(data);
+            Debug.LogWarning("OnCallLuaFunc length:>>" + data.buffer.Length);
+        }
+
+        /// <summary>
+        /// cjson函数回调;
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="func"></param>
+        public static void OnJsonCallFunc(string data, LuaFunction func)
+        {
+            Debug.LogWarning("OnJsonCallback data:>>" + data + " lenght:>>" + data.Length);
+            if (func != null) func.Call(data);
         }
     }
 }
