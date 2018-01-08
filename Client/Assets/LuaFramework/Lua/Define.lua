@@ -21,7 +21,6 @@ logColor = Framework.LogColor
 
 --log print
 function log(msg)
-    logUtility.Print(msg,logColor.Green)
     logUtility.Print(msg)
 end
 
