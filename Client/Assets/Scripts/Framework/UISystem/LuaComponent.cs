@@ -1,17 +1,18 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/01/08 23:20:54
-** desc:  UI组件
+** date:  2017/12/28 00:32:14
+** desc:  Lua组件
 *********************************************************************************/
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Framework
 {
-	public class LuaBehaviour : MonoBehaviour
-    {
+	public class LuaComponent : MonoBehaviour
+	{
 	    
 	}
 }
