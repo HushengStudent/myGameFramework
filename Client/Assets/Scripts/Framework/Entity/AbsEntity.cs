@@ -11,16 +11,8 @@ using UnityEngine;
 
 namespace Framework
 {
-	public class AbsEntity : IComponent
+	public class AbsEntity
     {
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Init()
-        {
-            throw new NotImplementedException();
-        }
+        
 	}
 }

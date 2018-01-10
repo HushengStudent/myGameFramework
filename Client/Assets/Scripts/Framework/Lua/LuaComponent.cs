@@ -11,16 +11,8 @@ using UnityEngine;
 
 namespace Framework
 {
-	public class LuaComponent : IComponent
+	public class LuaComponent : AbsComponent
 	{
-	    public void Dispose()
-	    {
-	        throw new NotImplementedException();
-	    }
-	
-	    public void Init()
-	    {
-	        throw new NotImplementedException();
-	    }
+	    
 	}
 }
