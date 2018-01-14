@@ -11,8 +11,21 @@ using UnityEngine;
 
 namespace Framework
 {
-	public class AbsEntity
+	public abstract class AbsEntity
     {
-        
-	}
+        private ulong id;
+        public ulong ID
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+        public virtual void AwakeEx() { }
+        public virtual void UpdateEx() { }
+        public virtual void LateUpdateEx() { }
+        public virtual void OnDestroyEx() { }
+
+        public abstract void CreateEntity();
+        public abstract void DestroyEntity();
+    }
 }

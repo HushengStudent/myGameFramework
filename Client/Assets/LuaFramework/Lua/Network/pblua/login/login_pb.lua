@@ -10,7 +10,7 @@ LOGINRESPONSE = protobuf.Descriptor();
 LOGINRESPONSE_ID_FIELD = protobuf.FieldDescriptor();
 
 LOGINREQUEST_ID_FIELD.name = "id"
-LOGINREQUEST_ID_FIELD.full_name = ".LoginRequest.id"
+LOGINREQUEST_ID_FIELD.full_name = ".Protocol.LoginRequest.id"
 LOGINREQUEST_ID_FIELD.number = 1
 LOGINREQUEST_ID_FIELD.index = 0
 LOGINREQUEST_ID_FIELD.label = 2
@@ -20,7 +20,7 @@ LOGINREQUEST_ID_FIELD.type = 5
 LOGINREQUEST_ID_FIELD.cpp_type = 1
 
 LOGINREQUEST_NAME_FIELD.name = "name"
-LOGINREQUEST_NAME_FIELD.full_name = ".LoginRequest.name"
+LOGINREQUEST_NAME_FIELD.full_name = ".Protocol.LoginRequest.name"
 LOGINREQUEST_NAME_FIELD.number = 2
 LOGINREQUEST_NAME_FIELD.index = 1
 LOGINREQUEST_NAME_FIELD.label = 2
@@ -30,7 +30,7 @@ LOGINREQUEST_NAME_FIELD.type = 9
 LOGINREQUEST_NAME_FIELD.cpp_type = 9
 
 LOGINREQUEST_EMAIL_FIELD.name = "email"
-LOGINREQUEST_EMAIL_FIELD.full_name = ".LoginRequest.email"
+LOGINREQUEST_EMAIL_FIELD.full_name = ".Protocol.LoginRequest.email"
 LOGINREQUEST_EMAIL_FIELD.number = 3
 LOGINREQUEST_EMAIL_FIELD.index = 2
 LOGINREQUEST_EMAIL_FIELD.label = 1
@@ -40,14 +40,14 @@ LOGINREQUEST_EMAIL_FIELD.type = 9
 LOGINREQUEST_EMAIL_FIELD.cpp_type = 9
 
 LOGINREQUEST.name = "LoginRequest"
-LOGINREQUEST.full_name = ".LoginRequest"
+LOGINREQUEST.full_name = ".Protocol.LoginRequest"
 LOGINREQUEST.nested_types = {}
 LOGINREQUEST.enum_types = {}
 LOGINREQUEST.fields = {LOGINREQUEST_ID_FIELD, LOGINREQUEST_NAME_FIELD, LOGINREQUEST_EMAIL_FIELD}
 LOGINREQUEST.is_extendable = false
 LOGINREQUEST.extensions = {}
 LOGINRESPONSE_ID_FIELD.name = "id"
-LOGINRESPONSE_ID_FIELD.full_name = ".LoginResponse.id"
+LOGINRESPONSE_ID_FIELD.full_name = ".Protocol.LoginResponse.id"
 LOGINRESPONSE_ID_FIELD.number = 1
 LOGINRESPONSE_ID_FIELD.index = 0
 LOGINRESPONSE_ID_FIELD.label = 2
@@ -57,7 +57,7 @@ LOGINRESPONSE_ID_FIELD.type = 5
 LOGINRESPONSE_ID_FIELD.cpp_type = 1
 
 LOGINRESPONSE.name = "LoginResponse"
-LOGINRESPONSE.full_name = ".LoginResponse"
+LOGINRESPONSE.full_name = ".Protocol.LoginResponse"
 LOGINRESPONSE.nested_types = {}
 LOGINRESPONSE.enum_types = {}
 LOGINRESPONSE.fields = {LOGINRESPONSE_ID_FIELD}

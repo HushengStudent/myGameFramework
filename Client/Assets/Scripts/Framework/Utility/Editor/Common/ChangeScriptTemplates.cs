@@ -17,7 +17,7 @@ namespace Framework
 	
 	    public static void OnWillCreateAsset(string path)
 	    {
-	        if (path.Contains("Assets/Scripts"))
+	        if (path.Contains("Assets/Scripts") && !path.Contains("Assets/Scripts/Common/Protocol"))
 	        {
 	            path = path.Replace(".meta", "");
 	            if (path.EndsWith(".cs"))

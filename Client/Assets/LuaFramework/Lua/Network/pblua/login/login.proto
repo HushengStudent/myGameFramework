@@ -1,3 +1,4 @@
+package Protocol;
 
 message LoginRequest {
 	required int32 id = 1;

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/01/08 00:26:38
-** desc:  实体管理
+** date:  2018/01/14 14:16:25
+** desc:  #####
 *********************************************************************************/
 
 using System.Collections;
@@ -10,19 +10,19 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class EntityMgr : MonoSingleton<EntityMgr>
-    {
+	public class ComponentMgr : MonoSingleton<ComponentMgr>
+	{
         public override void Init()
         {
             base.Init();
-            LogUtility.Print("[EntityMgr]Init!", LogColor.Green);
+            LogUtility.Print("[ComponentMgr]Init!", LogColor.Green);
         }
 
         #region Field
 
-        private Dictionary<ulong, AbsEntity> EntityDict = new Dictionary<ulong, AbsEntity>();
+        private Dictionary<ulong, AbsComponent> ComponentDict = new Dictionary<ulong, AbsComponent>();
 
-        private List<AbsEntity> EntityList = new List<AbsEntity>();
+        private List<AbsComponent> ComponentList = new List<AbsComponent>();
 
         #endregion
 
@@ -31,36 +31,36 @@ namespace Framework
         public override void AwakeEx()
         {
             base.AwakeEx();
-            for (int i = 0; i < EntityList.Count; i++)
+            for(int i = 0; i < ComponentList.Count; i++)
             {
-                EntityList[i].AwakeEx();
+                ComponentList[i].AwakeEx();
             }
         }
 
         public override void UpdateEx()
         {
             base.UpdateEx();
-            for (int i = 0; i < EntityList.Count; i++)
+            for (int i = 0; i < ComponentList.Count; i++)
             {
-                EntityList[i].UpdateEx();
+                ComponentList[i].UpdateEx();
             }
         }
 
         public override void LateUpdateEx()
         {
             base.LateUpdateEx();
-            for (int i = 0; i < EntityList.Count; i++)
+            for (int i = 0; i < ComponentList.Count; i++)
             {
-                EntityList[i].LateUpdateEx();
+                ComponentList[i].LateUpdateEx();
             }
         }
 
         public override void OnDestroyEx()
         {
             base.OnDestroyEx();
-            for (int i = 0; i < EntityList.Count; i++)
+            for (int i = 0; i < ComponentList.Count; i++)
             {
-                EntityList[i].OnDestroyEx();
+                ComponentList[i].OnDestroyEx();
             }
         }
 
@@ -68,30 +68,30 @@ namespace Framework
 
         #region Function
 
-        public void StartEntityMgr()
+        public void StartComponentMgr()
         {
 
         }
 
-        private bool AddEntity(AbsEntity entity)
+        private bool AddComponent(AbsComponent component)
         {
-            if (EntityDict.ContainsKey(entity.ID))
+            if (ComponentDict.ContainsKey(component.ID))
             {
                 return false;
             }
-            EntityDict[entity.ID] = entity;
-            EntityList.Add(entity);
+            ComponentDict[component.ID] = component;
+            ComponentList.Add(component);
             return true;
         }
 
-        private bool RemoveComponent(AbsEntity entity)
+        private bool RemoveComponent(AbsComponent component)
         {
-            if (!EntityDict.ContainsKey(entity.ID))
+            if (!ComponentDict.ContainsKey(component.ID))
             {
                 return false;
             }
-            EntityDict.Remove(entity.ID);
-            EntityList.Remove(entity);
+            ComponentDict.Remove(component.ID);
+            ComponentList.Remove(component);
             return true;
         }
 

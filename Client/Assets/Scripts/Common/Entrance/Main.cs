@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Framework;
+using Protocol;
 
 namespace Common
 {
@@ -20,6 +21,8 @@ namespace Common
 
         private void StartGame()
         {
+            ComponentMgr.Instance.StartComponentMgr();
+            EntityMgr.Instance.StartEntityMgr();
             LuaMgr.Instance.StartLuaMgr();
         }
     }

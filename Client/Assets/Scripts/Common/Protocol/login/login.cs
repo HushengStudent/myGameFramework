@@ -10,7 +10,7 @@
 // Option: missing-value detection (*Specified/ShouldSerialize*/Reset*) enabled
     
 // Generated from: login.proto
-namespace login
+namespace Protocol
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LoginRequest")]
   public partial class LoginRequest : global::ProtoBuf.IExtensible
