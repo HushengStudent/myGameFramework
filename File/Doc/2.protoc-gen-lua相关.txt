@@ -1,0 +1,12 @@
+protoc-gen-lua：
+
+1.解压myGameFramework\File\Source\pblua\protobuff\protobuf-python-3.0.0.zip 到C盘。
+2.解压myGameFramework\File\Source\pblua\protobuff\protoc-3.0.0-win32.zip 把Protoc放到protobuf/src下。
+3.使用protobuf的python版本必须在2.6以上，protoc的版本要与protobuf的版本保持一致。
+4.如果python2.7的版本大于2.7.9，在安装python时setuptools已自动安装，否则则需要手动。
+5.cmd进入到protobuf/python 执行以下命令:
+python setup.py build
+python setup.py install
+6.致此pblua环境搭建完成。
+7.myGameFramework\Tools\protoc-gen-lua-master 为pblua工作目录，已经解压好了。
+8.参考工程代码：PbLuaEditor.cs。

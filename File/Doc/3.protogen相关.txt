@@ -1,0 +1,7 @@
+protogen:
+
+1.解压myGameFramework\File\Source\pblua\protobuff-net\protobuf-net-r668.zip。
+2.打开项目下protobuff-net工程，生成。
+3.打开ProtoGen工程，生成。
+4.其中ProtoGen工程生成的protogen.exe即可以拿来用proto文件生成C#代码。
+5.参考工程代码：PbLuaEditor.cs。
