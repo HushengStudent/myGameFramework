@@ -59,3 +59,10 @@ function string.split(input, delimiter)
     table.insert(arr, string.sub(input, pos))
     return arr
 end
+
+---table dump
+function table.dump(t)
+    for k, v in pairs(t) do
+        logGreen("--->>>key:"..tostring(k).." --->>>value:"..tostring(v))
+    end
+end
