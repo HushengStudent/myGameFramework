@@ -4,9 +4,17 @@
 ---
 
 require "Define"
+require "Common/Class"
 
-Game = {}
+Game = class("Game")
 
-Game.StartGame = function()
+function Game:ctor() end
+
+game = Game.new()
+
+function Game:StartGame()
     log("game start!")
 end
+
+
+
