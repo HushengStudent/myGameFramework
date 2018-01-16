@@ -1,25 +1,22 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/01/10 23:31:39
-** desc:  UI√Ê∞Â
+** date:  2018/01/17 03:29:33
+** desc:  ≥°æ∞ui¿‡
 *********************************************************************************/
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Framework
-{
-	public class AbsStage : MonoBehaviour {
-	
-		// Use this for initialization
-		void Start () {
-			
-		}
+public class BaseUI : MonoBehaviour {
+
+	// Use this for initialization
+	void Start () {
 		
-		// Update is called once per frame
-		void Update () {
-			
-		}
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
 	}
 }

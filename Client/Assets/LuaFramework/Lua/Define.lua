@@ -1,25 +1,26 @@
 ---
 --- Created by husheng.
 --- DateTime: 2018/1/7 18:49
+--- 定义引用:c# to lua
 ---
 
---[Unity]
+---[Unity]
 WWW = UnityEngine.WWW;
 GameObject = UnityEngine.GameObject;
 
---[Mgr]
+---[Mgr]
 luaMgr = Framework.LuaMgr.Instance --luaMgr
 
---[Utility]
+---[Utility]
 luaUtility = Framework.LuaUtility.Instance --luaUtility
 logUtility = Framework.LogUtility
 
---[Enum]
+---[Enum]
 logColor = Framework.LogColor
 
---[Function]
+---[Function]
 
---log print
+---log print
 function log(msg)
     logUtility.Print(msg)
 end
