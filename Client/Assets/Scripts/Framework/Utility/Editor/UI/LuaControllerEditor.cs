@@ -70,7 +70,13 @@ namespace Framework
                 File.WriteAllText(fileName, allText);
                 EditorUtility.DisplayDialog("提示", "文件： " + name + "Ctrl.lua" + " 生成成功！", "确认");
             }
+
             if (GUILayout.Button("update panel"))
+            {
+
+            }
+
+            if (GUILayout.Button("create data"))
             {
 
             }
