@@ -8,6 +8,8 @@ require "Common.Functions"
 require "Manager.GameManager"
 require "Manager.UIManager"
 require "Manager.SceneManager"
+require "UI.BaseCtrl"
+require "UI.BaseData"
 
 ---[luaMgr]
 GameMgr = GameManager.new()
