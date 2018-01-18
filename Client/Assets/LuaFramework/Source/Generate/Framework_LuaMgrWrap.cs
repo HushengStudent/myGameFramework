@@ -9,10 +9,11 @@ public class Framework_LuaMgrWrap
 		L.BeginClass(typeof(Framework.LuaMgr), typeof(Framework.MonoSingleton<Framework.LuaMgr>));
 		L.RegFunction("Init", Init);
 		L.RegFunction("AwakeEx", AwakeEx);
-		L.RegFunction("OnDestroyEx", OnDestroyEx);
 		L.RegFunction("StartLuaMgr", StartLuaMgr);
 		L.RegFunction("DoFile", DoFile);
 		L.RegFunction("CallFunction", CallFunction);
+		L.RegFunction("CallLuaModuleMethod", CallLuaModuleMethod);
+		L.RegFunction("CallLuaTableMethod", CallLuaTableMethod);
 		L.RegFunction("LuaGC", LuaGC);
 		L.RegFunction("Close", Close);
 		L.RegFunction("__eq", op_Equality);
@@ -44,22 +45,6 @@ public class Framework_LuaMgrWrap
 			ToLua.CheckArgsCount(L, 1);
 			Framework.LuaMgr obj = (Framework.LuaMgr)ToLua.CheckObject<Framework.LuaMgr>(L, 1);
 			obj.AwakeEx();
-			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int OnDestroyEx(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 1);
-			Framework.LuaMgr obj = (Framework.LuaMgr)ToLua.CheckObject<Framework.LuaMgr>(L, 1);
-			obj.OnDestroyEx();
 			return 0;
 		}
 		catch (Exception e)
@@ -113,6 +98,43 @@ public class Framework_LuaMgrWrap
 			object[] o = obj.CallFunction(arg0, arg1);
 			ToLua.Push(L, o);
 			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int CallLuaModuleMethod(IntPtr L)
+	{
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+			Framework.LuaMgr obj = (Framework.LuaMgr)ToLua.CheckObject<Framework.LuaMgr>(L, 1);
+			string arg0 = ToLua.CheckString(L, 2);
+			object[] arg1 = ToLua.ToParamsObject(L, 3, count - 2);
+			obj.CallLuaModuleMethod(arg0, arg1);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int CallLuaTableMethod(IntPtr L)
+	{
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+			Framework.LuaMgr obj = (Framework.LuaMgr)ToLua.CheckObject<Framework.LuaMgr>(L, 1);
+			string arg0 = ToLua.CheckString(L, 2);
+			string arg1 = ToLua.CheckString(L, 3);
+			object[] arg2 = ToLua.ToParamsObject(L, 4, count - 3);
+			obj.CallLuaTableMethod(arg0, arg1, arg2);
+			return 0;
 		}
 		catch (Exception e)
 		{

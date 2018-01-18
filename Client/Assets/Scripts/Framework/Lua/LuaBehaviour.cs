@@ -12,27 +12,28 @@ namespace Framework
 {
     public class LuaBehaviour : MonoBehaviour
     {
+        private string luaTitle = "UI.Controller";
         private string luaName;
 
         protected void Awake()
         {
-            luaName = name + "Ctrl";
-            LuaUtility.CallMethod(luaName, "Awake", gameObject);
+            luaName = luaTitle+"."+ name + "Ctrl";
+            LuaUtility.CallLuaTableMethod(luaName, "Awake", gameObject);
         }
 
         protected void Start()
         {
-            LuaUtility.CallMethod(luaName, "Start", gameObject);
+            LuaUtility.CallLuaTableMethod(luaName, "Start");
         }
 
         protected void OnEnable()
         {
-            LuaUtility.CallMethod(luaName, "OnEnable", gameObject);
+            LuaUtility.CallLuaTableMethod(luaName, "OnEnable");
         }
 
         protected void OnDisable()
         {
-            LuaUtility.CallMethod(luaName, "OnDisable", gameObject);
+            LuaUtility.CallLuaTableMethod(luaName, "OnDisable");
         }
 
         protected void OnDestroy()

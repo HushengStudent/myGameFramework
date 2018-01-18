@@ -17,6 +17,8 @@ namespace Framework
 {
     public class LuaUtility : Singleton<LuaUtility>
     {
+        #region Math
+
         public static int Int(object o)
         {
             return Convert.ToInt32(o);
@@ -42,18 +44,9 @@ namespace Framework
             return UnityEngine.Random.Range(min, max);
         }
 
-        public static string Uid(string uid)
-        {
-            int position = uid.LastIndexOf('_');
-            return uid.Remove(0, position + 1);
-        }
+        #endregion
 
-        public static long GetTime()
-        {
-            //TODO:使用服务器时间;
-            TimeSpan ts = new TimeSpan(DateTime.UtcNow.Ticks - new DateTime(1970, 1, 1, 0, 0, 0).Ticks);
-            return (long)ts.TotalMilliseconds;
-        }
+        #region Unity
 
         /// <summary>
         /// 搜索子物体组件:GameObject版;
@@ -163,6 +156,35 @@ namespace Framework
         }
 
         /// <summary>
+        /// 清除所有子节点;
+        /// </summary>
+        public static void ClearChild(Transform go)
+        {
+            if (go == null) return;
+            for (int i = go.childCount - 1; i >= 0; i--)
+            {
+                GameObject.Destroy(go.GetChild(i).gameObject);
+            }
+        }
+
+        #endregion
+
+        #region System
+
+        public static string Uid(string uid)
+        {
+            int position = uid.LastIndexOf('_');
+            return uid.Remove(0, position + 1);
+        }
+
+        public static long GetTime()
+        {
+            //TODO:使用服务器时间;
+            TimeSpan ts = new TimeSpan(DateTime.UtcNow.Ticks - new DateTime(1970, 1, 1, 0, 0, 0).Ticks);
+            return (long)ts.TotalMilliseconds;
+        }
+
+        /// <summary>
         /// 计算字符串的MD5值;
         /// </summary>
         public static string md5(string source)
@@ -203,18 +225,6 @@ namespace Framework
             catch (Exception ex)
             {
                 throw new Exception("md5file() fail, error:" + ex.Message);
-            }
-        }
-
-        /// <summary>
-        /// 清除所有子节点;
-        /// </summary>
-        public static void ClearChild(Transform go)
-        {
-            if (go == null) return;
-            for (int i = go.childCount - 1; i >= 0; i--)
-            {
-                GameObject.Destroy(go.GetChild(i).gameObject);
             }
         }
 
@@ -280,6 +290,10 @@ namespace Framework
             return path;
         }
 
+        #endregion
+
+        #region Call Lua
+
         /// <summary>
         /// 执行Lua方法;
         /// </summary>
@@ -287,6 +301,18 @@ namespace Framework
         {
             if (LuaMgr.Instance == null) return null;
             return LuaMgr.Instance.CallFunction(module + "." + func, args);
+        }
+
+        public static void CallLuaModuleMethod(string module, string func, params object[] args)
+        {
+            if (LuaMgr.Instance == null) return;
+            LuaMgr.Instance.CallLuaModuleMethod(module + "." + func, args);
+        }
+
+        public static void CallLuaTableMethod(string module, string func, params object[] args)
+        {
+            if (LuaMgr.Instance == null) return;
+            LuaMgr.Instance.CallLuaTableMethod(module, func, args);
         }
 
         /// <summary>
@@ -300,6 +326,10 @@ namespace Framework
             Debug.LogWarning("OnCallLuaFunc length:>>" + data.buffer.Length);
         }
 
+        #endregion
+
+        #region Json
+
         /// <summary>
         /// cjson函数回调;
         /// </summary>
@@ -310,5 +340,8 @@ namespace Framework
             Debug.LogWarning("OnJsonCallback data:>>" + data + " lenght:>>" + data.Length);
             if (func != null) func.Call(data);
         }
+
+        #endregion
+
     }
 }

@@ -16,6 +16,8 @@ namespace Framework
 {
     public class LuaComponent : MonoBehaviour
     {
+        [SerializeField]
+        public string ComponentName;
 
         private Button curButton;
         private Image curImage;

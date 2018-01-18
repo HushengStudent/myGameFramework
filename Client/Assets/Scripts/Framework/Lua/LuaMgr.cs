@@ -121,6 +121,25 @@ namespace Framework
             return null;
         }
 
+        public void CallLuaModuleMethod(string funcName, params object[] args)
+        {
+            LuaFunction func = lua.GetFunction(funcName);
+            if (func != null)
+            {
+                func.Call(args);
+            }
+        }
+
+        public void CallLuaTableMethod(string module, string funcName, params object[] args)
+        {
+            LuaFunction func = lua.GetFunction(module+"."+ funcName);
+            LuaTable table = lua.GetTable(module);
+            if(func!=null && table != null)
+            {
+                func.Call(table,args);
+            }
+        }
+
         public void LuaGC()
         {
             lua.LuaGC(LuaGCOptions.LUA_GCCOLLECT);

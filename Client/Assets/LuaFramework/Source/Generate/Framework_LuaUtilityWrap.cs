@@ -11,17 +11,21 @@ public class Framework_LuaUtilityWrap
 		L.RegFunction("Float", Float);
 		L.RegFunction("Long", Long);
 		L.RegFunction("Random", Random);
-		L.RegFunction("Uid", Uid);
-		L.RegFunction("GetTime", GetTime);
 		L.RegFunction("Child", Child);
 		L.RegFunction("Peer", Peer);
+		L.RegFunction("ClearChild", ClearChild);
+		L.RegFunction("Uid", Uid);
+		L.RegFunction("GetTime", GetTime);
 		L.RegFunction("md5", md5);
 		L.RegFunction("md5file", md5file);
-		L.RegFunction("ClearChild", ClearChild);
 		L.RegFunction("ClearMemory", ClearMemory);
 		L.RegFunction("GetFileText", GetFileText);
 		L.RegFunction("AppContentPath", AppContentPath);
 		L.RegFunction("CallMethod", CallMethod);
+		L.RegFunction("CallLuaModuleMethod", CallLuaModuleMethod);
+		L.RegFunction("CallLuaTableMethod", CallLuaTableMethod);
+		L.RegFunction("OnCallLuaFunc", OnCallLuaFunc);
+		L.RegFunction("OnJsonCallFunc", OnJsonCallFunc);
 		L.RegFunction("New", _CreateFramework_LuaUtility);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("NetAvailable", get_NetAvailable, null);
@@ -123,39 +127,6 @@ public class Framework_LuaUtilityWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int Uid(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 1);
-			string arg0 = ToLua.CheckString(L, 1);
-			string o = Framework.LuaUtility.Uid(arg0);
-			LuaDLL.lua_pushstring(L, o);
-			return 1;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int GetTime(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 0);
-			long o = Framework.LuaUtility.GetTime();
-			LuaDLL.tolua_pushint64(L, o);
-			return 1;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Child(IntPtr L)
 	{
 		try
@@ -224,6 +195,55 @@ public class Framework_LuaUtilityWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int ClearChild(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			UnityEngine.Transform arg0 = (UnityEngine.Transform)ToLua.CheckObject<UnityEngine.Transform>(L, 1);
+			Framework.LuaUtility.ClearChild(arg0);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int Uid(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			string arg0 = ToLua.CheckString(L, 1);
+			string o = Framework.LuaUtility.Uid(arg0);
+			LuaDLL.lua_pushstring(L, o);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int GetTime(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 0);
+			long o = Framework.LuaUtility.GetTime();
+			LuaDLL.tolua_pushint64(L, o);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int md5(IntPtr L)
 	{
 		try
@@ -250,22 +270,6 @@ public class Framework_LuaUtilityWrap
 			string o = Framework.LuaUtility.md5file(arg0);
 			LuaDLL.lua_pushstring(L, o);
 			return 1;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int ClearChild(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 1);
-			UnityEngine.Transform arg0 = (UnityEngine.Transform)ToLua.CheckObject<UnityEngine.Transform>(L, 1);
-			Framework.LuaUtility.ClearChild(arg0);
-			return 0;
 		}
 		catch (Exception e)
 		{
@@ -333,6 +337,76 @@ public class Framework_LuaUtilityWrap
 			object[] o = Framework.LuaUtility.CallMethod(arg0, arg1, arg2);
 			ToLua.Push(L, o);
 			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int CallLuaModuleMethod(IntPtr L)
+	{
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+			string arg0 = ToLua.CheckString(L, 1);
+			string arg1 = ToLua.CheckString(L, 2);
+			object[] arg2 = ToLua.ToParamsObject(L, 3, count - 2);
+			Framework.LuaUtility.CallLuaModuleMethod(arg0, arg1, arg2);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int CallLuaTableMethod(IntPtr L)
+	{
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+			string arg0 = ToLua.CheckString(L, 1);
+			string arg1 = ToLua.CheckString(L, 2);
+			object[] arg2 = ToLua.ToParamsObject(L, 3, count - 2);
+			Framework.LuaUtility.CallLuaTableMethod(arg0, arg1, arg2);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int OnCallLuaFunc(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			LuaByteBuffer arg0 = new LuaByteBuffer(ToLua.CheckByteBuffer(L, 1));
+			LuaFunction arg1 = ToLua.CheckLuaFunction(L, 2);
+			Framework.LuaUtility.OnCallLuaFunc(arg0, arg1);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int OnJsonCallFunc(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			string arg0 = ToLua.CheckString(L, 1);
+			LuaFunction arg1 = ToLua.CheckLuaFunction(L, 2);
+			Framework.LuaUtility.OnJsonCallFunc(arg0, arg1);
+			return 0;
 		}
 		catch (Exception e)
 		{

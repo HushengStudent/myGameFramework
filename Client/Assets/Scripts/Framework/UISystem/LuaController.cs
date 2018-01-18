@@ -12,6 +12,8 @@ namespace Framework
 {
 	public class LuaController : MonoBehaviour
     {
-        
+        [SerializeField]
+        public LuaComponent[] componentArray;
+
     }
 }
