@@ -12,14 +12,14 @@ namespace Framework
 {
     public class AssetBundleTag : MonoBehaviour
     {
-        // Use this for initialization
-        void Start()
-        {
+        private string assetBundleName = string.Empty;
 
+        public string AssetBundleName
+        {
+            set { assetBundleName = value; }
         }
 
-        // Update is called once per frame
-        void Update()
+        void OnDestroy()
         {
 
         }
