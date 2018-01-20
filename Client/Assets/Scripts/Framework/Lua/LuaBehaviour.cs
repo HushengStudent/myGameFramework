@@ -12,12 +12,11 @@ namespace Framework
 {
     public class LuaBehaviour : MonoBehaviour
     {
-        private string luaTitle = "UI.Controller";
-        private string luaName;
+        private string luaName ="";
 
         protected void Awake()
         {
-            luaName = luaTitle+"."+ name + "Ctrl";
+            luaName = name + "Ctrl";
             LuaUtility.CallLuaTableMethod(luaName, "Awake", gameObject);
         }
 

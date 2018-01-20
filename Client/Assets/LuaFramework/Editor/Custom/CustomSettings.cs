@@ -160,6 +160,8 @@ public static class CustomSettings
         _GT(typeof(LogColor)),
         _GT(typeof(LuaController)),
         _GT(typeof(LuaComponent)),
+        _GT(typeof(SceneMgr)),
+        _GT(typeof(ResourceMgr)),
 
         //_GT(typeof(AppConst)),
         //_GT(typeof(LuaHelper)),

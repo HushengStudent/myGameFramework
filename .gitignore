@@ -20,3 +20,7 @@
 /Client/Assets/StreamingAssets
 /Client/Assets/StreamingAssets.meta
 /Client/Assets/LuaFramework/Lua/.idea
+/Server/myServer/.vs
+/Server/myServerFramework/.vs
+/Client/Assembly-CSharp.csproj
+/Client/Assembly-CSharp-Editor.csproj

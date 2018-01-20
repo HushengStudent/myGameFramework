@@ -89,8 +89,12 @@ public static class LuaBinder
 		Framework_LogColorWrap.Register(L);
 		Framework_LuaControllerWrap.Register(L);
 		Framework_LuaComponentWrap.Register(L);
+		Framework_SceneMgrWrap.Register(L);
+		Framework_ResourceMgrWrap.Register(L);
 		Framework_MonoSingleton_Framework_LuaMgrWrap.Register(L);
 		Framework_Singleton_Framework_LuaUtilityWrap.Register(L);
+		Framework_Singleton_Framework_SceneMgrWrap.Register(L);
+		Framework_Singleton_Framework_ResourceMgrWrap.Register(L);
 		L.EndModule();
 		L.BeginModule("System");
 		L.RegFunction("Action", System_Action);

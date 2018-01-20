@@ -5,11 +5,13 @@
 ---
 
 ---[Unity]
-WWW = UnityEngine.WWW;
-GameObject = UnityEngine.GameObject;
+WWW = UnityEngine.WWW
+GameObject = UnityEngine.GameObject
 
 ---[Mgr]
 luaMgr = Framework.LuaMgr.Instance --luaMgr
+sceneMgr = Framework.SceneMgr.Instance
+resourceMgr = Framework.ResourceMgr.Instance
 
 ---[Utility]
 luaUtility = Framework.LuaUtility.Instance --luaUtility

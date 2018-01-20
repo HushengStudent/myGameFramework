@@ -8,8 +8,12 @@ GameManager = class("GameManager")
 
 function GameManager:ctor() end
 
-function GameManager:GetClassName()
+function GameManager:GetManagerName()
     log("GameManager")
+end
+
+function GameManager:StartGame()
+    g_UIMgr:OnEnterCanvas(CanvasEnum.LoginCanvas)
 end
 
 
