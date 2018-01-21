@@ -12,16 +12,25 @@ namespace Framework
 {
     public class AssetBundleTag : MonoBehaviour
     {
-        private string assetBundleName = string.Empty;
+        private string assetName = string.Empty;
+
+        private AssetType type = AssetType.Non;
 
         public string AssetBundleName
         {
-            set { assetBundleName = value; }
+            get { return assetName; }
+            set { assetName = value; }
+        }
+
+        public AssetType Type
+        {
+            get { return type; }
+            set { type = value; }
         }
 
         void OnDestroy()
         {
-
+            AssetBundleMgr.Instance.UnloadAsset(Type, AssetBundleName);
         }
     }
 }
