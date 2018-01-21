@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1464540467
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 34b0f5c4cc46e784e5426d991b70fb08
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2f83f8f92ace07d29cf518d0769d85c5
+HashAppended: 0
+ClassTypes:
+- Class: 74
+  Script: {instanceID: 0}
+Assets:
+- Assets/Bundles/Anim/test.anim
+Dependencies: []

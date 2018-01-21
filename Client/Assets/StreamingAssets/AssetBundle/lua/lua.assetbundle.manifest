@@ -1,0 +1,106 @@
+ManifestFileVersion: 0
+CRC: 2992154713
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 55a7aba8c1897c78d26c6c82ba4e8962
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1033bf7ddfd4c6d43e7a6382c0a0a61a
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/Lua/UnityEngine/RaycastHit.lua.bytes
+- Assets/Resources/Lua/socket/mbox.lua.bytes
+- Assets/Resources/Lua/Common/Functions.lua.bytes
+- Assets/Resources/Lua/Panel/CtrlEnum.lua.bytes
+- Assets/Resources/Lua/UnityEngine/Vector2.lua.bytes
+- Assets/Resources/Lua/UnityEngine/Time.lua.bytes
+- Assets/Resources/Lua/UnityEngine/Bounds.lua.bytes
+- Assets/Resources/Lua/protobuf/containers.lua.bytes
+- Assets/Resources/Lua/jit/dis_arm.lua.bytes
+- Assets/Resources/Lua/System/Timer.lua.bytes
+- Assets/Resources/Lua/Common/cjson/test.lua.bytes
+- Assets/Resources/Lua/Manager/UIManager.lua.bytes
+- Assets/Resources/Lua/jit/dis_mips64.lua.bytes
+- Assets/Resources/Lua/Common/cjson/lua2json.lua.bytes
+- Assets/Resources/Lua/UnityEngine/Touch.lua.bytes
+- Assets/Resources/Lua/System/coroutine.lua.bytes
+- Assets/Resources/Lua/protobuf/decoder.lua.bytes
+- Assets/Resources/Lua/lpeg/re.lua.bytes
+- Assets/Resources/Lua/socket/http.lua.bytes
+- Assets/Resources/Lua/Define.lua.bytes
+- Assets/Resources/Lua/Panel/View/LoginPanel.lua.bytes
+- Assets/Resources/Lua/Common/luabitop/installpath.lua.bytes
+- Assets/Resources/Lua/cjson/util.lua.bytes
+- Assets/Resources/Lua/protobuf/encoder.lua.bytes
+- Assets/Resources/Lua/typeof.lua.bytes
+- Assets/Resources/Lua/ltn12.lua.bytes
+- Assets/Resources/Lua/jit/dis_arm64be.lua.bytes
+- Assets/Resources/Lua/Panel/Data/LoginData.lua.bytes
+- Assets/Resources/Lua/Manager/SceneManager.lua.bytes
+- Assets/Resources/Lua/jit/dis_mips64el.lua.bytes
+- Assets/Resources/Lua/UnityEngine/LayerMask.lua.bytes
+- Assets/Resources/Lua/Manager/GameManager.lua.bytes
+- Assets/Resources/Lua/Network/NetworkDefine.lua.bytes
+- Assets/Resources/Lua/Common/cjson/json2lua.lua.bytes
+- Assets/Resources/Lua/Common/luabitop/md5test.lua.bytes
+- Assets/Resources/Lua/protobuf/text_format.lua.bytes
+- Assets/Resources/Lua/tolua.lua.bytes
+- Assets/Resources/Lua/Common/luabitop/nsievebits.lua.bytes
+- Assets/Resources/Lua/jit/vmdef.lua.bytes
+- Assets/Resources/Lua/socket/ftp.lua.bytes
+- Assets/Resources/Lua/jit/dis_x64.lua.bytes
+- Assets/Resources/Lua/protobuf/descriptor.lua.bytes
+- Assets/Resources/Lua/slot.lua.bytes
+- Assets/Resources/Lua/System/ValueType.lua.bytes
+- Assets/Resources/Lua/list.lua.bytes
+- Assets/Resources/Lua/UI/Canvas/LoginCanvas.lua.bytes
+- Assets/Resources/Lua/jit/p.lua.bytes
+- Assets/Resources/Lua/jit/dis_x86.lua.bytes
+- Assets/Resources/Lua/jit/dis_arm64.lua.bytes
+- Assets/Resources/Lua/Main.lua.bytes
+- Assets/Resources/Lua/protobuf/listener.lua.bytes
+- Assets/Resources/Lua/misc/functions.lua.bytes
+- Assets/Resources/Lua/UnityEngine/Mathf.lua.bytes
+- Assets/Resources/Lua/Common/Class.lua.bytes
+- Assets/Resources/Lua/event.lua.bytes
+- Assets/Resources/Lua/UnityEngine/Ray.lua.bytes
+- Assets/Resources/Lua/UnityEngine/Color.lua.bytes
+- Assets/Resources/Lua/socket/tp.lua.bytes
+- Assets/Resources/Lua/jit/dis_mipsel.lua.bytes
+- Assets/Resources/Lua/jit/bc.lua.bytes
+- Assets/Resources/Lua/UI/CanvasEnum.lua.bytes
+- Assets/Resources/Lua/Panel/Controller/LoginCtrl.lua.bytes
+- Assets/Resources/Lua/UnityEngine/Plane.lua.bytes
+- Assets/Resources/Lua/Event/eventlib.lua.bytes
+- Assets/Resources/Lua/jit/dis_ppc.lua.bytes
+- Assets/Resources/Lua/socket/headers.lua.bytes
+- Assets/Resources/Lua/protobuf/wire_format.lua.bytes
+- Assets/Resources/Lua/misc/strict.lua.bytes
+- Assets/Resources/Lua/UI/Canvas/BaseCanvas.lua.bytes
+- Assets/Resources/Lua/jit/dis_mips.lua.bytes
+- Assets/Resources/Lua/jit/bcsave.lua.bytes
+- Assets/Resources/Lua/jit/v.lua.bytes
+- Assets/Resources/Lua/UnityEngine/Quaternion.lua.bytes
+- Assets/Resources/Lua/socket/url.lua.bytes
+- Assets/Resources/Lua/socket/smtp.lua.bytes
+- Assets/Resources/Lua/System/Reflection/BindingFlags.lua.bytes
+- Assets/Resources/Lua/UnityEngine/Vector4.lua.bytes
+- Assets/Resources/Lua/mime.lua.bytes
+- Assets/Resources/Lua/jit/dump.lua.bytes
+- Assets/Resources/Lua/protobuf/protobuf.lua.bytes
+- Assets/Resources/Lua/Network/pblua/login/login_pb.lua.bytes
+- Assets/Resources/Lua/Common/cjson/util.lua.bytes
+- Assets/Resources/Lua/UnityEngine/Vector3.lua.bytes
+- Assets/Resources/Lua/Panel/BaseCtrl.lua.bytes
+- Assets/Resources/Lua/jit/zone.lua.bytes
+- Assets/Resources/Lua/misc/utf8.lua.bytes
+- Assets/Resources/Lua/Event/events.lua.bytes
+- Assets/Resources/Lua/protobuf/type_checkers.lua.bytes
+- Assets/Resources/Lua/Common/luabitop/bittest.lua.bytes
+- Assets/Resources/Lua/socket.lua.bytes
+- Assets/Resources/Lua/Common/luabitop/bitbench.lua.bytes
+Dependencies: []

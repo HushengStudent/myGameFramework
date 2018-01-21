@@ -13,13 +13,6 @@ namespace Framework
 {
     public static class AssetBundleDefine
     {
-        //AssetBundle打包存储路径;
-        private static string assetBundlePath = Application.dataPath + "/StreamingAssets/AssetBundle";
-        public static string AssetBundlePath
-        {
-            get { return assetBundlePath; }
-        }
-
         /// <summary>
         /// 根据资源路径获取资源类型;
         /// </summary>
@@ -91,6 +84,7 @@ namespace Framework
         Texture,
         Audio,
         AnimeCtrl,
-        AnimeClip
+        AnimeClip,
+        Lua
     }
 }

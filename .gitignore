@@ -15,12 +15,9 @@
 /Client/Client.userprefs
 /Client/.vs
 /Client/Client.Editor.csproj
-/Client/Assets/Resources/Lua
-/Client/Assets/Resources/Lua.meta
-/Client/Assets/StreamingAssets
-/Client/Assets/StreamingAssets.meta
 /Client/Assets/LuaFramework/Lua/.idea
 /Server/myServer/.vs
 /Server/myServerFramework/.vs
 /Client/Assembly-CSharp.csproj
 /Client/Assembly-CSharp-Editor.csproj
+/Client/obj

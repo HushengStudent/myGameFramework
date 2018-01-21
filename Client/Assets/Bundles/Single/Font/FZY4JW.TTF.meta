@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 295bdb7f4f95da5489359b337c44b2f8
+timeCreated: 1516472010
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: FZCuYuan-M03S
+  fontNames:
+  - FZCuYuan-M03S
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: font/fzy4jw.assetbundle
+  assetBundleVariant: 

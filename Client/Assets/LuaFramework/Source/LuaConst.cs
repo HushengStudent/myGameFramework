@@ -6,7 +6,7 @@ public static class LuaConst
     public static string toluaDir = Application.dataPath + "/LuaFramework/ToLua/Lua";        //tolua lua文件目录
 
 #if UNITY_STANDALONE
-    public static string osDir = "Win";
+    public static string osDir = "AssetBundle/Lua";
 #elif UNITY_ANDROID
     public static string osDir = "Android";            
 #elif UNITY_IPHONE

@@ -1155,11 +1155,9 @@ public static class ToLuaMenu
     [MenuItem("Lua/Build Luajit bundle files (PC) (Lua bytecode->Lua AssetBundle)", false, 56)]
     public static void BuildLuaBundles()
     {
-        EditorUtility.DisplayDialog("提示", "请使用 Game -> AssetBundleTools 打包 Lua 文件 !", "确认");
+        EditorUtility.DisplayDialog("提示", "请使用 MGame -> AssetBundleTools 打包 Lua 文件 !", "确认");
 
         /*
-  
-
         ClearAllLuaFiles();                
         CreateStreamDir(GetOS());
 
