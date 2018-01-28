@@ -52,7 +52,7 @@ namespace Framework
                 }
                 if (mainAssetBundle == null)
                 {
-                    Debug.LogError(string.Format("[AssetBundleMgr]Load AssetBundle {0} failure!", FilePathUtility.AssetBundlePath + "AssetBundle"));
+                    LogUtil.LogUtility.PrintError(string.Format("[AssetBundleMgr]Load AssetBundle {0} failure!", FilePathUtility.AssetBundlePath + "AssetBundle"));
                 }
                 return mainAssetBundle;
             }
@@ -71,7 +71,7 @@ namespace Framework
                 }
                 if (manifest == null)
                 {
-                    Debug.LogError(string.Format("[AssetBundleMgr]Load AssetBundleManifest {0} failure!", FilePathUtility.AssetBundlePath + "AssetBundle"));
+                    LogUtil.LogUtility.PrintError(string.Format("[AssetBundleMgr]Load AssetBundleManifest {0} failure!", FilePathUtility.AssetBundlePath + "AssetBundle"));
                 }
                 return manifest;
             }
@@ -117,18 +117,18 @@ namespace Framework
                     assetBundle = AssetBundle.LoadFromFile(path);
                     if (null == assetBundle)
                     {
-                        Debug.LogError(string.Format("[AssetBundleMgr]Load AssetBundle {0} failure!", path));
+                        LogUtil.LogUtility.PrintError(string.Format("[AssetBundleMgr]Load AssetBundle {0} failure!", path));
                     }
                     else
                     {
                         assetBundleCache[path] = assetBundle;
                         assetBundleReference[path] = 1;
-                        Debug.Log(string.Format("[AssetBundleMgr]Load AssetBundle {0} Success!", path));
+                        LogUtil.LogUtility.Print(string.Format("[AssetBundleMgr]Load AssetBundle {0} Success!", path));
                     }
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError(e.ToString());
+                    LogUtil.LogUtility.PrintError(e.ToString());
                 }
             }
             else
@@ -175,13 +175,13 @@ namespace Framework
                 assetBundle = assetBundleReq.assetBundle;
                 if (assetBundle == null)
                 {
-                    Debug.Log(string.Format("[AssetBundleMgr]Load AssetBundle {0} failure!", path));
+                    LogUtil.LogUtility.Print(string.Format("[AssetBundleMgr]Load AssetBundle {0} failure!", path));
                 }
                 else
                 {
                     assetBundleCache[path] = assetBundle;
                     assetBundleReference[path] = 1;
-                    Debug.Log(string.Format("[AssetBundleMgr]Load AssetBundle {0} Success!", path));
+                    LogUtil.LogUtility.Print(string.Format("[AssetBundleMgr]Load AssetBundle {0} Success!", path));
                 }
                 //º”‘ÿÕÍ±œ;
                 assetBundleLoading.Remove(path);
@@ -293,7 +293,7 @@ namespace Framework
                     AssetBundle bundle = assetBundleCache[path];
                     if (bundle != null) bundle.Unload(flag);
                     assetBundleCache.Remove(path);
-                    Debug.Log(string.Format("[AssetBundleMgr]Unload {0} AssetBundle {0} Success!", flag, path));
+                    LogUtil.LogUtility.Print(string.Format("[AssetBundleMgr]Unload {0} AssetBundle {0} Success!", flag, path));
                 }
                 else
                 {

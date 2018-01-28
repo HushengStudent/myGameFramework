@@ -32,7 +32,7 @@ namespace Framework
 	    protected Singleton()
 	    {
 	        if (null != instance)
-	            Debug.Log("This " + (typeof(T)).ToString() + " Singleton Instance is not null!");
+                LogUtil.LogUtility.Print("This " + (typeof(T)).ToString() + " Singleton Instance is not null!");
 	        Init();
 	    }
 	

@@ -15,10 +15,10 @@ resourceMgr = Framework.ResourceMgr.Instance
 
 ---[Utility]
 luaUtility = Framework.LuaUtility.Instance --luaUtility
-logUtility = Framework.LogUtility
+logUtility = LogUtil.LogUtility
 
 ---[Enum]
-logColor = Framework.LogColor
+logColor = LogUtil.LogColor
 
 ---[Function]
 

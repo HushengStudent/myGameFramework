@@ -10,6 +10,7 @@ using UnityEngine;
 
 namespace Framework
 {
+    /*
 	public static class LogUtility
 	{
 	    public static void Print(string str)
@@ -57,4 +58,5 @@ namespace Framework
 	    Green = 2,
 	    Yellow= 3,
 	}
+    */
 }

@@ -22,7 +22,6 @@ namespace Common
         private void StartGame()
         {
             LuaMgr.Instance.StartLuaMgr();
-            
         }
     }
 }

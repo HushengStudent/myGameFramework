@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEditor;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
+//using Debug = UnityEngine.Debug;
 
 namespace Common
 {
@@ -58,7 +58,7 @@ namespace Common
             Stopwatch watch = Stopwatch.StartNew();//开启计时;
             BuildPipeline.BuildAssetBundles(buildPath, AssetBuildDefine.options, AssetBuildDefine.buildTarget);
             watch.Stop();
-            Debug.LogWarning(string.Format("[BuildBat]BuildAllAssetBundle Spend Time:{0}s", watch.Elapsed.TotalSeconds));
+            LogUtil.LogUtility.PrintWarning(string.Format("[BuildBat]BuildAllAssetBundle Spend Time:{0}s", watch.Elapsed.TotalSeconds));
             AssetDatabase.Refresh();
             EditorUtility.UnloadUnusedAssetsImmediate();
         }

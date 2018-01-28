@@ -9,7 +9,7 @@ using System;
 using System.IO;
 using UnityEditor;
 using System.Diagnostics;
-using Debug = UnityEngine.Debug;
+//using Debug = UnityEngine.Debug;
 using System.Collections.Generic;
 
 namespace Framework
@@ -99,7 +99,7 @@ namespace Framework
                     else
                     {
                         //需要打包AssetBundle的资源目录下的资源,引用非该目录下的资源!!!
-                        Debug.LogError("[error Reference] path:" + allAssetPath[i] + " Reference--->>>>: " + tempPath);
+                        LogUtil.LogUtility.PrintError("[error Reference] path:" + allAssetPath[i] + " Reference--->>>>: " + tempPath);
                     }
                 }
             }
@@ -173,7 +173,7 @@ namespace Framework
             EditorUtility.ClearProgressBar();
 
             watch.Stop();
-            Debug.LogWarning(string.Format("[AssetDependenciesAnalysis]Asset Dependencies Analysis Spend Time:{0}s", watch.Elapsed.TotalSeconds));
+            LogUtil.LogUtility.PrintWarning(string.Format("[AssetDependenciesAnalysis]Asset Dependencies Analysis Spend Time:{0}s", watch.Elapsed.TotalSeconds));
 
             AssetDatabase.Refresh();
         }

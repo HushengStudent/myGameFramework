@@ -21,3 +21,5 @@
 /Client/Assembly-CSharp.csproj
 /Client/Assembly-CSharp-Editor.csproj
 /Client/obj
+/Tools/LogUtil/LogUtil.v12.suo
+/Tools/LogUtil/LogUtil/obj
