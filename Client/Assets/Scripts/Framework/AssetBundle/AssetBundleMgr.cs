@@ -11,6 +11,9 @@ using UnityEngine;
 
 namespace Framework
 {
+    /// <summary>
+    /// AssetBundle在异步加载完成时再同步加载会报错;
+    /// </summary>
     public class AssetBundleMgr : Singleton<AssetBundleMgr>
     {
 
@@ -306,7 +309,7 @@ namespace Framework
         /// <param name="assetName">资源名字</param>
         public void UnloadAsset(AssetType type, string assetName)
         {
-            if (type == AssetType.Non || type == AssetType.Shader || type == AssetType.Lua|| type == AssetType.Scripts || string.IsNullOrEmpty(assetName))
+            if (type == AssetType.Non || type == AssetType.Shader || type == AssetType.Lua || type == AssetType.Scripts || string.IsNullOrEmpty(assetName))
                 return;
 
             string assetBundleName = FilePathUtility.GetAssetBundleFileName(type, assetName);

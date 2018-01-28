@@ -21,9 +21,8 @@ namespace Common
 
         private void StartGame()
         {
-            ComponentMgr.Instance.StartComponentMgr();
-            EntityMgr.Instance.StartEntityMgr();
             LuaMgr.Instance.StartLuaMgr();
+            
         }
     }
 }

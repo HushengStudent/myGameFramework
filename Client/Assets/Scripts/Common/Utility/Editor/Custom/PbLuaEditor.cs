@@ -88,7 +88,7 @@ namespace Common
                 EditorUtility.DisplayProgressBar("Build PbLua File", "gen proto to c#:" + name, index / files.Count);
                 ProcessStartInfo info = new ProcessStartInfo();
                 info.FileName = protogen;
-                info.Arguments = "-i:" + name + " -o:" + outPath + "/"+fileName+".cs -p:detectMissing";
+                info.Arguments = "-i:" + name + " -o:" + outPath + "/" + fileName + ".cs -p:detectMissing";
                 info.WindowStyle = ProcessWindowStyle.Hidden;
                 info.UseShellExecute = true;
                 info.WorkingDirectory = workPath;
