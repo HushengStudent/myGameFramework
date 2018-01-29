@@ -41,7 +41,7 @@ namespace Common
             AssetDatabase.Refresh();
         }
 
-        [MenuItem("MGame/AssetBundleTools/Delete AssetBundle", false, 20)]
+        [MenuItem("MGame/AssetBundleTools/Delete AssetBundle", false, 100)]
         private static void DeleteAll()
         {
             AssetDependenciesAnalysis analysiser = new AssetDependenciesAnalysis();
