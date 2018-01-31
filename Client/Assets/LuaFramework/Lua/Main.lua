@@ -16,6 +16,7 @@ require "Manager.SceneManager"
 require "UI.Canvas.BaseCanvas"
 require "Panel.BaseCtrl"
 
+require "Network.pblua.login.login_pb"
 
 ---[luaMgr]
 g_GameMgr = GameManager.new()
@@ -25,7 +26,8 @@ g_SceneMgr = SceneManager.new()
 --主入口函数。从这里开始lua逻辑
 function Main()					
 	log("main logic start")
-	g_GameMgr:StartGame()
+	--g_GameMgr:StartGame()
+	test_pblua_func()
 end
 
 --场景切换通知
@@ -35,10 +37,23 @@ function OnLevelWasLoaded(level)
 end
 
 
+---=====================================================================================================================
+--测试pblua--
+function test_pblua_func()
+	local login = Protol.login_pb.LoginRequest();
+	login.id = 2000;
+	login.name = 'game';
+	login.email = 'jarjin@163.com';
 
+	local msg = login:SerializeToString();
+	luaUtility.OnCallLuaFunc(msg, OnPbluaCall);
+end
 
-
-
-
-
+--pblua callback--
+function OnPbluaCall(data)
+	local msg = Protol.login_pb.LoginRequest();
+	msg:ParseFromString(data);
+	print(msg);
+	print(msg.id..' '..msg.name);
+end
 
