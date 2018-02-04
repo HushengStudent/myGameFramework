@@ -21,7 +21,7 @@ namespace Framework
 
         #region Field
 
-        private Dictionary<ulong, AbsEntity> EntityDict = new Dictionary<ulong, AbsEntity>();
+        private Dictionary<long, AbsEntity> EntityDict = new Dictionary<long, AbsEntity>();
 
         private List<AbsEntity> EntityList = new List<AbsEntity>();
 

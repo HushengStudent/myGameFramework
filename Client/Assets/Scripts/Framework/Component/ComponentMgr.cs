@@ -21,7 +21,7 @@ namespace Framework
 
         #region Field
 
-        private Dictionary<ulong, AbsComponent> ComponentDict = new Dictionary<ulong, AbsComponent>();
+        private Dictionary<long, AbsComponent> ComponentDict = new Dictionary<long, AbsComponent>();
 
         private List<AbsComponent> ComponentList = new List<AbsComponent>();
 
