@@ -1,40 +1,40 @@
 ManifestFileVersion: 0
-CRC: 4094776617
+CRC: 3877536815
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: animeclip/test.assetbundle
-      Dependencies: {}
-    Info_1:
-      Name: animectrl/test.assetbundle
-      Dependencies: {}
-    Info_2:
-      Name: audio/test.assetbundle
-      Dependencies: {}
-    Info_3:
-      Name: material/test.assetbundle
-      Dependencies: {}
-    Info_4:
-      Name: model/test.assetbundle
-      Dependencies: {}
-    Info_5:
-      Name: prefab/login.assetbundle
-      Dependencies: {}
-    Info_6:
-      Name: texture/test.assetbundle
-      Dependencies: {}
-    Info_7:
-      Name: font/fzy4jw.assetbundle
-      Dependencies: {}
-    Info_8:
-      Name: shader/shader.assetbundle
-      Dependencies: {}
-    Info_9:
       Name: lua/lua.assetbundle
       Dependencies: {}
-    Info_10:
+    Info_1:
+      Name: atlas/login.assetbundle
+      Dependencies: {}
+    Info_2:
       Name: scene/game.assetbundle
       Dependencies: {}
+    Info_3:
+      Name: texture/test.assetbundle
+      Dependencies: {}
+    Info_4:
+      Name: shader/shader.assetbundle
+      Dependencies: {}
+    Info_5:
+      Name: material/test.assetbundle
+      Dependencies: {}
+    Info_6:
+      Name: animeclip/test.assetbundle
+      Dependencies: {}
+    Info_7:
+      Name: model/test.assetbundle
+      Dependencies: {}
+    Info_8:
+      Name: prefab/login.assetbundle
+      Dependencies: {}
+    Info_9:
+      Name: audio/test.assetbundle
+      Dependencies: {}
+    Info_10:
+      Name: font/fzy4jw.assetbundle
+      Dependencies: {}
     Info_11:
-      Name: atlas/login.assetbundle
+      Name: animectrl/test.assetbundle
       Dependencies: {}
