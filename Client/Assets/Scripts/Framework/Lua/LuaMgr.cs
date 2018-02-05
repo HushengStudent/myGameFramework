@@ -22,7 +22,7 @@ namespace Framework
         public override void Init()
         {
             base.Init();
-            LogUtility.Print("[LuaMgr]Init!", LogColor.Green);
+            //...
         }
 
         public override void AwakeEx()
