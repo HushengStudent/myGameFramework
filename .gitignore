@@ -29,3 +29,5 @@
 /Client/Assembly-CSharp-vs.csproj
 /Client/Client-csharp.sln
 /Client/UnityVS.Client.csproj
+/Client/UnityVS.Client.v12.suo
+/Client/Client.CSharp.Plugins.csproj
