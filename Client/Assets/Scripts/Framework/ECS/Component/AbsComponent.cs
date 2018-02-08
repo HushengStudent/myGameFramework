@@ -16,17 +16,22 @@ namespace Framework
         private long _id;
         private AbsEntity _entity;
         private bool _enable = true;
+        private GameObject _componentGo = null;
         private Action<AbsComponent> _initCallBack;
 
         public long ID { get { return _id; } }
         public AbsEntity Entity { get { return _entity; } }
         public bool Enable { get { return _enable; } set { _enable = value; } }
+        public GameObject ComponentGo { get { return _componentGo; } set { _componentGo = value; } }
         public Action<AbsComponent> InitCallBack { get { return _initCallBack; } set { _initCallBack = value; } }
 
         public virtual void AwakeEx() { }
         public virtual void UpdateEx() { }
         public virtual void LateUpdateEx() { }
         public virtual void OnDestroyEx() { }
+
+        public virtual void OnLoad() { }
+
         public virtual void OnInit(AbsEntity entity)
         {
             //TODO:use pool and async;
@@ -37,11 +42,13 @@ namespace Framework
                 InitCallBack(this);
             }
         }
+
         public virtual void ResetComponent()
         {
             _id = 0;
             _entity = null;
             _enable = true;
+            _componentGo = null;
             _initCallBack = null;
         }
     }

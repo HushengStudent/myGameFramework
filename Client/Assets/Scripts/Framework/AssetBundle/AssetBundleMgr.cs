@@ -14,7 +14,7 @@ namespace Framework
     /// <summary>
     /// AssetBundle在异步加载完成时再同步加载会报错;
     /// </summary>
-    public class AssetBundleMgr : Singleton<AssetBundleMgr>
+    public partial class AssetBundleMgr : Singleton<AssetBundleMgr>
     {
 
         #region Field

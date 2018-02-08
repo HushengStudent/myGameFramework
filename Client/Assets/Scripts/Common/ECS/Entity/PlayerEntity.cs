@@ -1,28 +1,26 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/02/06 00:55:38
-** desc:  事件接口
+** date:  2018/01/08 00:29:30
+** desc:  玩家实体
 *********************************************************************************/
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Framework
+public class PlayerEntity : RoleEntity
 {
-    public class IEvent : MonoBehaviour
+
+    // Use this for initialization
+    void Start()
     {
 
-        // Use this for initialization
-        void Start()
-        {
+    }
 
-        }
+    // Update is called once per frame
+    void Update()
+    {
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }
+

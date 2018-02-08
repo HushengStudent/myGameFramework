@@ -27,14 +27,19 @@ namespace Framework
         public virtual void UpdateEx() { }
         public virtual void LateUpdateEx() { }
         public virtual void OnDestroyEx() { }
+
+        public virtual void OnLoad() { }
+
         public virtual void OnInit()
         {
+            //TODO:use pool and async;
             _id = IdGenerater.GenerateId();
             if (InitCallBack != null)
             {
                 InitCallBack(this);
             }
         }
+
         protected virtual void ResetEntity()
         {
             _id = 0;

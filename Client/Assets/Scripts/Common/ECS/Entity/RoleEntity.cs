@@ -1,25 +1,27 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/01/08 00:29:46
-** desc:  敌人实体
+** date:  2018/01/08 00:29:15
+** desc:  角色实体
 *********************************************************************************/
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Framework;
 
-namespace Framework
+public class RoleEntity : AbsEntity
 {
-	public class EnemyEntity : MonoBehaviour {
-	
-		// Use this for initialization
-		void Start () {
-			
-		}
-		
-		// Update is called once per frame
-		void Update () {
-			
-		}
-	}
+
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }
+

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/02/06 00:55:38
-** desc:  事件接口
+** date:  2018/02/08 23:51:14
+** desc:  AssetBundle异步加载
 *********************************************************************************/
 
 using System.Collections;
@@ -10,19 +10,8 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class IEvent : MonoBehaviour
+    public partial class AssetBundleMgr
     {
-
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        //Unity2017建议使用Task
     }
 }

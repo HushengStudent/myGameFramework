@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/01/08 00:29:15
-** desc:  角色实体
+** date:  2018/02/08 23:43:33
+** desc:  系统接口
 *********************************************************************************/
 
 using System.Collections;
@@ -10,16 +10,19 @@ using UnityEngine;
 
 namespace Framework
 {
-	public class RoleEntity : MonoBehaviour {
-	
-		// Use this for initialization
-		void Start () {
-			
-		}
-		
-		// Update is called once per frame
-		void Update () {
-			
-		}
-	}
+    public class ISystem : MonoBehaviour
+    {
+
+        // Use this for initialization
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+    }
 }
