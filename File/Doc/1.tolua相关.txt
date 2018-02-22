@@ -1,5 +1,21 @@
 tolua：
 
+class.lua  lua多重继承。
 
+ulong从C#传递到Lua使用string。
 
+require("UI/Ctrl/"..l_ctrlName)。
 
+lua面向对象编程：class  .:，属性使用点号。方法使用冒号。
+
+net模块。
+
+定时器。
+
+事件派发。
+
+tolua底层lua和C#代码库。
+
+每个lua类在使用时都会new，各个lua模块统一在UIMgr来new，各个管理类都在Define里面来new，lua class里面只定义方法和属性。
+
+构造函数自己定义。
