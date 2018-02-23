@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/01/20 00:13:50
-** desc:  对象池接口
+** desc:  对象池组件接口
 *********************************************************************************/
 
 using System.Collections;
@@ -10,19 +10,9 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class IPool : MonoBehaviour
+    public interface IPool
     {
-
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        protected virtual void Init(params Object[] args);
+        protected virtual void Release();
     }
 }
