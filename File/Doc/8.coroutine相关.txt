@@ -1,0 +1,5 @@
+More Effective Coroutines：
+1.两倍速度。
+2.0GC。
+3.yield return Timing.WaitForOneFrame;
+4.yield return new WaitForSeconds(0.1f);

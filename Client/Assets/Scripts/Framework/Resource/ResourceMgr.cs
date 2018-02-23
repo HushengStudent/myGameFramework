@@ -10,6 +10,7 @@ using System;
 using Object = UnityEngine.Object;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using MEC;
 
 namespace Framework
 {
@@ -106,12 +107,12 @@ namespace Framework
         /// <param name="type">资源类型</param>
         /// <param name="assetName">资源名字</param>
         /// <returns></returns>
-        public IEnumerator LoadResAsync<T>(AssetType type, string assetName) where T : Object
+        public IEnumerator<float> LoadResAsync<T>(AssetType type, string assetName) where T : Object
         {
             IEnumerator itor = LoadResAsync<T>(type, assetName, null, null);
             while (itor.MoveNext())
             {
-                yield return null;
+                yield return Timing.WaitForOneFrame;
             }
         }
 
@@ -123,12 +124,12 @@ namespace Framework
         /// <param name="assetName">资源名字</param>
         /// <param name="action">资源回调</param>
         /// <returns></returns>
-        public IEnumerator LoadResAsync<T>(AssetType type, string assetName, Action<T> action) where T : Object
+        public IEnumerator<float> LoadResAsync<T>(AssetType type, string assetName, Action<T> action) where T : Object
         {
             IEnumerator itor = LoadResAsync<T>(type, assetName, action, null);
             while (itor.MoveNext())
             {
-                yield return null;
+                yield return Timing.WaitForOneFrame;
             }
         }
 
@@ -141,7 +142,7 @@ namespace Framework
         /// <param name="action">资源回调</param>
         /// <param name="progress">进度回调</param>
         /// <returns></returns>
-        public IEnumerator LoadResAsync<T>(AssetType type, string assetName, Action<T> action, Action<float> progress) where T : Object
+        public IEnumerator<float> LoadResAsync<T>(AssetType type, string assetName, Action<T> action, Action<float> progress) where T : Object
         {
             string path = FilePathUtility.GetResourcePath(type, assetName);
             IAssetLoader<T> loader = CreateLoader<T>(type);
@@ -153,11 +154,11 @@ namespace Framework
                 while (request.progress < 0.99)
                 {
                     if (progress != null) progress(request.progress);
-                    yield return null;
+                    yield return Timing.WaitForOneFrame;
                 }
                 while (!request.isDone)
                 {
-                    yield return null;
+                    yield return Timing.WaitForOneFrame;
                 }
                 ctrl = loader.GetAsset(request.asset as T);
             }
@@ -207,7 +208,7 @@ namespace Framework
         /// <param name="action">资源回调</param>
         /// <param name="progress">progress回调</param>
         /// <returns></returns>
-        public IEnumerator LoadAssetFromAssetBundleAsync<T>(AssetType type, string assetName, Action<T> action, Action<float> progress)
+        public IEnumerator<float> LoadAssetFromAssetBundleAsync<T>(AssetType type, string assetName, Action<T> action, Action<float> progress)
             where T : Object
         {
             T ctrl = null;
@@ -222,7 +223,7 @@ namespace Framework
                 null);
             while (itor.MoveNext())
             {
-                yield return null;
+                yield return Timing.WaitForOneFrame;
             }
 
             AssetBundleRequest request = assetBundle.LoadAssetAsync<T>(assetName);
@@ -230,11 +231,11 @@ namespace Framework
             {
                 if (progress != null)
                     progress(request.progress);
-                yield return null;
+                yield return Timing.WaitForOneFrame;
             }
             while (!request.isDone)
             {
-                yield return null;
+                yield return Timing.WaitForOneFrame;
             }
             ctrl = loader.GetAsset(request.asset as T);
             if (ctrl == null)
