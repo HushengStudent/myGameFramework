@@ -12,7 +12,7 @@ namespace Framework
 {
     public interface IPool
     {
-        protected virtual void Init(params Object[] args);
-        protected virtual void Release();
+        void Init(params Object[] args);
+        void Release();
     }
 }
