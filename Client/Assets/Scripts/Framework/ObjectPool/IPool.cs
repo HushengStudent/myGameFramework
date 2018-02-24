@@ -4,15 +4,16 @@
 ** desc:  对象池组件接口
 *********************************************************************************/
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Framework
 {
     public interface IPool
     {
-        void Init(params Object[] args);
-        void Release();
+        void OnInit(params Object[] args);
+        void OnRelease();
+        UnityEngine.GameObject OnAddGameObject();
     }
 }
