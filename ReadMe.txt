@@ -8,7 +8,8 @@ Client：客户端工程使用Unity5.5.4创建
 	(1)资源管理：AssetBundle打包(finish)、资源加载(finish)、资源卸载(finish).
 	(2)tolua接入(finish).
 	(3)Log封装(finish).
-	(4)Lua UI模块：Lua类(finish)、工具方法(finish)、定时器(finish)、事件系统(finish)、网络协议(finish)、Lua Profiler(TODO).
+	(4)Lua UI模块：
+	    Lua类(finish)、工具方法(finish)、定时器(finish)、事件系统(finish)、网络协议(finish)、Lua Profiler(TODO).
 	(5)ECS模式(TODO).
 	(6)通用单例(finish).
 	(7)协程封装(finish).
