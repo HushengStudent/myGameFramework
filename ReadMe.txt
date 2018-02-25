@@ -20,6 +20,8 @@ Client：客户端工程使用Unity5.5.4创建
 	(13)场景管理.
 	(14)技能模块：行为树、FSM.
 	(15)Buff.
+	(16)ILRuntime.
+	(17)网络同步：帧同步、状态同步.
 	
 	Reference：
 	(1)tolua：(tolua:https://github.com/topameng/tolua).
