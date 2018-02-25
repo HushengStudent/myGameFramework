@@ -8,7 +8,7 @@ Client：客户端工程使用Unity5.5.4创建
 	(1)资源管理：AssetBundle打包、资源加载、资源卸载.
 	(2)tolua接入.
 	(3)Log封装.
-	(4)Lua UI模块：Lua类、工具方法、定时器、事件系统、网络协议.
+	(4)Lua UI模块：Lua类、工具方法、定时器、事件系统、网络协议、Lua Profiler.
 	(5)ECS模式.
 	(6)通用单例.
 	(7)协程封装.
@@ -21,7 +21,12 @@ Client：客户端工程使用Unity5.5.4创建
 	(14)技能模块：行为树、FSM.
 	(15)Buff.
 	(16)ILRuntime.
-	(17)网络同步：帧同步、状态同步.
+	(17)网络同步机制：帧同步、状态同步.
+	(18)UI：UI复用、图文混排、超链、HUD、飘字、物品掉落.
+	(19)实时阴影.
+	(20)换装模块.
+	(21)寻路模块.
+	(22)Timeline.
 	
 	Reference：
 	(1)tolua：(tolua:https://github.com/topameng/tolua).
