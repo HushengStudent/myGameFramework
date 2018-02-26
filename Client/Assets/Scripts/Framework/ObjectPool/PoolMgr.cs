@@ -47,11 +47,11 @@ namespace Framework
         public void Release<T>(T type) where T : IPool, new()
         {
             type.OnRelease();
-            //UnityEngine.GameObject go = type.OnAddGameObject();
-            //if (go)
-            //{
-            //    _objectPool.Add(_objectPool.Count, go);
-            //}
+            UnityEngine.GameObject go = type.OnAddGameObject();
+            if (go)
+            {
+                _objectPool.Add(_objectPool.Count, go);
+            }
             ObjectPool<T> pool;
             Object temp;
             if (_pool.TryGetValue(typeof(T), out temp))
@@ -70,13 +70,13 @@ namespace Framework
         /// </summary>
         public void DestroyPool()
         {
-            //for (int i = 0; i < _objectPool.Count; i++)
-            //{
-            //    if (_objectPool[i])
-            //    {
-            //        UnityEngine.GameObject.Destroy(_objectPool[i]);//销毁对象附着GameObject,对象GC回收;
-            //    }
-            //}
+            for (int i = 0; i < _objectPool.Count; i++)
+            {
+                if (_objectPool[i])
+                {
+                    UnityEngine.GameObject.Destroy(_objectPool[i]);//销毁对象附着GameObject,对象GC回收;
+                }
+            }
             _objectPool.Clear();
             _pool.Clear();
         }

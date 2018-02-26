@@ -10,11 +10,11 @@ using System.Collections.Generic;
 
 namespace Framework
 {
-    public interface IPool : IDisposable
+    public interface IPool //: IDisposable
     {
         void OnInit(params Object[] args);
         void OnRelease();
-        //UnityEngine.GameObject OnAddGameObject();
+        UnityEngine.GameObject OnAddGameObject();
 
         //void Dispose();ÔÚdisposeÏú»ÙGameObject
     }
