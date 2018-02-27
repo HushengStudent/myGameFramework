@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/02/08 23:51:14
-** desc:  AssetBundle异步加载
+** desc:  AssetBundle寮傛鍔犺浇
 *********************************************************************************/
 
 using System.Collections;
@@ -12,6 +12,6 @@ namespace Framework
 {
     public partial class AssetBundleMgr
     {
-        //Unity2017建议使用Task
+        //Unity2017寤鸿浣跨敤Task
     }
 }

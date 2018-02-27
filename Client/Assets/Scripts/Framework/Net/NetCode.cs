@@ -1,6 +1,6 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/02/25 00:47:41
+** date:  2018/02/26 23:44:48
 ** desc:  ÍøÂçĞ­Òé´íÎóÂë
 *********************************************************************************/
 
@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class ProtoErrorCode
+    public enum NetCode
     {
 
     }

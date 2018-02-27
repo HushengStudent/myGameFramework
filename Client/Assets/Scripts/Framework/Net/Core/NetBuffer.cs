@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/02/25 00:47:41
-** desc:  ÍøÂçĞ­Òé´íÎóÂë
+** date:  2018/02/28 00:50:20
+** desc:  Buff
 *********************************************************************************/
 
 using System.Collections;
@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class ProtoErrorCode
+    public class NetBuffer
     {
 
     }
