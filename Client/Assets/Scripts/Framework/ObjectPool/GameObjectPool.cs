@@ -1,18 +1,25 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/01/20 00:13:50
-** desc:  对象池组件接口
+** date:  2018/03/01 23:14:44
+** desc:  Unity对象池
 *********************************************************************************/
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-namespace Framework
+public class GameObjectPool : MonoBehaviour
 {
-    public interface IPool //: IDisposable
+
+    // Use this for initialization
+    void Start()
     {
-        void OnGet(params Object[] args);
-        void OnRelease();
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
     }
 }

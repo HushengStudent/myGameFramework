@@ -1,7 +1,7 @@
-/********************************************************************************
+ï»¿/********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/01/10 23:22:57
-** desc:  ×é¼ş³éÏó»ùÀà
+** desc:  ç»„ä»¶æŠ½è±¡åŸºç±»
 *********************************************************************************/
 
 using MEC;
@@ -39,10 +39,10 @@ namespace Framework
         }
 
         /// <summary>
-        /// Òì²½³õÊ¼»¯Component;
+        /// å¼‚æ­¥åˆå§‹åŒ–Component;
         /// </summary>
         /// <param name="entity">Entity</param>
-        /// <param name="isUsePool">ÊÇ·ñÊ¹ÓÃ¶ÔÏó³Ø</param>
+        /// <param name="isUsePool">æ˜¯å¦ä½¿ç”¨å¯¹è±¡æ± </param>
         /// <returns></returns>
         public virtual void OnInit(AbsEntity entity, bool isUsePool)
         {
@@ -72,6 +72,5 @@ namespace Framework
 
         public virtual void OnGet(params System.Object[] args) { }
         public virtual void OnRelease() { }
-        public virtual void OnClear() { }
     }
 }
