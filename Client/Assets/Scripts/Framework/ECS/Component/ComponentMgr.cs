@@ -9,11 +9,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using LogUtil;
 using System;
+using MEC;
 
 namespace Framework
 {
-	public class ComponentMgr : MonoSingleton<ComponentMgr>
-	{
+    public class ComponentMgr : MonoSingleton<ComponentMgr>
+    {
         public override void Init()
         {
             base.Init();
@@ -33,9 +34,12 @@ namespace Framework
         public override void AwakeEx()
         {
             base.AwakeEx();
-            for(int i = 0; i < ComponentList.Count; i++)
+            for (int i = 0; i < ComponentList.Count; i++)
             {
-                ComponentList[i].AwakeEx();
+                if (ComponentList[i].IsLoaded && ComponentList[i].Enable)
+                {
+                    ComponentList[i].AwakeEx();
+                }
             }
         }
 
@@ -44,7 +48,10 @@ namespace Framework
             base.UpdateEx();
             for (int i = 0; i < ComponentList.Count; i++)
             {
-                ComponentList[i].UpdateEx();
+                if (ComponentList[i].IsLoaded && ComponentList[i].Enable)
+                {
+                    ComponentList[i].UpdateEx();
+                }
             }
         }
 
@@ -53,7 +60,10 @@ namespace Framework
             base.LateUpdateEx();
             for (int i = 0; i < ComponentList.Count; i++)
             {
-                ComponentList[i].LateUpdateEx();
+                if (ComponentList[i].IsLoaded && ComponentList[i].Enable)
+                {
+                    ComponentList[i].LateUpdateEx();
+                }
             }
         }
 
@@ -62,7 +72,10 @@ namespace Framework
             base.OnDestroyEx();
             for (int i = 0; i < ComponentList.Count; i++)
             {
-                ComponentList[i].OnDestroyEx();
+                if (ComponentList[i].IsLoaded && ComponentList[i].Enable)
+                {
+                    ComponentList[i].OnDestroyEx();
+                }
             }
         }
 
@@ -70,14 +83,22 @@ namespace Framework
 
         #region Function
 
-        public T CreateComponent<T>(AbsEntity entity, Action<AbsComponent> initCallBack) where T : AbsComponent, new()
+        /// <summary>
+        /// 创建Component;
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entity"></param>
+        /// <param name="initCallBack">加载完成回调</param>
+        /// <param name="isUsePool"></param>
+        /// <returns></returns>
+        public T CreateComponent<T>(AbsEntity entity, Action<AbsComponent> initCallBack,
+            bool isUsePool = false) where T : AbsComponent, new()
         {
-            //TODO:use pool and async;
             T _Component = new T();
             if (AddComponent(_Component))
             {
                 _Component.InitCallBack = initCallBack;
-                _Component.OnInit(entity);
+                _Component.OnInit(entity, isUsePool);
                 return _Component;
             }
             else
@@ -87,6 +108,11 @@ namespace Framework
             }
         }
 
+        /// <summary>
+        /// 添加Component;
+        /// </summary>
+        /// <param name="component"></param>
+        /// <returns></returns>
         private bool AddComponent(AbsComponent component)
         {
             if (ComponentDict.ContainsKey(component.ID))
@@ -98,6 +124,11 @@ namespace Framework
             return true;
         }
 
+        /// <summary>
+        /// 移除Component;
+        /// </summary>
+        /// <param name="component"></param>
+        /// <returns></returns>
         private bool RemoveComponent(AbsComponent component)
         {
             if (!ComponentDict.ContainsKey(component.ID))
@@ -110,6 +141,5 @@ namespace Framework
         }
 
         #endregion
-
     }
 }

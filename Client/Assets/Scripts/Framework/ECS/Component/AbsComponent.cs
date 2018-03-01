@@ -4,6 +4,7 @@
 ** desc:  组件抽象基类
 *********************************************************************************/
 
+using MEC;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,17 +12,19 @@ using UnityEngine;
 
 namespace Framework
 {
-    public abstract class AbsComponent
+    public abstract class AbsComponent : IPool
     {
         private long _id;
-        private AbsEntity _entity;
         private bool _enable = true;
+        private bool _isLoaded = false;
+        private AbsEntity _entity;
         private GameObject _componentGo = null;
         private Action<AbsComponent> _initCallBack;
 
         public long ID { get { return _id; } }
-        public AbsEntity Entity { get { return _entity; } }
         public bool Enable { get { return _enable; } set { _enable = value; } }
+        public bool IsLoaded { get { return _isLoaded; } set { _isLoaded = value; } }
+        public AbsEntity Entity { get { return _entity; } }
         public GameObject ComponentGo { get { return _componentGo; } set { _componentGo = value; } }
         public Action<AbsComponent> InitCallBack { get { return _initCallBack; } set { _initCallBack = value; } }
 
@@ -30,16 +33,31 @@ namespace Framework
         public virtual void LateUpdateEx() { }
         public virtual void OnDestroyEx() { }
 
-        public virtual void OnLoad() { }
-
-        public virtual void OnInit(AbsEntity entity)
+        public virtual IEnumerator<float> OnLoad()
         {
-            //TODO:use pool and async;
+            yield return Timing.WaitForOneFrame;
+        }
+
+        /// <summary>
+        /// 异步初始化Component;
+        /// </summary>
+        /// <param name="entity">Entity</param>
+        /// <param name="isUsePool">是否使用对象池</param>
+        /// <returns></returns>
+        public virtual void OnInit(AbsEntity entity, bool isUsePool)
+        {
             _id = IdGenerater.GenerateId();
             _entity = entity;
-            if (InitCallBack != null)
+            if (isUsePool)
             {
-                InitCallBack(this);
+
+            }
+            else
+            {
+                if (InitCallBack != null)
+                {
+                    InitCallBack(this);
+                }
             }
         }
 
@@ -51,5 +69,9 @@ namespace Framework
             _componentGo = null;
             _initCallBack = null;
         }
+
+        public virtual void OnGet(params System.Object[] args) { }
+        public virtual void OnRelease() { }
+        public virtual void OnClear() { }
     }
 }

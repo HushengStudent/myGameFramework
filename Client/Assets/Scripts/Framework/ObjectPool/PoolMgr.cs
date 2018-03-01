@@ -14,8 +14,6 @@ namespace Framework
     {
         private Dictionary<Type, Object> _pool = new Dictionary<Type, Object>();
 
-        private Dictionary<int, UnityEngine.GameObject> _objectPool = new Dictionary<int, UnityEngine.GameObject>();
-
         /// <summary>
         /// 获取对象池目标组件;
         /// </summary>
@@ -35,7 +33,7 @@ namespace Framework
                 pool = CreatePool<T>();
             }
             T t = pool.Get();
-            t.OnInit(args);
+            t.OnGet(args);
             return t;
         }
 
@@ -47,11 +45,6 @@ namespace Framework
         public void Release<T>(T type) where T : IPool, new()
         {
             type.OnRelease();
-            UnityEngine.GameObject go = type.OnAddGameObject();
-            if (go)
-            {
-                _objectPool.Add(_objectPool.Count, go);
-            }
             ObjectPool<T> pool;
             Object temp;
             if (_pool.TryGetValue(typeof(T), out temp))
@@ -68,16 +61,8 @@ namespace Framework
         /// <summary>
         /// 销毁对象池;
         /// </summary>
-        public void DestroyPool()
+        public void ClearPool()
         {
-            for (int i = 0; i < _objectPool.Count; i++)
-            {
-                if (_objectPool[i])
-                {
-                    UnityEngine.GameObject.Destroy(_objectPool[i]);//销毁对象附着GameObject,对象GC回收;
-                }
-            }
-            _objectPool.Clear();
             _pool.Clear();
         }
 

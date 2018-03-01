@@ -12,10 +12,8 @@ namespace Framework
 {
     public interface IPool //: IDisposable
     {
-        void OnInit(params Object[] args);
+        void OnGet(params Object[] args);
         void OnRelease();
-        UnityEngine.GameObject OnAddGameObject();
-
-        //void Dispose();ÔÚdisposeÏú»ÙGameObject
+        void OnClear();
     }
 }

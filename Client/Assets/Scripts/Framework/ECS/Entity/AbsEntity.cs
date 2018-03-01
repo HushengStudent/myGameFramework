@@ -15,11 +15,13 @@ namespace Framework
     {
         private long _id;
         private bool _enable = true;
+        private bool _isLoaded = false;
         private GameObject _entityGo = null;
         private Action<AbsEntity> _initCallBack;
 
         public long ID { get { return _id; } }
         public bool Enable { get { return _enable; } set { _enable = value; } }
+        public bool IsLoaded { get { return _isLoaded; } set { _isLoaded = value; } }
         public GameObject EntityGO { get { return _entityGo; } set { _entityGo = value; } }
         public Action<AbsEntity> InitCallBack { get { return _initCallBack; } set { _initCallBack = value; } }
 
