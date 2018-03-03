@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/01/14 18:14:29
-** desc:  ¶ÔÏó³Ø¹ÜÀí
+** desc:  å¯¹è±¡æ± ç®¡ç†
 *********************************************************************************/
 
 using System;
@@ -25,10 +25,10 @@ namespace Framework
         private GameObjectPool _gameObjectPool = new GameObjectPool();
 
         /// <summary>
-        /// »ñÈ¡¶ÔÏó³ØÄ¿±ê×é¼ş;
+        /// è·å–å¯¹è±¡æ± ç›®æ ‡ç»„ä»¶;
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="args">³õÊ¼»¯²ÎÊı</param>
+        /// <param name="args">åˆå§‹åŒ–å‚æ•°</param>
         /// <returns></returns>
         public T Get<T>(params Object[] args) where T : IPool, new()
         {
@@ -48,7 +48,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// ÊÍ·Å¶ÔÏó³Ø×é¼ş;
+        /// é‡Šæ”¾å¯¹è±¡æ± ç»„ä»¶;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="type"></param>
@@ -69,7 +69,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// ´´½¨¶ÔÏó³Ø;
+        /// åˆ›å»ºå¯¹è±¡æ± ;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
@@ -89,7 +89,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// »ñÈ¡GameObject,¿ÉÄÜÎªnull;
+        /// è·å–GameObject,å¯èƒ½ä¸ºnull;
         /// </summary>
         /// <param name="type"></param>
         /// <param name="assetName"></param>
@@ -100,7 +100,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// Öü´æGameObject;
+        /// è´®å­˜GameObject;
         /// </summary>
         /// <param name="type"></param>
         /// <param name="assetName"></param>
@@ -111,7 +111,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// Ïú»Ù¶ÔÏó³Ø;
+        /// é”€æ¯å¯¹è±¡æ± ;
         /// </summary>
         public void ClearPool(Action onFinish)
         {

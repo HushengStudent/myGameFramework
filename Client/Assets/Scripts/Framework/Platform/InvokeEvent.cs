@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/02/04 23:53:02
-** desc:  ƽ̨�¼�
+** desc:  平台事件
 *********************************************************************************/
 
 using System.Collections;
@@ -12,8 +12,8 @@ namespace Framework
 {
     public enum InvokeEvent
     {
-        Login = 1,	               //��½;
-        Payment = 2,	           //֧��;
-        LoginOut = 3,	           //�˳�;
+        Login = 1,	               //登陆;
+        Payment = 2,	           //支付;
+        LoginOut = 3,	           //退出;
     }
 }

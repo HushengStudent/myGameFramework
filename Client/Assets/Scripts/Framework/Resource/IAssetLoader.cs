@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/01/23 00:39:09
-** desc:  Asset¼ÓÔØ½Ó¿Ú
+** desc:  AssetåŠ è½½æ¥å£
 *********************************************************************************/
 
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using Object = UnityEngine.Object;
 namespace Framework
 {
     /// <summary>
-    /// ×ÊÔ´¼ÓÔØ½Ó¿Ú,Ö÷ÒªÇø±ğÊÇ·ñÊµÀı»¯;
+    /// èµ„æºåŠ è½½æ¥å£,ä¸»è¦åŒºåˆ«æ˜¯å¦å®ä¾‹åŒ–;
     /// </summary>
     public interface IAssetLoader<T> where T : Object
     {

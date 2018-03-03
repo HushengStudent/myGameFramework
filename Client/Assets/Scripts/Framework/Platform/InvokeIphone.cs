@@ -36,11 +36,11 @@ namespace Framework
 
         /*
 
-        iOS调用Unity函数
+        iOS璋冪敤Unity鍑芥暟
         
         UnitySendMessage("GameObjectName1", "MethodName1", "Message to send");
 
-        iOS实现Unity中声明的函数格式
+        iOS瀹炵幇Unity涓０鏄庣殑鍑芥暟鏍煎紡
         
         extern "C" 
         {

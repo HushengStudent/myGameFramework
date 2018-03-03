@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2017/12/25 00:27:56
-** desc:  ×ÊÔ´¹ÜÀí
+** desc:  èµ„æºç®¡ç†
 *********************************************************************************/
 
 using UnityEngine;
@@ -19,11 +19,11 @@ namespace Framework
         #region Function
 
         /// <summary>
-        /// ´´½¨×ÊÔ´¼ÓÔØÆ÷;
+        /// åˆ›å»ºèµ„æºåŠ è½½å™¨;
         /// </summary>
         /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="assetType">×ÊÔ´ÀàĞÍ</param>
-        /// <returns>×ÊÔ´¼ÓÔØÆ÷;</returns>
+        /// <param name="assetType">èµ„æºç±»å‹</param>
+        /// <returns>èµ„æºåŠ è½½å™¨;</returns>
         private IAssetLoader<T> CreateLoader<T>(AssetType assetType) where T : Object
         {
             if (assetType == AssetType.Prefab || assetType == AssetType.Model) return new ResLoader<T>();
@@ -31,7 +31,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// AssetBundle²»ÄÜÖ±½Ó¼ÓÔØ»ñµÃ½Å±¾;
+        /// AssetBundleä¸èƒ½ç›´æ¥åŠ è½½è·å¾—è„šæœ¬;
         /// </summary>
         /// <typeparam name="T">ctrl</typeparam>
         /// <param name="tempObject">Object</param>
@@ -53,7 +53,7 @@ namespace Framework
 
         public void InitShader()
         {
-            //Shader³õÊ¼»¯;
+            //Shaderåˆå§‹åŒ–;
             AssetBundle shaderAssetBundle = AssetBundleMgr.Instance.LoadShaderAssetBundle();
             if (shaderAssetBundle != null)
             {
@@ -78,11 +78,11 @@ namespace Framework
         #region Resources Load
 
         /// <summary>
-        /// ResourceÍ¬²½¼ÓÔØ;
+        /// ResourceåŒæ­¥åŠ è½½;
         /// </summary>
         /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="type">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
+        /// <param name="type">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
         /// <returns>ctrl</returns>
         public T LoadResSync<T>(AssetType type, string assetName) where T : Object
         {
@@ -101,11 +101,11 @@ namespace Framework
         }
 
         /// <summary>
-        /// ResourceÒì²½¼ÓÔØ;
+        /// Resourceå¼‚æ­¥åŠ è½½;
         /// </summary>
         /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="type">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
+        /// <param name="type">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
         /// <returns></returns>
         public IEnumerator<float> LoadResAsync<T>(AssetType type, string assetName) where T : Object
         {
@@ -117,12 +117,12 @@ namespace Framework
         }
 
         /// <summary>
-        /// ResourceÒì²½¼ÓÔØ;
+        /// Resourceå¼‚æ­¥åŠ è½½;
         /// </summary>
         /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="type">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
-        /// <param name="action">×ÊÔ´»Øµ÷</param>
+        /// <param name="type">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
+        /// <param name="action">èµ„æºå›è°ƒ</param>
         /// <returns></returns>
         public IEnumerator<float> LoadResAsync<T>(AssetType type, string assetName, Action<T> action) where T : Object
         {
@@ -134,13 +134,13 @@ namespace Framework
         }
 
         /// <summary>
-        /// ResourceÒì²½¼ÓÔØ;
+        /// Resourceå¼‚æ­¥åŠ è½½;
         /// </summary>
         /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="type">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
-        /// <param name="action">×ÊÔ´»Øµ÷</param>
-        /// <param name="progress">½ø¶È»Øµ÷</param>
+        /// <param name="type">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
+        /// <param name="action">èµ„æºå›è°ƒ</param>
+        /// <param name="progress">è¿›åº¦å›è°ƒ</param>
         /// <returns></returns>
         public IEnumerator<float> LoadResAsync<T>(AssetType type, string assetName, Action<T> action, Action<float> progress) where T : Object
         {
@@ -180,8 +180,8 @@ namespace Framework
         /// Asset sync load from AssetBundle;
         /// </summary>
         /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="type">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
+        /// <param name="type">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
         /// <returns>ctrl</returns>
         public T LoadAssetFromAssetBundleSync<T>(AssetType type, string assetName) where T : Object
         {
@@ -203,10 +203,10 @@ namespace Framework
         /// Asset async load from AssetBundle;
         /// </summary>
         /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="type">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
-        /// <param name="action">×ÊÔ´»Øµ÷</param>
-        /// <param name="progress">progress»Øµ÷</param>
+        /// <param name="type">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
+        /// <param name="action">èµ„æºå›è°ƒ</param>
+        /// <param name="progress">progresså›è°ƒ</param>
         /// <returns></returns>
         public IEnumerator<float> LoadAssetFromAssetBundleAsync<T>(AssetType type, string assetName, Action<T> action, Action<float> progress)
             where T : Object

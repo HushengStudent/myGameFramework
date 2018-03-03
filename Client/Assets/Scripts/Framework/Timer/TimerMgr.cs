@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/02/04 23:14:51
-** desc:  Ê±¼ä¹ÜÀí
+** desc:  æ—¶é—´ç®¡ç†
 *********************************************************************************/
 
 using System;
@@ -16,17 +16,17 @@ namespace Framework
         #region Time Sync
 
         /// <summary>
-        /// ·şÎñÆ÷Í¬²½¹ıÀ´µÄÊ±¼ä;
+        /// æœåŠ¡å™¨åŒæ­¥è¿‡æ¥çš„æ—¶é—´;
         /// </summary>
         private DateTime serverTime;
 
         /// <summary>
-        /// ¿Í»§¶Ë¿ªÆôÓÎÏ·Ê±±¾»úµÄÊ±¼ä,µ¥Î»Ãë;
+        /// å®¢æˆ·ç«¯å¼€å¯æ¸¸æˆæ—¶æœ¬æœºçš„æ—¶é—´,å•ä½ç§’;
         /// </summary>
         private float clientStartTime;
 
         /// <summary>
-        /// µ±Ç°·şÎñÆ÷Ê±¼ä;
+        /// å½“å‰æœåŠ¡å™¨æ—¶é—´;
         /// </summary>
         public DateTime CurentSeverTime
         {
@@ -36,9 +36,9 @@ namespace Framework
             }
         }
         /// <summary>
-        /// Í¬²½·şÎñÆ÷µÄÊ±¼äµ½¿Í»§¶Ë;
+        /// åŒæ­¥æœåŠ¡å™¨çš„æ—¶é—´åˆ°å®¢æˆ·ç«¯;
         /// </summary>
-        /// <param name="time">·şÎñÆ÷Ê±¼ä</param>
+        /// <param name="time">æœåŠ¡å™¨æ—¶é—´</param>
         public void SyncServerTime(DateTime time)
         {
             serverTime = time;
@@ -51,72 +51,72 @@ namespace Framework
         #region Timer Event
 
         /// <summary>
-        /// ¶¨Ê±Æ÷ÊÂ¼ş;
+        /// å®šæ—¶å™¨äº‹ä»¶;
         /// </summary>
         public class TimerEvent
         {
             /// <summary>
-            /// Ê×´ÎÖ´ĞĞÑÓÊ±;
+            /// é¦–æ¬¡æ‰§è¡Œå»¶æ—¶;
             /// </summary>
             public float DelayTime;
 
             /// <summary>
-            /// Ö´ĞĞ´ÎÊı;
+            /// æ‰§è¡Œæ¬¡æ•°;
             /// </summary>
             public int RepeatTimes;
 
             /// <summary>
-            /// ÒÑ¾­Ö´ĞĞµÄ´ÎÊı;
+            /// å·²ç»æ‰§è¡Œçš„æ¬¡æ•°;
             /// </summary>
             public int ExeTimes;
 
             /// <summary>
-            /// Ö´ĞĞ¼ä¸ô;
+            /// æ‰§è¡Œé—´éš”;
             /// </summary>
             public float IntervalTime;
 
             /// <summary>
-            /// ÎŞ²Î»Øµ÷º¯Êı;
+            /// æ— å‚å›è°ƒå‡½æ•°;
             /// </summary>
             public Action CallBackFunc;
 
             /// <summary>
-            /// ²ÎÊı;
+            /// å‚æ•°;
             /// </summary>
             public object Param;
 
             /// <summary>
-            /// °üº¬²ÎÊıµÄ»Øµ÷º¯Êı;
+            /// åŒ…å«å‚æ•°çš„å›è°ƒå‡½æ•°;
             /// </summary>
             public Action<object> CallBackFuncWithParam;
 
             /// <summary>
-            /// ¶¨Ê±Æ÷ÊÂ¼ş½áÊøºóµÄ»Øµ÷º¯Êı;
+            /// å®šæ—¶å™¨äº‹ä»¶ç»“æŸåçš„å›è°ƒå‡½æ•°;
             /// </summary>
             public Action OnFinish;
 
             /// <summary>
-            /// ÊÂ¼ş¿ªÊ¼Ê±¼ä;
+            /// äº‹ä»¶å¼€å§‹æ—¶é—´;
             /// </summary>
             public float StartTime;
 
             /// <summary>
-            /// ÏÂÒ»´ÎÔËĞĞÊ±¼ä;
+            /// ä¸‹ä¸€æ¬¡è¿è¡Œæ—¶é—´;
             /// </summary>
             public float NextRunTime;
 
             /// <summary>
-            /// ÊÂ¼şÊÇ·ñÒÑ¾­½áÊø;
+            /// äº‹ä»¶æ˜¯å¦å·²ç»ç»“æŸ;
             /// </summary>
             public bool IsFinish;
 
             /// <summary>
-            /// ÊÇ·ñÔİÍ£;
+            /// æ˜¯å¦æš‚åœ;
             /// </summary>
             public bool IsPause;
 
             /// <summary>
-            /// µ±Ç°Ê±¼ä;
+            /// å½“å‰æ—¶é—´;
             /// </summary>
             public float CurTime
             {
@@ -124,7 +124,7 @@ namespace Framework
             }
 
             /// <summary>
-            /// Ê±¼ä²î;
+            /// æ—¶é—´å·®;
             /// </summary>
             public float DeltaTime
             {
@@ -132,7 +132,7 @@ namespace Framework
             }
 
             /// <summary>
-            /// Ê±¼ä³õÊ¼»¯;
+            /// æ—¶é—´åˆå§‹åŒ–;
             /// </summary>
             public void InitTimerEvent()
             {
@@ -141,7 +141,7 @@ namespace Framework
             }
 
             /// <summary>
-            /// ½áÊøÊ±ÒÆ³ıËùÓĞÊÂ¼ş;
+            /// ç»“æŸæ—¶ç§»é™¤æ‰€æœ‰äº‹ä»¶;
             /// </summary>
             public void RemoveCallBackFunc()
             {
@@ -151,7 +151,7 @@ namespace Framework
             }
 
             /// <summary>
-            /// Ö´ĞĞ»Øµ÷;
+            /// æ‰§è¡Œå›è°ƒ;
             /// </summary>
             public void DoCallBack()
             {
@@ -166,7 +166,7 @@ namespace Framework
             }
 
             /// <summary>
-            /// ÒÆ³ıÊÂ¼şÅĞ¶Ïº¯Êı;
+            /// ç§»é™¤äº‹ä»¶åˆ¤æ–­å‡½æ•°;
             /// </summary>
             /// <returns></returns>
             public bool IsCanRemoveEvent()
@@ -188,7 +188,7 @@ namespace Framework
             }
 
             /// <summary>
-            /// ¼ÆÊ±º¯Êı;
+            /// è®¡æ—¶å‡½æ•°;
             /// </summary>
             /// <returns></returns>
             protected bool CountDown()
@@ -214,15 +214,15 @@ namespace Framework
         private List<TimerEvent> EventLists = new List<TimerEvent>();
 
         /// <summary>
-        /// ×¢²á¼ÆÊ±ÊÂ¼ş;
+        /// æ³¨å†Œè®¡æ—¶äº‹ä»¶;
         /// </summary>
-        /// <param name="delayTime">µÚÒ»´ÎÖ´ĞĞÑÓÊ±(s)</param>
-        /// <param name="repeatTimes">ÖØ¸´Ö´ĞĞ´ÎÊı(s)</param>
-        /// <param name="intervalTime">Á½´ÎÖ´ĞĞ¼ä¸ôÊ±¼ä(s)</param>
-        /// <param name="callBackFunc">ÎŞ²Î»Øµ÷º¯Êı</param>
-        /// <param name="callBackFuncWithParam">»Øµ÷º¯Êı</param>
-        /// <param name="param">²ÎÊı</param>
-        /// <param name="onFinish">ÊÂ¼ş½áÊø»Øµ÷º¯Êı</param>
+        /// <param name="delayTime">ç¬¬ä¸€æ¬¡æ‰§è¡Œå»¶æ—¶(s)</param>
+        /// <param name="repeatTimes">é‡å¤æ‰§è¡Œæ¬¡æ•°(s)</param>
+        /// <param name="intervalTime">ä¸¤æ¬¡æ‰§è¡Œé—´éš”æ—¶é—´(s)</param>
+        /// <param name="callBackFunc">æ— å‚å›è°ƒå‡½æ•°</param>
+        /// <param name="callBackFuncWithParam">å›è°ƒå‡½æ•°</param>
+        /// <param name="param">å‚æ•°</param>
+        /// <param name="onFinish">äº‹ä»¶ç»“æŸå›è°ƒå‡½æ•°</param>
         /// <returns></returns>
         public TimerHandler RegisterTimerEvent(float delayTime, int repeatTimes, float intervalTime, Action callBackFunc,
             Action<object> callBackFuncWithParam, object param, Action onFinish)
@@ -246,11 +246,11 @@ namespace Framework
         }
 
         /// <summary>
-        /// ×¢²á¼ÆÊ±ÊÂ¼ş;
+        /// æ³¨å†Œè®¡æ—¶äº‹ä»¶;
         /// </summary>
-        /// <param name="delayTime">µÚÒ»´ÎÖ´ĞĞÑÓÊ±(s)</param>
-        /// <param name="callBackFunc">»Øµ÷º¯Êı</param>
-        /// <param name="onFinish">½áÊø»Øµ÷º¯Êı</param>
+        /// <param name="delayTime">ç¬¬ä¸€æ¬¡æ‰§è¡Œå»¶æ—¶(s)</param>
+        /// <param name="callBackFunc">å›è°ƒå‡½æ•°</param>
+        /// <param name="onFinish">ç»“æŸå›è°ƒå‡½æ•°</param>
         /// <returns></returns>
         public TimerHandler RegisterTimerEvent(float delayTime, Action callBackFunc, Action onFinish)
         {
@@ -262,12 +262,12 @@ namespace Framework
         #region Timer Handler
 
         /// <summary>
-        /// ¼ÆÊ±ÊÂ¼ş²Ù×÷Àà;
+        /// è®¡æ—¶äº‹ä»¶æ“ä½œç±»;
         /// </summary>
         public class TimerHandler
         {
             /// <summary>
-            /// ¼ÆÊ±ÊÂ¼ş;
+            /// è®¡æ—¶äº‹ä»¶;
             /// </summary>
             private TimerEvent mTimer;
 
@@ -276,21 +276,21 @@ namespace Framework
                 mTimer = timer;
             }
             /// <summary>
-            /// ÔİÍ£;
+            /// æš‚åœ;
             /// </summary>
             public void Pause()
             {
                 if (mTimer != null) mTimer.IsPause = true;
             }
             /// <summary>
-            /// ¼ÌĞø;
+            /// ç»§ç»­;
             /// </summary>
             public void Replay()
             {
                 if (mTimer != null) mTimer.IsPause = false;
             }
             /// <summary>
-            /// ÒÆ³ıÊ±¼ä;
+            /// ç§»é™¤æ—¶é—´;
             /// </summary>
             public void RemoveTimer()
             {

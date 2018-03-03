@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/01/21 14:09:40
-** desc:  ÎÄ¼şÂ·¾¶¹ÜÀí¹¤¾ß
+** desc:  æ–‡ä»¶è·¯å¾„ç®¡ç†å·¥å…·
 *********************************************************************************/
 
 using System.Collections;
@@ -13,7 +13,7 @@ namespace Framework
 {
     public static class FilePathUtility
     {
-        //AssetBundle´ò°ü´æ´¢Â·¾¶;
+        //AssetBundleæ‰“åŒ…å­˜å‚¨è·¯å¾„;
         private static string assetBundlePath = Application.dataPath + "/StreamingAssets/AssetBundle";
         public static string AssetBundlePath
         {
@@ -21,54 +21,54 @@ namespace Framework
         }
 
         /// <summary>
-        /// ĞèÒª´ò°üµÄ×ÊÔ´ËùÔÚµÄÄ¿Â¼;
+        /// éœ€è¦æ‰“åŒ…çš„èµ„æºæ‰€åœ¨çš„ç›®å½•;
         /// </summary>
         public static string resPath = "Assets/Bundles/";
 
         /// <summary>
-        /// ĞèÒª´ò°üµÄluaÎÄ¼ş;
+        /// éœ€è¦æ‰“åŒ…çš„luaæ–‡ä»¶;
         /// </summary>
         public static string luaPath = "Assets/Resources/Lua";
 
         /// <summary>
-        /// ĞèÒª´ò°üµÄAtlasÎÄ¼ş;
+        /// éœ€è¦æ‰“åŒ…çš„Atlasæ–‡ä»¶;
         /// </summary>
         public static string atlasPath = "Assets/Atlas";
 
         /// <summary>
-        /// ĞèÒª´ò°üµÄSceneÎÄ¼ş;
+        /// éœ€è¦æ‰“åŒ…çš„Sceneæ–‡ä»¶;
         /// </summary>
         public static string scenePath = "Assets/Scenes/";
 
         /// <summary>
-        /// ¸ÃÂ·¾¶ÏÂµÄ×ÊÔ´µ¥¶À´ò°ü,Ö÷ÒªÊÇÎªÁË·½±ãÊ¹ÓÃ×ÊÔ´,ÈçÍ¼¼¯,×ÖÌå,³¡¾°´óµÄ±³¾°ÌùÍ¼µÈµÈ;
+        /// è¯¥è·¯å¾„ä¸‹çš„èµ„æºå•ç‹¬æ‰“åŒ…,ä¸»è¦æ˜¯ä¸ºäº†æ–¹ä¾¿ä½¿ç”¨èµ„æº,å¦‚å›¾é›†,å­—ä½“,åœºæ™¯å¤§çš„èƒŒæ™¯è´´å›¾ç­‰ç­‰;
         /// </summary>
         public static string singleResPath = "Assets/Bundles/Single/";
 
         /// <summary>
-        /// »ñÈ¡AssetBundleÎÄ¼şµÄÃû×Ö;
+        /// è·å–AssetBundleæ–‡ä»¶çš„åå­—;
         /// </summary>
-        /// <param name="type">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
-        /// <returns>AssetBundle×ÊÔ´Ãû×Ö</returns>
+        /// <param name="type">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
+        /// <returns>AssetBundleèµ„æºåå­—</returns>
         public static string GetAssetBundleFileName(AssetType type, string assetName)
         {
             string assetBundleName = null;
 
             if (type == AssetType.Non || string.IsNullOrEmpty(assetName)) return assetBundleName;
-            //AssetBundleµÄÃû×Ö²»Ö§³Ö´óĞ´;
-            //AssetBundle´ò°üÃüÃû·½Ê½Îª[assetType/assetName.assetbundle],¿ª·¢Ê±Í¬ÖÖ×ÊÔ´²»ÔÊĞíÃû×ÖÏàÍ¬,Ò»°ãÍ¬Ò»ÎÄ¼ş¼ĞÏÂ²»»áÖØ¸´,Ã¿¸ö
-            //ÎÄ¼ş¼ĞÏÂµÄ×ÊÔ´¶¼´øÓĞÏàÍ¬µÄÇ°×º,²»Í¬ÎÄ¼ş¼ĞÏÂ,×ÊÔ´Ç°×º²»Í¬;
+            //AssetBundleçš„åå­—ä¸æ”¯æŒå¤§å†™;
+            //AssetBundleæ‰“åŒ…å‘½åæ–¹å¼ä¸º[assetType/assetName.assetbundle],å¼€å‘æ—¶åŒç§èµ„æºä¸å…è®¸åå­—ç›¸åŒ,ä¸€èˆ¬åŒä¸€æ–‡ä»¶å¤¹ä¸‹ä¸ä¼šé‡å¤,æ¯ä¸ª
+            //æ–‡ä»¶å¤¹ä¸‹çš„èµ„æºéƒ½å¸¦æœ‰ç›¸åŒçš„å‰ç¼€,ä¸åŒæ–‡ä»¶å¤¹ä¸‹,èµ„æºå‰ç¼€ä¸åŒ;
             assetBundleName = (type.ToString() + "/" + assetName + ".assetbundle").ToLower();
             return assetBundleName;
         }
 
         /// <summary>
-        /// »ñÈ¡AssetBundleÎÄ¼ş¼ÓÔØÂ·¾¶;
+        /// è·å–AssetBundleæ–‡ä»¶åŠ è½½è·¯å¾„;
         /// </summary>
-        /// <param name="type">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
-        /// <returns>AssetBundle×ÊÔ´Â·¾¶</returns>
+        /// <param name="type">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
+        /// <returns>AssetBundleèµ„æºè·¯å¾„</returns>
         public static string GetAssetBundlePath(AssetType type, string assetName)
         {
             string assetBundleName = GetAssetBundleFileName(type, assetName);
@@ -77,11 +77,11 @@ namespace Framework
         }
 
         /// <summary>
-        /// »ñÈ¡ResourceÎÄ¼ş¼ÓÔØÂ·¾¶;
+        /// è·å–Resourceæ–‡ä»¶åŠ è½½è·¯å¾„;
         /// </summary>
-        /// <param name="type">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
-        /// <returns>Resource×ÊÔ´Â·¾¶;</returns>
+        /// <param name="type">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
+        /// <returns>Resourceèµ„æºè·¯å¾„;</returns>
         public static string GetResourcePath(AssetType type, string assetName)
         {
             if (type == AssetType.Non || type == AssetType.Scripts || string.IsNullOrEmpty(assetName)) return null;

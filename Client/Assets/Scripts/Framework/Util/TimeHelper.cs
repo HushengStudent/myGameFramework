@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/02/05 01:29:56
-** desc:  Ê±¼ä¹¤¾ß
+** desc:  æ—¶é—´å·¥å…·
 *********************************************************************************/
 
 using System;
@@ -16,7 +16,7 @@ namespace Framework
         private static readonly long epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).Ticks;
 
         /// <summary>
-        /// ¿Í»§¶ËÊ±¼ä;
+        /// å®¢æˆ·ç«¯æ—¶é—´;
         /// </summary>
         /// <returns></returns>
         public static long ClientNow()
@@ -30,7 +30,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// µÇÂ½Ç°ÊÇ¿Í»§¶ËÊ±¼ä,µÇÂ½ºóÊÇÍ¬²½¹ıµÄ·şÎñÆ÷Ê±¼ä;
+        /// ç™»é™†å‰æ˜¯å®¢æˆ·ç«¯æ—¶é—´,ç™»é™†åæ˜¯åŒæ­¥è¿‡çš„æœåŠ¡å™¨æ—¶é—´;
         /// </summary>
         /// <returns></returns>
         public static long Now()

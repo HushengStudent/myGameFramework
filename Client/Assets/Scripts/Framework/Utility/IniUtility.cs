@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/01/28 15:48:00
-** desc:  iniÎÄ¼ş¶ÁÈ¡¹¤¾ß
+** desc:  iniæ–‡ä»¶è¯»å–å·¥å…·
 *********************************************************************************/
 
 using System.Collections;
@@ -13,30 +13,30 @@ namespace Framework
 {
     public static class IniUtility
     {
-        //È¥µôÒ»ĞĞĞÅÏ¢µÄ¿ªÊ¼ºÍÄ©Î²²»ĞèÒªµÄĞÅÏ¢;
+        //å»æ‰ä¸€è¡Œä¿¡æ¯çš„å¼€å§‹å’Œæœ«å°¾ä¸éœ€è¦çš„ä¿¡æ¯;
         private static readonly char[] TrimStart = new char[] { ' ', '\t' };
         private static readonly char[] TrimEnd = new char[] { ' ', '\t', '\r', '\n' };
-        //keyºÍvalueµÄ·Ö¸ô·û;
+        //keyå’Œvalueçš„åˆ†éš”ç¬¦;
         private static string DELEMITER = "=";
-        //Â·¾¶;
+        //è·¯å¾„;
         private static string strFilePath = null;
-        //ÊÇ·ñÇø·Ö´óĞ¡Ğ´;
+        //æ˜¯å¦åŒºåˆ†å¤§å°å†™;
         private static bool IsCaseSensitive = false;
         private static Dictionary<string, Dictionary<string, string>> IniConfigDic = new Dictionary<string, Dictionary<string, string>>();
 
-        //³õÊ¼»¯;
+        //åˆå§‹åŒ–;
         public static void IniFile(string path, bool isCaseSensitive = false)
         {
             strFilePath = path;
             IsCaseSensitive = isCaseSensitive;
         }
 
-        //½âÎöini;
+        //è§£æini;
         public static void ParseIni()
         {
             if (!File.Exists(strFilePath))
             {
-                Debug.LogWarning("the ini file's path is error£º" + strFilePath);
+                Debug.LogWarning("the ini file's path is errorï¼š" + strFilePath);
                 return;
             }
             using (StreamReader reader = new StreamReader(strFilePath))
@@ -51,7 +51,7 @@ namespace Framework
                 {
                     strLine = strLine.TrimStart(TrimStart);
                     strLine = strLine.TrimEnd(TrimEnd);
-                    //'#'¿ªÊ¼´ú±í×¢ÊÍ;
+                    //'#'å¼€å§‹ä»£è¡¨æ³¨é‡Š;
                     if (strLine.StartsWith("#"))
                     {
                         continue;
@@ -83,14 +83,14 @@ namespace Framework
                         }
                         else
                         {
-                            Debug.LogWarning("the ini file's format is error£¬lost [Section]'s information");
+                            Debug.LogWarning("the ini file's format is errorï¼Œlost [Section]'s information");
                         }
                     }
                 }
             }
         }
 
-        //Ğ´Èëini;
+        //å†™å…¥ini;
         public static void SaveIni()
         {
             if (string.IsNullOrEmpty(strFilePath))
