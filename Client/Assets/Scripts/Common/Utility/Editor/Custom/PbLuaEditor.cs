@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/01/08 00:22:03
-** desc:  protoÉú³É
+** desc:  protoç”Ÿæˆ
 *********************************************************************************/
 
 using System.Collections;
@@ -19,19 +19,19 @@ namespace Common
     {
         private static List<string> paths = new List<string>();
         private static List<string> files = new List<string>();
-        //protoc.exe°²×°ÔÚcÅÌ;
+        //protoc.exeå®‰è£…åœ¨cç›˜;
         private static string protoc = "c:/protobuf-3.0.0/src/protoc.exe";
 
-        //pbluaÄ¿Â¼;
+        //pbluaç›®å½•;
         private static string pbluaDir = Application.dataPath.ToLower() + "/LuaFramework/Lua/Network/pblua";
-        //toolsÄ¿Â¼;
+        //toolsç›®å½•;
         private static string protoc_gen_dir = "\"" + Application.dataPath.ToLower() + "/../../Tools/protoc-gen-lua-master/plugin/protoc-gen-lua.bat\"";
 
-        //protogenÄ¿Â¼;
+        //protogenç›®å½•;
         private static string protogen = Application.dataPath.ToLower() + "/../../Tools/protoc-gen-csharp/ProtoGen/bin/Release/protogen.exe";
-        //csharp¿Í»§¶ËÊä³öÄ¿Â¼;
+        //csharpå®¢æˆ·ç«¯è¾“å‡ºç›®å½•;
         private static string csharpClientPath = Application.dataPath.ToLower() + "/Scripts/Common/Protocol";
-        //TODO:Éú³ÉĞ­Òé¸ø·şÎñÆ÷;
+        //TODO:ç”Ÿæˆåè®®ç»™æœåŠ¡å™¨;
         //private static string csharpServerPath = Application.dataPath.ToLower() + "/Scripts/Common/Protocol";
 
         [MenuItem("MPbTool/Build Pb File => Lua", false, 0)]
@@ -78,7 +78,7 @@ namespace Common
                 string ext = Path.GetExtension(f);
                 string workPath = Path.GetDirectoryName(f);
                 if (!ext.Equals(".proto")) continue;
-                //Êä³öÄ¿Â¼;
+                //è¾“å‡ºç›®å½•;
                 string outPath = GetCsharpPath(f);
                 if (null == outPath) continue;
                 if (!Directory.Exists(outPath))
@@ -110,7 +110,7 @@ namespace Common
         }
 
         /// <summary>
-        /// ±éÀúÄ¿Â¼¼°Æä×ÓÄ¿Â¼;
+        /// éå†ç›®å½•åŠå…¶å­ç›®å½•;
         /// </summary>
         /// <param name="path"></param>
         private static void Recursive(string path)
@@ -131,7 +131,7 @@ namespace Common
         }
 
         /// <summary>
-        /// µÃµ½Ğ­ÒéC#Êä³öÄ¿Â¼;
+        /// å¾—åˆ°åè®®C#è¾“å‡ºç›®å½•;
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
