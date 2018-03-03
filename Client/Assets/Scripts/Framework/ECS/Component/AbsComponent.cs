@@ -12,6 +12,9 @@ using UnityEngine;
 
 namespace Framework
 {
+    /// <summary>
+    /// 组件抽象基类;
+    /// </summary>
     public abstract class AbsComponent : IPool
     {
         private long _id;
@@ -24,7 +27,7 @@ namespace Framework
         public long ID { get { return _id; } }
         public bool Enable { get { return _enable; } set { _enable = value; } }
         public bool IsLoaded { get { return _isLoaded; } set { _isLoaded = value; } }
-        public AbsEntity Entity { get { return _entity; } }
+        public AbsEntity Entity { get { return _entity; } set { _entity = value; } }
         public GameObject ComponentGo { get { return _componentGo; } set { _componentGo = value; } }
         public Action<AbsComponent> InitCallBack { get { return _initCallBack; } set { _initCallBack = value; } }
 
@@ -32,45 +35,66 @@ namespace Framework
         public virtual void UpdateEx() { }
         public virtual void LateUpdateEx() { }
         public virtual void OnDestroyEx() { }
-
-        public virtual IEnumerator<float> OnLoad()
-        {
-            yield return Timing.WaitForOneFrame;
-        }
-
         /// <summary>
-        /// 异步初始化Component;
+        /// 初始化Component;
         /// </summary>
-        /// <param name="entity">Entity</param>
-        /// <param name="isUsePool">是否使用对象池</param>
-        /// <returns></returns>
-        public virtual void OnInit(AbsEntity entity, bool isUsePool)
+        /// <param name="entity">entity</param>
+        /// <param name="go">gameObject</param>
+        public virtual void OnInitComponent(AbsEntity entity, GameObject go)
         {
             _id = IdGenerater.GenerateId();
-            _entity = entity;
-            if (isUsePool)
+            OnAttachEntity(entity);
+            OnAttachComponentGo(go);
+            if (InitCallBack != null)
             {
-
-            }
-            else
-            {
-                if (InitCallBack != null)
-                {
-                    InitCallBack(this);
-                }
+                InitCallBack(this);
             }
         }
-
-        public virtual void ResetComponent()
+        /// <summary>
+        /// 充值Component;
+        /// </summary>
+        public virtual void OnResetComponent()
         {
+            DeAttachEntity();
+            DeAttachComponentGo();
             _id = 0;
             _entity = null;
             _enable = true;
             _componentGo = null;
             _initCallBack = null;
         }
-
+        /// <summary>
+        /// Component附加Entity;
+        /// </summary>
+        /// <param name="entity"></param>
+        public virtual void OnAttachEntity(AbsEntity entity)
+        {
+            Entity = entity;
+        }
+        /// <summary>
+        /// Component附加GameObject;
+        /// </summary>
+        /// <param name="go"></param>
+        public virtual void OnAttachComponentGo(GameObject go)
+        {
+            ComponentGo = go;
+        }
+        /// <summary>
+        /// 重置Entity的附加;
+        /// </summary>
+        public abstract void DeAttachEntity();
+        /// <summary>
+        /// 重置GameObject的附加;
+        /// </summary>
+        public abstract void DeAttachComponentGo();
+        /// <summary>
+        /// 对象池Get;
+        /// </summary>
+        /// <param name="args"></param>
         public virtual void OnGet(params System.Object[] args) { }
+        /// <summary>
+        /// 对象池Release;
+        /// </summary>
         public virtual void OnRelease() { }
     }
 }

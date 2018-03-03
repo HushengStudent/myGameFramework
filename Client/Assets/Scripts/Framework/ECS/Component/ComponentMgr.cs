@@ -91,14 +91,14 @@ namespace Framework
         /// <param name="initCallBack">加载完成回调</param>
         /// <param name="isUsePool"></param>
         /// <returns></returns>
-        public T CreateComponent<T>(AbsEntity entity, Action<AbsComponent> initCallBack,
-            bool isUsePool = false) where T : AbsComponent, new()
+        public T CreateComponent<T>(AbsEntity entity, GameObject go,
+            Action<AbsComponent> initCallBack) where T : AbsComponent, new()
         {
-            T _Component = new T();
+            T _Component = PoolMgr.Instance.Get<T>();
             if (AddComponent(_Component))
             {
                 _Component.InitCallBack = initCallBack;
-                _Component.OnInit(entity, isUsePool);
+                _Component.OnInitComponent(entity, go);
                 return _Component;
             }
             else
