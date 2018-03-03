@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/01/21 02:20:27
-** desc:  AssetBundle´ò°ü¶¨Òå
+** desc:  AssetBundleæ‰“åŒ…å®šä¹‰
 *********************************************************************************/
 
 using System.Collections;
@@ -14,17 +14,17 @@ namespace Framework
 	public static class AssetBuildDefine 
     {
         /// <summary>
-        /// ´ò°üÑ¡Ïî,´ò°üAssetBundle²»Ñ¹Ëõ,Ê¹ÓÃµÚÈı·½Ñ¹ËõÈí¼şÑ¹Ëõ,ÔÙ½âÑ¹µ½É³ºĞÂ·¾¶,¼È¿ÉÒÔ¼õÉÙ°üÌå,¼Ó¿ì¶ÁÈ¡ËÙ¶È,µ«ÊÇÕ¼ÎïÀí´ÅÅÌ¿Õ¼ä;
-        /// CompleteAssetsÄ¬ÈÏ¿ªÆô;CollectDependenciesÄ¬ÈÏ¿ªÆô;DeterministicAssetBundleÄ¬ÈÏ¿ªÆô;ChunkBasedCompressionÊ¹ÓÃLZ4Ñ¹Ëõ;
+        /// æ‰“åŒ…é€‰é¡¹,æ‰“åŒ…AssetBundleä¸å‹ç¼©,ä½¿ç”¨ç¬¬ä¸‰æ–¹å‹ç¼©è½¯ä»¶å‹ç¼©,å†è§£å‹åˆ°æ²™ç›’è·¯å¾„,æ—¢å¯ä»¥å‡å°‘åŒ…ä½“,åŠ å¿«è¯»å–é€Ÿåº¦,ä½†æ˜¯å ç‰©ç†ç£ç›˜ç©ºé—´;
+        /// CompleteAssetsé»˜è®¤å¼€å¯;CollectDependenciesé»˜è®¤å¼€å¯;DeterministicAssetBundleé»˜è®¤å¼€å¯;ChunkBasedCompressionä½¿ç”¨LZ4å‹ç¼©;
         /// </summary>
         public static BuildAssetBundleOptions options = BuildAssetBundleOptions.UncompressedAssetBundle;
 
         /// <summary>
-        /// AssetBundle´ò°üÄ¿±êÆ½Ì¨;
+        /// AssetBundleæ‰“åŒ…ç›®æ ‡å¹³å°;
         /// </summary>
         public static BuildTarget buildTarget =
 
-#if UNITY_IOS    //unity5.x UNITY_IPHONE»»³ÉUNITY_IOS
+#if UNITY_IOS    //unity5.x UNITY_IPHONEæ¢æˆUNITY_IOS
 	BuildTarget.iOS;
 #elif UNITY_ANDROID
     BuildTarget.Android;

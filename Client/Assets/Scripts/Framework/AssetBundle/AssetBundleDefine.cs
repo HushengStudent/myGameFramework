@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2017/12/26 23:42:52
-** desc:  AssetBundle´ò°ü¶¨Òå
+** desc:  AssetBundleæ‰“åŒ…å®šä¹‰
 *********************************************************************************/
 
 using System.Collections;
@@ -14,9 +14,9 @@ namespace Framework
     public static class AssetBundleDefine
     {
         /// <summary>
-        /// ¸ù¾İ×ÊÔ´Â·¾¶»ñÈ¡×ÊÔ´ÀàĞÍ;
+        /// æ ¹æ®èµ„æºè·¯å¾„è·å–èµ„æºç±»å‹;
         /// </summary>
-        /// <param name="path">×ÊÔ´Â·¾¶</param>
+        /// <param name="path">èµ„æºè·¯å¾„</param>
         /// <returns></returns>
         public static AssetType GetAssetType(string path)
         {
@@ -65,7 +65,7 @@ namespace Framework
     }
 
     /// <summary>
-    /// ×ÊÔ´ÀàĞÍ;
+    /// èµ„æºç±»å‹;
     /// </summary>
     public enum AssetType
     {
@@ -77,7 +77,7 @@ namespace Framework
         Scripts,
         Font,
         /// <summary>
-        /// ²»ĞèÒªÊµÀı»¯µÄµÄPrefab×ÊÔ´,ÈçÍ¼¼¯;
+        /// ä¸éœ€è¦å®ä¾‹åŒ–çš„çš„Prefabèµ„æº,å¦‚å›¾é›†;
         /// </summary>
         AssetPrefab,
         Shader,

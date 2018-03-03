@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2017/12/25 23:46:32
-** desc:  事件系统
+** desc:  浜嬩欢绯荤粺
 *********************************************************************************/
 
 using System;
@@ -48,10 +48,10 @@ namespace Framework
             return true;
         }
 
-        #region Action委托
+        #region Action濮旀墭
 
         /// <summary>
-        /// 注册无参Action委托;
+        /// 娉ㄥ唽鏃犲弬Action濮旀墭;
         /// </summary>
         /// <param name="key"></param>
         /// <param name="handler"></param>
@@ -68,7 +68,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// 移除无参Action委托;
+        /// 绉婚櫎鏃犲弬Action濮旀墭;
         /// </summary>
         /// <param name="key"></param>
         /// <param name="handler"></param>
@@ -85,7 +85,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// 广播无参Action委托;
+        /// 骞挎挱鏃犲弬Action濮旀墭;
         /// </summary>
         /// <param name="key"></param>
         public static void FireEvent(TKey key)
@@ -114,10 +114,10 @@ namespace Framework
 
         #endregion
 
-        #region Action<T>委托
+        #region Action<T>濮旀墭
 
         /// <summary>
-        /// 注册含一个参数的委托;
+        /// 娉ㄥ唽鍚竴涓弬鏁扮殑濮旀墭;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="key"></param>
@@ -135,7 +135,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// 移除含一个参数的Action委托;
+        /// 绉婚櫎鍚竴涓弬鏁扮殑Action濮旀墭;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="key"></param>
@@ -153,7 +153,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// 广播含一个参数的Action委托;
+        /// 骞挎挱鍚竴涓弬鏁扮殑Action濮旀墭;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="key"></param>
@@ -184,10 +184,10 @@ namespace Framework
 
         #endregion
 
-        #region Action<T1,T2>委托
+        #region Action<T1,T2>濮旀墭
 
         /// <summary>
-        /// 注册含两个参数的Action委托;
+        /// 娉ㄥ唽鍚袱涓弬鏁扮殑Action濮旀墭;
         /// </summary>
         /// <typeparam name="T1"></typeparam>
         /// <typeparam name="T2"></typeparam>
@@ -206,7 +206,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// 移除含两个参数的Action委托;
+        /// 绉婚櫎鍚袱涓弬鏁扮殑Action濮旀墭;
         /// </summary>
         /// <typeparam name="T1"></typeparam>
         /// <typeparam name="T2"></typeparam>
@@ -225,7 +225,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// 广播含两个参数的Action委托
+        /// 骞挎挱鍚袱涓弬鏁扮殑Action濮旀墭
         /// </summary>
         /// <typeparam name="T1"></typeparam>
         /// <typeparam name="T2"></typeparam>

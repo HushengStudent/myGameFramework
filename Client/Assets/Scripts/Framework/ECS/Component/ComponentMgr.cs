@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/01/14 14:16:25
-** desc:  组件管理
+** desc:  缁勪欢绠＄悊
 *********************************************************************************/
 
 using System.Collections;
@@ -84,11 +84,11 @@ namespace Framework
         #region Function
 
         /// <summary>
-        /// 创建Component;
+        /// 鍒涘缓Component;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="entity"></param>
-        /// <param name="initCallBack">加载完成回调</param>
+        /// <param name="initCallBack">鍔犺浇瀹屾垚鍥炶皟</param>
         /// <param name="isUsePool"></param>
         /// <returns></returns>
         public T CreateComponent<T>(AbsEntity entity, GameObject go,
@@ -109,7 +109,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// 添加Component;
+        /// 娣诲姞Component;
         /// </summary>
         /// <param name="component"></param>
         /// <returns></returns>
@@ -125,7 +125,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// 移除Component;
+        /// 绉婚櫎Component;
         /// </summary>
         /// <param name="component"></param>
         /// <returns></returns>

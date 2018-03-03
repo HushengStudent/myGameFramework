@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2017/12/28 00:32:46
-** desc:  Lua¼ÓÔØ¹¤¾ß
+** desc:  LuaåŠ è½½å·¥å…·
 *********************************************************************************/
 
 using LuaInterface;
@@ -14,9 +14,9 @@ namespace Framework
     public class LuaLoaderUtility : LuaFileUtils
     {
         /// <summary>
-        /// ¹¹Ôìº¯Êı;
+        /// æ„é€ å‡½æ•°;
         /// </summary>
-        /// <param name="isBundles">ÊÇ·ñÊ¹ÓÃAssetBundle¼ÓÔØ</param>
+        /// <param name="isBundles">æ˜¯å¦ä½¿ç”¨AssetBundleåŠ è½½</param>
         public LuaLoaderUtility(bool isBundles = false)
         {
             beZip = isBundles;

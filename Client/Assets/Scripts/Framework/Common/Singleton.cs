@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2017/12/25 23:37:56
-** desc:  µ¥ÀıÄ£°å
+** desc:  å•ä¾‹æ¨¡æ¿
 *********************************************************************************/
 
 using System.Collections;
@@ -20,14 +20,14 @@ namespace Framework
 	        {
 	            if (null == instance)
 	            {
-	                instance = new T(); //µ÷ÓÃ¹¹Ôìº¯Êı;
+	                instance = new T(); //è°ƒç”¨æ„é€ å‡½æ•°;
 	            }
 	            return instance;
 	        }
 	    }
 	
 	    /// <summary>
-	    /// ¹¹Ôìº¯Êı;
+	    /// æ„é€ å‡½æ•°;
 	    /// </summary>
 	    protected Singleton()
 	    {

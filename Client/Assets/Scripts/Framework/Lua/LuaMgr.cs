@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2017/12/25 00:30:25
-** desc:  Lua¹ÜÀí
+** desc:  Luaç®¡ç†
 *********************************************************************************/
 
 using LuaInterface;
@@ -12,7 +12,7 @@ using LogUtil;
 
 namespace Framework
 {
-    //²Î¿¼(https://github.com/jarjin/LuaFramework_UGUI)¼¯³Étolua;
+    //å‚è€ƒ(https://github.com/jarjin/LuaFramework_UGUI)é›†æˆtolua;
     public class LuaMgr : MonoSingleton<LuaMgr> 
 	{
         private LuaState lua;
@@ -28,8 +28,8 @@ namespace Framework
         public override void AwakeEx()
         {
             base.AwakeEx();
-            //³õÊ¼»¯LuaMgr;
-            loader = new LuaLoaderUtility();//TODO:Lua AssetBundleµÄÊ¹ÓÃ;
+            //åˆå§‹åŒ–LuaMgr;
+            loader = new LuaLoaderUtility();//TODO:Lua AssetBundleçš„ä½¿ç”¨;
             lua = new LuaState();
             this.OpenLibs();
             lua.LuaSetTop(0);
@@ -39,7 +39,7 @@ namespace Framework
         }
         
         /// <summary>
-        /// ³õÊ¼»¯¼ÓÔØµÚÈı·½¿â;
+        /// åˆå§‹åŒ–åŠ è½½ç¬¬ä¸‰æ–¹åº“;
         /// </summary>
         void OpenLibs()
         {
@@ -52,7 +52,7 @@ namespace Framework
             this.OpenCJson();
         }
 
-        //cjson±È½ÏÌØÊâ,Ö»newÁËÒ»¸ötable,Ã»ÓĞ×¢²á¿â,ÕâÀï×¢²áÒ»ÏÂ;
+        //cjsonæ¯”è¾ƒç‰¹æ®Š,åªnewäº†ä¸€ä¸ªtable,æ²¡æœ‰æ³¨å†Œåº“,è¿™é‡Œæ³¨å†Œä¸€ä¸‹;
         protected void OpenCJson()
         {
             lua.LuaGetField(LuaIndexes.LUA_REGISTRYINDEX, "_LOADED");
@@ -66,13 +66,13 @@ namespace Framework
         {
             InitLuaPath();
             InitLuaBundle();
-            this.lua.Start();    //Æô¶¯LUAVM;
+            this.lua.Start();    //å¯åŠ¨LUAVM;
             this.StartMain();
             this.StartLooper();
         }
 
         /// <summary>
-        /// ³õÊ¼»¯Lua´úÂë¼ÓÔØÂ·¾¶;
+        /// åˆå§‹åŒ–Luaä»£ç åŠ è½½è·¯å¾„;
         /// </summary>
         void InitLuaPath()
         {
@@ -81,7 +81,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// ³õÊ¼»¯LuaBundle;
+        /// åˆå§‹åŒ–LuaBundle;
         /// </summary>
         void InitLuaBundle()
         {

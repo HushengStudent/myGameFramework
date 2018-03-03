@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2017/12/25 00:27:09
-** desc:  AssetBundle¹ÜÀí
+** desc:  AssetBundleç®¡ç†
 *********************************************************************************/
 
 using System;
@@ -12,7 +12,7 @@ using UnityEngine;
 namespace Framework
 {
     /// <summary>
-    /// AssetBundleÔÚÒì²½¼ÓÔØÍê³ÉÊ±ÔÙÍ¬²½¼ÓÔØ»á±¨´í;
+    /// AssetBundleåœ¨å¼‚æ­¥åŠ è½½å®Œæˆæ—¶å†åŒæ­¥åŠ è½½ä¼šæŠ¥é”™;
     /// </summary>
     public partial class AssetBundleMgr : Singleton<AssetBundleMgr>
     {
@@ -20,17 +20,17 @@ namespace Framework
         #region Field
 
         /// <summary>
-        /// ¼ÓÔØ³öÀ´µÄAssetBundle»º´æ;
+        /// åŠ è½½å‡ºæ¥çš„AssetBundleç¼“å­˜;
         /// </summary>
         private Dictionary<string, AssetBundle> assetBundleCache = new Dictionary<string, AssetBundle>();
 
         /// <summary>
-        /// ¼ÓÔØ³öÀ´µÄAssetBundleÒıÓÃ¼ÆÊı;
+        /// åŠ è½½å‡ºæ¥çš„AssetBundleå¼•ç”¨è®¡æ•°;
         /// </summary>
         private Dictionary<string, int> assetBundleReference = new Dictionary<string, int>();
 
         /// <summary>
-        /// ÒÀÀµ¹ØÏµAssetBundle;
+        /// ä¾èµ–å…³ç³»AssetBundle;
         /// </summary>
         private AssetBundle mainAssetBundle;
 
@@ -40,7 +40,7 @@ namespace Framework
         private AssetBundleManifest manifest;
 
         /// <summary>
-        /// ÒÀÀµ¹ØÏµAssetBundle;
+        /// ä¾èµ–å…³ç³»AssetBundle;
         /// </summary>
         private AssetBundle MainAssetBundle
         {
@@ -78,7 +78,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// ÕıÔÚÒì²½¼ÓÔØÖĞµÄAssetBundle;
+        /// æ­£åœ¨å¼‚æ­¥åŠ è½½ä¸­çš„AssetBundle;
         /// </summary>
         public HashSet<string> assetBundleLoading = new HashSet<string>();
 
@@ -87,7 +87,7 @@ namespace Framework
         #region Function
 
         /// <summary>
-        /// AssetBundleÊÇ·ñÕıÔÚ¼ÓÔØ;
+        /// AssetBundleæ˜¯å¦æ­£åœ¨åŠ è½½;
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
@@ -101,9 +101,9 @@ namespace Framework
         #region AssetBundle Load
 
         /// <summary>
-        /// AssetBundleÍ¬²½¼ÓÔØLoadFromFile;
+        /// AssetBundleåŒæ­¥åŠ è½½LoadFromFile;
         /// </summary>
-        /// <param name="path">AssetBundleÎÄ¼şÂ·¾¶</param>
+        /// <param name="path">AssetBundleæ–‡ä»¶è·¯å¾„</param>
         /// <returns>AssetBundle</returns>
         private AssetBundle LoadSingleSync(string path)
         {
@@ -140,11 +140,11 @@ namespace Framework
         }
 
         /// <summary>
-        /// AssetBundleÒì²½¼ÓÔØLoadFromFileAsync,wwwÒì²½¼ÓÔØÏûºÄ´óÓÚLoadFromFileAsync;
+        /// AssetBundleå¼‚æ­¥åŠ è½½LoadFromFileAsync,wwwå¼‚æ­¥åŠ è½½æ¶ˆè€—å¤§äºLoadFromFileAsync;
         /// </summary>
-        /// <param name="path">×ÊÔ´Â·¾¶</param>
-        /// <param name="action">AssetBundle»Øµ÷</param>
-        /// <param name="progress">progress»Øµ÷</param>
+        /// <param name="path">èµ„æºè·¯å¾„</param>
+        /// <param name="action">AssetBundleå›è°ƒ</param>
+        /// <param name="progress">progresså›è°ƒ</param>
         /// <returns></returns>
         private IEnumerator LoadSingleAsync(string path, Action<AssetBundle> action, Action<float> progress)
         {
@@ -157,10 +157,10 @@ namespace Framework
             }
             if (!assetBundleCache.ContainsKey(path))
             {
-                //¿ªÊ¼¼ÓÔØ;
+                //å¼€å§‹åŠ è½½;
                 assetBundleLoading.Add(path);
                 AssetBundleCreateRequest assetBundleReq = AssetBundle.LoadFromFileAsync(path);
-                //¼ÓÔØ½ø¶È;
+                //åŠ è½½è¿›åº¦;
                 while (assetBundleReq.progress < 0.99)
                 {
                     if (null != progress)
@@ -183,7 +183,7 @@ namespace Framework
                     assetBundleReference[path] = 1;
                     LogUtil.LogUtility.Print(string.Format("[AssetBundleMgr]Load AssetBundle {0} Success!", path));
                 }
-                //¼ÓÔØÍê±Ï;
+                //åŠ è½½å®Œæ¯•;
                 assetBundleLoading.Remove(path);
             }
             else
@@ -195,10 +195,10 @@ namespace Framework
         }
 
         /// <summary>
-        /// AssetBundleÍ¬²½¼ÓÔØ;
+        /// AssetBundleåŒæ­¥åŠ è½½;
         /// </summary>
-        /// <param name="type">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
+        /// <param name="type">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
         /// <returns>AssetBundle</returns>
         public AssetBundle LoadAssetBundleSync(AssetType type, string assetName)
         {
@@ -211,7 +211,7 @@ namespace Framework
             AssetBundle assetBundle = LoadSingleSync(assetBundlePath);
             if (assetBundle == null) return null;
 
-            //·µ»ØAssetBundleName;
+            //è¿”å›AssetBundleName;
             string[] DependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
             foreach (string tempAssetBundle in DependentAssetBundle)
             {
@@ -223,12 +223,12 @@ namespace Framework
         }
 
         /// <summary>
-        /// AssetBundleÒì²½¼ÓÔØ;
+        /// AssetBundleå¼‚æ­¥åŠ è½½;
         /// </summary>
-        /// <param name="type">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
-        /// <param name="action">AssetBundle»Øµ÷</param>
-        /// <param name="progress">progress»Øµ÷</param>
+        /// <param name="type">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
+        /// <param name="action">AssetBundleå›è°ƒ</param>
+        /// <param name="progress">progresså›è°ƒ</param>
         /// <returns></returns>
         public IEnumerator LoadAssetBundleAsync(AssetType type, string assetName, Action<AssetBundle> action, Action<float> progress)
         {
@@ -236,7 +236,7 @@ namespace Framework
             string assetBundlePath = FilePathUtility.GetAssetBundlePath(type, assetName);
             if (assetBundlePath == null) yield break;
             string assetBundleName = FilePathUtility.GetAssetBundleFileName(type, assetName);
-            //ÏÈ¼ÓÔØÒÀÀµµÄAssetBundle;
+            //å…ˆåŠ è½½ä¾èµ–çš„AssetBundle;
             string[] DependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
             foreach (string tempAssetBundle in DependentAssetBundle)
             {
@@ -248,7 +248,7 @@ namespace Framework
                     yield return null;
                 }
             }
-            //¼ÓÔØÄ¿±êAssetBundle;
+            //åŠ è½½ç›®æ ‡AssetBundle;
             IEnumerator itorTarget = LoadSingleAsync(assetBundlePath, action, progress);
             while (itorTarget.MoveNext())
             {
@@ -257,7 +257,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// ¼ÓÔØShader AssetBundle;
+        /// åŠ è½½Shader AssetBundle;
         /// </summary>
         /// <returns>AssetBundle</returns>
         public AssetBundle LoadShaderAssetBundle()
@@ -277,9 +277,9 @@ namespace Framework
         #region AssetBundle Unload
 
         /// <summary>
-        /// Ğ¶ÔØAssetBundle×ÊÔ´;
+        /// å¸è½½AssetBundleèµ„æº;
         /// </summary>
-        /// <param name="path">×ÊÔ´Â·¾¶</param>
+        /// <param name="path">èµ„æºè·¯å¾„</param>
         /// <param name="flag">true or false</param>
         private void UnloadAsset(string path, bool flag)
         {
@@ -303,10 +303,10 @@ namespace Framework
         }
 
         /// <summary>
-        /// Í¨ÓÃ×ÊÔ´AssetBundleĞ¶ÔØ·½·¨[Unload(true)];
+        /// é€šç”¨èµ„æºAssetBundleå¸è½½æ–¹æ³•[Unload(true)];
         /// </summary>
-        /// <param name="type">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
+        /// <param name="type">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
         public void UnloadAsset(AssetType type, string assetName)
         {
             if (type == AssetType.Non || type == AssetType.Shader || type == AssetType.Lua || type == AssetType.Scripts || string.IsNullOrEmpty(assetName))
@@ -329,10 +329,10 @@ namespace Framework
         }
 
         /// <summary>
-        /// AssetBundle ¾µÏñĞ¶ÔØ·½·¨[Unload(false)],Ê¹ÓÃ×ÊÔ´ÎªÒ»°ã³õÊ¼»¯¾ÍÈ«¾Ö±£´æ²»ÔÚÏú»ÙµÄ×ÊÔ´,Èç:Shader;
+        /// AssetBundle é•œåƒå¸è½½æ–¹æ³•[Unload(false)],ä½¿ç”¨èµ„æºä¸ºä¸€èˆ¬åˆå§‹åŒ–å°±å…¨å±€ä¿å­˜ä¸åœ¨é”€æ¯çš„èµ„æº,å¦‚:Shader;
         /// </summary>
-        /// <param name="type">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
+        /// <param name="type">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
         public void UnloadMirroring(AssetType type, string assetName)
         {
             if (type == AssetType.Non || type == AssetType.Scripts || string.IsNullOrEmpty(assetName))

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/02/28 00:30:26
-** desc:  »á»°
+** desc:  ä¼šè¯
 *********************************************************************************/
 
 using System.Collections;
@@ -14,24 +14,24 @@ namespace Framework
     public class ClientSession<T>
     {
         /// <summary>
-        /// ÉÏÏÂÎÄ¶ÔÏó;
+        /// ä¸Šä¸‹æ–‡å¯¹è±¡;
         /// </summary>
         internal SocketAsyncEventArgs SendEventArgs { get; private set; }
         internal SocketAsyncEventArgs ReceiveEventArgs { get; private set; }
         internal SocketAsyncEventArgs ConnectEventArgs { get; private set; }
 
         /// <summary>
-        /// ºÍSession¹ØÁªµÄ¶ÔÏó;
+        /// å’ŒSessionå…³è”çš„å¯¹è±¡;
         /// </summary>
         public T Data { get; set; }
 
         /// <summary>
-        /// ¿Í»§¶Ë¶ÔÓ¦µÄSocket;
+        /// å®¢æˆ·ç«¯å¯¹åº”çš„Socket;
         /// </summary>
         internal Socket Socket { get; private set; }
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı;
+        /// æ„é€ å‡½æ•°;
         /// </summary>
         public ClientSession()
         {

@@ -12,7 +12,7 @@ using UnityEngine;
 namespace Framework
 {
     /// <summary>
-    /// »º³åÀàĞÍ;
+    /// ç¼“å†²ç±»å‹;
     /// </summary>
     internal enum NetBufferType
     {
@@ -40,7 +40,7 @@ namespace Framework
         internal NetBufferType BuffSizeType { get; set; }
 
         /// <summary>
-        /// ×Ö½ÚµÄÊı×é;
+        /// å­—èŠ‚çš„æ•°ç»„;
         /// </summary>
         protected byte[] m_buffer;
 
@@ -50,16 +50,16 @@ namespace Framework
         }
 
         /// <summary>
-        /// µ±Ç°Ê¹ÓÃµÄÊı¾İ³¤¶È;
+        /// å½“å‰ä½¿ç”¨çš„æ•°æ®é•¿åº¦;
         /// </summary>
         public int Length { get; set; }
 
         private int referenceCounter;
 
         /// <summary>
-        /// À©´ó»º³åÊı¾İµÄ´óĞ¡(×¢Òâ£¬À©´óºó£¬Byte·µ»ØµÄÊı×éµÄÒıÓÃ½«²»Í¬);
+        /// æ‰©å¤§ç¼“å†²æ•°æ®çš„å¤§å°(æ³¨æ„ï¼Œæ‰©å¤§åï¼ŒByteè¿”å›çš„æ•°ç»„çš„å¼•ç”¨å°†ä¸åŒ);
         /// </summary>
-        /// <param name="minSize">À©´óµÄ×îĞ¡³ß´ç</param>
+        /// <param name="minSize">æ‰©å¤§çš„æœ€å°å°ºå¯¸</param>
         public void UpdateCapacity(int minSize = 0)
         {
             int newSize;
@@ -78,7 +78,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// °´ÕÕ4K¶ÔÆë;
+        /// æŒ‰ç…§4Kå¯¹é½;
         /// </summary>
         /// <param name="minSize"></param>
         /// <returns></returns>
@@ -88,8 +88,8 @@ namespace Framework
         }
 
         /// <summary>
-        /// Èç¹û¶ÔÏóÊÇÍ¨¹ıPool»ñµÃ¶ÔÏó,Ôò²»ÓÃµ÷ÓÃ¸Ã·½·¨;
-        /// Èç¹ûÊÇ²ÎÊı´«Èë,²¢ÇÒĞèÒªÊ¹ÓÃËüµÄbyteÊı×é,ÔòĞèÒªÏÈUse,ÔÙRelease;
+        /// å¦‚æœå¯¹è±¡æ˜¯é€šè¿‡Poolè·å¾—å¯¹è±¡,åˆ™ä¸ç”¨è°ƒç”¨è¯¥æ–¹æ³•;
+        /// å¦‚æœæ˜¯å‚æ•°ä¼ å…¥,å¹¶ä¸”éœ€è¦ä½¿ç”¨å®ƒçš„byteæ•°ç»„,åˆ™éœ€è¦å…ˆUse,å†Release;
         /// </summary>
         public void Use()
         {
@@ -97,7 +97,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// µ±²»ÔÙÊ¹ÓÃ»º³åÇøÊ±,ĞèÒªÊÖ¶¯ÊÍ·Å,¶ÔÏó»á×Ô¶¯·µ»Ø¶ÔÏó³ØÀï;
+        /// å½“ä¸å†ä½¿ç”¨ç¼“å†²åŒºæ—¶,éœ€è¦æ‰‹åŠ¨é‡Šæ”¾,å¯¹è±¡ä¼šè‡ªåŠ¨è¿”å›å¯¹è±¡æ± é‡Œ;
         /// </summary>
         public void Release()
         {

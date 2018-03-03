@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/01/07 17:33:17
-** desc:  Lua¹¤¾ß¼¯
+** desc:  Luaå·¥å…·é›†
 *********************************************************************************/
 
 using LuaInterface;
@@ -49,7 +49,7 @@ namespace Framework
         #region Unity
 
         /// <summary>
-        /// ËÑË÷×ÓÎïÌå×é¼ş:GameObject°æ;
+        /// æœç´¢å­ç‰©ä½“ç»„ä»¶:GameObjectç‰ˆ;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="go"></param>
@@ -66,7 +66,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// ËÑË÷×ÓÎïÌå×é¼ş:Transform°æ;
+        /// æœç´¢å­ç‰©ä½“ç»„ä»¶:Transformç‰ˆ;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="go"></param>
@@ -83,7 +83,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// ËÑË÷×ÓÎïÌå×é¼ş:Component°æ;
+        /// æœç´¢å­ç‰©ä½“ç»„ä»¶:Componentç‰ˆ;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="go"></param>
@@ -95,7 +95,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// Ìí¼Ó×é¼ş;
+        /// æ·»åŠ ç»„ä»¶;
         /// </summary>
         public static T Add<T>(GameObject go) where T : Component
         {
@@ -112,7 +112,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// Ìí¼Ó×é¼ş;
+        /// æ·»åŠ ç»„ä»¶;
         /// </summary>
         public static T Add<T>(Transform go) where T : Component
         {
@@ -120,7 +120,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// ²éÕÒ×Ó¶ÔÏó;
+        /// æŸ¥æ‰¾å­å¯¹è±¡;
         /// </summary>
         public static GameObject Child(GameObject go, string subnode)
         {
@@ -128,7 +128,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// ²éÕÒ×Ó¶ÔÏó;
+        /// æŸ¥æ‰¾å­å¯¹è±¡;
         /// </summary>
         public static GameObject Child(Transform go, string subnode)
         {
@@ -138,7 +138,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// È¡Æ½¼¶¶ÔÏó;
+        /// å–å¹³çº§å¯¹è±¡;
         /// </summary>
         public static GameObject Peer(GameObject go, string subnode)
         {
@@ -146,7 +146,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// È¡Æ½¼¶¶ÔÏó;
+        /// å–å¹³çº§å¯¹è±¡;
         /// </summary>
         public static GameObject Peer(Transform go, string subnode)
         {
@@ -156,7 +156,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// Çå³ıËùÓĞ×Ó½Úµã;
+        /// æ¸…é™¤æ‰€æœ‰å­èŠ‚ç‚¹;
         /// </summary>
         public static void ClearChild(Transform go)
         {
@@ -179,13 +179,13 @@ namespace Framework
 
         public static long GetTime()
         {
-            //TODO:Ê¹ÓÃ·şÎñÆ÷Ê±¼ä;
+            //TODO:ä½¿ç”¨æœåŠ¡å™¨æ—¶é—´;
             TimeSpan ts = new TimeSpan(DateTime.UtcNow.Ticks - new DateTime(1970, 1, 1, 0, 0, 0).Ticks);
             return (long)ts.TotalMilliseconds;
         }
 
         /// <summary>
-        /// ¼ÆËã×Ö·û´®µÄMD5Öµ;
+        /// è®¡ç®—å­—ç¬¦ä¸²çš„MD5å€¼;
         /// </summary>
         public static string md5(string source)
         {
@@ -204,7 +204,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// ¼ÆËãÎÄ¼şµÄMD5Öµ;
+        /// è®¡ç®—æ–‡ä»¶çš„MD5å€¼;
         /// </summary>
         public static string md5file(string file)
         {
@@ -229,7 +229,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// ÇåÀíÄÚ´æ;
+        /// æ¸…ç†å†…å­˜;
         /// </summary>
         public static void ClearMemory()
         {
@@ -240,7 +240,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// È¡µÃĞĞÎÄ±¾;
+        /// å–å¾—è¡Œæ–‡æœ¬;
         /// </summary>
         public static string GetFileText(string path)
         {
@@ -248,7 +248,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// ÍøÂç¿ÉÓÃ;
+        /// ç½‘ç»œå¯ç”¨;
         /// </summary>
         public static bool NetAvailable
         {
@@ -259,7 +259,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// ÊÇ·ñÊÇÎŞÏß;
+        /// æ˜¯å¦æ˜¯æ— çº¿;
         /// </summary>
         public static bool IsWifi
         {
@@ -270,7 +270,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// Ó¦ÓÃ³ÌĞòÄÚÈİÂ·¾¶;
+        /// åº”ç”¨ç¨‹åºå†…å®¹è·¯å¾„;
         /// </summary>
         public static string AppContentPath()
         {
@@ -295,7 +295,7 @@ namespace Framework
         #region Call Lua
 
         /// <summary>
-        /// Ö´ĞĞLua·½·¨;
+        /// æ‰§è¡ŒLuaæ–¹æ³•;
         /// </summary>
         public static object[] CallMethod(string module, string func, params object[] args)
         {
@@ -316,7 +316,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// pbc/pbluaº¯Êı»Øµ÷;
+        /// pbc/pbluaå‡½æ•°å›è°ƒ;
         /// </summary>
         /// <param name="data"></param>
         /// <param name="func"></param>
@@ -331,7 +331,7 @@ namespace Framework
         #region Json
 
         /// <summary>
-        /// cjsonº¯Êı»Øµ÷;
+        /// cjsonå‡½æ•°å›è°ƒ;
         /// </summary>
         /// <param name="data"></param>
         /// <param name="func"></param>
