@@ -11,17 +11,19 @@ using Framework;
 
 public class RoleEntity : AbsEntity
 {
-
-    // Use this for initialization
-    void Start()
+    public override void OnInitEntity(GameObject go)
     {
-
+        base.OnInitEntity(go);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnAttachEntityGo(GameObject go)
     {
+        base.OnAttachEntityGo(go);
+    }
 
+    public override void DeAttachEntityGo()
+    {
+        throw new System.NotImplementedException();
     }
 }
 

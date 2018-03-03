@@ -11,43 +11,66 @@ using UnityEngine;
 
 namespace Framework
 {
-    public abstract class AbsEntity
+    public abstract class AbsEntity : IPool
     {
         private long _id;
-        private bool _enable = true;
-        private bool _isLoaded = false;
+        private bool _enable = false;
         private GameObject _entityGo = null;
         private Action<AbsEntity> _initCallBack;
 
         public long ID { get { return _id; } }
         public bool Enable { get { return _enable; } set { _enable = value; } }
-        public bool IsLoaded { get { return _isLoaded; } set { _isLoaded = value; } }
         public GameObject EntityGO { get { return _entityGo; } set { _entityGo = value; } }
         public Action<AbsEntity> InitCallBack { get { return _initCallBack; } set { _initCallBack = value; } }
 
-        public virtual void AwakeEx() { }
         public virtual void UpdateEx() { }
         public virtual void LateUpdateEx() { }
-        public virtual void OnDestroyEx() { }
-
-        public virtual void OnLoad() { }
-
-        public virtual void OnInit()
+        /// <summary>
+        /// 初始化Entity;
+        /// </summary>
+        /// <param name="go"></param>
+        public virtual void OnInitEntity(GameObject go)
         {
-            //TODO:use pool and async;
             _id = IdGenerater.GenerateId();
+            OnAttachEntityGo(go);
             if (InitCallBack != null)
             {
                 InitCallBack(this);
             }
-        }
-
-        protected virtual void ResetEntity()
-        {
-            _id = 0;
             _enable = true;
+        }
+        /// <summary>
+        /// 重置Entity;
+        /// </summary>
+        protected virtual void OnResetEntity()
+        {
+            DeAttachEntityGo();
+            _id = 0;
+            _enable = false;
             _entityGo = null;
             _initCallBack = null;
         }
+
+        /// <summary>
+        /// Entity附加GameObject;
+        /// </summary>
+        /// <param name="go"></param>
+        public virtual void OnAttachEntityGo(GameObject go)
+        {
+            _entityGo = go;
+        }
+        /// <summary>
+        /// 重置GameObject的附加;
+        /// </summary>
+        public abstract void DeAttachEntityGo();
+        /// <summary>
+        /// 对象池Get;
+        /// </summary>
+        /// <param name="args"></param>
+        public virtual void OnGet(params System.Object[] args) { }
+        /// <summary>
+        /// 对象池Release;
+        /// </summary>
+        public virtual void OnRelease() { }
     }
 }

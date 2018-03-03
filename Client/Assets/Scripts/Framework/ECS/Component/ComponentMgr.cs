@@ -22,33 +22,25 @@ namespace Framework
         }
 
         #region Field
-
+        /// <summary>
+        /// ComponentDict;
+        /// </summary>
         private Dictionary<long, AbsComponent> ComponentDict = new Dictionary<long, AbsComponent>();
-
+        /// <summary>
+        /// ComponentList;
+        /// </summary>
         private List<AbsComponent> ComponentList = new List<AbsComponent>();
 
         #endregion
 
         #region Unity api
 
-        public override void AwakeEx()
-        {
-            base.AwakeEx();
-            for (int i = 0; i < ComponentList.Count; i++)
-            {
-                if (ComponentList[i].IsLoaded && ComponentList[i].Enable)
-                {
-                    ComponentList[i].AwakeEx();
-                }
-            }
-        }
-
         public override void UpdateEx()
         {
             base.UpdateEx();
             for (int i = 0; i < ComponentList.Count; i++)
             {
-                if (ComponentList[i].IsLoaded && ComponentList[i].Enable)
+                if (ComponentList[i].Enable)
                 {
                     ComponentList[i].UpdateEx();
                 }
@@ -60,21 +52,9 @@ namespace Framework
             base.LateUpdateEx();
             for (int i = 0; i < ComponentList.Count; i++)
             {
-                if (ComponentList[i].IsLoaded && ComponentList[i].Enable)
+                if (ComponentList[i].Enable)
                 {
                     ComponentList[i].LateUpdateEx();
-                }
-            }
-        }
-
-        public override void OnDestroyEx()
-        {
-            base.OnDestroyEx();
-            for (int i = 0; i < ComponentList.Count; i++)
-            {
-                if (ComponentList[i].IsLoaded && ComponentList[i].Enable)
-                {
-                    ComponentList[i].OnDestroyEx();
                 }
             }
         }
@@ -88,8 +68,8 @@ namespace Framework
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="entity"></param>
-        /// <param name="initCallBack">加载完成回调</param>
-        /// <param name="isUsePool"></param>
+        /// <param name="go"></param>
+        /// <param name="initCallBack"></param>
         /// <returns></returns>
         public T CreateComponent<T>(AbsEntity entity, GameObject go,
             Action<AbsComponent> initCallBack) where T : AbsComponent, new()
@@ -107,7 +87,6 @@ namespace Framework
                 return null;
             }
         }
-
         /// <summary>
         /// 添加Component;
         /// </summary>
@@ -123,7 +102,6 @@ namespace Framework
             ComponentList.Add(component);
             return true;
         }
-
         /// <summary>
         /// 移除Component;
         /// </summary>

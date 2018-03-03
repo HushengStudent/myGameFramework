@@ -21,30 +21,28 @@ namespace Framework
         }
 
         #region Field
-
+        /// <summary>
+        /// EntityDict;
+        /// </summary>
         private Dictionary<long, AbsEntity> EntityDict = new Dictionary<long, AbsEntity>();
-
+        /// <summary>
+        /// EntityList;
+        /// </summary>
         private List<AbsEntity> EntityList = new List<AbsEntity>();
 
         #endregion
 
         #region Unity api
 
-        public override void AwakeEx()
-        {
-            base.AwakeEx();
-            for (int i = 0; i < EntityList.Count; i++)
-            {
-                EntityList[i].AwakeEx();
-            }
-        }
-
         public override void UpdateEx()
         {
             base.UpdateEx();
             for (int i = 0; i < EntityList.Count; i++)
             {
-                EntityList[i].UpdateEx();
+                if (EntityList[i].Enable)
+                {
+                    EntityList[i].UpdateEx();
+                }
             }
         }
 
@@ -53,31 +51,30 @@ namespace Framework
             base.LateUpdateEx();
             for (int i = 0; i < EntityList.Count; i++)
             {
-                EntityList[i].LateUpdateEx();
-            }
-        }
-
-        public override void OnDestroyEx()
-        {
-            base.OnDestroyEx();
-            for (int i = 0; i < EntityList.Count; i++)
-            {
-                EntityList[i].OnDestroyEx();
+                if (EntityList[i].Enable)
+                {
+                    EntityList[i].LateUpdateEx();
+                }
             }
         }
 
         #endregion
 
         #region Function
-
-        public T CreateEntity<T>(Action<AbsEntity> initCallBack) where T : AbsEntity, new()
+        /// <summary>
+        /// 创建Entity;
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="go"></param>
+        /// <param name="initCallBack"></param>
+        /// <returns></returns>
+        public T CreateEntity<T>(GameObject go, Action<AbsEntity> initCallBack) where T : AbsEntity, new()
         {
-            //TODO:use pool and async;
-            T _Entity = new T();
+            T _Entity = PoolMgr.Instance.Get<T>();
             if (AddEntity(_Entity))
             {
                 _Entity.InitCallBack = initCallBack;
-                _Entity.OnInit();
+                _Entity.OnInitEntity(go);
                 return _Entity;
             }
             else
@@ -86,7 +83,11 @@ namespace Framework
                 return null;
             }
         }
-
+        /// <summary>
+        /// 添加Entity;
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         private bool AddEntity(AbsEntity entity)
         {
             if (EntityDict.ContainsKey(entity.ID))
@@ -97,7 +98,11 @@ namespace Framework
             EntityList.Add(entity);
             return true;
         }
-
+        /// <summary>
+        /// 移除Entity;
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         private bool RemoveComponent(AbsEntity entity)
         {
             if (!EntityDict.ContainsKey(entity.ID))
