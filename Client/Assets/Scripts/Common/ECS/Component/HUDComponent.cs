@@ -11,16 +11,18 @@ using UnityEngine;
 
 public class HUDComponent : AbsComponent
 {
-
-    // Use this for initialization
-    void Start()
+    public override void OnInitComponent(AbsEntity entity, GameObject go)
     {
-
+        base.OnInitComponent(entity, go);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void DeAttachEntity()
     {
+        throw new System.NotImplementedException();
+    }
 
+    public override void DeAttachComponentGo()
+    {
+        throw new System.NotImplementedException();
     }
 }
