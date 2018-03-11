@@ -37,8 +37,9 @@ Client：客户端工程使用Unity5.5.4创建
 	(2)protoc-gen-lua：(pblua:https://github.com/topameng/protoc-gen-lua).
 	(3)AssetBundle：(myAssetBundleTools:https://github.com/HushengStudent/myAssetBundleTools).
 	(4)protobuf-net-r668：(protobuf-net-r668:https://github.com/mdavid/protobuf-net).
-	(5)More Effective Coroutine：(Asset Store)
-	(6)ObjectPool：(ugui:https://github.com/HushengStudent/ugui)
+	(5)More Effective Coroutine：(Asset Store).
+	(6)ObjectPool：(ugui:https://github.com/HushengStudent/ugui).
+	(7)kbengine_unity3d_lua_plugins：(https://github.com/liuxq/kbengine_unity3d_lua_plugins).
 	
 Server：服务器工程使用visual studio2013创建
 	Reference：
