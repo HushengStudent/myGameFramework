@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/01/08 00:32:30
-** desc:  实体抽象基类
+** desc:  ECS实体抽象基类
 *********************************************************************************/
 
 using System;
@@ -25,6 +25,7 @@ namespace Framework
 
         public virtual void UpdateEx() { }
         public virtual void LateUpdateEx() { }
+
         /// <summary>
         /// 初始化Entity;
         /// </summary>
@@ -33,6 +34,7 @@ namespace Framework
         {
             _id = IdGenerater.GenerateId();
             OnAttachEntityGo(go);
+            EventSubscribe();
             if (InitCallBack != null)
             {
                 InitCallBack(this);
@@ -45,24 +47,32 @@ namespace Framework
         protected virtual void OnResetEntity()
         {
             DeAttachEntityGo();
+            EventUnsubscribe();
             _id = 0;
             _enable = false;
             _entityGo = null;
             _initCallBack = null;
         }
-
         /// <summary>
         /// Entity附加GameObject;
         /// </summary>
         /// <param name="go"></param>
-        public virtual void OnAttachEntityGo(GameObject go)
+        protected virtual void OnAttachEntityGo(GameObject go)
         {
             _entityGo = go;
         }
         /// <summary>
         /// 重置GameObject的附加;
         /// </summary>
-        public abstract void DeAttachEntityGo();
+        protected abstract void DeAttachEntityGo();
+        /// <summary>
+        /// 注册事件;
+        /// </summary>
+        protected abstract void EventSubscribe();
+        /// <summary>
+        /// 注销事件;
+        /// </summary>
+        protected abstract void EventUnsubscribe();
         /// <summary>
         /// 对象池Get;
         /// </summary>

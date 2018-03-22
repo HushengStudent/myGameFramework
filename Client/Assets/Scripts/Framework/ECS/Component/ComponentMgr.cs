@@ -62,7 +62,6 @@ namespace Framework
         #endregion
 
         #region Function
-
         /// <summary>
         /// 创建Component;
         /// </summary>

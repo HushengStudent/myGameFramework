@@ -1,4 +1,4 @@
-﻿/********************************************************************************
+/********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/01/10 23:22:57
 ** desc:  组件抽象基类
@@ -31,6 +31,7 @@ namespace Framework
 
         public virtual void UpdateEx() { }
         public virtual void LateUpdateEx() { }
+
         /// <summary>
         /// 初始化Component;
         /// </summary>
@@ -41,6 +42,7 @@ namespace Framework
             _id = IdGenerater.GenerateId();
             OnAttachEntity(entity);
             OnAttachComponentGo(go);
+            EventSubscribe();
             if (InitCallBack != null)
             {
                 InitCallBack(this);
@@ -54,6 +56,7 @@ namespace Framework
         {
             DeAttachEntity();
             DeAttachComponentGo();
+            EventUnsubscribe();
             _id = 0;
             _entity = null;
             _enable = false;
@@ -79,11 +82,19 @@ namespace Framework
         /// <summary>
         /// 重置Entity的附加;
         /// </summary>
-        public abstract void DeAttachEntity();
+        protected abstract void DeAttachEntity();
         /// <summary>
         /// 重置GameObject的附加;
         /// </summary>
-        public abstract void DeAttachComponentGo();
+        protected abstract void DeAttachComponentGo();
+        /// <summary>
+        /// 注册事件;
+        /// </summary>
+        protected abstract void EventSubscribe();
+        /// <summary>
+        /// 注销事件;
+        /// </summary>
+        protected abstract void EventUnsubscribe();
         /// <summary>
         /// 对象池Get;
         /// </summary>

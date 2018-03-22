@@ -16,12 +16,22 @@ public class RoleEntity : AbsEntity
         base.OnInitEntity(go);
     }
 
-    public override void OnAttachEntityGo(GameObject go)
+    protected override void OnAttachEntityGo(GameObject go)
     {
         base.OnAttachEntityGo(go);
     }
 
-    public override void DeAttachEntityGo()
+    protected override void DeAttachEntityGo()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void EventSubscribe()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void EventUnsubscribe()
     {
         throw new System.NotImplementedException();
     }
