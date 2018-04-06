@@ -13,6 +13,12 @@ namespace Framework
 {
     public class CoroutineMgr : MonoSingleton<CoroutineMgr>
     {
+        public override void Init()
+        {
+            base.Init();
+            //...
+        }
+
         public CoroutineHandle RunCoroutine(IEnumerator<float> coroutine)
         {
             return Timing.RunCoroutine(coroutine);

@@ -7,8 +7,7 @@ public class Framework_ResourceMgrWrap
 	public static void Register(LuaState L)
 	{
 		L.BeginClass(typeof(Framework.ResourceMgr), typeof(Framework.Singleton<Framework.ResourceMgr>));
-		L.RegFunction("InitShader", InitShader);
-		L.RegFunction("InitLua", InitLua);
+		L.RegFunction("Init", Init);
 		L.RegFunction("New", _CreateFramework_ResourceMgr);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.EndClass();
@@ -39,29 +38,13 @@ public class Framework_ResourceMgrWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int InitShader(IntPtr L)
+	static int Init(IntPtr L)
 	{
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
 			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
-			obj.InitShader();
-			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int InitLua(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 1);
-			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
-			obj.InitLua();
+			obj.Init();
 			return 0;
 		}
 		catch (Exception e)

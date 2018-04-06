@@ -23,6 +23,11 @@ namespace Framework
         {
             base.Init();
             //...
+            InitLuaPath();
+            InitLuaBundle();
+            this.lua.Start();    //启动LUAVM;
+            this.StartMain();
+            this.StartLooper();
         }
 
         public override void AwakeEx()
@@ -37,7 +42,7 @@ namespace Framework
             DelegateFactory.Init();
             LuaCoroutine.Register(lua, this);
         }
-        
+
         /// <summary>
         /// 初始化加载第三方库;
         /// </summary>
@@ -60,15 +65,6 @@ namespace Framework
             lua.LuaSetField(-2, "cjson");
             lua.OpenLibs(LuaDLL.luaopen_cjson_safe);
             lua.LuaSetField(-2, "cjson.safe");
-        }
-
-        public void StartLuaMgr()
-        {
-            InitLuaPath();
-            InitLuaBundle();
-            this.lua.Start();    //启动LUAVM;
-            this.StartMain();
-            this.StartLooper();
         }
 
         /// <summary>

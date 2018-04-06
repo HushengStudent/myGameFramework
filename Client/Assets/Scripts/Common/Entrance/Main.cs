@@ -21,7 +21,8 @@ namespace Common
 
         private void StartGame()
         {
-            LuaMgr.Instance.StartLuaMgr();
+            ResourceMgr.Instance.Init();      //资源初始化;
+            LuaMgr.Instance.Init();           //Lua初始化;
         }
     }
 }

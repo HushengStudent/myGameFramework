@@ -16,6 +16,17 @@ namespace Framework
 {
     public class ResourceMgr : Singleton<ResourceMgr>
     {
+        #region Init
+
+        public override void Init()
+        {
+            base.Init();
+            InitLua();
+            InitShader();
+        }
+
+        #endregion
+
         #region Function
 
         /// <summary>
@@ -51,7 +62,7 @@ namespace Framework
 
         #region Asset Init
 
-        public void InitShader()
+        private void InitShader()
         {
             //Shader初始化;
             AssetBundle shaderAssetBundle = AssetBundleMgr.Instance.LoadShaderAssetBundle();
@@ -68,9 +79,9 @@ namespace Framework
             //AssetBundleMgr.Instance.UnloadMirroring(AssetType.Shader, "Shader");
         }
 
-        public void InitLua()
+        private void InitLua()
         {
-
+            //TODO...
         }
 
         #endregion
@@ -183,7 +194,7 @@ namespace Framework
         /// <param name="type">资源类型</param>
         /// <param name="assetName">资源名字</param>
         /// <returns>ctrl</returns>
-        public T LoadAssetFromAssetBundleSync<T>(AssetType type, string assetName) where T : Object
+        public T LoadAssetFromAssetBundleSync<T>(AssetType type, string assetName) where T : MonoBehaviour
         {
             T ctrl = null;
             IAssetLoader<T> loader = CreateLoader<T>(type);
@@ -195,7 +206,17 @@ namespace Framework
                 ctrl = loader.GetAsset(tempObject);
             }
             if (ctrl == null)
+            {
                 LogUtil.LogUtility.PrintError(string.Format("[ResourceMgr]LoadAssetFromAssetBundleSync Load Asset {0} failure!", assetName + "." + type.ToString()));
+            }
+            else
+            {
+                UnityUtility.AddOrGetComponent<AssetBundleTag>(ctrl.gameObject, (tag) =>//自动卸载;
+                {
+                    tag.AssetBundleName = assetName;
+                    tag.Type = type;
+                });
+            }
             return ctrl;
         }
 
@@ -209,7 +230,7 @@ namespace Framework
         /// <param name="progress">progress回调</param>
         /// <returns></returns>
         public IEnumerator<float> LoadAssetFromAssetBundleAsync<T>(AssetType type, string assetName, Action<T> action, Action<float> progress)
-            where T : Object
+            where T : MonoBehaviour
         {
             T ctrl = null;
             AssetBundle assetBundle = null;
@@ -239,12 +260,21 @@ namespace Framework
             }
             ctrl = loader.GetAsset(request.asset as T);
             if (ctrl == null)
+            {
                 LogUtil.LogUtility.PrintError(string.Format("[ResourceMgr]LoadAssetFromAssetBundleSync Load Asset {0} failure!", assetName + "." + type.ToString()));
-            if (action != null)
-                action(ctrl);
+            }
+            else
+            {
+                UnityUtility.AddOrGetComponent<AssetBundleTag>(ctrl.gameObject, (tag) =>//自动卸载;
+                {
+                    tag.AssetBundleName = assetName;
+                    tag.Type = type;
+                });
+                if (action != null)
+                    action(ctrl);
+            }
         }
 
         #endregion
-
     }
 }
