@@ -82,19 +82,19 @@ namespace Framework
         /// <summary>
         /// 重置Entity的附加;
         /// </summary>
-        protected abstract void DeAttachEntity();
+        protected virtual void DeAttachEntity() { }
         /// <summary>
         /// 重置GameObject的附加;
         /// </summary>
-        protected abstract void DeAttachComponentGo();
+        protected virtual void DeAttachComponentGo() { }
         /// <summary>
         /// 注册事件;
         /// </summary>
-        protected abstract void EventSubscribe();
+        protected virtual void EventSubscribe() { }
         /// <summary>
         /// 注销事件;
         /// </summary>
-        protected abstract void EventUnsubscribe();
+        protected virtual void EventUnsubscribe() { }
         /// <summary>
         /// 对象池Get;
         /// </summary>

@@ -15,24 +15,4 @@ public class HUDComponent : AbsComponent
     {
         base.OnInitComponent(entity, go);
     }
-
-    protected override void DeAttachComponentGo()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override void DeAttachEntity()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override void EventSubscribe()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override void EventUnsubscribe()
-    {
-        throw new System.NotImplementedException();
-    }
 }

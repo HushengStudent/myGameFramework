@@ -20,20 +20,5 @@ public class RoleEntity : AbsEntity
     {
         base.OnAttachEntityGo(go);
     }
-
-    protected override void DeAttachEntityGo()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override void EventSubscribe()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override void EventUnsubscribe()
-    {
-        throw new System.NotImplementedException();
-    }
 }
 
