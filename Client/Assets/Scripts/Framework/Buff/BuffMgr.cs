@@ -12,10 +12,6 @@ namespace Framework
 {
     public class BuffMgr : Singleton<BuffMgr>
     {
-        public override void Init()
-        {
-            base.Init();
-            LogUtil.LogUtility.Print("--->>>BuffMgr Init!", LogUtil.LogColor.Green);
-        }
+
     }
 }

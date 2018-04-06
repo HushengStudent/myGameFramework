@@ -17,11 +17,9 @@ namespace Framework
     public class ResourceMgr : Singleton<ResourceMgr>
     {
         #region Init
-
-        public override void Init()
+        
+        public void InitMgr()
         {
-            base.Init();
-            LogUtil.LogUtility.Print("--->>>ResourceMgr Init!", LogUtil.LogColor.Green);
             InitLua();
             InitShader();
         }

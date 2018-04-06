@@ -18,14 +18,7 @@ namespace Framework
         private LuaState lua;
         private LuaLoaderUtility loader;
         private LuaLooper loop = null;
-
-        public override void Init()
-        {
-            base.Init();
-            //...
-            LogUtil.LogUtility.Print("--->>>LuaMgr Init!", LogUtil.LogColor.Green);
-        }
-
+        
         /// <summary>
         /// 初始化;
         /// </summary>

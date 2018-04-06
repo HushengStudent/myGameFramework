@@ -13,10 +13,6 @@ namespace Framework
 {
 	public class SkillMgr : Singleton<SkillMgr>
 	{
-        public override void Init()
-        {
-            base.Init();
-            LogUtil.LogUtility.Print("--->>>SkillMgr Init!", LogUtil.LogColor.Green);
-        }
+
     }
 }

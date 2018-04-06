@@ -7,7 +7,6 @@ public class Framework_MonoSingleton_Framework_LuaMgrWrap
 	public static void Register(LuaState L)
 	{
 		L.BeginClass(typeof(Framework.MonoSingleton<Framework.LuaMgr>), typeof(UnityEngine.MonoBehaviour), "MonoSingleton_Framework_LuaMgr");
-		L.RegFunction("Init", Init);
 		L.RegFunction("StartEx", StartEx);
 		L.RegFunction("AwakeEx", AwakeEx);
 		L.RegFunction("OnEnableEx", OnEnableEx);
@@ -20,22 +19,6 @@ public class Framework_MonoSingleton_Framework_LuaMgrWrap
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("Instance", get_Instance, null);
 		L.EndClass();
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int Init(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 1);
-			Framework.MonoSingleton<Framework.LuaMgr> obj = (Framework.MonoSingleton<Framework.LuaMgr>)ToLua.CheckObject<Framework.MonoSingleton<Framework.LuaMgr>>(L, 1);
-			obj.Init();
-			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]

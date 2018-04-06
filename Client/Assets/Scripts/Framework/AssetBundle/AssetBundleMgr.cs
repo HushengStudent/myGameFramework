@@ -85,13 +85,7 @@ namespace Framework
         #endregion
 
         #region Function
-
-        public override void Init()
-        {
-            base.Init();
-            LogUtil.LogUtility.Print("--->>>AssetBundleMgr Init!", LogUtil.LogColor.Green);
-        }
-
+        
         /// <summary>
         /// AssetBundle是否正在加载;
         /// </summary>

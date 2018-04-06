@@ -13,13 +13,6 @@ namespace Framework
 {
     public class CoroutineMgr : MonoSingleton<CoroutineMgr>
     {
-        public override void Init()
-        {
-            base.Init();
-            //...
-            LogUtil.LogUtility.Print("--->>>CoroutineMgr Init!", LogUtil.LogColor.Green);
-        }
-
         public CoroutineHandle RunCoroutine(IEnumerator<float> coroutine)
         {
             return Timing.RunCoroutine(coroutine);

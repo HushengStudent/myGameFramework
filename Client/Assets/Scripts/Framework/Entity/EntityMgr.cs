@@ -14,13 +14,6 @@ namespace Framework
 {
     public class EntityMgr : MonoSingleton<EntityMgr>
     {
-        public override void Init()
-        {
-            base.Init();
-            //...
-            LogUtil.LogUtility.Print("--->>>EntityMgr Init!", LogUtil.LogColor.Green);
-        }
-
         #region Field
         /// <summary>
         /// EntityDict;

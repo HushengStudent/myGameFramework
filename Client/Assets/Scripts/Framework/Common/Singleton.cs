@@ -36,7 +36,7 @@ namespace Framework
 	        Init();
 	    }
 	
-	    public virtual void Init() { }
+	    protected virtual void Init() { }
 	
 	    public virtual void OnDestroy()
 	    {

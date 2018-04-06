@@ -15,13 +15,6 @@ namespace Framework
 {
     public class ComponentMgr : MonoSingleton<ComponentMgr>
     {
-        public override void Init()
-        {
-            base.Init();
-            //...
-            LogUtil.LogUtility.Print("--->>>ComponentMgr Init!", LogUtil.LogColor.Green);
-        }
-
         #region Field
         /// <summary>
         /// ComponentDict;

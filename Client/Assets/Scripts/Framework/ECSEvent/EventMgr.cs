@@ -12,12 +12,6 @@ namespace Framework
 {
     public class EventMgr : Singleton<EventMgr>
     {
-        public override void Init()
-        {
-            base.Init();
-            LogUtil.LogUtility.Print("--->>>EventMgr Init!", LogUtil.LogColor.Green);
-        }
-
         /// <summary>
         /// 事件委托;
         /// </summary>

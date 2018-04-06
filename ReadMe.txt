@@ -1,7 +1,7 @@
 myGameFramework
 This is a game framework include client server and some tools.
 
-software：Unity5.5.4/visual studio2013.
+software：Unity5.5.4/visual studio2017.
 --------------------------------------------------------------
 Client：客户端工程使用Unity5.5.4创建
 	Module：

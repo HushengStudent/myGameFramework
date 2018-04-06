@@ -13,14 +13,6 @@ namespace Framework
 {
 	public class GameMgr : Singleton<GameMgr> 
 	{
-		// Use this for initialization
-		void Start () {
-			
-		}
 		
-		// Update is called once per frame
-		void Update () {
-			
-		}
 	}
 }
