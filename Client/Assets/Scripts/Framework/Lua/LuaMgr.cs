@@ -23,6 +23,14 @@ namespace Framework
         {
             base.Init();
             //...
+            LogUtil.LogUtility.Print("--->>>LuaMgr Init!", LogUtil.LogColor.Green);
+        }
+
+        /// <summary>
+        /// 初始化;
+        /// </summary>
+        public void InitMgr()
+        {
             InitLuaPath();
             InitLuaBundle();
             this.lua.Start();    //启动LUAVM;

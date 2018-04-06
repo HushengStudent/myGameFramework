@@ -19,6 +19,7 @@ namespace Framework
         {
             base.Init();
             //...
+            LogUtil.LogUtility.Print("--->>>ComponentMgr Init!", LogUtil.LogColor.Green);
         }
 
         #region Field

@@ -306,6 +306,12 @@ namespace Framework
 
         private TimerEvent tmpEvent = null;
 
+        public override void Init()
+        {
+            base.Init();
+            LogUtil.LogUtility.Print("--->>>TimerMgr Init!", LogUtil.LogColor.Green);
+        }
+
         // Update is called once per frame
         void Update()
         {

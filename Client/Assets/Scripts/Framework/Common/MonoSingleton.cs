@@ -20,10 +20,10 @@ namespace Framework
 	        {
 	            if (null == instance)
 	            {
-	                GameObject go = GameObject.Find("~!@#$%^&*()_MonoSingleton_");
+	                GameObject go = GameObject.Find("~!@#$%^&*()_+_monoSingleton_");
 	                if(null == go)
 	                {
-	                    go = new GameObject("~!@#$%^&*()_MonoSingleton_");
+	                    go = new GameObject("~!@#$%^&*()_+_monoSingleton_");
 	                    DontDestroyOnLoad(go);
 	                }
 	                instance = go.AddComponent<T>();

@@ -17,6 +17,7 @@ namespace Framework
         {
             base.Init();
             //...
+            LogUtil.LogUtility.Print("--->>>CoroutineMgr Init!", LogUtil.LogColor.Green);
         }
 
         public CoroutineHandle RunCoroutine(IEnumerator<float> coroutine)

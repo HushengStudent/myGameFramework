@@ -21,6 +21,7 @@ namespace Framework
         public override void Init()
         {
             base.Init();
+            LogUtil.LogUtility.Print("--->>>ResourceMgr Init!", LogUtil.LogColor.Green);
             InitLua();
             InitShader();
         }
