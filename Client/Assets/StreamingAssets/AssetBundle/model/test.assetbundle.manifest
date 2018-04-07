@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2642089589
+CRC: 4116558597
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 053f807eb15fd24bb20997179b8be1a8
+    Hash: 6aed9b37a4d4d05d7d3119cced672997
   TypeTreeHash:
     serializedVersion: 2
     Hash: ef79b55503f0c3d1fd0e18e3bc5b391a
@@ -14,5 +14,5 @@ ClassTypes:
 - Class: 4
   Script: {instanceID: 0}
 Assets:
-- Assets/Bundles/Models/test.prefab
+- Assets/Bundles/Models/Common/test.prefab
 Dependencies: []
