@@ -78,6 +78,17 @@ namespace Framework
             }
         }
         /// <summary>
+        /// 移除Entity;
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entity"></param>
+        public void ReleaseEntity<T>(AbsEntity entity) where T : AbsEntity, new()
+        {
+            RemoveEntity(entity);
+            entity.OnResetEntity();
+            PoolMgr.Instance.Release<T>(entity as T);
+        }
+        /// <summary>
         /// 添加Entity;
         /// </summary>
         /// <param name="entity"></param>
@@ -97,7 +108,7 @@ namespace Framework
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        private bool RemoveComponent(AbsEntity entity)
+        private bool RemoveEntity(AbsEntity entity)
         {
             if (!EntityDict.ContainsKey(entity.ID))
             {

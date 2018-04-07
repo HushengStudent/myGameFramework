@@ -44,7 +44,7 @@ namespace Framework
         /// <summary>
         /// 重置Entity;
         /// </summary>
-        protected virtual void OnResetEntity()
+        public virtual void OnResetEntity()
         {
             DeAttachEntityGo();
             EventUnsubscribe();

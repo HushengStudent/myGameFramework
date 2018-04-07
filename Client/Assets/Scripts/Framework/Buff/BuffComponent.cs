@@ -12,6 +12,12 @@ namespace Framework
 {
     public class BuffComponent : AbsComponent
     {
+        private List<Buff> _buffList = new List<Buff>();
 
+        public override void OnResetComponent()
+        {
+            base.OnResetComponent();
+            _buffList.Clear();
+        }
     }
 }

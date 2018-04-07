@@ -11,14 +11,21 @@ using Framework;
 
 public class RoleEntity : AbsEntity
 {
+    private BuffComponent _buffComp = null;
+
+    public BuffComponent BuffComp { get { return _buffComp; } }
+
     public override void OnInitEntity(GameObject go)
     {
         base.OnInitEntity(go);
+        ComponentMgr.Instance.CreateComponent<BuffComponent>(this, EntityGO, null);
     }
 
-    protected override void OnAttachEntityGo(GameObject go)
+    public override void OnResetEntity()
     {
-        base.OnAttachEntityGo(go);
+        base.OnResetEntity();
+        ComponentMgr.Instance.ReleaseComponent<BuffComponent>(_buffComp);
+        _buffComp = null;
     }
 }
 

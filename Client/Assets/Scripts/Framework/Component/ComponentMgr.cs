@@ -81,6 +81,17 @@ namespace Framework
             }
         }
         /// <summary>
+        /// 移除Component;
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="component"></param>
+        public void ReleaseComponent<T>(AbsComponent component) where T : AbsComponent, new()
+        {
+            RemoveComponent(component);
+            component.OnResetComponent();
+            PoolMgr.Instance.Release<T>(component as T);
+        }
+        /// <summary>
         /// 添加Component;
         /// </summary>
         /// <param name="component"></param>

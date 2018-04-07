@@ -12,6 +12,20 @@ namespace Framework
 {
     public class Buff
     {
+        private int _buffId;
+        private ulong _leftTime;
+        private BuffEventHandler _onInitHandler;
+        private BuffEventHandler _onFinishHandler;
 
+        public int BuffId { get { return _buffId; } }
+        public ulong LeftTime { get { return _leftTime; } }
+
+        public void InitBuff(int buffId, ulong leftTime, BuffEventHandler onInit, BuffEventHandler onFinish)
+        {
+            _buffId = buffId;
+            _leftTime = leftTime;
+            _onInitHandler = onInit;
+            _onFinishHandler = onFinish;
+        }
     }
 }

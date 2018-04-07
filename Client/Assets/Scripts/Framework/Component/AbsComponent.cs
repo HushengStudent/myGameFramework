@@ -67,7 +67,7 @@ namespace Framework
         /// Component附加Entity;
         /// </summary>
         /// <param name="entity"></param>
-        public virtual void OnAttachEntity(AbsEntity entity)
+        protected virtual void OnAttachEntity(AbsEntity entity)
         {
             Entity = entity;
         }
@@ -75,7 +75,7 @@ namespace Framework
         /// Component附加GameObject;
         /// </summary>
         /// <param name="go"></param>
-        public virtual void OnAttachComponentGo(GameObject go)
+        protected virtual void OnAttachComponentGo(GameObject go)
         {
             ComponentGo = go;
         }
