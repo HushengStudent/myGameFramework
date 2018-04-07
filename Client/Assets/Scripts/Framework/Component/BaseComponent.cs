@@ -17,6 +17,8 @@ namespace Framework
     /// </summary>
     public class BaseComponent : IPool
     {
+        protected BaseComponent() { }
+
         private long _id;
         private bool _enable = false;
         private BaseEntity _entity;

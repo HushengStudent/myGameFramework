@@ -13,6 +13,8 @@ namespace Framework
 {
     public class BaseEntity : IPool
     {
+        protected BaseEntity() { }
+
         private long _id;
         private ulong _uid;
         private bool _enable = false;
