@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/02/25 00:47:41
-** desc:  网络协议错误码
+** date:  2018/04/08 00:05:29
+** desc:  网络协议包
 *********************************************************************************/
 
 using System.Collections;
@@ -10,8 +10,9 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class ProtoErrorCode
+    public class NetPacket
     {
-
+        public int id;
+        public object args;
     }
 }

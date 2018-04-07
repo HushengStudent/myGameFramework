@@ -12,6 +12,6 @@ namespace Framework
 {
     public partial class AssetBundleMgr
     {
-        //Unity2017建议使用Task
+        //Unity2017建议使用Task;
     }
 }

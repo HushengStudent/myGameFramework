@@ -15,7 +15,7 @@ public class TestProtoReq //: ProtoBody
 public class TestProtoRsp //: ProtoBody
 {
     [ProtoMember(1)]
-    public ProtoErrorCode errorCode;
+    public NetCode errorCode;
 
     [ProtoMember(2)]
     public int number;
