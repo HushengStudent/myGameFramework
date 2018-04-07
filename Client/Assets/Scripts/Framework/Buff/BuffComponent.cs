@@ -10,14 +10,39 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class BuffComponent : AbsComponent
+    public class BuffComponent : BaseComponent
     {
-        private List<Buff> _buffList = new List<Buff>();
+        private Dictionary<int, Buff> _buffDict = new Dictionary<int, Buff>();
 
         public override void OnResetComponent()
         {
             base.OnResetComponent();
-            _buffList.Clear();
+            _buffDict.Clear();
+        }
+
+        public override void UpdateEx()
+        {
+            base.UpdateEx();
+        }
+
+        protected override void EventSubscribe()
+        {
+            base.EventSubscribe();
+        }
+
+        protected override void EventUnsubscribe()
+        {
+            base.EventUnsubscribe();
+        }
+
+        public void AddBuff(Buff buff)
+        {
+
+        }
+
+        public void RemoveBuff(Buff buff)
+        {
+
         }
     }
 }

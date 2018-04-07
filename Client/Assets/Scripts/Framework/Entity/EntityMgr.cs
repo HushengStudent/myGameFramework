@@ -18,11 +18,13 @@ namespace Framework
         /// <summary>
         /// EntityDict;
         /// </summary>
-        private Dictionary<long, AbsEntity> EntityDict = new Dictionary<long, AbsEntity>();
+        private Dictionary<long, BaseEntity> EntityDict = new Dictionary<long, BaseEntity>();
         /// <summary>
         /// EntityList;
         /// </summary>
-        private List<AbsEntity> EntityList = new List<AbsEntity>();
+        private List<BaseEntity> EntityList = new List<BaseEntity>();
+
+        private Dictionary<ulong, BaseEntity> EntityIndexDict = new Dictionary<ulong, BaseEntity>();
 
         #endregion
 
@@ -62,13 +64,13 @@ namespace Framework
         /// <param name="go"></param>
         /// <param name="initCallBack"></param>
         /// <returns></returns>
-        public T CreateEntity<T>(GameObject go, Action<AbsEntity> initCallBack) where T : AbsEntity, new()
+        public T CreateEntity<T>(GameObject go, ulong uid, Action<BaseEntity> initCallBack) where T : BaseEntity, new()
         {
             T _Entity = PoolMgr.Instance.Get<T>();
             if (AddEntity(_Entity))
             {
                 _Entity.InitCallBack = initCallBack;
-                _Entity.OnInitEntity(go);
+                _Entity.OnInitEntity(go,uid);
                 return _Entity;
             }
             else
@@ -82,24 +84,41 @@ namespace Framework
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="entity"></param>
-        public void ReleaseEntity<T>(AbsEntity entity) where T : AbsEntity, new()
+        public void ReleaseEntity<T>(BaseEntity entity) where T : BaseEntity, new()
         {
             RemoveEntity(entity);
             entity.OnResetEntity();
             PoolMgr.Instance.Release<T>(entity as T);
         }
         /// <summary>
+        /// 获取Entity;
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="uid"></param>
+        /// <returns></returns>
+        public T GetEntity<T>(ulong uid) where T : BaseEntity, new()
+        {
+            T target = null;
+            BaseEntity temp = null;
+            if (EntityIndexDict.TryGetValue(uid, out temp))
+            {
+                target = temp as T;
+            }
+            return target;
+        }
+        /// <summary>
         /// 添加Entity;
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        private bool AddEntity(AbsEntity entity)
+        private bool AddEntity(BaseEntity entity)
         {
             if (EntityDict.ContainsKey(entity.ID))
             {
                 return false;
             }
             EntityDict[entity.ID] = entity;
+            EntityIndexDict[entity.UID] = entity;
             EntityList.Add(entity);
             return true;
         }
@@ -108,13 +127,14 @@ namespace Framework
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        private bool RemoveEntity(AbsEntity entity)
+        private bool RemoveEntity(BaseEntity entity)
         {
             if (!EntityDict.ContainsKey(entity.ID))
             {
                 return false;
             }
             EntityDict.Remove(entity.ID);
+            EntityIndexDict.Remove(entity.UID);
             EntityList.Remove(entity);
             return true;
         }

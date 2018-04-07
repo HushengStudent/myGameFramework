@@ -9,9 +9,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HUDComponent : AbsComponent
+public class HUDComponent : BaseComponent
 {
-    public override void OnInitComponent(AbsEntity entity, GameObject go)
+    public override void OnInitComponent(BaseEntity entity, GameObject go)
     {
         base.OnInitComponent(entity, go);
     }

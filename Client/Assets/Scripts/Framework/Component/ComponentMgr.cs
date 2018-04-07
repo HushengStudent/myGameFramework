@@ -16,14 +16,15 @@ namespace Framework
     public class ComponentMgr : MonoSingleton<ComponentMgr>
     {
         #region Field
+
         /// <summary>
         /// ComponentDict;
         /// </summary>
-        private Dictionary<long, AbsComponent> ComponentDict = new Dictionary<long, AbsComponent>();
+        private Dictionary<long, BaseComponent> ComponentDict = new Dictionary<long, BaseComponent>();
         /// <summary>
         /// ComponentList;
         /// </summary>
-        private List<AbsComponent> ComponentList = new List<AbsComponent>();
+        private List<BaseComponent> ComponentList = new List<BaseComponent>();
 
         #endregion
 
@@ -64,8 +65,8 @@ namespace Framework
         /// <param name="go"></param>
         /// <param name="initCallBack"></param>
         /// <returns></returns>
-        public T CreateComponent<T>(AbsEntity entity, GameObject go,
-            Action<AbsComponent> initCallBack) where T : AbsComponent, new()
+        public T CreateComponent<T>(BaseEntity entity, GameObject go,
+            Action<BaseComponent> initCallBack) where T : BaseComponent, new()
         {
             T _Component = PoolMgr.Instance.Get<T>();
             if (AddComponent(_Component))
@@ -85,7 +86,7 @@ namespace Framework
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="component"></param>
-        public void ReleaseComponent<T>(AbsComponent component) where T : AbsComponent, new()
+        public void ReleaseComponent<T>(BaseComponent component) where T : BaseComponent, new()
         {
             RemoveComponent(component);
             component.OnResetComponent();
@@ -96,7 +97,7 @@ namespace Framework
         /// </summary>
         /// <param name="component"></param>
         /// <returns></returns>
-        private bool AddComponent(AbsComponent component)
+        private bool AddComponent(BaseComponent component)
         {
             if (ComponentDict.ContainsKey(component.ID))
             {
@@ -111,7 +112,7 @@ namespace Framework
         /// </summary>
         /// <param name="component"></param>
         /// <returns></returns>
-        private bool RemoveComponent(AbsComponent component)
+        private bool RemoveComponent(BaseComponent component)
         {
             if (!ComponentDict.ContainsKey(component.ID))
             {

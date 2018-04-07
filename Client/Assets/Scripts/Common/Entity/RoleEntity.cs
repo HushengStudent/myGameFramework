@@ -9,15 +9,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Framework;
 
-public class RoleEntity : AbsEntity
+public class RoleEntity : BaseEntity
 {
     private BuffComponent _buffComp = null;
 
     public BuffComponent BuffComp { get { return _buffComp; } }
 
-    public override void OnInitEntity(GameObject go)
+    public override void OnInitEntity(GameObject go,ulong uid)
     {
-        base.OnInitEntity(go);
+        base.OnInitEntity(go,uid);
         ComponentMgr.Instance.CreateComponent<BuffComponent>(this, EntityGO, null);
     }
 

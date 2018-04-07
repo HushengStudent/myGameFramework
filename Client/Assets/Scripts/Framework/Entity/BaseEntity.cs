@@ -1,10 +1,9 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/01/10 23:22:57
-** desc:  ECS组件抽象基类
+** date:  2018/01/08 00:32:30
+** desc:  ECS实体抽象基类
 *********************************************************************************/
 
-using MEC;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,36 +11,32 @@ using UnityEngine;
 
 namespace Framework
 {
-    /// <summary>
-    /// 组件抽象基类;
-    /// </summary>
-    public abstract class AbsComponent : IPool
+    public class BaseEntity : IPool
     {
         private long _id;
+        private ulong _uid;
         private bool _enable = false;
-        private AbsEntity _entity;
-        private GameObject _componentGo = null;
-        private Action<AbsComponent> _initCallBack;
+        private GameObject _entityGo = null;
+        private Action<BaseEntity> _initCallBack;
 
         public long ID { get { return _id; } }
+        public ulong UID { get { return _uid; } }
         public bool Enable { get { return _enable; } set { _enable = value; } }
-        public AbsEntity Entity { get { return _entity; } set { _entity = value; } }
-        public GameObject ComponentGo { get { return _componentGo; } set { _componentGo = value; } }
-        public Action<AbsComponent> InitCallBack { get { return _initCallBack; } set { _initCallBack = value; } }
+        public GameObject EntityGO { get { return _entityGo; } set { _entityGo = value; } }
+        public Action<BaseEntity> InitCallBack { get { return _initCallBack; } set { _initCallBack = value; } }
 
         public virtual void UpdateEx() { }
         public virtual void LateUpdateEx() { }
 
         /// <summary>
-        /// 初始化Component;
+        /// 初始化Entity;
         /// </summary>
-        /// <param name="entity">entity</param>
-        /// <param name="go">gameObject</param>
-        public virtual void OnInitComponent(AbsEntity entity, GameObject go)
+        /// <param name="go"></param>
+        public virtual void OnInitEntity(GameObject go,ulong uid)
         {
             _id = IdGenerater.GenerateId();
-            OnAttachEntity(entity);
-            OnAttachComponentGo(go);
+            _uid = uid;
+            OnAttachEntityGo(go);
             EventSubscribe();
             if (InitCallBack != null)
             {
@@ -50,43 +45,29 @@ namespace Framework
             _enable = true;
         }
         /// <summary>
-        /// 重置Component;
+        /// 重置Entity;
         /// </summary>
-        public virtual void OnResetComponent()
+        public virtual void OnResetEntity()
         {
-            DeAttachEntity();
-            DeAttachComponentGo();
+            DeAttachEntityGo();
             EventUnsubscribe();
             _id = 0;
-            _entity = null;
             _enable = false;
-            _componentGo = null;
+            _entityGo = null;
             _initCallBack = null;
         }
         /// <summary>
-        /// Component附加Entity;
-        /// </summary>
-        /// <param name="entity"></param>
-        protected virtual void OnAttachEntity(AbsEntity entity)
-        {
-            Entity = entity;
-        }
-        /// <summary>
-        /// Component附加GameObject;
+        /// Entity附加GameObject;
         /// </summary>
         /// <param name="go"></param>
-        protected virtual void OnAttachComponentGo(GameObject go)
+        protected virtual void OnAttachEntityGo(GameObject go)
         {
-            ComponentGo = go;
+            _entityGo = go;
         }
-        /// <summary>
-        /// 重置Entity的附加;
-        /// </summary>
-        protected virtual void DeAttachEntity() { }
         /// <summary>
         /// 重置GameObject的附加;
         /// </summary>
-        protected virtual void DeAttachComponentGo() { }
+        protected virtual void DeAttachEntityGo() { }
         /// <summary>
         /// 注册事件;
         /// </summary>

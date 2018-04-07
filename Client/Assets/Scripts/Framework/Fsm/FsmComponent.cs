@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class FsmComponent : AbsComponent
+    public class FsmComponent : BaseComponent
     {
 
     }
