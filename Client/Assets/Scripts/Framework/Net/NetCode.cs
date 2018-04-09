@@ -10,8 +10,8 @@ using UnityEngine;
 
 namespace Framework
 {
-    public enum NetCode
+    public enum NetCode:byte
     {
-
+        
     }
 }

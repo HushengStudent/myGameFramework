@@ -11,8 +11,8 @@ using UnityEngine;
 
 namespace Framework
 {
-	public static class LuaNetUtility
-	{
+	public static class LuaNetUtil
+    {
         public static void SendReq(LuaByteBuffer data)
         {
 

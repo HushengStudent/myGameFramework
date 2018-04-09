@@ -10,11 +10,5 @@ using UnityEngine;
 
 namespace Framework
 {
-    public delegate void NetConnectEventHandler(Session session, object args);
-    public delegate void NetCloseEventHandler(Session session);
-    public delegate void NetSendEventHandler(Session session, int id, object args);
-    public delegate void NetReceiveEventHandler(Session session, NetPacket args);
-    public delegate void NetMissBeatEventHandler(Session session, int id);
-    public delegate void NetErrorEventHandler(Session session, NetCode code, string str);
-    public delegate void NetCustomErrorEventHandler(Session session, object args);
+    
 }
