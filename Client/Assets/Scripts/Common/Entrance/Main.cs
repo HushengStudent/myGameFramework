@@ -19,11 +19,6 @@ public class Main : MonoBehaviour
 
     private void StartGame()
     {
-        //==========Singleton==========
-        ResourceMgr.Instance.InitMgr();      //资源初始化;
-
-        //==========MonoSingleton==========
-        LuaMgr.Instance.InitMgr();           //Lua初始化;
-
+        GameMgr.Instance.InitMgr();
     }
 }

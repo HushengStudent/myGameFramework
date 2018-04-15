@@ -26,6 +26,14 @@ namespace Framework
         private GameObjectPool _gameObjectPool = new GameObjectPool();
 
         /// <summary>
+        /// 初始化;
+        /// </summary>
+        public void InitMgr()
+        {
+            ClearPool(null);
+        }
+
+        /// <summary>
         /// 获取对象池目标组件;
         /// </summary>
         /// <typeparam name="T"></typeparam>
