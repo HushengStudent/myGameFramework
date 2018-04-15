@@ -66,7 +66,7 @@ namespace Framework
         /// <returns></returns>
         public T CreateEntity<T>(GameObject go, ulong uid, Action<BaseEntity> initCallBack) where T : BaseEntity, new()
         {
-            T _Entity = PoolMgr.Instance.Get<T>();
+            T _Entity = PoolMgr.Instance.Get<T>();//get from pool;
             if (AddEntity(_Entity))
             {
                 _Entity.InitCallBack = initCallBack;
@@ -88,7 +88,7 @@ namespace Framework
         {
             RemoveEntity(entity);
             entity.OnResetEntity();
-            PoolMgr.Instance.Release<T>(entity as T);
+            PoolMgr.Instance.Release<T>(entity as T);//release to pool;
         }
         /// <summary>
         /// 获取Entity;

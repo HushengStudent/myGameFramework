@@ -57,6 +57,10 @@ namespace Framework
                 m_Stack = new Stack<GameObject>();
                 m_Dict[assetName] = m_Stack;
             }
+            element.transform.SetParent(null);
+            element.transform.position = Vector3.zero;
+            element.transform.rotation = Quaternion.Euler(Vector3.zero);
+            element.transform.localScale = Vector3.one;
             m_Stack.Push(element);
         }
 

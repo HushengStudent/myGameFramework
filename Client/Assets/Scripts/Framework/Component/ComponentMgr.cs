@@ -68,7 +68,7 @@ namespace Framework
         public T CreateComponent<T>(BaseEntity entity, GameObject go,
             Action<BaseComponent> initCallBack) where T : BaseComponent, new()
         {
-            T _Component = PoolMgr.Instance.Get<T>();
+            T _Component = PoolMgr.Instance.Get<T>();//get from pool;
             if (AddComponent(_Component))
             {
                 _Component.InitCallBack = initCallBack;
@@ -90,7 +90,7 @@ namespace Framework
         {
             RemoveComponent(component);
             component.OnResetComponent();
-            PoolMgr.Instance.Release<T>(component as T);
+            PoolMgr.Instance.Release<T>(component as T);//release to pool;
         }
         /// <summary>
         /// 添加Component;
