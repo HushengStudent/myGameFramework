@@ -4,6 +4,7 @@
 ** desc:  对象池管理
 *********************************************************************************/
 
+using MEC;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -94,9 +95,13 @@ namespace Framework
         /// <param name="type"></param>
         /// <param name="assetName"></param>
         /// <returns></returns>
-        public GameObject Get(AssetType type, string assetName)
+        public IEnumerator<float> Get(AssetType type, string assetName, Action<GameObject> onLoadFinish)
         {
-            return _gameObjectPool.Get(type, assetName);
+            IEnumerator<float> itor = _gameObjectPool.Get(type, assetName, onLoadFinish);
+            while (itor.MoveNext())
+            {
+                yield return Timing.WaitForOneFrame;
+            }
         }
 
         /// <summary>

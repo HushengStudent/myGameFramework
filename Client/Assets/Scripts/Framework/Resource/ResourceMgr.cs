@@ -17,7 +17,7 @@ namespace Framework
     public class ResourceMgr : Singleton<ResourceMgr>
     {
         #region Init
-        
+
         public void InitMgr()
         {
             InitLua();
@@ -26,7 +26,7 @@ namespace Framework
 
         #endregion
 
-        #region Function
+        #region Functions
 
         /// <summary>
         /// 创建资源加载器;
@@ -182,7 +182,7 @@ namespace Framework
             }
         }
 
-        #endregion
+        #endregion 
 
         #region AssetBundle Load
 
@@ -271,6 +271,89 @@ namespace Framework
                 });
                 if (action != null)
                     action(ctrl);
+            }
+        }
+
+        #endregion
+
+        #region AssetBundle Load GameObject
+
+        /// <summary>
+        /// Asset sync load from AssetBundle;
+        /// </summary>
+        /// <param name="type">资源类型</param>
+        /// <param name="assetName">资源名字</param>
+        /// <returns></returns>
+        public GameObject LoadGameObjectFromAssetBundleSync(AssetType type, string assetName)
+        {
+            AssetBundle assetBundle = AssetBundleMgr.Instance.LoadAssetBundleSync(type, assetName);
+            GameObject tempObject = null;
+            if (assetBundle != null)
+            {
+                tempObject = assetBundle.LoadAsset(assetName) as GameObject;
+            }
+            if (tempObject == null)
+            {
+                LogUtil.LogUtility.PrintError(string.Format("[ResourceMgr]LoadAssetFromAssetBundleSync Load Asset {0} failure!", assetName + "." + type.ToString()));
+            }
+            else
+            {
+                UnityUtility.AddOrGetComponent<AssetBundleTag>(tempObject, (tag) =>//自动卸载;
+                {
+                    tag.AssetBundleName = assetName;
+                    tag.Type = type;
+                });
+            }
+            return tempObject;
+        }
+
+        /// <summary>
+        /// Asset async load from AssetBundle;
+        /// </summary>
+        /// <param name="type">资源类型</param>
+        /// <param name="assetName">资源名字</param>
+        /// <param name="action">资源回调</param>
+        /// <param name="progress">progress回调</param>
+        /// <returns></returns>
+        public IEnumerator<float> LoadGameObjectFromAssetBundleAsync(AssetType type, string assetName, Action<GameObject> action, Action<float> progress)
+        {
+            GameObject tempObject = null;
+            AssetBundle assetBundle = null;
+            IEnumerator itor = AssetBundleMgr.Instance.LoadAssetBundleAsync(type, assetName,
+                ab =>
+                {
+                    assetBundle = ab;
+                },
+                null);
+            while (itor.MoveNext())
+            {
+                yield return Timing.WaitForOneFrame;
+            }
+            AssetBundleRequest request = assetBundle.LoadAssetAsync(assetName);
+            while (request.progress < 0.99)
+            {
+                if (progress != null)
+                    progress(request.progress);
+                yield return Timing.WaitForOneFrame;
+            }
+            while (!request.isDone)
+            {
+                yield return Timing.WaitForOneFrame;
+            }
+            tempObject = request.asset as GameObject;
+            if (tempObject == null)
+            {
+                LogUtil.LogUtility.PrintError(string.Format("[ResourceMgr]LoadAssetFromAssetBundleSync Load Asset {0} failure!", assetName + "." + type.ToString()));
+            }
+            else
+            {
+                UnityUtility.AddOrGetComponent<AssetBundleTag>(tempObject, (tag) =>//自动卸载;
+                {
+                    tag.AssetBundleName = assetName;
+                    tag.Type = type;
+                });
+                if (action != null)
+                    action(tempObject);
             }
         }
 

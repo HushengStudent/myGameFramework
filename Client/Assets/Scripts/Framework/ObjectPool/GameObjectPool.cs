@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/03/01 23:14:44
-** desc:  Unity对象池
+** desc:  GameObject对象池
 *********************************************************************************/
 
 using MEC;
@@ -17,7 +17,7 @@ namespace Framework
         private Dictionary<AssetType, Dictionary<string, Stack<GameObject>>> _pool =
             new Dictionary<AssetType, Dictionary<string, Stack<GameObject>>>();
 
-        public GameObject Get(AssetType type, string assetName)
+        public IEnumerator<float> Get(AssetType type, string assetName, Action<GameObject> onLoadFinish)
         {
             GameObject element;
             Dictionary<string, Stack<GameObject>> m_Dict;
@@ -34,13 +34,26 @@ namespace Framework
             }
             if (m_Stack.Count == 0)
             {
-                element = null;
+                element = ResourceMgr.Instance.LoadResSync<GameObject>(type, assetName);
+                if (element)
+                {
+                    onLoadFinish(element);
+                    yield break;
+                }
+                IEnumerator<float> itor = ResourceMgr.Instance.LoadGameObjectFromAssetBundleAsync(type, assetName, onLoadFinish, null);
+                while (itor.MoveNext())
+                {
+                    yield return Timing.WaitForOneFrame;
+                }
             }
             else
             {
                 element = m_Stack.Pop();
+                if (onLoadFinish != null)
+                {
+                    onLoadFinish(element);
+                }
             }
-            return element;
         }
 
         public void Release(AssetType type, string assetName, GameObject element)
