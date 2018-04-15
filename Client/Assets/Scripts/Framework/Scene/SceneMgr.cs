@@ -4,6 +4,7 @@
 ** desc:  场景管理;
 *********************************************************************************/
 
+using MEC;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,8 +12,32 @@ using UnityEngine;
 
 namespace Framework
 {
-	public class SceneMgr : Singleton<SceneMgr>
-	{
+    public class SceneMgr : Singleton<SceneMgr>
+    {
+        private Scene _scene = null;
 
-	}
+        public Scene CurScene { get { return _scene; } set { _scene = value; } }
+
+
+        public IEnumerator<float> TransToScene(int sceneId, SceneLoadEventHandler handler)
+        {
+            if (CurScene != null)
+            {
+                IEnumerator<float> unloadItor = CurScene.UnloadScene();
+                while (unloadItor.MoveNext())
+                {
+                    yield return Timing.WaitForOneFrame;
+                }
+            }
+            else
+            {
+                CurScene = new Scene();
+            }
+            IEnumerator<float> loadItor = CurScene.LoadScene(sceneId, handler);
+            while (loadItor.MoveNext())
+            {
+                yield return Timing.WaitForOneFrame;
+            }
+        }
+    }
 }
