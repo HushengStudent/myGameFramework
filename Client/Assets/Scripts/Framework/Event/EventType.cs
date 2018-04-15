@@ -10,8 +10,8 @@ using UnityEngine;
 
 namespace Framework
 {
-    public enum EventType
+    public enum EventType : int
     {
-
+        INIT_GAME_EVENT      = 1,   //初始化游戏;
     }
 }

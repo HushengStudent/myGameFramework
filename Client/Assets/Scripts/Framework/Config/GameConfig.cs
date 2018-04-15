@@ -12,6 +12,10 @@ namespace Framework
 {
 	public static class GameConfig
 	{
+        public static int GameFrame = 60;
+        public static float SyncInterval = 0.2f;
+        public static MobileLevel MobileLevelValue = MobileLevel.High;
+
         public static string applicationDataPath =Application.dataPath.ToLower();
     }
 }

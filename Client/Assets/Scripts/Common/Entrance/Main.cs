@@ -17,6 +17,9 @@ public class Main : MonoBehaviour
         StartGame();
     }
 
+    /// <summary>
+    /// 初始化游戏;
+    /// </summary>
     private void StartGame()
     {
         GameMgr.Instance.InitMgr();
