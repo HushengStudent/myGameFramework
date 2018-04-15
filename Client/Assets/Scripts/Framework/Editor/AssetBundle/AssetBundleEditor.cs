@@ -33,7 +33,7 @@ namespace Common
             BuildAssetBundle(FilePathUtility.AssetBundlePath);
         }
 
-        //[MenuItem("MGame/AssetBundleTools/Clear AssetName", false, 10)]
+        //[MenuItem("MGame/AssetBundleTools/Clear AssetName", false, 1)]
         private static void ClearAll()
         {
             AssetDependenciesAnalysis analysiser = new AssetDependenciesAnalysis();
@@ -41,7 +41,7 @@ namespace Common
             AssetDatabase.Refresh();
         }
 
-        [MenuItem("MGame/AssetBundleTools/Delete AssetBundle", false, 100)]
+        [MenuItem("MGame/AssetBundleTools/Delete AssetBundle", false, 2)]
         private static void DeleteAll()
         {
             AssetDependenciesAnalysis analysiser = new AssetDependenciesAnalysis();

@@ -39,6 +39,7 @@ Client：客户端工程使用Unity5.5.4创建
 	(4)protobuf-net-r668：(protobuf-net-r668:https://github.com/mdavid/protobuf-net).
 	(5)More Effective Coroutine：(Asset Store).
 	(6)ObjectPool：(ugui:https://github.com/HushengStudent/ugui).
+	(7)Mixed Text and Graphics：(EmojiText:https://github.com/zouchunyi/EmojiText).
 	
 Server：服务器工程使用visual studio2013创建
 	Reference：
