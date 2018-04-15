@@ -17,7 +17,7 @@ namespace Framework
     public partial class AssetBundleMgr : Singleton<AssetBundleMgr>
     {
 
-        #region Field
+        #region Fields
 
         /// <summary>
         /// 加载出来的AssetBundle缓存;
@@ -84,8 +84,8 @@ namespace Framework
 
         #endregion
 
-        #region Function
-        
+        #region Functions
+
         /// <summary>
         /// AssetBundle是否正在加载;
         /// </summary>
@@ -345,5 +345,6 @@ namespace Framework
         }
 
         #endregion
+
     }
 }

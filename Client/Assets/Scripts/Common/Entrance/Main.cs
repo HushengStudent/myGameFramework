@@ -10,23 +10,20 @@ using UnityEngine;
 using Framework;
 using Protocol;
 
-namespace Common
+public class Main : MonoBehaviour
 {
-    public class Main : MonoBehaviour
+    void Awake()
     {
-        void Awake()
-        {
-            StartGame();
-        }
+        StartGame();
+    }
 
-        private void StartGame()
-        {
-            //==========Singleton==========
-            ResourceMgr.Instance.InitMgr();      //资源初始化;
-            
-            //==========MonoSingleton==========
-            LuaMgr.Instance.InitMgr();           //Lua初始化;
+    private void StartGame()
+    {
+        //==========Singleton==========
+        ResourceMgr.Instance.InitMgr();      //资源初始化;
 
-        }
+        //==========MonoSingleton==========
+        LuaMgr.Instance.InitMgr();           //Lua初始化;
+
     }
 }

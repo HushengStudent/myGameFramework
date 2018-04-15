@@ -14,7 +14,7 @@ namespace Framework
 {
     public class EntityMgr : MonoSingleton<EntityMgr>
     {
-        #region Field
+        #region Fields
         /// <summary>
         /// EntityDict;
         /// </summary>
@@ -56,7 +56,7 @@ namespace Framework
 
         #endregion
 
-        #region Function
+        #region Functions
         /// <summary>
         /// 创建Entity;
         /// </summary>

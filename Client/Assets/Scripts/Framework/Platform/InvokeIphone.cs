@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class InvokeIphone : MonoBehaviour
+    public class InvokeIphone
     {
         public static string IOS_SDK_MANAGER = "";
 

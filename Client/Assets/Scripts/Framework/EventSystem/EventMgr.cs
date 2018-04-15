@@ -48,7 +48,7 @@ namespace Framework
             return true;
         }
 
-        #region Action委托
+        #region Action
 
         /// <summary>
         /// 注册无参Action委托;
@@ -114,7 +114,7 @@ namespace Framework
 
         #endregion
 
-        #region Action<T>委托
+        #region Action<T>
 
         /// <summary>
         /// 注册含一个参数的委托;
@@ -184,7 +184,7 @@ namespace Framework
 
         #endregion
 
-        #region Action<T1,T2>委托
+        #region Action<T1,T2>
 
         /// <summary>
         /// 注册含两个参数的Action委托;

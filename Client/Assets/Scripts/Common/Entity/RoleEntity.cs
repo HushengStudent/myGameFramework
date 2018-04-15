@@ -15,9 +15,9 @@ public class RoleEntity : BaseEntity
 
     public BuffComponent BuffComp { get { return _buffComp; } }
 
-    public override void OnInitEntity(GameObject go,ulong uid)
+    public override void OnInitEntity(GameObject go, ulong uid)
     {
-        base.OnInitEntity(go,uid);
+        base.OnInitEntity(go, uid);
         ComponentMgr.Instance.CreateComponent<BuffComponent>(this, EntityGO, null);
     }
 
