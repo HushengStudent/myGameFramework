@@ -20,7 +20,7 @@ namespace Framework
             eventDict.Remove(key);
         }
 
-        public static void RemoveEvent()
+        public static void InitMgr()
         {
             eventDict.Clear();
         }

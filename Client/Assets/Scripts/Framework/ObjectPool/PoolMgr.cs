@@ -13,7 +13,7 @@ using Object = System.Object;
 
 namespace Framework
 {
-    public class PoolMgr : Singleton<PoolMgr>
+    public class PoolMgr : Singleton<PoolMgr>, IMgr
     {
         /// <summary>
         /// C# Object Pool;

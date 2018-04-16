@@ -12,12 +12,16 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class SceneMgr : Singleton<SceneMgr>
+    public class SceneMgr : Singleton<SceneMgr>, IMgr
     {
         private Scene _scene = null;
 
         public Scene CurScene { get { return _scene; } set { _scene = value; } }
 
+        public void InitMgr()
+        {
+            CurScene = null;
+        }
 
         public IEnumerator<float> TransToScene(int sceneId, SceneLoadEventHandler handler)
         {

@@ -13,12 +13,12 @@ using LogUtil;
 namespace Framework
 {
     //参考(https://github.com/jarjin/LuaFramework_UGUI)集成tolua;
-    public class LuaMgr : MonoSingleton<LuaMgr> 
-	{
+    public class LuaMgr : MonoSingleton<LuaMgr>, IMgr
+    {
         private LuaState lua;
         private LuaLoaderUtility loader;
         private LuaLooper loop = null;
-        
+
         /// <summary>
         /// 初始化;
         /// </summary>
@@ -130,11 +130,11 @@ namespace Framework
 
         public void CallLuaTableMethod(string module, string funcName, params object[] args)
         {
-            LuaFunction func = lua.GetFunction(module+"."+ funcName);
+            LuaFunction func = lua.GetFunction(module + "." + funcName);
             LuaTable table = lua.GetTable(module);
-            if(func!=null && table != null)
+            if (func != null && table != null)
             {
-                func.Call(table,args);
+                func.Call(table, args);
             }
         }
 
@@ -152,5 +152,5 @@ namespace Framework
             lua = null;
             loader = null;
         }
-	}
+    }
 }

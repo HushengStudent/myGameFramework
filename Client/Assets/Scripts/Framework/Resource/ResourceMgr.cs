@@ -14,12 +14,14 @@ using MEC;
 
 namespace Framework
 {
-    public class ResourceMgr : Singleton<ResourceMgr>
+    public class ResourceMgr : Singleton<ResourceMgr>, IMgr
     {
         #region Init
 
         public void InitMgr()
         {
+            Clear();
+            GameGC();
             InitLua();
             InitShader();
         }
@@ -55,6 +57,22 @@ namespace Framework
                 ctrl = go.GetComponent<T>();
             }
             return ctrl;
+        }
+
+        /// <summary>
+        /// 清理;
+        /// </summary>
+        public void Clear()
+        {
+            Resources.UnloadUnusedAssets();
+        }
+
+        /// <summary>
+        /// GC;
+        /// </summary>
+        public void GameGC()
+        {
+            System.GC.Collect();
         }
 
         #endregion
