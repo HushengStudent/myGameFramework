@@ -34,12 +34,13 @@ namespace Framework
         /// 初始化Entity;
         /// </summary>
         /// <param name="go"></param>
-        public virtual void OnInitEntity(GameObject go,ulong uid)
+        public void Create(GameObject go, ulong uid)
         {
             _id = IdGenerater.GenerateId();
             _uid = uid;
             OnAttachEntityGo(go);
             EventSubscribe();
+            OnInit();
             if (InitCallBack != null)
             {
                 InitCallBack(this);
@@ -49,15 +50,24 @@ namespace Framework
         /// <summary>
         /// 重置Entity;
         /// </summary>
-        public virtual void OnResetEntity()
+        public void Reset()
         {
             DeAttachEntityGo();
             EventUnsubscribe();
+            OnReset();
             _id = 0;
             _enable = false;
             _entityGo = null;
             _initCallBack = null;
         }
+        /// <summary>
+        /// 初始化;
+        /// </summary>
+        protected virtual void OnInit() { }
+        /// <summary>
+        /// 重置;
+        /// </summary>
+        protected virtual void OnReset() { }
         /// <summary>
         /// Entity附加GameObject;
         /// </summary>
@@ -78,6 +88,16 @@ namespace Framework
         /// 注销事件;
         /// </summary>
         protected virtual void EventUnsubscribe() { }
+        /// <summary>
+        /// 进入场景;
+        /// </summary>
+        /// <param name="sceneId"></param>
+        protected virtual void OnEnterScene(int sceneId) { }
+        /// <summary>
+        /// 离开场景;
+        /// </summary>
+        /// <param name="sceneId"></param>
+        protected virtual void OnExitScene(int sceneId) { }
         /// <summary>
         /// 对象池Get;
         /// </summary>

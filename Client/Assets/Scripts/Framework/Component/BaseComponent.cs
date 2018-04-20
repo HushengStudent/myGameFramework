@@ -39,12 +39,13 @@ namespace Framework
         /// </summary>
         /// <param name="entity">entity</param>
         /// <param name="go">gameObject</param>
-        public virtual void OnInitComponent(BaseEntity entity, GameObject go)
+        public void Create(BaseEntity entity, GameObject go)
         {
             _id = IdGenerater.GenerateId();
             OnAttachEntity(entity);
             OnAttachComponentGo(go);
             EventSubscribe();
+            OnInitComponent();
             if (InitCallBack != null)
             {
                 InitCallBack(this);
@@ -54,17 +55,26 @@ namespace Framework
         /// <summary>
         /// 重置Component;
         /// </summary>
-        public virtual void OnResetComponent()
+        public void Reset()
         {
             DeAttachEntity();
             DeAttachComponentGo();
             EventUnsubscribe();
+            OnResetComponent();
             _id = 0;
             _entity = null;
             _enable = false;
             _componentGo = null;
             _initCallBack = null;
         }
+        /// <summary>
+        /// 初始化;
+        /// </summary>
+        protected virtual void OnInitComponent() { }
+        /// <summary>
+        /// 重置;
+        /// </summary>
+        protected virtual void OnResetComponent() { }
         /// <summary>
         /// Component附加Entity;
         /// </summary>
@@ -97,6 +107,16 @@ namespace Framework
         /// 注销事件;
         /// </summary>
         protected virtual void EventUnsubscribe() { }
+        /// <summary>
+        /// 进入场景;
+        /// </summary>
+        /// <param name="sceneId"></param>
+        protected virtual void OnEnterScene(int sceneId) { }
+        /// <summary>
+        /// 离开场景;
+        /// </summary>
+        /// <param name="sceneId"></param>
+        protected virtual void OnExitScene(int sceneId) { }
         /// <summary>
         /// 对象池Get;
         /// </summary>

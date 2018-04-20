@@ -11,8 +11,5 @@ using UnityEngine;
 
 public class HUDComponent : BaseComponent
 {
-    public override void OnInitComponent(BaseEntity entity, GameObject go)
-    {
-        base.OnInitComponent(entity, go);
-    }
+
 }

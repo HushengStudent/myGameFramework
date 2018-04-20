@@ -1,15 +1,15 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/02/06 00:49:57
-** desc:  敌人HUD;
+** date:  2018/04/20 20:49:56
+** desc:  装备组件;
 *********************************************************************************/
 
+using Framework;
 using System.Collections;
 using System.Collections.Generic;
-using Framework;
 using UnityEngine;
 
-public class EnemyHUDComponent : HUDComponent
+public class EquipComponent : BaseComponent
 {
 
 }

@@ -72,7 +72,7 @@ namespace Framework
             if (AddComponent(_Component))
             {
                 _Component.InitCallBack = initCallBack;
-                _Component.OnInitComponent(entity, go);
+                _Component.Create(entity, go);
                 return _Component;
             }
             else
@@ -89,7 +89,7 @@ namespace Framework
         public void ReleaseComponent<T>(BaseComponent component) where T : BaseComponent, new()
         {
             RemoveComponent(component);
-            component.OnResetComponent();
+            component.Reset();
             PoolMgr.Instance.Release<T>(component as T);//release to pool;
         }
         /// <summary>

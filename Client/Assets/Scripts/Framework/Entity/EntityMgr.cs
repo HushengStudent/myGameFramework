@@ -70,7 +70,7 @@ namespace Framework
             if (AddEntity(_Entity))
             {
                 _Entity.InitCallBack = initCallBack;
-                _Entity.OnInitEntity(go,uid);
+                _Entity.Create(go, uid);
                 return _Entity;
             }
             else
@@ -87,7 +87,7 @@ namespace Framework
         public void ReleaseEntity<T>(BaseEntity entity) where T : BaseEntity, new()
         {
             RemoveEntity(entity);
-            entity.OnResetEntity();
+            entity.Reset();
             PoolMgr.Instance.Release<T>(entity as T);//release to pool;
         }
         /// <summary>

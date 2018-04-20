@@ -8,6 +8,10 @@ public class Framework_ResourceMgrWrap
 	{
 		L.BeginClass(typeof(Framework.ResourceMgr), typeof(Framework.Singleton<Framework.ResourceMgr>));
 		L.RegFunction("InitMgr", InitMgr);
+		L.RegFunction("Clear", Clear);
+		L.RegFunction("GameGC", GameGC);
+		L.RegFunction("LoadGameObjectFromAssetBundleSync", LoadGameObjectFromAssetBundleSync);
+		L.RegFunction("LoadGameObjectFromAssetBundleAsync", LoadGameObjectFromAssetBundleAsync);
 		L.RegFunction("New", _CreateFramework_ResourceMgr);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.EndClass();
@@ -46,6 +50,78 @@ public class Framework_ResourceMgrWrap
 			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
 			obj.InitMgr();
 			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int Clear(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+			obj.Clear();
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int GameGC(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+			obj.GameGC();
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int LoadGameObjectFromAssetBundleSync(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 3);
+			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+			Framework.AssetType arg0 = (Framework.AssetType)ToLua.CheckObject(L, 2, typeof(Framework.AssetType));
+			string arg1 = ToLua.CheckString(L, 3);
+			UnityEngine.GameObject o = obj.LoadGameObjectFromAssetBundleSync(arg0, arg1);
+			ToLua.PushSealed(L, o);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int LoadGameObjectFromAssetBundleAsync(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 5);
+			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+			Framework.AssetType arg0 = (Framework.AssetType)ToLua.CheckObject(L, 2, typeof(Framework.AssetType));
+			string arg1 = ToLua.CheckString(L, 3);
+			System.Action<UnityEngine.GameObject> arg2 = (System.Action<UnityEngine.GameObject>)ToLua.CheckDelegate<System.Action<UnityEngine.GameObject>>(L, 4);
+			System.Action<float> arg3 = (System.Action<float>)ToLua.CheckDelegate<System.Action<float>>(L, 5);
+			System.Collections.Generic.IEnumerator<float> o = obj.LoadGameObjectFromAssetBundleAsync(arg0, arg1, arg2, arg3);
+			ToLua.PushObject(L, o);
+			return 1;
 		}
 		catch (Exception e)
 		{
