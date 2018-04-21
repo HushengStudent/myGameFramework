@@ -4,6 +4,7 @@
 ** desc:  AssetBundle管理;
 *********************************************************************************/
 
+using MEC;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,7 +17,6 @@ namespace Framework
     /// </summary>
     public partial class AssetBundleMgr : Singleton<AssetBundleMgr>
     {
-
         #region Fields
 
         /// <summary>
@@ -146,14 +146,14 @@ namespace Framework
         /// <param name="action">AssetBundle回调</param>
         /// <param name="progress">progress回调</param>
         /// <returns></returns>
-        private IEnumerator LoadSingleAsync(string path, Action<AssetBundle> action, Action<float> progress)
+        private IEnumerator<float> LoadSingleAsync(string path, Action<AssetBundle> action, Action<float> progress)
         {
             if (string.IsNullOrEmpty(path)) yield break;
 
             AssetBundle assetBundle = null;
             while (IsAssetBundleLoading(path))
             {
-                yield return null;
+                yield return Timing.WaitForOneFrame;
             }
             if (!assetBundleCache.ContainsKey(path))
             {
@@ -165,12 +165,12 @@ namespace Framework
                 {
                     if (null != progress)
                         progress(assetBundleReq.progress);
-                    yield return null;
+                    yield return Timing.WaitForOneFrame;
                 }
 
                 while (!assetBundleReq.isDone)
                 {
-                    yield return null;
+                    yield return Timing.WaitForOneFrame;
                 }
                 assetBundle = assetBundleReq.assetBundle;
                 if (assetBundle == null)
@@ -230,7 +230,7 @@ namespace Framework
         /// <param name="action">AssetBundle回调</param>
         /// <param name="progress">progress回调</param>
         /// <returns></returns>
-        public IEnumerator LoadAssetBundleAsync(AssetType type, string assetName, Action<AssetBundle> action, Action<float> progress)
+        public IEnumerator<float> LoadAssetBundleAsync(AssetType type, string assetName, Action<AssetBundle> action, Action<float> progress)
         {
             if (type == AssetType.Non || string.IsNullOrEmpty(assetName)) yield break;
             string assetBundlePath = FilePathUtility.GetAssetBundlePath(type, assetName);
@@ -242,17 +242,17 @@ namespace Framework
             {
                 if (tempAssetBundle == FilePathUtility.GetAssetBundleFileName(AssetType.Shader, "Shader")) continue;
                 string tempPtah = FilePathUtility.AssetBundlePath + tempAssetBundle;
-                IEnumerator itor = LoadSingleAsync(tempPtah, null, null);
+                IEnumerator<float> itor = LoadSingleAsync(tempPtah, null, null);
                 while (itor.MoveNext())
                 {
-                    yield return null;
+                    yield return Timing.WaitForOneFrame;
                 }
             }
             //加载目标AssetBundle;
-            IEnumerator itorTarget = LoadSingleAsync(assetBundlePath, action, progress);
+            IEnumerator<float> itorTarget = LoadSingleAsync(assetBundlePath, action, progress);
             while (itorTarget.MoveNext())
             {
-                yield return null;
+                yield return Timing.WaitForOneFrame;
             }
         }
 
@@ -345,6 +345,5 @@ namespace Framework
         }
 
         #endregion
-
     }
 }

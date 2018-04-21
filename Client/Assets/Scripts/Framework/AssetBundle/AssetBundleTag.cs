@@ -16,6 +16,8 @@ namespace Framework
 
         private AssetType type = AssetType.Non;
 
+        private bool isClone = false;
+
         public string AssetBundleName
         {
             get { return assetName; }
@@ -28,9 +30,18 @@ namespace Framework
             set { type = value; }
         }
 
+        public bool IsClone
+        {
+            get { return isClone; }
+            set { isClone = value; }
+        }
+
         void OnDestroy()
         {
-            AssetBundleMgr.Instance.UnloadAsset(Type, AssetBundleName);
+            if (!isClone)
+            {
+                AssetBundleMgr.Instance.UnloadAsset(Type, AssetBundleName);
+            }
         }
     }
 }

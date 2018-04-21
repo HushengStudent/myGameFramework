@@ -18,7 +18,7 @@ namespace Framework
         High
     }
 
-    public class GameMgr : Singleton<GameMgr>,IMgr
+    public class GameMgr : Singleton<GameMgr>, IMgr
     {
         private int _gameFrame = 60;
         private float _syncInterval = 0.2f;
@@ -32,14 +32,17 @@ namespace Framework
         {
             EventMgr.Instance.InitMgr();         //事件系统初始化;
             UIEventMgr<int>.InitMgr();           //UI事件系统初始化;
+
+            PoolMgr.Instance.ClearFinishHandler = () =>
+            {
+                PoolMgr.Instance.ClearFinishHandler = null;
+
+                SetGameConfig();
+                ResourceMgr.Instance.InitMgr();      //资源初始化;
+                UIMgr.Instance.InitMgr();
+                SceneMgr.Instance.InitMgr();
+            };
             PoolMgr.Instance.InitMgr();          //对象池初始化;
-
-            SetGameConfig();
-
-            ResourceMgr.Instance.InitMgr();      //资源初始化;
-            UIMgr.Instance.InitMgr();
-            SceneMgr.Instance.InitMgr();
-            LuaMgr.Instance.InitMgr();           //Lua初始化;
         }
 
         /// <summary>

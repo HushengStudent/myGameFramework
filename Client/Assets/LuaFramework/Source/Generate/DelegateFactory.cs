@@ -30,8 +30,6 @@ public class DelegateFactory
 		dict.Add(typeof(UnityEngine.AudioClip.PCMSetPositionCallback), factory.UnityEngine_AudioClip_PCMSetPositionCallback);
 		dict.Add(typeof(UnityEngine.RectTransform.ReapplyDrivenProperties), factory.UnityEngine_RectTransform_ReapplyDrivenProperties);
 		dict.Add(typeof(Framework.SceneLoadEventHandler), factory.Framework_SceneLoadEventHandler);
-		dict.Add(typeof(System.Action<UnityEngine.GameObject>), factory.System_Action_UnityEngine_GameObject);
-		dict.Add(typeof(System.Action<float>), factory.System_Action_float);
 
 		DelegateTraits<System.Action>.Init(factory.System_Action);
 		DelegateTraits<UnityEngine.Events.UnityAction>.Init(factory.UnityEngine_Events_UnityAction);
@@ -46,8 +44,6 @@ public class DelegateFactory
 		DelegateTraits<UnityEngine.AudioClip.PCMSetPositionCallback>.Init(factory.UnityEngine_AudioClip_PCMSetPositionCallback);
 		DelegateTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Init(factory.UnityEngine_RectTransform_ReapplyDrivenProperties);
 		DelegateTraits<Framework.SceneLoadEventHandler>.Init(factory.Framework_SceneLoadEventHandler);
-		DelegateTraits<System.Action<UnityEngine.GameObject>>.Init(factory.System_Action_UnityEngine_GameObject);
-		DelegateTraits<System.Action<float>>.Init(factory.System_Action_float);
 
 		TypeTraits<System.Action>.Init(factory.Check_System_Action);
 		TypeTraits<UnityEngine.Events.UnityAction>.Init(factory.Check_UnityEngine_Events_UnityAction);
@@ -62,8 +58,6 @@ public class DelegateFactory
 		TypeTraits<UnityEngine.AudioClip.PCMSetPositionCallback>.Init(factory.Check_UnityEngine_AudioClip_PCMSetPositionCallback);
 		TypeTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Init(factory.Check_UnityEngine_RectTransform_ReapplyDrivenProperties);
 		TypeTraits<Framework.SceneLoadEventHandler>.Init(factory.Check_Framework_SceneLoadEventHandler);
-		TypeTraits<System.Action<UnityEngine.GameObject>>.Init(factory.Check_System_Action_UnityEngine_GameObject);
-		TypeTraits<System.Action<float>>.Init(factory.Check_System_Action_float);
 
 		StackTraits<System.Action>.Push = factory.Push_System_Action;
 		StackTraits<UnityEngine.Events.UnityAction>.Push = factory.Push_UnityEngine_Events_UnityAction;
@@ -78,8 +72,6 @@ public class DelegateFactory
 		StackTraits<UnityEngine.AudioClip.PCMSetPositionCallback>.Push = factory.Push_UnityEngine_AudioClip_PCMSetPositionCallback;
 		StackTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Push = factory.Push_UnityEngine_RectTransform_ReapplyDrivenProperties;
 		StackTraits<Framework.SceneLoadEventHandler>.Push = factory.Push_Framework_SceneLoadEventHandler;
-		StackTraits<System.Action<UnityEngine.GameObject>>.Push = factory.Push_System_Action_UnityEngine_GameObject;
-		StackTraits<System.Action<float>>.Push = factory.Push_System_Action_float;
 	}
     
     public static Delegate CreateDelegate(Type t, LuaFunction func = null)
@@ -942,120 +934,6 @@ public class DelegateFactory
 	}
 
 	void Push_Framework_SceneLoadEventHandler(IntPtr L, Framework.SceneLoadEventHandler o)
-	{
-		ToLua.Push(L, o);
-	}
-
-	class System_Action_UnityEngine_GameObject_Event : LuaDelegate
-	{
-		public System_Action_UnityEngine_GameObject_Event(LuaFunction func) : base(func) { }
-		public System_Action_UnityEngine_GameObject_Event(LuaFunction func, LuaTable self) : base(func, self) { }
-
-		public void Call(UnityEngine.GameObject param0)
-		{
-			func.BeginPCall();
-			func.PushSealed(param0);
-			func.PCall();
-			func.EndPCall();
-		}
-
-		public void CallWithSelf(UnityEngine.GameObject param0)
-		{
-			func.BeginPCall();
-			func.Push(self);
-			func.PushSealed(param0);
-			func.PCall();
-			func.EndPCall();
-		}
-	}
-
-	public System.Action<UnityEngine.GameObject> System_Action_UnityEngine_GameObject(LuaFunction func, LuaTable self, bool flag)
-	{
-		if (func == null)
-		{
-			System.Action<UnityEngine.GameObject> fn = delegate(UnityEngine.GameObject param0) { };
-			return fn;
-		}
-
-		if(!flag)
-		{
-			System_Action_UnityEngine_GameObject_Event target = new System_Action_UnityEngine_GameObject_Event(func);
-			System.Action<UnityEngine.GameObject> d = target.Call;
-			target.method = d.Method;
-			return d;
-		}
-		else
-		{
-			System_Action_UnityEngine_GameObject_Event target = new System_Action_UnityEngine_GameObject_Event(func, self);
-			System.Action<UnityEngine.GameObject> d = target.CallWithSelf;
-			target.method = d.Method;
-			return d;
-		}
-	}
-
-	bool Check_System_Action_UnityEngine_GameObject(IntPtr L, int pos)
-	{
-		return TypeChecker.CheckDelegateType(typeof(System.Action<UnityEngine.GameObject>), L, pos);
-	}
-
-	void Push_System_Action_UnityEngine_GameObject(IntPtr L, System.Action<UnityEngine.GameObject> o)
-	{
-		ToLua.Push(L, o);
-	}
-
-	class System_Action_float_Event : LuaDelegate
-	{
-		public System_Action_float_Event(LuaFunction func) : base(func) { }
-		public System_Action_float_Event(LuaFunction func, LuaTable self) : base(func, self) { }
-
-		public void Call(float param0)
-		{
-			func.BeginPCall();
-			func.Push(param0);
-			func.PCall();
-			func.EndPCall();
-		}
-
-		public void CallWithSelf(float param0)
-		{
-			func.BeginPCall();
-			func.Push(self);
-			func.Push(param0);
-			func.PCall();
-			func.EndPCall();
-		}
-	}
-
-	public System.Action<float> System_Action_float(LuaFunction func, LuaTable self, bool flag)
-	{
-		if (func == null)
-		{
-			System.Action<float> fn = delegate(float param0) { };
-			return fn;
-		}
-
-		if(!flag)
-		{
-			System_Action_float_Event target = new System_Action_float_Event(func);
-			System.Action<float> d = target.Call;
-			target.method = d.Method;
-			return d;
-		}
-		else
-		{
-			System_Action_float_Event target = new System_Action_float_Event(func, self);
-			System.Action<float> d = target.CallWithSelf;
-			target.method = d.Method;
-			return d;
-		}
-	}
-
-	bool Check_System_Action_float(IntPtr L, int pos)
-	{
-		return TypeChecker.CheckDelegateType(typeof(System.Action<float>), L, pos);
-	}
-
-	void Push_System_Action_float(IntPtr L, System.Action<float> o)
 	{
 		ToLua.Push(L, o);
 	}

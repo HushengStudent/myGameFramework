@@ -14,18 +14,25 @@ namespace Framework
 {
     public class GameObjectPool
     {
-        private Dictionary<AssetType, Dictionary<string, Stack<GameObject>>> _pool =
+        /// <summary>
+        /// 单帧卸载数量;
+        /// </summary>
+        private int _preFrameClearCount = 10;
+
+        private Dictionary<AssetType, Dictionary<string, Stack<GameObject>>> _gameObjectPool =
             new Dictionary<AssetType, Dictionary<string, Stack<GameObject>>>();
+
+        public int PreFrameClearCount { get { return _preFrameClearCount; } set { _preFrameClearCount = value; } }
 
         public IEnumerator<float> Get(AssetType type, string assetName, Action<GameObject> onLoadFinish)
         {
             GameObject element;
             Dictionary<string, Stack<GameObject>> m_Dict;
             Stack<GameObject> m_Stack;
-            if (!_pool.TryGetValue(type, out m_Dict))
+            if (!_gameObjectPool.TryGetValue(type, out m_Dict))
             {
                 m_Dict = new Dictionary<string, Stack<GameObject>>();
-                _pool[type] = m_Dict;
+                _gameObjectPool[type] = m_Dict;
             }
             if (!m_Dict.TryGetValue(assetName, out m_Stack))
             {
@@ -40,7 +47,7 @@ namespace Framework
                     onLoadFinish(element);
                     yield break;
                 }
-                IEnumerator<float> itor = ResourceMgr.Instance.LoadGameObjectFromAssetBundleAsync(type, assetName, onLoadFinish, null);
+                IEnumerator<float> itor = ResourceMgr.Instance.LoadAssetAsync<GameObject>(type, assetName, onLoadFinish, null);
                 while (itor.MoveNext())
                 {
                     yield return Timing.WaitForOneFrame;
@@ -60,10 +67,10 @@ namespace Framework
         {
             Dictionary<string, Stack<GameObject>> m_Dict;
             Stack<GameObject> m_Stack;
-            if (!_pool.TryGetValue(type, out m_Dict))
+            if (!_gameObjectPool.TryGetValue(type, out m_Dict))
             {
                 m_Dict = new Dictionary<string, Stack<GameObject>>();
-                _pool[type] = m_Dict;
+                _gameObjectPool[type] = m_Dict;
             }
             if (!m_Dict.TryGetValue(assetName, out m_Stack))
             {
@@ -77,12 +84,12 @@ namespace Framework
             m_Stack.Push(element);
         }
 
-        public IEnumerator<float> ClearPool(Action onFinish)
+        public IEnumerator<float> ClearGameObjectPool()
         {
             Dictionary<AssetType, Dictionary<string, Stack<GameObject>>> tempDict
-                = new Dictionary<AssetType, Dictionary<string, Stack<GameObject>>>(_pool);
-            _pool = new Dictionary<AssetType, Dictionary<string, Stack<GameObject>>>();
-
+                = new Dictionary<AssetType, Dictionary<string, Stack<GameObject>>>(_gameObjectPool);
+            _gameObjectPool = new Dictionary<AssetType, Dictionary<string, Stack<GameObject>>>();
+            int index = 0;
             foreach (var temp in tempDict)
             {
                 if (temp.Value == null)
@@ -100,15 +107,16 @@ namespace Framework
                     {
                         GameObject go = stack.Pop();
                         GameObject.DestroyImmediate(go);
-                        yield return Timing.WaitForOneFrame;
+                        index++;
+                        if (index > PreFrameClearCount)
+                        {
+                            yield return Timing.WaitForOneFrame;
+                            index = 0;
+                        }
                     }
                 }
             }
-            Resources.UnloadUnusedAssets();
-            if (onFinish != null)
-            {
-                onFinish();
-            }
+            _gameObjectPool.Clear();
         }
     }
 }

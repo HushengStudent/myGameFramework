@@ -41,11 +41,11 @@ namespace Framework
             OnAttachEntityGo(go);
             EventSubscribe();
             OnInit();
+            _enable = true;
             if (InitCallBack != null)
             {
                 InitCallBack(this);
             }
-            _enable = true;
         }
         /// <summary>
         /// 重置Entity;
@@ -57,7 +57,6 @@ namespace Framework
             OnReset();
             _id = 0;
             _enable = false;
-            _entityGo = null;
             _initCallBack = null;
         }
         /// <summary>
@@ -79,7 +78,10 @@ namespace Framework
         /// <summary>
         /// 重置GameObject的附加;
         /// </summary>
-        protected virtual void DeAttachEntityGo() { }
+        protected virtual void DeAttachEntityGo()
+        {
+            _entityGo = null;
+        }
         /// <summary>
         /// 注册事件;
         /// </summary>

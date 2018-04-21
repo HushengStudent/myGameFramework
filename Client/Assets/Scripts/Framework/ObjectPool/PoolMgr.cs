@@ -13,6 +13,8 @@ using Object = System.Object;
 
 namespace Framework
 {
+    public delegate void PoolClearFinishEventHandler();
+
     public class PoolMgr : Singleton<PoolMgr>, IMgr
     {
         /// <summary>
@@ -21,16 +23,20 @@ namespace Framework
         private Dictionary<Type, Object> _pool = new Dictionary<Type, Object>();
 
         /// <summary>
-        /// GameObject Pool;
+        /// Unity Object Pool;
         /// </summary>
-        private GameObjectPool _gameObjectPool = new GameObjectPool();
+        private GameObjectPool _unityObjectPool = new GameObjectPool();
+
+        public PoolClearFinishEventHandler _clearFinishHandler = null;
+
+        public PoolClearFinishEventHandler ClearFinishHandler { get { return _clearFinishHandler; } set { _clearFinishHandler = value; } }
 
         /// <summary>
         /// 初始化;
         /// </summary>
         public void InitMgr()
         {
-            ClearPool(null);
+            CoroutineMgr.Instance.RunCoroutine(ClearPool(null));
         }
 
         /// <summary>
@@ -105,7 +111,7 @@ namespace Framework
         /// <returns></returns>
         public IEnumerator<float> Get(AssetType type, string assetName, Action<GameObject> onLoadFinish)
         {
-            IEnumerator<float> itor = _gameObjectPool.Get(type, assetName, onLoadFinish);
+            IEnumerator<float> itor = _unityObjectPool.Get(type, assetName, onLoadFinish);
             while (itor.MoveNext())
             {
                 yield return Timing.WaitForOneFrame;
@@ -120,25 +126,24 @@ namespace Framework
         /// <param name="element"></param>
         public void Release(AssetType type, string assetName, GameObject element)
         {
-            _gameObjectPool.Release(type, assetName, element);
+            _unityObjectPool.Release(type, assetName, element);
         }
 
         /// <summary>
         /// 销毁对象池;
         /// </summary>
-        public void ClearPool(Action onFinish)
+        public IEnumerator<float> ClearPool(PoolClearFinishEventHandler onFinish)
         {
             _pool.Clear();
-            CoroutineMgr.Instance.RunCoroutine(_gameObjectPool.ClearPool(
-                () =>
-                {
-                    System.GC.Collect();
-                    if (onFinish != null)
-                    {
-                        onFinish();
-                    }
-                }
-                ));
+            IEnumerator<float> _goPoolItor = _unityObjectPool.ClearGameObjectPool();
+            while (_goPoolItor.MoveNext())
+            {
+                yield return Timing.WaitForOneFrame;
+            }
+            Resources.UnloadUnusedAssets();
+            System.GC.Collect();
+            if (onFinish != null)
+                onFinish();
         }
     }
 }

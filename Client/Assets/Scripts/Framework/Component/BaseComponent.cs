@@ -46,11 +46,11 @@ namespace Framework
             OnAttachComponentGo(go);
             EventSubscribe();
             OnInitComponent();
+            _enable = true;
             if (InitCallBack != null)
             {
                 InitCallBack(this);
             }
-            _enable = true;
         }
         /// <summary>
         /// 重置Component;
@@ -62,9 +62,7 @@ namespace Framework
             EventUnsubscribe();
             OnResetComponent();
             _id = 0;
-            _entity = null;
             _enable = false;
-            _componentGo = null;
             _initCallBack = null;
         }
         /// <summary>
@@ -81,7 +79,7 @@ namespace Framework
         /// <param name="entity"></param>
         protected virtual void OnAttachEntity(BaseEntity entity)
         {
-            Entity = entity;
+            _entity = entity;
         }
         /// <summary>
         /// Component附加GameObject;
@@ -89,16 +87,22 @@ namespace Framework
         /// <param name="go"></param>
         protected virtual void OnAttachComponentGo(GameObject go)
         {
-            ComponentGo = go;
+            _componentGo = go;
         }
         /// <summary>
         /// 重置Entity的附加;
         /// </summary>
-        protected virtual void DeAttachEntity() { }
+        protected virtual void DeAttachEntity()
+        {
+            _entity = null;
+        }
         /// <summary>
         /// 重置GameObject的附加;
         /// </summary>
-        protected virtual void DeAttachComponentGo() { }
+        protected virtual void DeAttachComponentGo()
+        {
+            _componentGo = null;
+        }
         /// <summary>
         /// 注册事件;
         /// </summary>
