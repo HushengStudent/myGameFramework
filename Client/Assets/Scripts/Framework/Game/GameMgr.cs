@@ -30,6 +30,9 @@ namespace Framework
 
         public void InitMgr()
         {
+#if UNITY_EDITOR
+            DebugMgr.Instance.InitMgr();
+#endif
             EventMgr.Instance.InitMgr();         //事件系统初始化;
             UIEventMgr<int>.InitMgr();           //UI事件系统初始化;
 

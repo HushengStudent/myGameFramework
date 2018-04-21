@@ -28,6 +28,7 @@ namespace Framework
         public void InitMgr()
         {
             EventDict.Clear();
+            LogUtil.LogUtility.Print("[EventMgr]EventMgr init!");
         }
 
         /// <summary>

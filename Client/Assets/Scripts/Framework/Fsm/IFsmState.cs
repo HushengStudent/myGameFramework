@@ -12,10 +12,10 @@ namespace Framework
 {
     public interface IFsmState
     {
-        string Name { get; }
-        IFsmMachine Parent { get; }
-        float Time { get; }
-        List<IFsmTransition> Transitions { get; }
+        string Name { get; set; }
+        IFsmMachine Parent { get; set; }
+        float Time { get; set; }
+        List<IFsmTransition> Transitions { get; set; }
         void OnEnter(IFsmState preState);
         void OnExit(IFsmState nextState);
         void OnUpdate();

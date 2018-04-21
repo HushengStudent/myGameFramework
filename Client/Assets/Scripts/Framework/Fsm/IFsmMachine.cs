@@ -12,8 +12,9 @@ namespace Framework
 {
     public interface IFsmMachine
     {
-        IFsmState CurrentState { get; }
+        IFsmState CurrentState { get; set; }
         IFsmState DefaultState { get; set; }
+        List<IFsmState> States { get; set; }
         bool AddState(IFsmState state);
         bool RemoveState(IFsmState state);
         IFsmState GetState(IFsmState state);

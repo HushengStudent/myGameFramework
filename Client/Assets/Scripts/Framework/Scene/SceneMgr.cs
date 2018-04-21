@@ -21,6 +21,7 @@ namespace Framework
         public void InitMgr()
         {
             CurScene = null;
+            LogUtil.LogUtility.Print("[SceneMgr]SceneMgr init!");
         }
 
         public IEnumerator<float> TransToScene(int sceneId, SceneLoadEventHandler handler)

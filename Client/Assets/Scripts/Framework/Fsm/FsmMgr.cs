@@ -10,8 +10,16 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class FsmMgr : Singleton<BuffMgr>
+    /// <summary>
+    /// Unity状态机实现更简单;
+    /// </summary>
+    public class FsmMgr : Singleton<FsmMgr>
     {
+        private bool[,] _fsmTransition = new bool[,] {
+            {false, false},
+            {false, false}
+        };
 
+        public bool[,] FsmTransition { get { return _fsmTransition; } }
     }
 }

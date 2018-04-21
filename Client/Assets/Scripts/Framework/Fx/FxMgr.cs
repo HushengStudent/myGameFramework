@@ -12,6 +12,6 @@ namespace Framework
 {
     public class FxMgr : Singleton<FxMgr>
     {
-
+        
     }
 }

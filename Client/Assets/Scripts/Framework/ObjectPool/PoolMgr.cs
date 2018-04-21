@@ -36,7 +36,8 @@ namespace Framework
         /// </summary>
         public void InitMgr()
         {
-            CoroutineMgr.Instance.RunCoroutine(ClearPool(null));
+            LogUtil.LogUtility.Print("[PoolMgr]PoolMgr init!");
+            CoroutineMgr.Instance.RunCoroutine(ClearPool());
         }
 
         /// <summary>
@@ -132,7 +133,7 @@ namespace Framework
         /// <summary>
         /// 销毁对象池;
         /// </summary>
-        public IEnumerator<float> ClearPool(PoolClearFinishEventHandler onFinish)
+        public IEnumerator<float> ClearPool()
         {
             _pool.Clear();
             IEnumerator<float> _goPoolItor = _unityObjectPool.ClearGameObjectPool();
@@ -142,8 +143,8 @@ namespace Framework
             }
             Resources.UnloadUnusedAssets();
             System.GC.Collect();
-            if (onFinish != null)
-                onFinish();
+            if (ClearFinishHandler != null)
+                ClearFinishHandler();
         }
     }
 }

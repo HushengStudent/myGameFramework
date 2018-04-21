@@ -14,7 +14,7 @@ namespace Framework
     {
         IFsmState FromState { get; set; }
         IFsmState ToState { get; set; }
-        string Name { get; }
+        string Name { get; set; }
         void OnTrans();
         bool CanTrans();
     }

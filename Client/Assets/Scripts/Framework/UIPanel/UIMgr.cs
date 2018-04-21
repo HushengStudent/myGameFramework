@@ -22,6 +22,7 @@ namespace Framework
         {
             CurPanel = null;
             CurPanelType = PanelType.Non;
+            LogUtil.LogUtility.Print("[UIMgr]UIMgr init!");
         }
 
         public override void UpdateEx()
