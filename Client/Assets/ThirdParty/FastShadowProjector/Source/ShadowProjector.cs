@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 [AddComponentMenu("Fast Shadow Projector/Shadow Projector")]
@@ -6,8 +6,14 @@ public class ShadowProjector : MonoBehaviour {
 	
 	private static class MeshGen {
 		
-		public static Mesh CreatePlane(Vector3 up, Vector3 right, Rect uvRect, Color color) {
+		public static Mesh CreatePlane(Vector3 up, Vector3 right, Rect uvRect, Color color, ShadowProjector parent) {
 			Mesh planeMesh = new Mesh();
+
+			bool shouldFlipX = (GlobalProjectorManager.Exists() ? GlobalProjectorManager.GlobalFlipX : parent.GlobalFlipX);
+			Vector2 flipX = new Vector2(uvRect.width, -uvRect.width);
+			
+			bool shouldFlipY = (GlobalProjectorManager.Exists() ? GlobalProjectorManager.GlobalFlipY : parent.GlobalFlipY);
+			Vector2 flipY = new Vector2(-uvRect.height, uvRect.height);
 			
 			Vector3[] vertices = new Vector3[] {
 				(up * 0.5f - right * 0.5f),
@@ -31,6 +37,20 @@ public class ShadowProjector : MonoBehaviour {
 			};
 			
 			int[] indices = new int[] { 0, 1, 3, 0, 3, 2 };
+
+			if (shouldFlipX) {
+				uvs[0].x += flipX[0];
+				uvs[1].x += flipX[1];
+				uvs[2].x += flipX[0];
+				uvs[3].x += flipX[1];
+			}
+
+			if (shouldFlipY) {
+				uvs[0].y += flipY[0];
+				uvs[1].y += flipY[0];
+				uvs[2].y += flipY[1];
+				uvs[3].y += flipY[1];
+			}
 			
 			planeMesh.vertices = vertices;
 			planeMesh.uv = uvs;
@@ -120,6 +140,38 @@ public class ShadowProjector : MonoBehaviour {
 	
 	[UnityEngine.SerializeField]
 	protected float _GlobalCutOffDistance;
+
+	public bool GlobalFlipX {
+		set {
+			_GlobalFlipX = value;
+
+			if (GlobalProjectorManager.Exists()) {
+				GlobalProjectorManager.GlobalFlipX = _GlobalFlipX; 
+			}
+		}
+		get {
+			return _GlobalFlipX;
+		}
+	}
+	
+	[UnityEngine.SerializeField]
+	protected bool _GlobalFlipX;
+
+	public bool GlobalFlipY {
+		set {
+			_GlobalFlipY = value;
+			
+			if (GlobalProjectorManager.Exists()) {
+				GlobalProjectorManager.GlobalFlipY = _GlobalFlipY; 
+			}
+		}
+		get {
+			return _GlobalFlipY;
+		}
+	}
+	
+	[UnityEngine.SerializeField]
+	protected bool _GlobalFlipY;
 	
 	public float ShadowSize {
 		set {
@@ -383,9 +435,12 @@ public class ShadowProjector : MonoBehaviour {
 	
 	float _initialSize;
 	float _initialOpacity;
+
+	bool _discarded;
 	
 	void Awake() {
-		_ShadowDummyMesh = MeshGen.CreatePlane(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(1.0f, 0.0f, 0.0f), _UVRect, new Color(_ShadowColor.r, _ShadowColor.g, _ShadowColor.b, _ShadowOpacity));
+		_ShadowDummyMesh = MeshGen.CreatePlane(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(1.0f, 0.0f, 0.0f), _UVRect, 
+		                                       new Color(_ShadowColor.r, _ShadowColor.g, _ShadowColor.b, _ShadowOpacity), this);
 		
 		Transform parent = transform;
 		
@@ -407,7 +462,11 @@ public class ShadowProjector : MonoBehaviour {
 		
 		_Renderer = _ShadowDummy.gameObject.AddComponent<MeshRenderer>();
 		_Renderer.receiveShadows = false;
+#if UNITY_5_0 || UNITY_5_1 || UNITY_5_2 || UNITY_5_3 || UNITY_5_4 
+		_Renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+#else
 		_Renderer.castShadows = false;
+#endif
 		_Renderer.material = _Material;
 		_Renderer.enabled = false;
 		
@@ -416,6 +475,8 @@ public class ShadowProjector : MonoBehaviour {
 		
 		_initialSize = _ShadowSize;
 		_initialOpacity = _ShadowOpacity;
+
+		_discarded = false;
 	}
 	
 	void Start () {	
@@ -454,6 +515,15 @@ public class ShadowProjector : MonoBehaviour {
 	public void SetVisible(bool visible) {
 		_Renderer.enabled = visible;
 	}
+
+	public void Discard(bool discard) {
+		_discarded = discard;
+		SetVisible(!discard);
+	}
+
+	public bool IsDiscarded() {
+		return _discarded;
+	}
 	
 	void Update() {
 		if (_AutoSizeOpacity) {
@@ -481,11 +551,12 @@ public class ShadowProjector : MonoBehaviour {
 	public Matrix4x4 ShadowDummyLocalToWorldMatrix() {
 		return _ShadowDummy.transform.localToWorldMatrix;
 	}
-	
+
 	public float GetShadowWorldSize() {
-		return (ShadowDummyLocalToWorldMatrix() * new Vector3(1.0f, 0.0f, 0.0f)).magnitude;
+		Matrix4x4 dummyMatrix = ShadowDummyLocalToWorldMatrix();
+		return Mathf.Max ((dummyMatrix * new Vector3(1.0f, 0.0f, 0.0f)).magnitude, (dummyMatrix * new Vector3(0.0f, 1.0f, 0.0f)).magnitude);
 	}
-	
+
 	public Vector3 GetShadowPos() {
 		return _ShadowDummy.transform.position;
 	}
@@ -494,7 +565,7 @@ public class ShadowProjector : MonoBehaviour {
 		_ShadowDummy.transform.localScale = new Vector3(_ShadowSize, _ShadowSize, _ShadowSize);
 	}
 	
-	void OnUVRectChanged() {
+	public void OnUVRectChanged() {
 		RebuildMesh();
 	}
 	
@@ -504,7 +575,8 @@ public class ShadowProjector : MonoBehaviour {
 	}
 	
 	void RebuildMesh() {
-		_ShadowDummyMesh = MeshGen.CreatePlane(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(1.0f, 0.0f, 0.0f), _UVRect, new Color(_ShadowColor.r, _ShadowColor.g, _ShadowColor.b, _ShadowOpacity));
+		_ShadowDummyMesh = MeshGen.CreatePlane(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(1.0f, 0.0f, 0.0f), _UVRect,
+		                                       new Color(_ShadowColor.r, _ShadowColor.g, _ShadowColor.b, _ShadowOpacity), this);
 		_MeshFilter.mesh = _ShadowDummyMesh;
 	}
 }

@@ -1,15 +1,20 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 
 class ShadowTextureUVEditor:  EditorWindow {
 
 	public ShadowProjector _shadowProjector;
 	public float _zoomLevel = 1.0f;
-	
 
 	public static void Open(ShadowProjector shadowProjector) {
 		ShadowTextureUVEditor window = (ShadowTextureUVEditor)EditorWindow.GetWindow (typeof (ShadowTextureUVEditor));
+#if UNITY_5_1 || UNITY_5_2 || UNITY_5_3 || UNITY_5_4 || UNITY_5_5 || UNITY_5_6 
+		window.titleContent = new GUIContent("UV Editor");
+#else
 		window.title = "UV Editor";
+#endif
+
+
 		window._shadowProjector = shadowProjector;
 		window._zoomLevel = 1.0f;
 
@@ -36,8 +41,11 @@ class ShadowTextureUVEditor:  EditorWindow {
 			_zoomLevel = EditorGUILayout.Slider(_zoomLevel, 0.0f, 2.0f);
 
 			Vector2 imagePos = new Vector2(20, 150);
-			EditorGUI.DrawPreviewTexture(new Rect(imagePos.x, imagePos.y, shadowTex.width*_zoomLevel, shadowTex.height*_zoomLevel), shadowTex, null, ScaleMode.ScaleToFit);
-			DrawZones(shadowTex, new Rect(_shadowProjector.UVRect.x,_shadowProjector.UVRect.y, _shadowProjector.UVRect.width, _shadowProjector.UVRect.height), imagePos);
+			Rect imageRect = new Rect(imagePos.x, imagePos.y, shadowTex.width*_zoomLevel, shadowTex.height*_zoomLevel);
+
+			EditorGUI.DrawRect(imageRect, new Color(0.7f, 0.7f, 0.7f, 0.7f));
+			EditorGUI.DrawPreviewTexture(imageRect, shadowTex, _shadowProjector._Material, ScaleMode.ScaleToFit);
+			DrawZones(shadowTex, new Rect(_shadowProjector.UVRect.x, 1.0f -_shadowProjector.UVRect.y, _shadowProjector.UVRect.width, _shadowProjector.UVRect.height), imagePos);
 
 			if (GUI.changed) {
 				EditorUtility.SetDirty(_shadowProjector);

@@ -10,8 +10,9 @@ public class ShadowReceiver : MonoBehaviour {
 	MeshRenderer _meshRenderer;
 	Terrain _terrain = null;
 	public Material _terrainMaterial;
-	
+
 	bool _isTerrain = false;
+	bool _standardTerrain = false;
 
 	public int _id;
 	
@@ -23,14 +24,35 @@ public class ShadowReceiver : MonoBehaviour {
 	
 		if (_terrain != null) {
 			_isTerrain = true;
+
+#if UNITY_5_0 || UNITY_5_1 || UNITY_5_2 || UNITY_5_3 || UNITY_5_4 
+			if (_terrain.materialType == Terrain.MaterialType.BuiltInStandard) {
 			
-			_terrainMaterial = new Material(Shader.Find("FastShadowProjector/FSP_TerrainFirstPass"));
-				
+				_terrainMaterial = new Material(Shader.Find("FastShadowProjector/FSP_Standard-TerrainFirstPass"));
+				_standardTerrain = true;
+			} else {
+				_terrainMaterial = new Material(Shader.Find("FastShadowProjector/FSP_TerrainFirstPass"));
+				_standardTerrain = false;
+			}
+
 			if (_terrainMaterial == null) {
-				Debug.Log ("Could not find: FSP_TerrainFirstPass shader!");
+				Debug.LogWarning ("Could not find: FSP terrain FirstPass shader!");
+			} else { 
+
+				_terrain.materialType = Terrain.MaterialType.Custom;
+				_terrain.materialTemplate = _terrainMaterial;
+			}		
+#else 
+			_terrainMaterial = new Material(Shader.Find("FastShadowProjector/FSP_TerrainFirstPass"));
+			_standardTerrain = false;
+
+			
+			if (_terrainMaterial == null) {
+				Debug.LogWarning ("Could not find: FSP terrain FirstPass shader!");
 			} else { 
 				_terrain.materialTemplate = _terrainMaterial;
-			}				
+			}		
+#endif
 		}
 
 		if (_terrain == null && !_meshRenderer.isPartOfStaticBatch && _meshFilter != null) {
@@ -66,6 +88,10 @@ public class ShadowReceiver : MonoBehaviour {
 			}
 		}
 		return _isTerrain;
+	}
+
+	public bool IsStandardTerrain() {
+		return _standardTerrain;
 	}
 	
 	public Terrain GetTerrain() {

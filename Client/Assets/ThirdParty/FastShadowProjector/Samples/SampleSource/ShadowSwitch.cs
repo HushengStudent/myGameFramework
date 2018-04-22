@@ -1,11 +1,15 @@
 using UnityEngine;
 using System.Collections;
 
-public class ShadowSwitch : MonoBehaviour {
+namespace FSP_Samples {
 
-	void OnGUI() {
-		if (GUI.Button(new Rect(Screen.width - 140, 50, 130, 40), "Toggle Shadows")) {
-			GlobalProjectorManager.Get().ShadowsOn = !GlobalProjectorManager.Get().ShadowsOn;
+	public class ShadowSwitch : MonoBehaviour {
+
+		void OnGUI() {
+			if (GUI.Button(new Rect(Screen.width - 140, 50, 130, 40), "Toggle Shadows")) {
+				GlobalProjectorManager.Get().ShadowsOn = !GlobalProjectorManager.Get().ShadowsOn;
+			}
 		}
 	}
+
 }

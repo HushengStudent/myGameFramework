@@ -29,6 +29,9 @@ public class ShadowProjectorEditor : Editor {
 		EditorGUILayout.EndToggleGroup();
 
 
+		shadowProj.GlobalFlipX = EditorGUILayout.Toggle("Global flip shadows X:", shadowProj.GlobalFlipX);
+		shadowProj.GlobalFlipY = EditorGUILayout.Toggle("Global flip shadows Y:", shadowProj.GlobalFlipY);
+
 		shadowProj.ShadowSize = EditorGUILayout.FloatField("Shadow size", shadowProj.ShadowSize);
 		
 		shadowProj.ShadowColor = EditorGUILayout.ColorField("Shadow color", shadowProj.ShadowColor);
@@ -104,7 +107,8 @@ public class ShadowProjectorEditor : Editor {
 				targetShadowProj.GlobalShadowResolution = shadowProj.GlobalShadowResolution;
 				targetShadowProj.GlobalShadowCullingMode = shadowProj.GlobalShadowCullingMode;
 				targetShadowProj.GlobalCutOffDistance = shadowProj.GlobalCutOffDistance;
-
+				targetShadowProj.GlobalFlipX = shadowProj.GlobalFlipX;
+				targetShadowProj.GlobalFlipY = shadowProj.GlobalFlipY;
 				EditorUtility.SetDirty(shadowProj);
 				break;
 			}
@@ -125,6 +129,8 @@ public class ShadowProjectorEditor : Editor {
 				shadowProj.GlobalShadowResolution = targetShadowProj.GlobalShadowResolution;
 				shadowProj.GlobalShadowCullingMode = targetShadowProj.GlobalShadowCullingMode;
 				shadowProj.GlobalCutOffDistance = targetShadowProj.GlobalCutOffDistance;
+				shadowProj.GlobalFlipX = targetShadowProj.GlobalFlipX;
+				shadowProj.GlobalFlipY = targetShadowProj.GlobalFlipY;
 
 				EditorUtility.SetDirty(shadowProj);
 			}

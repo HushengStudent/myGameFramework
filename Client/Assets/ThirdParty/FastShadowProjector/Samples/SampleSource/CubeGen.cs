@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+namespace FSP_Samples {
+
 	public class CubeGen : MonoBehaviour {
 	
 		public GameObject _cubePrefab;
@@ -44,4 +46,4 @@ using System.Collections;
 			}
 		}
 	}
-
+}

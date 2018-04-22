@@ -5,8 +5,6 @@ using System.Collections;
 [CustomEditor(typeof(ShadowReceiver))] 
 public class ShadowReceiverEditor : Editor {
 
-	Material _terrainMaterial = null;
-	
 	public override void OnInspectorGUI() {
 
 		if (!Application.isPlaying) {
@@ -17,21 +15,17 @@ public class ShadowReceiverEditor : Editor {
 
 	public void OnEnable() {
 		if (!Application.isPlaying) {
-			SetTerrainMaterial(_terrainMaterial);
+			SetTerrainProperties();
 		}
 	}
 
 	public void OnDisable() {
 		if (!Application.isPlaying) {
-			SetTerrainMaterial(_terrainMaterial);	
+			SetTerrainProperties();	
 		}
 	}
-	
-	void SetTerrainMaterial() {
-		SetTerrainMaterial(null);
-	}
-	
-	void SetTerrainMaterial(Material terrainMaterial) {
+
+	void SetTerrainProperties() {
 		ShadowReceiver shadowReceiver = (ShadowReceiver) target;
 
 		if (shadowReceiver != null && shadowReceiver.IsTerrain()) {
@@ -40,13 +34,9 @@ public class ShadowReceiverEditor : Editor {
 			
 			Terrain terrain = shadowReceiver.GetComponent<Terrain>();
 			
-			if (terrainMaterial == null && terrain != null) {
-				 shadowReceiver = (ShadowReceiver) target;
-#if UNITY_5_0 || UNITY_5_1
-				terrain.materialType = Terrain.MaterialType.Custom;
-#endif
-				terrain.materialTemplate = terrainMaterial;
-				
+			if (terrain != null) {
+				shadowReceiver = (ShadowReceiver) target;
+
 				TerrainCollider terrainCollider = terrain.GetComponent<TerrainCollider>();
 				terrainCollider.enabled = false;
 				terrain.castShadows = false;
@@ -54,6 +44,9 @@ public class ShadowReceiverEditor : Editor {
 			}
 			serializedObject.ApplyModifiedProperties();
 
+			if (GUI.changed) {
+				EditorUtility.SetDirty(terrain);
+			}
 		}
 	}
 }
