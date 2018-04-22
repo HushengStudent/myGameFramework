@@ -35,3 +35,5 @@
 /Client/Assembly-CSharp-firstpass.csproj
 /Client/Client.Editor.Plugins.csproj
 /Client/Debug
+/Tools/Table/TableExport/.vs
+/Tools/Table/TableExport/TableExport/obj
