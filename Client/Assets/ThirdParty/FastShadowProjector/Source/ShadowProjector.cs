@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 [AddComponentMenu("Fast Shadow Projector/Shadow Projector")]
@@ -465,7 +465,7 @@ public class ShadowProjector : MonoBehaviour {
 #if UNITY_5_0 || UNITY_5_1 || UNITY_5_2 || UNITY_5_3 || UNITY_5_4 
 		_Renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 #else
-		_Renderer.castShadows = false;
+		_Renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 #endif
 		_Renderer.material = _Material;
 		_Renderer.enabled = false;

@@ -14,37 +14,31 @@ namespace Framework
 {
     public static class TableUtility
     {
-        [MenuItem("MGame/TableTools/Export Csharp", false, 0)]
+        [MenuItem("MGame/TableTools/Generate all", false, 0)]
+        public static void GenerateAll()
+        {
+
+        }
+
+        [MenuItem("MGame/TableTools/Export csharp", false, 10)]
         public static void ExportCsharp()
         {
 
         }
 
-        [MenuItem("MGame/TableTools/Export Lua", false, 1)]
-        public static void ExportLua()
-        {
-
-        }
-
-        [MenuItem("MGame/TableTools/Generate Bytes", false, 2)]
+        [MenuItem("MGame/TableTools/Generate bytes", false, 11)]
         public static void GenerateBytes()
         {
 
         }
 
-        [MenuItem("MGame/TableTools/Export Select Csharp", false, 13)]
+        [MenuItem("MGame/TableTools/Export Select csharp", false, 20)]
         public static void ExportSelectCsharp()
         {
 
         }
 
-        [MenuItem("MGame/TableTools/Export Select Lua", false, 14)]
-        public static void ExportSelectLua()
-        {
-
-        }
-
-        [MenuItem("MGame/TableTools/Generate Select Bytes", false, 15)]
+        [MenuItem("MGame/TableTools/Generate Select bytes", false, 21)]
         public static void GenerateSelectBytes()
         {
 

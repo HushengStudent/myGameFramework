@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 [System.Serializable]
@@ -72,7 +72,7 @@ public class ProjectorEyeTexture {
 	}
 
 	public bool RenderTextureSupported() {
-		return SystemInfo.supportsRenderTextures;
+		return true;
 	}
 }
 
