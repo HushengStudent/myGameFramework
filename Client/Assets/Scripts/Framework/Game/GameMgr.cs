@@ -35,7 +35,10 @@ namespace Framework
 #endif
             EventMgr.Instance.InitMgr();         //事件系统初始化;
             UIEventMgr<int>.InitMgr();           //UI事件系统初始化;
-
+            SdkMgr.Instance.InitMgr();
+            TimerMgr.Instance.InitMgr();
+            ComponentMgr.Instance.InitMgr();
+            EntityMgr.Instance.InitMgr();
             PoolMgr.Instance.ClearFinishHandler = () =>
             {
                 PoolMgr.Instance.ClearFinishHandler = null;
@@ -44,6 +47,7 @@ namespace Framework
                 ResourceMgr.Instance.InitMgr();      //资源初始化;
                 UIMgr.Instance.InitMgr();
                 SceneMgr.Instance.InitMgr();
+                LuaMgr.Instance.InitMgr();
             };
             PoolMgr.Instance.InitMgr();          //对象池初始化;
         }

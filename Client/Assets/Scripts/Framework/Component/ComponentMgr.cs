@@ -13,7 +13,7 @@ using MEC;
 
 namespace Framework
 {
-    public class ComponentMgr : MonoSingleton<ComponentMgr>
+    public class ComponentMgr : MonoSingleton<ComponentMgr>, IMgr
     {
         #region Field
 
@@ -29,6 +29,12 @@ namespace Framework
         #endregion
 
         #region Unity api
+
+        public void InitMgr()
+        {
+            ComponentDict.Clear();
+            ComponentList.Clear();
+        }
 
         public override void UpdateEx()
         {

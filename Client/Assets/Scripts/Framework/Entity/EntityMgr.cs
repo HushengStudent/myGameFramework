@@ -12,7 +12,7 @@ using System;
 
 namespace Framework
 {
-    public class EntityMgr : MonoSingleton<EntityMgr>
+    public class EntityMgr : MonoSingleton<EntityMgr>, IMgr
     {
         #region Fields
         /// <summary>
@@ -57,6 +57,13 @@ namespace Framework
         #endregion
 
         #region Functions
+
+        public void InitMgr()
+        {
+            EntityDict.Clear();
+            EntityList.Clear();
+            EntityIndexDict.Clear();
+        }
         /// <summary>
         /// 创建Entity;
         /// </summary>

@@ -22,7 +22,6 @@ namespace TableExport
             waring,
             error,
         }
-
         /// <summary>
         /// 配置类型;
         /// </summary>
@@ -68,7 +67,6 @@ namespace TableExport
             if (!_noWaring)
                 Console.ReadKey();
         }
-
         /// <summary>
         /// 字符串分割;
         /// </summary>
@@ -80,7 +78,6 @@ namespace TableExport
             string[] paths = str.Split(splite.ToArray());
             return paths.ToList();
         }
-
         /// <summary>
         /// 获取类型;
         /// </summary>
@@ -106,7 +103,6 @@ namespace TableExport
             }
             return target;
         }
-
         /// <summary>
         /// log输出;
         /// </summary>
@@ -136,7 +132,6 @@ namespace TableExport
                 Console.ReadKey();
             }
         }
-
         /// <summary>
         /// 写文件;
         /// </summary>
@@ -147,7 +142,6 @@ namespace TableExport
             string allText = code;
             File.WriteAllText(path, allText);
         }
-
         /// <summary>
         /// 读表;
         /// </summary>
@@ -184,7 +178,6 @@ namespace TableExport
             //}
             //Console.ReadKey();
         }
-
         /// <summary>
         /// 创建cs文件;
         /// </summary>
@@ -218,7 +211,6 @@ namespace TableExport
             code = code.Replace("{arg4}", fileds);
             CreateFile(cspath + "/" + className + ".cs", code);
         }
-
         /// <summary>
         /// cs模板文件;
         /// </summary>
