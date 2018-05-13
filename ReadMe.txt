@@ -31,6 +31,7 @@ Client：客户端工程使用Unity5.5.4创建
 	(24)FMOD.(TODO)
 	(25)T4M.(TODO)
 	(26)FairyGUI.(TODO)
+	(27)配置表工具.(TODO)
 	
 	Reference：
 	(1)tolua：(tolua:https://github.com/topameng/tolua).
@@ -40,6 +41,8 @@ Client：客户端工程使用Unity5.5.4创建
 	(5)More Effective Coroutine：(Asset Store).
 	(6)ObjectPool：(ugui:https://github.com/HushengStudent/ugui).
 	(7)Mixed Text and Graphics：(EmojiText:https://github.com/zouchunyi/EmojiText).
+	(8)Table：(ExcelUtilityWith-ExcelReader:https://github.com/Ribosome2/ExcelUtilityWith-ExcelReader).
+	(9)NetWork：(GameFramework:https://github.com/EllanJiang/GameFramework).
 	
 Server：服务器工程使用visual studio2017创建
 	Reference：
