@@ -30,7 +30,7 @@ namespace Framework
 
         private static string _targetPath = string.Empty;
 
-        [MenuItem("MGame/TableTools/初始化配置表", false, 101)]
+        [MenuItem("MGame/TableTools/初始化配置表", false, 301)]
         public static void InitTable()
         {
             _colDict.Clear();
@@ -102,7 +102,7 @@ namespace Framework
                 info[i] = target;
             }
             File.WriteAllLines(_targetPath, info, Encoding.UTF8);
-            EditorUtility.DisplayDialog("提醒", "配置表已刷新并保存！", "确认");
+            EditorUtility.DisplayDialog("提示", "配置表已刷新并保存！", "确认");
         }
 
         void OnGUI()
