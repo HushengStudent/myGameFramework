@@ -6,6 +6,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 using UnityEditor;
 using UnityEngine;
@@ -20,29 +21,30 @@ namespace Framework
 
         }
 
-        [MenuItem("MGame/TableTools/Export csharp", false, 10)]
+        [MenuItem("MGame/TableTools/Export cs", false, 10)]
         public static void ExportCsharp()
         {
 
         }
 
-        [MenuItem("MGame/TableTools/Generate bytes", false, 11)]
+        [MenuItem("MGame/TableTools/Generate byte", false, 20)]
         public static void GenerateBytes()
         {
 
         }
 
-        [MenuItem("MGame/TableTools/Export Select csharp", false, 20)]
+        [MenuItem("MGame/TableTools/Export Select cs", false, 11)]
         public static void ExportSelectCsharp()
         {
 
         }
 
-        [MenuItem("MGame/TableTools/Generate Select bytes", false, 21)]
+        [MenuItem("MGame/TableTools/Generate Select byte", false, 21)]
         public static void GenerateSelectBytes()
         {
 
         }
+
 
         private static void ExportTable()
         {

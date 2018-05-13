@@ -1,5 +1,5 @@
-µÀ¾ßId,µÀ¾ßÃû×Ö,µÀ¾ßÃèÊö
-ItemId,ItemName,ItemDes
-1,ÍÀÁúµ¶,ÍÀÁú±¦µ¶£¬ÎäÁÖÖÁ×ð
-2,ÒÐÌì½£,ÒÐÌì²»³ö£¬Ë­ÓëÕù·æ
-3,´ò¹·°ô,Ø¤°ï°ïÖ÷ÐÅÎï
+ï»¿é“å…·Id,é“å…·åå­—,é“å…·æè¿°
+ItemId:INT,ItemName:STRING,ItemDes:STRING
+1,å± é¾™åˆ€,å± é¾™å®åˆ€ï¼Œæ­¦æž—è‡³å°Š
+2,å€šå¤©å‰‘,å€šå¤©ä¸å‡ºï¼Œè°ä¸Žäº‰é”‹
+3,æ‰“ç‹—æ£’,ä¸å¸®å¸®ä¸»ä¿¡ç‰©
