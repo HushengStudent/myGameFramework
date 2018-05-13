@@ -17,17 +17,17 @@ namespace Framework
 {
     public class TableInitCsv : EditorWindow
     {
-        private static Dictionary<int, List<string>> infoDict = new Dictionary<int, List<string>>();
+        private static Dictionary<int, List<string>> _infoDict = new Dictionary<int, List<string>>();
 
-        private static Dictionary<int, KeyValuePair<string, TableFiledType>> colDict = new Dictionary<int, KeyValuePair<string, TableFiledType>>();
+        private static Dictionary<int, KeyValuePair<string, TableFiledType>> _colDict = new Dictionary<int, KeyValuePair<string, TableFiledType>>();
 
-        private static string targetPath = string.Empty;
+        private static string _targetPath = string.Empty;
 
         [MenuItem("MGame/TableTools/初始化配置表", false, 101)]
         public static void InitTable()
         {
-            colDict.Clear();
-            targetPath = string.Empty;
+            _colDict.Clear();
+            _targetPath = string.Empty;
             bool autoSave = false;
 
             var window = GetWindow(typeof(TableInitCsv), false, "初始化配置表");
@@ -43,11 +43,11 @@ namespace Framework
             }
             if (string.IsNullOrEmpty(path))
                 return;
-            infoDict = TableReader.ReadCsvFile(path);
-            if (infoDict.ContainsKey(2))
+            _infoDict = TableReader.ReadCsvFile(path);
+            if (_infoDict.ContainsKey(1))
             {
-                targetPath = path;
-                List<string> line = infoDict[1];
+                _targetPath = path;
+                List<string> line = _infoDict[1];
                 for (int i = 0; i < line.Count; i++)
                 {
                     string target = line[i];
@@ -57,13 +57,13 @@ namespace Framework
                     {
                         LogUtil.LogUtility.PrintWarning(string.Format("#配表未指定类型{0}行,{1}列#path:" + path, 2.ToString(), i.ToString()));
                         autoSave = true;
-                        infoDict[1][i] = temp[0] + ":" + type;
+                        _infoDict[1][i] = temp[0] + ":" + type;
                     }
                     else
                     {
                         type = temp[1];
                     }
-                    colDict[i] = new KeyValuePair<string, TableFiledType>(temp[0], TableReader.GetTableFiledType(type));
+                    _colDict[i] = new KeyValuePair<string, TableFiledType>(temp[0], TableReader.GetTableFiledType(type));
                 }
                 if (autoSave)
                     Save();
@@ -75,17 +75,17 @@ namespace Framework
         /// </summary>
         private static void Save()
         {
-            if (string.IsNullOrEmpty(targetPath))
+            if (string.IsNullOrEmpty(_targetPath))
             {
-                LogUtil.LogUtility.PrintWarning("#未指定配表路径#path:" + targetPath);
+                LogUtil.LogUtility.PrintWarning("#未指定配表路径#path:" + _targetPath);
                 return;
             }
-            int count = infoDict.Count;
+            int count = _infoDict.Count;
             string[] info = new string[count];
             for (int i = 0; i < count; i++)
             {
                 string target = string.Empty;
-                List<string> list = infoDict[i];
+                List<string> list = _infoDict[i];
                 for (int j = 0; j < list.Count; j++)
                 {
                     if (j != 0)
@@ -94,7 +94,7 @@ namespace Framework
                 }
                 info[i] = target;
             }
-            File.WriteAllLines(targetPath, info, Encoding.UTF8);
+            File.WriteAllLines(_targetPath, info, Encoding.UTF8);
             EditorUtility.DisplayDialog("提醒", "配置表已刷新并保存！", "确认");
         }
 
@@ -109,7 +109,7 @@ namespace Framework
             if (GUILayout.Button("open table", GUILayout.Width(150), GUILayout.Height(30)))
                 InitTable();
             EditorGUILayout.EndHorizontal();
-            int count = colDict.Count;
+            int count = _colDict.Count;
             for (int i = 0; i < count; i++)
             {
                 GUILayout.Space(6);
@@ -117,12 +117,12 @@ namespace Framework
                 GUILayout.Space(6);
                 EditorGUILayout.BeginHorizontal();
                 GUILayout.Label("", GUILayout.Width(10));
-                GUILayout.Label(colDict[i].Key, GUILayout.Width(150));
-                int index = EditorGUILayout.Popup((int)colDict[i].Value, TableReader._tableTypeOptions, GUILayout.Width(150));
-                if ((int)colDict[i].Value != index)
+                GUILayout.Label(_colDict[i].Key, GUILayout.Width(150));
+                int index = EditorGUILayout.Popup((int)_colDict[i].Value, TableReader._tableTypeOptions, GUILayout.Width(150));
+                if ((int)_colDict[i].Value != index)
                 {
-                    colDict[i] = new KeyValuePair<string, TableFiledType>(colDict[i].Key, (TableFiledType)index);
-                    infoDict[1][i] = colDict[i].Key + ":" + colDict[i].Value.ToString();
+                    _colDict[i] = new KeyValuePair<string, TableFiledType>(_colDict[i].Key, (TableFiledType)index);
+                    _infoDict[1][i] = _colDict[i].Key + ":" + _colDict[i].Value.ToString();
                 }
                 EditorGUILayout.EndHorizontal();
             }
