@@ -15,7 +15,7 @@ namespace Framework
 {
     public static class TableReader
     {
-        public static Dictionary<TableFiledType, string> _tableType = new Dictionary<TableFiledType, string>()
+        public static Dictionary<TableFiledType, string> _tableTypeDict = new Dictionary<TableFiledType, string>()
         {
             {TableFiledType.INT,"int"},
             {TableFiledType.FLOAT,"float"},

@@ -4,6 +4,7 @@
 ** desc:  导表工具;
 *********************************************************************************/
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,18 @@ namespace Framework
         [MenuItem("MGame/TableTools/Export Select cs", false, 11)]
         public static void ExportSelectCsharp()
         {
-
+            string path = string.Empty;
+            try
+            {
+                path = EditorUtility.OpenFilePanel("选择配置表", TableReader.TablePath, "csv");
+            }
+            catch (Exception e)
+            {
+                LogUtil.LogUtility.PrintWarning(e.ToString());
+            }
+            if (string.IsNullOrEmpty(path))
+                return;
+            TableExportCs.ExportCs(path);
         }
 
         [MenuItem("MGame/TableTools/Generate Select byte", false, 21)]

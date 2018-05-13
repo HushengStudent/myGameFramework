@@ -17,6 +17,13 @@ namespace Framework
 {
     public class TableInitCsv : EditorWindow
     {
+        public static Dictionary<TableFiledType, string> _tableType = new Dictionary<TableFiledType, string>()
+        {
+            {TableFiledType.INT,"int"},
+            {TableFiledType.FLOAT,"float"},
+            {TableFiledType.STRING,"string"}
+        };
+
         private static Dictionary<int, List<string>> _infoDict = new Dictionary<int, List<string>>();
 
         private static Dictionary<int, KeyValuePair<string, TableFiledType>> _colDict = new Dictionary<int, KeyValuePair<string, TableFiledType>>();

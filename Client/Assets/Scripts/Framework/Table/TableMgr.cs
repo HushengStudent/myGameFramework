@@ -16,6 +16,28 @@ namespace Framework
     {
         protected List<T> _dataList = new List<T>();
 
+        /// <summary>
+        /// 主键查找;
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public T FindByKey(int key)
+        {
+            for (int i = 0; i < _dataList.Count; i++)
+            {
+                if (_dataList[i].Key == key)
+                {
+                    return _dataList[i];
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 行查找;
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public T GetByIndex(int index)
         {
             return _dataList[index];
@@ -31,7 +53,7 @@ namespace Framework
             _dataList.Clear();
             int pos = 0;
             int dataCount = ConverterUtility.GetInt32(bytes, pos);
-            pos += Marshal.SizeOf(pos);
+            pos += Marshal.SizeOf(pos);//int大小;
             for (int i = 0; i < dataCount; i++)
             {
                 T data = Activator.CreateInstance<T>();

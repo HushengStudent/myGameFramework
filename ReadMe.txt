@@ -43,6 +43,7 @@ Client：客户端工程使用Unity5.5.4创建
 	(7)Mixed Text and Graphics：(EmojiText:https://github.com/zouchunyi/EmojiText).
 	(8)Table：(ExcelUtilityWith-ExcelReader:https://github.com/Ribosome2/ExcelUtilityWith-ExcelReader).
 	(9)NetWork：(GameFramework:https://github.com/EllanJiang/GameFramework).
+	(10)Fast Shadow Projector：(Asset Store).
 	
 Server：服务器工程使用visual studio2017创建
 	Reference：
