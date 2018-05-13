@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright (c) 2015-2017 topameng(topameng@qq.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -85,6 +85,9 @@ namespace LuaInterface
         HashSet<string> moduleSet = null;
 
         private static LuaState mainState = null;
+
+        public static LuaState MainState { get { return mainState; } }
+
         private static Dictionary<IntPtr, LuaState> stateMap = new Dictionary<IntPtr, LuaState>();
 
         private int beginCount = 0;

@@ -57,6 +57,8 @@ namespace Framework
         public override void UpdateEx()
         {
             base.UpdateEx();
+            if (_fpsInfo == null)
+                return;
             _fpsInfo.UpdateFps(Time.deltaTime, Time.unscaledDeltaTime);
             if (Input.GetKeyDown(KeyCode.D) && _showType == ShowType.ShowNon)
             {
