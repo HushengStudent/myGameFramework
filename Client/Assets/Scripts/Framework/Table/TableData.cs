@@ -30,6 +30,12 @@ namespace Framework
             byteOffset += ConverterUtility.SHORT_LENGTH;
         }
 
+        protected static void ReadBoolean(ref byte[] byteArr, ref int byteOffset, out bool outputValue)
+        {
+            outputValue = ConverterUtility.GetBoolean(byteArr, byteOffset);
+            byteOffset += ConverterUtility.BOOL_LENGTH;
+        }
+
         protected static void ReadInt32(ref byte[] byteArr, ref int byteOffset, out int outputValue)
         {
             outputValue = ConverterUtility.GetInt32(byteArr, byteOffset);

@@ -15,11 +15,20 @@ namespace Framework
 {
     public static class TableExportCs
     {
+        public static Dictionary<TableFiledType, string> _tableTypeDict = new Dictionary<TableFiledType, string>()
+        {
+            {TableFiledType.INT,"int"},
+            {TableFiledType.FLOAT,"float"},
+            {TableFiledType.STRING,"string"},
+            {TableFiledType.BOOL,"bool"},
+        };
+
         public static Dictionary<TableFiledType, string> _tableReadDict = new Dictionary<TableFiledType, string>()
         {
             {TableFiledType.INT,"        ReadInt32(ref byteArr,ref bytePos,out {0});"},
             {TableFiledType.FLOAT,"        ReadFloat(ref byteArr,ref bytePos,out {0});"},
-            {TableFiledType.STRING,"        ReadString(ref byteArr,ref bytePos,out {0});"}
+            {TableFiledType.STRING,"        ReadString(ref byteArr,ref bytePos,out {0});"},
+            {TableFiledType.BOOL,"        ReadBoolean(ref byteArr,ref bytePos,out {0});"}
         };
 
         private static Dictionary<int, List<string>> infoDict = new Dictionary<int, List<string>>();
@@ -32,6 +41,8 @@ namespace Framework
 
         public static void ExportCs(string path)
         {
+            if (string.IsNullOrEmpty(path))
+                return;
             infoDict.Clear();
             fileName = string.Empty;
             code = string.Empty;
@@ -63,7 +74,7 @@ namespace Framework
                     {
                         type = TableReader.GetTableFiledType(temp[1]);
                     }
-                    fields = fields + "\r\n " + "    public " + TableReader._tableTypeDict[type].ToString() + " " + temp[0] + ";";
+                    fields = fields + "\r\n " + "    public " + _tableTypeDict[type].ToString() + " " + temp[0] + ";";
                     if (i == 0)
                         mainKey = temp[0];
                     funcs = funcs + "\r\n " + string.Format(_tableReadDict[type], temp[0]);
@@ -73,6 +84,7 @@ namespace Framework
                 code = code.Replace("#function#", funcs);
                 File.WriteAllText(targetPath, code);
                 AssetDatabase.Refresh();
+                EditorUtility.DisplayDialog("提示", "cs 导出成功，等待编译通过！", "确认");
             }
         }
 

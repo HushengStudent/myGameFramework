@@ -15,15 +15,6 @@ namespace Framework
 {
     public static class TableReader
     {
-        public static Dictionary<TableFiledType, string> _tableTypeDict = new Dictionary<TableFiledType, string>()
-        {
-            {TableFiledType.INT,"int"},
-            {TableFiledType.FLOAT,"float"},
-            {TableFiledType.STRING,"string"}
-        };
-
-        public static string[] _tableTypeOptions = new string[] { "    string [字符串]", "    float [浮点数]", "    int [整数]" };
-
         private static string _tablePath = Application.dataPath.ToLower() + "/../../Table/";
 
         public static string TablePath { get { return _tablePath; } }
@@ -72,6 +63,7 @@ namespace Framework
     {
         STRING = 0, //字符串;
         FLOAT,      //浮点数;
-        INT         //整数;
+        INT,        //整数;
+        BOOL,       //Boolean;
     }
 }

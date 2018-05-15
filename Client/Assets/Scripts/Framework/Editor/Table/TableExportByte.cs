@@ -6,12 +6,19 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace Framework
 {
     public class TableExportByte
     {
+        public static void ExportByte(string path)
+        {
+            if (string.IsNullOrEmpty(path))
+                return;
 
+            EditorUtility.DisplayDialog("提示", "byte 导出成功！", "确认");
+        }
     }
 }

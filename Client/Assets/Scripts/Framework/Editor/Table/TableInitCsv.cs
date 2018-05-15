@@ -17,12 +17,7 @@ namespace Framework
 {
     public class TableInitCsv : EditorWindow
     {
-        public static Dictionary<TableFiledType, string> _tableType = new Dictionary<TableFiledType, string>()
-        {
-            {TableFiledType.INT,"int"},
-            {TableFiledType.FLOAT,"float"},
-            {TableFiledType.STRING,"string"}
-        };
+        public static string[] _tableTypeOptions = new string[] { "    string [字符串]", "    float [浮点数]", "    int [整数]", "    bool [Boolean]" };
 
         private static Dictionary<int, List<string>> _infoDict = new Dictionary<int, List<string>>();
 
@@ -110,11 +105,19 @@ namespace Framework
             EditorGUILayout.BeginVertical();
             EditorGUILayout.BeginScrollView(new Vector2(1000, 1000));
             EditorGUILayout.BeginHorizontal();
-            if (GUILayout.Button("save table", GUILayout.Width(150), GUILayout.Height(30)))
-                Save();
-            GUILayout.Space(20);
-            if (GUILayout.Button("open table", GUILayout.Width(150), GUILayout.Height(30)))
+
+            if (GUILayout.Button("open table", GUILayout.Width(120), GUILayout.Height(30)))
                 InitTable();
+            GUILayout.Space(10);
+            if (GUILayout.Button("save table", GUILayout.Width(120), GUILayout.Height(30)))
+                Save();
+            GUILayout.Space(10);
+            if (GUILayout.Button("export cs", GUILayout.Width(120), GUILayout.Height(30)))
+                TableExportCs.ExportCs(_targetPath);
+            GUILayout.Space(10);
+            if (GUILayout.Button("generate byte", GUILayout.Width(120), GUILayout.Height(30)))
+                TableExportByte.ExportByte(_targetPath);
+
             EditorGUILayout.EndHorizontal();
             int count = _colDict.Count;
             for (int i = 0; i < count; i++)
@@ -125,7 +128,7 @@ namespace Framework
                 EditorGUILayout.BeginHorizontal();
                 GUILayout.Label("", GUILayout.Width(10));
                 GUILayout.Label(_colDict[i].Key, GUILayout.Width(150));
-                int index = EditorGUILayout.Popup((int)_colDict[i].Value, TableReader._tableTypeOptions, GUILayout.Width(150));
+                int index = EditorGUILayout.Popup((int)_colDict[i].Value, _tableTypeOptions, GUILayout.Width(150));
                 if ((int)_colDict[i].Value != index)
                 {
                     _colDict[i] = new KeyValuePair<string, TableFiledType>(_colDict[i].Key, (TableFiledType)index);
