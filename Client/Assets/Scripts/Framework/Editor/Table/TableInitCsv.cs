@@ -29,6 +29,7 @@ namespace Framework
         public static void InitTable()
         {
             _colDict.Clear();
+            _infoDict.Clear();
             _targetPath = string.Empty;
             bool autoSave = false;
 
@@ -46,10 +47,10 @@ namespace Framework
             if (string.IsNullOrEmpty(path))
                 return;
             _infoDict = TableReader.ReadCsvFile(path);
-            if (_infoDict.ContainsKey(1))
+            if (_infoDict.ContainsKey(2))
             {
                 _targetPath = path;
-                List<string> line = _infoDict[1];
+                List<string> line = _infoDict[2];
                 for (int i = 0; i < line.Count; i++)
                 {
                     string target = line[i];
@@ -59,7 +60,7 @@ namespace Framework
                     {
                         LogUtil.LogUtility.PrintWarning(string.Format("#配表未指定类型{0}行,{1}列#path:" + path, 2.ToString(), i.ToString()));
                         autoSave = true;
-                        _infoDict[1][i] = temp[0] + ":" + type;
+                        _infoDict[2][i] = temp[0] + ":" + type;
                     }
                     else
                     {
@@ -87,7 +88,7 @@ namespace Framework
             for (int i = 0; i < count; i++)
             {
                 string target = string.Empty;
-                List<string> list = _infoDict[i];
+                List<string> list = _infoDict[i+1];
                 for (int j = 0; j < list.Count; j++)
                 {
                     if (j != 0)
@@ -132,7 +133,7 @@ namespace Framework
                 if ((int)_colDict[i].Value != index)
                 {
                     _colDict[i] = new KeyValuePair<string, TableFiledType>(_colDict[i].Key, (TableFiledType)index);
-                    _infoDict[1][i] = _colDict[i].Key + ":" + _colDict[i].Value.ToString();
+                    _infoDict[2][i] = _colDict[i].Key + ":" + _colDict[i].Value.ToString();
                 }
                 EditorGUILayout.EndHorizontal();
             }

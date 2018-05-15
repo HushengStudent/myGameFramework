@@ -31,35 +31,35 @@ namespace Framework
             {TableFiledType.BOOL,"        ReadBoolean(ref byteArr,ref bytePos,out {0});"}
         };
 
-        private static Dictionary<int, List<string>> infoDict = new Dictionary<int, List<string>>();
+        private static Dictionary<int, List<string>> _infoDict = new Dictionary<int, List<string>>();
 
-        private static string targetPath = Application.dataPath.ToLower() + "/Scripts/Common/Table/";
+        private static string _targetPath = Application.dataPath.ToLower() + "/Scripts/Common/Table/";
 
-        private static string fileName = string.Empty;
+        private static string _fileName = string.Empty;
 
-        private static string code = string.Empty;
+        private static string _code = string.Empty;
 
         public static void ExportCs(string path)
         {
             if (string.IsNullOrEmpty(path))
                 return;
-            infoDict.Clear();
-            fileName = string.Empty;
-            code = string.Empty;
+            _infoDict.Clear();
+            _fileName = string.Empty;
+            _code = string.Empty;
 
-            infoDict = TableReader.ReadCsvFile(path);
-            code = template;
-            if (infoDict.ContainsKey(1))
+            _infoDict = TableReader.ReadCsvFile(path);
+            _code = template;
+            if (_infoDict.ContainsKey(2))
             {
-                fileName = Path.GetFileNameWithoutExtension(path);
-                targetPath = targetPath + fileName + ".cs";
-                code = code.Replace("#fileName#", fileName);
+                _fileName = Path.GetFileNameWithoutExtension(path);
+                _targetPath = _targetPath + _fileName + ".cs";
+                _code = _code.Replace("#fileName#", _fileName);
 
                 string fields = string.Empty;
                 string mainKey = string.Empty;
                 string funcs = string.Empty;
 
-                List<string> line = infoDict[1];
+                List<string> line = _infoDict[2];
                 for (int i = 0; i < line.Count; i++)
                 {
                     string target = line[i];
@@ -79,10 +79,10 @@ namespace Framework
                         mainKey = temp[0];
                     funcs = funcs + "\r\n " + string.Format(_tableReadDict[type], temp[0]);
                 }
-                code = code.Replace("#fields#", fields);
-                code = code.Replace("#mainKey#", mainKey);
-                code = code.Replace("#function#", funcs);
-                File.WriteAllText(targetPath, code);
+                _code = _code.Replace("#fields#", fields);
+                _code = _code.Replace("#mainKey#", mainKey);
+                _code = _code.Replace("#function#", funcs);
+                File.WriteAllText(_targetPath, _code);
                 AssetDatabase.Refresh();
                 EditorUtility.DisplayDialog("提示", "cs 导出成功，等待编译通过！", "确认");
             }

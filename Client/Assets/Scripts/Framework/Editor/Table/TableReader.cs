@@ -28,10 +28,14 @@ namespace Framework
                 LogUtil.LogUtility.PrintError("#配置表错误#path:" + path);
                 return null;
             }
+            int index = 1;
             for (int i = 0; i < info.Length; i++)
             {
                 List<string> line = StringSplit(info[i], ",");
-                infoDict[i] = line;
+                if (line == null || line.Count < 1)
+                    continue;
+                infoDict[index] = line;
+                index++;
             }
             return infoDict;
         }
