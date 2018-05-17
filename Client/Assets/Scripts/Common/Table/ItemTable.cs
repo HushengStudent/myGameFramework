@@ -12,7 +12,7 @@ using System.Collections;
 using System.Collections.Generic; 
 using UnityEngine; 
  
-public class ItemTableDB : TableMgr<ItemTable>
+public class ItemTableDB : BaseTableDB<ItemTable>
 {
     public static readonly ItemTableDB instance=new ItemTableDB();
 }

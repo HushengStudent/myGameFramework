@@ -30,6 +30,8 @@ namespace Framework
             _infoDict.Clear();
             _tableTypeDict.Clear();
             _infoDict = TableReader.ReadCsvFile(path);
+
+            List<byte> allBytes = new List<byte>();
             if (_infoDict.ContainsKey(2))
             {
                 _fileName = Path.GetFileNameWithoutExtension(path);
@@ -53,11 +55,9 @@ namespace Framework
                 }
                 int col = line.Count;
 
-                MemoryStream ms = new MemoryStream();
-                ms.Position = 0;
-                ms.SetLength(0);
                 byte[] dataCount = ConverterUtility.GetBytes(_infoDict.Count - 2);
-                ms.Write(dataCount, 0, dataCount.Length);
+                allBytes.AddRange(dataCount);
+
                 int index = 3;
                 while (_infoDict.ContainsKey(index))
                 {
@@ -70,11 +70,11 @@ namespace Framework
                     for (int i = 0; i < info.Count; i++)
                     {
                         byte[] tempByte = Export2Bytes(info[i], _tableTypeDict[i]);
-                        ms.Write(tempByte, 0, tempByte.Length);
+                        allBytes.AddRange(tempByte);
                     }
                     index++;
                 }
-                FileUtility.Write2Bytes(filePath, ms.GetBuffer());
+                FileUtility.Write2Bytes(filePath, allBytes.ToArray());
 
                 EditorUtility.DisplayDialog("提示", "byte 导出成功！", "确认");
             }
@@ -82,7 +82,7 @@ namespace Framework
 
         public static byte[] Export2Bytes(string value, TableFiledType type)
         {
-            MemoryStream ms = new MemoryStream();
+            List<byte> bytesList = new List<byte>();
             byte[] targetBytes;
             switch (type)
             {
@@ -98,12 +98,12 @@ namespace Framework
                 case TableFiledType.STRING:
                 default:
                     targetBytes = ConverterUtility.GetBytes(value);
-                    byte[] countBytes = ConverterUtility.GetBytes((short)targetBytes.Length);
-                    ms.Write(countBytes, 0, countBytes.Length);
+                    byte[] countBytes = ConverterUtility.GetBytes((ushort)targetBytes.Length);
+                    bytesList.AddRange(countBytes);
                     break;
             }
-            ms.Write(targetBytes, 0, targetBytes.Length);
-            return ms.GetBuffer();
+            bytesList.AddRange(targetBytes);
+            return bytesList.ToArray();
         }
     }
 }

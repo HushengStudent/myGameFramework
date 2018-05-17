@@ -1,65 +1,35 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/05/13 20:57:14
-** desc:  配置表管理类;
+** date:  2018/05/17 23:35:26
+** desc:  数据表管理;
 *********************************************************************************/
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
+using System.IO;
 using UnityEngine;
 
 namespace Framework
 {
-    public class TableMgr<T> where T : TableData
+    public class TableMgr : Singleton<TableMgr>, IMgr
     {
-        protected List<T> _dataList = new List<T>();
+        private string _path = Application.dataPath.ToLower() + "/Bundles/Single/Table/";
 
-        /// <summary>
-        /// 主键查找;
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public T FindByKey(int key)
+        private Dictionary<string, Table> _dbDict = new Dictionary<string, Table>();
+
+        public void InitMgr()
         {
-            for (int i = 0; i < _dataList.Count; i++)
-            {
-                if (_dataList[i].Key == key)
-                {
-                    return _dataList[i];
-                }
-            }
-            return null;
+            _dbDict.Clear();
         }
 
-        /// <summary>
-        /// 行查找;
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
-        public T GetByIndex(int index)
+        public void LoadTable(string tableName, Table table)
         {
-            return _dataList[index];
+            if (_dbDict.ContainsKey(tableName))
+                return;
+            byte[] bytes = FileUtility.ReadFromBytes(_path + tableName + ".byte");
+            table.LoadData(bytes);
+            _dbDict[tableName] = table;
         }
 
-        public int Size()
-        {
-            return _dataList.Count;
-        }
-
-        public void LoadData(byte[] bytes)
-        {
-            _dataList.Clear();
-            int pos = 0;
-            int dataCount = ConverterUtility.GetInt32(bytes, pos);
-            pos += Marshal.SizeOf(pos);//int大小;
-            for (int i = 0; i < dataCount; i++)
-            {
-                T data = Activator.CreateInstance<T>();
-                data.Decode(bytes, ref pos);
-                _dataList.Add(data);
-            }
-        }
     }
 }

@@ -103,7 +103,7 @@ namespace Framework
             "using System.Collections.Generic; \r\n" +
             "using UnityEngine; \r\n" +
             " \r\n" +
-            "public class #fileName#DB : TableMgr<#fileName#>\r\n" +
+            "public class #fileName#DB : BaseTableDB<#fileName#>\r\n" +
             "{\r\n" +
             "    public static readonly #fileName#DB instance=new #fileName#DB();\r\n" +
             "}\r\n" +
