@@ -52,7 +52,7 @@ namespace Framework
             if (_infoDict.ContainsKey(2))
             {
                 _fileName = Path.GetFileNameWithoutExtension(path);
-                _targetPath = _targetPath + _fileName + ".cs";
+                string filePath = _targetPath + _fileName + ".cs";
                 _code = _code.Replace("#fileName#", _fileName);
 
                 string fields = string.Empty;
@@ -82,7 +82,7 @@ namespace Framework
                 _code = _code.Replace("#fields#", fields);
                 _code = _code.Replace("#mainKey#", mainKey);
                 _code = _code.Replace("#function#", funcs);
-                File.WriteAllText(_targetPath, _code);
+                File.WriteAllText(filePath, _code);
                 AssetDatabase.Refresh();
                 EditorUtility.DisplayDialog("提示", "cs 导出成功，等待编译通过！", "确认");
             }

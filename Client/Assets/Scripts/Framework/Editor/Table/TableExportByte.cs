@@ -33,7 +33,7 @@ namespace Framework
             if (_infoDict.ContainsKey(2))
             {
                 _fileName = Path.GetFileNameWithoutExtension(path);
-                _targetPath = _targetPath + _fileName + ".byte";
+                string filePath = _targetPath + _fileName + ".byte";
                 List<string> line = _infoDict[2];
                 for (int i = 0; i < line.Count; i++)
                 {
@@ -74,7 +74,7 @@ namespace Framework
                     }
                     index++;
                 }
-                FileUtility.Write2Bytes(_targetPath, ms.GetBuffer());
+                FileUtility.Write2Bytes(filePath, ms.GetBuffer());
 
                 EditorUtility.DisplayDialog("提示", "byte 导出成功！", "确认");
             }
