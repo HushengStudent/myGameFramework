@@ -38,7 +38,7 @@ namespace Framework
             string path = string.Empty;
             try
             {
-                path = EditorUtility.OpenFilePanel("选择配置表", TableReader.TablePath, "csv");
+                path = EditorUtility.OpenFilePanel("选择配置表", TableConfig.TablePath, "csv");
             }
             catch (Exception e)
             {
@@ -88,7 +88,7 @@ namespace Framework
             for (int i = 0; i < count; i++)
             {
                 string target = string.Empty;
-                List<string> list = _infoDict[i+1];
+                List<string> list = _infoDict[i + 1];
                 for (int j = 0; j < list.Count; j++)
                 {
                     if (j != 0)

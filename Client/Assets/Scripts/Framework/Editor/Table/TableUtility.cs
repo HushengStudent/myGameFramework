@@ -49,7 +49,7 @@ namespace Framework
             string path = string.Empty;
             try
             {
-                path = EditorUtility.OpenFilePanel("选择配置表", TableReader.TablePath, "csv");
+                path = EditorUtility.OpenFilePanel("选择配置表", TableConfig.TablePath, "csv");
             }
             catch (Exception e)
             {

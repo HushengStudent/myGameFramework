@@ -15,10 +15,6 @@ namespace Framework
 {
     public static class TableReader
     {
-        private static string _tablePath = Application.dataPath.ToLower() + "/../../Table/";
-
-        public static string TablePath { get { return _tablePath; } }
-
         public static Dictionary<int, List<string>> ReadCsvFile(string path)
         {
             Dictionary<int, List<string>> infoDict = new Dictionary<int, List<string>>();
@@ -61,13 +57,5 @@ namespace Framework
         {
             return (TableFiledType)Enum.Parse(typeof(TableFiledType), str);
         }
-    }
-
-    public enum TableFiledType : int
-    {
-        STRING = 0, //字符串;
-        FLOAT,      //浮点数;
-        INT,        //整数;
-        BOOL,       //Boolean;
     }
 }

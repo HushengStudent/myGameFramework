@@ -56,7 +56,8 @@ namespace Framework
                 MemoryStream ms = new MemoryStream();
                 ms.Position = 0;
                 ms.SetLength(0);
-
+                byte[] dataCount = ConverterUtility.GetBytes(_infoDict.Count - 2);
+                ms.Write(dataCount, 0, dataCount.Length);
                 int index = 3;
                 while (_infoDict.ContainsKey(index))
                 {
@@ -66,7 +67,7 @@ namespace Framework
                         LogUtil.LogUtility.PrintWarning(string.Format("#配表未指定类型{0}行错误#path:" + path, index));
                         return;
                     }
-                    for(int i = 0; i < info.Count; i++)
+                    for (int i = 0; i < info.Count; i++)
                     {
                         byte[] tempByte = Export2Bytes(info[i], _tableTypeDict[i]);
                         ms.Write(tempByte, 0, tempByte.Length);
@@ -81,21 +82,28 @@ namespace Framework
 
         public static byte[] Export2Bytes(string value, TableFiledType type)
         {
-            byte[] bytes = new byte[0];
+            MemoryStream ms = new MemoryStream();
+            byte[] targetBytes;
             switch (type)
             {
-                case TableFiledType.STRING:
-                    break;
                 case TableFiledType.FLOAT:
+                    targetBytes = ConverterUtility.GetBytes(float.Parse(value));
                     break;
                 case TableFiledType.INT:
+                    targetBytes = ConverterUtility.GetBytes(int.Parse(value));
                     break;
                 case TableFiledType.BOOL:
+                    targetBytes = ConverterUtility.GetBytes((int.Parse(value)) == 1);
                     break;
+                case TableFiledType.STRING:
                 default:
+                    targetBytes = ConverterUtility.GetBytes(value);
+                    byte[] countBytes = ConverterUtility.GetBytes((short)targetBytes.Length);
+                    ms.Write(countBytes, 0, countBytes.Length);
                     break;
             }
-            return bytes;
+            ms.Write(targetBytes, 0, targetBytes.Length);
+            return ms.GetBuffer();
         }
     }
 }
