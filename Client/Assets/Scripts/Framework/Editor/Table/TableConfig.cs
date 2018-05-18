@@ -23,6 +23,5 @@ namespace Framework
         private static string _tablePath = Application.dataPath.ToLower() + "/../../Table/";
 
         public static string TablePath { get { return _tablePath; } }
-
     }
 }

@@ -31,6 +31,7 @@ namespace Framework
             _colDict.Clear();
             _infoDict.Clear();
             _targetPath = string.Empty;
+
             bool autoSave = false;
 
             var window = GetWindow(typeof(TableInitCsv), false, "初始化配置表");
