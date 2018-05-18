@@ -16,6 +16,8 @@ namespace Framework
     {
         protected List<T> _dataList = new List<T>();
 
+        public List<T> DataList { get { return _dataList; } }
+
         /// <summary>
         /// 主键查找;
         /// </summary>

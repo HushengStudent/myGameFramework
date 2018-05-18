@@ -22,7 +22,6 @@ namespace Framework
             {TableFiledType.STRING,"string"},
             {TableFiledType.BOOL,"bool"},
         };
-
         public static Dictionary<TableFiledType, string> _tableReadDict = new Dictionary<TableFiledType, string>()
         {
             {TableFiledType.INT,"        ReadInt32(ref byteArr,ref bytePos,out {0});"},
@@ -30,13 +29,9 @@ namespace Framework
             {TableFiledType.STRING,"        ReadString(ref byteArr,ref bytePos,out {0});"},
             {TableFiledType.BOOL,"        ReadBoolean(ref byteArr,ref bytePos,out {0});"}
         };
-
         private static Dictionary<int, List<string>> _infoDict = new Dictionary<int, List<string>>();
-
         private static string _targetPath = Application.dataPath.ToLower() + "/Scripts/Common/Table/";
-
         private static string _fileName = string.Empty;
-
         private static string _code = string.Empty;
 
         public static void ExportCs(string path)

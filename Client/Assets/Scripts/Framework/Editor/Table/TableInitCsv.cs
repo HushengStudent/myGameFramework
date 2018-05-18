@@ -18,11 +18,8 @@ namespace Framework
     public class TableInitCsv : EditorWindow
     {
         public static string[] _tableTypeOptions = new string[] { "    string [字符串]", "    float [浮点数]", "    int [整数]", "    bool [Boolean]" };
-
         private static Dictionary<int, List<string>> _infoDict = new Dictionary<int, List<string>>();
-
         private static Dictionary<int, KeyValuePair<string, TableFiledType>> _colDict = new Dictionary<int, KeyValuePair<string, TableFiledType>>();
-
         private static string _targetPath = string.Empty;
 
         [MenuItem("MGame/TableTools/初始化配置表", false, 301)]
@@ -33,7 +30,6 @@ namespace Framework
             _targetPath = string.Empty;
 
             bool autoSave = false;
-
             var window = GetWindow(typeof(TableInitCsv), false, "初始化配置表");
             window.Show();
             string path = string.Empty;

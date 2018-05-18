@@ -16,11 +16,8 @@ namespace Framework
     public class TableExportByte
     {
         public static Dictionary<int, TableFiledType> _tableTypeDict = new Dictionary<int, TableFiledType>();
-
         private static Dictionary<int, List<string>> _infoDict = new Dictionary<int, List<string>>();
-
         private static string _targetPath = Application.dataPath.ToLower() + "/Bundles/Single/Table/";
-
         private static string _fileName = string.Empty;
 
         public static void ExportByte(string path)
@@ -54,10 +51,8 @@ namespace Framework
                     _tableTypeDict[i] = TableReader.GetTableFiledType(type);
                 }
                 int col = line.Count;
-
                 byte[] dataCount = ConverterUtility.GetBytes(_infoDict.Count - 2);
                 allBytes.AddRange(dataCount);
-
                 int index = 3;
                 while (_infoDict.ContainsKey(index))
                 {
@@ -75,7 +70,6 @@ namespace Framework
                     index++;
                 }
                 FileUtility.Write2Bytes(filePath, allBytes.ToArray());
-
                 EditorUtility.DisplayDialog("提示", "byte 导出成功！", "确认");
             }
         }
