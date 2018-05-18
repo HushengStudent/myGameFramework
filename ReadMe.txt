@@ -9,7 +9,7 @@ Client：客户端工程使用Unity5.5.4创建
 	(2)tolua接入.(Finish)
 	(3)Log封装.(Finish)
 	(4)Lua UI模块：Lua类、工具方法、定时器、事件系统.(Finish)
-	(5)Lua Profiler.(TODO)
+	(5)Lua Profiler.(Finish)
 	(6)ECS模式.(Finish)
 	(7)通用单例.(Finish)
 	(8)协程封装.(Finish)
@@ -44,6 +44,7 @@ Client：客户端工程使用Unity5.5.4创建
 	(8)Table：(ExcelUtilityWith-ExcelReader:https://github.com/Ribosome2/ExcelUtilityWith-ExcelReader).
 	(9)NetWork：(GameFramework:https://github.com/EllanJiang/GameFramework).
 	(10)Fast Shadow Projector：(Asset Store).
+	(11)Lua Profiler：(LuaMemorySnapshotDump:https://github.com/EllanJiang/GameFramework).
 	
 Server：服务器工程使用visual studio2017创建
 	Reference：
