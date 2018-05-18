@@ -72,9 +72,9 @@ namespace Framework
 
         protected static void ReadString(ref byte[] byteArr, ref int byteOffset, out string str)
         {
-            ushort len;
+            int len;
             //第一位为长度;
-            ReadUShort(ref byteArr, ref byteOffset, out len);
+            ReadInt32(ref byteArr, ref byteOffset, out len);
             str = Encoding.UTF8.GetString(byteArr, byteOffset, len);
             byteOffset += len;
         }

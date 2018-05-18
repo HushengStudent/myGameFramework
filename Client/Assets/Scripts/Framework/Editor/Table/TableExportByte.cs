@@ -92,7 +92,7 @@ namespace Framework
                 case TableFiledType.STRING:
                 default:
                     targetBytes = ConverterUtility.GetBytes(value);
-                    byte[] countBytes = ConverterUtility.GetBytes((ushort)targetBytes.Length);
+                    byte[] countBytes = ConverterUtility.GetBytes(targetBytes.Length);
                     bytesList.AddRange(countBytes);
                     break;
             }

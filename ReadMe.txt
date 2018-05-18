@@ -31,7 +31,7 @@ Client：客户端工程使用Unity5.5.4创建
 	(24)FMOD.(TODO)
 	(25)T4M.(TODO)
 	(26)FairyGUI.(TODO)
-	(27)配置表工具.(TODO)
+	(27)配置表工具.(Finish)
 	
 	Reference：
 	(1)tolua：(tolua:https://github.com/topameng/tolua).

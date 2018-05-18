@@ -20,6 +20,7 @@ namespace Framework
         public void InitMgr()
         {
             _dbDict.Clear();
+            PreLoad();
         }
 
         public void LoadTable(string tableName, Table table)
@@ -31,5 +32,9 @@ namespace Framework
             _dbDict[tableName] = table;
         }
 
+        private void PreLoad()
+        {
+            LoadTable("ItemTable", ItemTableDB.instance);
+        }
     }
 }
