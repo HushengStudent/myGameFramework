@@ -13,5 +13,5 @@ namespace Framework
     public class NetMgr : Singleton<NetMgr>
     {
 
-	}
+    }
 }

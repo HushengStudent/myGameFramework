@@ -11,21 +11,8 @@ using UnityEngine;
 
 namespace Framework
 {
-	public static class LuaNetUtil
+    public static class LuaNetUtil
     {
-        public static void SendReq(LuaByteBuffer data)
-        {
 
-        }
-
-        public static void SendNtf(LuaByteBuffer data)
-        {
-
-        }
-
-        public static void OnReceiveRsp()
-        {
-
-        }
-	}
+    }
 }
