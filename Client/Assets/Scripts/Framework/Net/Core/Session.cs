@@ -16,7 +16,7 @@ namespace Framework
 {
     public class Session
     {
-        private int _defaultPacketHeaderLength = 4;
+        private int _defaultPacketLength = 4;//协议格式:4位长度+4位id+内容;此处指长度,4位;
         private int _defaultMaxPacketLength = 1024 * 64;
 
         private readonly string _name;
@@ -235,7 +235,7 @@ namespace Framework
             }
             _socket = new Socket(addressFamily, SocketType.Stream, ProtocolType.Tcp);
             _receiver = new SessionReceiver(_defaultMaxPacketLength);
-            _receiver.Reset(_defaultPacketHeaderLength);
+            _receiver.Reset(_defaultPacketLength);
         }
 
         private void ConnectCallback(IAsyncResult ar)
@@ -270,11 +270,6 @@ namespace Framework
         #endregion
 
         #region Session Send
-
-        public void Send(byte[] buffer)
-        {
-            Send(buffer, 0, buffer.Length);
-        }
 
         public void Send(byte[] buffer, int offset, int size)
         {
@@ -330,27 +325,15 @@ namespace Framework
             {
                 int length = 0;
                 int packetLength = 0;
-                byte[] packetBuffer = new byte[_defaultMaxPacketLength];
+                byte[] packetBuffer = new byte[_defaultMaxPacketLength];//TODO:内存池;
                 using (MemoryStream memoryStream = new MemoryStream(packetBuffer, true))
                 {
-                    memoryStream.Seek(_defaultPacketHeaderLength, SeekOrigin.Begin);
+                    memoryStream.Seek(_defaultPacketLength, SeekOrigin.Begin);
                     SessionUtil.Serialize(this, memoryStream, packet);
                     length = (int)memoryStream.Position;
                 }
-                packetLength = length - _defaultPacketHeaderLength;
-                if (_defaultPacketHeaderLength == 4)
-                {
-                    ConverterUtility.GetBytes(packetLength).CopyTo(packetBuffer, 0);
-                }
-                else if (_defaultPacketHeaderLength == 2)
-                {
-                    ConverterUtility.GetBytes((ushort)packetLength).CopyTo(packetBuffer, 0);
-                }
-                else
-                {
-                    packetBuffer[0] = (byte)packetLength;
-                }
-
+                packetLength = length - _defaultPacketLength;
+                ConverterUtility.GetBytes(packetLength).CopyTo(packetBuffer, 0);
                 Send(packetBuffer, 0, length);
             }
             catch (Exception exception)
@@ -454,7 +437,7 @@ namespace Framework
             bool processSuccess = false;
             try
             {
-                processSuccess = Process();
+                processSuccess = Process();//返回false,继续接收;
             }
             catch (Exception exception)
             {
@@ -480,13 +463,13 @@ namespace Framework
             {
                 throw new Exception(string.Format("Receive length '{0}' is not equal to length '{1}'.", _receiver.ReceivedLength.ToString(), _receiver.Length.ToString()));
             }
-            if (_receiver.Length < _defaultPacketHeaderLength)
+            if (_receiver.Length < _defaultPacketLength)
             {
                 throw new Exception(string.Format("Length '{0}' is smaller than length header.", _receiver.Length.ToString()));
             }
-            if (_receiver.Length == _defaultPacketHeaderLength)
+            if (_receiver.Length == _defaultPacketLength)
             {
-                int packetLength = _defaultPacketHeaderLength == 4 ? ConverterUtility.GetInt32(_receiver.GetBuffer()) : (_defaultPacketHeaderLength == 2 ? ConverterUtility.GetUInt16(_receiver.GetBuffer()) : _receiver.GetBuffer()[0]);
+                int packetLength = ConverterUtility.GetInt32(_receiver.GetBuffer());
                 if (packetLength <= 0)
                 {
                     string errorMessage = string.Format("Packet length '{0}' is invalid.", packetLength.ToString());
@@ -503,7 +486,7 @@ namespace Framework
                     string errorMessage = string.Format("Length '{0}' is larger than buffer size '{1}'.", _receiver.Length.ToString(), _receiver.BufferSize.ToString());
                     if (ErrorHandler != null)
                     {
-                        ErrorHandler(this, SessionState.OutOfRangeError, errorMessage);
+                        ErrorHandler(this, SessionState.OutOfRangeError, errorMessage);//未接收完成,继续;
                         return false;
                     }
                     throw new Exception(errorMessage);
@@ -513,16 +496,16 @@ namespace Framework
             Packet packet = null;
             try
             {
-                int packetLength = _receiver.Length - _defaultPacketHeaderLength;
+                int packetLength = _receiver.Length - _defaultPacketLength;
                 object customErrorData = null;
-                using (MemoryStream memoryStream = new MemoryStream(_receiver.GetBuffer(), _defaultPacketHeaderLength, packetLength, false))
+                using (MemoryStream memoryStream = new MemoryStream(_receiver.GetBuffer(), _defaultPacketLength, packetLength, false))
                 {
                     lock (thisLock)
                     {
                         packet = SessionUtil.Deserialize(this, memoryStream, out customErrorData);
                     }
                 }
-                _receiver.Reset(_defaultPacketHeaderLength);
+                _receiver.Reset(_defaultPacketLength);
                 if (packet == null)
                 {
                     if (CustomErrorHandler != null)

@@ -6,13 +6,16 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace Framework
 {
     public class Packet
     {
-        public int id;
-        public object args;
+        private int _id;
+        public int Id { get { return _id; } set { _id = value; } }
+
+        public virtual void Process() { }
     }
 }

@@ -13,16 +13,22 @@ namespace Framework
 {
     public static class SessionUtil
     {
-        public static void Serialize<T>(Session networkChannel, Stream destination, T packet) where T : Packet
+        public static void Serialize<T>(Session session, Stream destination, T packet) where T : Packet
         {
-
+            byte[] idBytes = ConverterUtility.GetBytes(packet.Id);//TODO:优化为UShort,减少数据;
+            destination.Write(idBytes, 0, idBytes.Length);
+            ProtoBuf.Serializer.Serialize<T>(destination, packet);
         }
 
-        public static Packet Deserialize(Session networkChannel, Stream source, out object customErrorData)
+        public static Packet Deserialize(Session session, Stream source, out object customErrorData)
         {
-            Packet packet = new Packet();
             customErrorData = null;
-            return packet;
+            long begin = source.Position;
+            byte[] buffer = new byte[4];
+            source.Read(buffer, 0, sizeof(int));
+            int id = ConverterUtility.GetInt32(buffer);
+            source.Position += sizeof(int);
+            return ProtoBuf.Serializer.Deserialize<Packet>(source);
         }
     }
 }
