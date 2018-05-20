@@ -6,16 +6,20 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 
 namespace Framework
 {
-	public static class GameConfig
-	{
+    public static class GameConfig
+    {
         public static int GameFrame = 60;
         public static float SyncInterval = 0.2f;
         public static MobileLevel MobileLevelValue = MobileLevel.High;
 
-        public static string applicationDataPath =Application.dataPath.ToLower();
+        public static string applicationDataPath = Application.dataPath.ToLower();
+    
+        public static IPAddress ipAddress = IPAddress.Parse("127.0.0.1");
+        public static int port = 10000;
     }
 }

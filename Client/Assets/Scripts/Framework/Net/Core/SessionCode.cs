@@ -10,7 +10,27 @@ using UnityEngine;
 
 namespace Framework
 {
-    public enum NetCode : byte
+    public enum SessionType
+    {
+        Unknown = 0,
+        IPv4,
+        IPv6,
+    }
+
+    public enum SessionState : int
+    {
+        ConnectError = 0,
+        SendError,
+        ReceiveError,
+        StateError,
+        SerializeError,
+        DeserializeError,
+        HeaderError,
+        OutOfRangeError,
+        StreamError,
+    }
+
+    public enum SessionCode : int
     {
 
     }
