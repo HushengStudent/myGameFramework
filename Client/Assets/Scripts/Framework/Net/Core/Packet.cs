@@ -11,11 +11,17 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class Packet
+    public abstract class Packet
     {
-        private int _id;
+        private int _id = 0;
+
         public int Id { get { return _id; } set { _id = value; } }
 
-        public virtual void Process() { }
+        public abstract int GetPacketId();
+
+        public abstract void Serialize(MemoryStream stream);
+        public abstract void DeSerialize(MemoryStream stream);
+
+        public abstract void Process();
     }
 }

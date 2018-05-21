@@ -30,7 +30,7 @@ namespace Common
         //protogen目录;
         private static string protogen = Application.dataPath.ToLower() + "/../../Tools/protoc-gen-csharp/ProtoGen/bin/Release/protogen.exe";
         //csharp客户端输出目录;
-        private static string csharpClientPath = Application.dataPath.ToLower() + "/Scripts/Common/Protocol";
+        private static string csharpClientPath = Application.dataPath.ToLower() + "/Scripts/Common/Protocol/Proto";
         //TODO:生成协议给服务器;
         //private static string csharpServerPath = Application.dataPath.ToLower() + "/Scripts/Common/Protocol";
 
