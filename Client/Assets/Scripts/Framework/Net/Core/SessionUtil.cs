@@ -15,9 +15,10 @@ namespace Framework
     {
         public static void Serialize<T>(Session session, MemoryStream destination, T packet) where T : Packet
         {
-            byte[] idBytes = ConverterUtility.GetBytes(packet.GetPacketId());//TODO:优化为UShort,减少数据;
+            byte[] idBytes = ConverterUtility.GetBytes(packet.GetPacketId());
             destination.Write(idBytes, 0, idBytes.Length);
             packet.Serialize(destination);
+            ProtoRegister.ReturnPacket(packet);
         }
 
         public static Packet Deserialize(Session session, MemoryStream source, out object customErrorData)
@@ -26,10 +27,11 @@ namespace Framework
             long begin = source.Position;
             byte[] buffer = new byte[4];
             source.Read(buffer, 0, sizeof(int));
-            //TODO:根据id拿到协议反序列化;
             int id = ConverterUtility.GetInt32(buffer);
+            Packet packet = ProtoRegister.GetPacketById(id);
             source.Position += sizeof(int);
-            return ProtoBuf.Serializer.Deserialize<Packet>(source);
+            packet.DeSerialize(source);
+            return packet;
         }
     }
 }

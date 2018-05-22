@@ -13,10 +13,7 @@ namespace Framework
 {
     public abstract class Packet
     {
-        private int _id = 0;
-
-        public int Id { get { return _id; } set { _id = value; } }
-
+        //TODO:协议ID优化为UShort,减少数据;
         public abstract int GetPacketId();
 
         public abstract void Serialize(MemoryStream stream);

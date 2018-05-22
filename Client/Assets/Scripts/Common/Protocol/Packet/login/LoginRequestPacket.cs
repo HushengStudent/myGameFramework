@@ -3,11 +3,12 @@ using Protocol;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEngine;
 
 public class LoginRequestPacket : Packet
 {
-    public LoginRequest data = new LoginRequest();
+    private LoginRequest data = new LoginRequest();
+
+    public LoginRequest Data { get { return data; } }
 
     public override int GetPacketId()
     {
@@ -28,5 +29,4 @@ public class LoginRequestPacket : Packet
     {
 
     }
-
 }

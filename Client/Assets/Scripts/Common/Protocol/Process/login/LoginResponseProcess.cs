@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class LoginResponseProcess
 {
+    public static void Process(LoginResponsePacket packet)
+    {
 
+    }
 }

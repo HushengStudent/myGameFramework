@@ -47,7 +47,8 @@ namespace Framework
 
         private void OnReceive(Session session, Packet packet)
         {
-            throw new NotImplementedException();
+            packet.Process();
+            ProtoRegister.ReturnPacket(packet);
         }
 
         private void OnCustomError(Session session, object args)

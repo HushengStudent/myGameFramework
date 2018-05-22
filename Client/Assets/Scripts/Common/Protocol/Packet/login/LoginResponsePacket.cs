@@ -3,11 +3,12 @@ using Protocol;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEngine;
 
 public class LoginResponsePacket : Packet
 {
-    public LoginResponse data = new LoginResponse();
+    private LoginResponse data = new LoginResponse();
+
+    public LoginResponse Data { get { return data; } }
 
     public override int GetPacketId()
     {
