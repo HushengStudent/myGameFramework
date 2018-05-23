@@ -194,7 +194,7 @@ namespace Framework
                 string errorMessage = "initialize failure.";
                 if (ErrorHandler != null)
                 {
-                    ErrorHandler(this, SessionState.StateError, errorMessage);
+                    ErrorHandler(this, SessionErrorCode.StateError, errorMessage);
                     return;
                 }
                 throw new Exception(errorMessage);
@@ -208,7 +208,7 @@ namespace Framework
             {
                 if (ErrorHandler != null)
                 {
-                    ErrorHandler(this, SessionState.StateError, exception.Message);
+                    ErrorHandler(this, SessionErrorCode.StateError, exception.Message);
                     return;
                 }
                 throw;
@@ -254,7 +254,7 @@ namespace Framework
                 _active = false;
                 if (ErrorHandler != null)
                 {
-                    ErrorHandler(this, SessionState.ConnectError, exception.Message);
+                    ErrorHandler(this, SessionErrorCode.ConnectError, exception.Message);
                     return;
                 }
                 throw;
@@ -278,7 +278,7 @@ namespace Framework
                 string errorMessage = "session not initialize.";
                 if (ErrorHandler != null)
                 {
-                    ErrorHandler(this, SessionState.StateError, errorMessage);
+                    ErrorHandler(this, SessionErrorCode.StateError, errorMessage);
                     return;
                 }
                 throw new Exception(errorMessage);
@@ -292,7 +292,7 @@ namespace Framework
                 _active = false;
                 if (ErrorHandler != null)
                 {
-                    ErrorHandler(this, SessionState.StateError, exception.Message);
+                    ErrorHandler(this, SessionErrorCode.StateError, exception.Message);
                     return;
                 }
                 throw;
@@ -306,7 +306,7 @@ namespace Framework
                 string errorMessage = "session not initialize.";
                 if (ErrorHandler != null)
                 {
-                    ErrorHandler(this, SessionState.StateError, errorMessage);
+                    ErrorHandler(this, SessionErrorCode.StateError, errorMessage);
                     return;
                 }
                 throw new Exception(errorMessage);
@@ -316,7 +316,7 @@ namespace Framework
                 string errorMessage = "Packet is invalid.";
                 if (ErrorHandler != null)
                 {
-                    ErrorHandler(this, SessionState.StateError, errorMessage);
+                    ErrorHandler(this, SessionErrorCode.StateError, errorMessage);
                     return;
                 }
                 throw new Exception(errorMessage);
@@ -341,7 +341,7 @@ namespace Framework
                 _active = false;
                 if (ErrorHandler != null)
                 {
-                    ErrorHandler(this, SessionState.SerializeError, exception.ToString());
+                    ErrorHandler(this, SessionErrorCode.SerializeError, exception.ToString());
                     return;
                 }
                 throw;
@@ -366,7 +366,7 @@ namespace Framework
                 _active = false;
                 if (ErrorHandler != null)
                 {
-                    ErrorHandler(this, SessionState.SendError, exception.Message);
+                    ErrorHandler(this, SessionErrorCode.SendError, exception.Message);
                     return;
                 }
 
@@ -393,7 +393,7 @@ namespace Framework
                 _active = false;
                 if (ErrorHandler != null)
                 {
-                    ErrorHandler(this, SessionState.ReceiveError, exception.Message);
+                    ErrorHandler(this, SessionErrorCode.ReceiveError, exception.Message);
                     return;
                 }
                 throw;
@@ -417,7 +417,7 @@ namespace Framework
                 _active = false;
                 if (ErrorHandler != null)
                 {
-                    ErrorHandler(this, SessionState.ReceiveError, exception.Message);
+                    ErrorHandler(this, SessionErrorCode.ReceiveError, exception.Message);
                     return;
                 }
 
@@ -444,7 +444,7 @@ namespace Framework
                 _active = false;
                 if (ErrorHandler != null)
                 {
-                    ErrorHandler(this, SessionState.StreamError, exception.Message);
+                    ErrorHandler(this, SessionErrorCode.StreamError, exception.Message);
                     return;
                 }
 
@@ -475,7 +475,7 @@ namespace Framework
                     string errorMessage = string.Format("Packet length '{0}' is invalid.", packetLength.ToString());
                     if (ErrorHandler != null)
                     {
-                        ErrorHandler(this, SessionState.HeaderError, errorMessage);
+                        ErrorHandler(this, SessionErrorCode.HeaderError, errorMessage);
                         return false;
                     }
                     throw new Exception(errorMessage);
@@ -486,7 +486,7 @@ namespace Framework
                     string errorMessage = string.Format("Length '{0}' is larger than buffer size '{1}'.", _receiver.Length.ToString(), _receiver.BufferSize.ToString());
                     if (ErrorHandler != null)
                     {
-                        ErrorHandler(this, SessionState.OutOfRangeError, errorMessage);//未接收完成,继续;
+                        ErrorHandler(this, SessionErrorCode.OutOfRangeError, errorMessage);//未接收完成,继续;
                         return false;
                     }
                     throw new Exception(errorMessage);
@@ -526,7 +526,7 @@ namespace Framework
                 _active = false;
                 if (ErrorHandler != null)
                 {
-                    ErrorHandler(this, SessionState.DeserializeError, exception.ToString());
+                    ErrorHandler(this, SessionErrorCode.DeserializeError, exception.ToString());
                     return false;
                 }
                 throw;

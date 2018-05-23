@@ -17,7 +17,7 @@ namespace Framework
         IPv6,
     }
 
-    public enum SessionState : int
+    public enum SessionErrorCode : int
     {
         ConnectError = 0,
         SendError,

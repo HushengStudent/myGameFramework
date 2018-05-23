@@ -28,7 +28,7 @@ namespace Framework
             byte[] buffer = new byte[4];
             source.Read(buffer, 0, sizeof(int));
             int id = ConverterUtility.GetInt32(buffer);
-            Packet packet = ProtoRegister.GetPacketById(id);
+            Packet packet = ProtoRegister.GetPacket(id);
             source.Position += sizeof(int);
             packet.DeSerialize(source);
             return packet;

@@ -16,6 +16,7 @@ public class ProtoRegister
         {
             Packet packet = target as Packet;
             _factory[packet.GetPacketId()] = new PacketFactory(type);
+            ReturnPacket(packet);
         }
         else
         {
@@ -23,7 +24,7 @@ public class ProtoRegister
         }
     }
 
-    public static Packet GetPacketById(int type)
+    public static Packet GetPacket(int type)
     {
         lock (thisLock)
         {
@@ -57,6 +58,7 @@ public class ProtoRegister
 
     public static void Register()
     {
-        RegisterProto(typeof(LoginRequestPacket));
+        _factory.Clear();
+        RegisterProto(typeof(Packet_LoginResponse));
     }
 }

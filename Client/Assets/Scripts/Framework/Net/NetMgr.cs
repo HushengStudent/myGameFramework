@@ -42,7 +42,7 @@ namespace Framework
 
         private void OnSend(Session session, int count, SessionParam args)
         {
-            throw new NotImplementedException();
+
         }
 
         private void OnReceive(Session session, Packet packet)
@@ -53,22 +53,36 @@ namespace Framework
 
         private void OnCustomError(Session session, object args)
         {
-            throw new NotImplementedException();
+
         }
 
-        private void OnError(Session session, SessionState state, string error)
+        private void OnError(Session session, SessionErrorCode state, string error)
         {
-            throw new NotImplementedException();
+            LogUtil.LogUtility.PrintError(string.Format("[NetMgr]Session error,Session Error Code: {0},info: {1}", state.ToString(), error.ToString()));
         }
 
         private void OnClosed(Session session)
         {
-            throw new NotImplementedException();
+
         }
 
         private void OnConnected(Session session, SessionParam args)
         {
-            throw new NotImplementedException();
+            LogUtil.LogUtility.Print(string.Format("[NetMgr]Session error,Session Connected!"));
+            ProtoRegister.Register();
+        }
+
+        public void Send<T>(T packet) where T : Packet
+        {
+            try
+            {
+                session.Send<T>(packet);
+            }
+            catch (Exception e)
+            {
+                LogUtil.LogUtility.PrintError(string.Format("[NetMgr]Send {0} error!", e.ToString()));
+                session.Dispose();
+            }
         }
     }
 }

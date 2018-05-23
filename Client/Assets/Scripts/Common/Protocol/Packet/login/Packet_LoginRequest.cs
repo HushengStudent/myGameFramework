@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
-public class LoginRequestPacket : Packet
+public class Packet_LoginRequest : Packet
 {
     private LoginRequest data = new LoginRequest();
 
@@ -27,6 +27,6 @@ public class LoginRequestPacket : Packet
 
     public override void Process()
     {
-
+        Process_LoginRequest.Process(this);
     }
 }

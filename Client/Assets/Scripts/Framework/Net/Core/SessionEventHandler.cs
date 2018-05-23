@@ -15,7 +15,7 @@ namespace Framework
     //网络关闭;
     public delegate void SessionClosedEventHandler(Session session);
     //session错误;
-    public delegate void SessionErrorEventHandler(Session session, SessionState state, string error);
+    public delegate void SessionErrorEventHandler(Session session, SessionErrorCode state, string error);
     //通信错误;
     public delegate void SessionCustomErrorEventHandler(Session session, object args);
     //接收;
