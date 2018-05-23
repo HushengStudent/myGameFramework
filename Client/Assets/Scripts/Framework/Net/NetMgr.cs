@@ -11,6 +11,7 @@ using UnityEngine;
 
 namespace Framework
 {
+    //TODO:协议池+buff池自己实现,以解耦,或许更好;
     public class NetMgr : MonoSingleton<NetMgr>
     {
         private Session session;
