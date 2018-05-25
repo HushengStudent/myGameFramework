@@ -37,3 +37,7 @@
 /Client/Debug
 /Tools/Table/TableExport/.vs
 /Tools/Table/TableExport/TableExport/obj
+/Server/myServerFramework/myServerFramework/bin/Debug
+/Server/myServerFramework/myServerFramework/bin/Release
+/Server/myServerFramework/myServerFramework/obj
+/Server/myServerFramework/myServerFramework/bin
