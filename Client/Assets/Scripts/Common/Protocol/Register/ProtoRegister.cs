@@ -59,6 +59,7 @@ public class ProtoRegister
     public static void Register()
     {
         _factory.Clear();
+        RegisterProto(typeof(Packet_LoginRequest));
         RegisterProto(typeof(Packet_LoginResponse));
     }
 }

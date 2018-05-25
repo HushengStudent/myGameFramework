@@ -17,12 +17,12 @@ public class Packet_LoginRequest : Packet
 
     public override void DeSerialize(MemoryStream stream)
     {
-        ProtoBuf.Serializer.Serialize<LoginRequest>(stream, data);
+        data = ProtoBuf.Serializer.Deserialize<LoginRequest>(stream);
     }
 
     public override void Serialize(MemoryStream stream)
     {
-        data = ProtoBuf.Serializer.Deserialize<LoginRequest>(stream);
+        ProtoBuf.Serializer.Serialize<LoginRequest>(stream, data);
     }
 
     public override void Process()

@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myServer.GameServer", "myServer.GameServer\myServer.GameServer.csproj", "{F85AE281-7EFF-4625-A0C5-BDA7BDD63F59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myServer.TestServer", "myServer.TestServer\myServer.TestServer.csproj", "{90E796D6-A329-4C29-B5DA-DED4E564E6C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{F85AE281-7EFF-4625-A0C5-BDA7BDD63F59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F85AE281-7EFF-4625-A0C5-BDA7BDD63F59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F85AE281-7EFF-4625-A0C5-BDA7BDD63F59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90E796D6-A329-4C29-B5DA-DED4E564E6C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90E796D6-A329-4C29-B5DA-DED4E564E6C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90E796D6-A329-4C29-B5DA-DED4E564E6C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90E796D6-A329-4C29-B5DA-DED4E564E6C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E60E15D-6E8C-4319-9F3A-D5091E062232}
 	EndGlobalSection
 EndGlobal

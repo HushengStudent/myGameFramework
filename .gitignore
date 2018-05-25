@@ -41,3 +41,5 @@
 /Server/myServerFramework/myServerFramework/bin/Release
 /Server/myServerFramework/myServerFramework/obj
 /Server/myServerFramework/myServerFramework/bin
+/Server/myServer/myServer.TestServer/bin
+/Server/myServer/myServer.TestServer/obj

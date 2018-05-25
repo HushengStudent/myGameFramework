@@ -9,9 +9,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FrameworkTest
+public class FrameworkTest : MonoBehaviour
 {
-    void Test()
+    public void NetWorkTest()
     {
         Packet_LoginRequest req = new Packet_LoginRequest();
         req.Data.id = 1001;

@@ -50,6 +50,7 @@ namespace Framework
                 LuaMgr.Instance.InitMgr();
             };
             PoolMgr.Instance.InitMgr();          //对象池初始化;
+            NetMgr.Instance.InitMgr();
         }
 
         /// <summary>

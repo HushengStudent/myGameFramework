@@ -12,22 +12,27 @@ using UnityEngine;
 namespace Framework
 {
     //TODO:协议池+buff池自己实现,以解耦,或许更好;
-    public class NetMgr : MonoSingleton<NetMgr>
+    public class NetMgr : MonoSingleton<NetMgr>, IMgr
     {
         private Session session;
 
-        protected override void Init()
+        public override void AwakeEx()
         {
-            base.Init();
+            base.AwakeEx();
             session = new Session("session");
             InitHandler();
             session.Connect(GameConfig.ipAddress, GameConfig.port);
         }
 
+        public void InitMgr()
+        {
+            LogUtil.LogUtility.Print("[NetMgr]NetMgr init!");
+        }
+
         public override void UpdateEx()
         {
             base.UpdateEx();
-            if (session.Active)
+            if (session != null && session.Active)
                 session.Update();
         }
 
@@ -69,7 +74,7 @@ namespace Framework
 
         private void OnConnected(Session session, SessionParam args)
         {
-            LogUtil.LogUtility.Print(string.Format("[NetMgr]Session error,Session Connected!"));
+            LogUtil.LogUtility.Print(string.Format("[NetMgr]Session Connected!"));
             ProtoRegister.Register();
         }
 

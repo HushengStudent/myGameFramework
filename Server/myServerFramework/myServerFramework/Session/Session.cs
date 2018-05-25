@@ -25,6 +25,9 @@ namespace myServerFramework
         private bool _active;
         private bool _disposed;
 
+        private IPAddress _ipAddress;
+        private int _port;
+
         private object thisLock = new object();
 
         public SessionConnectedEventHandler ConnectedHandler;
@@ -37,6 +40,9 @@ namespace myServerFramework
         public string Name { get { return _name; } }
         public SessionType Type { get { return _sessionType; } }
         public bool Active { get { return _active; } }
+        public Socket socket { get { return _socket; } set { _socket = value; } }
+        public IPAddress ipAddress { get { return _ipAddress; } set { _ipAddress = value; } }
+        public int Port { get { return _port; } set { _port = value; } }
 
         public Session(string name)
         {
@@ -188,6 +194,8 @@ namespace myServerFramework
         public void Connect(IPAddress ipAddress, int port)
         {
             Initialize(ipAddress.AddressFamily);
+            _ipAddress = ipAddress;
+            _port = port;
             if (_socket == null)
             {
                 string errorMessage = "initialize failure.";
@@ -200,8 +208,8 @@ namespace myServerFramework
             }
             try
             {
-                SessionParam param = new SessionParam(_socket, ipAddress, port);
-                _socket.BeginConnect(ipAddress, port, ConnectCallback, param);
+                SessionParam param = new SessionParam(_socket, _ipAddress, _port);
+                _socket.BeginConnect(_ipAddress, _port, ConnectCallback, param);
             }
             catch (Exception exception)
             {
@@ -284,7 +292,8 @@ namespace myServerFramework
             }
             try
             {
-                _socket.BeginSend(buffer, offset, size, SocketFlags.None, SendCallback, null);
+                SessionParam param = new SessionParam(_socket, _ipAddress, _port);
+                _socket.BeginSend(buffer, offset, size, SocketFlags.None, SendCallback, param);
             }
             catch (Exception exception)
             {

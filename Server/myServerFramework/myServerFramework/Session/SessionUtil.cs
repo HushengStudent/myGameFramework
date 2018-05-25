@@ -28,7 +28,6 @@ namespace myServerFramework
             source.Read(buffer, 0, sizeof(int));
             int id = ConverterUtility.GetInt32(buffer);
             Packet packet = ProtoRegister.GetPacket(id);
-            source.Position += sizeof(int);
             packet.DeSerialize(source);
             return packet;
         }

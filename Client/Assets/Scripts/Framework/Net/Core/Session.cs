@@ -26,6 +26,9 @@ namespace Framework
         private bool _active;
         private bool _disposed;
 
+        private IPAddress _ipAddress;
+        private int _port;
+
         private object thisLock = new object();
 
         public SessionConnectedEventHandler ConnectedHandler;
@@ -189,6 +192,8 @@ namespace Framework
         public void Connect(IPAddress ipAddress, int port)
         {
             Initialize(ipAddress.AddressFamily);
+            _ipAddress = ipAddress;
+            _port = port;
             if (_socket == null)
             {
                 string errorMessage = "initialize failure.";
@@ -201,8 +206,8 @@ namespace Framework
             }
             try
             {
-                SessionParam param = new SessionParam(_socket, ipAddress, port);
-                _socket.BeginConnect(ipAddress, port, ConnectCallback, param);
+                SessionParam param = new SessionParam(_socket, _ipAddress, _port);
+                _socket.BeginConnect(_ipAddress, _port, ConnectCallback, param);
             }
             catch (Exception exception)
             {
@@ -285,7 +290,8 @@ namespace Framework
             }
             try
             {
-                _socket.BeginSend(buffer, offset, size, SocketFlags.None, SendCallback, null);
+                SessionParam param = new SessionParam(_socket, _ipAddress, _port);
+                _socket.BeginSend(buffer, offset, size, SocketFlags.None, SendCallback, param);
             }
             catch (Exception exception)
             {
