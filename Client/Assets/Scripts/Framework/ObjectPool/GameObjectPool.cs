@@ -19,104 +19,75 @@ namespace Framework
         /// </summary>
         private int _preFrameClearCount = 10;
 
-        private Dictionary<AssetType, Dictionary<string, Stack<GameObject>>> _gameObjectPool =
-            new Dictionary<AssetType, Dictionary<string, Stack<GameObject>>>();
+        private Dictionary<int, Stack<GameObject>> _gameObjectPool = new Dictionary<int, Stack<GameObject>>();
 
         public int PreFrameClearCount { get { return _preFrameClearCount; } set { _preFrameClearCount = value; } }
 
-        public IEnumerator<float> Get(AssetType type, string assetName, Action<GameObject> onLoadFinish)
+        public GameObject Clone(GameObject go)
         {
             GameObject element;
-            Dictionary<string, Stack<GameObject>> m_Dict;
-            Stack<GameObject> m_Stack;
-            if (!_gameObjectPool.TryGetValue(type, out m_Dict))
+            int instanceId = go.GetInstanceID();
+            Stack<GameObject> stack;
+            if (!_gameObjectPool.TryGetValue(instanceId, out stack))
             {
-                m_Dict = new Dictionary<string, Stack<GameObject>>();
-                _gameObjectPool[type] = m_Dict;
+                stack = new Stack<GameObject>();
+                _gameObjectPool[instanceId] = stack;
             }
-            if (!m_Dict.TryGetValue(assetName, out m_Stack))
+            if (stack.Count == 0)
             {
-                m_Stack = new Stack<GameObject>();
-                m_Dict[assetName] = m_Stack;
-            }
-            if (m_Stack.Count == 0)
-            {
-                element = ResourceMgr.Instance.LoadResSync<GameObject>(type, assetName);
-                if (element)
-                {
-                    onLoadFinish(element);
-                    yield break;
-                }
-                IEnumerator<float> itor = ResourceMgr.Instance.LoadAssetAsync<GameObject>(type, assetName, onLoadFinish, null);
-                while (itor.MoveNext())
-                {
-                    yield return Timing.WaitForOneFrame;
-                }
+                element = GameObject.Instantiate(go);//clone出来的子物体instanceId == parent instanceId;
             }
             else
             {
-                element = m_Stack.Pop();
-                if (onLoadFinish != null)
-                {
-                    onLoadFinish(element);
-                }
+                element = stack.Pop();
             }
+            return element;
         }
 
-        public void Release(AssetType type, string assetName, GameObject element)
+        public void Release(GameObject element)
         {
-            Dictionary<string, Stack<GameObject>> m_Dict;
-            Stack<GameObject> m_Stack;
-            if (!_gameObjectPool.TryGetValue(type, out m_Dict))
+            int instanceId = element.GetInstanceID();
+            Stack<GameObject> stack;
+            if (!_gameObjectPool.TryGetValue(instanceId, out stack))
             {
-                m_Dict = new Dictionary<string, Stack<GameObject>>();
-                _gameObjectPool[type] = m_Dict;
-            }
-            if (!m_Dict.TryGetValue(assetName, out m_Stack))
-            {
-                m_Stack = new Stack<GameObject>();
-                m_Dict[assetName] = m_Stack;
+                stack = new Stack<GameObject>();
+                _gameObjectPool[instanceId] = stack;
             }
             element.transform.SetParent(null);
             element.transform.position = Vector3.zero;
             element.transform.rotation = Quaternion.Euler(Vector3.zero);
             element.transform.localScale = Vector3.one;
-            m_Stack.Push(element);
+            stack.Push(element);
         }
 
         public IEnumerator<float> ClearGameObjectPool()
         {
-            Dictionary<AssetType, Dictionary<string, Stack<GameObject>>> tempDict
-                = new Dictionary<AssetType, Dictionary<string, Stack<GameObject>>>(_gameObjectPool);
-            _gameObjectPool = new Dictionary<AssetType, Dictionary<string, Stack<GameObject>>>();
+            Dictionary<int, Stack<GameObject>> stack = new Dictionary<int, Stack<GameObject>>();
+            _gameObjectPool = new Dictionary<int, Stack<GameObject>>();
             int index = 0;
-            foreach (var temp in tempDict)
+            foreach (var temp in stack)
             {
-                if (temp.Value == null)
+                Stack<GameObject> target = temp.Value;
+                if (target == null || target.Count < 1)
                 {
                     continue;
                 }
-                foreach (var value in temp.Value)
+                while (target.Count > 0)
                 {
-                    Stack<GameObject> stack = value.Value;
-                    if (stack == null)
+                    GameObject go = target.Pop();
+                    if (go == null)
                     {
                         continue;
                     }
-                    while (stack.Count > 0)
+                    GameObject.DestroyImmediate(go);
+                    index++;
+                    if (index > PreFrameClearCount)
                     {
-                        GameObject go = stack.Pop();
-                        GameObject.DestroyImmediate(go);
-                        index++;
-                        if (index > PreFrameClearCount)
-                        {
-                            yield return Timing.WaitForOneFrame;
-                            index = 0;
-                        }
+                        yield return Timing.WaitForOneFrame;
+                        index = 0;
                     }
                 }
             }
-            _gameObjectPool.Clear();
         }
     }
 }

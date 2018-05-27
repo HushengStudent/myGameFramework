@@ -105,18 +105,14 @@ namespace Framework
         }
 
         /// <summary>
-        /// 获取GameObject,可能为null;
+        /// 获取GameObject;
         /// </summary>
         /// <param name="type"></param>
         /// <param name="assetName"></param>
         /// <returns></returns>
-        public IEnumerator<float> Get(AssetType type, string assetName, Action<GameObject> onLoadFinish)
+        public GameObject Clone(GameObject go)
         {
-            IEnumerator<float> itor = _unityObjectPool.Get(type, assetName, onLoadFinish);
-            while (itor.MoveNext())
-            {
-                yield return Timing.WaitForOneFrame;
-            }
+            return _unityObjectPool.Clone(go);
         }
 
         /// <summary>
@@ -125,9 +121,9 @@ namespace Framework
         /// <param name="type"></param>
         /// <param name="assetName"></param>
         /// <param name="element"></param>
-        public void Release(AssetType type, string assetName, GameObject element)
+        public void Release(GameObject element)
         {
-            _unityObjectPool.Release(type, assetName, element);
+            _unityObjectPool.Release(element);
         }
 
         /// <summary>
