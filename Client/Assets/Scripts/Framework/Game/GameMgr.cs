@@ -30,27 +30,30 @@ namespace Framework
 
         public void InitMgr()
         {
+            PoolMgr.Instance.ClearFinishHandler = () => InitApp();
+            PoolMgr.Instance.InitMgr();          //对象池初始化;
+        }
+
+        private void InitApp()
+        {
+            PoolMgr.Instance.ClearFinishHandler = null;
+            SetGameConfig();
 #if UNITY_EDITOR
-            DebugMgr.Instance.InitMgr();
+            DebugMgr.Instance.InitMgr();         //Debug工具初始化;
 #endif
             EventMgr.Instance.InitMgr();         //事件系统初始化;
             UIEventMgr<int>.InitMgr();           //UI事件系统初始化;
-            SdkMgr.Instance.InitMgr();
-            TimerMgr.Instance.InitMgr();
-            ComponentMgr.Instance.InitMgr();
-            EntityMgr.Instance.InitMgr();
-            PoolMgr.Instance.ClearFinishHandler = () =>
-            {
-                PoolMgr.Instance.ClearFinishHandler = null;
+            SdkMgr.Instance.InitMgr();           //平台初始化;
+            TimerMgr.Instance.InitMgr();         //定时器初始化;
+            ComponentMgr.Instance.InitMgr();     //组件初始化;
+            EntityMgr.Instance.InitMgr();        //实体初始化;
+            ResourceMgr.Instance.InitMgr();      //资源初始化;
+            UIMgr.Instance.InitMgr();            //UI初始化;
+            SceneMgr.Instance.InitMgr();         //场景初始化;
+            LuaMgr.Instance.InitMgr();           //lua初始化;
+            NetMgr.Instance.InitMgr();           //网络初始化;
+            MemoryMgr.Instance.InitMgr();
 
-                SetGameConfig();
-                ResourceMgr.Instance.InitMgr();      //资源初始化;
-                UIMgr.Instance.InitMgr();
-                SceneMgr.Instance.InitMgr();
-                LuaMgr.Instance.InitMgr();
-            };
-            PoolMgr.Instance.InitMgr();          //对象池初始化;
-            NetMgr.Instance.InitMgr();
         }
 
         /// <summary>
