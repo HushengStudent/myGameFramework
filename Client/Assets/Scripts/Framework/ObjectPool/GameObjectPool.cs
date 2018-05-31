@@ -21,6 +21,8 @@ namespace Framework
 
         private Dictionary<int, Stack<GameObject>> _gameObjectPool = new Dictionary<int, Stack<GameObject>>();
 
+        private Dictionary<int, int> _gameObjectIndex = new Dictionary<int, int>();
+
         public int PreFrameClearCount { get { return _preFrameClearCount; } set { _preFrameClearCount = value; } }
 
         public GameObject Clone(GameObject go)
@@ -41,6 +43,8 @@ namespace Framework
             {
                 element = stack.Pop();
             }
+            _gameObjectIndex[element.GetInstanceID()] = instanceId;
+            element.transform.SetParent(null);
             return element;
         }
 
@@ -48,12 +52,28 @@ namespace Framework
         {
             int instanceId = element.GetInstanceID();
             Stack<GameObject> stack;
-            if (!_gameObjectPool.TryGetValue(instanceId, out stack))
+            int parentInstanceId;
+            if (_gameObjectPool.ContainsKey(instanceId))
+            {
+                parentInstanceId = instanceId;
+            }
+            else
+            {
+                if (!_gameObjectIndex.TryGetValue(instanceId, out parentInstanceId))
+                {
+                    stack = new Stack<GameObject>();
+                    _gameObjectPool[instanceId] = stack;
+                    parentInstanceId = instanceId;
+                    LogUtil.LogUtility.PrintWarning(string.Format("[GameObjectPool]the game object:{0} is not create form pool " +
+                        "or it's parents destroyed,but it is trying to release to pool!",element.name));
+                }
+            }
+            if (!_gameObjectPool.TryGetValue(parentInstanceId, out stack))
             {
                 stack = new Stack<GameObject>();
-                _gameObjectPool[instanceId] = stack;
+                _gameObjectPool[parentInstanceId] = stack;
             }
-            element.transform.SetParent(null);
+            element.transform.SetParent(PoolMgr.Instance.Root.transform);
             element.transform.position = Vector3.zero;
             element.transform.rotation = Quaternion.Euler(Vector3.zero);
             element.transform.localScale = Vector3.one;
@@ -62,7 +82,8 @@ namespace Framework
 
         public IEnumerator<float> ClearGameObjectPool()
         {
-            Dictionary<int, Stack<GameObject>> stack = new Dictionary<int, Stack<GameObject>>();
+            Dictionary<int, Stack<GameObject>> stack = new Dictionary<int, Stack<GameObject>>(_gameObjectPool);
+            _gameObjectIndex = new Dictionary<int, int>();
             _gameObjectPool = new Dictionary<int, Stack<GameObject>>();
             int index = 0;
             foreach (var temp in stack)

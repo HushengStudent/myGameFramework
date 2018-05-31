@@ -15,8 +15,9 @@ namespace Framework
 {
     public delegate void PoolClearFinishEventHandler();
 
-    public class PoolMgr : Singleton<PoolMgr>, IMgr
+    public class PoolMgr : MonoSingleton<PoolMgr>, IMgr
     {
+        private GameObject _resPoolRoot;
         /// <summary>
         /// C# Object Pool;
         /// </summary>
@@ -28,8 +29,18 @@ namespace Framework
         private GameObjectPool _unityObjectPool = new GameObjectPool();
 
         public PoolClearFinishEventHandler _clearFinishHandler = null;
-
+        public GameObject Root { get { return _resPoolRoot; } }
         public PoolClearFinishEventHandler ClearFinishHandler { get { return _clearFinishHandler; } set { _clearFinishHandler = value; } }
+
+        private void Awake()
+        {
+            _resPoolRoot = GameObject.Find("_resPoolRoot");
+            if (_resPoolRoot == null)
+            {
+                _resPoolRoot = new GameObject("_resPoolRoot");
+                DontDestroyOnLoad(_resPoolRoot);
+            } 
+        }
 
         /// <summary>
         /// 初始化;
