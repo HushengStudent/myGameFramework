@@ -1,4 +1,3 @@
-using myServerFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace myServer.TestServer
+namespace myServer
 {
     class Program
     {
@@ -41,7 +40,7 @@ namespace myServer.TestServer
             Packet_LoginResponse rsp = new Packet_LoginResponse();
             rsp.Data.id = 123;
             session.Send<Packet_LoginResponse>(rsp);
-            Console.WriteLine(string.Format("send to client: {0} !",rsp.Data.id));
+            Console.WriteLine(string.Format("send to client: {0} !", rsp.Data.id));
         }
     }
 }

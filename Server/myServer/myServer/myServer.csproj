@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2E419C15-EEDF-43A2-8E2A-837657EAD540}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>myServerFramework</RootNamespace>
-    <AssemblyName>myServerFramework</AssemblyName>
+    <ProjectGuid>{2DEFCC4B-CD53-4040-A6F4-4E4522C44203}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>myServer</RootNamespace>
+    <AssemblyName>myServer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="protobuf-net">
-      <HintPath>lib\protobuf-net.dll</HintPath>
+      <HintPath>..\lib\protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -43,23 +45,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NetWork\Protocol\login.cs" />
+    <Compile Include="NetWork\Protocol\Packet_LoginRequest.cs" />
+    <Compile Include="NetWork\Protocol\Packet_LoginResponse.cs" />
+    <Compile Include="NetWork\Protocol\Process_LoginRequest.cs" />
+    <Compile Include="NetWork\Protocol\Process_LoginResponse.cs" />
+    <Compile Include="NetWork\Protocol\ProtoRegister.cs" />
+    <Compile Include="NetWork\Session\Packet.cs" />
+    <Compile Include="NetWork\Session\PacketFactory.cs" />
+    <Compile Include="NetWork\Session\Session.cs" />
+    <Compile Include="NetWork\Session\SessionBuff.cs" />
+    <Compile Include="NetWork\Session\SessionCode.cs" />
+    <Compile Include="NetWork\Session\SessionEventHandler.cs" />
+    <Compile Include="NetWork\Session\SessionParam.cs" />
+    <Compile Include="NetWork\Session\SessionReceiver.cs" />
+    <Compile Include="NetWork\Session\SessionUtil.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Protocol\login.cs" />
-    <Compile Include="Protocol\Packet_LoginRequest.cs" />
-    <Compile Include="Protocol\Packet_LoginResponse.cs" />
-    <Compile Include="Protocol\Process_LoginRequest.cs" />
-    <Compile Include="Protocol\Process_LoginResponse.cs" />
-    <Compile Include="Protocol\ProtoRegister.cs" />
-    <Compile Include="Session\Packet.cs" />
-    <Compile Include="Session\PacketFactory.cs" />
-    <Compile Include="Session\Session.cs" />
-    <Compile Include="Session\SessionBuff.cs" />
-    <Compile Include="Session\SessionCode.cs" />
-    <Compile Include="Session\SessionEventHandler.cs" />
-    <Compile Include="Session\SessionParam.cs" />
-    <Compile Include="Session\SessionReceiver.cs" />
-    <Compile Include="Session\SessionUtil.cs" />
     <Compile Include="Utility\ConverterUtility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
