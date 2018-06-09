@@ -12,6 +12,7 @@ namespace Framework
 {
     public class UpdateMgr : Singleton<UpdateMgr>
     {
-
+        private string _localVersion = string.Empty;
+        private string _curVersion = string.Empty;
     }
 }
