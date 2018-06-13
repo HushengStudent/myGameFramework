@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,12 +37,12 @@ namespace LogUtil
 
         public static void PrintWarning(string str)
         {
-            Debug.Log("<color=#EEEE00> " + str + " </color>");
+            Debug.LogWarning("<color=#EEEE00> " + str + " </color>");
         }
 
         public static void PrintError(string str)
         {
-            Debug.Log("<color=#FF0000> " + str + " </color>");
+            Debug.LogError("<color=#FF0000> " + str + " </color>");
         }
     }
 

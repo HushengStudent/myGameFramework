@@ -45,6 +45,7 @@ Client：客户端工程使用Unity5.5.4创建
 	(9)NetWork：(GameFramework:https://github.com/EllanJiang/GameFramework).
 	(10)Fast Shadow Projector：(Asset Store).
 	(11)Lua Profiler：(LuaMemorySnapshotDump:https://github.com/yaukeywang/LuaMemorySnapshotDump).
+	(12)Navigation：(NavmeshExport:https://github.com/LingJiJian/NavmeshExport).
 	
 Server：服务器工程使用visual studio2017创建
 	Reference：
