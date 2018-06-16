@@ -6,7 +6,7 @@ software：Unity5.5.4/visual studio2017.
 Client：客户端工程使用Unity5.5.4创建
 	Module：
 	(1)资源管理：AssetBundle打包、资源加载、资源卸载.(Finish)
-	(2)tolua接入.(Finish)
+	(2)tolua.(Finish)
 	(3)Log封装.(Finish)
 	(4)Lua UI模块：Lua类、工具方法、定时器、事件系统.(Finish)
 	(5)Lua Profiler.(Finish)
@@ -19,7 +19,7 @@ Client：客户端工程使用Unity5.5.4创建
 	(12)对象池.(Finish)
 	(13)sdk封装.(Finish)
 	(14)场景管理.(Finish)
-	(15)技能模块：行为树、FSM.(TODO)
+	(15)技能模块：FSM.(TODO)
 	(16)Buff.(Finish)
 	(17)ILRuntime.(TODO)
 	(18)网络同步机制：帧同步、状态同步.(TODO)
@@ -32,6 +32,9 @@ Client：客户端工程使用Unity5.5.4创建
 	(25)T4M.(TODO)
 	(26)FairyGUI.(TODO)
 	(27)配置表工具.(Finish)
+	(28)AI：行为树.(TODO)
+	(29)KCP.(TODO)
+	(30)编辑器：AI、战斗、场景.(TODO)
 	
 	Reference：
 	(1)tolua：(tolua:https://github.com/topameng/tolua).
