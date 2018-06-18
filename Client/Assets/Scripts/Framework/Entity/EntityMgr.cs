@@ -71,13 +71,13 @@ namespace Framework
         /// <param name="go"></param>
         /// <param name="initCallBack"></param>
         /// <returns></returns>
-        public T CreateEntity<T>(GameObject go, ulong uid, Action<BaseEntity> initCallBack) where T : BaseEntity, new()
+        public T CreateEntity<T>(GameObject go, ulong uid, string name, Action<BaseEntity> initCallBack) where T : BaseEntity, new()
         {
             T _Entity = PoolMgr.Instance.Get<T>();//get from pool;
             if (AddEntity(_Entity))
             {
                 _Entity.InitCallBack = initCallBack;
-                _Entity.Create(go, uid);
+                _Entity.Create(go, uid, name);
                 return _Entity;
             }
             else

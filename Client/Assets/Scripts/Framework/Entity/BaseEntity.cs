@@ -18,12 +18,14 @@ namespace Framework
         private long _id;
         private ulong _uid;
         private bool _enable = false;
+        private string _entityName = string.Empty;
         private GameObject _entityGo = null;
         private Action<BaseEntity> _initCallBack;
 
         public long ID { get { return _id; } }
         public ulong UID { get { return _uid; } }
         public bool Enable { get { return _enable; } set { _enable = value; } }
+        public string EntityName { get { return _entityName; } set { _entityName = value; } }
         public GameObject EntityGO { get { return _entityGo; } set { _entityGo = value; } }
         public Action<BaseEntity> InitCallBack { get { return _initCallBack; } set { _initCallBack = value; } }
 
@@ -34,10 +36,11 @@ namespace Framework
         /// 初始化Entity;
         /// </summary>
         /// <param name="go"></param>
-        public void Create(GameObject go, ulong uid)
+        public void Create(GameObject go, ulong uid, string name)
         {
             _id = IdGenerater.GenerateId();
             _uid = uid;
+            _entityName = name;
             OnAttachEntityGo(go);
             EventSubscribe();
             OnInit();

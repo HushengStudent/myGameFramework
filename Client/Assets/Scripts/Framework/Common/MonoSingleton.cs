@@ -69,7 +69,7 @@ namespace Framework
         }
         void LateUpdate()
         {
-            LateUpdateEx(Time.realtimeSinceStartup - _lastUpdate);
+            LateUpdateEx(Time.realtimeSinceStartup - _lateUpdate);
             _lateUpdate = Time.realtimeSinceStartup;
         }
         void OnDisable() { OnDisableEx(); }
