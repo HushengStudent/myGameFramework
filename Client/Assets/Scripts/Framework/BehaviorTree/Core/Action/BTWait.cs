@@ -17,6 +17,11 @@ namespace Framework
             throw new System.NotImplementedException();
         }
 
+        public override void UpdateEx()
+        {
+            base.UpdateEx();
+        }
+
         protected override void Reset()
         {
             throw new System.NotImplementedException();

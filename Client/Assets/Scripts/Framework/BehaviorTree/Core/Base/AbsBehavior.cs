@@ -14,9 +14,9 @@ namespace Framework
     {
         public BehavioResult _returnCode;
 
-        public AbsBehavior() { }
-
         public abstract BehavioResult Behave(BaseEntity entity);
+
+        public virtual void UpdateEx() { }
 
         protected abstract void Reset();
 

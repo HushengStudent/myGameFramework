@@ -12,9 +12,12 @@ namespace Framework
 {
     public class BTLog : AbsBehavior
     {
+        private string _log = string.Empty;
+
         public override BehavioResult Behave(BaseEntity entity)
         {
-            throw new System.NotImplementedException();
+            LogUtil.LogUtility.Print(_log);
+            return BehavioResult.Success;
         }
 
         protected override void Reset()
