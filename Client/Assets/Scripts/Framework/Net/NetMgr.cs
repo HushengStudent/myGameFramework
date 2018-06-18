@@ -29,9 +29,9 @@ namespace Framework
             LogUtil.LogUtility.Print("[NetMgr]NetMgr init!");
         }
 
-        public override void UpdateEx()
+        public override void UpdateEx(float interval)
         {
-            base.UpdateEx();
+            base.UpdateEx(interval);
             if (session != null && session.Active)
                 session.Update();
         }

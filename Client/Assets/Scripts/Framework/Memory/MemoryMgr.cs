@@ -32,9 +32,9 @@ namespace Framework
             _lastUpdateTimer = Time.realtimeSinceStartup;
         }
 
-        public override void UpdateEx()
+        public override void UpdateEx(float interval)
         {
-            base.UpdateEx();
+            base.UpdateEx(interval);
             if (Time.realtimeSinceStartup - _lastUpdateTimer > _monitTime)
             {
                 _lastUpdateTimer = Time.realtimeSinceStartup;

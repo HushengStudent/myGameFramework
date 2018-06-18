@@ -10,57 +10,73 @@ using UnityEngine;
 
 namespace Framework
 {
-	public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
-	{
-	    protected static T instance = null;
-	
-	    public static T Instance
-	    {
-	        get
-	        {
-	            if (null == instance)
-	            {
-	                GameObject go = GameObject.Find("~!@#$%^&*()_+_monoSingleton_");
-	                if(null == go)
-	                {
-	                    go = new GameObject("~!@#$%^&*()_+_monoSingleton_");
-	                    DontDestroyOnLoad(go);
-	                }
-	                instance = go.AddComponent<T>();
-	            }
-	            return instance;
-	        }
-	    }
-	
-	    /// <summary>
-	    /// 构造函数;
-	    /// </summary>
-	    protected MonoSingleton()
-	    {
-	        if (null != instance)
-                LogUtil.LogUtility.Print("This " + (typeof(T)).ToString() + " Singleton Instance is not null!");
-	    }
+    public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
+    {
+        protected static T instance = null;
 
-	    public virtual void StartEx() { }
-	    public virtual void AwakeEx() { }
-	    public virtual void OnEnableEx() { }
-	    public virtual void FixedUpdateEx() { }
-	    public virtual void UpdateEx() { }
-	    public virtual void LateUpdateEx() { }
-	    public virtual void OnDisableEx() { }
-	    public virtual void OnDestroyEx() { }
-	
-	    void Start(){ StartEx(); }
-	    void Awake() { AwakeEx(); }
-	    void OnEnable() { OnEnableEx(); }
-	    void FixedUpdate() { FixedUpdateEx(); }
-	    void Update() { UpdateEx(); }
-	    void LateUpdate() { LateUpdateEx(); }
-	    void OnDisable() { OnDisableEx(); }
-	    void OnDestroy()
-	    {
-	        instance = null;
-	        OnDestroyEx();
-	    }
-	}
+        private float _fixedUpdate = Time.realtimeSinceStartup;
+        private float _lastUpdate = Time.realtimeSinceStartup;
+        private float _lateUpdate = Time.realtimeSinceStartup;
+
+        public static T Instance
+        {
+            get
+            {
+                if (null == instance)
+                {
+                    GameObject go = GameObject.Find("~!@#$%^&*()_+_monoSingleton_");
+                    if (null == go)
+                    {
+                        go = new GameObject("~!@#$%^&*()_+_monoSingleton_");
+                        DontDestroyOnLoad(go);
+                    }
+                    instance = go.AddComponent<T>();
+                }
+                return instance;
+            }
+        }
+
+        /// <summary>
+        /// 构造函数;
+        /// </summary>
+        protected MonoSingleton()
+        {
+            if (null != instance)
+                LogUtil.LogUtility.Print("This " + (typeof(T)).ToString() + " Singleton Instance is not null!");
+        }
+
+        public virtual void StartEx() { }
+        public virtual void AwakeEx() { }
+        public virtual void OnEnableEx() { }
+        public virtual void FixedUpdateEx(float interval) { }
+        public virtual void UpdateEx(float interval) { }
+        public virtual void LateUpdateEx(float interval) { }
+        public virtual void OnDisableEx() { }
+        public virtual void OnDestroyEx() { }
+
+        void Start() { StartEx(); }
+        void Awake() { AwakeEx(); }
+        void OnEnable() { OnEnableEx(); }
+        void FixedUpdate()
+        {
+            FixedUpdateEx(Time.realtimeSinceStartup - _fixedUpdate);
+            _fixedUpdate = Time.realtimeSinceStartup;
+        }
+        void Update()
+        {
+            UpdateEx(Time.realtimeSinceStartup - _lastUpdate);
+            _lastUpdate = Time.realtimeSinceStartup;
+        }
+        void LateUpdate()
+        {
+            LateUpdateEx(Time.realtimeSinceStartup - _lastUpdate);
+            _lateUpdate = Time.realtimeSinceStartup;
+        }
+        void OnDisable() { OnDisableEx(); }
+        void OnDestroy()
+        {
+            instance = null;
+            OnDestroyEx();
+        }
+    }
 }

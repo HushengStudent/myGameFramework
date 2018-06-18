@@ -54,9 +54,9 @@ namespace Framework
             SetShowType(ShowType.ShowNon);
         }
 
-        public override void UpdateEx()
+        public override void UpdateEx(float interval)
         {
-            base.UpdateEx();
+            base.UpdateEx(interval);
             if (_fpsInfo == null)
                 return;
             _fpsInfo.UpdateFps(Time.deltaTime, Time.unscaledDeltaTime);

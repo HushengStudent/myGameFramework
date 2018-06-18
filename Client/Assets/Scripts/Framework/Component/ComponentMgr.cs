@@ -36,9 +36,9 @@ namespace Framework
             ComponentList.Clear();
         }
 
-        public override void UpdateEx()
+        public override void UpdateEx(float interval)
         {
-            base.UpdateEx();
+            base.UpdateEx(interval);
             for (int i = 0; i < ComponentList.Count; i++)
             {
                 if (ComponentList[i].Enable)
@@ -48,9 +48,9 @@ namespace Framework
             }
         }
 
-        public override void LateUpdateEx()
+        public override void LateUpdateEx(float interval)
         {
-            base.LateUpdateEx();
+            base.LateUpdateEx(interval);
             for (int i = 0; i < ComponentList.Count; i++)
             {
                 if (ComponentList[i].Enable)
