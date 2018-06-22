@@ -12,6 +12,8 @@ namespace Framework
 {
     public class BTSequence : AbsBehavior
     {
+        private List<AbsBehavior> _list = new List<AbsBehavior>();
+
         public override BehavioResult Behave(BaseEntity entity)
         {
             throw new System.NotImplementedException();

@@ -41,15 +41,19 @@ Client：客户端工程使用Unity5.5.4创建
 	(2)protoc-gen-lua：(pblua:https://github.com/topameng/protoc-gen-lua).
 	(3)AssetBundle：(myAssetBundleTools:https://github.com/HushengStudent/myAssetBundleTools).
 	(4)protobuf-net-r668：(protobuf-net-r668:https://github.com/mdavid/protobuf-net).
-	(5)More Effective Coroutine：(Asset Store).
-	(6)ObjectPool：(ugui:https://github.com/HushengStudent/ugui).
-	(7)Mixed Text and Graphics：(EmojiText:https://github.com/zouchunyi/EmojiText).
-	(8)Table：(ExcelUtilityWith-ExcelReader:https://github.com/Ribosome2/ExcelUtilityWith-ExcelReader).
-	(9)NetWork：(GameFramework:https://github.com/EllanJiang/GameFramework).
-	(10)Fast Shadow Projector：(Asset Store).
-	(11)Lua Profiler：(LuaMemorySnapshotDump:https://github.com/yaukeywang/LuaMemorySnapshotDump).
-	(12)Navigation：(NavmeshExport:https://github.com/LingJiJian/NavmeshExport).
-	(13)A* Pathfinding Project：(Asset Store).
+	(5)ObjectPool：(ugui:https://github.com/HushengStudent/ugui).
+	(6)Mixed Text and Graphics：(EmojiText:https://github.com/zouchunyi/EmojiText).
+	(7)Table：(ExcelUtilityWith-ExcelReader:https://github.com/Ribosome2/ExcelUtilityWith-ExcelReader).
+	(8)NetWork：(GameFramework:https://github.com/EllanJiang/GameFramework).
+	(9)Lua Profiler：(LuaMemorySnapshotDump:https://github.com/yaukeywang/LuaMemorySnapshotDump).
+	(10)Navigation：(NavmeshExport:https://github.com/LingJiJian/NavmeshExport).
+	
+	Asset Store:
+	(1)More Effective Coroutine.
+	(2)Fast Shadow Projector.
+	(3)A* Pathfinding Project.
+	(4)FlowCanvas.
+	(5)NodeCanvas.
 	
 Server：服务器工程使用visual studio2017创建
 	Reference：
