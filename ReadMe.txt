@@ -54,6 +54,7 @@ Client：客户端工程使用Unity5.5.4创建
 	(3)A* Pathfinding Project.
 	(4)FlowCanvas.
 	(5)NodeCanvas.
+	(6)Behavior Designer.
 	
 Server：服务器工程使用visual studio2017创建
 	Reference：
