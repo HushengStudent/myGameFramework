@@ -10,9 +10,9 @@ using UnityEngine;
 
 namespace Framework
 {
-    public enum BehavioResult :int
+    public enum BehaviorState : int
     {
-        Reset   = 0,
+        Reset = 0,
         Failure = 1,
         Success = 2,
         Running = 3,
@@ -33,19 +33,20 @@ namespace Framework
             base.UpdateEx(interval);
             _treeList.Clear();
             foreach (var temp in _tree.Values)
-                _treeList.Add(temp);
+                if (temp.Enable) _treeList.Add(temp);
             for (int i = 0; i < _treeList.Count; i++)
             {
                 _treeList[i].Update();
             }
         }
 
-        public void CreateBehaviorTree(BaseEntity entity, BehaviorTree tree)
+        public void CreateBehaviorTree(BaseEntity entity, BehaviorTree tree,bool enable = false)
         {
             if (_tree.ContainsKey(entity))
             {
                 LogUtil.LogUtility.PrintWarning(string.Format("[BehaviorTreeMgr]repeat add BehaviorTree at EntityName: {0}.", entity.EntityName));
             }
+            tree.Enable = enable;
             _tree[entity] = tree;
         }
 

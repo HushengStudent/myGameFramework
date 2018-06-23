@@ -14,12 +14,17 @@ namespace Framework
     {
         private List<AbsBehavior> _list = new List<AbsBehavior>();
 
-        public override BehavioResult Behave(BaseEntity entity)
+        protected override void AwakeEx()
         {
             throw new System.NotImplementedException();
         }
 
         protected override void Reset()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void UpdateEx()
         {
             throw new System.NotImplementedException();
         }

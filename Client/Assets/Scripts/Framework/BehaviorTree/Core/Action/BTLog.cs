@@ -14,13 +14,17 @@ namespace Framework
     {
         private string _log = string.Empty;
 
-        public override BehavioResult Behave(BaseEntity entity)
+        protected override void AwakeEx()
         {
-            LogUtil.LogUtility.Print(_log);
-            return BehavioResult.Success;
+            throw new System.NotImplementedException();
         }
 
         protected override void Reset()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void UpdateEx()
         {
             throw new System.NotImplementedException();
         }

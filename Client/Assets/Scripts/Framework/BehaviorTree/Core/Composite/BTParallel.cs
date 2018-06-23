@@ -12,12 +12,17 @@ namespace Framework
 {
     public class BTParallel : AbsBehavior
     {
-        public override BehavioResult Behave(BaseEntity entity)
+        protected override void AwakeEx()
         {
             throw new System.NotImplementedException();
         }
 
         protected override void Reset()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void UpdateEx()
         {
             throw new System.NotImplementedException();
         }

@@ -28,9 +28,24 @@ namespace Framework
 
         public void Update()
         {
-            if (_enable && _entity != null && (_root._returnCode == BehavioResult.Reset || _root._returnCode == BehavioResult.Running))
+            if (_enable && _entity != null && (_root.Reslut == BehaviorState.Reset || _root.Reslut == BehaviorState.Running))
             {
-                _root.Behave(_entity);
+                BehaviorState reslut = _root.Behave(_entity);
+                switch (reslut)
+                {
+                    case BehaviorState.Reset:
+                        break;
+                    case BehaviorState.Failure:
+                        break;
+                    case BehaviorState.Running:
+                        break;
+                    case BehaviorState.Success:
+                        break;
+                    default:
+                        _enable = false;
+                        LogUtil.LogUtility.PrintError("[BehaviorTree]error state.");
+                        break;
+                }
             }
         }
     }

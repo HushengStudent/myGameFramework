@@ -12,21 +12,39 @@ namespace Framework
 {
     public abstract class AbsBehavior
     {
-        public BehavioResult _returnCode;
+        private bool _awake = false;
+        private BehaviorState _reslut = BehaviorState.Reset;
 
-        public abstract BehavioResult Behave(BaseEntity entity);
+        public BehaviorState Reslut { get { return _reslut; } set { _reslut = value; } }
 
-        public virtual void UpdateEx() { }
-
-        protected abstract void Reset();
+        public BehaviorState Behave(BaseEntity entity)
+        {
+            if (!_awake)
+            {
+                _awake = true;
+                Reslut = BehaviorState.Running;
+                AwakeEx();
+            }
+            UpdateEx();
+            return Reslut;
+        }
 
         public bool ResetBehavior()
         {
-            if (_returnCode == BehavioResult.Running)
+            if (Reslut == BehaviorState.Running)
                 return false;
             Reset();
-            _returnCode = BehavioResult.Reset;
+            _awake = false;
+            Reslut = BehaviorState.Reset;
             return true;
         }
+
+        protected AbsBehavior() { }
+
+        protected abstract void AwakeEx();
+
+        protected abstract void UpdateEx();
+
+        protected abstract void Reset();
     }
 }
