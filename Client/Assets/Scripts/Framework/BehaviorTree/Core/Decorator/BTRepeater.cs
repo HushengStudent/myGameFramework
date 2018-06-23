@@ -12,6 +12,8 @@ namespace Framework
 {
     public class BTRepeater : AbsBehavior
     {
+        public BTRepeater(object[] args) : base(args) { }
+
         protected override void AwakeEx()
         {
             throw new System.NotImplementedException();

@@ -12,6 +12,8 @@ namespace Framework
 {
     public class BTEvent : AbsBehavior
     {
+        public BTEvent(object[] args) : base(args) { }
+
         protected override void AwakeEx()
         {
             throw new System.NotImplementedException();

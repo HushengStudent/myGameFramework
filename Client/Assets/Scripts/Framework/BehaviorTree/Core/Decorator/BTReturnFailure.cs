@@ -12,6 +12,8 @@ namespace Framework
 {
     public class BTReturnFailure : AbsBehavior
     {
+        public BTReturnFailure(object[] args) : base(args) { }
+
         protected override void AwakeEx()
         {
             throw new System.NotImplementedException();

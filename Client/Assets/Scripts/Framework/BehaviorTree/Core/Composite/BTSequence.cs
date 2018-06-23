@@ -14,6 +14,8 @@ namespace Framework
     {
         private List<AbsBehavior> _list = new List<AbsBehavior>();
 
+        public BTSequence(object[] args) : base(args) { }
+
         protected override void AwakeEx()
         {
             throw new System.NotImplementedException();

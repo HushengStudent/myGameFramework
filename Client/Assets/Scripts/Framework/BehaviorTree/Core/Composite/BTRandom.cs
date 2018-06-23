@@ -12,6 +12,8 @@ namespace Framework
 {
     public class BTRandom : AbsBehavior
     {
+        public BTRandom(object[] args) : base(args) { }
+
         protected override void AwakeEx()
         {
             throw new System.NotImplementedException();

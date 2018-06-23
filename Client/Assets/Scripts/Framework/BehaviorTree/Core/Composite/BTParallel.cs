@@ -12,6 +12,8 @@ namespace Framework
 {
     public class BTParallel : AbsBehavior
     {
+        public BTParallel(object[] args) : base(args) { }
+
         protected override void AwakeEx()
         {
             throw new System.NotImplementedException();

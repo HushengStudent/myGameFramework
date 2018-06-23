@@ -12,6 +12,8 @@ namespace Framework
 {
     public class BTExecuteSkill : AbsBehavior
     {
+        public BTExecuteSkill(object[] args) : base(args) { }
+
         protected override void AwakeEx()
         {
             throw new System.NotImplementedException();

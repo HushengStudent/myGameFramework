@@ -12,6 +12,8 @@ namespace Framework
 {
     public class BTWait : AbsBehavior
     {
+        public BTWait(object[] args) : base(args) { }
+
         protected override void AwakeEx()
         {
             throw new System.NotImplementedException();

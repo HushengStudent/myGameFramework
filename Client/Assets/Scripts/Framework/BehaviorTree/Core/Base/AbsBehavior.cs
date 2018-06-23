@@ -39,7 +39,7 @@ namespace Framework
             return true;
         }
 
-        protected AbsBehavior() { }
+        public AbsBehavior(object[] args) { }
 
         protected abstract void AwakeEx();
 

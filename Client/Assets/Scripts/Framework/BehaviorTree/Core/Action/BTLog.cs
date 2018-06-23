@@ -14,6 +14,8 @@ namespace Framework
     {
         private string _log = string.Empty;
 
+        public BTLog(object[] args) : base(args){ }
+
         protected override void AwakeEx()
         {
             throw new System.NotImplementedException();

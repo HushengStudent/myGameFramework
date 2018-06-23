@@ -12,6 +12,8 @@ namespace Framework
 {
     public class BTSelector : AbsBehavior
     {
+        public BTSelector(object[] args) : base(args) { }
+
         protected override void AwakeEx()
         {
             throw new System.NotImplementedException();
