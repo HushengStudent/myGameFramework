@@ -14,21 +14,23 @@ namespace Framework
     {
         private string _log = string.Empty;
 
-        public BTLog(object[] args) : base(args){ }
+        public BTLog(object[] args) : base(args)
+        {
+            _log = (string)args[0];
+        }
 
         protected override void AwakeEx()
         {
-            throw new System.NotImplementedException();
         }
 
         protected override void Reset()
         {
-            throw new System.NotImplementedException();
         }
 
         protected override void UpdateEx()
         {
-            throw new System.NotImplementedException();
+            LogUtil.LogUtility.Print(string.Format("[BTLog]:{0}", _log));
+            Reslut = BehaviorState.Success;
         }
     }
 }

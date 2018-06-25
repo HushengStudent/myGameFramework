@@ -49,4 +49,9 @@ public class FrameworkTest : MonoBehaviour
     {
         CoroutineMgr.Instance.RunCoroutine(PoolMgr.Instance.ClearPool());
     }
+
+    public void BehaviorTreeTest()
+    {
+        BehaviorTreeMgr.Instance.CreateBehaviorTree(null, "BehaviourTree.BT");
+    }
 }

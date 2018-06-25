@@ -31,9 +31,10 @@ namespace Framework
         public OnBehaviorTreeFailureHandler OnFailure { get { return _onFailure; } set { _onFailure = value; } }
         public OnBehaviorTreeResetHandler OnReset { get { return _onReset; } set { _onReset = value; } }
 
-        public BehaviorTree(AbsBehavior root)
+        public BehaviorTree(AbsBehavior root,BaseEntity entity)
         {
             _root = root;
+            _entity = entity;
             _enable = false;
         }
 

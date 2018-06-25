@@ -1,0 +1,191 @@
+{
+    "version": 2.8,
+    "type": "NodeCanvas.BehaviourTrees.BehaviourTree",
+    "nodes": [
+        {
+            "_position": {
+                "x": 5347.0,
+                "y": 5145.0
+            },
+            "$type": "NodeCanvas.BehaviourTrees.BTSequence",
+            "$id": "2"
+        },
+        {
+            "Log": "Sequence1",
+            "_position": {
+                "x": 5184.0,
+                "y": 5234.0
+            },
+            "_tag": "",
+            "_comment": "",
+            "$type": "NodeCanvas.BehaviourTrees.BTLog",
+            "$id": "3"
+        },
+        {
+            "_position": {
+                "x": 5304.0,
+                "y": 5233.0
+            },
+            "$type": "NodeCanvas.BehaviourTrees.BTRandom",
+            "$id": "4"
+        },
+        {
+            "Log": "Random1",
+            "_position": {
+                "x": 5129.0,
+                "y": 5368.0
+            },
+            "$type": "NodeCanvas.BehaviourTrees.BTLog",
+            "$id": "5"
+        },
+        {
+            "Log": "Random2",
+            "_position": {
+                "x": 5245.0,
+                "y": 5370.0
+            },
+            "$type": "NodeCanvas.BehaviourTrees.BTLog",
+            "$id": "6"
+        },
+        {
+            "Log": "Random3",
+            "_position": {
+                "x": 5355.0,
+                "y": 5371.0
+            },
+            "$type": "NodeCanvas.BehaviourTrees.BTLog",
+            "$id": "7"
+        },
+        {
+            "Log": "Sequence2",
+            "_position": {
+                "x": 5417.0,
+                "y": 5233.0
+            },
+            "$type": "NodeCanvas.BehaviourTrees.BTLog",
+            "$id": "8"
+        },
+        {
+            "_position": {
+                "x": 5477.0,
+                "y": 5371.0
+            },
+            "$type": "NodeCanvas.BehaviourTrees.BTSelector",
+            "$id": "9"
+        },
+        {
+            "Log": "Selector1",
+            "_position": {
+                "x": 5362.0,
+                "y": 5477.0
+            },
+            "$type": "NodeCanvas.BehaviourTrees.BTLog",
+            "$id": "10"
+        },
+        {
+            "Log": "Selector2",
+            "_position": {
+                "x": 5475.0,
+                "y": 5476.0
+            },
+            "$type": "NodeCanvas.BehaviourTrees.BTLog",
+            "$id": "11"
+        }
+    ],
+    "connections": [
+        {
+            "_sourceNode": {
+                "$ref": "2"
+            },
+            "_targetNode": {
+                "$ref": "3"
+            },
+            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+        },
+        {
+            "_sourceNode": {
+                "$ref": "2"
+            },
+            "_targetNode": {
+                "$ref": "4"
+            },
+            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+        },
+        {
+            "_sourceNode": {
+                "$ref": "2"
+            },
+            "_targetNode": {
+                "$ref": "8"
+            },
+            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+        },
+        {
+            "_sourceNode": {
+                "$ref": "4"
+            },
+            "_targetNode": {
+                "$ref": "5"
+            },
+            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+        },
+        {
+            "_sourceNode": {
+                "$ref": "4"
+            },
+            "_targetNode": {
+                "$ref": "6"
+            },
+            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+        },
+        {
+            "_sourceNode": {
+                "$ref": "4"
+            },
+            "_targetNode": {
+                "$ref": "7"
+            },
+            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+        },
+        {
+            "_sourceNode": {
+                "$ref": "8"
+            },
+            "_targetNode": {
+                "$ref": "9"
+            },
+            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+        },
+        {
+            "_sourceNode": {
+                "$ref": "9"
+            },
+            "_targetNode": {
+                "$ref": "10"
+            },
+            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+        },
+        {
+            "_sourceNode": {
+                "$ref": "9"
+            },
+            "_targetNode": {
+                "$ref": "11"
+            },
+            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+        }
+    ],
+    "primeNode": {
+        "$ref": "2"
+    },
+    "localBlackboard": {
+        "_name": "Local Blackboard",
+        "_variables": {
+
+        }
+    },
+    "derivedData": {
+        "repeat": true,
+        "$type": "NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"
+    }
+}

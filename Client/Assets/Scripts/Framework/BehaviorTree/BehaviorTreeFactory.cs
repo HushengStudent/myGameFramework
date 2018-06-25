@@ -12,10 +12,22 @@ namespace Framework
 {
     public static class BehaviorTreeFactory
     {
-        public static BehaviorTree CreateBehaviorTree()
+        private static Dictionary<int, AbsBehavior> _behaviorDict = new Dictionary<int, AbsBehavior>();
+        private static Dictionary<int, List<int>> _connectionDict = new Dictionary<int, List<int>>();
+
+        public static BehaviorTree CreateBehaviorTree(BaseEntity entity,string path)
         {
-            BehaviorTree tree = new BehaviorTree(null);
+            ReadConfig(path);
+            BehaviorTree tree = new BehaviorTree(null, entity);
             return tree;
+        }
+
+        private static void ReadConfig(string path)
+        {
+            _behaviorDict.Clear();
+            _connectionDict.Clear();
+            TextAsset json = Resources.Load<TextAsset>(path);
+            ArrayList list = MiniJsonExtensions.arrayListFromJson(json.text);
         }
     }
 }

@@ -12,21 +12,62 @@ namespace Framework
 {
     public class BTRandom : AbsBehavior
     {
-        public BTRandom(object[] args) : base(args) { }
+        private List<AbsBehavior> _list = new List<AbsBehavior>();
+        private AbsBehavior _target = null;
+
+        public BTRandom(object[] args) : base(args)
+        {
+            _list.Clear();
+            for (int i = 0; i < args.Length; i++)
+            {
+                _list.Add((AbsBehavior)args[i]);
+            }
+        }
 
         protected override void AwakeEx()
         {
-            throw new System.NotImplementedException();
         }
 
         protected override void Reset()
         {
-            throw new System.NotImplementedException();
+            //处理子节点;
+            for (int i = 0; i < _list.Count; i++)
+            {
+                _list[i].ResetBehavior();
+            }
+            //处理自己;
+            _target = null;
         }
 
         protected override void UpdateEx()
         {
-            throw new System.NotImplementedException();
+            if (Reslut == BehaviorState.Running)
+            {
+                int count = _list.Count;
+                if (_target == null)
+                {
+                    int index = Random.Range(0, count);
+                    _target = _list[index];
+                }
+                switch (_target.Behave(Entity))
+                {
+                    case BehaviorState.Running:
+                        Reslut = BehaviorState.Running;
+                        break;
+                    case BehaviorState.Success:
+                        Reslut = BehaviorState.Success;
+                        break;
+                    case BehaviorState.Failure:
+                    case BehaviorState.Reset:
+                        Reslut = BehaviorState.Failure;
+                        LogUtil.LogUtility.PrintError("[BTRandom]BTRandom execute failure!");
+                        break;
+                    default:
+                        Reslut = BehaviorState.Failure;
+                        LogUtil.LogUtility.PrintError("[BTRandom]BTRandom execute failure!");
+                        break;
+                }
+            }
         }
     }
 }
