@@ -35,6 +35,25 @@ namespace Framework
             return File.ReadAllLines(path);
         }
 
+        /// <summary>
+        /// 保存Txt;
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="contents"></param>
+        public static void Write2Txt(string path, string contents)
+        {
+            File.WriteAllText(path, contents);
+        }
+        /// <summary>
+        /// 读取Txt;
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static string ReadAllText(string path)
+        {
+            return File.ReadAllText(path);
+        }
+
         #endregion
 
         #region Bytes

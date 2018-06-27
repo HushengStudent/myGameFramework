@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace NodeCanvas.BehaviourTrees
 {
-    [Name("Log", 10)]
+    [Name("ExecuteSkill", 10)]
     [Category("MyGameFramework/Task/Skill/ExecuteSkill")]
     [Description("技能执行节点.")]
     [Icon("Sequencer")]

@@ -90,6 +90,15 @@
             },
             "$type": "NodeCanvas.BehaviourTrees.BTLog",
             "$id": "11"
+        },
+        {
+            "Level": 100,
+            "_position": {
+                "x": 5534.0,
+                "y": 5234.0
+            },
+            "$type": "NodeCanvas.BehaviourTrees.BTLevel",
+            "$id": "12"
         }
     ],
     "connections": [
@@ -117,6 +126,15 @@
             },
             "_targetNode": {
                 "$ref": "8"
+            },
+            "$type": "NodeCanvas.BehaviourTrees.BTConnection"
+        },
+        {
+            "_sourceNode": {
+                "$ref": "2"
+            },
+            "_targetNode": {
+                "$ref": "12"
             },
             "$type": "NodeCanvas.BehaviourTrees.BTConnection"
         },
