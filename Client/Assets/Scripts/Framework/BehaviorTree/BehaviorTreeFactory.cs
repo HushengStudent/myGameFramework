@@ -30,7 +30,8 @@ namespace Framework
             TextAsset json = Resources.Load<TextAsset>(path);
             string content = json.text.Replace("\r", "").Replace("\n", "");
             Hashtable table = MiniJsonExtensions.hashtableFromJson(content);
-            object nodes = table["nodes"];
+            ArrayList nodeList = table["nodes"] as ArrayList;
+            ArrayList connectionList = table["connections"] as ArrayList;
         }
 
         private static AbsBehavior CreateBehavior(string type)
