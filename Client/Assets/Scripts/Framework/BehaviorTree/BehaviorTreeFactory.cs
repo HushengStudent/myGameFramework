@@ -32,6 +32,10 @@ namespace Framework
             Hashtable table = MiniJsonExtensions.hashtableFromJson(content);
             ArrayList nodeList = table["nodes"] as ArrayList;
             ArrayList connectionList = table["connections"] as ArrayList;
+            for(int i = 0; i < nodeList.Count; i++)
+            {
+                //AbsBehavior absBehavior = CreateBehavior();
+            }
         }
 
         private static AbsBehavior CreateBehavior(string type)
