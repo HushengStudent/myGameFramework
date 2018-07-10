@@ -12,7 +12,7 @@ namespace Framework
 {
     public class BTReturnSuccess : AbsBehavior
     {
-        public BTReturnSuccess(object[] args) : base(args) { }
+        public BTReturnSuccess(Hashtable table) : base(table) { }
 
         protected override void AwakeEx()
         {

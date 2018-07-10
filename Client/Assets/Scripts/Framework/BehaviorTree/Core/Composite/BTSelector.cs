@@ -10,17 +10,18 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class BTSelector : AbsBehavior
+    public class BTSelector : AbsComposite
     {
         private List<AbsBehavior> _list = new List<AbsBehavior>();
 
-        public BTSelector(object[] args) : base(args)
+        public BTSelector(Hashtable table) : base(table)
         {
             _list.Clear();
-            for (int i = 0; i < args.Length; i++)
-            {
-                _list.Add((AbsBehavior)args[i]);
-            }
+        }
+
+        public override void Serialize(List<AbsBehavior> behaviorList)
+        {
+            _list = behaviorList;
         }
 
         protected override void AwakeEx()

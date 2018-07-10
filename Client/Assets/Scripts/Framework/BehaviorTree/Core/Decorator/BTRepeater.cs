@@ -12,7 +12,7 @@ namespace Framework
 {
     public class BTRepeater : AbsBehavior
     {
-        public BTRepeater(object[] args) : base(args) { }
+        public BTRepeater(Hashtable table) : base(table) { }
 
         protected override void AwakeEx()
         {

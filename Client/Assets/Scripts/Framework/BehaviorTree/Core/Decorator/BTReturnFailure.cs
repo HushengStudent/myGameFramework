@@ -12,7 +12,7 @@ namespace Framework
 {
     public class BTReturnFailure : AbsBehavior
     {
-        public BTReturnFailure(object[] args) : base(args) { }
+        public BTReturnFailure(Hashtable table) : base(table) { }
 
         protected override void AwakeEx()
         {

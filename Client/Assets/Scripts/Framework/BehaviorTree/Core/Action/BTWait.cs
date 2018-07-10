@@ -12,7 +12,7 @@ namespace Framework
 {
     public class BTWait : AbsBehavior
     {
-        public BTWait(object[] args) : base(args) { }
+        public BTWait(Hashtable table) : base(table) { }
 
         protected override void AwakeEx()
         {

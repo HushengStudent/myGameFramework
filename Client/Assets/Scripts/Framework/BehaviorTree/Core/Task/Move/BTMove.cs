@@ -12,7 +12,7 @@ namespace Framework
 {
     public class BTMove : AbsBehavior
     {
-        public BTMove(object[] args) : base(args) { }
+        public BTMove(Hashtable table) : base(table) { }
 
         protected override void AwakeEx()
         {

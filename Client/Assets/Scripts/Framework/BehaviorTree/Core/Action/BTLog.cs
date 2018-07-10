@@ -14,9 +14,9 @@ namespace Framework
     {
         private string _log = string.Empty;
 
-        public BTLog(object[] args) : base(args)
+        public BTLog(Hashtable table) : base(table)
         {
-            _log = (string)args[0];
+
         }
 
         protected override void AwakeEx()

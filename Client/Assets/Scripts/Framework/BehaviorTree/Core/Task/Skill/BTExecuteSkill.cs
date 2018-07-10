@@ -12,7 +12,7 @@ namespace Framework
 {
     public class BTExecuteSkill : AbsBehavior
     {
-        public BTExecuteSkill(object[] args) : base(args) { }
+        public BTExecuteSkill(Hashtable table) : base(table) { }
 
         protected override void AwakeEx()
         {

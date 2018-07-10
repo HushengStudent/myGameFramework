@@ -12,7 +12,7 @@ namespace Framework
 {
     public class BTLevel : AbsBehavior
     {
-        public BTLevel(object[] args) : base(args) { }
+        public BTLevel(Hashtable table) : base(table) { }
 
         protected override void AwakeEx()
         {

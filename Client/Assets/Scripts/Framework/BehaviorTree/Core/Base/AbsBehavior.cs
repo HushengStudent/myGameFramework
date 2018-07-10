@@ -43,7 +43,7 @@ namespace Framework
             return true;
         }
 
-        public AbsBehavior(object[] args) { }
+        public AbsBehavior(Hashtable table) { }
 
         protected abstract void AwakeEx();
 
