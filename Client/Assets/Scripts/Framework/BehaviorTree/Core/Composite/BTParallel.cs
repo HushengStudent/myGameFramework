@@ -30,7 +30,7 @@ namespace Framework
             //处理自己;
         }
 
-        protected override void UpdateExx()
+        protected override void UpdateEx()
         {
             if (Reslut == BehaviorState.Running)
             {

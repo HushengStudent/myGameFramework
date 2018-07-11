@@ -33,7 +33,7 @@ namespace Framework
             _target = null;
         }
 
-        protected override void UpdateExx()
+        protected override void UpdateEx()
         {
             if (Reslut == BehaviorState.Running)
             {

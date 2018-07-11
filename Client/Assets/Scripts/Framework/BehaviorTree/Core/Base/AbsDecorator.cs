@@ -26,11 +26,11 @@ namespace Framework
             _nextNode = node;
         }
 
-        protected sealed override void UpdateEx()
+        protected sealed override void UpdateNodeEx()
         {
             if (Reslut == BehaviorState.Running)
             {
-                UpdateExx();
+                UpdateEx();
             }
             else if (Reslut == BehaviorState.Finish)
             {
@@ -40,7 +40,5 @@ namespace Framework
                 }
             }
         }
-
-        protected abstract void UpdateExx();
     }
 }

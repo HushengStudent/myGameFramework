@@ -27,7 +27,7 @@ namespace Framework
         {
         }
 
-        protected override void UpdateExx()
+        protected override void UpdateEx()
         {
             throw new System.NotImplementedException();
         }

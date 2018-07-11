@@ -30,7 +30,7 @@ namespace Framework
                 Reslut = BehaviorState.Running;
                 AwakeEx();
             }
-            UpdateEx();
+            UpdateNodeEx();
             return Reslut;
         }
 
@@ -49,8 +49,11 @@ namespace Framework
 
         protected abstract void AwakeEx();
 
+        protected abstract void UpdateNodeEx();
+
         protected abstract void UpdateEx();
 
         protected abstract void Reset();
+
     }
 }
