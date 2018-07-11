@@ -31,5 +31,19 @@ namespace Framework
         {
             _list = behaviorList;
         }
+
+        protected sealed override void UpdateEx()
+        {
+            if (Reslut == BehaviorState.Running)
+            {
+                UpdateExx();
+            }
+            else if (Reslut == BehaviorState.Finish)
+            {
+                Reslut = BehaviorState.Success;
+            }
+        }
+
+        protected abstract void UpdateExx();
     }
 }

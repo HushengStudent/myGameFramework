@@ -27,10 +27,9 @@ namespace Framework
         {
         }
 
-        protected override void UpdateEx()
+        protected override void UpdateExx()
         {
-            LogUtil.LogUtility.Print(string.Format("[BTLog]:{0}", _log));
-            Reslut = BehaviorState.Success;
+            throw new System.NotImplementedException();
         }
     }
 }

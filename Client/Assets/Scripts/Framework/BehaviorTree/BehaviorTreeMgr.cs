@@ -14,8 +14,9 @@ namespace Framework
     {
         Reset = 0,
         Failure = 1,
-        Success = 2,
-        Running = 3,
+        Finish = 2,
+        Success = 3,
+        Running = 4,
     }
 
     public class BehaviorTreeMgr : MonoSingleton<BehaviorTreeMgr>, IMgr

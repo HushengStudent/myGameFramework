@@ -14,6 +14,8 @@ namespace Framework
     {
         protected AbsBehavior _nextNode = null;
 
+        public AbsBehavior NextNode { get { return _nextNode; } }
+
         public AbsDecorator(Hashtable table) : base(table)
         {
             _nextNode = null;
@@ -23,5 +25,22 @@ namespace Framework
         {
             _nextNode = node;
         }
+
+        protected sealed override void UpdateEx()
+        {
+            if (Reslut == BehaviorState.Running)
+            {
+                UpdateExx();
+            }
+            else if (Reslut == BehaviorState.Finish)
+            {
+                if (_nextNode.Behave(Entity) == BehaviorState.Success)
+                {
+                    Reslut = BehaviorState.Success;
+                }
+            }
+        }
+
+        protected abstract void UpdateExx();
     }
 }
