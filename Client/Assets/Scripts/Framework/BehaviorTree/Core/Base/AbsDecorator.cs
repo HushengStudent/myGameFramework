@@ -34,7 +34,12 @@ namespace Framework
             }
             else if (Reslut == BehaviorState.Finish)
             {
-                if (_nextNode.Behave(Entity) == BehaviorState.Success)
+                if (_nextNode == null)
+                {
+                    Reslut = BehaviorState.Success;
+                    return;
+                }
+                if (_nextNode != null && _nextNode.Behave(Entity) == BehaviorState.Success)
                 {
                     Reslut = BehaviorState.Success;
                 }
