@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class BTLog : AbsBehavior
+    public class BTLog : AbsDecorator
     {
         private string _log = string.Empty;
 

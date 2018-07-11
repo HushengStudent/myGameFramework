@@ -12,16 +12,8 @@ namespace Framework
 {
     public class BTSequence : AbsComposite
     {
-        private List<AbsBehavior> _list = new List<AbsBehavior>();
-
         public BTSequence(Hashtable table) : base(table)
         {
-            _list.Clear();
-        }
-
-        public override void Serialize(List<AbsBehavior> behaviorList)
-        {
-            _list = behaviorList;
         }
 
         protected override void AwakeEx()

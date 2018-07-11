@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class BTWait : AbsBehavior
+    public class BTWait : AbsDecorator
     {
         public BTWait(Hashtable table) : base(table) { }
 

@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class BTRepeater : AbsBehavior
+    public class BTRepeater : AbsDecorator
     {
         public BTRepeater(Hashtable table) : base(table) { }
 

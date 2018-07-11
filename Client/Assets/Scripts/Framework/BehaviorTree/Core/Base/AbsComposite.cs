@@ -12,8 +12,24 @@ namespace Framework
 {
     public abstract class AbsComposite : AbsBehavior
     {
-        public AbsComposite(Hashtable table) : base(table) { }
+        protected List<AbsBehavior> _list = new List<AbsBehavior>();
 
-        public abstract void Serialize(List<AbsBehavior> behaviorList);
+        public override bool IsComposite
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public AbsComposite(Hashtable table) : base(table)
+        {
+            _list.Clear();
+        }
+
+        public void Serialize(List<AbsBehavior> behaviorList)
+        {
+            _list = behaviorList;
+        }
     }
 }

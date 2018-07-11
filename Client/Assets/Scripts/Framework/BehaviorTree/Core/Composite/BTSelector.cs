@@ -12,16 +12,8 @@ namespace Framework
 {
     public class BTSelector : AbsComposite
     {
-        private List<AbsBehavior> _list = new List<AbsBehavior>();
-
         public BTSelector(Hashtable table) : base(table)
         {
-            _list.Clear();
-        }
-
-        public override void Serialize(List<AbsBehavior> behaviorList)
-        {
-            _list = behaviorList;
         }
 
         protected override void AwakeEx()

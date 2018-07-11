@@ -19,6 +19,8 @@ namespace Framework
         public BaseEntity Entity { get { return _entity; } }
         public BehaviorState Reslut { get { return _reslut; } set { _reslut = value; } }
 
+        public virtual bool IsComposite { get { return false; } }
+
         public BehaviorState Behave(BaseEntity entity)
         {
             if (!_awake)

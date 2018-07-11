@@ -35,15 +35,44 @@ namespace Framework
             for (int i = 0; i < nodeList.Count; i++)
             {
                 Hashtable nodeTable = nodeList[i] as Hashtable;
-                int id = (int)nodeTable["$id"];
-                AbsBehavior absBehavior = CreateBehavior(nodeTable);
-                _behaviorDict[id] = absBehavior;
+                var id = 0;
+                if(int.TryParse(nodeTable["$id"].ToString(),out id))
+                {
+                    AbsBehavior absBehavior = CreateBehavior(nodeTable);
+                    _behaviorDict[id] = absBehavior;
+                }
+                else
+                {
+                    LogUtil.LogUtility.PrintError("[BehaviorTreeFactory]try get node id error!");
+                }
             }
-            for(int i = 0;i< connectionList.Count; i++)
+            for (int i = 0; i < connectionList.Count; i++)
             {
-
+                Hashtable connectionTable = connectionList[i] as Hashtable;
+                int source = 0;
+                int target = 0;
+                if (int.TryParse(connectionTable["_sourceNode"].ToString(), out source) 
+                    && int.TryParse(connectionTable["_targetNode"].ToString(), out target))
+                {
+                    List<int> list;
+                    if(!_connectionDict.TryGetValue(source,out list))
+                    {
+                        _connectionDict[source] = new List<int>();
+                        list = _connectionDict[source];
+                    }
+                    list.Add(target);
+                }
+                else
+                {
+                    LogUtil.LogUtility.PrintError("[BehaviorTreeFactory]try get source id and target id error!");
+                }
             }
         }
+
+        //private AbsBehavior GenerateNode()
+        //{
+
+        //}
 
         private static AbsBehavior CreateBehavior(Hashtable table)
         {

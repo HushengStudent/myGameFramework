@@ -12,18 +12,10 @@ namespace Framework
 {
     public class BTRandom : AbsComposite
     {
-        private List<AbsBehavior> _list = new List<AbsBehavior>();
         private AbsBehavior _target = null;
 
         public BTRandom(Hashtable table) : base(table)
         {
-            _list.Clear();
-            
-        }
-
-        public override void Serialize(List<AbsBehavior> behaviorList)
-        {
-            _list = behaviorList;
         }
 
         protected override void AwakeEx()

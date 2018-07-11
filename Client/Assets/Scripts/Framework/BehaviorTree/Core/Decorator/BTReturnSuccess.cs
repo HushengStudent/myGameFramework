@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class BTReturnSuccess : AbsBehavior
+    public class BTReturnSuccess : AbsDecorator
     {
         public BTReturnSuccess(Hashtable table) : base(table) { }
 
