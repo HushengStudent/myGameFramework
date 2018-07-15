@@ -39,6 +39,7 @@ namespace Framework
                     switch (_list[i].Behave(Entity))
                     {
                         case BehaviorState.Running:
+                        case BehaviorState.Finish:
                             Reslut = BehaviorState.Running;
                             return;
                         case BehaviorState.Success:
@@ -54,7 +55,7 @@ namespace Framework
                             return;
                     }
                 }
-                Reslut = BehaviorState.Success;
+                Reslut = BehaviorState.Finish;
             }
         }
     }

@@ -13,9 +13,11 @@ namespace Framework
     public abstract class AbsBehavior
     {
         private bool _awake = false;
+        private int _id;
         private BaseEntity _entity = null;
         private BehaviorState _reslut = BehaviorState.Reset;
 
+        public int Id { get { return _id; } set { _id = value; } }
         public BaseEntity Entity { get { return _entity; } }
         public BehaviorState Reslut { get { return _reslut; } set { _reslut = value; } }
 
@@ -30,7 +32,7 @@ namespace Framework
                 Reslut = BehaviorState.Running;
                 AwakeEx();
             }
-            UpdateNodeEx();
+            Update();
             return Reslut;
         }
 
@@ -49,7 +51,7 @@ namespace Framework
 
         protected abstract void AwakeEx();
 
-        protected abstract void UpdateNodeEx();
+        protected abstract void Update();
 
         protected abstract void UpdateEx();
 

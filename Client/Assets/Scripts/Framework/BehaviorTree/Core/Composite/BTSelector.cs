@@ -39,10 +39,11 @@ namespace Framework
                     switch (_list[i].Behave(Entity))
                     {
                         case BehaviorState.Running:
+                        case BehaviorState.Finish:
                             Reslut = BehaviorState.Running;
                             return;
                         case BehaviorState.Success:
-                            Reslut = BehaviorState.Success;
+                            Reslut = BehaviorState.Finish;
                             return;
                         case BehaviorState.Failure:
                         case BehaviorState.Reset:

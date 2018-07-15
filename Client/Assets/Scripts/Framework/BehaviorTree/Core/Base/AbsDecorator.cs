@@ -26,7 +26,7 @@ namespace Framework
             _nextNode = node;
         }
 
-        protected sealed override void UpdateNodeEx()
+        protected sealed override void Update()
         {
             if (Reslut == BehaviorState.Running)
             {

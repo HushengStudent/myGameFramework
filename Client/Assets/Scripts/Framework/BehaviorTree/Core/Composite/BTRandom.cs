@@ -46,10 +46,11 @@ namespace Framework
                 switch (_target.Behave(Entity))
                 {
                     case BehaviorState.Running:
+                    case BehaviorState.Finish:
                         Reslut = BehaviorState.Running;
                         break;
                     case BehaviorState.Success:
-                        Reslut = BehaviorState.Success;
+                        Reslut = BehaviorState.Finish;
                         break;
                     case BehaviorState.Failure:
                     case BehaviorState.Reset:

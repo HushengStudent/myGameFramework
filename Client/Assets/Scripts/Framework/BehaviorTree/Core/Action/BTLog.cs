@@ -16,7 +16,7 @@ namespace Framework
 
         public BTLog(Hashtable table) : base(table)
         {
-
+            _log = table["Log"].ToString();
         }
 
         protected override void AwakeEx()
@@ -29,7 +29,8 @@ namespace Framework
 
         protected override void UpdateEx()
         {
-            throw new System.NotImplementedException();
+            LogUtil.LogUtility.Print(_log);
+            Reslut = BehaviorState.Finish;
         }
     }
 }

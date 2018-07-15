@@ -34,13 +34,14 @@ namespace Framework
         {
             if (Reslut == BehaviorState.Running)
             {
-                bool success = true;
+                bool finish = true;
                 for (int i = 0; i < _list.Count; i++)
                 {
                     switch (_list[i].Behave(Entity))
                     {
                         case BehaviorState.Running:
-                            success = false;
+                        case BehaviorState.Finish:
+                            finish = false;
                             break;
                         case BehaviorState.Success:
                             break;
@@ -55,9 +56,9 @@ namespace Framework
                             return;
                     }
                 }
-                if (success)
+                if (finish)
                 {
-                    Reslut = BehaviorState.Success;
+                    Reslut = BehaviorState.Finish;
                 }
             }
         }

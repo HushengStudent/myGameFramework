@@ -13,10 +13,10 @@ namespace Framework
     public enum BehaviorState : int
     {
         Reset = 0,
-        Failure = 1,
-        Finish = 2,
-        Success = 3,
-        Running = 4,
+        Running = 1,
+        Failure = 2,
+        Finish = 3,
+        Success = 4,
     }
 
     public class BehaviorTreeMgr : MonoSingleton<BehaviorTreeMgr>, IMgr
