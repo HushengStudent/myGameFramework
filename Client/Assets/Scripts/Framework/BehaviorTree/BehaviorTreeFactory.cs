@@ -73,8 +73,10 @@ namespace Framework
                 Hashtable connectionTable = connectionList[i] as Hashtable;
                 int source = 0;
                 int target = 0;
-                if (int.TryParse(connectionTable["_sourceNode"].ToString(), out source)
-                    && int.TryParse(connectionTable["_targetNode"].ToString(), out target))
+                Hashtable scurceNode = connectionTable["_sourceNode"] as Hashtable;
+                Hashtable targetNode = connectionTable["_targetNode"] as Hashtable;
+                if (int.TryParse(scurceNode["$ref"].ToString(), out source)
+                    && int.TryParse(targetNode["$ref"].ToString(), out target))
                 {
                     List<int> list;
                     if (!_connectionDict.TryGetValue(source, out list))
@@ -99,13 +101,24 @@ namespace Framework
             {
                 target = list[i];
                 int id = target.Id;
-                List<int> connectList = _connectionDict[id];
+                List<int> connectList;
+                if(!_connectionDict.TryGetValue(id,out connectList))
+                {
+                    continue;
+                }
                 List<AbsBehavior> sonList = new List<AbsBehavior>();
                 for (int j = 0; j < connectList.Count; j++)
                 {
                     int sonId = connectList[j];
-                    AbsBehavior son = _behaviorDict[sonId];
-                    sonList.Add(son);
+                    AbsBehavior son;
+                    if(!_behaviorDict.TryGetValue(sonId,out son))
+                    {
+                        continue;
+                    }
+                    if (son != null)
+                    {
+                        sonList.Add(son);
+                    }
                 }
                 if (target.IsComposite)
                 {
@@ -134,7 +147,10 @@ namespace Framework
                     }
                 }
             }
-            GenerateConnect(nextList);
+            if (nextList.Count > 0)
+            {
+                GenerateConnect(nextList);
+            }
         }
 
         private static AbsBehavior CreateBehavior(Hashtable table, int id)

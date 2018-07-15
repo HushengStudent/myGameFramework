@@ -44,6 +44,11 @@ namespace Framework
         public void CreateBehaviorTree(BaseEntity entity, string path, bool enable = false)
         {
             BehaviorTree tree = BehaviorTreeFactory.CreateBehaviorTree(entity, path);
+            if (entity == null)
+            {
+                LogUtil.LogUtility.PrintError("[BehaviorTreeMgr]Create BehaviorTree error,entity is null!");
+                return;
+            }
             if (_tree.ContainsKey(entity))
             {
                 LogUtil.LogUtility.PrintWarning(string.Format("[BehaviorTreeMgr]repeat add BehaviorTree at EntityName: {0}.", entity.EntityName));
@@ -54,6 +59,11 @@ namespace Framework
 
         public void RemoveBehaviorTree(BaseEntity entity)
         {
+            if (entity == null)
+            {
+                LogUtil.LogUtility.PrintError("[BehaviorTreeMgr]Remove BehaviorTree error,entity is null!");
+                return;
+            }
             if (!_tree.ContainsKey(entity))
             {
                 LogUtil.LogUtility.PrintWarning(string.Format("[BehaviorTreeMgr]can not find a BehaviorTree at EntityName: {0}.", entity.EntityName));

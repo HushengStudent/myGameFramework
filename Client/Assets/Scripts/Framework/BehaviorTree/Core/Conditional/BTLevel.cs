@@ -12,21 +12,29 @@ namespace Framework
 {
     public class BTLevel : AbsDecorator
     {
-        public BTLevel(Hashtable table) : base(table) { }
+        private int _level;
+
+        public BTLevel(Hashtable table) : base(table)
+        {
+            string str = table["Level"].ToString();
+            if (!int.TryParse(str, out _level))
+            {
+                LogUtil.LogUtility.PrintError("[BTLevel]get level is error!");
+            }
+        }
 
         protected override void AwakeEx()
         {
-            throw new System.NotImplementedException();
         }
 
         protected override void Reset()
         {
-            throw new System.NotImplementedException();
         }
 
         protected override void UpdateEx()
         {
-            throw new System.NotImplementedException();
+            LogUtil.LogUtility.PrintWarning(string.Format("BTLevel's level:{0}", _level));
+            Reslut = BehaviorState.Finish;
         }
     }
 }

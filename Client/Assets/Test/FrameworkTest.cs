@@ -52,6 +52,11 @@ public class FrameworkTest : MonoBehaviour
 
     public void BehaviorTreeTest()
     {
-        BehaviorTreeMgr.Instance.CreateBehaviorTree(null, "BehaviourTree.BT");
+        var entity = EntityMgr.Instance.GetEntity<RoleEntity>(ulong.MaxValue);
+        if (entity == null)
+        {
+            entity = EntityMgr.Instance.CreateEntity<RoleEntity>(null, ulong.MaxValue, "BehaviorTree", null);
+        }
+        BehaviorTreeMgr.Instance.CreateBehaviorTree(entity, "BehaviourTree.BT", true);
     }
 }

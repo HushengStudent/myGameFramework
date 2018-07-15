@@ -53,6 +53,8 @@ namespace Framework
                         break;
                     case BehaviorState.Success:
                         break;
+                    case BehaviorState.Finish:
+                        break;
                     default:
                         _enable = false;
                         LogUtil.LogUtility.PrintError("[BehaviorTree]error state.");
