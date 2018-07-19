@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800216746578e6941a3f10c778ba6840, type: 3}
+  m_Name: Odin Editor Windows Introduction
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 2800000, guid: a78bffbeb81b48ae9ec71ad7969613e5, type: 3}
+  Title: Odin Editor Windows
+  BtnWidth: 133.13
+  SubTitleFontSize: 17
+  TitleFontSize: 25
+  Examples:
+  - VerticalResources: 0
+    Title: Basic Odin Editor Window
+    SubTitle: Inherit from OdinEditorWindow instead of EditorWindow. This will enable
+      you to render fields, properties and methods and make editor windows using attributes,
+      without writing any custom editor code.
+    Resources:
+    - Type: 1
+      ButtonName: Open Window
+      HighlightButton: 1
+      UnityObject: {fileID: 0}
+      StringValue: Sirenix.OdinInspector.Demos.BasicOdinEditorExampleWindow
+      windowSize: {x: 450, y: 300}
+    - Type: 0
+      ButtonName: Open Script
+      HighlightButton: 0
+      UnityObject: {fileID: 11500000, guid: 9a1e435d912810b4890a5ca4682f0e0f, type: 3}
+      StringValue: 
+      windowSize: {x: 700, y: 500}
+  - VerticalResources: 0
+    Title: Override GetTargets()
+    SubTitle: Odin Editor Windows are not limited to drawing themselves; you can override
+      GetTarget() or GetTargets() to make them display scriptable objects, components
+      or any arbitrary types (except value types like structs).
+    Resources:
+    - Type: 1
+      ButtonName: Open Window
+      HighlightButton: 1
+      UnityObject: {fileID: 0}
+      StringValue: Sirenix.OdinInspector.Demos.OverrideGetTargetsExampleWindow
+      windowSize: {x: 630, y: 800}
+    - Type: 0
+      ButtonName: Open Script
+      HighlightButton: 0
+      UnityObject: {fileID: 11500000, guid: 5957605b5da2ea642a9d9037f88d3627, type: 3}
+      StringValue: 
+      windowSize: {x: 700, y: 500}
+  - VerticalResources: 0
+    Title: Quickly inspect objects
+    SubTitle: Call OdinEditorWindow.InspectObject(myObj) to quickly pop up an editor
+      window for any given object. This is a great way to quickly debug objects or
+      make custom editor windows on the spot!
+    Resources:
+    - Type: 1
+      ButtonName: Open Window
+      HighlightButton: 1
+      UnityObject: {fileID: 0}
+      StringValue: Sirenix.OdinInspector.Demos.QuicklyInspectObjects
+      windowSize: {x: 400, y: 200}
+    - Type: 0
+      ButtonName: Open Script
+      HighlightButton: 0
+      UnityObject: {fileID: 11500000, guid: 503c8a9f7cfad80439b12cb7464b21e4, type: 3}
+      StringValue: 
+      windowSize: {x: 700, y: 500}
+  - VerticalResources: 0
+    Title: Menu Windows
+    SubTitle: 'Derive from OdinMenuEditorWindow to create windows that inspect a custom
+      tree of target objects, with automatic support for multiselection and more.
+      These are great for organizing your project neatly, and escaping the confusing,
+      massive project view hierarchy that often exists in very large projects.
+
+
+      For example, Odin itself uses one of these to draw its preferences window.'
+    Resources:
+    - Type: 1
+      ButtonName: Open Window
+      HighlightButton: 1
+      UnityObject: {fileID: 0}
+      StringValue: Sirenix.OdinInspector.Demos.OdinMenuEditorWindowExample
+      windowSize: {x: 800, y: 600}
+    - Type: 0
+      ButtonName: Open Script
+      HighlightButton: 0
+      UnityObject: {fileID: 11500000, guid: 66093819dfa2a0e49a76dae21d7c8a4c, type: 3}
+      StringValue: 
+      windowSize: {x: 800, y: 600}
+    - Type: 0
+      ButtonName: 
+      HighlightButton: 0
+      UnityObject: {fileID: 0}
+      StringValue: 
+      windowSize: {x: 700, y: 500}
+    - Type: 1
+      ButtonName: Styled Menu
+      HighlightButton: 1
+      UnityObject: {fileID: 0}
+      StringValue: Sirenix.OdinInspector.Demos.OdinMenuStyleExample
+      windowSize: {x: 800, y: 600}
+    - Type: 0
+      ButtonName: Open Script
+      HighlightButton: 0
+      UnityObject: {fileID: 11500000, guid: e18d6c02692f0604f84f93cb250834f1, type: 3}
+      StringValue: 
+      windowSize: {x: 800, y: 600}

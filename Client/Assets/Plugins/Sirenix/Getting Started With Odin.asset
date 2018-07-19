@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800216746578e6941a3f10c778ba6840, type: 3}
+  m_Name: Getting Started With Odin
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 2800000, guid: a78bffbeb81b48ae9ec71ad7969613e5, type: 3}
+  Title: Getting Started
+  BtnWidth: 178.65
+  SubTitleFontSize: 17
+  TitleFontSize: 25
+  Examples:
+  - VerticalResources: 0
+    Title: Odin Attributes Overview
+    SubTitle: The best way to get started using Odin is to open up the Attributes
+      Overview Demo scene and look through all of the examples.
+    Resources:
+    - Type: 0
+      ButtonName: Import Demo
+      HighlightButton: 0
+      UnityObject: {fileID: 102900000, guid: e74a7fdf7656bdc418bce45eff5c86d9, type: 3}
+      StringValue: Assets/Plugins/Sirenix/Demos/Odin Attributes Overview.unitypackage
+      windowSize: {x: 700, y: 500}
+    - Type: 0
+      ButtonName: Open Demo Scene
+      HighlightButton: 1
+      UnityObject: {fileID: 102900000, guid: 49a7e079b4a0c494d86c5da91a0f8385, type: 3}
+      StringValue: 
+      windowSize: {x: 700, y: 500}
+  - VerticalResources: 0
+    Title: Odin Editor Windows
+    SubTitle: You can also use Odin to rapidly create custom Editor Windows to help
+      organize your project and game data. This is where Odin can really help boost
+      your workflow. Make sure to check out the examples!
+    Resources:
+    - Type: 0
+      ButtonName: Import Demo
+      HighlightButton: 0
+      UnityObject: {fileID: 102900000, guid: 245bef657bc197845a09a21158c98c8d, type: 3}
+      StringValue: Assets/Plugins/Sirenix/Demos/Odin Editor Windows.unitypackage
+      windowSize: {x: 700, y: 500}
+    - Type: 1
+      ButtonName: Open Getting Started
+      HighlightButton: 1
+      UnityObject: {fileID: 0}
+      StringValue: Assets/Plugins/Sirenix/Demos/Odin Editor Windows/Odin Editor Windows
+        Introduction.asset
+      windowSize: {x: 600, y: 650}
+  - VerticalResources: 0
+    Title: Custom Drawer Examples
+    SubTitle: Making custom drawers in Odin is 10x faster and 10x more powerful than
+      in vanilla Unity. Drawers are strongly typed, with generic resolution, and have
+      full support for the layout system - no need to calculate any property heights!
+    Resources:
+    - Type: 0
+      ButtonName: Import Demo
+      HighlightButton: 0
+      UnityObject: {fileID: 102900000, guid: 904c3111621ed724bbb552165c1501e6, type: 3}
+      StringValue: Assets/Plugins/Sirenix/Demos/Custom Drawer Examples.unitypackage
+      windowSize: {x: 700, y: 500}
+    - Type: 0
+      ButtonName: Open Demo Scene
+      HighlightButton: 1
+      UnityObject: {fileID: 102900000, guid: eff1fe28f11c1fa43a4019748a284cb0, type: 3}
+      StringValue: 
+      windowSize: {x: 700, y: 500}
+  - VerticalResources: 1
+    Title: Online Resources
+    SubTitle: 'Check out the Manual for a proper in-depth introduction to Odin Inspector.
+
+
+      Also make sure to visit the Support page as well. There we show a collection
+      of all available Odin communities and services, where you can ask questions,
+      get inspiration or come and hang out.
+
+
+      We really hope you like Odin! if you do, be sure to leave a review on the Asset
+      Store, that helps us out a lot!'
+    Resources:
+    - Type: 2
+      ButtonName: Manual
+      HighlightButton: 0
+      UnityObject: {fileID: 0}
+      StringValue: http://sirenix.net/odininspector/manual/introduction/getting-started
+      windowSize: {x: 700, y: 500}
+    - Type: 2
+      ButtonName: API Documentation
+      HighlightButton: 0
+      UnityObject: {fileID: 0}
+      StringValue: http://sirenix.net/odininspector/documentation
+      windowSize: {x: 700, y: 500}
+    - Type: 2
+      ButtonName: Issue Tracker
+      HighlightButton: 0
+      UnityObject: {fileID: 0}
+      StringValue: https://bitbucket.org/sirenix/odin-inspector/issues
+      windowSize: {x: 700, y: 500}
+    - Type: 2
+      ButtonName: Support
+      HighlightButton: 0
+      UnityObject: {fileID: 0}
+      StringValue: http://sirenix.net/support
+      windowSize: {x: 700, y: 500}
+    - Type: 2
+      ButtonName: Asset Store
+      HighlightButton: 0
+      UnityObject: {fileID: 0}
+      StringValue: https://www.assetstore.unity3d.com/en/#!/content/89041
+      windowSize: {x: 700, y: 500}
