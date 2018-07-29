@@ -1,10 +1,9 @@
 ### myGameFramework
-This is a game framework include client server and some tools.
+#### This is a game framework include client server and some tools.
 
 software：Unity5.5.4/visual studio2017.
 
-Client：客户端工程使用Unity5.5.4创建
-
+#### Client：客户端工程使用Unity5.5.4创建
     Module：
     (1)资源管理：AB打包、资源加载、资源卸载.(Finish)
     (2)tolua接入.(Finish)
@@ -38,16 +37,16 @@ Client：客户端工程使用Unity5.5.4创建
     (30)编辑器：AI、战斗、场景.(TODO)
 	
     Reference：
-    (1)[tolua：(tolua:https://github.com/topameng/tolua)](tolua:https://github.com/topameng/tolua).
-    (2)[protoc-gen-lua：(pblua:https://github.com/topameng/protoc-gen-lua).](pblua:https://github.com/topameng/protoc-gen-lua).
-    (3)[AssetBundle：(myAssetBundleTools:https://github.com/HushengStudent/myAssetBundleTools).](myAssetBundleTools:https://github.com/HushengStudent/myAssetBundleTools).
-    (4)[protobuf-net-r668：(protobuf-net-r668:https://github.com/mdavid/protobuf-net).](protobuf-net-r668:https://github.com/mdavid/protobuf-net).
-    (5)[ObjectPool：(ugui:https://github.com/HushengStudent/ugui).](ugui:https://github.com/HushengStudent/ugui).
-    (6)[Mixed Text and Graphics：(EmojiText:https://github.com/zouchunyi/EmojiText).](EmojiText:https://github.com/zouchunyi/EmojiText).
-    (7)[Table：(ExcelUtilityWith-ExcelReader:https://github.com/Ribosome2/ExcelUtilityWith-ExcelReader).](ExcelUtilityWith-ExcelReader:https://github.com/Ribosome2/ExcelUtilityWith-ExcelReader).
-    (8)[NetWork：(GameFramework:https://github.com/EllanJiang/GameFramework).](GameFramework:https://github.com/EllanJiang/GameFramework).
-    (9)[Lua Profiler：(LuaMemorySnapshotDump:https://github.com/yaukeywang/LuaMemorySnapshotDump).](LuaMemorySnapshotDump:https://github.com/yaukeywang/LuaMemorySnapshotDump).
-    (10)[Navigation：(NavmeshExport:https://github.com/LingJiJian/NavmeshExport).](NavmeshExport:https://github.com/LingJiJian/NavmeshExport).
+    (1)[tolua：https://github.com/topameng/tolua](tolua:https://github.com/topameng/tolua).
+    (2)[protoc-gen-lua：https://github.com/topameng/protoc-gen-lua](pblua:https://github.com/topameng/protoc-gen-lua).
+    (3)[AssetBundle：https://github.com/HushengStudent/myAssetBundleTools](myAssetBundleTools:https://github.com/HushengStudent/myAssetBundleTools).
+    (4)[protobuf-net-r668：https://github.com/mdavid/protobuf-net](protobuf-net-r668:https://github.com/mdavid/protobuf-net).
+    (5)[ObjectPool：https://github.com/HushengStudent/ugui](ugui:https://github.com/HushengStudent/ugui).
+    (6)[Mixed Text and Graphics：https://github.com/zouchunyi/EmojiText](EmojiText:https://github.com/zouchunyi/EmojiText).
+    (7)[Table：https://github.com/Ribosome2/ExcelUtilityWith-ExcelReader](ExcelUtilityWith-ExcelReader:https://github.com/Ribosome2/ExcelUtilityWith-ExcelReader).
+    (8)[NetWork：https://github.com/EllanJiang/GameFramework](GameFramework:https://github.com/EllanJiang/GameFramework).
+    (9)[Lua Profiler：https://github.com/yaukeywang/LuaMemorySnapshotDump](LuaMemorySnapshotDump:https://github.com/yaukeywang/LuaMemorySnapshotDump).
+    (10)[Navigation：https://github.com/LingJiJian/NavmeshExport](NavmeshExport:https://github.com/LingJiJian/NavmeshExport).
 	
     Asset Store:
     (1)More Effective Coroutine.
@@ -57,11 +56,11 @@ Client：客户端工程使用Unity5.5.4创建
     (5)NodeCanvas.
     (6)Behavior Designer.
 	
-Server：服务器工程使用visual studio2017创建
+#### Server：服务器工程使用visual studio2017创建
     Reference：
     (1)protobuf-net-r668：(protobuf-net-r668:https://github.com/mdavid/protobuf-net).
 	
-Tools：相关工具目录
+#### Tools：相关工具目录
     (1)protoc-gen-lua.
     (2)protoc-gen-csharp.
 	
