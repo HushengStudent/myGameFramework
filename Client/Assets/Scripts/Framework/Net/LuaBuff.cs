@@ -12,158 +12,161 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 
-//参考LuaFramework;
-public class LuaBuff : MonoBehaviour
+namespace Framework
 {
-    MemoryStream _stream = null;
-    BinaryWriter _writer = null;
-    BinaryReader _reader = null;
-
-    public LuaBuff()
+    //参考LuaFramework;
+    public class LuaBuff
     {
-        _stream = new MemoryStream();
-        _writer = new BinaryWriter(_stream);
-    }
+        MemoryStream _stream = null;
+        BinaryWriter _writer = null;
+        BinaryReader _reader = null;
 
-    public LuaBuff(byte[] data)
-    {
-        if (data != null)
-        {
-            _stream = new MemoryStream(data);
-            _reader = new BinaryReader(_stream);
-        }
-        else
+        public LuaBuff()
         {
             _stream = new MemoryStream();
             _writer = new BinaryWriter(_stream);
         }
-    }
 
-    public void Close()
-    {
-        if (_writer != null) _writer.Close();
-        if (_reader != null) _reader.Close();
+        public LuaBuff(byte[] data)
+        {
+            if (data != null)
+            {
+                _stream = new MemoryStream(data);
+                _reader = new BinaryReader(_stream);
+            }
+            else
+            {
+                _stream = new MemoryStream();
+                _writer = new BinaryWriter(_stream);
+            }
+        }
 
-        _stream.Close();
-        _writer = null;
-        _reader = null;
-        _stream = null;
-    }
+        public void Close()
+        {
+            if (_writer != null) _writer.Close();
+            if (_reader != null) _reader.Close();
 
-    public void WriteByte(byte v)
-    {
-        _writer.Write(v);
-    }
+            _stream.Close();
+            _writer = null;
+            _reader = null;
+            _stream = null;
+        }
 
-    public void WriteInt(int v)
-    {
-        _writer.Write((int)v);
-    }
+        public void WriteByte(byte v)
+        {
+            _writer.Write(v);
+        }
 
-    public void WriteShort(ushort v)
-    {
-        _writer.Write((ushort)v);
-    }
+        public void WriteInt(int v)
+        {
+            _writer.Write((int)v);
+        }
 
-    public void WriteLong(long v)
-    {
-        _writer.Write((long)v);
-    }
+        public void WriteShort(ushort v)
+        {
+            _writer.Write((ushort)v);
+        }
 
-    public void WriteFloat(float v)
-    {
-        byte[] temp = BitConverter.GetBytes(v);
-        Array.Reverse(temp);
-        _writer.Write(BitConverter.ToSingle(temp, 0));
-    }
+        public void WriteLong(long v)
+        {
+            _writer.Write((long)v);
+        }
 
-    public void WriteDouble(double v)
-    {
-        byte[] temp = BitConverter.GetBytes(v);
-        Array.Reverse(temp);
-        _writer.Write(BitConverter.ToDouble(temp, 0));
-    }
+        public void WriteFloat(float v)
+        {
+            byte[] temp = BitConverter.GetBytes(v);
+            Array.Reverse(temp);
+            _writer.Write(BitConverter.ToSingle(temp, 0));
+        }
 
-    public void WriteString(string v)
-    {
-        byte[] bytes = Encoding.UTF8.GetBytes(v);
-        _writer.Write((ushort)bytes.Length);
-        _writer.Write(bytes);
-    }
+        public void WriteDouble(double v)
+        {
+            byte[] temp = BitConverter.GetBytes(v);
+            Array.Reverse(temp);
+            _writer.Write(BitConverter.ToDouble(temp, 0));
+        }
 
-    public void WriteBytes(byte[] v)
-    {
-        _writer.Write((int)v.Length);
-        _writer.Write(v);
-    }
+        public void WriteString(string v)
+        {
+            byte[] bytes = Encoding.UTF8.GetBytes(v);
+            _writer.Write((ushort)bytes.Length);
+            _writer.Write(bytes);
+        }
 
-    public void WriteBuffer(LuaByteBuffer strBuffer)
-    {
-        WriteBytes(strBuffer.buffer);
-    }
+        public void WriteBytes(byte[] v)
+        {
+            _writer.Write((int)v.Length);
+            _writer.Write(v);
+        }
 
-    public byte ReadByte()
-    {
-        return _reader.ReadByte();
-    }
+        public void WriteBuffer(LuaByteBuffer strBuffer)
+        {
+            WriteBytes(strBuffer.buffer);
+        }
 
-    public int ReadInt()
-    {
-        return (int)_reader.ReadInt32();
-    }
+        public byte ReadByte()
+        {
+            return _reader.ReadByte();
+        }
 
-    public ushort ReadShort()
-    {
-        return (ushort)_reader.ReadInt16();
-    }
+        public int ReadInt()
+        {
+            return (int)_reader.ReadInt32();
+        }
 
-    public long ReadLong()
-    {
-        return (long)_reader.ReadInt64();
-    }
+        public ushort ReadShort()
+        {
+            return (ushort)_reader.ReadInt16();
+        }
 
-    public float ReadFloat()
-    {
-        byte[] temp = BitConverter.GetBytes(_reader.ReadSingle());
-        Array.Reverse(temp);
-        return BitConverter.ToSingle(temp, 0);
-    }
+        public long ReadLong()
+        {
+            return (long)_reader.ReadInt64();
+        }
 
-    public double ReadDouble()
-    {
-        byte[] temp = BitConverter.GetBytes(_reader.ReadDouble());
-        Array.Reverse(temp);
-        return BitConverter.ToDouble(temp, 0);
-    }
+        public float ReadFloat()
+        {
+            byte[] temp = BitConverter.GetBytes(_reader.ReadSingle());
+            Array.Reverse(temp);
+            return BitConverter.ToSingle(temp, 0);
+        }
 
-    public string ReadString()
-    {
-        ushort len = ReadShort();
-        byte[] buffer = new byte[len];
-        buffer = _reader.ReadBytes(len);
-        return Encoding.UTF8.GetString(buffer);
-    }
+        public double ReadDouble()
+        {
+            byte[] temp = BitConverter.GetBytes(_reader.ReadDouble());
+            Array.Reverse(temp);
+            return BitConverter.ToDouble(temp, 0);
+        }
 
-    public byte[] ReadBytes()
-    {
-        int len = ReadInt();
-        return _reader.ReadBytes(len);
-    }
+        public string ReadString()
+        {
+            ushort len = ReadShort();
+            byte[] buffer = new byte[len];
+            buffer = _reader.ReadBytes(len);
+            return Encoding.UTF8.GetString(buffer);
+        }
 
-    public LuaByteBuffer ReadBuffer()
-    {
-        byte[] bytes = ReadBytes();
-        return new LuaByteBuffer(bytes);
-    }
+        public byte[] ReadBytes()
+        {
+            int len = ReadInt();
+            return _reader.ReadBytes(len);
+        }
 
-    public byte[] ToBytes()
-    {
-        _writer.Flush();
-        return _stream.ToArray();
-    }
+        public LuaByteBuffer ReadBuffer()
+        {
+            byte[] bytes = ReadBytes();
+            return new LuaByteBuffer(bytes);
+        }
 
-    public void Flush()
-    {
-        _writer.Flush();
+        public byte[] ToBytes()
+        {
+            _writer.Flush();
+            return _stream.ToArray();
+        }
+
+        public void Flush()
+        {
+            _writer.Flush();
+        }
     }
 }
