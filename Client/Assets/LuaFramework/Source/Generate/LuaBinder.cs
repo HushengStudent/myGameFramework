@@ -89,6 +89,7 @@ public static class LuaBinder
 		Framework_LuaComponentWrap.Register(L);
 		Framework_SceneMgrWrap.Register(L);
 		Framework_ResourceMgrWrap.Register(L);
+		Framework_LuaBuffWrap.Register(L);
 		Framework_MonoSingleton_Framework_LuaMgrWrap.Register(L);
 		Framework_Singleton_Framework_LuaUtilityWrap.Register(L);
 		Framework_Singleton_Framework_SceneMgrWrap.Register(L);

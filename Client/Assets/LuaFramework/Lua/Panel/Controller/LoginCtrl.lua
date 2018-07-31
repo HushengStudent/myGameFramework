@@ -5,6 +5,7 @@
  
 require "Panel.View.LoginPanel"
 require "Panel.Data.LoginData"
+require "Protol.login_pb"
  
 LoginCtrl = class("LoginCtrl",BaseCtrl)
  
@@ -16,6 +17,17 @@ function LoginCtrl:Awake(msg)
        log("--->>>LoginCtrl Awake be called.")
        local l_panel = LoginPanel.new()
        self.panel = l_panel:BindLuaComponent(msg[0])
+
+       --Test Net
+       local login = login_pb.LoginRequest();
+       login.id = 2000;
+       login.name = 'husheng';
+       local msg = login:SerializeToString();
+       ----------------------------------------------------------------
+       local buffer = luaBuff.New();
+       --buffer:WriteShort(10011);
+       --buffer:WriteBuffer(msg);
+       --networkMgr:SendMessage(buffer);
 end
  
 function LoginCtrl:Start()

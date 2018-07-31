@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Collections.Generic;
 using LuaInterface;
@@ -162,6 +162,8 @@ public static class CustomSettings
         _GT(typeof(LuaComponent)),
         _GT(typeof(SceneMgr)),
         _GT(typeof(ResourceMgr)),
+
+        _GT(typeof(LuaBuff)),
 
         //_GT(typeof(AppConst)),
         //_GT(typeof(LuaHelper)),

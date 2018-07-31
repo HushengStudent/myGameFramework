@@ -13,6 +13,9 @@ namespace Framework
 {
     public static class LuaNetUtil
     {
+        public static void SendLuaReq(LuaBuff buff)
+        {
 
+        }
     }
 }
