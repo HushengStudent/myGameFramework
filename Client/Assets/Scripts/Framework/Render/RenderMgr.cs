@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/07/21 00:43:38
-** desc:  å¸§åŒæ­¥ç®¡ç†;
+** date:  2018/08/05 02:25:38
+** desc:  äÖÈ¾¹ÜÀí;
 *********************************************************************************/
 
 using System.Collections;
@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class FrameSyncMgr : Singleton<FrameSyncMgr>
+    public class RenderMgr : MonoBehaviour
     {
 
     }
