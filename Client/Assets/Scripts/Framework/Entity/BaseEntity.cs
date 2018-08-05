@@ -17,15 +17,19 @@ namespace Framework
         private ulong _uid;
         private bool _enable = false;
         private string _entityName = string.Empty;
+        private string _resPath = string.Empty;
         private GameObject _entityObject = null;
         private EntityInitEventHandler _entityInitHandler;
+        private EntityLoadFinishEventHandler _entityLoadHandler;
 
         public long ID { get { return _id; } }
         public ulong UID { get { return _uid; } }
         public bool Enable { get { return _enable; } set { _enable = value; } }
         public string EntityName { get { return _entityName; } set { _entityName = value; } }
+        public string ResPath { get { return _resPath; } set { _resPath = value; } }
         public GameObject EntityObject { get { return _entityObject; } set { _entityObject = value; } }
         public EntityInitEventHandler EntityInitHandler { get { return _entityInitHandler; } set { _entityInitHandler = value; } }
+        public EntityLoadFinishEventHandler EntityLoadFinishHandler { get { return _entityLoadHandler; } set { _entityLoadHandler = value; } }
 
         public virtual void UpdateEx() { }
         public virtual void LateUpdateEx() { }
@@ -59,6 +63,7 @@ namespace Framework
             _id = 0;
             _enable = false;
             _entityInitHandler = null;
+            _entityLoadHandler = null;
         }
         /// <summary>
         /// 初始化;
@@ -110,5 +115,25 @@ namespace Framework
         /// 对象池Release;
         /// </summary>
         public virtual void OnRelease() { }
+
+        private void LoadEntitySync()
+        {
+            //TODO;
+            if (EntityLoadFinishHandler != null)
+            {
+                EntityLoadFinishHandler(this, EntityObject);
+            }
+        }
+
+        private IEnumerator LoadEntityAsyn()
+        {
+            IEnumerator itor = null;
+            //TODO;
+            if (EntityLoadFinishHandler != null)
+            {
+                EntityLoadFinishHandler(this, EntityObject);
+            }
+            return itor;
+        }
     }
 }

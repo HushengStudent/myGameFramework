@@ -11,5 +11,5 @@ using UnityEngine;
 namespace Framework
 {
     public delegate void EntityInitEventHandler(BaseEntity comp);
-    public delegate void EntityLoadEventHandler(BaseEntity comp, GameObject go);
+    public delegate void EntityLoadFinishEventHandler(BaseEntity comp, GameObject go);
 }
