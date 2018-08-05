@@ -23,5 +23,6 @@ public class Main : MonoBehaviour
     private void StartGame()
     {
         GameMgr.Instance.InitMgr();
+
     }
 }

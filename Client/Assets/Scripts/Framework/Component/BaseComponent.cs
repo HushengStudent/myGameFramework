@@ -14,22 +14,21 @@ namespace Framework
 {
     /// <summary>
     /// 组件抽象基类;
+    /// 
     /// </summary>
-    public class BaseComponent : IPool
+    public abstract class BaseComponent : IPool
     {
-        protected BaseComponent() { }
-
         private long _id;
         private bool _enable = false;
         private BaseEntity _entity;
-        private GameObject _componentGo = null;
-        private Action<BaseComponent> _initCallBack;
+        private GameObject _componentObject = null;
+        private ComponentInitEventHandler _componentInitHandler;
 
         public long ID { get { return _id; } }
         public bool Enable { get { return _enable; } set { _enable = value; } }
         public BaseEntity Entity { get { return _entity; } set { _entity = value; } }
-        public GameObject ComponentGo { get { return _componentGo; } set { _componentGo = value; } }
-        public Action<BaseComponent> InitCallBack { get { return _initCallBack; } set { _initCallBack = value; } }
+        public GameObject ComponentObject { get { return _componentObject; } set { _componentObject = value; } }
+        public ComponentInitEventHandler ComponentInitHandler { get { return _componentInitHandler; } set { _componentInitHandler = value; } }
 
         public virtual void UpdateEx() { }
         public virtual void LateUpdateEx() { }
@@ -43,13 +42,13 @@ namespace Framework
         {
             _id = IdGenerater.GenerateId();
             OnAttachEntity(entity);
-            OnAttachComponentGo(go);
+            OnAttachComponentObject(go);
             EventSubscribe();
             OnInitComponent();
             _enable = true;
-            if (InitCallBack != null)
+            if (ComponentInitHandler != null)
             {
-                InitCallBack(this);
+                ComponentInitHandler(this);
             }
         }
         /// <summary>
@@ -58,12 +57,12 @@ namespace Framework
         public void Reset()
         {
             DeAttachEntity();
-            DeAttachComponentGo();
+            DeAttachComponentObject();
             EventUnsubscribe();
             OnResetComponent();
             _id = 0;
             _enable = false;
-            _initCallBack = null;
+            _componentInitHandler = null;
         }
         /// <summary>
         /// 初始化;
@@ -85,9 +84,9 @@ namespace Framework
         /// Component附加GameObject;
         /// </summary>
         /// <param name="go"></param>
-        protected virtual void OnAttachComponentGo(GameObject go)
+        protected virtual void OnAttachComponentObject(GameObject go)
         {
-            _componentGo = go;
+            _componentObject = go;
         }
         /// <summary>
         /// 重置Entity的附加;
@@ -99,9 +98,9 @@ namespace Framework
         /// <summary>
         /// 重置GameObject的附加;
         /// </summary>
-        protected virtual void DeAttachComponentGo()
+        protected virtual void DeAttachComponentObject()
         {
-            _componentGo = null;
+            _componentObject = null;
         }
         /// <summary>
         /// 注册事件;

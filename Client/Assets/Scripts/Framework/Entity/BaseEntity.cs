@@ -13,21 +13,19 @@ namespace Framework
 {
     public class BaseEntity : IPool
     {
-        protected BaseEntity() { }
-
         private long _id;
         private ulong _uid;
         private bool _enable = false;
         private string _entityName = string.Empty;
-        private GameObject _entityGo = null;
-        private Action<BaseEntity> _initCallBack;
+        private GameObject _entityObject = null;
+        private EntityInitEventHandler _entityInitHandler;
 
         public long ID { get { return _id; } }
         public ulong UID { get { return _uid; } }
         public bool Enable { get { return _enable; } set { _enable = value; } }
         public string EntityName { get { return _entityName; } set { _entityName = value; } }
-        public GameObject EntityGO { get { return _entityGo; } set { _entityGo = value; } }
-        public Action<BaseEntity> InitCallBack { get { return _initCallBack; } set { _initCallBack = value; } }
+        public GameObject EntityObject { get { return _entityObject; } set { _entityObject = value; } }
+        public EntityInitEventHandler EntityInitHandler { get { return _entityInitHandler; } set { _entityInitHandler = value; } }
 
         public virtual void UpdateEx() { }
         public virtual void LateUpdateEx() { }
@@ -41,13 +39,13 @@ namespace Framework
             _id = IdGenerater.GenerateId();
             _uid = uid;
             _entityName = name;
-            OnAttachEntityGo(go);
+            OnAttachEntityObject(go);
             EventSubscribe();
             OnInit();
             _enable = true;
-            if (InitCallBack != null)
+            if (EntityInitHandler != null)
             {
-                InitCallBack(this);
+                EntityInitHandler(this);
             }
         }
         /// <summary>
@@ -55,12 +53,12 @@ namespace Framework
         /// </summary>
         public void Reset()
         {
-            DeAttachEntityGo();
+            DeAttachEntityObject();
             EventUnsubscribe();
             OnReset();
             _id = 0;
             _enable = false;
-            _initCallBack = null;
+            _entityInitHandler = null;
         }
         /// <summary>
         /// 初始化;
@@ -74,16 +72,16 @@ namespace Framework
         /// Entity附加GameObject;
         /// </summary>
         /// <param name="go"></param>
-        protected virtual void OnAttachEntityGo(GameObject go)
+        protected virtual void OnAttachEntityObject(GameObject go)
         {
-            _entityGo = go;
+            _entityObject = go;
         }
         /// <summary>
         /// 重置GameObject的附加;
         /// </summary>
-        protected virtual void DeAttachEntityGo()
+        protected virtual void DeAttachEntityObject()
         {
-            _entityGo = null;
+            _entityObject = null;
         }
         /// <summary>
         /// 注册事件;

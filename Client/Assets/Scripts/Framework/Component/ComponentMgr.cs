@@ -20,11 +20,11 @@ namespace Framework
         /// <summary>
         /// ComponentDict;
         /// </summary>
-        private Dictionary<long, BaseComponent> ComponentDict = new Dictionary<long, BaseComponent>();
+        private Dictionary<long, BaseComponent> _componentDict = new Dictionary<long, BaseComponent>();
         /// <summary>
         /// ComponentList;
         /// </summary>
-        private List<BaseComponent> ComponentList = new List<BaseComponent>();
+        private List<BaseComponent> _componentList = new List<BaseComponent>();
 
         #endregion
 
@@ -32,18 +32,18 @@ namespace Framework
 
         public void InitMgr()
         {
-            ComponentDict.Clear();
-            ComponentList.Clear();
+            _componentDict.Clear();
+            _componentList.Clear();
         }
 
         public override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
-            for (int i = 0; i < ComponentList.Count; i++)
+            for (int i = 0; i < _componentList.Count; i++)
             {
-                if (ComponentList[i].Enable)
+                if (_componentList[i].Enable)
                 {
-                    ComponentList[i].UpdateEx();
+                    _componentList[i].UpdateEx();
                 }
             }
         }
@@ -51,11 +51,11 @@ namespace Framework
         public override void LateUpdateEx(float interval)
         {
             base.LateUpdateEx(interval);
-            for (int i = 0; i < ComponentList.Count; i++)
+            for (int i = 0; i < _componentList.Count; i++)
             {
-                if (ComponentList[i].Enable)
+                if (_componentList[i].Enable)
                 {
-                    ComponentList[i].LateUpdateEx();
+                    _componentList[i].LateUpdateEx();
                 }
             }
         }
@@ -69,15 +69,14 @@ namespace Framework
         /// <typeparam name="T"></typeparam>
         /// <param name="entity"></param>
         /// <param name="go"></param>
-        /// <param name="initCallBack"></param>
+        /// <param name="handler"></param>
         /// <returns></returns>
-        public T CreateComponent<T>(BaseEntity entity, GameObject go,
-            Action<BaseComponent> initCallBack) where T : BaseComponent, new()
+        public T CreateComponent<T>(BaseEntity entity, GameObject go, ComponentInitEventHandler handler) where T : BaseComponent, new()
         {
-            T _Component = PoolMgr.Instance.Get<T>();//get from pool;
+            T _Component = PoolMgr.Instance.Get<T>();
             if (AddComponent(_Component))
             {
-                _Component.InitCallBack = initCallBack;
+                _Component.ComponentInitHandler = handler;
                 _Component.Create(entity, go);
                 return _Component;
             }
@@ -96,7 +95,7 @@ namespace Framework
         {
             RemoveComponent(component);
             component.Reset();
-            PoolMgr.Instance.Release<T>(component as T);//release to pool;
+            PoolMgr.Instance.Release<T>(component as T);//Release To Pool;
         }
         /// <summary>
         /// 添加Component;
@@ -105,12 +104,12 @@ namespace Framework
         /// <returns></returns>
         private bool AddComponent(BaseComponent component)
         {
-            if (ComponentDict.ContainsKey(component.ID))
+            if (_componentDict.ContainsKey(component.ID))
             {
                 return false;
             }
-            ComponentDict[component.ID] = component;
-            ComponentList.Add(component);
+            _componentDict[component.ID] = component;
+            _componentList.Add(component);
             return true;
         }
         /// <summary>
@@ -120,12 +119,12 @@ namespace Framework
         /// <returns></returns>
         private bool RemoveComponent(BaseComponent component)
         {
-            if (!ComponentDict.ContainsKey(component.ID))
+            if (!_componentDict.ContainsKey(component.ID))
             {
                 return false;
             }
-            ComponentDict.Remove(component.ID);
-            ComponentList.Remove(component);
+            _componentDict.Remove(component.ID);
+            _componentList.Remove(component);
             return true;
         }
 

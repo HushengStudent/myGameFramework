@@ -65,18 +65,18 @@ namespace Framework
             EntityIndexDict.Clear();
         }
         /// <summary>
-        /// 创建Entity;
+        /// 创建Entity;同步/异步完善;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="go"></param>
-        /// <param name="initCallBack"></param>
+        /// <param name="initHandler"></param>
         /// <returns></returns>
-        public T CreateEntity<T>(GameObject go, ulong uid, string name, Action<BaseEntity> initCallBack) where T : BaseEntity, new()
+        public T CreateEntity<T>(GameObject go, ulong uid, string name, EntityInitEventHandler initHandler) where T : BaseEntity, new()
         {
             T _Entity = PoolMgr.Instance.Get<T>();//get from pool;
             if (AddEntity(_Entity))
             {
-                _Entity.InitCallBack = initCallBack;
+                _Entity.EntityInitHandler = initHandler;
                 _Entity.Create(go, uid, name);
                 return _Entity;
             }

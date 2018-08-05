@@ -17,41 +17,41 @@ namespace Common
 {
     public static class PbLuaEditor
     {
-        private static List<string> paths = new List<string>();
-        private static List<string> files = new List<string>();
+        private static List<string> _paths = new List<string>();
+        private static List<string> _files = new List<string>();
         //protoc.exe安装在c盘;
-        private static string protoc = "c:/protobuf-3.0.0/src/protoc.exe";
+        private static string _protoc = "c:/protobuf-3.0.0/src/protoc.exe";
 
         //pblua目录;
-        private static string pbluaDir = Application.dataPath.ToLower() + "/LuaFramework/Lua/Network/pblua";
+        private static string _pbluaDir = Application.dataPath.ToLower() + "/LuaFramework/Lua/Network/pblua";
         //tools目录;
-        private static string protoc_gen_dir = "\"" + Application.dataPath.ToLower() + "/../../Tools/protoc-gen-lua-master/plugin/protoc-gen-lua.bat\"";
+        private static string _protocGenDir = "\"" + Application.dataPath.ToLower() + "/../../Tools/protoc-gen-lua-master/plugin/protoc-gen-lua.bat\"";
 
         //protogen目录;
-        private static string protogen = Application.dataPath.ToLower() + "/../../Tools/protoc-gen-csharp/ProtoGen/bin/Release/protogen.exe";
+        private static string _protogen = Application.dataPath.ToLower() + "/../../Tools/protoc-gen-csharp/ProtoGen/bin/Release/protogen.exe";
         //csharp客户端输出目录;
-        private static string csharpClientPath = Application.dataPath.ToLower() + "/Scripts/Common/Protocol/Proto";
+        private static string _csharpClientPath = Application.dataPath.ToLower() + "/Scripts/Common/Protocol/Proto";
         //TODO:生成协议给服务器;
         //private static string csharpServerPath = Application.dataPath.ToLower() + "/Scripts/Common/Protocol";
 
         [MenuItem("MPbTool/Build Pb File => Lua", false, 0)]
         public static void BuildPb2Lua()
         {
-            paths.Clear();
-            files.Clear();
-            Recursive(pbluaDir);
+            _paths.Clear();
+            _files.Clear();
+            Recursive(_pbluaDir);
             int index = 0;
-            foreach (string f in files)
+            foreach (string f in _files)
             {
                 index++;
                 string name = Path.GetFileName(f);
                 string ext = Path.GetExtension(f);
                 string workPath = Path.GetDirectoryName(f);
                 if (!ext.Equals(".proto")) continue;
-                EditorUtility.DisplayProgressBar("Build PbLua File", "gen proto to lua:" + name, index / files.Count);
+                EditorUtility.DisplayProgressBar("Build PbLua File", "gen proto to lua:" + name, index / _files.Count);
                 ProcessStartInfo info = new ProcessStartInfo();
-                info.FileName = protoc;
-                info.Arguments = " --lua_out=./ --plugin=protoc-gen-lua=" + protoc_gen_dir + " " + name;
+                info.FileName = _protoc;
+                info.Arguments = " --lua_out=./ --plugin=protoc-gen-lua=" + _protocGenDir + " " + name;
                 info.WindowStyle = ProcessWindowStyle.Hidden;
                 info.UseShellExecute = true;
                 info.WorkingDirectory = workPath;
@@ -67,11 +67,11 @@ namespace Common
         [MenuItem("MPbTool/Build Pb File => C#", false, 1)]
         public static void BuildPb2Csharp()
         {
-            paths.Clear();
-            files.Clear();
-            Recursive(pbluaDir);
+            _paths.Clear();
+            _files.Clear();
+            Recursive(_pbluaDir);
             int index = 0;
-            foreach (string f in files)
+            foreach (string f in _files)
             {
                 index++;
                 string name = Path.GetFileName(f);
@@ -86,9 +86,9 @@ namespace Common
                     Directory.CreateDirectory(outPath);
                 }
                 string fileName = Path.GetFileNameWithoutExtension(f);
-                EditorUtility.DisplayProgressBar("Build PbLua File", "gen proto to c#:" + name, index / files.Count);
+                EditorUtility.DisplayProgressBar("Build PbLua File", "gen proto to c#:" + name, index / _files.Count);
                 ProcessStartInfo info = new ProcessStartInfo();
-                info.FileName = protogen;
+                info.FileName = _protogen;
                 info.Arguments = "-i:" + name + " -o:" + outPath + "/" + fileName + ".cs -p:detectMissing";
                 info.WindowStyle = ProcessWindowStyle.Hidden;
                 info.UseShellExecute = true;
@@ -121,11 +121,11 @@ namespace Common
             {
                 string ext = Path.GetExtension(filename);
                 if (ext.Equals(".meta")) continue;
-                files.Add(filename.Replace('\\', '/'));
+                _files.Add(filename.Replace('\\', '/'));
             }
             foreach (string dir in dirs)
             {
-                paths.Add(dir.Replace('\\', '/'));
+                _paths.Add(dir.Replace('\\', '/'));
                 Recursive(dir);
             }
         }
@@ -137,11 +137,11 @@ namespace Common
         /// <returns></returns>
         private static string GetCsharpPath(string path)
         {
-            if (!path.Contains(pbluaDir))
+            if (!path.Contains(_pbluaDir))
             {
                 return null;
             }
-            return Path.GetDirectoryName(path.Replace(pbluaDir, csharpClientPath)) + "/";
+            return Path.GetDirectoryName(path.Replace(_pbluaDir, _csharpClientPath)) + "/";
         }
     }
 }

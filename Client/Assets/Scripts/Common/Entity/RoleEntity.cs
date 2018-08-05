@@ -18,7 +18,7 @@ public class RoleEntity : BaseEntity
     protected override void OnInit()
     {
         base.OnInit();
-        ComponentMgr.Instance.CreateComponent<BuffComponent>(this, EntityGO, null);
+        _buffComp = ComponentMgr.Instance.CreateComponent<BuffComponent>(this, EntityObject, null);
     }
 
     protected override void OnReset()
