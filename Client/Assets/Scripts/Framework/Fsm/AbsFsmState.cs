@@ -56,7 +56,7 @@ namespace Framework
         }
         protected abstract void OnExitStateEx(AbsFsmState nextState);
 
-        protected virtual void OnUpdate(float deltaTime)
+        public virtual void Update(float interval)
         {
             if(_triggerTrans == null)
             {
@@ -74,7 +74,7 @@ namespace Framework
             }
             if (_triggerTrans == null)
             {
-                OnUpdateEx(deltaTime);
+                UpdateEx(interval);
             }
             else
             {
@@ -87,9 +87,13 @@ namespace Framework
                 }
             }
         }
-        protected abstract void OnUpdateEx(float deltaTime);
+        protected abstract void UpdateEx(float interval);
 
-        protected virtual void OnLateUpdate(float deltaTime) { }
+        public virtual void LateUpdate(float interval)
+        {
+            LateUpdateEx(interval);
+        }
+        protected abstract void LateUpdateEx(float interval);
 
         public bool AddTransition(AbsFsmTransition trans)
         {

@@ -30,13 +30,13 @@ namespace Framework
             //处理自己;
         }
 
-        protected override void UpdateEx()
+        protected override void UpdateEx(float interval)
         {
             if (Reslut == BehaviorState.Running)
             {
                 for (int i = 0; i < _list.Count; i++)
                 {
-                    switch (_list[i].Behave(Entity))
+                    switch (_list[i].Behave(Entity, interval))
                     {
                         case BehaviorState.Running:
                         case BehaviorState.Finish:

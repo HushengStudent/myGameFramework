@@ -32,11 +32,11 @@ namespace Framework
             _list = behaviorList;
         }
 
-        protected sealed override void Update()
+        protected sealed override void Update(float interval)
         {
             if (Reslut == BehaviorState.Running)
             {
-                UpdateEx();
+                UpdateEx(interval);
             }
             else if (Reslut == BehaviorState.Finish)
             {

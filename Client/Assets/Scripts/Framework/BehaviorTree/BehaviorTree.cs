@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class BehaviorTree
+    public sealed class BehaviorTree
     {
         private bool _enable = false;
         private AbsBehavior _root;
@@ -31,18 +31,18 @@ namespace Framework
         public OnBehaviorTreeFailureHandler OnFailure { get { return _onFailure; } set { _onFailure = value; } }
         public OnBehaviorTreeResetHandler OnReset { get { return _onReset; } set { _onReset = value; } }
 
-        public BehaviorTree(AbsBehavior root,BaseEntity entity)
+        public BehaviorTree(AbsBehavior root, BaseEntity entity)
         {
             _root = root;
             _entity = entity;
             _enable = false;
         }
 
-        public void Update()
+        public void Update(float interval)
         {
             if (_enable && _entity != null && (_root.Reslut == BehaviorState.Reset || _root.Reslut == BehaviorState.Running))
             {
-                BehaviorState reslut = _root.Behave(_entity);
+                BehaviorState reslut = _root.Behave(_entity, interval);
                 switch (reslut)
                 {
                     case BehaviorState.Reset:

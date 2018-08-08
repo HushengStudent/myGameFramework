@@ -37,7 +37,7 @@ namespace Framework
                 if (temp.Enable) _treeList.Add(temp);
             for (int i = 0; i < _treeList.Count; i++)
             {
-                _treeList[i].Update();
+                _treeList[i].Update(interval);
             }
         }
 

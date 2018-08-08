@@ -13,17 +13,24 @@ namespace Framework
     public class FsmMgr : MonoSingleton<FsmMgr>, IMgr
     {
         private Dictionary<BaseEntity, FsmMachine> _fsmDict = new Dictionary<BaseEntity, FsmMachine>();
-        private List<FsmMachine> _fsmList = new List<FsmMachine>();
 
         public void InitMgr()
         {
             _fsmDict.Clear();
-            _fsmList.Clear();
         }
 
         protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
+            foreach(var target in _fsmDict)
+            {
+                target.Value.Update(interval);
+            }
+        }
+
+        public void CreateFsmMachine(BaseEntity entity, string name,List<AbsFsmState> stateList)
+        {
+
         }
     }
 }

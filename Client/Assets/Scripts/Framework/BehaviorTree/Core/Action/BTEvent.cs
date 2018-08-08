@@ -22,8 +22,9 @@ namespace Framework
         {
         }
 
-        protected override void UpdateEx()
+        protected override void UpdateEx(float interval)
         {
+
         }
     }
 }

@@ -33,7 +33,7 @@ namespace Framework
             _target = null;
         }
 
-        protected override void UpdateEx()
+        protected override void UpdateEx(float interval)
         {
             if (Reslut == BehaviorState.Running)
             {
@@ -43,7 +43,7 @@ namespace Framework
                     int index = Random.Range(0, count);
                     _target = _list[index];
                 }
-                switch (_target.Behave(Entity))
+                switch (_target.Behave(Entity, interval))
                 {
                     case BehaviorState.Running:
                     case BehaviorState.Finish:

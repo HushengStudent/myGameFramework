@@ -23,7 +23,7 @@ namespace Framework
 
         public virtual bool IsComposite { get { return false; } }
 
-        public BehaviorState Behave(BaseEntity entity)
+        public BehaviorState Behave(BaseEntity entity, float interval)
         {
             if (!_awake)
             {
@@ -32,7 +32,7 @@ namespace Framework
                 Reslut = BehaviorState.Running;
                 AwakeEx();
             }
-            Update();
+            Update(interval);
             return Reslut;
         }
 
@@ -51,9 +51,9 @@ namespace Framework
 
         protected abstract void AwakeEx();
 
-        protected abstract void Update();
+        protected abstract void Update(float interval);
 
-        protected abstract void UpdateEx();
+        protected abstract void UpdateEx(float interval);
 
         protected abstract void Reset();
 

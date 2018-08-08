@@ -26,11 +26,11 @@ namespace Framework
             _nextNode = node;
         }
 
-        protected sealed override void Update()
+        protected sealed override void Update(float interval)
         {
             if (Reslut == BehaviorState.Running)
             {
-                UpdateEx();
+                UpdateEx(interval);
             }
             else if (Reslut == BehaviorState.Finish)
             {
@@ -39,7 +39,7 @@ namespace Framework
                     Reslut = BehaviorState.Success;
                     return;
                 }
-                if (_nextNode != null && _nextNode.Behave(Entity) == BehaviorState.Success)
+                if (_nextNode != null && _nextNode.Behave(Entity, interval) == BehaviorState.Success)
                 {
                     Reslut = BehaviorState.Success;
                 }
