@@ -30,8 +30,9 @@ namespace Framework
         public GameObject ComponentObject { get { return _componentObject; } set { _componentObject = value; } }
         public ComponentInitEventHandler ComponentInitHandler { get { return _componentInitHandler; } set { _componentInitHandler = value; } }
 
-        public virtual void UpdateEx() { }
-        public virtual void LateUpdateEx() { }
+        public virtual void FixedUpdateEx(float interval) { }
+        public virtual void UpdateEx(float interval) { }
+        public virtual void LateUpdateEx(float interval) { }
 
         /// <summary>
         /// 初始化Component;

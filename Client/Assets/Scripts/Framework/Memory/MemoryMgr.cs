@@ -26,13 +26,13 @@ namespace Framework
             LogUtil.LogUtility.Print(string.Format("Used Heap Size: {0} MB", allMenory.ToString("F3")));
         }
 
-        public override void AwakeEx()
+        protected override void AwakeEx()
         {
             base.AwakeEx();
             _lastUpdateTimer = Time.realtimeSinceStartup;
         }
 
-        public override void UpdateEx(float interval)
+        protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
             if (Time.realtimeSinceStartup - _lastUpdateTimer > _monitTime)

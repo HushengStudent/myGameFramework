@@ -31,8 +31,9 @@ namespace Framework
         public EntityInitEventHandler EntityInitHandler { get { return _entityInitHandler; } set { _entityInitHandler = value; } }
         public EntityLoadFinishEventHandler EntityLoadFinishHandler { get { return _entityLoadHandler; } set { _entityLoadHandler = value; } }
 
-        public virtual void UpdateEx() { }
-        public virtual void LateUpdateEx() { }
+        public virtual void FixedUpdateEx(float interval) { }
+        public virtual void UpdateEx(float interval) { }
+        public virtual void LateUpdateEx(float interval) { }
 
         /// <summary>
         /// 初始化Entity;

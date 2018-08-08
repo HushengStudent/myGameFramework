@@ -36,26 +36,38 @@ namespace Framework
             _componentList.Clear();
         }
 
-        public override void UpdateEx(float interval)
+        protected override void FixedUpdateEx(float interval)
+        {
+            base.FixedUpdateEx(interval);
+            for (int i = 0; i < _componentList.Count; i++)
+            {
+                if (_componentList[i].Enable)
+                {
+                    _componentList[i].FixedUpdateEx(interval);
+                }
+            }
+        }
+
+        protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
             for (int i = 0; i < _componentList.Count; i++)
             {
                 if (_componentList[i].Enable)
                 {
-                    _componentList[i].UpdateEx();
+                    _componentList[i].UpdateEx(interval);
                 }
             }
         }
 
-        public override void LateUpdateEx(float interval)
+        protected override void LateUpdateEx(float interval)
         {
             base.LateUpdateEx(interval);
             for (int i = 0; i < _componentList.Count; i++)
             {
                 if (_componentList[i].Enable)
                 {
-                    _componentList[i].LateUpdateEx();
+                    _componentList[i].LateUpdateEx(interval);
                 }
             }
         }

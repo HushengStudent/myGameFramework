@@ -20,9 +20,9 @@ namespace Framework
             _buffDict.Clear();
         }
 
-        public override void UpdateEx()
+        public override void UpdateEx(float interval)
         {
-            base.UpdateEx();
+            base.UpdateEx(interval);
         }
 
         protected override void EventSubscribe()

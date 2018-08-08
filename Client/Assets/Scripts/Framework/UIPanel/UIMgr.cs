@@ -25,7 +25,7 @@ namespace Framework
             LogUtil.LogUtility.Print("[UIMgr]UIMgr init!");
         }
 
-        public override void UpdateEx(float interval)
+        protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
             if (CurPanel != null)

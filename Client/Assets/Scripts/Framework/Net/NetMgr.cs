@@ -16,7 +16,7 @@ namespace Framework
     {
         private Session session;
 
-        public override void AwakeEx()
+        protected override void AwakeEx()
         {
             base.AwakeEx();
             session = new Session("session");
@@ -29,7 +29,7 @@ namespace Framework
             LogUtil.LogUtility.Print("[NetMgr]NetMgr init!");
         }
 
-        public override void UpdateEx(float interval)
+        protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
             if (session != null && session.Active)

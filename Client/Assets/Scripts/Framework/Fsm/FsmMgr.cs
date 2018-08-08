@@ -10,16 +10,20 @@ using UnityEngine;
 
 namespace Framework
 {
-    /// <summary>
-    /// Unity状态机实现更简单;
-    /// </summary>
-    public class FsmMgr : Singleton<FsmMgr>
+    public class FsmMgr : MonoSingleton<FsmMgr>, IMgr
     {
-        private bool[,] _fsmTransition = new bool[,] {
-            {false, false},
-            {false, false}
-        };
+        private Dictionary<BaseEntity, FsmMachine> _fsmDict = new Dictionary<BaseEntity, FsmMachine>();
+        private List<FsmMachine> _fsmList = new List<FsmMachine>();
 
-        public bool[,] FsmTransition { get { return _fsmTransition; } }
+        public void InitMgr()
+        {
+            _fsmDict.Clear();
+            _fsmList.Clear();
+        }
+
+        protected override void UpdateEx(float interval)
+        {
+            base.UpdateEx(interval);
+        }
     }
 }

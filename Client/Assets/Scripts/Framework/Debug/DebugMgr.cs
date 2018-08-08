@@ -54,7 +54,7 @@ namespace Framework
             SetShowType(ShowType.ShowNon);
         }
 
-        public override void UpdateEx(float interval)
+        protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
             if (_fpsInfo == null)

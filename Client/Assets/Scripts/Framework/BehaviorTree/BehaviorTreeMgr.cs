@@ -21,19 +21,19 @@ namespace Framework
 
     public class BehaviorTreeMgr : MonoSingleton<BehaviorTreeMgr>, IMgr
     {
-        private Dictionary<BaseEntity, BehaviorTree> _tree = new Dictionary<BaseEntity, BehaviorTree>();
+        private Dictionary<BaseEntity, BehaviorTree> _treeDict = new Dictionary<BaseEntity, BehaviorTree>();
         private List<BehaviorTree> _treeList = new List<BehaviorTree>();
 
         public void InitMgr()
         {
-            _tree.Clear();
+            _treeDict.Clear();
         }
 
-        public override void UpdateEx(float interval)
+        protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
             _treeList.Clear();
-            foreach (var temp in _tree.Values)
+            foreach (var temp in _treeDict.Values)
                 if (temp.Enable) _treeList.Add(temp);
             for (int i = 0; i < _treeList.Count; i++)
             {
@@ -49,12 +49,12 @@ namespace Framework
                 LogUtil.LogUtility.PrintError("[BehaviorTreeMgr]Create BehaviorTree error,entity is null!");
                 return;
             }
-            if (_tree.ContainsKey(entity))
+            if (_treeDict.ContainsKey(entity))
             {
                 LogUtil.LogUtility.PrintWarning(string.Format("[BehaviorTreeMgr]repeat add BehaviorTree at EntityName: {0}.", entity.EntityName));
             }
             tree.Enable = enable;
-            _tree[entity] = tree;
+            _treeDict[entity] = tree;
         }
 
         public void RemoveBehaviorTree(BaseEntity entity)
@@ -64,13 +64,13 @@ namespace Framework
                 LogUtil.LogUtility.PrintError("[BehaviorTreeMgr]Remove BehaviorTree error,entity is null!");
                 return;
             }
-            if (!_tree.ContainsKey(entity))
+            if (!_treeDict.ContainsKey(entity))
             {
                 LogUtil.LogUtility.PrintWarning(string.Format("[BehaviorTreeMgr]can not find a BehaviorTree at EntityName: {0}.", entity.EntityName));
             }
             else
             {
-                _tree.Remove(entity);
+                _treeDict.Remove(entity);
             }
         }
     }

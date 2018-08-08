@@ -31,7 +31,7 @@ namespace Framework
             this.StartLooper();
         }
 
-        public override void AwakeEx()
+        protected override void AwakeEx()
         {
             base.AwakeEx();
             //初始化LuaMgr;

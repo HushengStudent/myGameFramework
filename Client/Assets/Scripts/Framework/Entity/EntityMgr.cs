@@ -30,26 +30,38 @@ namespace Framework
 
         #region Unity api
 
-        public override void UpdateEx(float interval)
+        protected override void FixedUpdateEx(float interval)
+        {
+            base.FixedUpdateEx(interval);
+            for (int i = 0; i < EntityList.Count; i++)
+            {
+                if (EntityList[i].Enable)
+                {
+                    EntityList[i].FixedUpdateEx(interval);
+                }
+            }
+        }
+
+        protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
             for (int i = 0; i < EntityList.Count; i++)
             {
                 if (EntityList[i].Enable)
                 {
-                    EntityList[i].UpdateEx();
+                    EntityList[i].UpdateEx(interval);
                 }
             }
         }
 
-        public override void LateUpdateEx(float interval)
+        protected override void LateUpdateEx(float interval)
         {
             base.LateUpdateEx(interval);
             for (int i = 0; i < EntityList.Count; i++)
             {
                 if (EntityList[i].Enable)
                 {
-                    EntityList[i].LateUpdateEx();
+                    EntityList[i].LateUpdateEx(interval);
                 }
             }
         }

@@ -45,14 +45,14 @@ namespace Framework
                 LogUtil.LogUtility.Print("This " + (typeof(T)).ToString() + " Singleton Instance is not null!");
         }
 
-        public virtual void StartEx() { }
-        public virtual void AwakeEx() { }
-        public virtual void OnEnableEx() { }
-        public virtual void FixedUpdateEx(float interval) { }
-        public virtual void UpdateEx(float interval) { }
-        public virtual void LateUpdateEx(float interval) { }
-        public virtual void OnDisableEx() { }
-        public virtual void OnDestroyEx() { }
+        protected virtual void StartEx() { }
+        protected virtual void AwakeEx() { }
+        protected virtual void OnEnableEx() { }
+        protected virtual void FixedUpdateEx(float interval) { }
+        protected virtual void UpdateEx(float interval) { }
+        protected virtual void LateUpdateEx(float interval) { }
+        protected virtual void OnDisableEx() { }
+        protected virtual void OnDestroyEx() { }
 
         void Start() { StartEx(); }
         void Awake()
