@@ -7,26 +7,9 @@ public class Framework_Singleton_Framework_LuaUtilityWrap
 	public static void Register(LuaState L)
 	{
 		L.BeginClass(typeof(Framework.Singleton<Framework.LuaUtility>), typeof(System.Object), "Singleton_Framework_LuaUtility");
-		L.RegFunction("OnDestroy", OnDestroy);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("Instance", get_Instance, null);
 		L.EndClass();
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int OnDestroy(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 1);
-			Framework.Singleton<Framework.LuaUtility> obj = (Framework.Singleton<Framework.LuaUtility>)ToLua.CheckObject<Framework.Singleton<Framework.LuaUtility>>(L, 1);
-			obj.OnDestroy();
-			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]

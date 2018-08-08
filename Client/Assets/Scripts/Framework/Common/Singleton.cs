@@ -37,10 +37,5 @@ namespace Framework
 	    }
 	
 	    protected virtual void Init() { }
-	
-	    public virtual void OnDestroy()
-	    {
-	        instance = null;
-	    }
 	}
 }

@@ -59,4 +59,5 @@ public class FrameworkTest : MonoBehaviour
         }
         BehaviorTreeMgr.Instance.CreateBehaviorTree(entity, "BehaviourTree.BT", true);
     }
+
 }

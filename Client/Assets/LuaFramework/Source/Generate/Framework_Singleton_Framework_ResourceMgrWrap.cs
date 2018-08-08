@@ -7,26 +7,9 @@ public class Framework_Singleton_Framework_ResourceMgrWrap
 	public static void Register(LuaState L)
 	{
 		L.BeginClass(typeof(Framework.Singleton<Framework.ResourceMgr>), typeof(System.Object), "Singleton_Framework_ResourceMgr");
-		L.RegFunction("OnDestroy", OnDestroy);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("Instance", get_Instance, null);
 		L.EndClass();
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int OnDestroy(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 1);
-			Framework.Singleton<Framework.ResourceMgr> obj = (Framework.Singleton<Framework.ResourceMgr>)ToLua.CheckObject<Framework.Singleton<Framework.ResourceMgr>>(L, 1);
-			obj.OnDestroy();
-			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
