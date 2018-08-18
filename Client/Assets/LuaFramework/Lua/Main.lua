@@ -16,7 +16,7 @@ require "Manager.SceneManager"
 require "UI.Canvas.BaseCanvas"
 require "Panel.BaseCtrl"
 
-require "Network.pblua.login.login_pb"
+require "Protol.login_pb"
 
 ---[luaMgr]
 g_GameMgr = GameManager.new()

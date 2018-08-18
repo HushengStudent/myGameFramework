@@ -23,7 +23,7 @@ namespace Common
         private static string _protoc = "c:/protobuf-3.0.0/src/protoc.exe";
 
         //pblua目录;
-        private static string _pbluaDir = Application.dataPath.ToLower() + "/LuaFramework/Lua/Network/pblua";
+        private static string _pbluaDir = Application.dataPath.ToLower() + "/LuaFramework/Lua/Network/Protol";
         //tools目录;
         private static string _protocGenDir = "\"" + Application.dataPath.ToLower() + "/../../Tools/protoc-gen-lua-master/plugin/protoc-gen-lua.bat\"";
 

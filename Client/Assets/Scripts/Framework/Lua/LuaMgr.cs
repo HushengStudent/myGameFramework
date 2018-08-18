@@ -75,6 +75,7 @@ namespace Framework
         {
             lua.AddSearchPath(LuaConst.luaDir);
             lua.AddSearchPath(LuaConst.luaResDir);
+            lua.AddSearchPath(Application.dataPath + "/LuaFramework/Lua/NetWork");
         }
 
         /// <summary>

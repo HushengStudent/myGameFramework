@@ -5,7 +5,7 @@
  
 require "Panel.View.LoginPanel"
 require "Panel.Data.LoginData"
-require "Network.pblua.login.login_pb"
+require "Protol.login_pb"
  
 LoginCtrl = class("LoginCtrl",BaseCtrl)
  

@@ -4,6 +4,9 @@
 --- 协议序列号
 ---
 
+module("Protol.ProtoDefine", package.seeall)
+
+
 ProtoID =
 {
     LoginRequest = 10011,
