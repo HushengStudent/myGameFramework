@@ -7,7 +7,6 @@ public class Framework_ResourceMgrWrap
 	public static void Register(LuaState L)
 	{
 		L.BeginClass(typeof(Framework.ResourceMgr), typeof(Framework.Singleton<Framework.ResourceMgr>));
-		L.RegFunction("InitEx", InitEx);
 		L.RegFunction("UnloadUnusedAssets", UnloadUnusedAssets);
 		L.RegFunction("GameGC", GameGC);
 		L.RegFunction("UnloadObject", UnloadObject);
@@ -33,22 +32,6 @@ public class Framework_ResourceMgrWrap
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: Framework.ResourceMgr.New");
 			}
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int InitEx(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 1);
-			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
-			obj.InitEx();
-			return 0;
 		}
 		catch (Exception e)
 		{

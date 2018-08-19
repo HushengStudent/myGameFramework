@@ -19,12 +19,12 @@ namespace Framework
         Success = 4,
     }
 
-    public class BehaviorTreeMgr : MonoSingleton<BehaviorTreeMgr>, IManagr
+    public class BehaviorTreeMgr : MonoSingleton<BehaviorTreeMgr>, IManager
     {
         private Dictionary<BaseEntity, BehaviorTree> _treeDict = new Dictionary<BaseEntity, BehaviorTree>();
         private List<BehaviorTree> _treeList = new List<BehaviorTree>();
 
-        public void InitEx()
+        public void Init()
         {
             _treeDict.Clear();
         }

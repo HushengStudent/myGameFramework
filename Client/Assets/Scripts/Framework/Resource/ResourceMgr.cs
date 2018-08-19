@@ -14,14 +14,14 @@ using MEC;
 
 namespace Framework
 {
-    public class ResourceMgr : Singleton<ResourceMgr>, IManagr
+    public class ResourceMgr : Singleton<ResourceMgr>
     {
         #region Functions
 
         /// <summary>
         /// 初始化;
         /// </summary>
-        public void InitEx()
+        protected override void InitEx()
         {
             //UnloadUnusedAssets();
             //GameGC();

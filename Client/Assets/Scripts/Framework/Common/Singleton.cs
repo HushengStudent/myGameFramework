@@ -10,32 +10,33 @@ using UnityEngine;
 
 namespace Framework
 {
-	public class Singleton<T> where T : class,new()
-	{
-	    private static T instance = null;
-	
-	    public static T Instance
-	    {
-	        get
-	        {
-	            if (null == instance)
-	            {
-	                instance = new T(); //调用构造函数;
-	            }
-	            return instance;
-	        }
-	    }
-	
-	    /// <summary>
-	    /// 构造函数;
-	    /// </summary>
-	    protected Singleton()
-	    {
-	        if (null != instance)
+    public class Singleton<T> where T : class, new()
+    {
+        private static T instance = null;
+
+        public static T Instance
+        {
+            get
+            {
+                if (null == instance)
+                {
+                    instance = new T(); //调用构造函数;
+                }
+                return instance;
+            }
+        }
+
+        /// <summary>
+        /// 构造函数;
+        /// </summary>
+        protected Singleton()
+        {
+            if (null != instance)
                 LogUtil.LogUtility.Print("This " + (typeof(T)).ToString() + " Singleton Instance is not null!");
-	        Init();
-	    }
-	
-	    protected virtual void Init() { }
-	}
+            InitEx();
+        }
+
+        protected virtual void InitEx() { }
+        public void Init() { }
+    }
 }

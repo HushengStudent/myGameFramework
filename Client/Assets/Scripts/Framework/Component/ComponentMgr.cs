@@ -13,7 +13,7 @@ using MEC;
 
 namespace Framework
 {
-    public class ComponentMgr : MonoSingleton<ComponentMgr>, IManagr
+    public class ComponentMgr : MonoSingleton<ComponentMgr>, IManager
     {
         #region Field
 
@@ -30,7 +30,7 @@ namespace Framework
 
         #region Unity api
 
-        public void InitEx()
+        public void Init()
         {
             _componentDict.Clear();
             _componentList.Clear();

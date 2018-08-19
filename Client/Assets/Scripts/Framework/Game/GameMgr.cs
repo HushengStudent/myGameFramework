@@ -18,7 +18,7 @@ namespace Framework
         High
     }
 
-    public class GameMgr : Singleton<GameMgr>, IManagr
+    public class GameMgr : Singleton<GameMgr>
     {
         private int _gameFrame = 60;
         private float _syncInterval = 0.2f;
@@ -28,10 +28,10 @@ namespace Framework
         public float SyncInterval { get { return _syncInterval; } set { _syncInterval = value; } }
         public MobileLevel MobileLevelValue { get { return _mobileLevelValue; } set { _mobileLevelValue = value; } }
 
-        public void InitEx()
+        protected override void InitEx()
         {
             PoolMgr.Instance.ClearFinishHandler = () => InitApp();
-            PoolMgr.Instance.InitEx();          //对象池初始化;
+            PoolMgr.Instance.Init();          //对象池初始化;
         }
 
         private void InitApp()
@@ -39,20 +39,20 @@ namespace Framework
             PoolMgr.Instance.ClearFinishHandler = null;
             SetGameConfig();
 #if UNITY_EDITOR
-            DebugMgr.Instance.InitMgr();         //Debug工具初始化;
+            DebugMgr.Instance.Init();         //Debug工具初始化;
 #endif
-            EventMgr.Instance.InitEx();         //事件系统初始化;
+            EventMgr.Instance.Init();         //事件系统初始化;
             UIEventMgr<int>.InitMgr();           //UI事件系统初始化;
-            SdkMgr.Instance.InitEx();           //平台初始化;
-            TimerMgr.Instance.InitEx();         //定时器初始化;
-            ComponentMgr.Instance.InitEx();     //组件初始化;
-            EntityMgr.Instance.InitEx();        //实体初始化;
-            ResourceMgr.Instance.InitEx();      //资源初始化;
-            UIMgr.Instance.InitEx();            //UI初始化;
-            SceneMgr.Instance.InitEx();         //场景初始化;
-            LuaMgr.Instance.InitEx();           //lua初始化;
-            NetMgr.Instance.InitEx();           //网络初始化;
-            MemoryMgr.Instance.InitEx();
+            SdkMgr.Instance.Init();           //平台初始化;
+            TimerMgr.Instance.Init();         //定时器初始化;
+            ComponentMgr.Instance.Init();     //组件初始化;
+            EntityMgr.Instance.Init();        //实体初始化;
+            ResourceMgr.Instance.Init();      //资源初始化;
+            UIMgr.Instance.Init();            //UI初始化;
+            SceneMgr.Instance.Init();         //场景初始化;
+            LuaMgr.Instance.Init();           //lua初始化;
+            NetMgr.Instance.Init();           //网络初始化;
+            MemoryMgr.Instance.Init();
 
         }
 

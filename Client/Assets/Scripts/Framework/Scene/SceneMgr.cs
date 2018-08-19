@@ -12,13 +12,13 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class SceneMgr : Singleton<SceneMgr>, IManagr
+    public class SceneMgr : Singleton<SceneMgr>
     {
         private Scene _scene = null;
 
         public Scene CurScene { get { return _scene; } set { _scene = value; } }
 
-        public void InitEx()
+        protected override void InitEx()
         {
             CurScene = null;
             LogUtil.LogUtility.Print("[SceneMgr]SceneMgr init!");

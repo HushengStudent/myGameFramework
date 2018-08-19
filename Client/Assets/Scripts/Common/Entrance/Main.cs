@@ -22,7 +22,7 @@ public class Main : MonoBehaviour
     /// </summary>
     private void StartGame()
     {
-        GameMgr.Instance.InitEx();
+        GameMgr.Instance.Init();
 
     }
 }

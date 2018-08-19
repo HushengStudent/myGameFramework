@@ -10,11 +10,11 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class FsmMgr : MonoSingleton<FsmMgr>, IManagr
+    public class FsmMgr : MonoSingleton<FsmMgr>, IManager
     {
         private Dictionary<BaseEntity, FsmMachine> _fsmDict = new Dictionary<BaseEntity, FsmMachine>();
 
-        public void InitEx()
+        public void Init()
         {
             _fsmDict.Clear();
         }
@@ -22,13 +22,13 @@ namespace Framework
         protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
-            foreach(var target in _fsmDict)
+            foreach (var target in _fsmDict)
             {
                 target.Value.Update(interval);
             }
         }
 
-        public void CreateFsmMachine(BaseEntity entity, string name,List<AbsFsmState> stateList)
+        public void CreateFsmMachine(BaseEntity entity, string name, List<AbsFsmState> stateList)
         {
 
         }

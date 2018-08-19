@@ -13,5 +13,9 @@ namespace Framework
     public partial class AssetBundleMgr
     {
         //Unity2017建议使用Task;
+
+        //伪异步,分帧同步加载;
+
+        //异步加载管理器;
     }
 }

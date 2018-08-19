@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/04/17 00:23:01
-** desc:  ç®¡ç†å™¨æ¥å£;
+** date:  2018/08/20 03:10:35
+** desc:  ¹ÜÀíÆ÷³õÊ¼»¯;
 *********************************************************************************/
 
 using System.Collections;
@@ -10,8 +10,8 @@ using UnityEngine;
 
 namespace Framework
 {
-    public interface IManagr
+    public interface IManager
     {
-        void InitEx();
+        void Init();
     }
 }
