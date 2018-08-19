@@ -15,7 +15,7 @@ namespace Framework
 {
     public class LuaCsRefUtility : EditorWindow
     {
-        [MenuItem("MGame/Utility/Lua Cs Ref Analysis", false, 0)]
+        [MenuItem("myGameFramework/Utility/Lua Cs Ref Analysis", false, 0)]
         public static void GenerateAll()
         {
             var window = GetWindow(typeof(LuaCsRefUtility), false, "LuaCsRef Utility");

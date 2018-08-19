@@ -36,7 +36,7 @@ namespace Framework
 
         private const int EmojiSize = 32;//the size of emoji;
 
-        [MenuItem("MGame/EmojiText/Build Emoji", false, 4)]
+        [MenuItem("myGameFramework/EmojiText/Build Emoji", false, 4)]
         public static void BuildEmoji()
         {
             List<char> keylist = new List<char>();

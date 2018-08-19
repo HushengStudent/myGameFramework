@@ -22,7 +22,7 @@ namespace Framework
         private static Dictionary<int, KeyValuePair<string, TableFiledType>> _colDict = new Dictionary<int, KeyValuePair<string, TableFiledType>>();
         private static string _targetPath = string.Empty;
 
-        [MenuItem("MGame/TableTools/初始化配置表", false, 301)]
+        [MenuItem("myGameFramework/TableTools/初始化配置表", false, 301)]
         public static void InitTable()
         {
             _colDict.Clear();

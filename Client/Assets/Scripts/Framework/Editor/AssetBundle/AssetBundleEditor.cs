@@ -16,7 +16,7 @@ namespace Common
 {
     public static class AssetBundleEditor
     {
-        [MenuItem("MGame/AssetBundleTools/Build AssetBundle", false, 0)]
+        [MenuItem("myGameFramework/AssetBundleTools/Build AssetBundle", false, 0)]
         private static void BuildAll()
         {
             bool state = false;
@@ -33,7 +33,7 @@ namespace Common
             BuildAssetBundle(FilePathUtility.AssetBundlePath);
         }
 
-        //[MenuItem("MGame/AssetBundleTools/Clear AssetName", false, 1)]
+        //[MenuItem("myGameFramework/AssetBundleTools/Clear AssetName", false, 1)]
         private static void ClearAll()
         {
             AssetDependenciesAnalysis analysiser = new AssetDependenciesAnalysis();
@@ -41,7 +41,7 @@ namespace Common
             AssetDatabase.Refresh();
         }
 
-        [MenuItem("MGame/AssetBundleTools/Delete AssetBundle", false, 2)]
+        [MenuItem("myGameFramework/AssetBundleTools/Delete AssetBundle", false, 2)]
         private static void DeleteAll()
         {
             AssetDependenciesAnalysis analysiser = new AssetDependenciesAnalysis();

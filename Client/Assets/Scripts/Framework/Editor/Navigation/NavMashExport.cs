@@ -20,7 +20,7 @@ namespace Framework
     {
         private static string _rootPath = Application.dataPath + "/ArtRes/NavMesh/";
 
-        [MenuItem("MGame/Navigation/Export NavMash", false, 0)]
+        [MenuItem("myGameFramework/Navigation/Export NavMash", false, 0)]
         public static void Export()
         {
             /*

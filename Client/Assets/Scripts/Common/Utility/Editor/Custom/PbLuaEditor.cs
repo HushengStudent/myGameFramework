@@ -34,7 +34,7 @@ namespace Common
         //TODO:生成协议给服务器;
         //private static string csharpServerPath = Application.dataPath.ToLower() + "/Scripts/Common/Protocol";
 
-        [MenuItem("MPbTool/Build Pb File => Lua", false, 0)]
+        [MenuItem("myGameFramework/PbTool/Build Pb File => Lua", false, 0)]
         public static void BuildPb2Lua()
         {
             _paths.Clear();
@@ -64,7 +64,7 @@ namespace Common
             AssetDatabase.Refresh();
         }
 
-        [MenuItem("MPbTool/Build Pb File => C#", false, 1)]
+        [MenuItem("myGameFramework/PbTool/Build Pb File => C#", false, 1)]
         public static void BuildPb2Csharp()
         {
             _paths.Clear();
@@ -102,7 +102,7 @@ namespace Common
             AssetDatabase.Refresh();
         }
 
-        [MenuItem("MPbTool/Build All", false, 2)]
+        [MenuItem("myGameFramework/PbTool/Build All", false, 2)]
         public static void BuildAll()
         {
             BuildPb2Lua();

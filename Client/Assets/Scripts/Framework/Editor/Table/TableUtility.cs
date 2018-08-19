@@ -16,7 +16,7 @@ namespace Framework
 {
     public static class TableUtility
     {
-        [MenuItem("MGame/TableTools/Generate all", false, 0)]
+        [MenuItem("myGameFramework/TableTools/Generate all", false, 0)]
         public static void GenerateAll()
         {
             if (EditorUtility.DisplayDialog("提示", "导出全部 cs 和 byte！", "确认", "取消"))
@@ -25,7 +25,7 @@ namespace Framework
             }
         }
 
-        [MenuItem("MGame/TableTools/Export cs", false, 101)]
+        [MenuItem("myGameFramework/TableTools/Export cs", false, 101)]
         public static void ExportCsharp()
         {
             if (EditorUtility.DisplayDialog("提示", "导出全部 cs！", "确认", "取消"))
@@ -34,7 +34,7 @@ namespace Framework
             }
         }
 
-        [MenuItem("MGame/TableTools/Generate byte", false, 102)]
+        [MenuItem("myGameFramework/TableTools/Generate byte", false, 102)]
         public static void GenerateBytes()
         {
             if (EditorUtility.DisplayDialog("提示", "导出全部 byte！", "确认", "取消"))
@@ -43,7 +43,7 @@ namespace Framework
             }
         }
 
-        [MenuItem("MGame/TableTools/Export Select cs", false, 201)]
+        [MenuItem("myGameFramework/TableTools/Export Select cs", false, 201)]
         public static void ExportSelectCsharp()
         {
             string path = string.Empty;
@@ -60,7 +60,7 @@ namespace Framework
             TableExportCs.ExportCs(path);
         }
 
-        [MenuItem("MGame/TableTools/Generate Select byte", false, 202)]
+        [MenuItem("myGameFramework/TableTools/Generate Select byte", false, 202)]
         public static void GenerateSelectBytes()
         {
 
