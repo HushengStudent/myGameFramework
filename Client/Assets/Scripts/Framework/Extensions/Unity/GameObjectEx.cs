@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class BetterObject
+    public class GameObjectEx
     {
         private GameObject _gameObject;
         private int _parentInstanceId;
