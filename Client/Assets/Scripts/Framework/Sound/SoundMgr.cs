@@ -12,6 +12,6 @@ namespace Framework
 {
     public class SoundMgr : Singleton<SoundMgr>
     {
-	
-	}
+
+    }
 }

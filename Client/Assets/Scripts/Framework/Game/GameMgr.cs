@@ -42,7 +42,7 @@ namespace Framework
             DebugMgr.Instance.Init();         //Debug工具初始化;
 #endif
             EventMgr.Instance.Init();         //事件系统初始化;
-            UIEventMgr<int>.InitMgr();           //UI事件系统初始化;
+            UIEventMgr<int>.Init();           //UI事件系统初始化;
             SdkMgr.Instance.Init();           //平台初始化;
             TimerMgr.Instance.Init();         //定时器初始化;
             ComponentMgr.Instance.Init();     //组件初始化;

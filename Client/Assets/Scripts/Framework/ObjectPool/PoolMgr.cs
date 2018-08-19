@@ -39,7 +39,7 @@ namespace Framework
             {
                 _resPoolRoot = new GameObject("_resPoolRoot");
                 DontDestroyOnLoad(_resPoolRoot);
-            } 
+            }
         }
 
         /// <summary>

@@ -11,8 +11,8 @@ using UnityEngine;
 
 namespace Framework
 {
-	public class SkillMgr : Singleton<SkillMgr>
-	{
+    public class SkillMgr : Singleton<SkillMgr>
+    {
 
     }
 }
