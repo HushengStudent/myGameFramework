@@ -13,17 +13,15 @@ using LogUtil;
 namespace Framework
 {
     //参考(https://github.com/jarjin/LuaFramework_UGUI)集成tolua;
-    public class LuaMgr : MonoSingleton<LuaMgr>, IMgr
+    public class LuaMgr : MonoSingleton<LuaMgr>
     {
         private LuaState lua;
         private LuaLoaderUtility loader;
         private LuaLooper loop = null;
 
-        /// <summary>
-        /// 初始化;
-        /// </summary>
-        public void InitMgr()
+        protected override void InitEx()
         {
+            base.InitEx();
             InitLuaPath();
             InitLuaBundle();
             this.lua.Start();    //启动LUAVM;

@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class TimerMgr : MonoSingleton<TimerMgr>, IMgr
+    public class TimerMgr : MonoSingleton<TimerMgr>
     {
         #region Time Sync
 
@@ -212,8 +212,9 @@ namespace Framework
 
         private List<TimerEvent> EventLists = new List<TimerEvent>();
 
-        public void InitMgr()
+        protected override void InitEx()
         {
+            base.InitEx();
             EventLists.Clear();
         }
 

@@ -20,7 +20,7 @@ namespace Framework
             eventDict.Remove(key);
         }
 
-        public static void InitMgr()
+        public static void Init()
         {
             eventDict.Clear();
             LogUtil.LogUtility.Print("[UIEventMgr]UIEventMgr init!");

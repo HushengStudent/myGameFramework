@@ -11,12 +11,13 @@ using System;
 
 namespace Framework
 {
-    public class SdkMgr : Singleton<SdkMgr>, IMgr
+    public class SdkMgr : Singleton<SdkMgr>
     {
         private Dictionary<string, Action<string>> SdkCallBack = new Dictionary<string, Action<string>>();
 
-        public void InitMgr()
+        protected override void InitEx()
         {
+            base.InitEx();
             SdkCallBack.Clear();
         }
 

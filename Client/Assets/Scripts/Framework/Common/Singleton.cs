@@ -33,9 +33,10 @@ namespace Framework
 	    {
 	        if (null != instance)
                 LogUtil.LogUtility.Print("This " + (typeof(T)).ToString() + " Singleton Instance is not null!");
-	        Init();
+            InitEx();
 	    }
-	
-	    protected virtual void Init() { }
-	}
+
+        protected virtual void InitEx() { }
+        public void Init() { }
+    }
 }

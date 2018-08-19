@@ -7,7 +7,6 @@ public class Framework_LuaMgrWrap
 	public static void Register(LuaState L)
 	{
 		L.BeginClass(typeof(Framework.LuaMgr), typeof(Framework.MonoSingleton<Framework.LuaMgr>));
-		L.RegFunction("InitMgr", InitMgr);
 		L.RegFunction("DoFile", DoFile);
 		L.RegFunction("CallFunction", CallFunction);
 		L.RegFunction("CallLuaModuleMethod", CallLuaModuleMethod);
@@ -17,22 +16,6 @@ public class Framework_LuaMgrWrap
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.EndClass();
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int InitMgr(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 1);
-			Framework.LuaMgr obj = (Framework.LuaMgr)ToLua.CheckObject<Framework.LuaMgr>(L, 1);
-			obj.InitMgr();
-			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
