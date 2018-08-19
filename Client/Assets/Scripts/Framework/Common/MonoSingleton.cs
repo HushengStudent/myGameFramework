@@ -12,7 +12,7 @@ namespace Framework
 {
     public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        protected static T _instance = null;
+        protected static T instance = null;
 
         private float _fixedUpdate;
         private float _lastUpdate;
@@ -22,7 +22,7 @@ namespace Framework
         {
             get
             {
-                if (null == _instance)
+                if (null == instance)
                 {
                     GameObject go = GameObject.Find("~!@#$%^&*()_+_monoSingleton_");
                     if (null == go)
@@ -30,9 +30,9 @@ namespace Framework
                         go = new GameObject("~!@#$%^&*()_+_monoSingleton_");
                         DontDestroyOnLoad(go);
                     }
-                    _instance = go.AddComponent<T>();
+                    instance = go.AddComponent<T>();
                 }
-                return _instance;
+                return instance;
             }
         }
 
@@ -41,9 +41,8 @@ namespace Framework
         /// </summary>
         protected MonoSingleton()
         {
-            if (null != _instance)
+            if (null != instance)
                 LogUtil.LogUtility.Print("This " + (typeof(T)).ToString() + " Singleton Instance is not null!");
-            InitEx();
         }
 
         protected virtual void StartEx() { }
@@ -55,6 +54,7 @@ namespace Framework
         protected virtual void OnDisableEx() { }
         protected virtual void OnDestroyEx() { }
 
+        void Start() { StartEx(); }
         void Awake()
         {
             _fixedUpdate = Time.realtimeSinceStartup;
@@ -62,7 +62,6 @@ namespace Framework
             _lateUpdate = Time.realtimeSinceStartup;
             AwakeEx();
         }
-        void Start() { StartEx(); }
         void OnEnable() { OnEnableEx(); }
         void FixedUpdate()
         {
@@ -82,11 +81,8 @@ namespace Framework
         void OnDisable() { OnDisableEx(); }
         void OnDestroy()
         {
-            _instance = null;
+            instance = null;
             OnDestroyEx();
         }
-
-        protected virtual void InitEx() { }
-        public void Init() { }
     }
 }

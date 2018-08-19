@@ -11,15 +11,14 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class TableMgr : Singleton<TableMgr>
+    public class TableMgr : Singleton<TableMgr>, IMgr
     {
         private string _path = Application.dataPath.ToLower() + "/Bundles/Single/Table/";
 
         private Dictionary<string, Table> _dbDict = new Dictionary<string, Table>();
 
-        protected override void InitEx()
+        public void InitMgr()
         {
-            base.InitEx();
             _dbDict.Clear();
             PreLoad();
         }

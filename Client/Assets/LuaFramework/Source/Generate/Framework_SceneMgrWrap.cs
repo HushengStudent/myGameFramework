@@ -7,6 +7,7 @@ public class Framework_SceneMgrWrap
 	public static void Register(LuaState L)
 	{
 		L.BeginClass(typeof(Framework.SceneMgr), typeof(Framework.Singleton<Framework.SceneMgr>));
+		L.RegFunction("InitMgr", InitMgr);
 		L.RegFunction("TransToScene", TransToScene);
 		L.RegFunction("New", _CreateFramework_SceneMgr);
 		L.RegFunction("__tostring", ToLua.op_ToString);
@@ -31,6 +32,22 @@ public class Framework_SceneMgrWrap
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: Framework.SceneMgr.New");
 			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int InitMgr(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			Framework.SceneMgr obj = (Framework.SceneMgr)ToLua.CheckObject<Framework.SceneMgr>(L, 1);
+			obj.InitMgr();
+			return 0;
 		}
 		catch (Exception e)
 		{

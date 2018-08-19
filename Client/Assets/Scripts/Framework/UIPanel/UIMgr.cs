@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class UIMgr : MonoSingleton<UIMgr>
+    public class UIMgr : MonoSingleton<UIMgr>, IMgr
     {
         private BasePanel _curPanel = null;
         private PanelType _curPanelType = PanelType.Non;
@@ -18,9 +18,8 @@ namespace Framework
         public BasePanel CurPanel { get { return _curPanel; } set { _curPanel = value; } }
         public PanelType CurPanelType { get { return _curPanelType; } set { _curPanelType = value; } }
 
-        protected override void InitEx()
+        public void InitMgr()
         {
-            base.InitEx();
             CurPanel = null;
             CurPanelType = PanelType.Non;
             LogUtil.LogUtility.Print("[UIMgr]UIMgr init!");

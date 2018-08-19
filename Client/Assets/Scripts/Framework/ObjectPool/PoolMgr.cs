@@ -15,7 +15,7 @@ namespace Framework
 {
     public delegate void PoolClearFinishEventHandler();
 
-    public class PoolMgr : MonoSingleton<PoolMgr>
+    public class PoolMgr : MonoSingleton<PoolMgr>, IMgr
     {
         private GameObject _resPoolRoot;
         /// <summary>
@@ -42,9 +42,11 @@ namespace Framework
             } 
         }
 
-        protected override void InitEx()
+        /// <summary>
+        /// 初始化;
+        /// </summary>
+        public void InitMgr()
         {
-            base.InitEx();
             LogUtil.LogUtility.Print("[PoolMgr]PoolMgr init!");
             CoroutineMgr.Instance.RunCoroutine(ClearPool());
         }

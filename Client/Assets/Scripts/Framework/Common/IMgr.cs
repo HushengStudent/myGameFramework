@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/02/08 23:51:14
-** desc:  AssetBundle异步加载;
+** date:  2018/04/17 00:23:01
+** desc:  管理器接口;
 *********************************************************************************/
 
 using System.Collections;
@@ -10,8 +10,8 @@ using UnityEngine;
 
 namespace Framework
 {
-    public partial class AssetBundleMgr
+    public interface IMgr
     {
-        //Unity2017建议使用Task;
+        void InitMgr();
     }
 }
