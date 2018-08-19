@@ -13,7 +13,7 @@ using LogUtil;
 namespace Framework
 {
     //参考(https://github.com/jarjin/LuaFramework_UGUI)集成tolua;
-    public class LuaMgr : MonoSingleton<LuaMgr>, IMgr
+    public class LuaMgr : MonoSingleton<LuaMgr>, IManagr
     {
         private LuaState lua;
         private LuaLoaderUtility loader;
@@ -22,7 +22,7 @@ namespace Framework
         /// <summary>
         /// 初始化;
         /// </summary>
-        public void InitMgr()
+        public void InitEx()
         {
             InitLuaPath();
             InitLuaBundle();

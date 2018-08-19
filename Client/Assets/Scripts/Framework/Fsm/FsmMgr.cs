@@ -10,11 +10,11 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class FsmMgr : MonoSingleton<FsmMgr>, IMgr
+    public class FsmMgr : MonoSingleton<FsmMgr>, IManagr
     {
         private Dictionary<BaseEntity, FsmMachine> _fsmDict = new Dictionary<BaseEntity, FsmMachine>();
 
-        public void InitMgr()
+        public void InitEx()
         {
             _fsmDict.Clear();
         }

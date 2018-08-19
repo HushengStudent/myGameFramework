@@ -10,8 +10,8 @@ using UnityEngine;
 
 namespace Framework
 {
-    public interface IMgr
+    public interface IManagr
     {
-        void InitMgr();
+        void InitEx();
     }
 }

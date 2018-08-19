@@ -7,7 +7,7 @@ public class Framework_SceneMgrWrap
 	public static void Register(LuaState L)
 	{
 		L.BeginClass(typeof(Framework.SceneMgr), typeof(Framework.Singleton<Framework.SceneMgr>));
-		L.RegFunction("InitMgr", InitMgr);
+		L.RegFunction("InitEx", InitEx);
 		L.RegFunction("TransToScene", TransToScene);
 		L.RegFunction("New", _CreateFramework_SceneMgr);
 		L.RegFunction("__tostring", ToLua.op_ToString);
@@ -40,13 +40,13 @@ public class Framework_SceneMgrWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int InitMgr(IntPtr L)
+	static int InitEx(IntPtr L)
 	{
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
 			Framework.SceneMgr obj = (Framework.SceneMgr)ToLua.CheckObject<Framework.SceneMgr>(L, 1);
-			obj.InitMgr();
+			obj.InitEx();
 			return 0;
 		}
 		catch (Exception e)

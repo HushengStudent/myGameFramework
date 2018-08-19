@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class EventMgr : Singleton<EventMgr>, IMgr
+    public class EventMgr : Singleton<EventMgr>, IManagr
     {
         /// <summary>
         /// 事件委托;
@@ -25,7 +25,7 @@ namespace Framework
         private Dictionary<EventType, Dictionary<Object, EventDelegate>> EventDict
             = new Dictionary<EventType, Dictionary<Object, EventDelegate>>();
 
-        public void InitMgr()
+        public void InitEx()
         {
             EventDict.Clear();
             LogUtil.LogUtility.Print("[EventMgr]EventMgr init!");
