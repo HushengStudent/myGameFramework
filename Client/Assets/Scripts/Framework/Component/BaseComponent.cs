@@ -14,7 +14,6 @@ namespace Framework
 {
     /// <summary>
     /// 组件抽象基类;
-    /// 
     /// </summary>
     public abstract class BaseComponent : IPool
     {

@@ -57,7 +57,7 @@ namespace Framework
         /// <typeparam name="T"></typeparam>
         /// <param name="args">初始化参数</param>
         /// <returns></returns>
-        public T Get<T>(params Object[] args) where T : IPool, new()
+        public T Get<T>(params Object[] args) where T : new()
         {
             ObjectPool<T> pool;
             Object temp;
@@ -70,7 +70,9 @@ namespace Framework
                 pool = CreatePool<T>();
             }
             T t = pool.Get();
-            t.OnGet(args);
+            IPool target = t as IPool;
+            if (target != null)
+                target.OnGet(args);
             return t;
         }
 
@@ -79,9 +81,11 @@ namespace Framework
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="type"></param>
-        public void Release<T>(T type) where T : IPool, new()
+        public void Release<T>(T type) where T : new()
         {
-            type.OnRelease();
+            IPool target = type as IPool;
+            if (target != null)
+                target.OnRelease();
             ObjectPool<T> pool;
             Object temp;
             if (_pool.TryGetValue(typeof(T), out temp))

@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class BaseEntity : IPool
+    public abstract class BaseEntity : IPool
     {
         private long _id;
         private ulong _uid;
