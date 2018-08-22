@@ -10,8 +10,26 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class ObjectEx
+    public class ObjectEx : IPool
     {
+        public ObjectEx()
+        {
+            _id = IdGenerater.GenerateId();
+            Enable = false;
+        }
 
+        private long _id;
+        public long ID { get { return _id; } }
+        public bool Enable { get; set; }
+
+        /// <summary>
+        /// 对象池Get;
+        /// </summary>
+        /// <param name="args"></param>
+        public virtual void OnGet(params System.Object[] args) { }
+        /// <summary>
+        /// 对象池Release;
+        /// </summary>
+        public virtual void OnRelease() { }
     }
 }

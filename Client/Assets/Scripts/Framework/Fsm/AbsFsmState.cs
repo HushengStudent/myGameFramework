@@ -14,7 +14,7 @@ namespace Framework
     {
         private string _name;
         private float _time;
-        private BaseEntity _entity = null;
+        private AbsEntity _entity = null;
         private List<AbsFsmTransition> _toTransitionList = new List<AbsFsmTransition>();
         private AbsFsmState _lastState;
         private AbsFsmState _nextState;
@@ -23,7 +23,7 @@ namespace Framework
         private FsmTransitionEventHandler _transitionHandler = null;
 
         public string Name { get { return _name; } set { _name = value; } }
-        public BaseEntity Entity { get { return _entity; } }
+        public AbsEntity Entity { get { return _entity; } }
         public AbsFsmState LastState { get { return _lastState; } }
         public AbsFsmState NextState { get { return _nextState; } }
         public FsmMachine Machine { get { return _machine; } }

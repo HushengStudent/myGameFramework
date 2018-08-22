@@ -19,13 +19,13 @@ namespace Framework
     {
         private long _id;
         private bool _enable = false;
-        private BaseEntity _entity;
+        private AbsEntity _entity;
         private GameObject _componentObject = null;
         private ComponentInitEventHandler _componentInitHandler;
 
         public long ID { get { return _id; } }
         public bool Enable { get { return _enable; } set { _enable = value; } }
-        public BaseEntity Entity { get { return _entity; } set { _entity = value; } }
+        public AbsEntity Entity { get { return _entity; } set { _entity = value; } }
         public GameObject ComponentObject { get { return _componentObject; } set { _componentObject = value; } }
         public ComponentInitEventHandler ComponentInitHandler { get { return _componentInitHandler; } set { _componentInitHandler = value; } }
 
@@ -38,7 +38,7 @@ namespace Framework
         /// </summary>
         /// <param name="entity">entity</param>
         /// <param name="go">gameObject</param>
-        public void Create(BaseEntity entity, GameObject go)
+        public void Create(AbsEntity entity, GameObject go)
         {
             _id = IdGenerater.GenerateId();
             OnAttachEntity(entity);
@@ -76,7 +76,7 @@ namespace Framework
         /// Component附加Entity;
         /// </summary>
         /// <param name="entity"></param>
-        protected virtual void OnAttachEntity(BaseEntity entity)
+        protected virtual void OnAttachEntity(AbsEntity entity)
         {
             _entity = entity;
         }

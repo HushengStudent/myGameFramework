@@ -12,7 +12,7 @@ namespace Framework
 {
     public class FsmMgr : MonoSingleton<FsmMgr>, IManager
     {
-        private Dictionary<BaseEntity, FsmMachine> _fsmDict = new Dictionary<BaseEntity, FsmMachine>();
+        private Dictionary<AbsEntity, FsmMachine> _fsmDict = new Dictionary<AbsEntity, FsmMachine>();
 
         public void Init()
         {
@@ -28,7 +28,7 @@ namespace Framework
             }
         }
 
-        public void CreateFsmMachine(BaseEntity entity, string name, List<AbsFsmState> stateList)
+        public void CreateFsmMachine(AbsEntity entity, string name, List<AbsFsmState> stateList)
         {
 
         }

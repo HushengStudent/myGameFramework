@@ -11,25 +11,19 @@ using UnityEngine;
 
 namespace Framework
 {
-    public abstract class BaseEntity : IPool
+    public abstract class AbsEntity : ObjectEx
     {
-        private long _id;
         private ulong _uid;
-        private bool _enable = false;
         private string _entityName = string.Empty;
         private string _resPath = string.Empty;
         private GameObject _entityObject = null;
-        private EntityInitEventHandler _entityInitHandler;
-        private EntityLoadFinishEventHandler _entityLoadHandler;
 
-        public long ID { get { return _id; } }
         public ulong UID { get { return _uid; } }
-        public bool Enable { get { return _enable; } set { _enable = value; } }
-        public string EntityName { get { return _entityName; } set { _entityName = value; } }
-        public string ResPath { get { return _resPath; } set { _resPath = value; } }
+        public string EntityName { get { return _entityName; } }
+        public string ResPath { get { return _resPath; } }
         public GameObject EntityObject { get { return _entityObject; } set { _entityObject = value; } }
-        public EntityInitEventHandler EntityInitHandler { get { return _entityInitHandler; } set { _entityInitHandler = value; } }
-        public EntityLoadFinishEventHandler EntityLoadFinishHandler { get { return _entityLoadHandler; } set { _entityLoadHandler = value; } }
+        public EntityInitEventHandler EntityInitHandler { get; set; }
+        public EntityLoadFinishEventHandler EntityLoadFinishHandler { get; set; }
 
         public virtual void FixedUpdateEx(float interval) { }
         public virtual void UpdateEx(float interval) { }
@@ -41,13 +35,12 @@ namespace Framework
         /// <param name="go"></param>
         public void Create(GameObject go, ulong uid, string name)
         {
-            _id = IdGenerater.GenerateId();
             _uid = uid;
             _entityName = name;
             OnAttachEntityObject(go);
             EventSubscribe();
             OnInit();
-            _enable = true;
+            Enable = true;
             if (EntityInitHandler != null)
             {
                 EntityInitHandler(this);
@@ -61,10 +54,9 @@ namespace Framework
             DeAttachEntityObject();
             EventUnsubscribe();
             OnReset();
-            _id = 0;
-            _enable = false;
-            _entityInitHandler = null;
-            _entityLoadHandler = null;
+            Enable = false;
+            EntityInitHandler = null;
+            EntityLoadFinishHandler = null;
         }
         /// <summary>
         /// 初始化;
@@ -107,15 +99,6 @@ namespace Framework
         /// </summary>
         /// <param name="sceneId"></param>
         protected virtual void OnExitScene(int sceneId) { }
-        /// <summary>
-        /// 对象池Get;
-        /// </summary>
-        /// <param name="args"></param>
-        public virtual void OnGet(params System.Object[] args) { }
-        /// <summary>
-        /// 对象池Release;
-        /// </summary>
-        public virtual void OnRelease() { }
 
         private void LoadEntitySync()
         {

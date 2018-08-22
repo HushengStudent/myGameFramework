@@ -17,7 +17,7 @@ namespace Framework
         private static Dictionary<int, AbsBehavior> _behaviorDict = new Dictionary<int, AbsBehavior>();
         private static Dictionary<int, List<int>> _connectionDict = new Dictionary<int, List<int>>();
 
-        public static BehaviorTree CreateBehaviorTree(BaseEntity entity, string path)
+        public static BehaviorTree CreateBehaviorTree(AbsEntity entity, string path)
         {
             InitDict(path);
             if (_rootBehavior == null)

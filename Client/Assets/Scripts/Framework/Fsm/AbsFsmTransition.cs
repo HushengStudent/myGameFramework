@@ -21,7 +21,7 @@ namespace Framework
         private string _name;
         private AbsFsmState _formState;
         private AbsFsmState _toState;
-        private BaseEntity _entity = null;
+        private AbsEntity _entity = null;
         private FsmMachine _machine;
         private FsmTransitionStateEnum _transState = FsmTransitionStateEnum.Transing;
         private FsmTransitionEventHandler _transitionHandler = null;
@@ -29,7 +29,7 @@ namespace Framework
         public string Name { get { return _name; } set { _name = value; } }
         public AbsFsmState FromState { get { return _formState; } set { _formState = value; } }
         public AbsFsmState ToState { get { return _toState; } set { _toState = value; } }
-        public BaseEntity Entity { get { return _entity; } }
+        public AbsEntity Entity { get { return _entity; } }
         public FsmMachine Machine { get { return _machine; } set { _machine = value; } }
         public FsmTransitionStateEnum TransState { get { return _transState; } set { _transState = value; } }
         public FsmTransitionEventHandler TransitionHandler { get { return _transitionHandler; } set { _transitionHandler = value; } }

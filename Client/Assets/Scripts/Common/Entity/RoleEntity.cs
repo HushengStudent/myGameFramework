@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Framework;
 
-public class RoleEntity : BaseEntity
+public class RoleEntity : AbsEntity
 {
     private BuffComponent _buffComp = null;
 

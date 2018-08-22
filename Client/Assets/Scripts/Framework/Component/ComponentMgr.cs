@@ -83,7 +83,7 @@ namespace Framework
         /// <param name="go"></param>
         /// <param name="handler"></param>
         /// <returns></returns>
-        public T CreateComponent<T>(BaseEntity entity, GameObject go, ComponentInitEventHandler handler) where T : BaseComponent, new()
+        public T CreateComponent<T>(AbsEntity entity, GameObject go, ComponentInitEventHandler handler) where T : BaseComponent, new()
         {
             T _Component = PoolMgr.Instance.Get<T>();
             if (AddComponent(_Component))

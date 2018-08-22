@@ -21,7 +21,7 @@ namespace Framework
 
     public class BehaviorTreeMgr : MonoSingleton<BehaviorTreeMgr>, IManager
     {
-        private Dictionary<BaseEntity, BehaviorTree> _treeDict = new Dictionary<BaseEntity, BehaviorTree>();
+        private Dictionary<AbsEntity, BehaviorTree> _treeDict = new Dictionary<AbsEntity, BehaviorTree>();
         private List<BehaviorTree> _treeList = new List<BehaviorTree>();
 
         public void Init()
@@ -41,7 +41,7 @@ namespace Framework
             }
         }
 
-        public void CreateBehaviorTree(BaseEntity entity, string path, bool enable = false)
+        public void CreateBehaviorTree(AbsEntity entity, string path, bool enable = false)
         {
             BehaviorTree tree = BehaviorTreeFactory.CreateBehaviorTree(entity, path);
             if (entity == null)
@@ -57,7 +57,7 @@ namespace Framework
             _treeDict[entity] = tree;
         }
 
-        public void RemoveBehaviorTree(BaseEntity entity)
+        public void RemoveBehaviorTree(AbsEntity entity)
         {
             if (entity == null)
             {

@@ -14,16 +14,16 @@ namespace Framework
     {
         private bool _awake = false;
         private int _id;
-        private BaseEntity _entity = null;
+        private AbsEntity _entity = null;
         private BehaviorState _reslut = BehaviorState.Reset;
 
         public int Id { get { return _id; } set { _id = value; } }
-        public BaseEntity Entity { get { return _entity; } }
+        public AbsEntity Entity { get { return _entity; } }
         public BehaviorState Reslut { get { return _reslut; } set { _reslut = value; } }
 
         public virtual bool IsComposite { get { return false; } }
 
-        public BehaviorState Behave(BaseEntity entity, float interval)
+        public BehaviorState Behave(AbsEntity entity, float interval)
         {
             if (!_awake)
             {

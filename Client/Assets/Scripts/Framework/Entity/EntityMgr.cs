@@ -18,13 +18,13 @@ namespace Framework
         /// <summary>
         /// EntityDict;
         /// </summary>
-        private Dictionary<long, BaseEntity> EntityDict = new Dictionary<long, BaseEntity>();
+        private Dictionary<long, AbsEntity> EntityDict = new Dictionary<long, AbsEntity>();
         /// <summary>
         /// EntityList;
         /// </summary>
-        private List<BaseEntity> EntityList = new List<BaseEntity>();
+        private List<AbsEntity> EntityList = new List<AbsEntity>();
 
-        private Dictionary<ulong, BaseEntity> EntityIndexDict = new Dictionary<ulong, BaseEntity>();
+        private Dictionary<ulong, AbsEntity> EntityIndexDict = new Dictionary<ulong, AbsEntity>();
 
         #endregion
 
@@ -83,7 +83,7 @@ namespace Framework
         /// <param name="go"></param>
         /// <param name="initHandler"></param>
         /// <returns></returns>
-        public T CreateEntity<T>(GameObject go, ulong uid, string name, EntityInitEventHandler initHandler) where T : BaseEntity, new()
+        public T CreateEntity<T>(GameObject go, ulong uid, string name, EntityInitEventHandler initHandler) where T : AbsEntity, new()
         {
             T _Entity = PoolMgr.Instance.Get<T>();//get from pool;
             if (AddEntity(_Entity))
@@ -103,7 +103,7 @@ namespace Framework
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="entity"></param>
-        public void ReleaseEntity<T>(BaseEntity entity) where T : BaseEntity, new()
+        public void ReleaseEntity<T>(AbsEntity entity) where T : AbsEntity, new()
         {
             RemoveEntity(entity);
             entity.Reset();
@@ -115,10 +115,10 @@ namespace Framework
         /// <typeparam name="T"></typeparam>
         /// <param name="uid"></param>
         /// <returns></returns>
-        public T GetEntity<T>(ulong uid) where T : BaseEntity, new()
+        public T GetEntity<T>(ulong uid) where T : AbsEntity, new()
         {
             T target = null;
-            BaseEntity temp = null;
+            AbsEntity temp = null;
             if (EntityIndexDict.TryGetValue(uid, out temp))
             {
                 target = temp as T;
@@ -130,7 +130,7 @@ namespace Framework
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        private bool AddEntity(BaseEntity entity)
+        private bool AddEntity(AbsEntity entity)
         {
             if (EntityDict.ContainsKey(entity.ID))
             {
@@ -146,7 +146,7 @@ namespace Framework
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        private bool RemoveEntity(BaseEntity entity)
+        private bool RemoveEntity(AbsEntity entity)
         {
             if (!EntityDict.ContainsKey(entity.ID))
             {

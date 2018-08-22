@@ -15,7 +15,7 @@ namespace Framework
     {
         private bool _enable = false;
         private AbsBehavior _root;
-        private BaseEntity _entity;
+        private AbsEntity _entity;
 
         private OnBehaviorTreeStartHandler _onStart;
         private OnBehaviorTreeSuccesstHandler _onSuccess;
@@ -24,14 +24,14 @@ namespace Framework
 
         public bool Enable { get { return _enable; } set { _enable = value; } }
         public AbsBehavior Root { get { return _root; } set { _root = value; } }
-        public BaseEntity Entity { get { return _entity; } set { _entity = value; } }
+        public AbsEntity Entity { get { return _entity; } set { _entity = value; } }
 
         public OnBehaviorTreeStartHandler OnStart { get { return _onStart; } set { _onStart = value; } }
         public OnBehaviorTreeSuccesstHandler OnSuccess { get { return _onSuccess; } set { _onSuccess = value; } }
         public OnBehaviorTreeFailureHandler OnFailure { get { return _onFailure; } set { _onFailure = value; } }
         public OnBehaviorTreeResetHandler OnReset { get { return _onReset; } set { _onReset = value; } }
 
-        public BehaviorTree(AbsBehavior root, BaseEntity entity)
+        public BehaviorTree(AbsBehavior root, AbsEntity entity)
         {
             _root = root;
             _entity = entity;

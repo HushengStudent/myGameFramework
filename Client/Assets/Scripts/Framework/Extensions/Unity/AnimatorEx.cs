@@ -15,13 +15,16 @@ namespace Framework
     {
         private Animator _animator = null;
         private AnimatorOverrideController _animatorOverrideController = null;
+        private DictEx<string, AnimationClip> _AnimationInfo = new DictEx<string, AnimationClip>();
 
-        public void Init(string path)
+        public void Init(Animator animator, string path)
         {
-            _animator = ResourceMgr.Instance.LoadAssetSync<Animator>(AssetType.AnimeCtrl, Path.GetFileName(path));
-            _animatorOverrideController = new AnimatorOverrideController();
-            RuntimeAnimatorController controller = _animator.runtimeAnimatorController;
-            _animatorOverrideController = controller as AnimatorOverrideController;
+            _animator = animator;
+            RuntimeAnimatorController runtimeAnimatorController =
+                ResourceMgr.Instance.LoadAssetSync<RuntimeAnimatorController>(AssetType.AnimeCtrl, Path.GetFileName(path));
+            _animator.runtimeAnimatorController = runtimeAnimatorController;
+            _animatorOverrideController = runtimeAnimatorController as AnimatorOverrideController;
+            _animator.Rebind();
         }
 
         public void OverrideAnimationCli(string name, string path, bool autoPlay = true)
@@ -29,6 +32,7 @@ namespace Framework
             AnimationClip clip = ResourceMgr.Instance.LoadAssetSync<AnimationClip>(AssetType.AnimeClip, Path.GetFileName(path));
             _animatorOverrideController[name] = clip;
             _animator.runtimeAnimatorController = _animatorOverrideController;
+            _AnimationInfo.Data[name] = clip;
             _animator.Rebind();
             if (autoPlay)
             {

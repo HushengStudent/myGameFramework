@@ -10,6 +10,6 @@ using UnityEngine;
 
 namespace Framework
 {
-    public delegate void EntityInitEventHandler(BaseEntity comp);
-    public delegate void EntityLoadFinishEventHandler(BaseEntity comp, GameObject go);
+    public delegate void EntityInitEventHandler(AbsEntity comp);
+    public delegate void EntityLoadFinishEventHandler(AbsEntity comp, GameObject go);
 }

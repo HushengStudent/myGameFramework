@@ -12,27 +12,40 @@ namespace Framework
 {
     public class GameObjectEx
     {
-        private GameObject _go;
         private int _parentInstanceId;
-        private Transform _trans;
 
-        public GameObject gameObject { get { return _go; } set { _go = value; } }
-        public int parentInstanceId { get { return _parentInstanceId; } set { _parentInstanceId = value; } }
-        public Transform Trans { get { return _trans; } }
+        public GameObject Go { get; set; }
+        public int ParentInstanceId { get { return _parentInstanceId; } }
+        private Transform Trans { get; set; }
 
-        public void SetLocalPosition(float x,float y,float z)
+        public GameObjectEx(GameObject go, int parentInstanceId = -1)
         {
-            if (_go)
+            Go = go;
+            _parentInstanceId = parentInstanceId;
+            Trans = go.transform;
+        }
+
+        public void SetLocalPosition(float x, float y, float z)
+        {
+            if (Go)
             {
-                gameObject.transform.localPosition = new Vector3(x, y, z);
+                Go.transform.localPosition = new Vector3(x, y, z);
             }
         }
 
-        public void SetLocalScale(float x,float y,float z)
+        public void SetLocalScale(float x, float y, float z)
         {
-            if (_go)
+            if (Go)
             {
-                gameObject.transform.localScale = new Vector3(x, y, z);
+                Go.transform.localScale = new Vector3(x, y, z);
+            }
+        }
+
+        public void SetLocalRotation(float x, float y, float z, float w)
+        {
+            if (Go)
+            {
+                Go.transform.localRotation = new Quaternion(x, y, z, w);
             }
         }
     }
