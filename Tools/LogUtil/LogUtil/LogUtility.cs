@@ -8,9 +8,20 @@ namespace LogUtil
 {
     public class LogUtility
     {
+        private static bool _logEnable = true;
+        private static bool _warningEnable = true;
+        private static bool _errorEnable = true;
+
+        public static bool LogEnable { get { return _logEnable; } set { _logEnable = value; } }
+        public static bool WarningEnable { get { return _warningEnable; } set { _warningEnable = value; } }
+        public static bool ErrorEnable { get { return _errorEnable; } set { _errorEnable = value; } }
+
         public static void Print(string str)
         {
-            Debug.Log(str);
+            if (_logEnable)
+            {
+                Debug.Log(str);
+            }
         }
 
         public static void Print(string str, LogColor color)
@@ -24,7 +35,10 @@ namespace LogUtil
                     PrintError(str);
                     break;
                 case LogColor.Green:
-                    Debug.Log("<color=#7FFF00> " + str + " </color>");
+                    if (_logEnable)
+                    {
+                        Debug.Log("<color=#7FFF00> " + str + " </color>");
+                    }
                     break;
                 case LogColor.Yellow:
                     PrintWarning(str);
@@ -37,12 +51,18 @@ namespace LogUtil
 
         public static void PrintWarning(string str)
         {
-            Debug.LogWarning("<color=#EEEE00> " + str + " </color>");
+            if (_warningEnable)
+            {
+                Debug.LogWarning("<color=#EEEE00> " + str + " </color>");
+            }
         }
 
         public static void PrintError(string str)
         {
-            Debug.LogError("<color=#FF0000> " + str + " </color>");
+            if (_errorEnable)
+            {
+                Debug.LogError("<color=#FF0000> " + str + " </color>");
+            }
         }
     }
 

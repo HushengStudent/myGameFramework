@@ -64,6 +64,7 @@ namespace Framework
             SetGameFrame(GameConfig.GameFrame);
             SetMobileLevel(GameConfig.MobileLevelValue);
             SetSyncInterval(GameConfig.SyncInterval);
+            SetLogLevel();
         }
 
         /// <summary>
@@ -91,6 +92,16 @@ namespace Framework
         public void SetMobileLevel(MobileLevel level)
         {
             MobileLevelValue = level;
+        }
+
+        public void SetLogLevel()
+        {
+            LogUtil.LogUtility.LogEnable = false;
+#if UNITY_EDITOR
+            LogUtil.LogUtility.LogEnable = true;
+#endif
+            LogUtil.LogUtility.WarningEnable = true;
+            LogUtil.LogUtility.ErrorEnable = true;
         }
     }
 }
