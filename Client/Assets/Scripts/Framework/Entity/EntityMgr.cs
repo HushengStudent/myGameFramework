@@ -83,13 +83,13 @@ namespace Framework
         /// <param name="go"></param>
         /// <param name="initHandler"></param>
         /// <returns></returns>
-        public T CreateEntity<T>(GameObject go, ulong uid, string name, EntityInitEventHandler initHandler) where T : AbsEntity, new()
+        public T CreateEntity<T>(int entityId, ulong uid, string name, EntityInitEventHandler initHandler) where T : AbsEntity, new()
         {
-            T _Entity = PoolMgr.Instance.Get<T>();//get from pool;
+            T _Entity = PoolMgr.Instance.Get<T>();
             if (AddEntity(_Entity))
             {
                 _Entity.EntityInitHandler = initHandler;
-                _Entity.Create(go, uid, name);
+                _Entity.Create(entityId, uid, name);
                 return _Entity;
             }
             else

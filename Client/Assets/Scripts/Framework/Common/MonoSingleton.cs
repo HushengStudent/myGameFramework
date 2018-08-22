@@ -14,10 +14,6 @@ namespace Framework
     {
         protected static T _instance = null;
 
-        private float _fixedUpdate;
-        private float _lastUpdate;
-        private float _lateUpdate;
-
         public static T Instance
         {
             get
@@ -56,27 +52,21 @@ namespace Framework
 
         void Awake()
         {
-            _fixedUpdate = Time.realtimeSinceStartup;
-            _lastUpdate = Time.realtimeSinceStartup;
-            _lateUpdate = Time.realtimeSinceStartup;
             AwakeEx();
         }
         void Start() { StartEx(); }
         void OnEnable() { OnEnableEx(); }
         void FixedUpdate()
         {
-            FixedUpdateEx(Time.realtimeSinceStartup - _fixedUpdate);
-            _fixedUpdate = Time.realtimeSinceStartup;
+            FixedUpdateEx(Time.deltaTime);
         }
         void Update()
         {
-            UpdateEx(Time.realtimeSinceStartup - _lastUpdate);
-            _lastUpdate = Time.realtimeSinceStartup;
+            UpdateEx(Time.deltaTime);
         }
         void LateUpdate()
         {
-            LateUpdateEx(Time.realtimeSinceStartup - _lateUpdate);
-            _lateUpdate = Time.realtimeSinceStartup;
+            LateUpdateEx(Time.deltaTime);
         }
         void OnDisable() { OnDisableEx(); }
         void OnDestroy()

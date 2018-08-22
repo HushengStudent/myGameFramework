@@ -4,6 +4,7 @@
 ** desc:  GameObject扩展;
 *********************************************************************************/
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,17 +13,30 @@ namespace Framework
 {
     public class GameObjectEx
     {
-        private int _parentInstanceId;
+        private int _parentInstanceId = -1;
 
         public GameObject Go { get; set; }
         public int ParentInstanceId { get { return _parentInstanceId; } }
         private Transform Trans { get; set; }
 
-        public GameObjectEx(GameObject go, int parentInstanceId = -1)
+        public void Init(AbsEntity entity, string path, Action<GameObjectEx> action, bool isAsync = true)
         {
+            //加载;
+            GameObject go = null;
             Go = go;
-            _parentInstanceId = parentInstanceId;
             Trans = go.transform;
+            if (action != null)
+            {
+                action(this);
+            }
+        }
+
+        public void Uninit()
+        {
+            //销毁;
+            _parentInstanceId = -1;
+            Go = null;
+            Trans = null;
         }
 
         public void SetLocalPosition(float x, float y, float z)

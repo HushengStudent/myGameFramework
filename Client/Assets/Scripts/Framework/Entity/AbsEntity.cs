@@ -13,17 +13,34 @@ namespace Framework
 {
     public abstract class AbsEntity : ObjectEx
     {
+        protected AbsEntity() : base() { }
+
         private ulong _uid;
+        private int _entityId;
         private string _entityName = string.Empty;
         private string _resPath = string.Empty;
-        private GameObject _entityObject = null;
+        private GameObjectEx _goEx = null;
+        private EntityLoadFinishEventHandler _entityLoadFinishHandler = null;
+
 
         public ulong UID { get { return _uid; } }
+        public int EntityId { get { return _entityId; } }
         public string EntityName { get { return _entityName; } }
         public string ResPath { get { return _resPath; } }
-        public GameObject EntityObject { get { return _entityObject; } set { _entityObject = value; } }
+        public GameObjectEx GoEx { get { return _goEx; } }
         public EntityInitEventHandler EntityInitHandler { get; set; }
-        public EntityLoadFinishEventHandler EntityLoadFinishHandler { get; set; }
+        public EntityLoadFinishEventHandler EntityLoadFinishHandler
+        {
+            get { return _entityLoadFinishHandler; }
+            set
+            {
+                if (_goEx != null && _goEx.Go != null)
+                {
+                    _entityLoadFinishHandler = value;
+                    _entityLoadFinishHandler(this, _goEx.Go);
+                }
+            }
+        }
 
         public virtual void FixedUpdateEx(float interval) { }
         public virtual void UpdateEx(float interval) { }
@@ -32,14 +49,20 @@ namespace Framework
         /// <summary>
         /// 初始化Entity;
         /// </summary>
-        /// <param name="go"></param>
-        public void Create(GameObject go, ulong uid, string name)
+        /// <param name="entityId"></param>
+        /// <param name="uid"></param>
+        /// <param name="name"></param>
+        public void Create(int entityId, ulong uid, string name)
         {
             _uid = uid;
             _entityName = name;
-            OnAttachEntityObject(go);
+            _entityId = entityId;
+
+            _goEx = PoolMgr.Instance.Get<GameObjectEx>();
+            _goEx.Init(this, _resPath, OnAttachGoEx);
+
             EventSubscribe();
-            OnInit();
+            OnInitEx();
             Enable = true;
             if (EntityInitHandler != null)
             {
@@ -51,35 +74,42 @@ namespace Framework
         /// </summary>
         public void Reset()
         {
-            DeAttachEntityObject();
+            DeAttachGoEx();
             EventUnsubscribe();
-            OnReset();
+            OnResetEx();
             Enable = false;
             EntityInitHandler = null;
             EntityLoadFinishHandler = null;
         }
+
         /// <summary>
         /// 初始化;
         /// </summary>
-        protected virtual void OnInit() { }
+        protected virtual void OnInitEx() { }
         /// <summary>
         /// 重置;
         /// </summary>
-        protected virtual void OnReset() { }
+        protected virtual void OnResetEx() { }
         /// <summary>
         /// Entity附加GameObject;
         /// </summary>
         /// <param name="go"></param>
-        protected virtual void OnAttachEntityObject(GameObject go)
+        protected virtual void OnAttachGoEx(GameObjectEx go)
         {
-            _entityObject = go;
+            _goEx = go;
+            if (_entityLoadFinishHandler != null)
+            {
+                _entityLoadFinishHandler(this, _goEx.Go);
+            }
         }
         /// <summary>
         /// 重置GameObject的附加;
         /// </summary>
-        protected virtual void DeAttachEntityObject()
+        protected virtual void DeAttachGoEx()
         {
-            _entityObject = null;
+            _goEx.Uninit();
+            PoolMgr.Instance.Release<GameObjectEx>(_goEx);
+            _goEx = null;
         }
         /// <summary>
         /// 注册事件;
@@ -99,25 +129,5 @@ namespace Framework
         /// </summary>
         /// <param name="sceneId"></param>
         protected virtual void OnExitScene(int sceneId) { }
-
-        private void LoadEntitySync()
-        {
-            //TODO;
-            if (EntityLoadFinishHandler != null)
-            {
-                EntityLoadFinishHandler(this, EntityObject);
-            }
-        }
-
-        private IEnumerator LoadEntityAsyn()
-        {
-            IEnumerator itor = null;
-            //TODO;
-            if (EntityLoadFinishHandler != null)
-            {
-                EntityLoadFinishHandler(this, EntityObject);
-            }
-            return itor;
-        }
     }
 }

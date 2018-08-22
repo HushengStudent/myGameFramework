@@ -9,7 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HUDComponent : BaseComponent
+public class HUDComponent : AbsComponent
 {
 
 }

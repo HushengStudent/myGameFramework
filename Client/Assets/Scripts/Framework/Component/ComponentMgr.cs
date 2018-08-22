@@ -20,11 +20,11 @@ namespace Framework
         /// <summary>
         /// ComponentDict;
         /// </summary>
-        private Dictionary<long, BaseComponent> _componentDict = new Dictionary<long, BaseComponent>();
+        private Dictionary<long, AbsComponent> _componentDict = new Dictionary<long, AbsComponent>();
         /// <summary>
         /// ComponentList;
         /// </summary>
-        private List<BaseComponent> _componentList = new List<BaseComponent>();
+        private List<AbsComponent> _componentList = new List<AbsComponent>();
 
         #endregion
 
@@ -83,13 +83,13 @@ namespace Framework
         /// <param name="go"></param>
         /// <param name="handler"></param>
         /// <returns></returns>
-        public T CreateComponent<T>(AbsEntity entity, GameObject go, ComponentInitEventHandler handler) where T : BaseComponent, new()
+        public T CreateComponent<T>(AbsEntity entity, ComponentInitEventHandler handler) where T : AbsComponent, new()
         {
             T _Component = PoolMgr.Instance.Get<T>();
             if (AddComponent(_Component))
             {
                 _Component.ComponentInitHandler = handler;
-                _Component.Create(entity, go);
+                _Component.Create(entity);
                 return _Component;
             }
             else
@@ -103,7 +103,7 @@ namespace Framework
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="component"></param>
-        public void ReleaseComponent<T>(BaseComponent component) where T : BaseComponent, new()
+        public void ReleaseComponent<T>(AbsComponent component) where T : AbsComponent, new()
         {
             RemoveComponent(component);
             component.Reset();
@@ -114,7 +114,7 @@ namespace Framework
         /// </summary>
         /// <param name="component"></param>
         /// <returns></returns>
-        private bool AddComponent(BaseComponent component)
+        private bool AddComponent(AbsComponent component)
         {
             if (_componentDict.ContainsKey(component.ID))
             {
@@ -129,7 +129,7 @@ namespace Framework
         /// </summary>
         /// <param name="component"></param>
         /// <returns></returns>
-        private bool RemoveComponent(BaseComponent component)
+        private bool RemoveComponent(AbsComponent component)
         {
             if (!_componentDict.ContainsKey(component.ID))
             {

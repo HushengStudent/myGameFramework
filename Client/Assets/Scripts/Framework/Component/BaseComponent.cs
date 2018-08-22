@@ -15,19 +15,14 @@ namespace Framework
     /// <summary>
     /// 组件抽象基类;
     /// </summary>
-    public abstract class BaseComponent : IPool
+    public abstract class AbsComponent : ObjectEx
     {
-        private long _id;
-        private bool _enable = false;
-        private AbsEntity _entity;
-        private GameObject _componentObject = null;
-        private ComponentInitEventHandler _componentInitHandler;
+        protected AbsComponent() : base() { }
 
-        public long ID { get { return _id; } }
-        public bool Enable { get { return _enable; } set { _enable = value; } }
-        public AbsEntity Entity { get { return _entity; } set { _entity = value; } }
-        public GameObject ComponentObject { get { return _componentObject; } set { _componentObject = value; } }
-        public ComponentInitEventHandler ComponentInitHandler { get { return _componentInitHandler; } set { _componentInitHandler = value; } }
+        private AbsEntity _entity;
+
+        public AbsEntity Entity { get { return _entity; } }
+        public ComponentInitEventHandler ComponentInitHandler { get; set; }
 
         public virtual void FixedUpdateEx(float interval) { }
         public virtual void UpdateEx(float interval) { }
@@ -38,14 +33,13 @@ namespace Framework
         /// </summary>
         /// <param name="entity">entity</param>
         /// <param name="go">gameObject</param>
-        public void Create(AbsEntity entity, GameObject go)
+        public void Create(AbsEntity entity)
         {
-            _id = IdGenerater.GenerateId();
             OnAttachEntity(entity);
-            OnAttachComponentObject(go);
+            //OnAttachGoEx(go);
             EventSubscribe();
-            OnInitComponent();
-            _enable = true;
+            OnInit();
+            Enable = true;
             if (ComponentInitHandler != null)
             {
                 ComponentInitHandler(this);
@@ -57,21 +51,20 @@ namespace Framework
         public void Reset()
         {
             DeAttachEntity();
-            DeAttachComponentObject();
+            DeAttachGoEx();
             EventUnsubscribe();
-            OnResetComponent();
-            _id = 0;
-            _enable = false;
-            _componentInitHandler = null;
+            OnReset();
+            Enable = false;
+            ComponentInitHandler = null;
         }
         /// <summary>
         /// 初始化;
         /// </summary>
-        protected virtual void OnInitComponent() { }
+        protected virtual void OnInit() { }
         /// <summary>
         /// 重置;
         /// </summary>
-        protected virtual void OnResetComponent() { }
+        protected virtual void OnReset() { }
         /// <summary>
         /// Component附加Entity;
         /// </summary>
@@ -84,10 +77,7 @@ namespace Framework
         /// Component附加GameObject;
         /// </summary>
         /// <param name="go"></param>
-        protected virtual void OnAttachComponentObject(GameObject go)
-        {
-            _componentObject = go;
-        }
+        protected virtual void OnAttachGoEx(GameObjectEx goEx) { }
         /// <summary>
         /// 重置Entity的附加;
         /// </summary>
@@ -98,10 +88,7 @@ namespace Framework
         /// <summary>
         /// 重置GameObject的附加;
         /// </summary>
-        protected virtual void DeAttachComponentObject()
-        {
-            _componentObject = null;
-        }
+        protected virtual void DeAttachGoEx() { }
         /// <summary>
         /// 注册事件;
         /// </summary>
@@ -120,14 +107,5 @@ namespace Framework
         /// </summary>
         /// <param name="sceneId"></param>
         protected virtual void OnExitScene(int sceneId) { }
-        /// <summary>
-        /// 对象池Get;
-        /// </summary>
-        /// <param name="args"></param>
-        public virtual void OnGet(params System.Object[] args) { }
-        /// <summary>
-        /// 对象池Release;
-        /// </summary>
-        public virtual void OnRelease() { }
     }
 }

@@ -10,13 +10,13 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class BuffComponent : BaseComponent
+    public class BuffComponent : AbsComponent
     {
         private Dictionary<int, Buff> _buffDict = new Dictionary<int, Buff>();
 
-        protected override void OnResetComponent()
+        protected override void OnReset()
         {
-            base.OnResetComponent();
+            base.OnReset();
             _buffDict.Clear();
         }
 

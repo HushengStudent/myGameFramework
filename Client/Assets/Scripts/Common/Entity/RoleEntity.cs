@@ -15,15 +15,15 @@ public class RoleEntity : AbsEntity
 
     public BuffComponent BuffComp { get { return _buffComp; } }
 
-    protected override void OnInit()
+    protected override void OnInitEx()
     {
-        base.OnInit();
-        _buffComp = ComponentMgr.Instance.CreateComponent<BuffComponent>(this, EntityObject, null);
+        base.OnInitEx();
+        _buffComp = ComponentMgr.Instance.CreateComponent<BuffComponent>(this, null);
     }
 
-    protected override void OnReset()
+    protected override void OnResetEx()
     {
-        base.OnReset();
+        base.OnResetEx();
         ComponentMgr.Instance.ReleaseComponent<BuffComponent>(_buffComp);
         _buffComp = null;
     }

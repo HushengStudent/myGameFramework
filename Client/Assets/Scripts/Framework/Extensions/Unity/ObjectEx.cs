@@ -12,7 +12,7 @@ namespace Framework
 {
     public class ObjectEx : IPool
     {
-        public ObjectEx()
+        protected ObjectEx()
         {
             _id = IdGenerater.GenerateId();
             Enable = false;
