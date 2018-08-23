@@ -18,13 +18,14 @@ namespace Framework
         /// <summary>
         /// EntityDict;
         /// </summary>
-        private Dictionary<long, AbsEntity> EntityDict = new Dictionary<long, AbsEntity>();
+        private Dictionary<long, AbsEntity> _entityDict = new Dictionary<long, AbsEntity>();
         /// <summary>
         /// EntityList;
         /// </summary>
-        private List<AbsEntity> EntityList = new List<AbsEntity>();
+        private List<AbsEntity> _entityList = new List<AbsEntity>();
+        private List<AbsEntity> _list = new List<AbsEntity>();
 
-        private Dictionary<ulong, AbsEntity> EntityIndexDict = new Dictionary<ulong, AbsEntity>();
+        private Dictionary<ulong, AbsEntity> _entityIdDict = new Dictionary<ulong, AbsEntity>();
 
         #endregion
 
@@ -33,11 +34,12 @@ namespace Framework
         protected override void FixedUpdateEx(float interval)
         {
             base.FixedUpdateEx(interval);
-            for (int i = 0; i < EntityList.Count; i++)
+            _list.AddRange(_entityList);
+            for (int i = 0; i < _list.Count; i++)
             {
-                if (EntityList[i].Enable)
+                if (_list[i].Enable)
                 {
-                    EntityList[i].FixedUpdateEx(interval);
+                    _list[i].FixedUpdateEx(interval);
                 }
             }
         }
@@ -45,11 +47,11 @@ namespace Framework
         protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
-            for (int i = 0; i < EntityList.Count; i++)
+            for (int i = 0; i < _list.Count; i++)
             {
-                if (EntityList[i].Enable)
+                if (_list[i].Enable)
                 {
-                    EntityList[i].UpdateEx(interval);
+                    _list[i].UpdateEx(interval);
                 }
             }
         }
@@ -57,11 +59,11 @@ namespace Framework
         protected override void LateUpdateEx(float interval)
         {
             base.LateUpdateEx(interval);
-            for (int i = 0; i < EntityList.Count; i++)
+            for (int i = 0; i < _list.Count; i++)
             {
-                if (EntityList[i].Enable)
+                if (_list[i].Enable)
                 {
-                    EntityList[i].LateUpdateEx(interval);
+                    _list[i].LateUpdateEx(interval);
                 }
             }
         }
@@ -72,9 +74,9 @@ namespace Framework
 
         public void Init()
         {
-            EntityDict.Clear();
-            EntityList.Clear();
-            EntityIndexDict.Clear();
+            _entityDict.Clear();
+            _entityList.Clear();
+            _entityIdDict.Clear();
         }
         /// <summary>
         /// 创建Entity;同步/异步完善;
@@ -119,7 +121,7 @@ namespace Framework
         {
             T target = null;
             AbsEntity temp = null;
-            if (EntityIndexDict.TryGetValue(uid, out temp))
+            if (_entityIdDict.TryGetValue(uid, out temp))
             {
                 target = temp as T;
             }
@@ -132,13 +134,13 @@ namespace Framework
         /// <returns></returns>
         private bool AddEntity(AbsEntity entity)
         {
-            if (EntityDict.ContainsKey(entity.ID))
+            if (_entityDict.ContainsKey(entity.ID))
             {
                 return false;
             }
-            EntityDict[entity.ID] = entity;
-            EntityIndexDict[entity.UID] = entity;
-            EntityList.Add(entity);
+            _entityDict[entity.ID] = entity;
+            _entityIdDict[entity.UID] = entity;
+            _entityList.Add(entity);
             return true;
         }
         /// <summary>
@@ -148,13 +150,13 @@ namespace Framework
         /// <returns></returns>
         private bool RemoveEntity(AbsEntity entity)
         {
-            if (!EntityDict.ContainsKey(entity.ID))
+            if (!_entityDict.ContainsKey(entity.ID))
             {
                 return false;
             }
-            EntityDict.Remove(entity.ID);
-            EntityIndexDict.Remove(entity.UID);
-            EntityList.Remove(entity);
+            _entityDict.Remove(entity.ID);
+            _entityIdDict.Remove(entity.UID);
+            _entityList.Remove(entity);
             return true;
         }
 

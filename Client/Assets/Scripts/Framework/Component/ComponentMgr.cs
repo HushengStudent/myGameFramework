@@ -110,6 +110,15 @@ namespace Framework
             PoolMgr.Instance.Release<T>(component as T);//Release To Pool;
         }
         /// <summary>
+        /// 移除Component;
+        /// </summary>
+        /// <param name="component"></param>
+        public void DestroyComponent(AbsComponent component)
+        {
+            RemoveComponent(component);
+            component.Reset();
+        }
+        /// <summary>
         /// 添加Component;
         /// </summary>
         /// <param name="component"></param>
