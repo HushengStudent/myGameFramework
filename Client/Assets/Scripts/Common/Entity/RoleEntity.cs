@@ -18,7 +18,7 @@ public class RoleEntity : AbsEntity
     protected override void OnInitEx()
     {
         base.OnInitEx();
-        _buffComp = ComponentMgr.Instance.CreateComponent<BuffComponent>(this, null);
+        _buffComp = ComponentMgr.Instance.CreateComponent<BuffComponent>(this);
     }
 
     protected override void OnResetEx()

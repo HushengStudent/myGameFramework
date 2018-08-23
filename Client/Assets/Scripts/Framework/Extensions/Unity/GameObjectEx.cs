@@ -11,55 +11,95 @@ using UnityEngine;
 
 namespace Framework
 {
+    public delegate void GameObjectExLoadFinishHandler(GameObjectEx go);
+    public delegate void GameObjectExDestroyHandler(GameObjectEx go);
+
     public class GameObjectEx
     {
         private int _parentInstanceId = -1;
+        private AbsEntity _entity = null;
+        private string _resPath = string.Empty;
+        private GameObjectExLoadFinishHandler _loadFinishHandler = null;
+        private GameObjectExDestroyHandler _destroyHandler = null;
 
-        public GameObject Go { get; set; }
+        public bool IsLoadFinish { get; set; }
+        public GameObject gameObject { get; set; }
+        public AbsEntity Entity { get { return _entity; } }
+        public Transform Trans { get; set; }
+        public string ResPath { get { return _resPath; } }
         public int ParentInstanceId { get { return _parentInstanceId; } }
-        private Transform Trans { get; set; }
 
-        public void Init(AbsEntity entity, string path, Action<GameObjectEx> action, bool isAsync = true)
+        public void Init(AbsEntity entity, string path, bool isAsync = true)
         {
+            _entity = entity;
+            _resPath = path;
+            IsLoadFinish = false;
             //加载;
             GameObject go = null;
-            Go = go;
+            gameObject = go;
+            IsLoadFinish = true;
             Trans = go.transform;
-            if (action != null)
+            if (_loadFinishHandler != null)
             {
-                action(this);
+                _loadFinishHandler(this);
             }
         }
 
         public void Uninit()
         {
-            //销毁;
-            _parentInstanceId = -1;
-            Go = null;
+            if (_destroyHandler != null)
+            {
+                _destroyHandler(this);
+            }
+            if (IsLoadFinish)
+            {
+                //销毁;
+            }
+            gameObject = null;
             Trans = null;
+            _entity = null;
+            _resPath = string.Empty;
+            _parentInstanceId = -1;
+            _loadFinishHandler = null;
+            _destroyHandler = null;
+        }
+
+        public void AddLoadFinishHandler(GameObjectExLoadFinishHandler handler)
+        {
+            _loadFinishHandler += handler;
+        }
+
+        public void RemoveLoadFinishHandler(GameObjectExLoadFinishHandler handler)
+        {
+            _loadFinishHandler -= handler;
+        }
+
+        public void AddDestroyHandler(GameObjectExDestroyHandler handler)
+        {
+            _destroyHandler += handler;
         }
 
         public void SetLocalPosition(float x, float y, float z)
         {
-            if (Go)
+            if (gameObject)
             {
-                Go.transform.localPosition = new Vector3(x, y, z);
+                gameObject.transform.localPosition = new Vector3(x, y, z);
             }
         }
 
         public void SetLocalScale(float x, float y, float z)
         {
-            if (Go)
+            if (gameObject)
             {
-                Go.transform.localScale = new Vector3(x, y, z);
+                gameObject.transform.localScale = new Vector3(x, y, z);
             }
         }
 
         public void SetLocalRotation(float x, float y, float z, float w)
         {
-            if (Go)
+            if (gameObject)
             {
-                Go.transform.localRotation = new Quaternion(x, y, z, w);
+                gameObject.transform.localRotation = new Quaternion(x, y, z, w);
             }
         }
     }

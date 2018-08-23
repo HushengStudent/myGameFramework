@@ -36,7 +36,14 @@ namespace Framework
         public void Create(AbsEntity entity)
         {
             OnAttachEntity(entity);
-            //OnAttachGoEx(go);
+            if (_entity.gameObjectEx.IsLoadFinish)
+            {
+                OnAttachGoEx(_entity.gameObjectEx);
+            }
+            else
+            {
+                _entity.gameObjectEx.AddLoadFinishHandler(OnAttachGoEx);
+            }
             EventSubscribe();
             OnInit();
             Enable = true;
@@ -88,7 +95,13 @@ namespace Framework
         /// <summary>
         /// 重置GameObject的附加;
         /// </summary>
-        protected virtual void DeAttachGoEx() { }
+        protected virtual void DeAttachGoEx()
+        {
+            if (!_entity.gameObjectEx.IsLoadFinish)
+            {
+                _entity.gameObjectEx.RemoveLoadFinishHandler(OnAttachGoEx);
+            }
+        }
         /// <summary>
         /// 注册事件;
         /// </summary>

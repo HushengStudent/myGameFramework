@@ -19,25 +19,24 @@ namespace Framework
         private int _entityId;
         private string _entityName = string.Empty;
         private string _resPath = string.Empty;
-        private GameObjectEx _goEx = null;
+        private GameObjectEx _gameObjectEx = null;
         private EntityLoadFinishEventHandler _entityLoadFinishHandler = null;
-
 
         public ulong UID { get { return _uid; } }
         public int EntityId { get { return _entityId; } }
         public string EntityName { get { return _entityName; } }
         public string ResPath { get { return _resPath; } }
-        public GameObjectEx GoEx { get { return _goEx; } }
+        public GameObjectEx gameObjectEx { get { return _gameObjectEx; } }
         public EntityInitEventHandler EntityInitHandler { get; set; }
         public EntityLoadFinishEventHandler EntityLoadFinishHandler
         {
             get { return _entityLoadFinishHandler; }
             set
             {
-                if (_goEx != null && _goEx.Go != null)
+                if (_gameObjectEx != null && _gameObjectEx.gameObject != null)
                 {
                     _entityLoadFinishHandler = value;
-                    _entityLoadFinishHandler(this, _goEx.Go);
+                    _entityLoadFinishHandler(this, _gameObjectEx.gameObject);
                 }
             }
         }
@@ -58,8 +57,9 @@ namespace Framework
             _entityName = name;
             _entityId = entityId;
 
-            _goEx = PoolMgr.Instance.Get<GameObjectEx>();
-            _goEx.Init(this, _resPath, OnAttachGoEx);
+            _gameObjectEx = PoolMgr.Instance.Get<GameObjectEx>();
+            _gameObjectEx.AddLoadFinishHandler(OnAttachGoEx);
+            _gameObjectEx.Init(this, _resPath);
 
             EventSubscribe();
             OnInitEx();
@@ -96,10 +96,10 @@ namespace Framework
         /// <param name="go"></param>
         protected virtual void OnAttachGoEx(GameObjectEx go)
         {
-            _goEx = go;
+            _gameObjectEx = go;
             if (_entityLoadFinishHandler != null)
             {
-                _entityLoadFinishHandler(this, _goEx.Go);
+                _entityLoadFinishHandler(this, _gameObjectEx.gameObject);
             }
         }
         /// <summary>
@@ -107,9 +107,9 @@ namespace Framework
         /// </summary>
         protected virtual void DeAttachGoEx()
         {
-            _goEx.Uninit();
-            PoolMgr.Instance.Release<GameObjectEx>(_goEx);
-            _goEx = null;
+            _gameObjectEx.Uninit();
+            PoolMgr.Instance.Release<GameObjectEx>(_gameObjectEx);
+            _gameObjectEx = null;
         }
         /// <summary>
         /// 注册事件;

@@ -17,14 +17,11 @@ namespace Framework
     {
         #region Field
 
-        /// <summary>
-        /// ComponentDict;
-        /// </summary>
         private Dictionary<long, AbsComponent> _componentDict = new Dictionary<long, AbsComponent>();
-        /// <summary>
-        /// ComponentList;
-        /// </summary>
+
         private List<AbsComponent> _componentList = new List<AbsComponent>();
+
+        private List<AbsComponent> _list = new List<AbsComponent>();
 
         #endregion
 
@@ -32,6 +29,7 @@ namespace Framework
 
         public void Init()
         {
+            _list.Clear();
             _componentDict.Clear();
             _componentList.Clear();
         }
@@ -39,11 +37,12 @@ namespace Framework
         protected override void FixedUpdateEx(float interval)
         {
             base.FixedUpdateEx(interval);
-            for (int i = 0; i < _componentList.Count; i++)
+            _list.AddRange(_componentList);
+            for (int i = 0; i < _list.Count; i++)
             {
-                if (_componentList[i].Enable)
+                if (_list[i].Enable)
                 {
-                    _componentList[i].FixedUpdateEx(interval);
+                    _list[i].FixedUpdateEx(interval);
                 }
             }
         }
@@ -51,11 +50,11 @@ namespace Framework
         protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
-            for (int i = 0; i < _componentList.Count; i++)
+            for (int i = 0; i < _list.Count; i++)
             {
-                if (_componentList[i].Enable)
+                if (_list[i].Enable)
                 {
-                    _componentList[i].UpdateEx(interval);
+                    _list[i].UpdateEx(interval);
                 }
             }
         }
@@ -63,11 +62,11 @@ namespace Framework
         protected override void LateUpdateEx(float interval)
         {
             base.LateUpdateEx(interval);
-            for (int i = 0; i < _componentList.Count; i++)
+            for (int i = 0; i < _list.Count; i++)
             {
-                if (_componentList[i].Enable)
+                if (_list[i].Enable)
                 {
-                    _componentList[i].LateUpdateEx(interval);
+                    _list[i].LateUpdateEx(interval);
                 }
             }
         }
@@ -75,6 +74,7 @@ namespace Framework
         #endregion
 
         #region Function
+
         /// <summary>
         /// 创建Component;
         /// </summary>
@@ -83,7 +83,7 @@ namespace Framework
         /// <param name="go"></param>
         /// <param name="handler"></param>
         /// <returns></returns>
-        public T CreateComponent<T>(AbsEntity entity, ComponentInitEventHandler handler) where T : AbsComponent, new()
+        public T CreateComponent<T>(AbsEntity entity, ComponentInitEventHandler handler = null) where T : AbsComponent, new()
         {
             T _Component = PoolMgr.Instance.Get<T>();
             if (AddComponent(_Component))
@@ -137,6 +137,22 @@ namespace Framework
             }
             _componentDict.Remove(component.ID);
             _componentList.Remove(component);
+            return true;
+        }
+        /// <summary>
+        /// 移除Component;
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        private bool RemoveComponent(long id)
+        {
+            if (!_componentDict.ContainsKey(id))
+            {
+                return false;
+            }
+            var target = _componentDict[id];
+            _componentList.Remove(target);
+            _componentDict.Remove(id);
             return true;
         }
 
