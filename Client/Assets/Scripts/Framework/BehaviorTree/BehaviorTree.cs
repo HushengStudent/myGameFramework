@@ -13,34 +13,28 @@ namespace Framework
 {
     public sealed class BehaviorTree
     {
-        private bool _enable = false;
         private AbsBehavior _root;
         private AbsEntity _entity;
 
-        private OnBehaviorTreeStartHandler _onStart;
-        private OnBehaviorTreeSuccesstHandler _onSuccess;
-        private OnBehaviorTreeFailureHandler _onFailure;
-        private OnBehaviorTreeResetHandler _onReset;
+        public bool Enable { get; set; }
+        public AbsBehavior Root { get { return _root; } }
+        public AbsEntity Entity { get { return _entity; } }
 
-        public bool Enable { get { return _enable; } set { _enable = value; } }
-        public AbsBehavior Root { get { return _root; } set { _root = value; } }
-        public AbsEntity Entity { get { return _entity; } set { _entity = value; } }
-
-        public OnBehaviorTreeStartHandler OnStart { get { return _onStart; } set { _onStart = value; } }
-        public OnBehaviorTreeSuccesstHandler OnSuccess { get { return _onSuccess; } set { _onSuccess = value; } }
-        public OnBehaviorTreeFailureHandler OnFailure { get { return _onFailure; } set { _onFailure = value; } }
-        public OnBehaviorTreeResetHandler OnReset { get { return _onReset; } set { _onReset = value; } }
+        public OnBehaviorTreeStartHandler OnStart { get; set; }
+        public OnBehaviorTreeSuccesstHandler OnSuccess { get; set; }
+        public OnBehaviorTreeFailureHandler OnFailure { get; set; }
+        public OnBehaviorTreeResetHandler OnReset { get; set; }
 
         public BehaviorTree(AbsBehavior root, AbsEntity entity)
         {
             _root = root;
             _entity = entity;
-            _enable = false;
+            Enable = false;
         }
 
         public void Update(float interval)
         {
-            if (_enable && _entity != null && (_root.Reslut == BehaviorState.Reset || _root.Reslut == BehaviorState.Running))
+            if (Enable && _entity != null && (_root.Reslut == BehaviorState.Reset || _root.Reslut == BehaviorState.Running))
             {
                 BehaviorState reslut = _root.Behave(_entity, interval);
                 switch (reslut)
@@ -56,7 +50,7 @@ namespace Framework
                     case BehaviorState.Finish:
                         break;
                     default:
-                        _enable = false;
+                        Enable = false;
                         LogUtil.LogUtility.PrintError("[BehaviorTree]error state.");
                         break;
                 }
