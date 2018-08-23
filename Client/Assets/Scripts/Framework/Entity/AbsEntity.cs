@@ -11,6 +11,14 @@ using UnityEngine;
 
 namespace Framework
 {
+    public enum EntityTypeEnum : byte
+    {
+        Non = 0,
+        Role = 1,
+        Player = 2,
+        Enemy = 3,
+    }
+
     public abstract class AbsEntity : ObjectEx
     {
         protected AbsEntity() : base() { }
@@ -41,6 +49,7 @@ namespace Framework
                 }
             }
         }
+        public virtual EntityTypeEnum EntityType { get { return EntityTypeEnum.Non; } }
 
         public virtual void FixedUpdateEx(float interval) { }
         public virtual void UpdateEx(float interval) { }
@@ -77,7 +86,7 @@ namespace Framework
         public void Reset()
         {
             DeAttachGoEx();
-            for(int i = 0; i < _componentList.Count; i++)
+            for (int i = 0; i < _componentList.Count; i++)
             {
                 ComponentMgr.Instance.DestroyComponent(_componentList[i]);
             }
