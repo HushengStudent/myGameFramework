@@ -12,7 +12,7 @@ using UnityEditor;
 using UnityEngine;
 //using Debug = UnityEngine.Debug;
 
-namespace Common
+namespace Framework
 {
     public static class AssetBundleEditor
     {

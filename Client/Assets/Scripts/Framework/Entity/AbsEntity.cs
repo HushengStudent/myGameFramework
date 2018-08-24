@@ -34,7 +34,7 @@ namespace Framework
         public int EntityId { get { return _entityId; } }
         public string EntityName { get { return _entityName; } }
         public string ResPath { get { return _resPath; } }
-        public List<AbsComponent> _componentList = new List<AbsComponent>();
+        public List<AbsComponent> ComponentList = new List<AbsComponent>();
         public GameObjectEx gameObjectEx { get { return _gameObjectEx; } }
         public EntityInitEventHandler EntityInitHandler { get; set; }
         public EntityLoadFinishEventHandler EntityLoadFinishHandler
@@ -66,7 +66,7 @@ namespace Framework
             _uid = uid;
             _entityName = name;
             _entityId = entityId;
-            _componentList.Clear();
+            ComponentList.Clear();
 
             _gameObjectEx = PoolMgr.Instance.Get<GameObjectEx>();
             _gameObjectEx.AddLoadFinishHandler(OnAttachGoEx);
@@ -86,11 +86,11 @@ namespace Framework
         public void Reset()
         {
             DeAttachGoEx();
-            for (int i = 0; i < _componentList.Count; i++)
+            for (int i = 0; i < ComponentList.Count; i++)
             {
-                ComponentMgr.Instance.DestroyComponent(_componentList[i]);
+                ComponentMgr.Instance.DestroyComponent(ComponentList[i]);
             }
-            _componentList.Clear();
+            ComponentList.Clear();
             EventUnsubscribe();
             OnResetEx();
             Enable = false;

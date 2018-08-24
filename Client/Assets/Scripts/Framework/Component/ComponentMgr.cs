@@ -90,6 +90,7 @@ namespace Framework
             {
                 _Component.ComponentInitHandler = handler;
                 _Component.Create(entity);
+                entity.ComponentList.Add(_Component);
                 return _Component;
             }
             else
@@ -106,6 +107,7 @@ namespace Framework
         public void ReleaseComponent<T>(AbsComponent component) where T : AbsComponent, new()
         {
             RemoveComponent(component);
+            component.Entity.ComponentList.Remove(component);
             component.Reset();
             PoolMgr.Instance.Release<T>(component as T);//Release To Pool;
         }
