@@ -16,11 +16,11 @@ namespace Framework
     {
         private Scene _scene = null;
 
-        public Scene CurScene { get { return _scene; } set { _scene = value; } }
+        public Scene CurScene { get { return _scene; } }
 
         protected override void InitEx()
         {
-            CurScene = null;
+            _scene = null;
             LogUtil.LogUtility.Print("[SceneMgr]SceneMgr init!");
         }
 
@@ -36,7 +36,7 @@ namespace Framework
             }
             else
             {
-                CurScene = new Scene();
+                _scene = new Scene();
             }
             IEnumerator<float> loadItor = CurScene.LoadScene(sceneId, handler);
             while (loadItor.MoveNext())

@@ -16,6 +16,6 @@ namespace Framework
         private string _curVersion = string.Empty;
 
         public string LoaclVersion { get { return _localVersion; } }
-        public string CurVersion { get { return _curVersion; } set { _curVersion = value; } }
+        public string CurVersion { get { return _curVersion; } }
     }
 }

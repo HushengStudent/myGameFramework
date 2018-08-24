@@ -21,7 +21,7 @@ namespace Framework
         private PanelType _type = PanelType.Non;
         private List<BaseUI> _baseUIList = new List<BaseUI>();
 
-        public PanelType Type { get { return _type; } set { _type = value; } }
+        public PanelType Type { get { return _type; } }
         public List<BaseUI> BaseUIList { get { return _baseUIList; } set { _baseUIList = value; } }
 
         public virtual void Update()

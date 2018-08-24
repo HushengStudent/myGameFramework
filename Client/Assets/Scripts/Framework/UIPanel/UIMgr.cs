@@ -15,13 +15,13 @@ namespace Framework
         private BasePanel _curPanel = null;
         private PanelType _curPanelType = PanelType.Non;
 
-        public BasePanel CurPanel { get { return _curPanel; } set { _curPanel = value; } }
-        public PanelType CurPanelType { get { return _curPanelType; } set { _curPanelType = value; } }
+        public BasePanel CurPanel { get { return _curPanel; } }
+        public PanelType CurPanelType { get { return _curPanelType; } }
 
         public void Init()
         {
-            CurPanel = null;
-            CurPanelType = PanelType.Non;
+            _curPanel = null;
+            _curPanelType = PanelType.Non;
             LogUtil.LogUtility.Print("[UIMgr]UIMgr init!");
         }
 
@@ -46,7 +46,7 @@ namespace Framework
             }
             else
             {
-                CurPanel = CreatePanel(type);
+                _curPanel = CreatePanel(type);
                 if (CurPanel == null)
                 {
                     LogUtil.LogUtility.PrintError(string.Format("[UIMgr]trans to panel {0} error.", type.ToString()));

@@ -14,12 +14,10 @@ namespace Framework
     public class SessionReceiver
     {
         private readonly byte[] _buffer;
-        private int _length;
-        private int _receivedLength;
 
         public int BufferSize { get { return _buffer.Length; } }
-        public int Length { get { return _length; } set { _length = value; } }
-        public int ReceivedLength { get { return _receivedLength; } set { _receivedLength = value; } }
+        public int Length { get; set; }
+        public int ReceivedLength { get; set; }
 
         public SessionReceiver(int bufferSize)
         {

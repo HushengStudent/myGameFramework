@@ -10,7 +10,7 @@ public class Framework_SceneMgrWrap
 		L.RegFunction("TransToScene", TransToScene);
 		L.RegFunction("New", _CreateFramework_SceneMgr);
 		L.RegFunction("__tostring", ToLua.op_ToString);
-		L.RegVar("CurScene", get_CurScene, set_CurScene);
+		L.RegVar("CurScene", get_CurScene, null);
 		L.EndClass();
 	}
 
@@ -69,25 +69,6 @@ public class Framework_SceneMgrWrap
 			Framework.Scene ret = obj.CurScene;
 			ToLua.PushObject(L, ret);
 			return 1;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index CurScene on a nil value");
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_CurScene(IntPtr L)
-	{
-		object o = null;
-
-		try
-		{
-			o = ToLua.ToObject(L, 1);
-			Framework.SceneMgr obj = (Framework.SceneMgr)o;
-			Framework.Scene arg0 = (Framework.Scene)ToLua.CheckObject<Framework.Scene>(L, 2);
-			obj.CurScene = arg0;
-			return 0;
 		}
 		catch(Exception e)
 		{

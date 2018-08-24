@@ -13,10 +13,9 @@ namespace Framework
     public abstract class BaseUI
     {
         private string _name = string.Empty;
-        private bool _enable = false;
 
-        public string Name { get { return _name; } set { _name = value; } }
-        public bool Enable { get { return _enable; } set { _enable = value; } }
+        public string Name { get { return _name; } }
+        public bool Enable { get; set; }
 
         public abstract void OnInit();
         public abstract void Update();

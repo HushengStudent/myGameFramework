@@ -12,6 +12,9 @@ public class LogUtil_LogUtilityWrap
 		L.RegFunction("PrintError", PrintError);
 		L.RegFunction("New", _CreateLogUtil_LogUtility);
 		L.RegFunction("__tostring", ToLua.op_ToString);
+		L.RegVar("LogEnable", get_LogEnable, set_LogEnable);
+		L.RegVar("WarningEnable", get_WarningEnable, set_WarningEnable);
+		L.RegVar("ErrorEnable", get_ErrorEnable, set_ErrorEnable);
 		L.EndClass();
 	}
 
@@ -94,6 +97,93 @@ public class LogUtil_LogUtilityWrap
 			ToLua.CheckArgsCount(L, 1);
 			string arg0 = ToLua.CheckString(L, 1);
 			LogUtil.LogUtility.PrintError(arg0);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_LogEnable(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushboolean(L, LogUtil.LogUtility.LogEnable);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_WarningEnable(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushboolean(L, LogUtil.LogUtility.WarningEnable);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_ErrorEnable(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushboolean(L, LogUtil.LogUtility.ErrorEnable);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_LogEnable(IntPtr L)
+	{
+		try
+		{
+			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
+			LogUtil.LogUtility.LogEnable = arg0;
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_WarningEnable(IntPtr L)
+	{
+		try
+		{
+			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
+			LogUtil.LogUtility.WarningEnable = arg0;
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_ErrorEnable(IntPtr L)
+	{
+		try
+		{
+			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
+			LogUtil.LogUtility.ErrorEnable = arg0;
 			return 0;
 		}
 		catch (Exception e)

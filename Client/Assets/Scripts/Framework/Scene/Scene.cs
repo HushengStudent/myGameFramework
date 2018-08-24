@@ -14,8 +14,8 @@ namespace Framework
     public class Scene
     {
         private int _sceneID;
-        
-        public int SceneID { get { return _sceneID; } set { _sceneID = value; } }
+
+        public int SceneID { get { return _sceneID; } }
 
         public IEnumerator<float> UnloadScene()
         {
@@ -24,6 +24,7 @@ namespace Framework
 
         public IEnumerator<float> LoadScene(int id, SceneLoadEventHandler handler)
         {
+            _sceneID = id;
             yield return Timing.WaitForOneFrame;
         }
     }
