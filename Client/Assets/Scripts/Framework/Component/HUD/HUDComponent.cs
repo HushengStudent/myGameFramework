@@ -1,15 +1,17 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/04/20 20:49:56
-** desc:  装备组件;
+** date:  2018/08/24 23:31:30
+** desc:  HUDComponent;
 *********************************************************************************/
 
-using Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EquipComponent : AbsComponent
+namespace Framework
 {
+    public class HUDComponent : AbsComponent
+    {
 
+    }
 }

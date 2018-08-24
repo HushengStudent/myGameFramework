@@ -16,7 +16,7 @@ namespace Framework
         Non = 0,
         Role = 1,
         Player = 2,
-        Enemy = 3,
+        Monster = 3,
     }
 
     public abstract class AbsEntity : ObjectEx
