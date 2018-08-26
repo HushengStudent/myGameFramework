@@ -10,138 +10,71 @@ using UnityEngine;
 
 namespace Framework
 {
+    public enum FsmStateTypeEnum
+    {
+        Idel = 0,
+        Walk = 1,
+        Running = 2,
+
+    }
+
     public abstract class AbsFsmState
     {
         private string _name;
-        private float _time;
         private AbsEntity _entity = null;
-        private List<AbsFsmTransition> _toTransitionList = new List<AbsFsmTransition>();
-        private AbsFsmState _lastState;
-        private AbsFsmState _nextState;
         private FsmMachine _machine;
-        private AbsFsmTransition _triggerTrans;
-        private FsmTransitionEventHandler _transitionHandler = null;
 
-        public string Name { get { return _name; } set { _name = value; } }
+        public virtual FsmStateTypeEnum FsmStateType { get { return FsmStateTypeEnum.Idel; } }
+
+        public string Name { get { return _name; } }
         public AbsEntity Entity { get { return _entity; } }
-        public AbsFsmState LastState { get { return _lastState; } }
-        public AbsFsmState NextState { get { return _nextState; } }
         public FsmMachine Machine { get { return _machine; } }
-        public AbsFsmTransition TriggerTrans { get { return _triggerTrans; } set { _triggerTrans = value; } }
-        public FsmTransitionEventHandler TransitionHandler { get { return _transitionHandler; } set { _transitionHandler = value; } }
 
         public AbsFsmState(FsmMachine machine, string name)
         {
             _name = name;
             _entity = machine.Entity;
             _machine = machine;
-            _lastState = null;
-            _nextState = null;
-            _triggerTrans = null;
-            _toTransitionList.Clear();
         }
 
-        public void OnEnterState(AbsFsmState lastState)
+        private void OnEnterState(AbsFsmState lastState)
         {
-            _lastState = lastState;
             OnEnterStateEx(lastState);
+            Machine.CurrentState = this;
         }
-        protected abstract void OnEnterStateEx(AbsFsmState lastState);
+        protected virtual void OnEnterStateEx(AbsFsmState lastState) { }
 
-        public virtual void OnExitState(AbsFsmState nextState)
+        private void OnExitState(AbsFsmState nextState)
         {
-            _nextState = nextState;
             OnExitStateEx(nextState);
-            _machine.CurrentState = nextState;
         }
-        protected abstract void OnExitStateEx(AbsFsmState nextState);
+        protected virtual void OnExitStateEx(AbsFsmState nextState) { }
 
-        public virtual void Update(float interval)
+        public void Update(float interval)
         {
-            if(_triggerTrans == null)
-            {
-                for (int i = 0; i < _toTransitionList.Count; i++)
-                {
-                    var trans = _toTransitionList[i];
-                    if (trans.IsCanTrans())
-                    {
-                        _triggerTrans = trans;
-                        _triggerTrans.TransState = FsmTransitionStateEnum.Transing;
-                        OnExitState(trans.ToState);
-                        break;
-                    }
-                }
-            }
-            if (_triggerTrans == null)
+            if (Machine.CurTrans == null)
             {
                 UpdateEx(interval);
+
             }
             else
             {
-                FsmTransitionStateEnum state = _triggerTrans.ExcuteTrans(this, _triggerTrans.ToState);
-                if(state == FsmTransitionStateEnum.Finish)
+                OnExitState(Machine.CurTrans.ToState);
+                FsmTransitionStateEnum state = Machine.CurTrans.ExcuteTrans(this, Machine.CurTrans.ToState);
+                if (state == FsmTransitionStateEnum.Finish)
                 {
-                    _triggerTrans.TransState = FsmTransitionStateEnum.Transing;
-                    _machine.CurrentState.OnEnterState(this);
-                    _triggerTrans = null;
+                    Machine.CurrentState.OnEnterStateEx(this);
+                    Machine.CurTrans = null;
+                    Machine.CurTrans.TransState = FsmTransitionStateEnum.Transing;
                 }
             }
         }
-        protected abstract void UpdateEx(float interval);
+        protected virtual void UpdateEx(float interval) { }
 
-        public virtual void LateUpdate(float interval)
+        public void LateUpdate(float interval)
         {
             LateUpdateEx(interval);
         }
-        protected abstract void LateUpdateEx(float interval);
-
-        public bool AddTransition(AbsFsmTransition trans)
-        {
-            var lastState = trans.FromState;
-            var nextState = trans.ToState;
-            if (lastState != this && nextState != this)
-                return false;
-            if (nextState == this)
-            {
-                return lastState.AddTransition(trans);
-            }
-            if (lastState == this)
-            {
-                _toTransitionList.Add(trans);
-                return true;
-            }
-            return false;
-        }
-
-        public bool RemoveTransition(AbsFsmTransition trans)
-        {
-            var lastState = trans.FromState;
-            var nextState = trans.ToState;
-            if (lastState != this && nextState != this)
-                return false;
-            if (nextState == this)
-            {
-                return lastState.RemoveTransition(trans);
-            }
-            if (lastState == this && _toTransitionList.Contains(trans))
-            {
-                _toTransitionList.Remove(trans);
-                return true;
-            }
-            return false;
-        }
-
-        public AbsFsmTransition GetTransByName(string transName)
-        {
-            for (int i = 0; i < _toTransitionList.Count; i++)
-            {
-                var target = _toTransitionList[i];
-                if (target.Name == transName)
-                {
-                    return target;
-                }
-            }
-            return null;
-        }
+        protected virtual void LateUpdateEx(float interval) { }
     }
 }

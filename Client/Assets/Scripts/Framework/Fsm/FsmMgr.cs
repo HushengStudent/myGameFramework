@@ -28,9 +28,20 @@ namespace Framework
             }
         }
 
-        public void CreateFsmMachine(AbsEntity entity, string name, List<AbsFsmState> stateList)
+        protected override void LateUpdateEx(float interval)
         {
+            base.LateUpdateEx(interval);
+            foreach (var target in _fsmDict)
+            {
+                target.Value.LateUpdate(interval);
+            }
+        }
 
+        public void CreateFsmMachine(AbsEntity entity, string name,
+            List<AbsFsmState> stateList, AbsFsmState defaultState, List<AbsFsmTransition> transitionList)
+        {
+            FsmMachine fsm = new FsmMachine(entity, name, stateList, defaultState, transitionList);
+            _fsmDict.Add(entity, fsm);
         }
     }
 }
