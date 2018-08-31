@@ -33,7 +33,7 @@ namespace Framework
         /// </summary>
         /// <param name="entity">entity</param>
         /// <param name="go">gameObject</param>
-        public void Create(AbsEntity entity)
+        public void Init(AbsEntity entity)
         {
             OnAttachEntity(entity);
             if (_entity.gameObjectEx.IsLoadFinish)
@@ -45,7 +45,7 @@ namespace Framework
                 _entity.gameObjectEx.AddLoadFinishHandler(OnAttachGoEx);
             }
             EventSubscribe();
-            OnInit();
+            InitEx();
             Enable = true;
             if (ComponentInitHandler != null)
             {
@@ -55,23 +55,23 @@ namespace Framework
         /// <summary>
         /// 重置Component;
         /// </summary>
-        public void Reset()
+        public void Uninit()
         {
             DeAttachEntity();
             DeAttachGoEx();
             EventUnsubscribe();
-            OnReset();
+            UninitEx();
             Enable = false;
             ComponentInitHandler = null;
         }
         /// <summary>
         /// 初始化;
         /// </summary>
-        protected virtual void OnInit() { }
+        protected virtual void InitEx() { }
         /// <summary>
         /// 重置;
         /// </summary>
-        protected virtual void OnReset() { }
+        protected virtual void UninitEx() { }
         /// <summary>
         /// Component附加Entity;
         /// </summary>

@@ -61,7 +61,7 @@ namespace Framework
         /// <param name="entityId"></param>
         /// <param name="uid"></param>
         /// <param name="name"></param>
-        public void Create(int entityId, ulong uid, string name)
+        public void Init(int entityId, ulong uid, string name)
         {
             _uid = uid;
             _entityName = name;
@@ -73,7 +73,7 @@ namespace Framework
             _gameObjectEx.Init(this, _resPath);
 
             EventSubscribe();
-            OnInitEx();
+            InitEx();
             Enable = true;
             if (EntityInitHandler != null)
             {
@@ -83,7 +83,7 @@ namespace Framework
         /// <summary>
         /// 重置Entity;
         /// </summary>
-        public void Reset()
+        public void Uninit()
         {
             DeAttachGoEx();
             for (int i = 0; i < ComponentList.Count; i++)
@@ -92,7 +92,7 @@ namespace Framework
             }
             ComponentList.Clear();
             EventUnsubscribe();
-            OnResetEx();
+            UninitEx();
             Enable = false;
             EntityInitHandler = null;
             EntityLoadFinishHandler = null;
@@ -101,11 +101,11 @@ namespace Framework
         /// <summary>
         /// 初始化;
         /// </summary>
-        protected virtual void OnInitEx() { }
+        protected virtual void InitEx() { }
         /// <summary>
         /// 重置;
         /// </summary>
-        protected virtual void OnResetEx() { }
+        protected virtual void UninitEx() { }
         /// <summary>
         /// Entity附加GameObject;
         /// </summary>

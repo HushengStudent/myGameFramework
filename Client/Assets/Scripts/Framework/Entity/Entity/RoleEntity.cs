@@ -24,15 +24,15 @@ namespace Framework
 
         public BuffComponent BuffComp { get { return _buffComponent; } }
 
-        protected override void OnInitEx()
+        protected override void InitEx()
         {
-            base.OnInitEx();
+            base.InitEx();
             _buffComponent = ComponentMgr.Instance.CreateComponent<BuffComponent>(this);
         }
 
-        protected override void OnResetEx()
+        protected override void UninitEx()
         {
-            base.OnResetEx();
+            base.UninitEx();
             ComponentMgr.Instance.ReleaseComponent<BuffComponent>(_buffComponent);
         }
     }

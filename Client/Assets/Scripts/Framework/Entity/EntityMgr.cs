@@ -91,7 +91,7 @@ namespace Framework
             if (AddEntity(_Entity))
             {
                 _Entity.EntityInitHandler = initHandler;
-                _Entity.Create(entityId, uid, name);
+                _Entity.Init(entityId, uid, name);
                 return _Entity;
             }
             else
@@ -108,7 +108,7 @@ namespace Framework
         public void ReleaseEntity<T>(AbsEntity entity) where T : AbsEntity, new()
         {
             RemoveEntity(entity);
-            entity.Reset();
+            entity.Uninit();
             PoolMgr.Instance.Release<T>(entity as T);//release to pool;
         }
         /// <summary>

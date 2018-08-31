@@ -89,7 +89,7 @@ namespace Framework
             if (AddComponent(_Component))
             {
                 _Component.ComponentInitHandler = handler;
-                _Component.Create(entity);
+                _Component.Init(entity);
                 entity.ComponentList.Add(_Component);
                 return _Component;
             }
@@ -108,7 +108,7 @@ namespace Framework
         {
             RemoveComponent(component);
             component.Entity.ComponentList.Remove(component);
-            component.Reset();
+            component.Uninit();
             PoolMgr.Instance.Release<T>(component as T);//Release To Pool;
         }
         /// <summary>
@@ -118,7 +118,7 @@ namespace Framework
         public void DestroyComponent(AbsComponent component)
         {
             RemoveComponent(component);
-            component.Reset();
+            component.Uninit();
         }
         /// <summary>
         /// 添加Component;
