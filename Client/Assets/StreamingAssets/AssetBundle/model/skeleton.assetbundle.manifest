@@ -1,0 +1,32 @@
+ManifestFileVersion: 0
+CRC: 2213500224
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2d93259617224689382f452dff8491a2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f131d604cde7225bb90269222099b3e4
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+Assets:
+- Assets/Bundles/Models/Common/Skeleton.prefab
+Dependencies: []

@@ -1,15 +1,16 @@
 ManifestFileVersion: 0
-CRC: 2496368832
+CRC: 5370200
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
+      Name: scene/game.assetbundle
+      Dependencies:
+        Dependency_0: material/uguiemoji.assetbundle
+    Info_1:
       Name: lua/lua.assetbundle
       Dependencies: {}
-    Info_1:
-      Name: atlas/login.assetbundle
-      Dependencies: {}
     Info_2:
-      Name: scene/game.assetbundle
+      Name: atlas/login.assetbundle
       Dependencies: {}
     Info_3:
       Name: texture/test.assetbundle
@@ -24,17 +25,48 @@ AssetBundleManifest:
       Name: animeclip/test.assetbundle
       Dependencies: {}
     Info_7:
-      Name: model/test.assetbundle
-      Dependencies: {}
-    Info_8:
       Name: prefab/login.assetbundle
       Dependencies: {}
-    Info_9:
+    Info_8:
       Name: audio/test.assetbundle
       Dependencies: {}
-    Info_10:
+    Info_9:
       Name: font/fzy4jw.assetbundle
       Dependencies: {}
+    Info_10:
+      Name: animeclip/attack.assetbundle
+      Dependencies: {}
     Info_11:
-      Name: animectrl/test.assetbundle
+      Name: animeclip/damage.assetbundle
+      Dependencies: {}
+    Info_12:
+      Name: animeclip/death.assetbundle
+      Dependencies: {}
+    Info_13:
+      Name: animeclip/idle.assetbundle
+      Dependencies: {}
+    Info_14:
+      Name: animeclip/knockback.assetbundle
+      Dependencies: {}
+    Info_15:
+      Name: animeclip/run.assetbundle
+      Dependencies: {}
+    Info_16:
+      Name: animeclip/skill.assetbundle
+      Dependencies: {}
+    Info_17:
+      Name: animeclip/stand.assetbundle
+      Dependencies: {}
+    Info_18:
+      Name: animeclip/walk.assetbundle
+      Dependencies: {}
+    Info_19:
+      Name: material/uguiemoji.assetbundle
+      Dependencies:
+        Dependency_0: shader/shader.assetbundle
+    Info_20:
+      Name: model/skeleton.assetbundle
+      Dependencies: {}
+    Info_21:
+      Name: animectrl/player.assetbundle
       Dependencies: {}

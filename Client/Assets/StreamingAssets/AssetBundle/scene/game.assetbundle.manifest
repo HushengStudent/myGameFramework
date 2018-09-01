@@ -1,14 +1,16 @@
 ManifestFileVersion: 0
-CRC: 3191678242
+CRC: 711591116
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8528304feadde0849b26b906a0bf08ff
+    Hash: e2b8a565b8af2ba75a1ddbeec3a87d29
   TypeTreeHash:
     serializedVersion: 2
     Hash: 31d6cfe0d16ae931b73c59d7e0c089c0
 HashAppended: 0
 ClassTypes: []
 Assets:
-- Assets/Bundles/Single/Scenes/Game.unity
-Dependencies: []
+- Assets/Test/Test.unity
+- Assets/_Scenes/Game.unity
+Dependencies:
+- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/StreamingAssets/AssetBundle/material/uguiemoji.assetbundle

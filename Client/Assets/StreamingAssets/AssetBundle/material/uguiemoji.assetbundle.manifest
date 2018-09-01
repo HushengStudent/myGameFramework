@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 3604070412
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 36de438d70d82dfe34130b43ba21331a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0b04a37228feb7b9c312fb0cfbaa19c4
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/ArtRes/Emoji/UGUIEmoji.mat
+Dependencies:
+- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/StreamingAssets/AssetBundle/shader/shader.assetbundle

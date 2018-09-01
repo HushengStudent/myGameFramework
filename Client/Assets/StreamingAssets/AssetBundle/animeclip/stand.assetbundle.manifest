@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2718366081
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ec2aba87a61515160963784acbf8ee51
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2f83f8f92ace07d29cf518d0769d85c5
+HashAppended: 0
+ClassTypes:
+- Class: 74
+  Script: {instanceID: 0}
+Assets:
+- Assets/Bundles/Anim/Skeleton/Stand.anim
+Dependencies: []
