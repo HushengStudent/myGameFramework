@@ -10,26 +10,26 @@ using UnityEngine;
 
 namespace Framework
 {
-    public sealed class FsmMachine
+    public sealed class StateMachine
     {
         private string _name;
         private AbsEntity _entity = null;
-        private AbsFsmState _defaultState = null;
-        private List<AbsFsmState> _stateList = new List<AbsFsmState>();
-        private AbsFsmTransition _curTrans = null;
-        private List<AbsFsmTransition> _transitionList = new List<AbsFsmTransition>();
+        private AbsState _defaultState = null;
+        private List<AbsState> _stateList = new List<AbsState>();
+        private AbsTransition _curTrans = null;
+        private List<AbsTransition> _transitionList = new List<AbsTransition>();
 
         public bool Enable { get; set; }
         public string Name { get { return _name; } }
         public AbsEntity Entity { get { return _entity; } }
-        public AbsFsmState CurrentState { get; set; }
-        public AbsFsmState DefaultState { get; set; }
-        public List<AbsFsmState> StateList { get { return _stateList; } }
-        public AbsFsmTransition CurTrans { get { return _curTrans; } set { _curTrans = value; } }
-        public List<AbsFsmTransition> TransitionList { get { return _transitionList; } }
+        public AbsState CurrentState { get; set; }
+        public AbsState DefaultState { get; set; }
+        public List<AbsState> StateList { get { return _stateList; } }
+        public AbsTransition CurTrans { get { return _curTrans; } set { _curTrans = value; } }
+        public List<AbsTransition> TransitionList { get { return _transitionList; } }
 
-        public FsmMachine(AbsEntity entity, string name,
-            List<AbsFsmState> stateList, AbsFsmState defaultState, List<AbsFsmTransition> transitionList)
+        public StateMachine(AbsEntity entity, string name,
+            List<AbsState> stateList, AbsState defaultState, List<AbsTransition> transitionList)
         {
             Enable = false;
             _name = name;
@@ -65,13 +65,13 @@ namespace Framework
             }
         }
 
-        private bool OnChangeState(AbsFsmState fromState, AbsFsmState toState)
+        private bool OnChangeState(AbsState fromState, AbsState toState)
         {
             if (CurTrans == null)
             {
                 foreach (var target in TransitionList)
                 {
-                    if (target.FromState == fromState && target.ToState == toState && target.TransState == FsmTransitionStateEnum.Finish && target.IsCanTrans())
+                    if (target.FromState == fromState && target.ToState == toState && target.TransState == TransitionTypeEnum.Finish && target.IsCanTrans())
                     {
                         CurTrans = target;
                         return true;

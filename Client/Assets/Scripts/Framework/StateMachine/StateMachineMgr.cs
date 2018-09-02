@@ -10,9 +10,9 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class FsmMgr : MonoSingleton<FsmMgr>, IManager
+    public class StateMachineMgr : MonoSingleton<StateMachineMgr>, IManager
     {
-        private Dictionary<AbsEntity, FsmMachine> _fsmDict = new Dictionary<AbsEntity, FsmMachine>();
+        private Dictionary<AbsEntity, StateMachine> _fsmDict = new Dictionary<AbsEntity, StateMachine>();
 
         public void Init()
         {
@@ -38,9 +38,9 @@ namespace Framework
         }
 
         public void CreateFsmMachine(AbsEntity entity, string name,
-            List<AbsFsmState> stateList, AbsFsmState defaultState, List<AbsFsmTransition> transitionList)
+            List<AbsState> stateList, AbsState defaultState, List<AbsTransition> transitionList)
         {
-            FsmMachine fsm = new FsmMachine(entity, name, stateList, defaultState, transitionList);
+            StateMachine fsm = new StateMachine(entity, name, stateList, defaultState, transitionList);
             _fsmDict.Add(entity, fsm);
         }
     }

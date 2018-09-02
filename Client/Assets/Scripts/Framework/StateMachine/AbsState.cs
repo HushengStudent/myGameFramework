@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public enum FsmStateTypeEnum
+    public enum StateTypeEnum
     {
         Idel = 0,
         Walk = 1,
@@ -18,37 +18,37 @@ namespace Framework
 
     }
 
-    public abstract class AbsFsmState
+    public abstract class AbsState
     {
         private string _name;
         private AbsEntity _entity = null;
-        private FsmMachine _machine;
+        private StateMachine _machine;
 
-        public virtual FsmStateTypeEnum FsmStateType { get { return FsmStateTypeEnum.Idel; } }
+        public virtual StateTypeEnum FsmStateType { get { return StateTypeEnum.Idel; } }
 
         public string Name { get { return _name; } }
         public AbsEntity Entity { get { return _entity; } }
-        public FsmMachine Machine { get { return _machine; } }
+        public StateMachine Machine { get { return _machine; } }
 
-        public AbsFsmState(FsmMachine machine, string name)
+        public AbsState(StateMachine machine, string name)
         {
             _name = name;
             _entity = machine.Entity;
             _machine = machine;
         }
 
-        private void OnEnterState(AbsFsmState lastState)
+        private void OnEnterState(AbsState lastState)
         {
             OnEnterStateEx(lastState);
             Machine.CurrentState = this;
         }
-        protected virtual void OnEnterStateEx(AbsFsmState lastState) { }
+        protected virtual void OnEnterStateEx(AbsState lastState) { }
 
-        private void OnExitState(AbsFsmState nextState)
+        private void OnExitState(AbsState nextState)
         {
             OnExitStateEx(nextState);
         }
-        protected virtual void OnExitStateEx(AbsFsmState nextState) { }
+        protected virtual void OnExitStateEx(AbsState nextState) { }
 
         public void Update(float interval)
         {
@@ -60,12 +60,12 @@ namespace Framework
             else
             {
                 OnExitState(Machine.CurTrans.ToState);
-                FsmTransitionStateEnum state = Machine.CurTrans.ExcuteTrans(this, Machine.CurTrans.ToState);
-                if (state == FsmTransitionStateEnum.Finish)
+                TransitionTypeEnum state = Machine.CurTrans.ExcuteTrans(this, Machine.CurTrans.ToState);
+                if (state == TransitionTypeEnum.Finish)
                 {
                     Machine.CurrentState.OnEnterStateEx(this);
                     Machine.CurTrans = null;
-                    Machine.CurTrans.TransState = FsmTransitionStateEnum.Transing;
+                    Machine.CurTrans.TransState = TransitionTypeEnum.Transing;
                 }
             }
         }

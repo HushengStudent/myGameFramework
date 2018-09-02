@@ -10,41 +10,41 @@ using UnityEngine;
 
 namespace Framework
 {
-    public enum FsmTransitionStateEnum
+    public enum TransitionTypeEnum
     {
         Transing = 0,
         Finish = 1
     }
 
-    public abstract class AbsFsmTransition
+    public abstract class AbsTransition
     {
         private string _name;
-        private AbsFsmState _formState;
-        private AbsFsmState _toState;
+        private AbsState _formState;
+        private AbsState _toState;
         private AbsEntity _entity = null;
-        private FsmMachine _machine;
-        private FsmTransitionStateEnum _transState = FsmTransitionStateEnum.Finish;
+        private StateMachine _machine;
+        private TransitionTypeEnum _transState = TransitionTypeEnum.Finish;
 
         public string Name { get { return _name; } }
-        public AbsFsmState FromState { get { return _formState; } }
-        public AbsFsmState ToState { get { return _toState; } }
+        public AbsState FromState { get { return _formState; } }
+        public AbsState ToState { get { return _toState; } }
         public AbsEntity Entity { get { return _entity; } }
-        public FsmMachine Machine { get { return _machine; } }
-        public FsmTransitionStateEnum TransState { get { return _transState; } set { _transState = value; } }
+        public StateMachine Machine { get { return _machine; } }
+        public TransitionTypeEnum TransState { get { return _transState; } set { _transState = value; } }
 
-        public AbsFsmTransition(FsmMachine machine, string name, AbsFsmState formState, AbsFsmState toState)
+        public AbsTransition(StateMachine machine, string name, AbsState formState, AbsState toState)
         {
             _name = name;
             _entity = machine.Entity;
             _machine = machine;
-            _transState = FsmTransitionStateEnum.Transing;
+            _transState = TransitionTypeEnum.Transing;
             _formState = formState;
             _toState = toState;
         }
 
         public virtual bool IsCanTrans() { return true; }
 
-        public FsmTransitionStateEnum ExcuteTrans(AbsFsmState formState, AbsFsmState toState)
+        public TransitionTypeEnum ExcuteTrans(AbsState formState, AbsState toState)
         {
             _formState = formState;
             _toState = toState;
@@ -52,6 +52,6 @@ namespace Framework
             return _transState;
         }
 
-        public virtual FsmTransitionStateEnum ExcuteTransEx() { return FsmTransitionStateEnum.Finish; }
+        public virtual TransitionTypeEnum ExcuteTransEx() { return TransitionTypeEnum.Finish; }
     }
 }
