@@ -1,20 +1,21 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/09/16 23:51:59
-** desc:  ≥°æ∞±‡º≠∆˜;
+** desc:  Âú∫ÊôØÁºñËæëÂô®;
 *********************************************************************************/
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Framework
 {
     public class SceneEditor : EditorWindow
     {
 
-        [MenuItem("myGameFramework/Window/SceneEditor", false, 1)]
+        [MenuItem("myGameFramework/Window/SceneEditor #s", false, 1)]
         static void ShowWindow()
         {
             var window = GetWindowWithRect(typeof(SceneEditor), new Rect(0, 0, 600, 630), true, "SceneEditor");
@@ -24,8 +25,18 @@ namespace Framework
         void OnGUI()
         {
             EditorGUILayout.BeginVertical();
-            EditorGUILayout.TextField("≥°æ∞±‡º≠∆˜");
+            EditorGUILayout.TextField("Âú∫ÊôØÁºñËæëÂô®");
 
+            Object obj = AssetDatabase.LoadMainAssetAtPath("");
+            GameObject go = obj as GameObject;
+            if (go)
+            {
+                GameObject target = GameObject.Instantiate(go);
+                //Êìç‰Ωú;
+                AssetDatabase.DeleteAsset("");
+                PrefabUtility.CreatePrefab("", target);
+                AssetDatabase.Refresh();
+            }
 
             EditorGUILayout.EndVertical();
         }
