@@ -11,7 +11,7 @@ using System.Text;
 
 namespace Framework
 {
-    public class HotfixMgr
+    public class HotfixMgr : Singleton<HotfixMgr>
     {
 
     }

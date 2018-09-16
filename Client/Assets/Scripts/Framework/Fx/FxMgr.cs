@@ -12,6 +12,30 @@ namespace Framework
 {
     public class FxMgr : Singleton<FxMgr>
     {
+        private Dictionary<string, GameObject> _fxDict = new Dictionary<string, GameObject>();
 
+        protected override void InitEx()
+        {
+            base.InitEx();
+            Clear();
+        }
+
+        public void PlayFx(string fxName, bool usePool = false)
+        {
+
+        }
+
+        private void Clear()
+        {
+            foreach (var temp in _fxDict)
+            {
+                GameObject target = temp.Value;
+                if (target)
+                {
+                    GameObject.DestroyImmediate(target);
+                }
+            }
+            _fxDict.Clear();
+        }
     }
 }
