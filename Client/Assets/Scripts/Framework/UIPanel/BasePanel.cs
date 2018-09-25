@@ -19,18 +19,17 @@ namespace Framework
     public abstract class BasePanel
     {
         private PanelType _type = PanelType.Non;
-        private List<BaseUI> _baseUIList = new List<BaseUI>();
 
+        public List<BaseUI> BaseUIList = new List<BaseUI>();
         public PanelType Type { get { return _type; } }
-        public List<BaseUI> BaseUIList { get { return _baseUIList; } set { _baseUIList = value; } }
 
         public virtual void Update()
         {
-            for (int i = 0; i < _baseUIList.Count; i++)
+            for (int i = 0; i < BaseUIList.Count; i++)
             {
-                if (_baseUIList[i].Enable)
+                if (BaseUIList[i].Enable)
                 {
-                    _baseUIList[i].Update();
+                    BaseUIList[i].Update();
                 }
             }
         }

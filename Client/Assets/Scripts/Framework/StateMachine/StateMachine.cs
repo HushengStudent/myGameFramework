@@ -16,7 +16,6 @@ namespace Framework
         private AbsEntity _entity = null;
         private AbsState _defaultState = null;
         private List<AbsState> _stateList = new List<AbsState>();
-        private AbsTransition _curTrans = null;
         private List<AbsTransition> _transitionList = new List<AbsTransition>();
 
         public bool Enable { get; set; }
@@ -25,7 +24,7 @@ namespace Framework
         public AbsState CurrentState { get; set; }
         public AbsState DefaultState { get; set; }
         public List<AbsState> StateList { get { return _stateList; } }
-        public AbsTransition CurTrans { get { return _curTrans; } set { _curTrans = value; } }
+        public AbsTransition CurTrans { get; set; }
         public List<AbsTransition> TransitionList { get { return _transitionList; } }
 
         public StateMachine(AbsEntity entity, string name,
@@ -33,12 +32,12 @@ namespace Framework
         {
             Enable = false;
             _name = name;
-            _curTrans = null;
             _entity = entity;
             _stateList.Clear();
             _transitionList.Clear();
             _stateList = stateList;
             _defaultState = defaultState;
+            CurTrans = null;
             CurrentState = _defaultState;
             _transitionList = transitionList;
         }

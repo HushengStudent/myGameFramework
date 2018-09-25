@@ -28,9 +28,8 @@ namespace Framework
         /// </summary>
         private GameObjectPool _unityObjectPool = new GameObjectPool();
 
-        public PoolClearFinishEventHandler _clearFinishHandler = null;
         public GameObject Root { get { return _resPoolRoot; } }
-        public PoolClearFinishEventHandler ClearFinishHandler { get { return _clearFinishHandler; } set { _clearFinishHandler = value; } }
+        public PoolClearFinishEventHandler ClearFinishHandler { get; set; }
 
         private void Awake()
         {
