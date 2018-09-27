@@ -14,7 +14,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public enum ProtocolType : int
+    public enum ProtoType : int
     {
         Csharp = 0,
         Lua = 1,
@@ -312,7 +312,7 @@ namespace Framework
         }
 
 
-        public void Send(int id, LuaBuff luaBuff)
+        public void Send(int id, LuaBuff buffer)
         {
             if (_socket == null)
             {
@@ -324,8 +324,8 @@ namespace Framework
                 }
                 throw new Exception(errorMessage);
             }
-            byte[] buff = luaBuff.ToBytes();
-            if (buff == null)
+            byte[] bufferBytes = buffer.ToBytes();
+            if (bufferBytes == null)
             {
                 string errorMessage = "luaBuff is null.";
                 if (ErrorHandler != null)
@@ -345,7 +345,7 @@ namespace Framework
                     memoryStream.Seek(_defaultPacketLength, SeekOrigin.Begin);
                     byte[] idBytes = ConverterUtility.GetBytes(id);
                     memoryStream.Write(idBytes, 0, idBytes.Length);
-                    memoryStream.Write(buff, 0, buff.Length);
+                    memoryStream.Write(bufferBytes, 0, bufferBytes.Length);
                     length = (int)memoryStream.Position;
                 }
                 packetLength = length - _defaultPacketLength;

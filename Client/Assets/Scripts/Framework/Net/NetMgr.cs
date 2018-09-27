@@ -91,11 +91,11 @@ namespace Framework
             }
         }
 
-        public void Send(int id, LuaBuff luaBuff)
+        public void Send(int id, LuaBuff buffer)
         {
             try
             {
-                session.Send(id, luaBuff);
+                session.Send(id, buffer);
             }
             catch (Exception e)
             {

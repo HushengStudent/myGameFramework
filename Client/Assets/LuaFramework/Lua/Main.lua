@@ -73,3 +73,12 @@ function TestSendPblua()
 	luaNetUtil.SendLuaReq(10011,buffer)
 end
 
+function TestProcessPblua(buffer)
+	local login = Protol.login_pb.LoginResponse()
+	local data = buffer:ReadBuffer()
+	login:ParseFromString(data)
+	----------------------------------------------------------------
+	logUtility.PrintError("lua:"..tostring(msg.id))
+	logUtility.PrintError("lua:"..tostring(msg.name))
+	logUtility.PrintError("lua:"..tostring(msg.email))
+end
