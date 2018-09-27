@@ -27,7 +27,8 @@ g_SceneMgr = SceneManager.new()
 function Main()					
 	log("main logic start")
 	--g_GameMgr:StartGame()
-	test_pblua_func()
+	--test_pblua_func()
+	TestSendPblua()
 end
 
 --场景切换通知
@@ -40,20 +41,35 @@ end
 ---=====================================================================================================================
 --测试pblua--
 function test_pblua_func()
-	local login = Protol.login_pb.LoginRequest();
-	login.id = 2000;
-	login.name = 'game';
-	login.email = 'jarjin@163.com';
+	local login = Protol.login_pb.LoginRequest()
+	login.id = 2000
+	login.name = 'game'
+	login.email = 'jarjin@163.com'
 
-	local msg = login:SerializeToString();
-	luaUtility.OnCallLuaFunc(msg, OnPbluaCall);
+	local msg = login:SerializeToString()
+	luaUtility.OnCallLuaFunc(msg, OnPbluaCall)
 end
 
 --pblua callback--
 function OnPbluaCall(data)
-	local msg = Protol.login_pb.LoginRequest();
-	msg:ParseFromString(data);
-	print(msg);
-	print(msg.id..' '..msg.name);
+	local msg = Protol.login_pb.LoginRequest()
+	msg:ParseFromString(data)
+	print(msg)
+	print(msg.id..' '..msg.name)
+end
+
+---=====================================================================================================================
+--测试发送PBLUA--
+function TestSendPblua()
+	local login = Protol.login_pb.LoginRequest()
+	login.id = 2000
+	login.name = 'game'
+	login.email = 'jarjin@163.com'
+
+	local msg = login:SerializeToString()
+	----------------------------------------------------------------
+	local buffer = luaBuff.New()
+	buffer:WriteBuffer(msg)
+	luaNetUtil.SendLuaReq(10011,buffer)
 end
 

@@ -14,6 +14,12 @@ using UnityEngine;
 
 namespace Framework
 {
+    public enum ProtocolType : int
+    {
+        Csharp = 0,
+        Lua = 1,
+    }
+
     public class Session
     {
         private int _defaultPacketLength = 4;//协议格式:4位长度+4位id+内容;此处指长度,4位;
@@ -299,6 +305,59 @@ namespace Framework
                 if (ErrorHandler != null)
                 {
                     ErrorHandler(this, SessionErrorCode.StateError, exception.Message);
+                    return;
+                }
+                throw;
+            }
+        }
+
+
+        public void Send(int id, LuaBuff luaBuff)
+        {
+            if (_socket == null)
+            {
+                string errorMessage = "session not initialize.";
+                if (ErrorHandler != null)
+                {
+                    ErrorHandler(this, SessionErrorCode.StateError, errorMessage);
+                    return;
+                }
+                throw new Exception(errorMessage);
+            }
+            byte[] buff = luaBuff.ToBytes();
+            if (buff == null)
+            {
+                string errorMessage = "luaBuff is null.";
+                if (ErrorHandler != null)
+                {
+                    ErrorHandler(this, SessionErrorCode.StateError, errorMessage);
+                    return;
+                }
+                throw new Exception(errorMessage);
+            }
+            try
+            {
+                int length = 0;
+                int packetLength = 0;
+                byte[] packetBuffer = new byte[_defaultMaxPacketLength];//TODO:内存池;
+                using (MemoryStream memoryStream = new MemoryStream(packetBuffer, true))
+                {
+                    memoryStream.Seek(_defaultPacketLength, SeekOrigin.Begin);
+                    byte[] idBytes = ConverterUtility.GetBytes(id);
+                    memoryStream.Write(idBytes, 0, idBytes.Length);
+                    memoryStream.Write(buff, 0, buff.Length);
+                    length = (int)memoryStream.Position;
+                }
+                packetLength = length - _defaultPacketLength;
+                ConverterUtility.GetBytes(packetLength).CopyTo(packetBuffer, 0);
+                Send(packetBuffer, 0, length);
+            }
+            catch (Exception exception)
+            {
+                _active = false;
+                if (ErrorHandler != null)
+                {
+                    ErrorHandler(this, SessionErrorCode.SerializeError, exception.ToString());
                     return;
                 }
                 throw;

@@ -13,9 +13,9 @@ namespace Framework
 {
     public static class LuaNetUtil
     {
-        public static void SendLuaReq(LuaBuff buff)
+        public static void SendLuaReq(int id, LuaBuff luaBuff)
         {
-
+            NetMgr.Instance.Send(id,luaBuff);
         }
     }
 }

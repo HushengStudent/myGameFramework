@@ -164,7 +164,7 @@ public static class CustomSettings
         _GT(typeof(ResourceMgr)),
 
         _GT(typeof(LuaBuff)),
-
+        _GT(typeof(LuaNetUtil)),
         //_GT(typeof(AppConst)),
         //_GT(typeof(LuaHelper)),
         //_GT(typeof(ByteBuffer)),

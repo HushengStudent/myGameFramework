@@ -90,5 +90,18 @@ namespace Framework
                 session.Dispose();
             }
         }
+
+        public void Send(int id, LuaBuff luaBuff)
+        {
+            try
+            {
+                session.Send(id, luaBuff);
+            }
+            catch (Exception e)
+            {
+                LogUtil.LogUtility.PrintError(string.Format("[NetMgr]Send {0} error!", e.ToString()));
+                session.Dispose();
+            }
+        }
     }
 }
