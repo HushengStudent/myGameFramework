@@ -18,11 +18,11 @@ namespace Framework
             NetMgr.Instance.Send(id, buffer);
         }
 
-        public static void Send2Lua(byte[] bytes)
+        public static void Send2Lua(int id, byte[] bytes)
         {
             LuaBuffer buffer = new LuaBuffer();
             buffer.WriteBytes(bytes);
-            LuaUtility.CallLuaTableMethod("Protol.ProtoProcess", "Process", buffer);
+            LuaUtility.CallLuaTableMethod("Protol.ProtoProcess", "Process", id, buffer);
         }
     }
 }

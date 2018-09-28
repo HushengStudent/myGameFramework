@@ -34,9 +34,10 @@ public class Framework_LuaNetUtilWrap
 	{
 		try
 		{
-			ToLua.CheckArgsCount(L, 1);
-			byte[] arg0 = ToLua.CheckByteBuffer(L, 1);
-			Framework.LuaNetUtil.Send2Lua(arg0);
+			ToLua.CheckArgsCount(L, 2);
+			int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
+			byte[] arg1 = ToLua.CheckByteBuffer(L, 2);
+			Framework.LuaNetUtil.Send2Lua(arg0, arg1);
 			return 0;
 		}
 		catch (Exception e)
