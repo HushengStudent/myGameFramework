@@ -2,7 +2,7 @@
 using System;
 using LuaInterface;
 
-public class Framework_LuaBuffWrap
+public class Framework_LuaBufferWrap
 {
 	public static void Register(LuaState L)
 	{
@@ -28,13 +28,13 @@ public class Framework_LuaBuffWrap
 		L.RegFunction("ReadBuffer", ReadBuffer);
 		L.RegFunction("ToBytes", ToBytes);
 		L.RegFunction("Flush", Flush);
-		L.RegFunction("New", _CreateFramework_LuaBuff);
+		L.RegFunction("New", _CreateFramework_LuaBuffer);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.EndClass();
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int _CreateFramework_LuaBuff(IntPtr L)
+	static int _CreateFramework_LuaBuffer(IntPtr L)
 	{
 		try
 		{
@@ -55,7 +55,7 @@ public class Framework_LuaBuffWrap
 			}
 			else
 			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: Framework.LuaBuff.New");
+				return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: Framework.LuaBuffer.New");
 			}
 		}
 		catch (Exception e)

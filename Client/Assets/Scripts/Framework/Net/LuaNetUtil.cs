@@ -13,9 +13,16 @@ namespace Framework
 {
     public static class LuaNetUtil
     {
-        public static void SendLuaReq(int id, LuaBuff buffer)
+        public static void SendLuaReq(int id, LuaBuffer buffer)
         {
-            NetMgr.Instance.Send(id,buffer);
+            NetMgr.Instance.Send(id, buffer);
+        }
+
+        public static void Send2Lua(byte[] bytes)
+        {
+            LuaBuffer buffer = new LuaBuffer();
+            buffer.WriteBytes(bytes);
+            LuaUtility.CallLuaTableMethod("Protol.ProtoProcess", "Process", buffer);
         }
     }
 }

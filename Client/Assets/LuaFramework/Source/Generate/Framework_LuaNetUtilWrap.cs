@@ -8,6 +8,7 @@ public class Framework_LuaNetUtilWrap
 	{
 		L.BeginStaticLibs("LuaNetUtil");
 		L.RegFunction("SendLuaReq", SendLuaReq);
+		L.RegFunction("Send2Lua", Send2Lua);
 		L.EndStaticLibs();
 	}
 
@@ -18,8 +19,24 @@ public class Framework_LuaNetUtilWrap
 		{
 			ToLua.CheckArgsCount(L, 2);
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
-			Framework.LuaBuff arg1 = (Framework.LuaBuff)ToLua.CheckObject<Framework.LuaBuff>(L, 2);
+			Framework.LuaBuffer arg1 = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 2);
 			Framework.LuaNetUtil.SendLuaReq(arg0, arg1);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int Send2Lua(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			byte[] arg0 = ToLua.CheckByteBuffer(L, 1);
+			Framework.LuaNetUtil.Send2Lua(arg0);
 			return 0;
 		}
 		catch (Exception e)

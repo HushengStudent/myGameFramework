@@ -68,7 +68,7 @@ function TestSendPblua()
 
 	local msg = login:SerializeToString()
 	----------------------------------------------------------------
-	local buffer = luaBuff.New()
+	local buffer = luaBuffer.New()
 	buffer:WriteBuffer(msg)
 	luaNetUtil.SendLuaReq(10011,buffer)
 end

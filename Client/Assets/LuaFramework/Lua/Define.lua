@@ -16,7 +16,7 @@ resourceMgr = Framework.ResourceMgr.Instance
 ---[Utility]
 luaUtility = Framework.LuaUtility.Instance --luaUtility
 logUtility = LogUtil.LogUtility
-luaBuff = Framework.LuaBuff
+luaBuffer = Framework.LuaBuffer
 luaNetUtil = Framework.LuaNetUtil
 
 ---[Enum]

@@ -312,7 +312,7 @@ namespace Framework
         }
 
 
-        public void Send(int id, LuaBuff buffer)
+        public void Send(int id, LuaBuffer buffer)
         {
             if (_socket == null)
             {

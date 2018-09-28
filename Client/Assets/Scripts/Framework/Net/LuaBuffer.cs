@@ -15,19 +15,19 @@ using UnityEngine;
 namespace Framework
 {
     //参考LuaFramework;
-    public class LuaBuff
+    public class LuaBuffer
     {
         MemoryStream _stream = null;
         BinaryWriter _writer = null;
         BinaryReader _reader = null;
 
-        public LuaBuff()
+        public LuaBuffer()
         {
             _stream = new MemoryStream();
             _writer = new BinaryWriter(_stream);
         }
 
-        public LuaBuff(byte[] data)
+        public LuaBuffer(byte[] data)
         {
             if (data != null)
             {
