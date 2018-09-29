@@ -31,8 +31,7 @@ function Main()
 	log("main logic start")
 	--g_GameMgr:StartGame()
 	--test_pblua_func()
-	--TestSendPblua()
-	luaNetUtil.Test()
+	TestSendPblua()
 end
 
 --场景切换通知
