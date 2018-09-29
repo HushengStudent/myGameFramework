@@ -8,16 +8,20 @@ require "Protol.ProtoDefine"
 
 ProtoProcessTable= {
 
-    [ProtoDefine.LoginRequest] = function(buffer)
+    [Protol.ProtoDefine.ProtoID.LoginResponse] =
+    function(buffer)
         TestProcessPblua(buffer)
     end,
 
 
 }
 
-function Process(id,buffer)
-    local func = ProtoProcessTable[id]
+function Process(msg)
+    logGreen("----->>>id:"..tostring(msg[0]))
+    logGreen("----->>>buffer:"..tostring(msg[1]))
+
+    local func = ProtoProcessTable[msg[0]]
     if func then
-        func(buffer)
+        func(msg[1])
     end
 end

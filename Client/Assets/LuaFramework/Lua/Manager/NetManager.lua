@@ -4,6 +4,8 @@
 --- lua网络模块
 ---
 
+require "Protol.ProtoProcess"
+
 NetManager = class("NetManager")
 
 function NetManager:ctor() end

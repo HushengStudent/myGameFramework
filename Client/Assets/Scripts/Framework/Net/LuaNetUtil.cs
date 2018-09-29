@@ -7,6 +7,7 @@
 using LuaInterface;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace Framework
@@ -22,7 +23,7 @@ namespace Framework
         {
             LuaBuffer buffer = new LuaBuffer();
             buffer.WriteBytes(bytes);
-            LuaUtility.CallLuaTableMethod("Protol.ProtoProcess", "Process", id, buffer);
+            LuaUtility.CallLuaModuleMethod("Protol.ProtoProcess", "Process", id, buffer);
         }
     }
 }
