@@ -17,9 +17,6 @@ ProtoProcessTable= {
 }
 
 function Process(msg)
-    logGreen("----->>>id:"..tostring(msg[0]))
-    logGreen("----->>>buffer:"..tostring(msg[1]))
-
     local func = ProtoProcessTable[msg[0]]
     if func then
         func(msg[1])

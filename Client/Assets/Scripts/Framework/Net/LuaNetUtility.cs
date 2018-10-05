@@ -1,10 +1,11 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/02/01 00:04:40
-** desc:  lua协议发送工具;
+** desc:  lua协议工具;
 *********************************************************************************/
 
 using LuaInterface;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +13,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public static class LuaNetUtil
+    public static class LuaNetUtility
     {
         public static void SendLuaReq(int id, LuaBuffer buffer)
         {
@@ -21,9 +22,15 @@ namespace Framework
 
         public static void Send2Lua(int id, byte[] bytes)
         {
-            LuaBuffer buffer = new LuaBuffer();
-            buffer.WriteBytes(bytes);
-            LuaUtility.CallLuaModuleMethod("Protol.ProtoProcess", "Process", id, buffer);
+            try
+            {
+                LuaByteBuffer byteBuffer = new LuaByteBuffer(bytes);
+                LuaUtility.CallLuaModuleMethod("Protol.ProtoProcess", "Process", id, byteBuffer);
+            }
+            catch (Exception e)
+            {
+                LogUtil.LogUtility.PrintError(string.Format("[LuaNetUtility]Send2Lua error,id:{0},info:{1}.", id, e.ToString()));
+            }
         }
     }
 }

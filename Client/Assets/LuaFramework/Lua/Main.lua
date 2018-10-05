@@ -73,17 +73,15 @@ function TestSendPblua()
 	----------------------------------------------------------------
 	local buffer = luaBuffer.New()
 	buffer:WriteBuffer(msg)
-	luaNetUtil.SendLuaReq(10011,buffer)
+    LuaNetUtility.SendLuaReq(10011,buffer)
 end
 
 function TestProcessPblua(buffer)
-	local login = Protol.login_pb.LoginResponse()
-	local data = buffer:ReadBuffer()
-	login:ParseFromString(data)
+	local msg = Protol.login_pb.LoginResponse()
+    msg:ParseFromString(buffer)
 	----------------------------------------------------------------
-	logUtility.PrintError("lua:"..tostring(msg.id))
-	logUtility.PrintError("lua:"..tostring(msg.name))
-	logUtility.PrintError("lua:"..tostring(msg.email))
+    logGreen("+++++>>>>>Lua process protocol!"..tostring(msg.id),LogUtil.LogColor.Green)
+    logGreen("+++++>>>>>id:"..tostring(msg.id),LogUtil.LogColor.Green)
 end
 
 function Receive(id,buffer)

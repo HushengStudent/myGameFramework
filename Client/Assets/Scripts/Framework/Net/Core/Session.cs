@@ -580,9 +580,29 @@ namespace Framework
                 }
                 else
                 {
-                    if (ReceiveHandler != null)
+                    var id = packet.GetPacketId();
+                    bool overridecs = false;
+                    if (LuaProtoRegister.LuaProtoDict.TryGetValue(id, out overridecs))
                     {
-                        ReceiveHandler(this, packet);
+                        if (!overridecs)
+                        {
+                            if (ReceiveHandler != null)
+                            {
+                                ReceiveHandler(this, packet);
+                            }
+                        }
+                        using (MemoryStream memoryStream = new MemoryStream())
+                        {
+                            packet.Serialize(memoryStream);
+                            LuaNetUtility.Send2Lua(id, memoryStream.ToArray());
+                        }
+                    }
+                    else
+                    {
+                        if (ReceiveHandler != null)
+                        {
+                            ReceiveHandler(this, packet);
+                        }
                     }
                 }
             }
