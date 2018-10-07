@@ -10,11 +10,8 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class RenderMgr : MonoSingleton<RenderMgr>, IManager
+    public class RenderMgr : MonoSingleton<RenderMgr>
     {
-        public void Init()
-        {
-            
-        }
+        
     }
 }

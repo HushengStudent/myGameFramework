@@ -12,7 +12,7 @@ using UnityEngine;
 namespace Framework
 {
     //TODO:协议池+buff池自己实现,以解耦,或许更好;
-    public class NetMgr : MonoSingleton<NetMgr>, IManager
+    public class NetMgr : MonoSingleton<NetMgr>
     {
         private Session _session;
 
@@ -24,8 +24,9 @@ namespace Framework
             _session.Connect(GameConfig.ipAddress, GameConfig.port);
         }
 
-        public void Init()
+        public override void Init()
         {
+            base.Init();
             LogUtil.LogUtility.Print("[NetMgr]NetMgr init!");
         }
 

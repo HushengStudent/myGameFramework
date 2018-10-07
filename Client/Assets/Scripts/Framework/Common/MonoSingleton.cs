@@ -74,5 +74,7 @@ namespace Framework
             _instance = null;
             OnDestroyEx();
         }
+
+        public virtual void Init() { }
     }
 }

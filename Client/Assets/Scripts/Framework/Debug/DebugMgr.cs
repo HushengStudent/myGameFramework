@@ -9,7 +9,7 @@ using System.Collections;
 
 namespace Framework
 {
-    public partial class DebugMgr : MonoSingleton<DebugMgr>, IManager
+    public partial class DebugMgr : MonoSingleton<DebugMgr>
     {
         private DebugFps _fpsInfo = null;
         private DebugSystem _sysInfo = new DebugSystem();
@@ -46,8 +46,9 @@ namespace Framework
             ShowProfiler,
         }
 
-        public void Init()
+        public override void Init()
         {
+            base.Init();
             LogUtil.LogUtility.Print("[DebugMgr]DebugMgr init!");
             _fpsInfo = new DebugFps(0.5f);
             Application.logMessageReceived += _logInfo.OnLogMessageReceived;
