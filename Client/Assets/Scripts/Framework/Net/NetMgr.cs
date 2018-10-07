@@ -14,14 +14,16 @@ namespace Framework
     //TODO:协议池+buff池自己实现,以解耦,或许更好;
     public class NetMgr : MonoSingleton<NetMgr>, IManager
     {
-        private Session session;
+        private Session _session;
+
+        public Action OnConnected;
 
         protected override void AwakeEx()
         {
             base.AwakeEx();
-            session = new Session("session");
+            _session = new Session("session");
             InitHandler();
-            session.Connect(GameConfig.ipAddress, GameConfig.port);
+            _session.Connect(GameConfig.ipAddress, GameConfig.port);
         }
 
         public void Init()
@@ -32,18 +34,18 @@ namespace Framework
         protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
-            if (session != null && session.Active)
-                session.Update();
+            if (_session != null && _session.Active)
+                _session.Update();
         }
 
         private void InitHandler()
         {
-            session.ConnectedHandler += OnConnected;
-            session.ClosedHandler += OnClosed;
-            session.ErrorHandler += OnError;
-            session.CustomErrorHandler += OnCustomError;
-            session.ReceiveHandler += OnReceive;
-            session.SendHandler += OnSend;
+            _session.ConnectedHandler += OnConnected;
+            _session.ClosedHandler += OnClosed;
+            _session.ErrorHandler += OnError;
+            _session.CustomErrorHandler += OnCustomError;
+            _session.ReceiveHandler += OnReceive;
+            _session.SendHandler += OnSend;
         }
 
         private void OnSend(Session session, int count, SessionParam args)
@@ -82,12 +84,12 @@ namespace Framework
         {
             try
             {
-                session.Send<T>(packet);
+                _session.Send<T>(packet);
             }
             catch (Exception e)
             {
                 LogUtil.LogUtility.PrintError(string.Format("[NetMgr]Send {0} error!", e.ToString()));
-                session.Dispose();
+                _session.Dispose();
             }
         }
 
@@ -95,12 +97,12 @@ namespace Framework
         {
             try
             {
-                session.Send(id, buffer);
+                _session.Send(id, buffer);
             }
             catch (Exception e)
             {
                 LogUtil.LogUtility.PrintError(string.Format("[NetMgr]Send {0} error!", e.ToString()));
-                session.Dispose();
+                _session.Dispose();
             }
         }
     }

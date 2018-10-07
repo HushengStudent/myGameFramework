@@ -51,8 +51,16 @@ namespace Framework
             UIMgr.Instance.Init();            //UI初始化;
             SceneMgr.Instance.Init();         //场景初始化;
             LuaMgr.Instance.Init();           //lua初始化;
-            NetMgr.Instance.Init();           //网络初始化;
             MemoryMgr.Instance.Init();
+            NetMgr.Instance.OnConnected = () =>
+            {
+                UpdateMgr.Instance.Init();
+            };
+            NetMgr.Instance.Init();           //网络初始化;
+        }
+
+        private void EnterGame()
+        {
 
         }
 

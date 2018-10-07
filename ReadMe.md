@@ -32,9 +32,9 @@ software：Unity5.5.4/visual studio2017.
     (25)ILRuntime.(TODO)
     (26)技能模块.(TODO)
     (27)Buff模块.(TODO)
-    (28)AI模块：FSM、行为树.(TODO)
+    (28)AI模块：FSM、行为树.(Finish)
     (29)网络同步机制：帧同步、状态同步.(TODO)
-    (30)编辑器：AI、战斗、场景.(TODO)
+    (30)编辑器：AI(行为树)、战斗(技能)、场景.(TODO)
 	
     Reference：
     (1)tolua：(https://github.com/topameng/tolua).
