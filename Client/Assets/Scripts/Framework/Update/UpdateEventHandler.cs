@@ -20,4 +20,10 @@ namespace Framework
     public delegate void UpdateStartEventHandler();
     public delegate void UpdateErrorEventHandler(UpdateCode code);
     public delegate void UpdateSuccessEventHandler();
+
+    public delegate void DownLoadStartEventHandler();
+    public delegate void DownLoadErrorEventHandler(string error);
+    public delegate void DownLoadProgressEventHandler(float progress);
+    public delegate void DownLoadSuccessEventHandler();
+
 }

@@ -16,8 +16,6 @@ namespace Framework
     {
         private Session _session;
 
-        public Action OnConnected;
-
         protected override void AwakeEx()
         {
             base.AwakeEx();
@@ -78,6 +76,8 @@ namespace Framework
         {
             LogUtil.LogUtility.Print(string.Format("[NetMgr]Session Connected!"));
             ProtoRegister.Register();
+
+            GameMgr.Instance.CheckUpdate();
         }
 
         public void Send<T>(T packet) where T : Packet

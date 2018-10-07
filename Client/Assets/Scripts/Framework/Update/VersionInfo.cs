@@ -14,6 +14,6 @@ namespace Framework
     {
         public string _updateUrl = "";
         public int _versionNumber;
-        public List<string> _md5List = new List<string>();
+        public Dictionary<int, string> _md5Dict = new Dictionary<int, string>();
     }
 }

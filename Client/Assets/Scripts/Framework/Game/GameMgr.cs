@@ -52,14 +52,15 @@ namespace Framework
             SceneMgr.Instance.Init();         //场景初始化;
             LuaMgr.Instance.Init();           //lua初始化;
             MemoryMgr.Instance.Init();
-            NetMgr.Instance.OnConnected = () =>
-            {
-                UpdateMgr.Instance.Init();
-            };
             NetMgr.Instance.Init();           //网络初始化;
         }
 
-        private void EnterGame()
+        public void CheckUpdate()
+        {
+            UpdateMgr.Instance.Init();
+        }
+
+        public void EnterGame()
         {
 
         }
