@@ -28,8 +28,9 @@ namespace Framework
         public float SyncInterval { get { return _syncInterval; } set { _syncInterval = value; } }
         public MobileLevel MobileLevelValue { get { return _mobileLevelValue; } set { _mobileLevelValue = value; } }
 
-        protected override void InitEx()
+        public override void Init()
         {
+            base.Init();
             PoolMgr.Instance.ClearFinishHandler = () => InitApp();
             PoolMgr.Instance.Init();          //对象池初始化;
         }

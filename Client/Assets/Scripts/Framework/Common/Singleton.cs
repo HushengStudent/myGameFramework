@@ -13,6 +13,7 @@ namespace Framework
     public class Singleton<T> where T : class, new()
     {
         private static T _instance = null;
+        private static object _lock = new object();
 
         public static T Instance
         {
@@ -20,7 +21,10 @@ namespace Framework
             {
                 if (null == _instance)
                 {
-                    _instance = new T(); //调用构造函数;
+                    lock (_lock)
+                    {
+                        _instance = new T(); //调用构造函数;
+                    }
                 }
                 return _instance;
             }
@@ -33,10 +37,8 @@ namespace Framework
         {
             if (null != _instance)
                 LogUtil.LogUtility.Print("This " + (typeof(T)).ToString() + " Singleton Instance is not null!");
-            InitEx();
         }
 
-        protected virtual void InitEx() { }
-        public void Init() { }
+        public virtual void Init() { }
     }
 }

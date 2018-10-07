@@ -18,8 +18,9 @@ namespace Framework
 
         public Scene CurScene { get { return _scene; } }
 
-        protected override void InitEx()
+        public override void Init()
         {
+            base.Init();
             _scene = null;
             LogUtil.LogUtility.Print("[SceneMgr]SceneMgr init!");
         }

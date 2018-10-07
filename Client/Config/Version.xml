@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="gb2312"?>
 <VersionInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <_updateUrl />
-  <_versionNumber>0</_versionNumber>
-  <_md5List />
+  <_version>
+    <_apkVersion>0</_apkVersion>
+    <_hotVersion>0</_hotVersion>
+    <_versionTime>0</_versionTime>
+    <_apkPermissions>0</_apkPermissions>
+  </_version>
 </VersionInfo>

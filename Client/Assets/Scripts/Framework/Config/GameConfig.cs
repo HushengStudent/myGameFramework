@@ -13,6 +13,9 @@ namespace Framework
 {
     public static class GameConfig
     {
+        public static string VersionFilePath = Application.dataPath.ToLower() + "/../Config/Version.xml";
+        public static string NetVersionFilePath = Application.dataPath.ToLower() + "/../Config/temp/Version.xml";
+
         public static int GameFrame = 60;
         public static float SyncInterval = 0.2f;
         public static MobileLevel MobileLevelValue = MobileLevel.High;

@@ -25,8 +25,9 @@ namespace Framework
         private Dictionary<EventType, Dictionary<Object, EventDelegate>> EventDict
             = new Dictionary<EventType, Dictionary<Object, EventDelegate>>();
 
-        protected override void InitEx()
+        public override void Init()
         {
+            base.Init();
             EventDict.Clear();
             LogUtil.LogUtility.Print("[EventMgr]EventMgr init!");
         }

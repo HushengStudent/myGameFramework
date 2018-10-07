@@ -13,9 +13,6 @@ namespace Framework
 {
     public class UpdateMgr : Singleton<UpdateMgr>
     {
-        private string _versionFilePath = Application.dataPath.ToLower() + "/../Config/Version.xml";
-        private string _netVersionFilePath = Application.dataPath.ToLower() + "/../Config/temp/Version.xml";
-
         private VersionInfo _localVersionInfo;
         private VersionInfo _netVersionInfo;
 
@@ -26,16 +23,16 @@ namespace Framework
         public UpdateErrorEventHandler ErrorHandler;
         public UpdateSuccessEventHandler SuccessHandler;
 
-        protected override void InitEx()
+        public override void Init()
         {
-            base.InitEx();
+            base.Init();
             SuccessHandler = () => { GameMgr.Instance.EnterGame(); };
-            if (!Directory.Exists(_versionFilePath))
+            if (!Directory.Exists(GameConfig.VersionFilePath))
             {
                 VersionInfo info = new VersionInfo();
-                SerializeUtility.SerializeXml<VersionInfo>(_versionFilePath, info);
+                SerializeUtility.SerializeXml<VersionInfo>(GameConfig.VersionFilePath, info);
             }
-            _localVersionInfo = SerializeUtility.DeserializeBinary<VersionInfo>(_versionFilePath);
+            _localVersionInfo = SerializeUtility.DeserializeXml<VersionInfo>(GameConfig.VersionFilePath);
         }
 
         public void CheckVersion()
@@ -43,10 +40,10 @@ namespace Framework
             WWWDownLoadHelper www = new WWWDownLoadHelper();
             www.SuccessHandler = () =>
             {
-                _netVersionInfo = SerializeUtility.DeserializeBinary<VersionInfo>(_netVersionFilePath);
+                _netVersionInfo = SerializeUtility.DeserializeXml<VersionInfo>(GameConfig.NetVersionFilePath);
                 CheckUpdate();
             };
-            CoroutineMgr.Instance.StartCoroutine(www.StartDownLoad(_localVersionInfo._updateUrl, _netVersionFilePath));
+            CoroutineMgr.Instance.StartCoroutine(www.StartDownLoad(_localVersionInfo._updateUrl, GameConfig.NetVersionFilePath));
         }
 
         public void CheckUpdate()

@@ -21,8 +21,9 @@ namespace Framework
         /// <summary>
         /// 初始化;
         /// </summary>
-        protected override void InitEx()
+        public override void Init()
         {
+            base.Init();
             //UnloadUnusedAssets();
             //GameGC();
             InitLua();

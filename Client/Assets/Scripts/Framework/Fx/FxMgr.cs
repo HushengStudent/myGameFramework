@@ -14,10 +14,11 @@ namespace Framework
     {
         private Dictionary<string, GameObject> _fxDict = new Dictionary<string, GameObject>();
 
-        protected override void InitEx()
+        public override void Init()
         {
-            base.InitEx();
+            base.Init();
             Clear();
+
         }
 
         public void PlayFx(string fxName, bool usePool = false)
