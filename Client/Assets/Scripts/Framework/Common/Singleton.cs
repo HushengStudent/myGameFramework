@@ -12,17 +12,17 @@ namespace Framework
 {
     public class Singleton<T> where T : class, new()
     {
-        private static T instance = null;
+        private static T _instance = null;
 
         public static T Instance
         {
             get
             {
-                if (null == instance)
+                if (null == _instance)
                 {
-                    instance = new T(); //调用构造函数;
+                    _instance = new T(); //调用构造函数;
                 }
-                return instance;
+                return _instance;
             }
         }
 
@@ -31,7 +31,7 @@ namespace Framework
         /// </summary>
         protected Singleton()
         {
-            if (null != instance)
+            if (null != _instance)
                 LogUtil.LogUtility.Print("This " + (typeof(T)).ToString() + " Singleton Instance is not null!");
             InitEx();
         }

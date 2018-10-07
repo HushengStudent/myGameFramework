@@ -14,6 +14,7 @@ namespace Framework
     public class UpdateMgr : Singleton<UpdateMgr>
     {
         private string _versionFilePath = Application.dataPath.ToLower() + "/../Config/Version.xml";
+        private string _netVersionFilePath = Application.dataPath.ToLower() + "/../Config/temp/Version.xml";
 
         private VersionInfo _localVersionInfo;
         private VersionInfo _netVersionInfo;
@@ -37,12 +38,18 @@ namespace Framework
             _localVersionInfo = SerializeUtility.DeserializeBinary<VersionInfo>(_versionFilePath);
         }
 
-        public static void CheckVersion()
+        public void CheckVersion()
         {
-
+            WWWDownLoadHelper www = new WWWDownLoadHelper();
+            www.SuccessHandler = () =>
+            {
+                _netVersionInfo = SerializeUtility.DeserializeBinary<VersionInfo>(_netVersionFilePath);
+                CheckUpdate();
+            };
+            CoroutineMgr.Instance.StartCoroutine(www.StartDownLoad(_localVersionInfo._updateUrl, _netVersionFilePath));
         }
 
-        public static void CheckUpdate()
+        public void CheckUpdate()
         {
 
         }

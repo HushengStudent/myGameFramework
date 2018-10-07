@@ -15,9 +15,9 @@ namespace Framework
 {
     public class UnityWebRequestDownLoadHelper
     {
-        private float _progress;
-        private bool _isDone;
-        private bool _isStop;
+        private float _progress = 0f;
+        private bool _isDone = false;
+        private bool _isStop = false;
 
         public float Progress { get { return _progress; } }
         public bool IsDone { get { return _isDone; } }

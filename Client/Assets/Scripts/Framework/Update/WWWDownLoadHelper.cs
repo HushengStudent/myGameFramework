@@ -14,13 +14,11 @@ namespace Framework
     {
         private WWW _www = null;
 
-        private float _progress;
-        private bool _isDone;
-        private bool _isStop;
+        private float _progress = 0f;
+        private bool _isDone = false;
 
         public float Progress { get { return _progress; } }
         public bool IsDone { get { return _isDone; } }
-        public bool IsStop { get { return _isStop; } }
 
         public DownLoadStartEventHandler StartHandler;
         public DownLoadErrorEventHandler ErrorHandler;
@@ -46,14 +44,10 @@ namespace Framework
             {
                 if (!_www.isDone)
                 {
-                    if (_isStop)
-                    {
-                        break;
-                    }
-                    var progress = _www.progress;
+                    _progress = _www.progress;
                     if (ProgressHandler != null)
                     {
-                        ProgressHandler(progress);
+                        ProgressHandler(_progress);
                     }
                     yield return null;
                 }
@@ -67,6 +61,7 @@ namespace Framework
                 else
                 {
                     FileUtility.Write2Bytes(filePath, _www.bytes);
+                    _isDone = true;
                     if (SuccessHandler != null)
                     {
                         SuccessHandler();
@@ -74,11 +69,6 @@ namespace Framework
                 }
                 _www.Dispose();
             }
-        }
-
-        public void Stop()
-        {
-            _isStop = true;
         }
     }
 }
