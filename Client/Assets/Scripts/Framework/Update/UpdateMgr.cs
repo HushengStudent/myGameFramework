@@ -33,6 +33,8 @@ namespace Framework
                 SerializeUtility.SerializeXml<VersionInfo>(GameConfig.VersionFilePath, info);
             }
             _localVersionInfo = SerializeUtility.DeserializeXml<VersionInfo>(GameConfig.VersionFilePath);
+
+            CheckVersion();
         }
 
         public void CheckVersion()

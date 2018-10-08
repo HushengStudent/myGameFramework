@@ -15,11 +15,13 @@ namespace Framework
     public class NetMgr : MonoSingleton<NetMgr>
     {
         private Session _session;
+        private bool _checkUpdateState = false;
 
         protected override void AwakeEx()
         {
             base.AwakeEx();
             _session = new Session("session");
+            _checkUpdateState = false;
             InitHandler();
             _session.Connect(GameConfig.ipAddress, GameConfig.port);
         }
@@ -29,6 +31,16 @@ namespace Framework
             base.UpdateEx(interval);
             if (_session != null && _session.Active)
                 _session.Update();
+            CheckUpdate();
+        }
+
+        public void CheckUpdate()
+        {
+            if (_checkUpdateState)
+            {
+                GameMgr.Instance.CheckUpdate();
+                _checkUpdateState = false;
+            }
         }
 
         private void InitHandler()
@@ -71,8 +83,11 @@ namespace Framework
         {
             LogUtil.LogUtility.Print(string.Format("[NetMgr]Session Connected!"));
             ProtoRegister.Register();
-
-            GameMgr.Instance.CheckUpdate();
+            if (!GameMgr.Instance.CheckUpdateState)
+            {
+                GameMgr.Instance.CheckUpdateState = true;
+                _checkUpdateState = true;
+            }
         }
 
         public void Send<T>(T packet) where T : Packet
