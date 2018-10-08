@@ -47,7 +47,6 @@ namespace Framework
         public override void Init()
         {
             base.Init();
-            LogUtil.LogUtility.Print("[PoolMgr]PoolMgr init!");
             CoroutineMgr.Instance.RunCoroutine(ClearPool());
         }
 

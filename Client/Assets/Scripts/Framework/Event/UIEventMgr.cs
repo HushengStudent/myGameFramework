@@ -23,7 +23,6 @@ namespace Framework
         public static void Init()
         {
             eventDict.Clear();
-            LogUtil.LogUtility.Print("[UIEventMgr]UIEventMgr init!");
         }
 
         private static bool JudeEvent(TKey key, Delegate delegateFunc)

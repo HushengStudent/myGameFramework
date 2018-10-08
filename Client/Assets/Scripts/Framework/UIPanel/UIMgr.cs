@@ -23,7 +23,6 @@ namespace Framework
             base.Init();
             _curPanel = null;
             _curPanelType = PanelType.Non;
-            LogUtil.LogUtility.Print("[UIMgr]UIMgr init!");
         }
 
         protected override void UpdateEx(float interval)

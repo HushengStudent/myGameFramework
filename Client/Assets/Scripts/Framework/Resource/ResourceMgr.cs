@@ -28,7 +28,6 @@ namespace Framework
             //GameGC();
             InitLua();
             InitShader();
-            LogUtil.LogUtility.Print("[ResourceMgr]ResourceMgr init!");
         }
 
         /// <summary>

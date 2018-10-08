@@ -24,12 +24,6 @@ namespace Framework
             _session.Connect(GameConfig.ipAddress, GameConfig.port);
         }
 
-        public override void Init()
-        {
-            base.Init();
-            LogUtil.LogUtility.Print("[NetMgr]NetMgr init!");
-        }
-
         protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);

@@ -49,7 +49,6 @@ namespace Framework
         public override void Init()
         {
             base.Init();
-            LogUtil.LogUtility.Print("[DebugMgr]DebugMgr init!");
             _fpsInfo = new DebugFps(0.5f);
             Application.logMessageReceived += _logInfo.OnLogMessageReceived;
             SetShowType(ShowType.ShowNon);

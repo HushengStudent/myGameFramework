@@ -38,7 +38,13 @@ namespace Framework
         protected MonoSingleton()
         {
             if (null != _instance)
-                LogUtil.LogUtility.Print("This " + (typeof(T)).ToString() + " Singleton Instance is not null!");
+            {
+                LogUtil.LogUtility.PrintWarning((typeof(T)).ToString() + " singleton Instance is not null.");
+            }
+            else
+            {
+                LogUtil.LogUtility.Print((typeof(T)).ToString() + " singleton Instance created.");
+            }
         }
 
         protected virtual void StartEx() { }
@@ -75,6 +81,9 @@ namespace Framework
             OnDestroyEx();
         }
 
-        public virtual void Init() { }
+        public virtual void Init()
+        {
+            LogUtil.LogUtility.Print((typeof(T)).ToString() + " singleton Instance Init.");
+        }
     }
 }

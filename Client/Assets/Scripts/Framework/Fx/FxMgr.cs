@@ -18,7 +18,6 @@ namespace Framework
         {
             base.Init();
             Clear();
-
         }
 
         public void PlayFx(string fxName, bool usePool = false)
