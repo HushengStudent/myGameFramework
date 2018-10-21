@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/09/17 00:39:06
-** desc:  技能编辑器;
+** date:  2018/10/21 23:40:35
+** desc:  打包编辑器;
 *********************************************************************************/
 
 using System;
@@ -14,12 +14,12 @@ using Object = UnityEngine.Object;
 
 namespace Framework
 {
-    public class SkillEditor : EditorWindow
+    public class PackEditor : EditorWindow
     {
-        [MenuItem("myGameFramework/Window/SkillEditor #k", false, 2)]
+        [MenuItem("myGameFramework/Window/PackEditor #p", false, 4)]
         static void ShowWindow()
         {
-            var window = GetWindowWithRect(typeof(SkillEditor), new Rect(0, 0, 600, 630), true, "技能编辑器");
+            var window = GetWindowWithRect(typeof(PackEditor), new Rect(0, 0, 600, 630), true, "打包编辑器");
             window.Show();
         }
 
