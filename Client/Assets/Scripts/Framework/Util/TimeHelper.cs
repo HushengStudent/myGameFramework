@@ -37,5 +37,20 @@ namespace Framework
         {
             return ClientNow();
         }
+
+        /// <summary>
+        /// 时间戳比较;
+        /// </summary>
+        /// <param name="utcSecconds">时间戳</param>
+        /// <param name="targetUtcSecconds">时间戳</param>
+        /// <returns></returns>
+        public static double CompareTime(long utcSecconds, long targetUtcSecconds)
+        {
+            long _baseTimeTicks = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)).Ticks;
+            DateTime dateTime = new DateTime(_baseTimeTicks + utcSecconds * 1000 * 10000L);
+            DateTime targetDateTime = new DateTime(_baseTimeTicks + targetUtcSecconds * 1000 * 10000L);
+            TimeSpan span = dateTime - targetDateTime;
+            return span.TotalSeconds;
+        }
     }
 }
