@@ -120,5 +120,20 @@ namespace Framework
         /// </summary>
         /// <param name="sceneId"></param>
         protected virtual void OnExitScene(int sceneId) { }
+
+        protected void AddEvent(EventType type, EventHandler handler)
+        {
+            EventMgr.Instance.AddEvent(type, Entity, handler);
+        }
+
+        protected void RemoveEvent(EventType type)
+        {
+            EventMgr.Instance.RemoveEvent(type, Entity);
+        }
+
+        protected void FireEvent(EventType type, AbsEntity receiver, IEventArgs eventArgs)
+        {
+            EventMgr.Instance.FireEvent(type, Entity, receiver, eventArgs);
+        }
     }
 }
