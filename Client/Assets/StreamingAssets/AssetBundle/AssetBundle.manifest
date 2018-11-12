@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 5370200
+CRC: 4210015787
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -69,4 +69,58 @@ AssetBundleManifest:
       Dependencies: {}
     Info_21:
       Name: animectrl/player.assetbundle
+      Dependencies: {}
+    Info_22:
+      Name: prefab/ch_pc_hou_004.assetbundle
+      Dependencies: {}
+    Info_23:
+      Name: prefab/ch_pc_hou_004_jiao.assetbundle
+      Dependencies: {}
+    Info_24:
+      Name: prefab/ch_pc_hou_004_shen.assetbundle
+      Dependencies: {}
+    Info_25:
+      Name: prefab/ch_pc_hou_004_shou.assetbundle
+      Dependencies: {}
+    Info_26:
+      Name: prefab/ch_pc_hou_004_tou.assetbundle
+      Dependencies: {}
+    Info_27:
+      Name: prefab/ch_pc_hou_006.assetbundle
+      Dependencies: {}
+    Info_28:
+      Name: prefab/ch_pc_hou_006_jiao.assetbundle
+      Dependencies: {}
+    Info_29:
+      Name: prefab/ch_pc_hou_006_shen.assetbundle
+      Dependencies: {}
+    Info_30:
+      Name: prefab/ch_pc_hou_006_shou.assetbundle
+      Dependencies: {}
+    Info_31:
+      Name: prefab/ch_pc_hou_006_tou.assetbundle
+      Dependencies: {}
+    Info_32:
+      Name: prefab/ch_pc_hou_008.assetbundle
+      Dependencies: {}
+    Info_33:
+      Name: prefab/ch_pc_hou_008_jiao.assetbundle
+      Dependencies: {}
+    Info_34:
+      Name: prefab/ch_pc_hou_008_shen.assetbundle
+      Dependencies: {}
+    Info_35:
+      Name: prefab/ch_pc_hou_008_shou.assetbundle
+      Dependencies: {}
+    Info_36:
+      Name: prefab/ch_pc_hou_008_tou.assetbundle
+      Dependencies: {}
+    Info_37:
+      Name: prefab/ch_we_one_hou_004.assetbundle
+      Dependencies: {}
+    Info_38:
+      Name: prefab/ch_we_one_hou_006.assetbundle
+      Dependencies: {}
+    Info_39:
+      Name: prefab/ch_we_one_hou_008.assetbundle
       Dependencies: {}
