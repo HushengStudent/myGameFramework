@@ -99,7 +99,7 @@ namespace Framework
                     else
                     {
                         //需要打包AssetBundle的资源目录下的资源,引用非该目录下的资源!!!
-                        LogUtil.LogUtility.PrintWarning("[error Reference] path:" + allAssetPath[i] + " Reference--->>>>: " + tempPath);
+                        LogUtil.LogUtility.Print("[Asset Dependencies Analysis] path:" + allAssetPath[i] + " Reference--->>>>: " + tempPath);
                     }
                 }
             }

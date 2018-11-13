@@ -46,7 +46,7 @@ namespace Framework
                     {
                         return AssetType.AssetPrefab;
                     }
-                    if (path.Contains("Model"))
+                    if (path.Contains("Models"))
                     {
                         return AssetType.Model;
                     }

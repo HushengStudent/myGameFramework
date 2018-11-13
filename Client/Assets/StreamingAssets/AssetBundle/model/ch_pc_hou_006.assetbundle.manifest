@@ -1,0 +1,32 @@
+ManifestFileVersion: 0
+CRC: 3253837441
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e4e011703c3e266c68589ef4a1596d85
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f131d604cde7225bb90269222099b3e4
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+Assets:
+- Assets/Bundles/Models/Avatar/ch_pc_hou_006.prefab
+Dependencies: []

@@ -1,0 +1,30 @@
+ManifestFileVersion: 0
+CRC: 245884866
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2fc266d42e6816ad469cac15e57624a2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: d4e22bca998c188582dba61b6c905222
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/Bundles/Models/Avatar/ch_we_one_hou_006.prefab
+Dependencies: []
