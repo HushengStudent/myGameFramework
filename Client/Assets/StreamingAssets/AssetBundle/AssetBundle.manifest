@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 3746799924
+CRC: 1013898677
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -22,105 +22,117 @@ AssetBundleManifest:
       Name: material/test.assetbundle
       Dependencies: {}
     Info_6:
-      Name: animeclip/test.assetbundle
-      Dependencies: {}
-    Info_7:
       Name: prefab/login.assetbundle
       Dependencies: {}
-    Info_8:
+    Info_7:
       Name: audio/test.assetbundle
       Dependencies: {}
-    Info_9:
+    Info_8:
       Name: font/fzy4jw.assetbundle
       Dependencies: {}
-    Info_10:
+    Info_9:
       Name: animeclip/attack.assetbundle
       Dependencies: {}
-    Info_11:
+    Info_10:
       Name: animeclip/damage.assetbundle
       Dependencies: {}
-    Info_12:
+    Info_11:
       Name: animeclip/death.assetbundle
       Dependencies: {}
-    Info_13:
+    Info_12:
       Name: animeclip/idle.assetbundle
       Dependencies: {}
-    Info_14:
+    Info_13:
       Name: animeclip/knockback.assetbundle
       Dependencies: {}
-    Info_15:
+    Info_14:
       Name: animeclip/run.assetbundle
       Dependencies: {}
-    Info_16:
+    Info_15:
       Name: animeclip/skill.assetbundle
       Dependencies: {}
-    Info_17:
+    Info_16:
       Name: animeclip/stand.assetbundle
       Dependencies: {}
-    Info_18:
+    Info_17:
       Name: animeclip/walk.assetbundle
       Dependencies: {}
-    Info_19:
+    Info_18:
       Name: material/uguiemoji.assetbundle
       Dependencies:
         Dependency_0: shader/shader.assetbundle
-    Info_20:
+    Info_19:
       Name: model/skeleton.assetbundle
       Dependencies: {}
-    Info_21:
+    Info_20:
       Name: animectrl/player.assetbundle
       Dependencies: {}
-    Info_22:
+    Info_21:
       Name: model/ch_pc_hou_004.assetbundle
       Dependencies: {}
-    Info_23:
+    Info_22:
       Name: model/ch_pc_hou_004_jiao.assetbundle
       Dependencies: {}
-    Info_24:
+    Info_23:
       Name: model/ch_pc_hou_004_shen.assetbundle
       Dependencies: {}
-    Info_25:
+    Info_24:
       Name: model/ch_pc_hou_004_shou.assetbundle
       Dependencies: {}
-    Info_26:
+    Info_25:
       Name: model/ch_pc_hou_004_tou.assetbundle
       Dependencies: {}
-    Info_27:
+    Info_26:
       Name: model/ch_pc_hou_006.assetbundle
       Dependencies: {}
-    Info_28:
+    Info_27:
       Name: model/ch_pc_hou_006_jiao.assetbundle
       Dependencies: {}
-    Info_29:
+    Info_28:
       Name: model/ch_pc_hou_006_shen.assetbundle
       Dependencies: {}
-    Info_30:
+    Info_29:
       Name: model/ch_pc_hou_006_shou.assetbundle
       Dependencies: {}
-    Info_31:
+    Info_30:
       Name: model/ch_pc_hou_006_tou.assetbundle
       Dependencies: {}
-    Info_32:
+    Info_31:
       Name: model/ch_pc_hou_008.assetbundle
       Dependencies: {}
-    Info_33:
+    Info_32:
       Name: model/ch_pc_hou_008_jiao.assetbundle
       Dependencies: {}
-    Info_34:
+    Info_33:
       Name: model/ch_pc_hou_008_shen.assetbundle
       Dependencies: {}
-    Info_35:
+    Info_34:
       Name: model/ch_pc_hou_008_shou.assetbundle
       Dependencies: {}
-    Info_36:
+    Info_35:
       Name: model/ch_pc_hou_008_tou.assetbundle
       Dependencies: {}
-    Info_37:
+    Info_36:
       Name: model/ch_we_one_hou_004.assetbundle
       Dependencies: {}
-    Info_38:
+    Info_37:
       Name: model/ch_we_one_hou_006.assetbundle
       Dependencies: {}
-    Info_39:
+    Info_38:
       Name: model/ch_we_one_hou_008.assetbundle
+      Dependencies: {}
+    Info_39:
+      Name: animeclip/attack1.assetbundle
+      Dependencies: {}
+    Info_40:
+      Name: animeclip/attack2.assetbundle
+      Dependencies: {}
+    Info_41:
+      Name: animeclip/attack3.assetbundle
+      Dependencies: {}
+    Info_42:
+      Name: animeclip/attack4.assetbundle
+      Dependencies: {}
+    Info_43:
+      Name: animeclip/breath.assetbundle
       Dependencies: {}

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3327340607
+CRC: 153092069
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 7753058dadcb333a4c4d9a3cda7e3d24
+    Hash: 18734734bfc68be7b900934cbdfd7a36
   TypeTreeHash:
     serializedVersion: 2
     Hash: c1642440719609290a7e09a50a7286f4
@@ -12,5 +12,5 @@ ClassTypes:
 - Class: 28
   Script: {instanceID: 0}
 Assets:
-- Assets/Bundles/Single/Tex/test.png
+- Assets/Bundles/Single/Tex/Test.png
 Dependencies: []

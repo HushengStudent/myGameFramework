@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3418844470
+CRC: 574033744
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2f704ed0b38a3e4f0cec5ac83dd146ec
+    Hash: 43a83bcd5907efee8b775c52aeb85ff3
   TypeTreeHash:
     serializedVersion: 2
     Hash: c516f2a3b2b6b67ef759f6410a790acd
@@ -12,5 +12,5 @@ ClassTypes:
 - Class: 83
   Script: {instanceID: 0}
 Assets:
-- Assets/Bundles/Audio/Common/test.wav
+- Assets/Bundles/Audio/Common/Test.wav
 Dependencies: []
