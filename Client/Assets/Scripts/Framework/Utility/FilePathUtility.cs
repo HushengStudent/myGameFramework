@@ -31,6 +31,11 @@ namespace Framework
         public static string luaPath = "Assets/Resources/Lua";
 
         /// <summary>
+        /// 二进制文件;
+        /// </summary>
+        public static string binPath = "Assets/Resources/Bin";
+
+        /// <summary>
         /// 需要打包的Atlas文件;
         /// </summary>
         public static string atlasPath = "Assets/Atlas";

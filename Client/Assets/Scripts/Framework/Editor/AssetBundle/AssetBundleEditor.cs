@@ -19,9 +19,7 @@ namespace Framework
         [MenuItem("myGameFramework/AssetBundleTools/Build AssetBundle", false, 0)]
         private static void BuildAll()
         {
-            bool state = false;
-            state = EditorUtility.DisplayDialog("提示", "是否确认重新生成依赖关系？\r\n\r\n不能确认请重新生成！", "重新分析", "直接打包");
-            if (state)
+            if (EditorUtility.DisplayDialog("AssetBundle打包提示", "开始打包AssetBundle？", "打包AssetBundle"))
             {
                 //DeleteAll();
                 //ClearAll();
@@ -29,8 +27,8 @@ namespace Framework
                 analysiser.AnalysisAllAsset();
                 //tips:Unity5.x Scripts not need to build AssetBundle
                 //analysiser.BuildAllScripts();
+                BuildAssetBundle(FilePathUtility.AssetBundlePath);
             }
-            BuildAssetBundle(FilePathUtility.AssetBundlePath);
         }
 
         //[MenuItem("myGameFramework/AssetBundleTools/Clear AssetName", false, 1)]

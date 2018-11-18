@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3552574035
+CRC: 3750394095
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 508030a3ae9a2f224872aab487446200
+    Hash: d669e43f010b6d1a308a672d8fe0a161
   TypeTreeHash:
     serializedVersion: 2
     Hash: 7bd39743cce4d37940997ab4332a0cd7
@@ -13,5 +13,4 @@ ClassTypes:
   Script: {instanceID: 0}
 Assets:
 - Assets/Bundles/Shaders/EmojiFont.shader
-- Assets/Bundles/Shaders/test.shader
 Dependencies: []

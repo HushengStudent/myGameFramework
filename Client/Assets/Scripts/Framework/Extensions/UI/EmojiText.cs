@@ -34,7 +34,7 @@ namespace UnityEngine.UI
             {
                 EmojiIndex = new Dictionary<string, EmojiInfo>();
                 //load emoji data, and you can overwrite this segment code base on your project;
-                TextAsset emojiContent = Resources.Load<TextAsset>("Bytes/emoji");
+                TextAsset emojiContent = Resources.Load<TextAsset>("Bin/Byte/emoji");
                 string[] lines = emojiContent.text.Split('\n');
                 for (int i = 1; i < lines.Length; i++)
                 {
