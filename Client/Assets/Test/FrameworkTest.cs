@@ -60,4 +60,28 @@ public class FrameworkTest : MonoBehaviour
         BehaviorTreeMgr.Instance.CreateBehaviorTree(entity, "Bin/Bt/BehaviourTree.BT", true);
     }
 
+    public void ChangeHead()
+    {
+
+    }
+
+    public void ChangeBody()
+    {
+
+    }
+
+    public void ChangeHand()
+    {
+
+    }
+
+    public void ChangeFeet()
+    {
+
+    }
+
+    public void ChangeWeapon()
+    {
+
+    }
 }
