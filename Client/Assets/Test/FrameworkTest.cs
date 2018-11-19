@@ -18,6 +18,7 @@ public class FrameworkTest : MonoBehaviour
     {
         _go = new GameObject();
         _goQueue.Enqueue(_go);
+        ModelInit();
     }
 
     public void NetWorkTest()
@@ -58,6 +59,11 @@ public class FrameworkTest : MonoBehaviour
             entity = EntityMgr.Instance.CreateEntity<RoleEntity>(1, ulong.MaxValue, "BehaviorTree", null);
         }
         BehaviorTreeMgr.Instance.CreateBehaviorTree(entity, "Bin/Bt/BehaviourTree.BT", true);
+    }
+
+    private void ModelInit()
+    {
+        ResourceMgr.Instance.LoadAssetSync<GameObject>(AssetType.Model, "ch_pc_hou_004");
     }
 
     public void ChangeHead()

@@ -63,7 +63,7 @@ namespace Framework
             //开始分析资源依赖关系;
             for (int i = 0; i < allAssetPath.Count; i++)
             {
-                EditorUtility.DisplayProgressBar("AssetBundle打包提示", "获取需要打包的资源", (i / allAssetPath.Count));
+                EditorUtility.DisplayProgressBar("AssetBundle打包提示", "获取需要打包的资源", ((float)i / (float)allAssetPath.Count));
 
                 //还未遍历到该资源;
                 if (!allAsset.ContainsKey(allAssetPath[i]))
@@ -108,7 +108,7 @@ namespace Framework
             //找出需要打包的资源;
             for (int i = 0; i < allAssetPath.Count; i++)
             {
-                EditorUtility.DisplayProgressBar("AssetBundle打包提示", "分析需要打包的资源", (i / allAssetPath.Count));
+                EditorUtility.DisplayProgressBar("AssetBundle打包提示", "分析需要打包的资源", ((float)i / (float)allAssetPath.Count));
 
                 //图集特殊处理;
                 /*
@@ -135,7 +135,7 @@ namespace Framework
             //设置资源AssetBundle Name;
             for (int i = 0; i < allAssetPath.Count; i++)
             {
-                EditorUtility.DisplayProgressBar("AssetBundle打包提示", "设置AssetBundle Name", (i / allAssetPath.Count));
+                EditorUtility.DisplayProgressBar("AssetBundle打包提示", "设置AssetBundle Name", ((float)i / (float)allAssetPath.Count));
 
                 AssetImporter importer = AssetImporter.GetAtPath(allAssetPath[i]);
                 if (importer != null)
@@ -158,7 +158,7 @@ namespace Framework
             foreach (string tempPath in allShaderAsset)
             {
                 index++;
-                EditorUtility.DisplayProgressBar("AssetBundle打包提示", "设置Shader AssetBundle Name", (index / allShaderAsset.Count));
+                EditorUtility.DisplayProgressBar("AssetBundle打包提示", "设置Shader AssetBundle Name", ((float)index / (float)allShaderAsset.Count));
                 AssetImporter importer = AssetImporter.GetAtPath(tempPath);
                 if (importer != null)
                 {

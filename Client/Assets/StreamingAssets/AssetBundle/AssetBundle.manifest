@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 1792376761
+CRC: 456134051
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -135,4 +135,7 @@ AssetBundleManifest:
       Dependencies: {}
     Info_43:
       Name: animeclip/breath.assetbundle
+      Dependencies: {}
+    Info_44:
+      Name: model/ch_pc_hou.assetbundle
       Dependencies: {}

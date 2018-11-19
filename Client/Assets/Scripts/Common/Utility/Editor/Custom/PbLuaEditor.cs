@@ -48,7 +48,7 @@ namespace Common
                 string ext = Path.GetExtension(f);
                 string workPath = Path.GetDirectoryName(f);
                 if (!ext.Equals(".proto")) continue;
-                EditorUtility.DisplayProgressBar("Build PbLua File", "gen proto to lua:" + name, index / _files.Count);
+                EditorUtility.DisplayProgressBar("Build PbLua File", "gen proto to lua:" + name, (float)index / (float)_files.Count);
                 ProcessStartInfo info = new ProcessStartInfo();
                 info.FileName = _protoc;
                 info.Arguments = " --lua_out=./ --plugin=protoc-gen-lua=" + _protocGenDir + " " + name;
@@ -86,7 +86,7 @@ namespace Common
                     Directory.CreateDirectory(outPath);
                 }
                 string fileName = Path.GetFileNameWithoutExtension(f);
-                EditorUtility.DisplayProgressBar("Build PbLua File", "gen proto to c#:" + name, index / _files.Count);
+                EditorUtility.DisplayProgressBar("Build PbLua File", "gen proto to c#:" + name, (float)index / (float)_files.Count);
                 ProcessStartInfo info = new ProcessStartInfo();
                 info.FileName = _protogen;
                 info.Arguments = "-i:" + name + " -o:" + outPath + "/" + fileName + ".cs -p:detectMissing";
