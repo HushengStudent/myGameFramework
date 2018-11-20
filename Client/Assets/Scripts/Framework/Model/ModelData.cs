@@ -4,14 +4,125 @@
 ** desc:  模型数据;
 *********************************************************************************/
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Framework
 {
+    public enum ModelPart : int
+    {
+        ModelHead = 1,
+        ModelBody,
+        ModelHand,
+        ModelFeet,
+        ModelWeapon
+    }
+
     public class ModelData
     {
+        private Dictionary<ModelPart, string> _modelDataDict = new Dictionary<ModelPart, string>();
+        private Dictionary<ModelPart, GameObject> _modelGoDict = new Dictionary<ModelPart, GameObject>();
+        private GameObject _model;
+        private bool _initModel;
 
+        public ModelData()
+        {
+            _modelDataDict[ModelPart.ModelHead] = "ch_pc_hou_004_tou";
+            _modelDataDict[ModelPart.ModelBody] = "ch_pc_hou_004_shen";
+            _modelDataDict[ModelPart.ModelHand] = "ch_pc_hou_004_shou";
+            _modelDataDict[ModelPart.ModelFeet] = "ch_pc_hou_004_jiao";
+            _modelDataDict[ModelPart.ModelWeapon] = "ch_we_one_hou_004";
+        }
+
+        public void Initialize()
+        {
+            //初始化;
+            _initModel = true;
+            CombineModel();
+        }
+
+        public void SetHead(string head)
+        {
+            var curHead = _modelDataDict[ModelPart.ModelHead];
+            if (curHead != head)
+            {
+                _modelDataDict[ModelPart.ModelHead] = head;
+                LoadModelPart(ModelPart.ModelHead, head, AddModelPart);
+            }
+        }
+
+        public void SetBody(string body)
+        {
+            var curBody = _modelDataDict[ModelPart.ModelBody];
+            if (curBody != body)
+            {
+                _modelDataDict[ModelPart.ModelBody] = body;
+                LoadModelPart(ModelPart.ModelBody, body, AddModelPart);
+            }
+        }
+
+        public void SetHand(string hand)
+        {
+            var curHand = _modelDataDict[ModelPart.ModelHand];
+            if (curHand != hand)
+            {
+                _modelDataDict[ModelPart.ModelHand] = hand;
+                LoadModelPart(ModelPart.ModelHand, hand, AddModelPart);
+            }
+        }
+
+        public void SetFeet(string feet)
+        {
+            var curFeet = _modelDataDict[ModelPart.ModelFeet];
+            if (curFeet != feet)
+            {
+                _modelDataDict[ModelPart.ModelFeet] = feet;
+                LoadModelPart(ModelPart.ModelFeet, feet, AddModelPart);
+            }
+        }
+
+        public void SetWeapon(string weapon)
+        {
+            var curWeapon = _modelDataDict[ModelPart.ModelWeapon];
+            if (curWeapon != weapon)
+            {
+                _modelDataDict[ModelPart.ModelWeapon] = weapon;
+                LoadModelPart(ModelPart.ModelWeapon, weapon, AddModelPart);
+            }
+        }
+
+        private void LoadModelPart(ModelPart part, string resName, Action<ModelPart, GameObject> callback)
+        {
+
+        }
+
+        private void AddModelPart(ModelPart part, GameObject go)
+        {
+
+            CombineModel(part);
+        }
+
+        private void CombineModel()
+        {
+            if (!_initModel)
+                return;
+            
+        }
+
+        private void CombineModel(ModelPart part)
+        {
+            if (!_initModel)
+                return;
+            if (part == ModelPart.ModelWeapon)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
     }
 }
