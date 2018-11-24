@@ -13,32 +13,27 @@ namespace Framework
     /// <summary>
     /// 事件委托;
     /// </summary>
-    /// <param name="sender">发送者</param>
     /// <param name="eventArgs">事件参数</param>
     /// <returns></returns>
-    public delegate bool EventHandler(AbsEntity sender, IEventArgs eventArgs);
-
-    /// <summary>
-    /// 事件委托;
-    /// </summary>
-    /// <param name="sender">发送者</param>
-    /// <returns></returns>
-    public delegate bool GlobalEventHandler(IEventArgs eventArgs);
+    public delegate bool EventHandler(IEventArgs eventArgs);
 
     public class EventMgr : Singleton<EventMgr>
     {
         /// <summary>
         /// 委托集合;
         /// </summary>
-        private Dictionary<EventType, Dictionary<AbsEntity, List<EventHandler>>> EventDict
-            = new Dictionary<EventType, Dictionary<AbsEntity, List<EventHandler>>>();
+        private Dictionary<AbsEntity, Dictionary<EventType, List<EventHandler>>> EventDict
+            = new Dictionary<AbsEntity, Dictionary<EventType, List<EventHandler>>>();
 
         /// <summary>
         /// 委托集合;
         /// </summary>
-        private Dictionary<EventType, List<GlobalEventHandler>> GlobalEventDict
-            = new Dictionary<EventType, List<GlobalEventHandler>>();
+        private Dictionary<EventType, List<EventHandler>> GlobalEventDict
+            = new Dictionary<EventType, List<EventHandler>>();
 
+        /// <summary>
+        /// 初始化;
+        /// </summary>
         public override void Init()
         {
             base.Init();
@@ -49,32 +44,33 @@ namespace Framework
         /// <summary>
         /// 添加事件;
         /// </summary>
-        /// <param name="type">事件类型</param>
         /// <param name="receiver">接收者</param>
+        /// <param name="type">事件类型</param>
         /// <param name="callBack">事件回调</param>
-        public void AddEvent(EventType type, AbsEntity receiver, EventHandler callBack)
+        public void AddEvent(AbsEntity receiver, EventType type, EventHandler callBack)
         {
             if (null == receiver)
             {
                 LogUtil.LogUtility.PrintError("[EventMgr]AddEvent error,the receiver is null.");
+                return;
             }
-            Dictionary<AbsEntity, List<EventHandler>> dict;
+            Dictionary<EventType, List<EventHandler>> dict;
             List<EventHandler> list;
-            if (!EventDict.TryGetValue(type, out dict))
+            if (!EventDict.TryGetValue(receiver, out dict))
             {
-                EventDict[type] = new Dictionary<AbsEntity, List<EventHandler>>();
+                EventDict[receiver] = new Dictionary<EventType, List<EventHandler>>();
             }
-            dict = EventDict[type];
-            if (!dict.TryGetValue(receiver, out list))
+            dict = EventDict[receiver];
+            if (!dict.TryGetValue(type, out list))
             {
                 list = new List<EventHandler>();
-                dict[receiver] = list;
+                dict[type] = list;
             }
-            list = dict[receiver];
+            list = dict[type];
             if (list.Contains(callBack))
             {
-                LogUtil.LogUtility.PrintWarning(string.Format("[EventMgr]AddEvent repeat,EventType:{0},Receiver:{1}.",
-                    type.ToString(), receiver.EntityName));
+                LogUtil.LogUtility.PrintWarning(string.Format("[EventMgr]AddEvent repeat,receiver:{0},eventType:{1}.",
+                    receiver.ID, type.ToString()));
             }
             else
             {
@@ -85,57 +81,75 @@ namespace Framework
         /// <summary>
         /// 移除事件;
         /// </summary>
-        /// <param name="type">事件类型</param>
         /// <param name="receiver">接收者</param>
-        public void RemoveEvent(EventType type, AbsEntity receiver)
+        /// <param name="type">事件类型</param>
+        public void RemoveEvent(AbsEntity receiver, EventType type)
         {
             if (null == receiver)
             {
                 LogUtil.LogUtility.PrintError("[EventMgr]RemoveEvent error,the receiver is null.");
+                return;
             }
-            Dictionary<AbsEntity, List<EventHandler>> dict;
-            if (EventDict.TryGetValue(type, out dict))
+            Dictionary<EventType, List<EventHandler>> dict;
+            if (EventDict.TryGetValue(receiver, out dict))
             {
                 if (null != dict && dict.Count > 0)
                 {
-                    if (dict.ContainsKey(receiver))
+                    if (dict.ContainsKey(type))
                     {
-                        dict.Remove(receiver);
+                        dict.Remove(type);
                     }
                 }
             }
         }
 
         /// <summary>
-        /// 广播事件;
+        /// 移除事件;
         /// </summary>
-        /// <param name="type">事件类型</param>
-        /// <param name="sender">发送者</param>
         /// <param name="receiver">接收者</param>
-        /// <param name="eventArgs">事件参数</param>
-        public void FireEvent(EventType type, AbsEntity sender, AbsEntity receiver, IEventArgs eventArgs)
+        public void RemoveEvent(AbsEntity receiver)
         {
             if (null == receiver)
             {
                 LogUtil.LogUtility.PrintError("[EventMgr]RemoveEvent error,the receiver is null.");
+                return;
             }
-            if (null == sender)
+            Dictionary<EventType, List<EventHandler>> dict;
+            if (EventDict.TryGetValue(receiver, out dict))
             {
-                LogUtil.LogUtility.PrintError("[EventMgr]RemoveEvent error,the sender is null.");
+                EventDict.Remove(receiver);
             }
-            Dictionary<AbsEntity, List<EventHandler>> dict;
+        }
+
+        /// <summary>
+        /// 广播事件;
+        /// </summary>
+        /// <param name="receiver">接收者</param>
+        /// <param name="type">事件类型</param>
+        /// <param name="eventArgs">事件参数</param>
+        public void FireEvent(AbsEntity receiver, EventType type, IEventArgs eventArgs)
+        {
+            if (null == receiver)
+            {
+                LogUtil.LogUtility.PrintError("[EventMgr]FireEvent error,the receiver is null.");
+                return;
+            }
+            Dictionary<EventType, List<EventHandler>> dict;
             List<EventHandler> list;
-            if (EventDict.TryGetValue(type, out dict))
+            if (EventDict.TryGetValue(receiver, out dict))
             {
                 if (null != dict && dict.Count > 0)
                 {
-                    if (dict.TryGetValue(receiver, out list))
+                    if (dict.TryGetValue(type, out list))
                     {
                         if (null != list && list.Count > 0)
                         {
                             foreach (var callback in list)
                             {
-                                callback(sender, eventArgs);
+                                if (callback != null)
+                                {
+                                    callback(eventArgs);
+                                }
                             }
                         }
                     }
@@ -148,12 +162,12 @@ namespace Framework
         /// </summary>
         /// <param name="type">事件类型</param>
         /// <param name="callBack">事件回调</param>
-        public void AddGlobalEvent(EventType type, GlobalEventHandler callBack)
+        public void AddGlobalEvent(EventType type, EventHandler callBack)
         {
-            List<GlobalEventHandler> list;
+            List<EventHandler> list;
             if (!GlobalEventDict.TryGetValue(type, out list))
             {
-                GlobalEventDict[type] = new List<GlobalEventHandler>();
+                GlobalEventDict[type] = new List<EventHandler>();
             }
             list = GlobalEventDict[type];
             if (list.Contains(callBack))
@@ -186,14 +200,17 @@ namespace Framework
         /// <param name="eventArgs">事件参数</param>
         public void FireGlobalEvent(EventType type, IEventArgs eventArgs)
         {
-            List<GlobalEventHandler> list;
+            List<EventHandler> list;
             if (GlobalEventDict.TryGetValue(type, out list))
             {
                 if (null != list && list.Count > 0)
                 {
                     foreach (var callback in list)
                     {
-                        callback(eventArgs);
+                        if (callback != null)
+                        {
+                            callback(eventArgs);
+                        }
                     }
                 }
             }

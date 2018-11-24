@@ -86,6 +86,7 @@ namespace Framework
         public void Uninit()
         {
             DeAttachGoEx();
+            EventMgr.Instance.RemoveEvent(this);
             for (int i = 0; i < ComponentList.Count; i++)
             {
                 ComponentMgr.Instance.DestroyComponent(ComponentList[i]);
@@ -148,17 +149,17 @@ namespace Framework
 
         protected void AddEvent(EventType type, EventHandler handler)
         {
-            EventMgr.Instance.AddEvent(type, this, handler);
+            EventMgr.Instance.AddEvent(this, type, handler);
         }
 
         protected void RemoveEvent(EventType type)
         {
-            EventMgr.Instance.RemoveEvent(type, this);
+            EventMgr.Instance.RemoveEvent(this, type);
         }
 
-        protected void FireEvent(EventType type, AbsEntity receiver, IEventArgs eventArgs)
+        protected void FireEvent(EventType type, IEventArgs eventArgs)
         {
-            EventMgr.Instance.FireEvent(type, this, receiver, eventArgs);
+            EventMgr.Instance.FireEvent(this, type, eventArgs);
         }
     }
 }

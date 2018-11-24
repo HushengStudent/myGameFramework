@@ -27,6 +27,7 @@ namespace Framework
         /// </summary>
         /// <param name="args"></param>
         public virtual void OnGet(params System.Object[] args) { }
+
         /// <summary>
         /// ¶ÔÏó³ØRelease;
         /// </summary>
