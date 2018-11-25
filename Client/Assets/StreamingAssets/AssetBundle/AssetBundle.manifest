@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 2081132382
+CRC: 2120921473
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -138,4 +138,7 @@ AssetBundleManifest:
       Dependencies: {}
     Info_44:
       Name: animectrl/player.assetbundle
+      Dependencies: {}
+    Info_45:
+      Name: prefab/reporter.assetbundle
       Dependencies: {}
