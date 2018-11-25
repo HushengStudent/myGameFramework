@@ -36,3 +36,7 @@
 /Tools/LogUtil/.vs
 /Client/Assembly-CSharp-Editor-firstpass.csproj
 /Client/Assets/LuaFramework/Lua/Lua.iml
+/Client/Unity.Postprocessing.Editor.csproj
+/Client/Unity.Postprocessing.Runtime.csproj
+/Client/Assets/StreamingAssets/build_info.txt
+/Client/Assets/StreamingAssets/build_info.txt.meta
