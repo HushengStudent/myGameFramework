@@ -43,7 +43,7 @@ namespace Framework
             PoolMgr.Instance.ClearFinishHandler = null;
             SetGameConfig();
 #if UNITY_EDITOR
-            DebugMgr.Instance.Init();         //Debug工具初始化;
+            //DebugMgr.Instance.Init();         //Debug工具初始化;
 #endif
             EventMgr.Instance.Init();         //事件系统初始化;
             UIEventMgr<int>.Init();           //UI事件系统初始化;
