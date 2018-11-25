@@ -21,6 +21,7 @@ public class UnityEngine_AudioClipWrap
 		L.RegVar("frequency", get_frequency, null);
 		L.RegVar("loadType", get_loadType, null);
 		L.RegVar("preloadAudioData", get_preloadAudioData, null);
+		L.RegVar("ambisonic", get_ambisonic, null);
 		L.RegVar("loadState", get_loadState, null);
 		L.RegVar("loadInBackground", get_loadInBackground, null);
 		L.RegFunction("PCMReaderCallback", UnityEngine_AudioClip_PCMReaderCallback);
@@ -307,6 +308,25 @@ public class UnityEngine_AudioClipWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o, "attempt to index preloadAudioData on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_ambisonic(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.AudioClip obj = (UnityEngine.AudioClip)o;
+			bool ret = obj.ambisonic;
+			LuaDLL.lua_pushboolean(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index ambisonic on a nil value");
 		}
 	}
 

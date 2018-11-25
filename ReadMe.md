@@ -1,9 +1,9 @@
 ### myGameFramework
 #### This is a game framework include client server and some tools.
 
-software：Unity5.5.4/visual studio2017.
+software：Unity2017.4.16/visual studio2017.
 
-#### Client：客户端工程使用Unity5.5.4创建
+#### Client：客户端工程使用Unity2017.4.16创建
     Module：
     (1)资源管理：AB打包、资源加载、资源卸载.(Finish)
     (2)tolua接入.(Finish)
@@ -52,9 +52,11 @@ software：Unity5.5.4/visual studio2017.
     (1)More Effective Coroutine.
     (2)Fast Shadow Projector.
     (3)A* Pathfinding Project.
-    (4)FlowCanvas.
-    (5)NodeCanvas.
-    (6)Behavior Designer.
+    (4)FlowCanvas/NodeCanvas.
+    (5)Behavior Designer.
+	(6)Unity Particle Pack 5.x.
+	(6)Anima2D.
+	(6)PostProcessing.
 	
 #### Server：服务器工程使用visual studio2017创建
     Reference：

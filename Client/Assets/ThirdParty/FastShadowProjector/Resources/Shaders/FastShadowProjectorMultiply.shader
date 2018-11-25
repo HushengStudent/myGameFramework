@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
  Shader "Fast Shadow Projector/Multiply"
  {
      Properties
@@ -37,7 +39,7 @@
              v2f vert(appdata_tan v)
              {
                  v2f o;
-                 o.pos = mul (UNITY_MATRIX_MVP, v.vertex);
+                 o.pos = UnityObjectToClipPos (v.vertex);
                  o.uv_Main = mul (_GlobalProjector, v.vertex);
                  o.uv_MainClip = mul (_GlobalProjectorClip, v.vertex);
                  return o;

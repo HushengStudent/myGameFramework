@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/08/05 02:40:11
-** desc:  UnityWebRequestÏÂÔØ¹¤¾ß;
+** desc:  UnityWebRequestï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½;
 *********************************************************************************/
 
 using System;
@@ -81,7 +81,7 @@ namespace Framework
                         yield return null;
                     }
                     bool isError = false;
-                    isError = request.isError;
+                    isError = request.isNetworkError;
                     if (isError)
                     {
                         if (ErrorHandler != null)

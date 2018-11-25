@@ -8,6 +8,7 @@ public class UnityEngine_TransformWrap
 	{
 		L.BeginClass(typeof(UnityEngine.Transform), typeof(UnityEngine.Component));
 		L.RegFunction("SetParent", SetParent);
+		L.RegFunction("SetPositionAndRotation", SetPositionAndRotation);
 		L.RegFunction("Translate", Translate);
 		L.RegFunction("Rotate", Rotate);
 		L.RegFunction("RotateAround", RotateAround);
@@ -25,7 +26,6 @@ public class UnityEngine_TransformWrap
 		L.RegFunction("GetSiblingIndex", GetSiblingIndex);
 		L.RegFunction("Find", Find);
 		L.RegFunction("IsChildOf", IsChildOf);
-		L.RegFunction("FindChild", FindChild);
 		L.RegFunction("GetEnumerator", GetEnumerator);
 		L.RegFunction("GetChild", GetChild);
 		L.RegFunction("__eq", op_Equality);
@@ -78,6 +78,24 @@ public class UnityEngine_TransformWrap
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.Transform.SetParent");
 			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int SetPositionAndRotation(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 3);
+			UnityEngine.Transform obj = (UnityEngine.Transform)ToLua.CheckObject<UnityEngine.Transform>(L, 1);
+			UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
+			UnityEngine.Quaternion arg1 = ToLua.ToQuaternion(L, 3);
+			obj.SetPositionAndRotation(arg0, arg1);
+			return 0;
 		}
 		catch (Exception e)
 		{
@@ -617,24 +635,6 @@ public class UnityEngine_TransformWrap
 			UnityEngine.Transform arg0 = (UnityEngine.Transform)ToLua.CheckObject<UnityEngine.Transform>(L, 2);
 			bool o = obj.IsChildOf(arg0);
 			LuaDLL.lua_pushboolean(L, o);
-			return 1;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int FindChild(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 2);
-			UnityEngine.Transform obj = (UnityEngine.Transform)ToLua.CheckObject<UnityEngine.Transform>(L, 1);
-			string arg0 = ToLua.CheckString(L, 2);
-			UnityEngine.Transform o = obj.FindChild(arg0);
-			ToLua.Push(L, o);
 			return 1;
 		}
 		catch (Exception e)

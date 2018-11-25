@@ -21,6 +21,7 @@ public class UnityEngine_CharacterControllerWrap
 		L.RegVar("slopeLimit", get_slopeLimit, set_slopeLimit);
 		L.RegVar("stepOffset", get_stepOffset, set_stepOffset);
 		L.RegVar("skinWidth", get_skinWidth, set_skinWidth);
+		L.RegVar("minMoveDistance", get_minMoveDistance, set_minMoveDistance);
 		L.RegVar("detectCollisions", get_detectCollisions, set_detectCollisions);
 		L.RegVar("enableOverlapRecovery", get_enableOverlapRecovery, set_enableOverlapRecovery);
 		L.EndClass();
@@ -276,6 +277,25 @@ public class UnityEngine_CharacterControllerWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_minMoveDistance(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.CharacterController obj = (UnityEngine.CharacterController)o;
+			float ret = obj.minMoveDistance;
+			LuaDLL.lua_pushnumber(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index minMoveDistance on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_detectCollisions(IntPtr L)
 	{
 		object o = null;
@@ -424,6 +444,25 @@ public class UnityEngine_CharacterControllerWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o, "attempt to index skinWidth on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_minMoveDistance(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.CharacterController obj = (UnityEngine.CharacterController)o;
+			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
+			obj.minMoveDistance = arg0;
+			return 0;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index minMoveDistance on a nil value");
 		}
 	}
 

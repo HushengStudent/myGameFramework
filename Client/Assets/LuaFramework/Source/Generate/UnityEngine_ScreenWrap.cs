@@ -10,16 +10,17 @@ public class UnityEngine_ScreenWrap
 		L.RegFunction("SetResolution", SetResolution);
 		L.RegVar("resolutions", get_resolutions, null);
 		L.RegVar("currentResolution", get_currentResolution, null);
+		L.RegVar("fullScreen", get_fullScreen, set_fullScreen);
 		L.RegVar("width", get_width, null);
 		L.RegVar("height", get_height, null);
 		L.RegVar("dpi", get_dpi, null);
-		L.RegVar("fullScreen", get_fullScreen, set_fullScreen);
+		L.RegVar("orientation", get_orientation, set_orientation);
+		L.RegVar("sleepTimeout", get_sleepTimeout, set_sleepTimeout);
 		L.RegVar("autorotateToPortrait", get_autorotateToPortrait, set_autorotateToPortrait);
 		L.RegVar("autorotateToPortraitUpsideDown", get_autorotateToPortraitUpsideDown, set_autorotateToPortraitUpsideDown);
 		L.RegVar("autorotateToLandscapeLeft", get_autorotateToLandscapeLeft, set_autorotateToLandscapeLeft);
 		L.RegVar("autorotateToLandscapeRight", get_autorotateToLandscapeRight, set_autorotateToLandscapeRight);
-		L.RegVar("orientation", get_orientation, set_orientation);
-		L.RegVar("sleepTimeout", get_sleepTimeout, set_sleepTimeout);
+		L.RegVar("safeArea", get_safeArea, null);
 		L.EndStaticLibs();
 	}
 
@@ -87,6 +88,20 @@ public class UnityEngine_ScreenWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_fullScreen(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushboolean(L, UnityEngine.Screen.fullScreen);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_width(IntPtr L)
 	{
 		try
@@ -129,11 +144,25 @@ public class UnityEngine_ScreenWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_fullScreen(IntPtr L)
+	static int get_orientation(IntPtr L)
 	{
 		try
 		{
-			LuaDLL.lua_pushboolean(L, UnityEngine.Screen.fullScreen);
+			ToLua.Push(L, UnityEngine.Screen.orientation);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_sleepTimeout(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushinteger(L, UnityEngine.Screen.sleepTimeout);
 			return 1;
 		}
 		catch (Exception e)
@@ -199,25 +228,11 @@ public class UnityEngine_ScreenWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_orientation(IntPtr L)
+	static int get_safeArea(IntPtr L)
 	{
 		try
 		{
-			ToLua.Push(L, UnityEngine.Screen.orientation);
-			return 1;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_sleepTimeout(IntPtr L)
-	{
-		try
-		{
-			LuaDLL.lua_pushinteger(L, UnityEngine.Screen.sleepTimeout);
+			ToLua.PushValue(L, UnityEngine.Screen.safeArea);
 			return 1;
 		}
 		catch (Exception e)
@@ -233,6 +248,36 @@ public class UnityEngine_ScreenWrap
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
 			UnityEngine.Screen.fullScreen = arg0;
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_orientation(IntPtr L)
+	{
+		try
+		{
+			UnityEngine.ScreenOrientation arg0 = (UnityEngine.ScreenOrientation)ToLua.CheckObject(L, 2, typeof(UnityEngine.ScreenOrientation));
+			UnityEngine.Screen.orientation = arg0;
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_sleepTimeout(IntPtr L)
+	{
+		try
+		{
+			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
+			UnityEngine.Screen.sleepTimeout = arg0;
 			return 0;
 		}
 		catch (Exception e)
@@ -293,36 +338,6 @@ public class UnityEngine_ScreenWrap
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
 			UnityEngine.Screen.autorotateToLandscapeRight = arg0;
-			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_orientation(IntPtr L)
-	{
-		try
-		{
-			UnityEngine.ScreenOrientation arg0 = (UnityEngine.ScreenOrientation)ToLua.CheckObject(L, 2, typeof(UnityEngine.ScreenOrientation));
-			UnityEngine.Screen.orientation = arg0;
-			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_sleepTimeout(IntPtr L)
-	{
-		try
-		{
-			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
-			UnityEngine.Screen.sleepTimeout = arg0;
 			return 0;
 		}
 		catch (Exception e)

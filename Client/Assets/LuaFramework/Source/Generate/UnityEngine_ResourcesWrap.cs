@@ -78,7 +78,7 @@ public class UnityEngine_ResourcesWrap
 			{
 				string arg0 = ToLua.CheckString(L, 1);
 				UnityEngine.ResourceRequest o = UnityEngine.Resources.LoadAsync(arg0);
-				ToLua.PushSealed(L, o);
+				ToLua.PushObject(L, o);
 				return 1;
 			}
 			else if (count == 2)
@@ -86,7 +86,7 @@ public class UnityEngine_ResourcesWrap
 				string arg0 = ToLua.CheckString(L, 1);
 				System.Type arg1 = ToLua.CheckMonoType(L, 2);
 				UnityEngine.ResourceRequest o = UnityEngine.Resources.LoadAsync(arg0, arg1);
-				ToLua.PushSealed(L, o);
+				ToLua.PushObject(L, o);
 				return 1;
 			}
 			else

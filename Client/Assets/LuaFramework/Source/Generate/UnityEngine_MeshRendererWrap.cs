@@ -24,7 +24,7 @@ public class UnityEngine_MeshRendererWrap
 			if (count == 0)
 			{
 				UnityEngine.MeshRenderer obj = new UnityEngine.MeshRenderer();
-				ToLua.PushSealed(L, obj);
+				ToLua.Push(L, obj);
 				return 1;
 			}
 			else

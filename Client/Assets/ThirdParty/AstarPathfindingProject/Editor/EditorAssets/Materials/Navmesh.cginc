@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 struct appdata_color {
 	float4 vertex : POSITION;
 	fixed4 color : COLOR;
@@ -27,8 +29,8 @@ line_v2f line_vert (appdata_color v, float pixelWidth, out float4 outpos : SV_PO
 	float4 p1 = UnityObjectToClipPos(v.vertex);
 	float4 p2 = UnityObjectToClipPos(float4(v.vertex.xyz + v.normal*0.0001, v.vertex.w));
 #else
-	float4 p1 = mul(UNITY_MATRIX_MVP, v.vertex);
-    float4 p2 = mul(UNITY_MATRIX_MVP, float4(v.vertex.xyz + v.normal*0.0001, v.vertex.w));
+	float4 p1 = UnityObjectToClipPos(v.vertex);
+    float4 p2 = UnityObjectToClipPos(float4(v.vertex.xyz + v.normal*0.0001, v.vertex.w));
 #endif
 
 	float4 p1s = p1/p1.w;

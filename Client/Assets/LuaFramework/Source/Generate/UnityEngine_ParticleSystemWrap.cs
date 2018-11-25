@@ -13,11 +13,12 @@ public class UnityEngine_ParticleSystemWrap
 		L.RegFunction("GetCustomParticleData", GetCustomParticleData);
 		L.RegFunction("Simulate", Simulate);
 		L.RegFunction("Play", Play);
-		L.RegFunction("Stop", Stop);
 		L.RegFunction("Pause", Pause);
+		L.RegFunction("Stop", Stop);
 		L.RegFunction("Clear", Clear);
 		L.RegFunction("IsAlive", IsAlive);
 		L.RegFunction("Emit", Emit);
+		L.RegFunction("EnableMeshNonUniformScaleFix", EnableMeshNonUniformScaleFix);
 		L.RegFunction("New", _CreateUnityEngine_ParticleSystem);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
@@ -50,6 +51,7 @@ public class UnityEngine_ParticleSystemWrap
 		L.RegVar("textureSheetAnimation", get_textureSheetAnimation, null);
 		L.RegVar("lights", get_lights, null);
 		L.RegVar("trails", get_trails, null);
+		L.RegVar("customData", get_customData, null);
 		L.EndClass();
 	}
 
@@ -234,6 +236,37 @@ public class UnityEngine_ParticleSystemWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int Pause(IntPtr L)
+	{
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 1)
+			{
+				UnityEngine.ParticleSystem obj = (UnityEngine.ParticleSystem)ToLua.CheckObject(L, 1, typeof(UnityEngine.ParticleSystem));
+				obj.Pause();
+				return 0;
+			}
+			else if (count == 2)
+			{
+				UnityEngine.ParticleSystem obj = (UnityEngine.ParticleSystem)ToLua.CheckObject(L, 1, typeof(UnityEngine.ParticleSystem));
+				bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
+				obj.Pause(arg0);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.ParticleSystem.Pause");
+			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Stop(IntPtr L)
 	{
 		try
@@ -264,37 +297,6 @@ public class UnityEngine_ParticleSystemWrap
 			else
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.ParticleSystem.Stop");
-			}
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int Pause(IntPtr L)
-	{
-		try
-		{
-			int count = LuaDLL.lua_gettop(L);
-
-			if (count == 1)
-			{
-				UnityEngine.ParticleSystem obj = (UnityEngine.ParticleSystem)ToLua.CheckObject(L, 1, typeof(UnityEngine.ParticleSystem));
-				obj.Pause();
-				return 0;
-			}
-			else if (count == 2)
-			{
-				UnityEngine.ParticleSystem obj = (UnityEngine.ParticleSystem)ToLua.CheckObject(L, 1, typeof(UnityEngine.ParticleSystem));
-				bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
-				obj.Pause(arg0);
-				return 0;
-			}
-			else
-			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.ParticleSystem.Pause");
 			}
 		}
 		catch (Exception e)
@@ -393,6 +395,22 @@ public class UnityEngine_ParticleSystemWrap
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.ParticleSystem.Emit");
 			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int EnableMeshNonUniformScaleFix(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			bool arg0 = LuaDLL.luaL_checkboolean(L, 1);
+			UnityEngine.ParticleSystem.EnableMeshNonUniformScaleFix(arg0);
+			return 0;
 		}
 		catch (Exception e)
 		{
@@ -966,6 +984,25 @@ public class UnityEngine_ParticleSystemWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o, "attempt to index trails on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_customData(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.ParticleSystem obj = (UnityEngine.ParticleSystem)o;
+			UnityEngine.ParticleSystem.CustomDataModule ret = obj.customData;
+			ToLua.PushValue(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index customData on a nil value");
 		}
 	}
 

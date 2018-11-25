@@ -197,7 +197,7 @@ public static class PackedMemorySnapshotUtility
                 }
             }
 
-            UnityEngine.Debug.logger.Log(logTypeFromTraceLevel[(int) level], message);
+            UnityEngine.Debug.unityLogger.Log(logTypeFromTraceLevel[(int) level], message);
             if (null != ex) {
                 UnityEngine.Debug.LogException(ex);
             }

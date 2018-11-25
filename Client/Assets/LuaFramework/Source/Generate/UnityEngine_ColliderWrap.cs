@@ -8,6 +8,7 @@ public class UnityEngine_ColliderWrap
 	{
 		L.BeginClass(typeof(UnityEngine.Collider), typeof(UnityEngine.Component));
 		L.RegFunction("ClosestPointOnBounds", ClosestPointOnBounds);
+		L.RegFunction("ClosestPoint", ClosestPoint);
 		L.RegFunction("Raycast", Raycast);
 		L.RegFunction("New", _CreateUnityEngine_Collider);
 		L.RegFunction("__eq", op_Equality);
@@ -55,6 +56,24 @@ public class UnityEngine_ColliderWrap
 			UnityEngine.Collider obj = (UnityEngine.Collider)ToLua.CheckObject<UnityEngine.Collider>(L, 1);
 			UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
 			UnityEngine.Vector3 o = obj.ClosestPointOnBounds(arg0);
+			ToLua.Push(L, o);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int ClosestPoint(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			UnityEngine.Collider obj = (UnityEngine.Collider)ToLua.CheckObject<UnityEngine.Collider>(L, 1);
+			UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
+			UnityEngine.Vector3 o = obj.ClosestPoint(arg0);
 			ToLua.Push(L, o);
 			return 1;
 		}

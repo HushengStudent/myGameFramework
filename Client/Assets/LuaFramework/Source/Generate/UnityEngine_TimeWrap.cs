@@ -12,7 +12,9 @@ public class UnityEngine_TimeWrap
 		L.RegVar("deltaTime", get_deltaTime, null);
 		L.RegVar("fixedTime", get_fixedTime, null);
 		L.RegVar("unscaledTime", get_unscaledTime, null);
+		L.RegVar("fixedUnscaledTime", get_fixedUnscaledTime, null);
 		L.RegVar("unscaledDeltaTime", get_unscaledDeltaTime, null);
+		L.RegVar("fixedUnscaledDeltaTime", get_fixedUnscaledDeltaTime, null);
 		L.RegVar("fixedDeltaTime", get_fixedDeltaTime, set_fixedDeltaTime);
 		L.RegVar("maximumDeltaTime", get_maximumDeltaTime, set_maximumDeltaTime);
 		L.RegVar("smoothDeltaTime", get_smoothDeltaTime, null);
@@ -22,6 +24,7 @@ public class UnityEngine_TimeWrap
 		L.RegVar("renderedFrameCount", get_renderedFrameCount, null);
 		L.RegVar("realtimeSinceStartup", get_realtimeSinceStartup, null);
 		L.RegVar("captureFramerate", get_captureFramerate, set_captureFramerate);
+		L.RegVar("inFixedTimeStep", get_inFixedTimeStep, null);
 		L.EndStaticLibs();
 	}
 
@@ -96,11 +99,39 @@ public class UnityEngine_TimeWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_fixedUnscaledTime(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushnumber(L, UnityEngine.Time.fixedUnscaledTime);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_unscaledDeltaTime(IntPtr L)
 	{
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Time.unscaledDeltaTime);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_fixedUnscaledDeltaTime(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushnumber(L, UnityEngine.Time.fixedUnscaledDeltaTime);
 			return 1;
 		}
 		catch (Exception e)
@@ -227,6 +258,20 @@ public class UnityEngine_TimeWrap
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.Time.captureFramerate);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_inFixedTimeStep(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushboolean(L, UnityEngine.Time.inFixedTimeStep);
 			return 1;
 		}
 		catch (Exception e)

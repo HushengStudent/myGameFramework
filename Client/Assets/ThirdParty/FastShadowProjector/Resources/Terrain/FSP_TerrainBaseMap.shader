@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "FastShadowProjector/FSP_TerrainBaseMap" { 
 	Properties { 
 		// Keeping these to make terrain happy. Please DO NOT remove these properties
@@ -46,7 +48,7 @@ Shader "FastShadowProjector/FSP_TerrainBaseMap" {
              v2f vert(appdata_tan v)
              {
                  v2f o;
-                 o.pos = mul (UNITY_MATRIX_MVP, v.vertex);
+                 o.pos = UnityObjectToClipPos (v.vertex);
                  o.uv_Main = mul (_GlobalProjector, v.vertex);
                  o.uv_MainClip = mul (_GlobalProjectorClip, v.vertex);
                  return o;

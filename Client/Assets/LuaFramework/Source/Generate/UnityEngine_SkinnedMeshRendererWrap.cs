@@ -7,17 +7,17 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	public static void Register(LuaState L)
 	{
 		L.BeginClass(typeof(UnityEngine.SkinnedMeshRenderer), typeof(UnityEngine.Renderer));
-		L.RegFunction("BakeMesh", BakeMesh);
 		L.RegFunction("GetBlendShapeWeight", GetBlendShapeWeight);
 		L.RegFunction("SetBlendShapeWeight", SetBlendShapeWeight);
+		L.RegFunction("BakeMesh", BakeMesh);
 		L.RegFunction("New", _CreateUnityEngine_SkinnedMeshRenderer);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("bones", get_bones, set_bones);
-		L.RegVar("rootBone", get_rootBone, set_rootBone);
 		L.RegVar("quality", get_quality, set_quality);
-		L.RegVar("sharedMesh", get_sharedMesh, set_sharedMesh);
 		L.RegVar("updateWhenOffscreen", get_updateWhenOffscreen, set_updateWhenOffscreen);
+		L.RegVar("rootBone", get_rootBone, set_rootBone);
+		L.RegVar("sharedMesh", get_sharedMesh, set_sharedMesh);
 		L.RegVar("skinnedMotionVectors", get_skinnedMotionVectors, set_skinnedMotionVectors);
 		L.RegVar("localBounds", get_localBounds, set_localBounds);
 		L.EndClass();
@@ -40,23 +40,6 @@ public class UnityEngine_SkinnedMeshRendererWrap
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: UnityEngine.SkinnedMeshRenderer.New");
 			}
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int BakeMesh(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 2);
-			UnityEngine.SkinnedMeshRenderer obj = (UnityEngine.SkinnedMeshRenderer)ToLua.CheckObject<UnityEngine.SkinnedMeshRenderer>(L, 1);
-			UnityEngine.Mesh arg0 = (UnityEngine.Mesh)ToLua.CheckObject(L, 2, typeof(UnityEngine.Mesh));
-			obj.BakeMesh(arg0);
-			return 0;
 		}
 		catch (Exception e)
 		{
@@ -92,6 +75,23 @@ public class UnityEngine_SkinnedMeshRendererWrap
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
 			float arg1 = (float)LuaDLL.luaL_checknumber(L, 3);
 			obj.SetBlendShapeWeight(arg0, arg1);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int BakeMesh(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			UnityEngine.SkinnedMeshRenderer obj = (UnityEngine.SkinnedMeshRenderer)ToLua.CheckObject<UnityEngine.SkinnedMeshRenderer>(L, 1);
+			UnityEngine.Mesh arg0 = (UnityEngine.Mesh)ToLua.CheckObject(L, 2, typeof(UnityEngine.Mesh));
+			obj.BakeMesh(arg0);
 			return 0;
 		}
 		catch (Exception e)
@@ -138,25 +138,6 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_rootBone(IntPtr L)
-	{
-		object o = null;
-
-		try
-		{
-			o = ToLua.ToObject(L, 1);
-			UnityEngine.SkinnedMeshRenderer obj = (UnityEngine.SkinnedMeshRenderer)o;
-			UnityEngine.Transform ret = obj.rootBone;
-			ToLua.Push(L, ret);
-			return 1;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index rootBone on a nil value");
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_quality(IntPtr L)
 	{
 		object o = null;
@@ -176,25 +157,6 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_sharedMesh(IntPtr L)
-	{
-		object o = null;
-
-		try
-		{
-			o = ToLua.ToObject(L, 1);
-			UnityEngine.SkinnedMeshRenderer obj = (UnityEngine.SkinnedMeshRenderer)o;
-			UnityEngine.Mesh ret = obj.sharedMesh;
-			ToLua.PushSealed(L, ret);
-			return 1;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index sharedMesh on a nil value");
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_updateWhenOffscreen(IntPtr L)
 	{
 		object o = null;
@@ -210,6 +172,44 @@ public class UnityEngine_SkinnedMeshRendererWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o, "attempt to index updateWhenOffscreen on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_rootBone(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.SkinnedMeshRenderer obj = (UnityEngine.SkinnedMeshRenderer)o;
+			UnityEngine.Transform ret = obj.rootBone;
+			ToLua.Push(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index rootBone on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_sharedMesh(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.SkinnedMeshRenderer obj = (UnityEngine.SkinnedMeshRenderer)o;
+			UnityEngine.Mesh ret = obj.sharedMesh;
+			ToLua.PushSealed(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index sharedMesh on a nil value");
 		}
 	}
 
@@ -271,25 +271,6 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_rootBone(IntPtr L)
-	{
-		object o = null;
-
-		try
-		{
-			o = ToLua.ToObject(L, 1);
-			UnityEngine.SkinnedMeshRenderer obj = (UnityEngine.SkinnedMeshRenderer)o;
-			UnityEngine.Transform arg0 = (UnityEngine.Transform)ToLua.CheckObject<UnityEngine.Transform>(L, 2);
-			obj.rootBone = arg0;
-			return 0;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index rootBone on a nil value");
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_quality(IntPtr L)
 	{
 		object o = null;
@@ -309,25 +290,6 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_sharedMesh(IntPtr L)
-	{
-		object o = null;
-
-		try
-		{
-			o = ToLua.ToObject(L, 1);
-			UnityEngine.SkinnedMeshRenderer obj = (UnityEngine.SkinnedMeshRenderer)o;
-			UnityEngine.Mesh arg0 = (UnityEngine.Mesh)ToLua.CheckObject(L, 2, typeof(UnityEngine.Mesh));
-			obj.sharedMesh = arg0;
-			return 0;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index sharedMesh on a nil value");
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_updateWhenOffscreen(IntPtr L)
 	{
 		object o = null;
@@ -343,6 +305,44 @@ public class UnityEngine_SkinnedMeshRendererWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o, "attempt to index updateWhenOffscreen on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_rootBone(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.SkinnedMeshRenderer obj = (UnityEngine.SkinnedMeshRenderer)o;
+			UnityEngine.Transform arg0 = (UnityEngine.Transform)ToLua.CheckObject<UnityEngine.Transform>(L, 2);
+			obj.rootBone = arg0;
+			return 0;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index rootBone on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_sharedMesh(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.SkinnedMeshRenderer obj = (UnityEngine.SkinnedMeshRenderer)o;
+			UnityEngine.Mesh arg0 = (UnityEngine.Mesh)ToLua.CheckObject(L, 2, typeof(UnityEngine.Mesh));
+			obj.sharedMesh = arg0;
+			return 0;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index sharedMesh on a nil value");
 		}
 	}
 

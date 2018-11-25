@@ -14,7 +14,6 @@ public class UnityEngine_Texture2DWrap
 		L.RegFunction("GetPixelBilinear", GetPixelBilinear);
 		L.RegFunction("SetPixels", SetPixels);
 		L.RegFunction("SetPixels32", SetPixels32);
-		L.RegFunction("LoadImage", LoadImage);
 		L.RegFunction("LoadRawTextureData", LoadRawTextureData);
 		L.RegFunction("GetRawTextureData", GetRawTextureData);
 		L.RegFunction("GetPixels", GetPixels);
@@ -23,9 +22,8 @@ public class UnityEngine_Texture2DWrap
 		L.RegFunction("Resize", Resize);
 		L.RegFunction("Compress", Compress);
 		L.RegFunction("PackTextures", PackTextures);
+		L.RegFunction("GenerateAtlas", GenerateAtlas);
 		L.RegFunction("ReadPixels", ReadPixels);
-		L.RegFunction("EncodeToPNG", EncodeToPNG);
-		L.RegFunction("EncodeToJPG", EncodeToJPG);
 		L.RegFunction("New", _CreateUnityEngine_Texture2D);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
@@ -283,41 +281,6 @@ public class UnityEngine_Texture2DWrap
 			else
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.Texture2D.SetPixels32");
-			}
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int LoadImage(IntPtr L)
-	{
-		try
-		{
-			int count = LuaDLL.lua_gettop(L);
-
-			if (count == 2)
-			{
-				UnityEngine.Texture2D obj = (UnityEngine.Texture2D)ToLua.CheckObject(L, 1, typeof(UnityEngine.Texture2D));
-				byte[] arg0 = ToLua.CheckByteBuffer(L, 2);
-				bool o = obj.LoadImage(arg0);
-				LuaDLL.lua_pushboolean(L, o);
-				return 1;
-			}
-			else if (count == 3)
-			{
-				UnityEngine.Texture2D obj = (UnityEngine.Texture2D)ToLua.CheckObject(L, 1, typeof(UnityEngine.Texture2D));
-				byte[] arg0 = ToLua.CheckByteBuffer(L, 2);
-				bool arg1 = LuaDLL.luaL_checkboolean(L, 3);
-				bool o = obj.LoadImage(arg0, arg1);
-				LuaDLL.lua_pushboolean(L, o);
-				return 1;
-			}
-			else
-			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.Texture2D.LoadImage");
 			}
 		}
 		catch (Exception e)
@@ -608,6 +571,26 @@ public class UnityEngine_Texture2DWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int GenerateAtlas(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 4);
+			UnityEngine.Vector2[] arg0 = ToLua.CheckStructArray<UnityEngine.Vector2>(L, 1);
+			int arg1 = (int)LuaDLL.luaL_checknumber(L, 2);
+			int arg2 = (int)LuaDLL.luaL_checknumber(L, 3);
+			System.Collections.Generic.List<UnityEngine.Rect> arg3 = (System.Collections.Generic.List<UnityEngine.Rect>)ToLua.CheckObject(L, 4, typeof(System.Collections.Generic.List<UnityEngine.Rect>));
+			bool o = UnityEngine.Texture2D.GenerateAtlas(arg0, arg1, arg2, arg3);
+			LuaDLL.lua_pushboolean(L, o);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ReadPixels(IntPtr L)
 	{
 		try
@@ -636,56 +619,6 @@ public class UnityEngine_Texture2DWrap
 			else
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.Texture2D.ReadPixels");
-			}
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int EncodeToPNG(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 1);
-			UnityEngine.Texture2D obj = (UnityEngine.Texture2D)ToLua.CheckObject(L, 1, typeof(UnityEngine.Texture2D));
-			byte[] o = obj.EncodeToPNG();
-			ToLua.Push(L, o);
-			return 1;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int EncodeToJPG(IntPtr L)
-	{
-		try
-		{
-			int count = LuaDLL.lua_gettop(L);
-
-			if (count == 1)
-			{
-				UnityEngine.Texture2D obj = (UnityEngine.Texture2D)ToLua.CheckObject(L, 1, typeof(UnityEngine.Texture2D));
-				byte[] o = obj.EncodeToJPG();
-				ToLua.Push(L, o);
-				return 1;
-			}
-			else if (count == 2)
-			{
-				UnityEngine.Texture2D obj = (UnityEngine.Texture2D)ToLua.CheckObject(L, 1, typeof(UnityEngine.Texture2D));
-				int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
-				byte[] o = obj.EncodeToJPG(arg0);
-				ToLua.Push(L, o);
-				return 1;
-			}
-			else
-			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.Texture2D.EncodeToJPG");
 			}
 		}
 		catch (Exception e)

@@ -20,6 +20,9 @@ public class UnityEngine_TextureWrap
 		L.RegVar("filterMode", get_filterMode, set_filterMode);
 		L.RegVar("anisoLevel", get_anisoLevel, set_anisoLevel);
 		L.RegVar("wrapMode", get_wrapMode, set_wrapMode);
+		L.RegVar("wrapModeU", get_wrapModeU, set_wrapModeU);
+		L.RegVar("wrapModeV", get_wrapModeV, set_wrapModeV);
+		L.RegVar("wrapModeW", get_wrapModeW, set_wrapModeW);
 		L.RegVar("mipMapBias", get_mipMapBias, set_mipMapBias);
 		L.RegVar("texelSize", get_texelSize, null);
 		L.EndClass();
@@ -244,6 +247,63 @@ public class UnityEngine_TextureWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_wrapModeU(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.Texture obj = (UnityEngine.Texture)o;
+			UnityEngine.TextureWrapMode ret = obj.wrapModeU;
+			ToLua.Push(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index wrapModeU on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_wrapModeV(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.Texture obj = (UnityEngine.Texture)o;
+			UnityEngine.TextureWrapMode ret = obj.wrapModeV;
+			ToLua.Push(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index wrapModeV on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_wrapModeW(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.Texture obj = (UnityEngine.Texture)o;
+			UnityEngine.TextureWrapMode ret = obj.wrapModeW;
+			ToLua.Push(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index wrapModeW on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_mipMapBias(IntPtr L)
 	{
 		object o = null;
@@ -422,6 +482,63 @@ public class UnityEngine_TextureWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o, "attempt to index wrapMode on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_wrapModeU(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.Texture obj = (UnityEngine.Texture)o;
+			UnityEngine.TextureWrapMode arg0 = (UnityEngine.TextureWrapMode)ToLua.CheckObject(L, 2, typeof(UnityEngine.TextureWrapMode));
+			obj.wrapModeU = arg0;
+			return 0;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index wrapModeU on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_wrapModeV(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.Texture obj = (UnityEngine.Texture)o;
+			UnityEngine.TextureWrapMode arg0 = (UnityEngine.TextureWrapMode)ToLua.CheckObject(L, 2, typeof(UnityEngine.TextureWrapMode));
+			obj.wrapModeV = arg0;
+			return 0;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index wrapModeV on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_wrapModeW(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.Texture obj = (UnityEngine.Texture)o;
+			UnityEngine.TextureWrapMode arg0 = (UnityEngine.TextureWrapMode)ToLua.CheckObject(L, 2, typeof(UnityEngine.TextureWrapMode));
+			obj.wrapModeW = arg0;
+			return 0;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index wrapModeW on a nil value");
 		}
 	}
 

@@ -21,6 +21,7 @@ public class UnityEngine_AnimationClipWrap
 		L.RegVar("localBounds", get_localBounds, set_localBounds);
 		L.RegVar("legacy", get_legacy, set_legacy);
 		L.RegVar("humanMotion", get_humanMotion, null);
+		L.RegVar("empty", get_empty, null);
 		L.RegVar("events", get_events, set_events);
 		L.EndClass();
 	}
@@ -265,6 +266,25 @@ public class UnityEngine_AnimationClipWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o, "attempt to index humanMotion on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_empty(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.AnimationClip obj = (UnityEngine.AnimationClip)o;
+			bool ret = obj.empty;
+			LuaDLL.lua_pushboolean(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index empty on a nil value");
 		}
 	}
 
