@@ -57,6 +57,7 @@ software：Unity2017.4.16/visual studio2017.
 	(6)Unity Particle Pack 5.x.
 	(6)Anima2D.
 	(6)PostProcessing.
+	(7)DOTween.
 	
 #### Server：服务器工程使用visual studio2017创建
     Reference：
