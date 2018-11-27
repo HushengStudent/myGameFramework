@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3464685880
+CRC: 572790351
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f7e9d80dc37ae8500f7b10926d3d6be3
+    Hash: 445185830f2a1d4df5a4546fde34476e
   TypeTreeHash:
     serializedVersion: 2
     Hash: 6f165f44e4778b6c9d85e7a145a54cb1
@@ -16,6 +16,6 @@ ClassTypes:
 - Class: 48
   Script: {instanceID: 0}
 Assets:
-- Assets/Bundles/Material/Emoji/UGUIEmoji.mat
+- Assets/Bundles/Material/Atlas/Number.mat
 Dependencies:
 - C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/StreamingAssets/AssetBundle/shader/shader.assetbundle

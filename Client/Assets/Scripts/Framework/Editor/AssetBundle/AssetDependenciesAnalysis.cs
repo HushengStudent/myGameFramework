@@ -168,7 +168,7 @@ namespace Framework
             }
 
             SetLuaAssetName();
-            SetAtlasName();
+            //SetAtlasName();
 
             EditorUtility.ClearProgressBar();
 
