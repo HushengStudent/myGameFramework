@@ -90,4 +90,15 @@ public class FrameworkTest : MonoBehaviour
     {
 
     }
+
+    public void ScreenShot()
+    {
+        UIScreenShotHelper.ExecuteScreenShot(null);
+    }
+
+    public void CameraShot()
+    {
+        var camera = transform.Find("Camera").GetComponent<Camera>();
+        UIScreenShotHelper.ExecuteCameraShot(camera, null);
+    }
 }
