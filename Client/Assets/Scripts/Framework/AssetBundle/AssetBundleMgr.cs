@@ -215,7 +215,7 @@ namespace Framework
             string[] DependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
             foreach (string tempAssetBundle in DependentAssetBundle)
             {
-                if (tempAssetBundle == FilePathUtility.GetAssetBundleFileName(AssetType.Shader, "Shader")) continue;
+                if (tempAssetBundle == FilePathUtility.GetAssetBundleFileName(AssetType.Shader, "Shaders")) continue;
                 string tempPtah = FilePathUtility.AssetBundlePath + tempAssetBundle;
                 LoadSingleSync(tempPtah);
             }
@@ -240,7 +240,7 @@ namespace Framework
             string[] DependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
             foreach (string tempAssetBundle in DependentAssetBundle)
             {
-                if (tempAssetBundle == FilePathUtility.GetAssetBundleFileName(AssetType.Shader, "Shader")) continue;
+                if (tempAssetBundle == FilePathUtility.GetAssetBundleFileName(AssetType.Shader, "Shaders")) continue;
                 string tempPtah = FilePathUtility.AssetBundlePath + tempAssetBundle;
                 IEnumerator<float> itor = LoadSingleAsync(tempPtah, null, null);
                 while (itor.MoveNext())
@@ -262,7 +262,7 @@ namespace Framework
         /// <returns>AssetBundle</returns>
         public AssetBundle LoadShaderAssetBundle()
         {
-            string path = FilePathUtility.GetAssetBundlePath(AssetType.Shader, "Shader");
+            string path = FilePathUtility.GetAssetBundlePath(AssetType.Shader, "Shaders");
             return LoadSingleSync(path);
         }
 
@@ -317,7 +317,7 @@ namespace Framework
             string[] DependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
             foreach (string tempAssetBundle in DependentAssetBundle)
             {
-                if (tempAssetBundle == FilePathUtility.GetAssetBundleFileName(AssetType.Shader, "Shader")) continue;
+                if (tempAssetBundle == FilePathUtility.GetAssetBundleFileName(AssetType.Shader, "Shaders")) continue;
                 string tempPtah = FilePathUtility.AssetBundlePath + tempAssetBundle;
                 UnloadAsset(tempPtah, true);
             }

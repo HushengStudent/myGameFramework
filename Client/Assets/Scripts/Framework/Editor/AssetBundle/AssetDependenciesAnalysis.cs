@@ -98,8 +98,8 @@ namespace Framework
                     }
                     else
                     {
-                        //需要打包AssetBundle的资源目录下的资源,引用非该目录下的资源!!!
-                        LogUtil.LogUtility.Print("[Asset Dependencies Analysis] path:" + allAssetPath[i] + " Reference--->>>>: " + tempPath);
+                        //需要打包AssetBundle的资源目录下的资源,引用非该目录下的资源;
+                        LogUtil.LogUtility.Print("[Asset Dependencies Analysis] path:" + allAssetPath[i] + "--->>>reference--->>>: " + tempPath);
                     }
                 }
             }
@@ -118,7 +118,7 @@ namespace Framework
                     continue;
                 }
                 */
-                if (allAssetPath[i].Contains("Shaders") && Path.GetExtension(allAssetPath[i]) == ".shader")
+                if (allAssetPath[i].Contains(FilePathUtility.resPath + "Shaders") && Path.GetExtension(allAssetPath[i]) == ".shader")
                 {
                     allShaderAsset.Add(allAssetPath[i]);
                     continue;
@@ -162,7 +162,7 @@ namespace Framework
                 AssetImporter importer = AssetImporter.GetAtPath(tempPath);
                 if (importer != null)
                 {
-                    importer.assetBundleName = FilePathUtility.GetAssetBundleFileName(AssetType.Shader, "Shader");
+                    importer.assetBundleName = FilePathUtility.GetAssetBundleFileName(AssetType.Shader, "Shaders");
                     AssetDatabase.ImportAsset(tempPath);
                 }
             }
@@ -212,7 +212,7 @@ namespace Framework
             return new AssetNode()
             {
                 type = AssetBundleDefine.GetAssetType(path),
-                assetName = Path.GetFileNameWithoutExtension(path),
+                assetName = path.Replace(FilePathUtility.resPath, ""),
                 assetPath = path,
                 parentDependentAssets = new HashSet<string>(),
                 sonDependentAssets = new HashSet<string>()
@@ -232,7 +232,7 @@ namespace Framework
         public void ClearAllAssetBundleName()
         {
             string[] allPath = Directory.GetFiles("Assets/", "*.*", SearchOption.AllDirectories);
-            
+
             //剔除.meta文件;
             List<string> allAssetPath = new List<string>();
             foreach (string tempPath in allPath)
@@ -241,8 +241,11 @@ namespace Framework
                 if (Path.GetExtension(path) == ".meta" || Path.GetExtension(path) == ".cs") continue;
                 allAssetPath.Add(path);
             }
+            float i = 0;
             foreach (string str in allAssetPath)
             {
+                EditorUtility.DisplayProgressBar("AssetBundle打包提示", "删除AssetBundle Name", ((float)i / (float)allAssetPath.Count));
+                i++;
                 AssetImporter importer = AssetImporter.GetAtPath(str);
                 if (importer != null)
                 {
@@ -250,12 +253,13 @@ namespace Framework
                     AssetDatabase.ImportAsset(FilePathUtility.luaPath);
                 }
             }
+            EditorUtility.ClearProgressBar();
         }
 
         public void DeleteAllAssetBundle()
         {
             string[] allPath = Directory.GetFiles(FilePathUtility.AssetBundlePath, "*.*", SearchOption.AllDirectories);
-            foreach(string str in allPath)
+            foreach (string str in allPath)
             {
                 File.Delete(str);
             }

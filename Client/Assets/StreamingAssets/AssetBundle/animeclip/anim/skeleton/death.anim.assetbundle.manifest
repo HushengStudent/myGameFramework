@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 566983235
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 078a7132cb0aa96c4fb06ada5c4731f4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 57cc261e7722b8429fae0fb29649ddb8
+HashAppended: 0
+ClassTypes:
+- Class: 74
+  Script: {instanceID: 0}
+Assets:
+- Assets/Bundles/Anim/Skeleton/Death.anim
+Dependencies: []

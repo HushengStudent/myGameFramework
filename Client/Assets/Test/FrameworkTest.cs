@@ -63,7 +63,7 @@ public class FrameworkTest : MonoBehaviour
 
     private void ModelInit()
     {
-        ResourceMgr.Instance.LoadAssetSync<GameObject>(AssetType.Model, "ch_pc_hou_004");
+        ResourceMgr.Instance.LoadAssetSync<GameObject>(AssetType.Prefab, "Prefab/Models/Avatar/ch_pc_hou_004.prefab");
     }
 
     public void ChangeHead()

@@ -1,139 +1,138 @@
 ManifestFileVersion: 0
-CRC: 2021744449
+CRC: 195015845
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: scene/game.assetbundle
-      Dependencies:
-        Dependency_0: material/uguiemoji.assetbundle
-    Info_1:
       Name: lua/lua.assetbundle
       Dependencies: {}
+    Info_1:
+      Name: animeclip/anim/avatar/attack1.anim.assetbundle
+      Dependencies: {}
     Info_2:
-      Name: texture/test.assetbundle
+      Name: animeclip/anim/avatar/attack2.anim.assetbundle
       Dependencies: {}
     Info_3:
-      Name: shader/shader.assetbundle
+      Name: animeclip/anim/avatar/attack3.anim.assetbundle
       Dependencies: {}
     Info_4:
-      Name: model/ch_pc_hou_008_tou.assetbundle
+      Name: animeclip/anim/avatar/attack4.anim.assetbundle
       Dependencies: {}
     Info_5:
-      Name: model/ch_pc_hou_004_jiao.assetbundle
+      Name: animeclip/anim/avatar/breath.anim.assetbundle
       Dependencies: {}
     Info_6:
-      Name: model/ch_pc_hou_006_shou.assetbundle
+      Name: animeclip/anim/avatar/run.anim.assetbundle
       Dependencies: {}
     Info_7:
-      Name: model/ch_we_one_hou_006.assetbundle
+      Name: animeclip/anim/skeleton/attack.anim.assetbundle
       Dependencies: {}
     Info_8:
-      Name: animeclip/knockback.assetbundle
+      Name: animeclip/anim/skeleton/damage.anim.assetbundle
       Dependencies: {}
     Info_9:
-      Name: model/ch_pc_hou_004.assetbundle
+      Name: animeclip/anim/skeleton/death.anim.assetbundle
       Dependencies: {}
     Info_10:
-      Name: animeclip/run.assetbundle
+      Name: animeclip/anim/skeleton/idle.anim.assetbundle
       Dependencies: {}
     Info_11:
-      Name: animeclip/damage.assetbundle
+      Name: animeclip/anim/skeleton/knockback.anim.assetbundle
       Dependencies: {}
     Info_12:
-      Name: model/ch_pc_hou_006.assetbundle
+      Name: animeclip/anim/skeleton/run.anim.assetbundle
       Dependencies: {}
     Info_13:
-      Name: animeclip/attack.assetbundle
+      Name: animeclip/anim/skeleton/skill.anim.assetbundle
       Dependencies: {}
     Info_14:
-      Name: model/ch_pc_hou_004_tou.assetbundle
+      Name: animeclip/anim/skeleton/stand.anim.assetbundle
       Dependencies: {}
     Info_15:
-      Name: model/skeleton.assetbundle
+      Name: animeclip/anim/skeleton/walk.anim.assetbundle
       Dependencies: {}
     Info_16:
-      Name: animeclip/skill.assetbundle
+      Name: animectrl/animator/common/player.controller.assetbundle
       Dependencies: {}
     Info_17:
-      Name: model/ch_pc_hou_008_shen.assetbundle
+      Name: audio/audio/common/test.wav.assetbundle
       Dependencies: {}
     Info_18:
-      Name: model/ch_we_one_hou_004.assetbundle
-      Dependencies: {}
+      Name: material/material/atlas/number.mat.assetbundle
+      Dependencies:
+        Dependency_0: shader/shaders.assetbundle
     Info_19:
-      Name: model/ch_pc_hou_008_shou.assetbundle
-      Dependencies: {}
+      Name: material/material/emoji/uguiemoji.mat.assetbundle
+      Dependencies:
+        Dependency_0: shader/shaders.assetbundle
     Info_20:
-      Name: model/ch_pc_hou_008.assetbundle
+      Name: prefab/prefab/models/avatar/ch_pc_hou.prefab.assetbundle
       Dependencies: {}
     Info_21:
-      Name: animeclip/attack4.assetbundle
+      Name: prefab/prefab/models/avatar/ch_pc_hou_004.prefab.assetbundle
       Dependencies: {}
     Info_22:
-      Name: animeclip/death.assetbundle
+      Name: prefab/prefab/models/avatar/ch_pc_hou_004_jiao.prefab.assetbundle
       Dependencies: {}
     Info_23:
-      Name: model/ch_pc_hou.assetbundle
+      Name: prefab/prefab/models/avatar/ch_pc_hou_004_shen.prefab.assetbundle
       Dependencies: {}
     Info_24:
-      Name: animeclip/attack1.assetbundle
+      Name: prefab/prefab/models/avatar/ch_pc_hou_004_shou.prefab.assetbundle
       Dependencies: {}
     Info_25:
-      Name: model/ch_pc_hou_006_tou.assetbundle
+      Name: prefab/prefab/models/avatar/ch_pc_hou_004_tou.prefab.assetbundle
       Dependencies: {}
     Info_26:
-      Name: animeclip/attack3.assetbundle
+      Name: prefab/prefab/models/avatar/ch_pc_hou_006.prefab.assetbundle
       Dependencies: {}
     Info_27:
-      Name: model/ch_pc_hou_004_shou.assetbundle
+      Name: prefab/prefab/models/avatar/ch_pc_hou_006_jiao.prefab.assetbundle
       Dependencies: {}
     Info_28:
-      Name: model/ch_pc_hou_008_jiao.assetbundle
+      Name: prefab/prefab/models/avatar/ch_pc_hou_006_shen.prefab.assetbundle
       Dependencies: {}
     Info_29:
-      Name: animeclip/attack2.assetbundle
+      Name: prefab/prefab/models/avatar/ch_pc_hou_006_shou.prefab.assetbundle
       Dependencies: {}
     Info_30:
-      Name: model/ch_pc_hou_006_jiao.assetbundle
+      Name: prefab/prefab/models/avatar/ch_pc_hou_006_tou.prefab.assetbundle
       Dependencies: {}
     Info_31:
-      Name: model/ch_pc_hou_004_shen.assetbundle
+      Name: prefab/prefab/models/avatar/ch_pc_hou_008.prefab.assetbundle
       Dependencies: {}
     Info_32:
-      Name: animeclip/breath.assetbundle
+      Name: prefab/prefab/models/avatar/ch_pc_hou_008_jiao.prefab.assetbundle
       Dependencies: {}
     Info_33:
-      Name: model/ch_pc_hou_006_shen.assetbundle
+      Name: prefab/prefab/models/avatar/ch_pc_hou_008_shen.prefab.assetbundle
       Dependencies: {}
     Info_34:
-      Name: animeclip/walk.assetbundle
+      Name: prefab/prefab/models/avatar/ch_pc_hou_008_shou.prefab.assetbundle
       Dependencies: {}
     Info_35:
-      Name: material/uguiemoji.assetbundle
-      Dependencies:
-        Dependency_0: shader/shader.assetbundle
+      Name: prefab/prefab/models/avatar/ch_pc_hou_008_tou.prefab.assetbundle
+      Dependencies: {}
     Info_36:
-      Name: animeclip/idle.assetbundle
+      Name: prefab/prefab/models/avatar/ch_we_one_hou_004.prefab.assetbundle
       Dependencies: {}
     Info_37:
-      Name: prefab/login.assetbundle
+      Name: prefab/prefab/models/avatar/ch_we_one_hou_006.prefab.assetbundle
       Dependencies: {}
     Info_38:
-      Name: animeclip/stand.assetbundle
+      Name: prefab/prefab/models/avatar/ch_we_one_hou_008.prefab.assetbundle
       Dependencies: {}
     Info_39:
-      Name: model/ch_we_one_hou_008.assetbundle
+      Name: prefab/prefab/models/common/skeleton.prefab.assetbundle
       Dependencies: {}
     Info_40:
-      Name: audio/test.assetbundle
+      Name: prefab/prefab/ui/common/login.prefab.assetbundle
       Dependencies: {}
     Info_41:
-      Name: font/fzy4jw.assetbundle
+      Name: font/single/font/fzy4jw.ttf.assetbundle
       Dependencies: {}
     Info_42:
-      Name: animectrl/player.assetbundle
+      Name: texture/single/tex/test.png.assetbundle
       Dependencies: {}
     Info_43:
-      Name: material/number.assetbundle
-      Dependencies:
-        Dependency_0: shader/shader.assetbundle
+      Name: shader/shaders.assetbundle
+      Dependencies: {}

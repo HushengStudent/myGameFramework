@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 2599764067
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: da616dc2c7c2c7b58c9fea922b873d77
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6f165f44e4778b6c9d85e7a145a54cb1
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/Bundles/Material/Atlas/Number.mat
+Dependencies:
+- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/StreamingAssets/AssetBundle/shader/shaders.assetbundle

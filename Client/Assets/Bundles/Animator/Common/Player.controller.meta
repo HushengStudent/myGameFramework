@@ -1,8 +1,8 @@
 fileFormatVersion: 2
 guid: e993a60ea2f63044a99f4706105f162f
-timeCreated: 1516471343
-licenseType: Pro
 NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
   userData: 
-  assetBundleName: animectrl/player.assetbundle
+  assetBundleName: animectrl/animator/common/player.controller.assetbundle
   assetBundleVariant: 

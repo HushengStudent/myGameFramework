@@ -1,8 +1,8 @@
 fileFormatVersion: 2
 guid: 745f9529e61ad4247b2ef0f8a2dd58cf
-timeCreated: 1542378592
-licenseType: Pro
 NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
   userData: 
-  assetBundleName: animeclip/attack4.assetbundle
+  assetBundleName: animeclip/anim/avatar/attack4.anim.assetbundle
   assetBundleVariant: 

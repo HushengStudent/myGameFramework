@@ -1,8 +1,8 @@
 fileFormatVersion: 2
 guid: 246b70efc7cf75d4e868b2e7a8d4841d
-timeCreated: 1535817609
-licenseType: Pro
 NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
   userData: 
-  assetBundleName: animeclip/run.assetbundle
+  assetBundleName: animeclip/anim/skeleton/run.anim.assetbundle
   assetBundleVariant: 

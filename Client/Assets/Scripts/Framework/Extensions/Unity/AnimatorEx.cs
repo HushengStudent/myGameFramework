@@ -21,7 +21,7 @@ namespace Framework
         {
             _animator = animator;
             RuntimeAnimatorController runtimeAnimatorController =
-                ResourceMgr.Instance.LoadAssetSync<RuntimeAnimatorController>(AssetType.AnimeCtrl, Path.GetFileName(path));
+                ResourceMgr.Instance.LoadAssetSync<RuntimeAnimatorController>(AssetType.AnimeCtrl, path);
             _animator.runtimeAnimatorController = runtimeAnimatorController;
             _animatorOverrideController = runtimeAnimatorController as AnimatorOverrideController;
             _animator.Rebind();
@@ -29,7 +29,7 @@ namespace Framework
 
         public void OverrideAnimationCli(string name, string path, bool autoPlay = true)
         {
-            AnimationClip clip = ResourceMgr.Instance.LoadAssetSync<AnimationClip>(AssetType.AnimeClip, Path.GetFileName(path));
+            AnimationClip clip = ResourceMgr.Instance.LoadAssetSync<AnimationClip>(AssetType.AnimeClip, path);
             _animatorOverrideController[name] = clip;
             _animator.runtimeAnimatorController = _animatorOverrideController;
             _AnimationInfo.Data[name] = clip;

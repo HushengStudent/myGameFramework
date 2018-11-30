@@ -11,6 +11,7 @@ using Object = UnityEngine.Object;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using MEC;
+using System.IO;
 
 namespace Framework
 {
@@ -105,7 +106,10 @@ namespace Framework
         /// <returns>资源加载器;</returns>
         private IAssetLoader<T> CreateLoader<T>(AssetType assetType) where T : Object
         {
-            if (assetType == AssetType.Prefab || assetType == AssetType.Model) return new ResLoader<T>();
+            if (assetType == AssetType.Prefab)
+            {
+                return new ResLoader<T>();
+            }
             return new AssetLoader<T>();
         }
 
@@ -229,7 +233,7 @@ namespace Framework
             bool isInstance = false;
             if (assetBundle != null)
             {
-                T tempObject = assetBundle.LoadAsset<T>(assetName);
+                T tempObject = assetBundle.LoadAsset<T>(Path.GetFileNameWithoutExtension(assetName));
                 ctrl = loader.GetAsset(tempObject, out isInstance);
             }
             if (ctrl == null)
@@ -282,7 +286,7 @@ namespace Framework
                 yield return Timing.WaitForOneFrame;
             }
 
-            AssetBundleRequest request = assetBundle.LoadAssetAsync<T>(assetName);
+            AssetBundleRequest request = assetBundle.LoadAssetAsync<T>(Path.GetFileNameWithoutExtension(assetName));
             while (request.progress < 0.99)
             {
                 if (progress != null)

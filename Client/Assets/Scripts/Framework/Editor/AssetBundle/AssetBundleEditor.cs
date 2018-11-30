@@ -31,19 +31,19 @@ namespace Framework
             }
         }
 
-        //[MenuItem("myGameFramework/AssetBundleTools/Clear AssetName", false, 1)]
-        private static void ClearAll()
-        {
-            AssetDependenciesAnalysis analysiser = new AssetDependenciesAnalysis();
-            analysiser.ClearAllAssetBundleName();
-            AssetDatabase.Refresh();
-        }
-
-        [MenuItem("myGameFramework/AssetBundleTools/Delete AssetBundle", false, 2)]
+        [MenuItem("myGameFramework/AssetBundleTools/Delete AssetBundle", false, 1)]
         private static void DeleteAll()
         {
             AssetDependenciesAnalysis analysiser = new AssetDependenciesAnalysis();
             analysiser.DeleteAllAssetBundle();
+            AssetDatabase.Refresh();
+        }
+
+        [MenuItem("myGameFramework/AssetBundleTools/Clear AssetName", false, 2)]
+        private static void ClearAll()
+        {
+            AssetDependenciesAnalysis analysiser = new AssetDependenciesAnalysis();
+            analysiser.ClearAllAssetBundleName();
             AssetDatabase.Refresh();
         }
 

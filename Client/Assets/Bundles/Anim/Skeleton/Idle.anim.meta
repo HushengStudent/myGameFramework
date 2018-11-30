@@ -1,8 +1,8 @@
 fileFormatVersion: 2
 guid: c8925e834270bfd41b93f0876d346564
-timeCreated: 1535817603
-licenseType: Pro
 NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
   userData: 
-  assetBundleName: animeclip/idle.assetbundle
+  assetBundleName: animeclip/anim/skeleton/idle.anim.assetbundle
   assetBundleVariant: 

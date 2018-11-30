@@ -1,8 +1,8 @@
 fileFormatVersion: 2
 guid: 4d82ebafb98a07b4fb51e1e5cba59f83
-timeCreated: 1535817612
-licenseType: Pro
 NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
   userData: 
-  assetBundleName: animeclip/skill.assetbundle
+  assetBundleName: animeclip/anim/skeleton/skill.anim.assetbundle
   assetBundleVariant: 

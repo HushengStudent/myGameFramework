@@ -1,8 +1,8 @@
 fileFormatVersion: 2
 guid: 766c5aba17aeecf48a1dbd1efbf10454
-timeCreated: 1535817601
-licenseType: Pro
 NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
   userData: 
-  assetBundleName: animeclip/death.assetbundle
+  assetBundleName: animeclip/anim/skeleton/death.anim.assetbundle
   assetBundleVariant: 

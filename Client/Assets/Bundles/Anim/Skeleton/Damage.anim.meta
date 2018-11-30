@@ -1,8 +1,8 @@
 fileFormatVersion: 2
 guid: 24c6e216011e31745b6acc409ff3b8a0
-timeCreated: 1535817598
-licenseType: Pro
 NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
   userData: 
-  assetBundleName: animeclip/damage.assetbundle
+  assetBundleName: animeclip/anim/skeleton/damage.anim.assetbundle
   assetBundleVariant: 

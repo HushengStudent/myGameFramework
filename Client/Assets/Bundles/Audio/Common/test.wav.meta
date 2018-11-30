@@ -1,8 +1,7 @@
 fileFormatVersion: 2
 guid: b724625fc4c3619408ad70946ebdd0eb
-timeCreated: 1516471870
-licenseType: Pro
 AudioImporter:
+  externalObjects: {}
   serializedVersion: 6
   defaultSettings:
     loadType: 0
@@ -16,7 +15,8 @@ AudioImporter:
   normalize: 1
   preloadAudioData: 1
   loadInBackground: 0
+  ambisonic: 0
   3D: 1
   userData: 
-  assetBundleName: audio/test.assetbundle
+  assetBundleName: audio/audio/common/test.wav.assetbundle
   assetBundleVariant: 

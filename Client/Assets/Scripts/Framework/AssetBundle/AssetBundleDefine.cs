@@ -42,6 +42,7 @@ namespace Framework
                 case ".shader":
                     return AssetType.Shader;
                 case ".prefab":
+                    /*
                     if (path.Contains("Atlas"))
                     {
                         return AssetType.AssetPrefab;
@@ -50,6 +51,7 @@ namespace Framework
                     {
                         return AssetType.Model;
                     }
+                    */
                     return AssetType.Prefab;
                 case ".unity":
                     return AssetType.Scene;
@@ -71,7 +73,7 @@ namespace Framework
     {
         Non,
         Prefab,
-        Model,
+        //Model,
         Scene,
         Material,
         Scripts,
@@ -79,7 +81,7 @@ namespace Framework
         /// <summary>
         /// 不需要实例化的的Prefab资源,如图集;
         /// </summary>
-        AssetPrefab,
+        //AssetPrefab,
         Shader,
         Texture,
         Audio,

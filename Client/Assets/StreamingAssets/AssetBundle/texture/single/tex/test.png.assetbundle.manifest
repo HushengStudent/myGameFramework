@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 722325584
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a24fbb55700b37062d339dc3458661c0
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c73412a662fd4e4f36af34cbdf078b85
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Bundles/Single/Tex/Test.png
+Dependencies: []

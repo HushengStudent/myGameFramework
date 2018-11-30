@@ -1,8 +1,7 @@
 fileFormatVersion: 2
 guid: 295bdb7f4f95da5489359b337c44b2f8
-timeCreated: 1516472010
-licenseType: Pro
 TrueTypeFontImporter:
+  externalObjects: {}
   serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
@@ -16,6 +15,7 @@ TrueTypeFontImporter:
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
   userData: 
-  assetBundleName: font/fzy4jw.assetbundle
+  assetBundleName: font/single/font/fzy4jw.ttf.assetbundle
   assetBundleVariant: 

@@ -1,8 +1,8 @@
 fileFormatVersion: 2
 guid: 471cf7b8ab39be144857821c0f45cf98
-timeCreated: 1542378592
-licenseType: Pro
 NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
   userData: 
-  assetBundleName: animeclip/run.assetbundle
+  assetBundleName: animeclip/anim/avatar/run.anim.assetbundle
   assetBundleVariant: 

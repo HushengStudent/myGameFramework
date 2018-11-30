@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1469448058
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ffbdff44249ca7d8c8f19e4517aa9447
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 57cc261e7722b8429fae0fb29649ddb8
+HashAppended: 0
+ClassTypes:
+- Class: 74
+  Script: {instanceID: 0}
+Assets:
+- Assets/Bundles/Anim/Avatar/Breath.anim
+Dependencies: []
