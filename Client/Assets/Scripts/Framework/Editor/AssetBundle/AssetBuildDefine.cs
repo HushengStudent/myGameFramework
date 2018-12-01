@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace Framework
 {
-	public static class AssetBuildDefine 
+    public static class AssetBuildDefine
     {
         /// <summary>
         /// 打包选项,打包AssetBundle不压缩,使用第三方压缩软件压缩,再解压到沙盒路径,既可以减少包体,加快读取速度,但是占物理磁盘空间;
@@ -32,5 +32,5 @@ namespace Framework
     EditorUserBuildSettings.activeBuildTarget;
 #endif
 
-	}
+    }
 }

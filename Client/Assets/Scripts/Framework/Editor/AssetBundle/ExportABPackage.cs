@@ -16,7 +16,7 @@ namespace Framework
         private string _lastAbPath;
         private string _curAbPath;
 
-        [MenuItem("myGameFramework/AssetBundleTools/Export AssetBundle Package", false, 21)]
+        [MenuItem("myGameFramework/AssetBundleTools/Export AssetBundle Package", false, 41)]
         public static void ExportAssetBundlePackage()
         {
             //VerifierUtility.GetMD5();

@@ -14,7 +14,7 @@ namespace Framework
 {
     public class AssetBundleViewer : EditorWindow
     {
-        [MenuItem("myGameFramework/AssetBundleTools/AssetBundle Viewer", false, 11)]
+        [MenuItem("myGameFramework/AssetBundleTools/AssetBundle Viewer", false, 21)]
         static void ShowWindow()
         {
             var window = GetWindowWithRect(typeof(AssetBundleViewer), new Rect(0, 0, 600, 630), true, "AssetBundle Viewer");
