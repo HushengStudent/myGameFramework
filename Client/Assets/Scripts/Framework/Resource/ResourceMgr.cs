@@ -80,7 +80,7 @@ namespace Framework
                 T ctrl = Resources.Load<T>(path);
                 if (ctrl != null)
                 {
-                    return loader.GetAsset(ctrl, out isInstance);
+                    return loader.GetAsset(ctrl);
                 }
             }
             LogUtil.LogUtility.PrintError(string.Format("[ResourceMgr]LoadResSync Load Asset {0} failure!", assetName + "." + type.ToString()));
@@ -132,7 +132,7 @@ namespace Framework
                 {
                     yield return Timing.WaitForOneFrame;
                 }
-                ctrl = loader.GetAsset(request.asset as T, out isInstance);
+                ctrl = loader.GetAsset(request.asset as T);
             }
             if (action != null)
             {
@@ -160,31 +160,14 @@ namespace Framework
             T ctrl = null;
             IAssetLoader<T> loader = CreateLoader<T>(type);
             AssetBundle assetBundle = AssetBundleMgr.Instance.LoadAssetBundleSync(type, assetName);
-            bool isInstance = false;
             if (assetBundle != null)
             {
                 T tempObject = assetBundle.LoadAsset<T>(Path.GetFileNameWithoutExtension(assetName));
-                ctrl = loader.GetAsset(tempObject, out isInstance);
+                ctrl = loader.GetAsset(tempObject);
             }
             if (ctrl == null)
             {
                 LogUtil.LogUtility.PrintError(string.Format("[ResourceMgr]LoadAssetFromAssetBundleSync Load Asset {0} failure!", assetName + "." + type.ToString()));
-            }
-            else
-            {
-                if (isInstance)
-                {
-                    var go = ctrl as GameObject;
-                    if (go)
-                    {
-                        UnityUtility.AddOrGetComponent<AssetBundleTag>(go, (tag) =>//自动卸载;
-                        {
-                            tag.AssetBundleName = assetName;
-                            tag.Type = type;
-                            tag.IsClone = false;
-                        });
-                    }
-                }
             }
             return ctrl;
         }
@@ -245,27 +228,13 @@ namespace Framework
             {
                 yield return Timing.WaitForOneFrame;
             }
-            bool isInstance = false;
-            ctrl = loader.GetAsset(request.asset as T, out isInstance);
+            ctrl = loader.GetAsset(request.asset as T);
             if (ctrl == null)
             {
                 LogUtil.LogUtility.PrintError(string.Format("[ResourceMgr]LoadAssetFromAssetBundleSync Load Asset {0} failure!", assetName + "." + type.ToString()));
             }
             else
             {
-                if (isInstance)
-                {
-                    var go = ctrl as GameObject;
-                    if (go)
-                    {
-                        UnityUtility.AddOrGetComponent<AssetBundleTag>(go, (tag) =>//自动卸载;
-                        {
-                            tag.AssetBundleName = assetName;
-                            tag.Type = type;
-                            tag.IsClone = false;
-                        });
-                    }
-                }
                 if (action != null)
                     action(ctrl);
             }
@@ -298,9 +267,6 @@ namespace Framework
         private GameObject Clone(GameObject go)
         {
             GameObject target = GameObject.Instantiate(go);
-            AssetBundleTag tag = target.GetComponent<AssetBundleTag>();
-            if (tag)
-                tag.IsClone = true;
             return target;
         }
 

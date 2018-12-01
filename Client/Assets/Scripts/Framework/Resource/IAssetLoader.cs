@@ -16,23 +16,21 @@ namespace Framework
     /// </summary>
     public interface IAssetLoader<T> where T : Object
     {
-        T GetAsset(T t, out bool isInstance);
+        T GetAsset(T t);
     }
 
     public class AssetLoader<T> : IAssetLoader<T> where T : Object
     {
-        public T GetAsset(T t, out bool isInstance)
+        public T GetAsset(T t)
         {
-            isInstance = false;
             return t;
         }
     }
 
     public class ResLoader<T> : IAssetLoader<T> where T : Object
     {
-        public T GetAsset(T t, out bool isInstance)
+        public T GetAsset(T t)
         {
-            isInstance = true;
             if (t == null) return null;
             return Object.Instantiate(t) as T;
         }
