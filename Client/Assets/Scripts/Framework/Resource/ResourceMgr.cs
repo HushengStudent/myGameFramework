@@ -147,22 +147,6 @@ namespace Framework
         /// <typeparam name="T">ctrl</typeparam>
         /// <param name="type">资源类型</param>
         /// <param name="assetName">资源名字</param>
-        /// <returns></returns>
-        public IEnumerator<float> LoadResAsync<T>(AssetType type, string assetName) where T : Object
-        {
-            IEnumerator itor = LoadResAsync<T>(type, assetName, null, null);
-            while (itor.MoveNext())
-            {
-                yield return Timing.WaitForOneFrame;
-            }
-        }
-
-        /// <summary>
-        /// Resource异步加载;
-        /// </summary>
-        /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="type">资源类型</param>
-        /// <param name="assetName">资源名字</param>
         /// <param name="action">资源回调</param>
         /// <returns></returns>
         public IEnumerator<float> LoadResAsync<T>(AssetType type, string assetName, Action<T> action) where T : Object
@@ -257,6 +241,24 @@ namespace Framework
                 }
             }
             return ctrl;
+        }
+
+        /// <summary>
+        /// Asset async load from AssetBundle;
+        /// </summary>
+        /// <typeparam name="T">ctrl</typeparam>
+        /// <param name="type">资源类型</param>
+        /// <param name="assetName">资源名字</param>
+        /// <param name="action">资源回调</param>
+        /// <returns></returns>
+        public IEnumerator<float> LoadAssetAsync<T>(AssetType type, string assetName, Action<T> action)
+            where T : Object
+        {
+            IEnumerator itor = LoadAssetAsync<T>(type, assetName, action, null);
+            while (itor.MoveNext())
+            {
+                yield return Timing.WaitForOneFrame;
+            }
         }
 
         /// <summary>
