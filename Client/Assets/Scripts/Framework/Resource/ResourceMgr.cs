@@ -17,7 +17,7 @@ namespace Framework
 {
     public class ResourceMgr : Singleton<ResourceMgr>
     {
-        #region Functions
+        #region Initialize
 
         /// <summary>
         /// 初始化;
@@ -57,60 +57,6 @@ namespace Framework
         private void InitLua()
         {
             //TODO...
-        }
-
-        /// <summary>
-        /// 清理;
-        /// </summary>
-        public void UnloadUnusedAssets()
-        {
-            Resources.UnloadUnusedAssets();
-        }
-
-        /// <summary>
-        /// GC;
-        /// </summary>
-        public void GameGC()
-        {
-            System.GC.Collect();
-        }
-
-        /// <summary>
-        /// 卸载不需实例化的资源(纹理,Animator);
-        /// </summary>
-        /// <param name="asset"></param>
-        public void UnloadObject(Object asset)
-        {
-            Resources.UnloadAsset(asset);
-        }
-
-        /// <summary>
-        /// Clone GameObject;
-        /// </summary>
-        /// <param name="go"></param>
-        /// <returns></returns>
-        private GameObject CloneGameObject(GameObject go)
-        {
-            GameObject target = GameObject.Instantiate(go);
-            AssetBundleTag tag = target.GetComponent<AssetBundleTag>();
-            if (tag)
-                tag.IsClone = true;
-            return target;
-        }
-
-        /// <summary>
-        /// 创建资源加载器;
-        /// </summary>
-        /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="assetType">资源类型</param>
-        /// <returns>资源加载器;</returns>
-        private IAssetLoader<T> CreateLoader<T>(AssetType assetType) where T : Object
-        {
-            if (assetType == AssetType.Prefab)
-            {
-                return new ResLoader<T>();
-            }
-            return new AssetLoader<T>();
         }
 
         #endregion
@@ -323,6 +269,68 @@ namespace Framework
                 if (action != null)
                     action(ctrl);
             }
+        }
+
+        #endregion
+
+        #region Functions
+
+        /// <summary>
+        /// 创建资源加载器;
+        /// </summary>
+        /// <typeparam name="T">ctrl</typeparam>
+        /// <param name="assetType">资源类型</param>
+        /// <returns>资源加载器;</returns>
+        private IAssetLoader<T> CreateLoader<T>(AssetType assetType) where T : Object
+        {
+            if (assetType == AssetType.Prefab)
+            {
+                return new ResLoader<T>();
+            }
+            return new AssetLoader<T>();
+        }
+
+        /// <summary>
+        /// Clone GameObject;
+        /// </summary>
+        /// <param name="go"></param>
+        /// <returns></returns>
+        private GameObject Clone(GameObject go)
+        {
+            GameObject target = GameObject.Instantiate(go);
+            AssetBundleTag tag = target.GetComponent<AssetBundleTag>();
+            if (tag)
+                tag.IsClone = true;
+            return target;
+        }
+
+        #endregion
+
+        #region Unload Assets
+
+        /// <summary>
+        /// 清理;
+        /// </summary>
+        public void UnloadUnusedAssets()
+        {
+            Resources.UnloadUnusedAssets();
+        }
+
+        /// <summary>
+        /// GC;
+        /// </summary>
+        public void GameGC()
+        {
+            System.GC.Collect();
+        }
+
+        /// <summary>
+        /// 卸载不需实例化的资源(纹理,Animator);
+        /// </summary>
+        /// <param name="asset"></param>
+        public void UnloadObject(Object asset)
+        {
+            Resources.UnloadAsset(asset);
         }
 
         #endregion
