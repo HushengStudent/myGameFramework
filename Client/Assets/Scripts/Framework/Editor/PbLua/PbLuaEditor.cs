@@ -10,9 +10,8 @@ using System.Diagnostics;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-using Framework;
 
-namespace Common
+namespace Framework
 {
     public static class PbLuaEditor
     {

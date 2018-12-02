@@ -18,7 +18,7 @@ namespace Framework
             byte[] idBytes = ConvertHelper.GetBytes(packet.GetPacketId());
             destination.Write(idBytes, 0, idBytes.Length);
             packet.Serialize(destination);
-            ProtoRegister.ReturnPacket(packet);
+            ProtoHelper.ReturnPacket(packet);
         }
 
         public static Packet Deserialize(Session session, MemoryStream source, out object customErrorData)
@@ -28,7 +28,7 @@ namespace Framework
             byte[] buffer = new byte[4];
             source.Read(buffer, 0, sizeof(int));
             int id = ConvertHelper.GetInt32(buffer);
-            Packet packet = ProtoRegister.GetPacket(id);
+            Packet packet = ProtoHelper.GetPacket(id);
             packet.DeSerialize(source);
             return packet;
         }

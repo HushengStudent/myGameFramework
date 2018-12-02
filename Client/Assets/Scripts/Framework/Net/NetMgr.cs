@@ -61,7 +61,7 @@ namespace Framework
         private void OnReceive(Session session, Packet packet)
         {
             packet.Process();
-            ProtoRegister.ReturnPacket(packet);
+            ProtoHelper.ReturnPacket(packet);
         }
 
         private void OnCustomError(Session session, object args)
@@ -82,7 +82,7 @@ namespace Framework
         private void OnConnected(Session session, SessionParam args)
         {
             LogHelper.Print(string.Format("[NetMgr]Session Connected!"));
-            ProtoRegister.Register();
+            ProtoHelper.Register();
             if (!GameMgr.Instance.CheckUpdateState)
             {
                 GameMgr.Instance.CheckUpdateState = true;

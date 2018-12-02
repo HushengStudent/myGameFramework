@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class ProtoRegister
+public class ProtoHelper
 {
     private static Dictionary<int, PacketFactory> _factory = new Dictionary<int, PacketFactory>();
 
