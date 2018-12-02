@@ -17,7 +17,7 @@ resourceMgr = Framework.ResourceMgr.Instance
 luaUtility = Framework.LuaUtility.Instance --luaUtility
 logHelper = LogHelper
 luaBuffer = Framework.LuaBuffer
-LuaNetUtility = Framework.LuaNetUtility
+LuaNetHelper = Framework.LuaNetHelper
 
 ---[Enum]
 logColor = LogColor

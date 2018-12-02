@@ -14,7 +14,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public static class TableUtility
+    public static class TableHelper
     {
         [MenuItem("myGameFramework/TableTools/Generate all", false, 0)]
         public static void GenerateAll()

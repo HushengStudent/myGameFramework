@@ -2,11 +2,11 @@
 using System;
 using LuaInterface;
 
-public class Framework_LuaNetUtilityWrap
+public class Framework_LuaNetHelperWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginStaticLibs("LuaNetUtility");
+		L.BeginStaticLibs("LuaNetHelper");
 		L.RegFunction("SendLuaReq", SendLuaReq);
 		L.RegFunction("Send2Lua", Send2Lua);
 		L.EndStaticLibs();

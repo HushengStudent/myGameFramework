@@ -13,7 +13,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public static class LuaNetUtility
+    public static class LuaNetHelper
     {
         public static void SendLuaReq(int id, LuaBuffer buffer)
         {

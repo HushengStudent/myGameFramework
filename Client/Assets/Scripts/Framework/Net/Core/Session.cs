@@ -594,7 +594,7 @@ namespace Framework
                         using (MemoryStream memoryStream = new MemoryStream())
                         {
                             packet.Serialize(memoryStream);
-                            LuaNetUtility.Send2Lua(id, memoryStream.ToArray());
+                            LuaNetHelper.Send2Lua(id, memoryStream.ToArray());
                         }
                     }
                     else

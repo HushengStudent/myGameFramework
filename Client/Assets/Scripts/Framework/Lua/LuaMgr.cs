@@ -15,7 +15,7 @@ namespace Framework
     public class LuaMgr : MonoSingleton<LuaMgr>
     {
         private LuaState lua;
-        private LuaLoaderUtility loader;
+        private LuaLoaderHelper loader;
         private LuaLooper loop = null;
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Framework
         {
             base.AwakeEx();
             //初始化LuaMgr;
-            loader = new LuaLoaderUtility();//TODO:Lua AssetBundle的使用;
+            loader = new LuaLoaderHelper();//TODO:Lua AssetBundle的使用;
             lua = new LuaState();
             this.OpenLibs();
             lua.LuaSetTop(0);
