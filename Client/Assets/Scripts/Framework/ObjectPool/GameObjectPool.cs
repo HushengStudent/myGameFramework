@@ -64,7 +64,7 @@ namespace Framework
                     stack = new Stack<GameObject>();
                     _gameObjectPool[instanceId] = stack;
                     parentInstanceId = instanceId;
-                    LogUtil.LogUtility.PrintWarning(string.Format("[GameObjectPool]the game object:{0} is not create form pool " +
+                    LogHelper.PrintWarning(string.Format("[GameObjectPool]the game object:{0} is not create form pool " +
                         "or it's parents destroyed,but it is trying to release to pool!",element.name));
                 }
             }

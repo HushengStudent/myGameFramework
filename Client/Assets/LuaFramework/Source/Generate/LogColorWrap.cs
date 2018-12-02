@@ -2,56 +2,56 @@
 using System;
 using LuaInterface;
 
-public class LogUtil_LogColorWrap
+public class LogColorWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginEnum(typeof(LogUtil.LogColor));
+		L.BeginEnum(typeof(LogColor));
 		L.RegVar("Non", get_Non, null);
 		L.RegVar("Red", get_Red, null);
 		L.RegVar("Green", get_Green, null);
 		L.RegVar("Yellow", get_Yellow, null);
 		L.RegFunction("IntToEnum", IntToEnum);
 		L.EndEnum();
-		TypeTraits<LogUtil.LogColor>.Check = CheckType;
-		StackTraits<LogUtil.LogColor>.Push = Push;
+		TypeTraits<LogColor>.Check = CheckType;
+		StackTraits<LogColor>.Push = Push;
 	}
 
-	static void Push(IntPtr L, LogUtil.LogColor arg)
+	static void Push(IntPtr L, LogColor arg)
 	{
 		ToLua.Push(L, arg);
 	}
 
 	static bool CheckType(IntPtr L, int pos)
 	{
-		return TypeChecker.CheckEnumType(typeof(LogUtil.LogColor), L, pos);
+		return TypeChecker.CheckEnumType(typeof(LogColor), L, pos);
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Non(IntPtr L)
 	{
-		ToLua.Push(L, LogUtil.LogColor.Non);
+		ToLua.Push(L, LogColor.Non);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Red(IntPtr L)
 	{
-		ToLua.Push(L, LogUtil.LogColor.Red);
+		ToLua.Push(L, LogColor.Red);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Green(IntPtr L)
 	{
-		ToLua.Push(L, LogUtil.LogColor.Green);
+		ToLua.Push(L, LogColor.Green);
 		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Yellow(IntPtr L)
 	{
-		ToLua.Push(L, LogUtil.LogColor.Yellow);
+		ToLua.Push(L, LogColor.Yellow);
 		return 1;
 	}
 
@@ -59,7 +59,7 @@ public class LogUtil_LogColorWrap
 	static int IntToEnum(IntPtr L)
 	{
 		int arg0 = (int)LuaDLL.lua_tonumber(L, 1);
-		LogUtil.LogColor o = (LogUtil.LogColor)arg0;
+		LogColor o = (LogColor)arg0;
 		ToLua.Push(L, o);
 		return 1;
 	}

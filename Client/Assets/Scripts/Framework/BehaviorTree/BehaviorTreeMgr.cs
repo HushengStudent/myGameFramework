@@ -47,12 +47,12 @@ namespace Framework
             BehaviorTree tree = BehaviorTreeFactory.CreateBehaviorTree(entity, path);
             if (entity == null)
             {
-                LogUtil.LogUtility.PrintError("[BehaviorTreeMgr]Create BehaviorTree error,entity is null!");
+                LogHelper.PrintError("[BehaviorTreeMgr]Create BehaviorTree error,entity is null!");
                 return;
             }
             if (_treeDict.ContainsKey(entity))
             {
-                LogUtil.LogUtility.PrintWarning(string.Format("[BehaviorTreeMgr]repeat add BehaviorTree at EntityName: {0}.", entity.EntityName));
+                LogHelper.PrintWarning(string.Format("[BehaviorTreeMgr]repeat add BehaviorTree at EntityName: {0}.", entity.EntityName));
             }
             tree.Enable = enable;
             _treeDict[entity] = tree;
@@ -62,12 +62,12 @@ namespace Framework
         {
             if (entity == null)
             {
-                LogUtil.LogUtility.PrintError("[BehaviorTreeMgr]Remove BehaviorTree error,entity is null!");
+                LogHelper.PrintError("[BehaviorTreeMgr]Remove BehaviorTree error,entity is null!");
                 return;
             }
             if (!_treeDict.ContainsKey(entity))
             {
-                LogUtil.LogUtility.PrintWarning(string.Format("[BehaviorTreeMgr]can not find a BehaviorTree at EntityName: {0}.", entity.EntityName));
+                LogHelper.PrintWarning(string.Format("[BehaviorTreeMgr]can not find a BehaviorTree at EntityName: {0}.", entity.EntityName));
             }
             else
             {

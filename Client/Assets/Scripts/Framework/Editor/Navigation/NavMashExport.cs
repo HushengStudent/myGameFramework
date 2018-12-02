@@ -54,7 +54,7 @@ namespace Framework
                 GameObject navMesh = Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(assetName));
                 navMesh.name = "_NavMesh";
                 ExportNavData(navMesh);
-                LogUtil.LogUtility.Print("导出NavMesh完成:" + sceneName + "_NavMesh.obj");
+                LogHelper.Print("导出NavMesh完成:" + sceneName + "_NavMesh.obj");
                 AssetDatabase.Refresh();
             }
         }

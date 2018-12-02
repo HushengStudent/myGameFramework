@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-using LogUtil;
 
 namespace Framework
 {
@@ -33,7 +32,7 @@ namespace Framework
                         componentArray[i].gameObject.name.Replace(" ", "").Replace("(", "").Replace("（", "").Replace(")", "").Replace("）", "").Replace("{", "").Replace("}", "").Replace(".", "");
                         if (nameList.Contains(componentArray[i].ComponentName))
                         {
-                            LogUtility.PrintError("[LuaControllerEditor]名字重复：" + componentArray[i].ComponentName);
+                            LogHelper.PrintError("[LuaControllerEditor]名字重复：" + componentArray[i].ComponentName);
                         }
                         nameList.Add(componentArray[i].ComponentName);
                     }
@@ -41,7 +40,7 @@ namespace Framework
                     {
                         if (nameList.Contains(componentArray[i].ComponentName))
                         {
-                            LogUtility.PrintError("[LuaControllerEditor]名字重复：" + componentArray[i].ComponentName);
+                            LogHelper.PrintError("[LuaControllerEditor]名字重复：" + componentArray[i].ComponentName);
                         }
                         nameList.Add(componentArray[i].ComponentName);
                     }
@@ -60,7 +59,7 @@ namespace Framework
                 LuaController ctrl = target as LuaController;
                 if (null == ctrl)
                 {
-                    LogUtility.PrintError("[LuaControllerEditor]LuaController is null.");
+                    LogHelper.PrintError("[LuaControllerEditor]LuaController is null.");
                     return;
                 }
                 string name = ctrl.gameObject.name;
@@ -82,7 +81,7 @@ namespace Framework
                 LuaController ctrl = target as LuaController;
                 if (null == ctrl)
                 {
-                    LogUtility.PrintError("[LuaControllerEditor]LuaController is null.");
+                    LogHelper.PrintError("[LuaControllerEditor]LuaController is null.");
                     return;
                 }
                 string name = ctrl.gameObject.name;
@@ -109,7 +108,7 @@ namespace Framework
                 LuaController ctrl = target as LuaController;
                 if (null == ctrl)
                 {
-                    LogUtility.PrintError("[LuaControllerEditor]LuaController is null.");
+                    LogHelper.PrintError("[LuaControllerEditor]LuaController is null.");
                     return;
                 }
                 string name = ctrl.gameObject.name;

@@ -17,13 +17,13 @@ namespace Framework
             RoleEntity entity = EntityMgr.Instance.GetEntity<RoleEntity>(uid);
             if (entity == null)
             {
-                LogUtil.LogUtility.PrintError(string.Format("[BuffMgr]entity is null,uid is {0}.", uid));
+                LogHelper.PrintError(string.Format("[BuffMgr]entity is null,uid is {0}.", uid));
                 return;
             }
             BuffComponent comp = entity.BuffComp;
             if (comp == null)
             {
-                LogUtil.LogUtility.PrintError(string.Format("[BuffMgr]buffComponent is null,uid is {0}.", uid));
+                LogHelper.PrintError(string.Format("[BuffMgr]buffComponent is null,uid is {0}.", uid));
                 return;
             }
             Buff buff = null;// 

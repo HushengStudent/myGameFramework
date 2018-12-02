@@ -109,12 +109,12 @@ namespace Framework
 
         public void SetLogLevel()
         {
-            LogUtil.LogUtility.LogEnable = false;
+            LogHelper.LogEnable = false;
 #if UNITY_EDITOR
-            LogUtil.LogUtility.LogEnable = true;
+            LogHelper.LogEnable = true;
 #endif
-            LogUtil.LogUtility.WarningEnable = true;
-            LogUtil.LogUtility.ErrorEnable = true;
+            LogHelper.WarningEnable = true;
+            LogHelper.ErrorEnable = true;
         }
     }
 }

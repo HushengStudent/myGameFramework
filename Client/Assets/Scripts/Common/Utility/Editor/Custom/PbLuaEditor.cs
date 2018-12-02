@@ -11,7 +11,6 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 using Framework;
-using LogUtil;
 
 namespace Common
 {
@@ -56,7 +55,7 @@ namespace Common
                 info.UseShellExecute = true;
                 info.WorkingDirectory = workPath;
                 info.ErrorDialog = true;
-                LogUtility.Print("gen proto to lua:" + name);
+                LogHelper.Print("gen proto to lua:" + name);
                 Process pro = Process.Start(info);
                 pro.WaitForExit();
             }
@@ -94,7 +93,7 @@ namespace Common
                 info.UseShellExecute = true;
                 info.WorkingDirectory = workPath;
                 info.ErrorDialog = true;
-                LogUtility.Print("gen proto to c#:" + name);
+                LogHelper.Print("gen proto to c#:" + name);
                 Process pro = Process.Start(info);
                 pro.WaitForExit();
             }

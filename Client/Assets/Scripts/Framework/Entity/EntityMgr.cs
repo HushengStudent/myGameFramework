@@ -7,7 +7,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using LogUtil;
 using System;
 
 namespace Framework
@@ -98,7 +97,7 @@ namespace Framework
             }
             else
             {
-                LogUtil.LogUtility.PrintError("[EntityMgr]CreateEntity " + typeof(T).ToString() + " error!");
+                LogHelper.PrintError("[EntityMgr]CreateEntity " + typeof(T).ToString() + " error!");
                 return null;
             }
         }

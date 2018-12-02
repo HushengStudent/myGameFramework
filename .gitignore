@@ -40,3 +40,5 @@
 /Client/Unity.Postprocessing.Runtime.csproj
 /Client/Assets/StreamingAssets/build_info.txt
 /Client/Assets/StreamingAssets/build_info.txt.meta
+/Tools/LogHelper/.vs
+/Tools/LogHelper/LogHelper/obj

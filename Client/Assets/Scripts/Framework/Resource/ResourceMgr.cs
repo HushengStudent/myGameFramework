@@ -42,11 +42,11 @@ namespace Framework
             {
                 shaderAssetBundle.LoadAllAssets();
                 Shader.WarmupAllShaders();
-                LogUtil.LogUtility.Print("[ResourceMgr]Load Shader and WarmupAllShaders Success!");
+                LogHelper.Print("[ResourceMgr]Load Shader and WarmupAllShaders Success!");
             }
             else
             {
-                LogUtil.LogUtility.PrintError("[ResourceMgr]Load Shader and WarmupAllShaders failure!");
+                LogHelper.PrintError("[ResourceMgr]Load Shader and WarmupAllShaders failure!");
             }
             //AssetBundleMgr.Instance.UnloadMirroring(AssetType.Shader, "Shader");
         }
@@ -83,7 +83,7 @@ namespace Framework
                     return loader.GetAsset(ctrl);
                 }
             }
-            LogUtil.LogUtility.PrintError(string.Format("[ResourceMgr]LoadResSync Load Asset {0} failure!", assetName + "." + type.ToString()));
+            LogHelper.PrintError(string.Format("[ResourceMgr]LoadResSync Load Asset {0} failure!", assetName + "." + type.ToString()));
             return null;
         }
 
@@ -140,7 +140,7 @@ namespace Framework
             }
             else
             {
-                LogUtil.LogUtility.PrintError(string.Format("[ResourceMgr]LoadResAsync Load Asset {0} failure!", assetName + "." + type.ToString()));
+                LogHelper.PrintError(string.Format("[ResourceMgr]LoadResAsync Load Asset {0} failure!", assetName + "." + type.ToString()));
             }
         }
 
@@ -167,7 +167,7 @@ namespace Framework
             }
             if (ctrl == null)
             {
-                LogUtil.LogUtility.PrintError(string.Format("[ResourceMgr]LoadAssetFromAssetBundleSync Load Asset {0} failure!", assetName + "." + type.ToString()));
+                LogHelper.PrintError(string.Format("[ResourceMgr]LoadAssetFromAssetBundleSync Load Asset {0} failure!", assetName + "." + type.ToString()));
             }
             return ctrl;
         }
@@ -231,7 +231,7 @@ namespace Framework
             ctrl = loader.GetAsset(request.asset as T);
             if (ctrl == null)
             {
-                LogUtil.LogUtility.PrintError(string.Format("[ResourceMgr]LoadAssetFromAssetBundleSync Load Asset {0} failure!", assetName + "." + type.ToString()));
+                LogHelper.PrintError(string.Format("[ResourceMgr]LoadAssetFromAssetBundleSync Load Asset {0} failure!", assetName + "." + type.ToString()));
             }
             else
             {

@@ -11,7 +11,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using LogUtil;
 
 namespace Framework
 {
@@ -62,21 +61,21 @@ namespace Framework
 
         public void AddClick(UnityAction callBack)
         {
-            if (null == CurButton) LogUtility.PrintError("[LuaComponent]Button is null.");
+            if (null == CurButton) LogHelper.PrintError("[LuaComponent]Button is null.");
             CurButton.onClick.RemoveAllListeners();
             CurButton.onClick.AddListener(callBack);
         }
 
         public void SetSprite(string atlas, string icon)
         {
-            if (null == CurImage) LogUtility.PrintError("[LuaComponent]Image is null.");
+            if (null == CurImage) LogHelper.PrintError("[LuaComponent]Image is null.");
             //CurImage.sprite = 
             CurImage.SetNativeSize();
         }
 
         public void SetSliderValue(float value)
         {
-            if (null == CurSlider) LogUtility.PrintError("[LuaComponent]Slider is null.");
+            if (null == CurSlider) LogHelper.PrintError("[LuaComponent]Slider is null.");
             CurSlider.value = value;
         }
     }

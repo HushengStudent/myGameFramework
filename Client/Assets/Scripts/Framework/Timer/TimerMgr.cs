@@ -43,7 +43,7 @@ namespace Framework
         {
             serverTime = time;
             clientStartTime = Time.realtimeSinceStartup;
-            LogUtil.LogUtility.PrintWarning(string.Format("[Sync Server Time] ServerTime = {0}", serverTime));
+            LogHelper.PrintWarning(string.Format("[Sync Server Time] ServerTime = {0}", serverTime));
         }
 
         #endregion

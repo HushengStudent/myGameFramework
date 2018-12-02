@@ -323,7 +323,7 @@ namespace Framework
         public static void OnCallLuaFunc(LuaByteBuffer data, LuaFunction func)
         {
             if (func != null) func.Call(data);
-            LogUtil.LogUtility.Print("OnCallLuaFunc length:>>" + data.buffer.Length);
+            LogHelper.Print("OnCallLuaFunc length:>>" + data.buffer.Length);
         }
 
         #endregion

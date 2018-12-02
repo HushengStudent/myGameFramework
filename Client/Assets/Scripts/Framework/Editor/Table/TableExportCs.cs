@@ -62,7 +62,7 @@ namespace Framework
                     TableFiledType type = TableFiledType.STRING;
                     if (temp.Length < 2)
                     {
-                        LogUtil.LogUtility.PrintWarning(string.Format("#配表未指定类型{0}行,{1}列,请先初始化#path:" + path, 2.ToString(), i.ToString()));
+                        LogHelper.PrintWarning(string.Format("#配表未指定类型{0}行,{1}列,请先初始化#path:" + path, 2.ToString(), i.ToString()));
                         return;
                     }
                     else

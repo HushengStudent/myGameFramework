@@ -25,7 +25,7 @@ namespace Framework
             T temp = null;
             if (go == null)
             {
-                LogUtil.LogUtility.PrintError("[UnityUtility]AddOrGetComponent error:gameObject is null!");
+                LogHelper.PrintError("[UnityUtility]AddOrGetComponent error:gameObject is null!");
                 return null;
             }
             temp = go.GetComponent<T>();

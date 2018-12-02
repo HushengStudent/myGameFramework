@@ -19,7 +19,7 @@ namespace Framework
             string str = table["Level"].ToString();
             if (!int.TryParse(str, out _level))
             {
-                LogUtil.LogUtility.PrintError("[BTLevel]get level is error!");
+                LogHelper.PrintError("[BTLevel]get level is error!");
             }
         }
 
@@ -33,7 +33,7 @@ namespace Framework
 
         protected override void UpdateEx(float interval)
         {
-            LogUtil.LogUtility.PrintWarning(string.Format("BTLevel's level:{0}", _level));
+            LogHelper.PrintWarning(string.Format("BTLevel's level:{0}", _level));
             Reslut = BehaviorState.Finish;
         }
     }

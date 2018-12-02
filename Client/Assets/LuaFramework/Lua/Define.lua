@@ -15,32 +15,32 @@ resourceMgr = Framework.ResourceMgr.Instance
 
 ---[Utility]
 luaUtility = Framework.LuaUtility.Instance --luaUtility
-logUtility = LogUtil.LogUtility
+logHelper = LogHelper
 luaBuffer = Framework.LuaBuffer
 LuaNetUtility = Framework.LuaNetUtility
 
 ---[Enum]
-logColor = LogUtil.LogColor
+logColor = LogColor
 
 ---[Function]
 
 ---log print
 function log(msg)
-    logUtility.Print(msg)
+    logHelper.Print(msg)
 end
 
 function logWarn(msg)
-    logUtility.PrintWarning(msg)
+    logHelper.PrintWarning(msg)
 end
 
 function logError(msg)
-    logUtility.PrintError(msg)
+    logHelper.PrintError(msg)
 end
 
 function logGreen(msg)
-    logUtility.Print(msg,logColor.Green)
+    logHelper.Print(msg,logColor.Green)
 end
 
 function logYellow(msg)
-    logUtility.Print(msg,logColor.Yellow)
+    logHelper.Print(msg,logColor.Yellow)
 end

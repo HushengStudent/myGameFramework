@@ -37,17 +37,17 @@ namespace Framework
         {
             if (null != _instance)
             {
-                LogUtil.LogUtility.PrintWarning((typeof(T)).ToString() + " singleton Instance is not null.");
+                LogHelper.PrintWarning((typeof(T)).ToString() + " singleton Instance is not null.");
             }
             else
             {
-                LogUtil.LogUtility.Print((typeof(T)).ToString() + " singleton Instance created.");
+                LogHelper.Print((typeof(T)).ToString() + " singleton Instance created.");
             }
         }
 
         public virtual void Init()
         {
-            LogUtil.LogUtility.Print((typeof(T)).ToString() + " singleton Instance Init.");
+            LogHelper.Print((typeof(T)).ToString() + " singleton Instance Init.");
         }
     }
 }

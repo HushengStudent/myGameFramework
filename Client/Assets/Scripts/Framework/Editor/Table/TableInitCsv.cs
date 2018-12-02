@@ -39,7 +39,7 @@ namespace Framework
             }
             catch (Exception e)
             {
-                LogUtil.LogUtility.PrintWarning(e.ToString());
+                LogHelper.PrintWarning(e.ToString());
             }
             if (string.IsNullOrEmpty(path))
                 return;
@@ -55,7 +55,7 @@ namespace Framework
                     string type = TableFiledType.STRING.ToString();
                     if (temp.Length < 2)
                     {
-                        LogUtil.LogUtility.PrintWarning(string.Format("#配表未指定类型{0}行,{1}列#path:" + path, 2.ToString(), i.ToString()));
+                        LogHelper.PrintWarning(string.Format("#配表未指定类型{0}行,{1}列#path:" + path, 2.ToString(), i.ToString()));
                         autoSave = true;
                         _infoDict[2][i] = temp[0] + ":" + type;
                     }
@@ -77,7 +77,7 @@ namespace Framework
         {
             if (string.IsNullOrEmpty(_targetPath))
             {
-                LogUtil.LogUtility.PrintWarning("#未指定配表路径#path:" + _targetPath);
+                LogHelper.PrintWarning("#未指定配表路径#path:" + _targetPath);
                 return;
             }
             int count = _infoDict.Count;

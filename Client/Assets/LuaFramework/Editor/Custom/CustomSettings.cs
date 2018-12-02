@@ -157,8 +157,8 @@ public static class CustomSettings
         //Framework;
         _GT(typeof(LuaMgr)),
         _GT(typeof(LuaUtility)),
-        _GT(typeof(LogUtil.LogUtility)),
-        _GT(typeof(LogUtil.LogColor)),
+        _GT(typeof(LogHelper)),
+        _GT(typeof(LogColor)),
         _GT(typeof(LuaController)),
         _GT(typeof(LuaComponent)),
         _GT(typeof(SceneMgr)),

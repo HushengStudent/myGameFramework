@@ -41,7 +41,7 @@ namespace Framework
                     string type = TableFiledType.STRING.ToString();
                     if (temp.Length < 2)
                     {
-                        LogUtil.LogUtility.PrintWarning(string.Format("#配表未指定类型{0}行,{1}列#path:" + path, 2.ToString(), i.ToString()));
+                        LogHelper.PrintWarning(string.Format("#配表未指定类型{0}行,{1}列#path:" + path, 2.ToString(), i.ToString()));
                         return;
                     }
                     else
@@ -59,7 +59,7 @@ namespace Framework
                     List<string> info = _infoDict[index];
                     if (info.Count != col)
                     {
-                        LogUtil.LogUtility.PrintWarning(string.Format("#配表未指定类型{0}行错误#path:" + path, index));
+                        LogHelper.PrintWarning(string.Format("#配表未指定类型{0}行错误#path:" + path, index));
                         return;
                     }
                     for (int i = 0; i < info.Count; i++)

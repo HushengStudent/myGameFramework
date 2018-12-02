@@ -47,10 +47,10 @@ namespace Framework
                             return;
                         case BehaviorState.Failure:
                         case BehaviorState.Reset:
-                            LogUtil.LogUtility.PrintError("[BTSelector]BTSelector execute failure!");
+                            LogHelper.PrintError("[BTSelector]BTSelector execute failure!");
                             break;
                         default:
-                            LogUtil.LogUtility.PrintError("[BTSelector]BTSelector execute failure!");
+                            LogHelper.PrintError("[BTSelector]BTSelector execute failure!");
                             break;
                     }
                 }

@@ -71,7 +71,7 @@ namespace Framework
 
         private void OnError(Session session, SessionErrorCode state, string error)
         {
-            LogUtil.LogUtility.PrintError(string.Format("[NetMgr]Session error,Session Error Code: {0},info: {1}", state.ToString(), error.ToString()));
+            LogHelper.PrintError(string.Format("[NetMgr]Session error,Session Error Code: {0},info: {1}", state.ToString(), error.ToString()));
         }
 
         private void OnClosed(Session session)
@@ -81,7 +81,7 @@ namespace Framework
 
         private void OnConnected(Session session, SessionParam args)
         {
-            LogUtil.LogUtility.Print(string.Format("[NetMgr]Session Connected!"));
+            LogHelper.Print(string.Format("[NetMgr]Session Connected!"));
             ProtoRegister.Register();
             if (!GameMgr.Instance.CheckUpdateState)
             {
@@ -98,7 +98,7 @@ namespace Framework
             }
             catch (Exception e)
             {
-                LogUtil.LogUtility.PrintError(string.Format("[NetMgr]Send {0} error!", e.ToString()));
+                LogHelper.PrintError(string.Format("[NetMgr]Send {0} error!", e.ToString()));
                 _session.Dispose();
             }
         }
@@ -111,7 +111,7 @@ namespace Framework
             }
             catch (Exception e)
             {
-                LogUtil.LogUtility.PrintError(string.Format("[NetMgr]Send {0} error!", e.ToString()));
+                LogHelper.PrintError(string.Format("[NetMgr]Send {0} error!", e.ToString()));
                 _session.Dispose();
             }
         }

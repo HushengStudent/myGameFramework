@@ -53,7 +53,7 @@ namespace Framework
             }
             catch (Exception e)
             {
-                LogUtil.LogUtility.PrintWarning(e.ToString());
+                LogHelper.PrintWarning(e.ToString());
             }
             if (string.IsNullOrEmpty(path))
                 return;

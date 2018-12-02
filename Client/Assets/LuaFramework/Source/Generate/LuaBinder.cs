@@ -10,6 +10,8 @@ public static class LuaBinder
 		float t = Time.realtimeSinceStartup;
 		L.BeginModule(null);
 		LuaInterface_DebuggerWrap.Register(L);
+		LogHelperWrap.Register(L);
+		LogColorWrap.Register(L);
 		L.BeginModule("UnityEngine");
 		UnityEngine_ComponentWrap.Register(L);
 		UnityEngine_TransformWrap.Register(L);
@@ -92,10 +94,6 @@ public static class LuaBinder
 		Framework_Singleton_Framework_SceneMgrWrap.Register(L);
 		Framework_Singleton_Framework_ResourceMgrWrap.Register(L);
 		L.RegFunction("SceneLoadEventHandler", Framework_SceneLoadEventHandler);
-		L.EndModule();
-		L.BeginModule("LogUtil");
-		LogUtil_LogUtilityWrap.Register(L);
-		LogUtil_LogColorWrap.Register(L);
 		L.EndModule();
 		L.BeginModule("System");
 		L.RegFunction("Action", System_Action);

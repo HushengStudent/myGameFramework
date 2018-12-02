@@ -29,7 +29,7 @@ namespace Framework
 
         protected override void UpdateEx(float interval)
         {
-            LogUtil.LogUtility.Print(_log);
+            LogHelper.Print(_log);
             Reslut = BehaviorState.Finish;
         }
     }

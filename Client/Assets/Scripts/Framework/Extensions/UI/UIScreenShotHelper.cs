@@ -25,7 +25,7 @@ namespace Framework
                 tex.Apply();
 
                 byte[] texByte = tex.EncodeToPNG();
-                LogUtil.LogUtility.Print("[UIScreenShotHelper]Save Image to:" + Application.dataPath.ToLower() + "/../ScreenShot/");
+                LogHelper.Print("[UIScreenShotHelper]Save Image to:" + Application.dataPath.ToLower() + "/../ScreenShot/");
                 FileHelper.Write2Bytes(Application.dataPath.ToLower() + "/../ScreenShot/ScreenShot.png", texByte);
 
                 if (action != null)
@@ -56,7 +56,7 @@ namespace Framework
                 RenderTexture.active = activeRt;
 
                 byte[] texByte = tex.EncodeToPNG();
-                LogUtil.LogUtility.Print("[UIScreenShotHelper]Save Image to:" + Application.dataPath.ToLower() + "/../ScreenShot/");
+                LogHelper.Print("[UIScreenShotHelper]Save Image to:" + Application.dataPath.ToLower() + "/../ScreenShot/");
                 FileHelper.Write2Bytes(Application.dataPath.ToLower() + "/../ScreenShot/CameraShot.png", texByte);
 
                 if (action != null)

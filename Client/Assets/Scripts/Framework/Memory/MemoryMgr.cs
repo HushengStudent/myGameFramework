@@ -24,7 +24,7 @@ namespace Framework
         {
             base.Init();
             float allMenory = GetAllMemory();
-            LogUtil.LogUtility.Print(string.Format("Used Heap Size: {0} MB", allMenory.ToString("F3")));
+            LogHelper.Print(string.Format("Used Heap Size: {0} MB", allMenory.ToString("F3")));
         }
 
         protected override void AwakeEx()
@@ -48,12 +48,12 @@ namespace Framework
             float allMenory = GetAllMemory();
             if (allMenory > _maxMemoryUse)
             {
-                LogUtil.LogUtility.PrintError(string.Format("Used Heap Size: {0} MB", allMenory.ToString("F3")));
+                LogHelper.PrintError(string.Format("Used Heap Size: {0} MB", allMenory.ToString("F3")));
                 FreeMemory();
             }
             else
             {
-                LogUtil.LogUtility.Print(string.Format("Used Heap Size: {0} MB", allMenory.ToString("F3")));
+                LogHelper.Print(string.Format("Used Heap Size: {0} MB", allMenory.ToString("F3")));
             }
         }
 

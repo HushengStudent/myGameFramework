@@ -54,7 +54,7 @@ namespace Framework
             Stopwatch watch = Stopwatch.StartNew();//开启计时;
             BuildPipeline.BuildAssetBundles(buildPath, AssetBuildDefine.options, AssetBuildDefine.buildTarget);
             watch.Stop();
-            LogUtil.LogUtility.PrintWarning(string.Format("[BuildBat]BuildAllAssetBundle Spend Time:{0}s", watch.Elapsed.TotalSeconds));
+            LogHelper.PrintWarning(string.Format("[BuildBat]BuildAllAssetBundle Spend Time:{0}s", watch.Elapsed.TotalSeconds));
             AssetDatabase.Refresh();
             EditorUtility.UnloadUnusedAssetsImmediate();
         }

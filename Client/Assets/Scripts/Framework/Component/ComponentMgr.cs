@@ -7,7 +7,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using LogUtil;
 using System;
 using MEC;
 
@@ -96,7 +95,7 @@ namespace Framework
             }
             else
             {
-                LogUtil.LogUtility.PrintError("[ComponentMgr]CreateComponent " + typeof(T).ToString() + " error!");
+                LogHelper.PrintError("[ComponentMgr]CreateComponent " + typeof(T).ToString() + " error!");
                 return null;
             }
         }

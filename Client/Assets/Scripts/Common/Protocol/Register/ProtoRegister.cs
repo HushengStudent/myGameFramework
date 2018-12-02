@@ -20,7 +20,7 @@ public class ProtoRegister
         }
         else
         {
-            LogUtil.LogUtility.PrintError(string.Format("[ProtoRegister]Register {0} error!", type.ToString()));
+            LogHelper.PrintError(string.Format("[ProtoRegister]Register {0} error!", type.ToString()));
         }
     }
 
@@ -34,7 +34,7 @@ public class ProtoRegister
             }
             else
             {
-                LogUtil.LogUtility.PrintError(string.Format("[ProtoRegister]UnRegister {0}!", type.ToString()));
+                LogHelper.PrintError(string.Format("[ProtoRegister]UnRegister {0}!", type.ToString()));
                 return null;
             }
         }
@@ -51,7 +51,7 @@ public class ProtoRegister
             }
             else
             {
-                LogUtil.LogUtility.PrintError(string.Format("[ProtoRegister]UnRegister {0}!", type.ToString()));
+                LogHelper.PrintError(string.Format("[ProtoRegister]UnRegister {0}!", type.ToString()));
             }
         }
     }

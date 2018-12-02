@@ -35,7 +35,7 @@ namespace Framework
                 {
                     SdkCallBack.Add(cbName, cb);
                 }
-                LogUtil.LogUtility.Print("[SdkMgr]Register Callback Success:" + cbName);
+                LogHelper.Print("[SdkMgr]Register Callback Success:" + cbName);
             }
         }
 

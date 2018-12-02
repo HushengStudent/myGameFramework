@@ -51,7 +51,7 @@ namespace Framework
                         break;
                     default:
                         Enable = false;
-                        LogUtil.LogUtility.PrintError("[BehaviorTree]error state.");
+                        LogHelper.PrintError("[BehaviorTree]error state.");
                         break;
                 }
             }

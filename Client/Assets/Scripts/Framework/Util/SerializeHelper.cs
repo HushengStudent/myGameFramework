@@ -28,7 +28,7 @@ namespace Framework
                 }
                 catch (Exception e)
                 {
-                    LogUtil.LogUtility.PrintError(e.ToString());
+                    LogHelper.PrintError(e.ToString());
                 }
             }
         }
@@ -45,7 +45,7 @@ namespace Framework
             }
             catch (Exception e)
             {
-                LogUtil.LogUtility.PrintError(e.ToString());
+                LogHelper.PrintError(e.ToString());
                 return default(T);
             }
         }
@@ -61,7 +61,7 @@ namespace Framework
                 }
                 catch (Exception e)
                 {
-                    LogUtil.LogUtility.PrintError(e.ToString());
+                    LogHelper.PrintError(e.ToString());
                 }
             }
         }
@@ -78,7 +78,7 @@ namespace Framework
             }
             catch (Exception e)
             {
-                LogUtil.LogUtility.PrintError(e.ToString());
+                LogHelper.PrintError(e.ToString());
                 return default(T);
             }
         }

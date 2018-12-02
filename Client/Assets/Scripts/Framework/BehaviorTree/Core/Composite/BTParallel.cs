@@ -48,11 +48,11 @@ namespace Framework
                         case BehaviorState.Failure:
                         case BehaviorState.Reset:
                             Reslut = BehaviorState.Failure;
-                            LogUtil.LogUtility.PrintError("[BTParallel]BTParallel execute failure!");
+                            LogHelper.PrintError("[BTParallel]BTParallel execute failure!");
                             return;
                         default:
                             Reslut = BehaviorState.Failure;
-                            LogUtil.LogUtility.PrintError("[BTParallel]BTParallel execute failure!");
+                            LogHelper.PrintError("[BTParallel]BTParallel execute failure!");
                             return;
                     }
                 }

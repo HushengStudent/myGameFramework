@@ -55,11 +55,11 @@ namespace Framework
                     case BehaviorState.Failure:
                     case BehaviorState.Reset:
                         Reslut = BehaviorState.Failure;
-                        LogUtil.LogUtility.PrintError("[BTRandom]BTRandom execute failure!");
+                        LogHelper.PrintError("[BTRandom]BTRandom execute failure!");
                         break;
                     default:
                         Reslut = BehaviorState.Failure;
-                        LogUtil.LogUtility.PrintError("[BTRandom]BTRandom execute failure!");
+                        LogHelper.PrintError("[BTRandom]BTRandom execute failure!");
                         break;
                 }
             }

@@ -49,7 +49,7 @@ namespace Framework
         {
             if (_prefab == null)
             {
-                LogUtil.LogUtility.PrintError("[LoopScrollRect]prefab is empty!");
+                LogHelper.PrintError("[LoopScrollRect]prefab is empty!");
                 return false;
             }
             if (_fixedCount <= 0)
@@ -58,12 +58,12 @@ namespace Framework
             }
             if (_elements.Count > 0)
             {
-                LogUtil.LogUtility.PrintError("[LoopScrollRect]Init repeated!");
+                LogHelper.PrintError("[LoopScrollRect]Init repeated!");
             }
             _scrollRect = transform.GetComponentInParent<ScrollRect>();
             if (_scrollRect == null)
             {
-                LogUtil.LogUtility.PrintError("[LoopScrollRect]scrollRect is empty!");
+                LogHelper.PrintError("[LoopScrollRect]scrollRect is empty!");
                 return false;
             }
             _scrollTrans = _scrollRect.transform.GetComponent<RectTransform>();
@@ -303,7 +303,7 @@ namespace Framework
             {
                 onLoopItemUpdate = (go, index) =>
                 {
-                    LogUtil.LogUtility.Print("===>>>[curIndex]:" + index);
+                    LogHelper.Print("===>>>[curIndex]:" + index);
                 };
                 if (InitScrollRect())
                 {

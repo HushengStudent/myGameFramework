@@ -99,7 +99,7 @@ namespace Framework
                     else
                     {
                         //需要打包AssetBundle的资源目录下的资源,引用非该目录下的资源;
-                        LogUtil.LogUtility.Print("[Asset Dependencies Analysis] path:" + allAssetPath[i] + "--->>>reference--->>>: " + tempPath);
+                        LogHelper.Print("[Asset Dependencies Analysis] path:" + allAssetPath[i] + "--->>>reference--->>>: " + tempPath);
                     }
                 }
             }
@@ -173,7 +173,7 @@ namespace Framework
             EditorUtility.ClearProgressBar();
 
             watch.Stop();
-            LogUtil.LogUtility.PrintWarning(string.Format("[AssetDependenciesAnalysis]Asset Dependencies Analysis Spend Time:{0}s", watch.Elapsed.TotalSeconds));
+            LogHelper.PrintWarning(string.Format("[AssetDependenciesAnalysis]Asset Dependencies Analysis Spend Time:{0}s", watch.Elapsed.TotalSeconds));
 
             AssetDatabase.Refresh();
         }

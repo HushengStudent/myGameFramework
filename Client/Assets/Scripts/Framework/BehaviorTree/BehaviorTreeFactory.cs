@@ -22,7 +22,7 @@ namespace Framework
             InitDict(path);
             if (_rootBehavior == null)
             {
-                LogUtil.LogUtility.PrintError("[BehaviorTreeFactory]Root Behavior is null!");
+                LogHelper.PrintError("[BehaviorTreeFactory]Root Behavior is null!");
                 return null;
             }
             GenerateConnect(new List<AbsBehavior>() { _rootBehavior });
@@ -65,7 +65,7 @@ namespace Framework
                 }
                 else
                 {
-                    LogUtil.LogUtility.PrintError("[BehaviorTreeFactory]try get node id error!");
+                    LogHelper.PrintError("[BehaviorTreeFactory]try get node id error!");
                 }
             }
             for (int i = 0; i < connectionList.Count; i++)
@@ -88,7 +88,7 @@ namespace Framework
                 }
                 else
                 {
-                    LogUtil.LogUtility.PrintError("[BehaviorTreeFactory]try get source id and target id error!");
+                    LogHelper.PrintError("[BehaviorTreeFactory]try get source id and target id error!");
                 }
             }
         }

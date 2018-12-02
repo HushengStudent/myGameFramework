@@ -21,7 +21,7 @@ namespace Framework
             string[] info = FileHelper.ReadFromTxt(path);
             if (info.Length < 3)
             {
-                LogUtil.LogUtility.PrintError("#配置表错误#path:" + path);
+                LogHelper.PrintError("#配置表错误#path:" + path);
                 return null;
             }
             int index = 1;

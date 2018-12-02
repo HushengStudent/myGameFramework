@@ -123,7 +123,7 @@ namespace Framework
             }
             catch (Exception e)
             {
-                LogUtil.LogUtility.PrintWarning(e.ToString());
+                LogHelper.PrintWarning(e.ToString());
             }
             return ms.GetBuffer();
         }

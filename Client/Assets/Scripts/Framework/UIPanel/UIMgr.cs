@@ -49,7 +49,7 @@ namespace Framework
                 _curPanel = CreatePanel(type);
                 if (CurPanel == null)
                 {
-                    LogUtil.LogUtility.PrintError(string.Format("[UIMgr]trans to panel {0} error.", type.ToString()));
+                    LogHelper.PrintError(string.Format("[UIMgr]trans to panel {0} error.", type.ToString()));
                     return;
                 }
             }

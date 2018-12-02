@@ -32,7 +32,7 @@ namespace Framework
             bool result = false;
             for (int i = 0; i < triangles.Length; i += 3)
             {
-                LogUtil.LogUtility.Print(string.Format("{0},{1},{2}", triangles[i], triangles[i + 1], triangles[i + 2]));
+                LogHelper.Print(string.Format("{0},{1},{2}", triangles[i], triangles[i + 1], triangles[i + 2]));
                 if (IsInside(worldVectors[triangles[i]], worldVectors[triangles[i + 1]], worldVectors[triangles[i + 2]], target))
                 {
                     result = true;
@@ -41,11 +41,11 @@ namespace Framework
             }
             if (result)
             {
-                LogUtil.LogUtility.Print("success!");
+                LogHelper.Print("success!");
             }
             else
             {
-                LogUtil.LogUtility.Print("error!");
+                LogHelper.Print("error!");
             }
         }
 

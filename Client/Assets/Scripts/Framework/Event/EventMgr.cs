@@ -51,7 +51,7 @@ namespace Framework
         {
             if (null == receiver)
             {
-                LogUtil.LogUtility.PrintError("[EventMgr]AddEvent error,the receiver is null.");
+                LogHelper.PrintError("[EventMgr]AddEvent error,the receiver is null.");
                 return;
             }
             Dictionary<EventType, List<EventHandler>> dict;
@@ -69,7 +69,7 @@ namespace Framework
             list = dict[type];
             if (list.Contains(callBack))
             {
-                LogUtil.LogUtility.PrintWarning(string.Format("[EventMgr]AddEvent repeat,receiver:{0},eventType:{1}.",
+                LogHelper.PrintWarning(string.Format("[EventMgr]AddEvent repeat,receiver:{0},eventType:{1}.",
                     receiver.ID, type.ToString()));
             }
             else
@@ -87,7 +87,7 @@ namespace Framework
         {
             if (null == receiver)
             {
-                LogUtil.LogUtility.PrintError("[EventMgr]RemoveEvent error,the receiver is null.");
+                LogHelper.PrintError("[EventMgr]RemoveEvent error,the receiver is null.");
                 return;
             }
             Dictionary<EventType, List<EventHandler>> dict;
@@ -111,7 +111,7 @@ namespace Framework
         {
             if (null == receiver)
             {
-                LogUtil.LogUtility.PrintError("[EventMgr]RemoveEvent error,the receiver is null.");
+                LogHelper.PrintError("[EventMgr]RemoveEvent error,the receiver is null.");
                 return;
             }
             Dictionary<EventType, List<EventHandler>> dict;
@@ -131,7 +131,7 @@ namespace Framework
         {
             if (null == receiver)
             {
-                LogUtil.LogUtility.PrintError("[EventMgr]FireEvent error,the receiver is null.");
+                LogHelper.PrintError("[EventMgr]FireEvent error,the receiver is null.");
                 return;
             }
             Dictionary<EventType, List<EventHandler>> dict;
@@ -172,7 +172,7 @@ namespace Framework
             list = GlobalEventDict[type];
             if (list.Contains(callBack))
             {
-                LogUtil.LogUtility.PrintWarning(string.Format("[EventMgr]AddGlobalEvent repeat,EventType:{0}.",
+                LogHelper.PrintWarning(string.Format("[EventMgr]AddGlobalEvent repeat,EventType:{0}.",
                     type.ToString()));
             }
             else
