@@ -21,8 +21,6 @@ namespace Framework
         {
             if (EditorUtility.DisplayDialog("AssetBundle打包提示", "开始打包AssetBundle？", "打包AssetBundle"))
             {
-                //DeleteAll();
-                //ClearAll();
                 AssetDependenciesAnalysis analysiser = new AssetDependenciesAnalysis();
                 analysiser.AnalysisAllAsset();
                 //tips:Unity5.x Scripts not need to build AssetBundle
