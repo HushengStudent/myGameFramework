@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class TextureImportUtility
+    public class TextureImportHelper
     {
         /*
 

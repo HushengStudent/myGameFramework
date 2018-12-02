@@ -13,12 +13,12 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class LuaCsRefUtility : EditorWindow
+    public class LuaCsRefHelper : EditorWindow
     {
-        [MenuItem("myGameFramework/Utility/Lua Cs Ref Analysis", false, 0)]
+        [MenuItem("myGameFramework/Helper/Lua Cs Ref Analysis", false, 0)]
         public static void GenerateAll()
         {
-            var window = GetWindow(typeof(LuaCsRefUtility), false, "LuaCsRef Utility");
+            var window = GetWindow(typeof(LuaCsRefHelper), false, "LuaCsRef Helper");
             window.Show();
         }
 
