@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public static class UnityUtility
+    public static class UnityHelper
     {
         /// <summary>
         /// 添加组件;

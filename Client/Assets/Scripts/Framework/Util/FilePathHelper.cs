@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public static class FilePathUtility
+    public static class FilePathHelper
     {
         //AssetBundle打包存储路径;
         private static string assetBundlePath = Application.dataPath + "/StreamingAssets/AssetBundle";

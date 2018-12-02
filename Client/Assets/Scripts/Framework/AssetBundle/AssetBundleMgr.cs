@@ -48,11 +48,11 @@ namespace Framework
             {
                 if (null == mainAssetBundle)
                 {
-                    mainAssetBundle = AssetBundle.LoadFromFile(FilePathUtility.AssetBundlePath + "/AssetBundle");
+                    mainAssetBundle = AssetBundle.LoadFromFile(FilePathHelper.AssetBundlePath + "/AssetBundle");
                 }
                 if (mainAssetBundle == null)
                 {
-                    LogUtil.LogUtility.PrintError(string.Format("[AssetBundleMgr]Load AssetBundle {0} failure!", FilePathUtility.AssetBundlePath + "/AssetBundle"));
+                    LogUtil.LogUtility.PrintError(string.Format("[AssetBundleMgr]Load AssetBundle {0} failure!", FilePathHelper.AssetBundlePath + "/AssetBundle"));
                 }
                 return mainAssetBundle;
             }
@@ -71,7 +71,7 @@ namespace Framework
                 }
                 if (manifest == null)
                 {
-                    LogUtil.LogUtility.PrintError(string.Format("[AssetBundleMgr]Load AssetBundleManifest {0} failure!", FilePathUtility.AssetBundlePath + "/AssetBundle"));
+                    LogUtil.LogUtility.PrintError(string.Format("[AssetBundleMgr]Load AssetBundleManifest {0} failure!", FilePathHelper.AssetBundlePath + "/AssetBundle"));
                 }
                 return manifest;
             }
@@ -204,9 +204,9 @@ namespace Framework
         {
             if (type == AssetType.Non || string.IsNullOrEmpty(assetName)) return null;
 
-            string assetBundlePath = FilePathUtility.GetAssetBundlePath(type, assetName);
+            string assetBundlePath = FilePathHelper.GetAssetBundlePath(type, assetName);
             if (assetBundlePath == null) return null;
-            string assetBundleName = FilePathUtility.GetAssetBundleFileName(type, assetName);
+            string assetBundleName = FilePathHelper.GetAssetBundleFileName(type, assetName);
 
             AssetBundle assetBundle = LoadSingleSync(assetBundlePath);
             if (assetBundle == null) return null;
@@ -215,8 +215,8 @@ namespace Framework
             string[] DependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
             foreach (string tempAssetBundle in DependentAssetBundle)
             {
-                if (tempAssetBundle == FilePathUtility.GetAssetBundleFileName(AssetType.Shader, "Shaders")) continue;
-                string tempPtah = FilePathUtility.AssetBundlePath + tempAssetBundle;
+                if (tempAssetBundle == FilePathHelper.GetAssetBundleFileName(AssetType.Shader, "Shaders")) continue;
+                string tempPtah = FilePathHelper.AssetBundlePath + tempAssetBundle;
                 LoadSingleSync(tempPtah);
             }
             return assetBundle;
@@ -233,15 +233,15 @@ namespace Framework
         public IEnumerator<float> LoadAssetBundleAsync(AssetType type, string assetName, Action<AssetBundle> action, Action<float> progress)
         {
             if (type == AssetType.Non || string.IsNullOrEmpty(assetName)) yield break;
-            string assetBundlePath = FilePathUtility.GetAssetBundlePath(type, assetName);
+            string assetBundlePath = FilePathHelper.GetAssetBundlePath(type, assetName);
             if (assetBundlePath == null) yield break;
-            string assetBundleName = FilePathUtility.GetAssetBundleFileName(type, assetName);
+            string assetBundleName = FilePathHelper.GetAssetBundleFileName(type, assetName);
             //先加载依赖的AssetBundle;
             string[] DependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
             foreach (string tempAssetBundle in DependentAssetBundle)
             {
-                if (tempAssetBundle == FilePathUtility.GetAssetBundleFileName(AssetType.Shader, "Shaders")) continue;
-                string tempPtah = FilePathUtility.AssetBundlePath + tempAssetBundle;
+                if (tempAssetBundle == FilePathHelper.GetAssetBundleFileName(AssetType.Shader, "Shaders")) continue;
+                string tempPtah = FilePathHelper.AssetBundlePath + tempAssetBundle;
                 IEnumerator<float> itor = LoadSingleAsync(tempPtah, null, null);
                 while (itor.MoveNext())
                 {
@@ -262,13 +262,13 @@ namespace Framework
         /// <returns>AssetBundle</returns>
         public AssetBundle LoadShaderAssetBundle()
         {
-            string path = FilePathUtility.GetAssetBundlePath(AssetType.Shader, "Shaders");
+            string path = FilePathHelper.GetAssetBundlePath(AssetType.Shader, "Shaders");
             return LoadSingleSync(path);
         }
 
         public AssetBundle LoadLuaAssetBundle()
         {
-            string path = FilePathUtility.GetAssetBundlePath(AssetType.Lua, "lua");
+            string path = FilePathHelper.GetAssetBundlePath(AssetType.Lua, "lua");
             return LoadSingleSync(path);
         }
 
@@ -312,16 +312,16 @@ namespace Framework
             if (type == AssetType.Non || type == AssetType.Shader || type == AssetType.Lua || type == AssetType.Scripts || string.IsNullOrEmpty(assetName))
                 return;
 
-            string assetBundleName = FilePathUtility.GetAssetBundleFileName(type, assetName);
+            string assetBundleName = FilePathHelper.GetAssetBundleFileName(type, assetName);
 
             string[] DependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
             foreach (string tempAssetBundle in DependentAssetBundle)
             {
-                if (tempAssetBundle == FilePathUtility.GetAssetBundleFileName(AssetType.Shader, "Shaders")) continue;
-                string tempPtah = FilePathUtility.AssetBundlePath + tempAssetBundle;
+                if (tempAssetBundle == FilePathHelper.GetAssetBundleFileName(AssetType.Shader, "Shaders")) continue;
+                string tempPtah = FilePathHelper.AssetBundlePath + tempAssetBundle;
                 UnloadAsset(tempPtah, true);
             }
-            string assetBundlePath = FilePathUtility.GetAssetBundlePath(type, assetName);
+            string assetBundlePath = FilePathHelper.GetAssetBundlePath(type, assetName);
             if (assetBundlePath != null)
             {
                 UnloadAsset(assetBundlePath, true);
@@ -337,7 +337,7 @@ namespace Framework
         {
             if (type == AssetType.Non || type == AssetType.Scripts || string.IsNullOrEmpty(assetName))
                 return;
-            string assetBundlePath = FilePathUtility.GetAssetBundlePath(type, assetName);
+            string assetBundlePath = FilePathHelper.GetAssetBundlePath(type, assetName);
             if (assetBundlePath != null)
             {
                 UnloadAsset(assetBundlePath, false);

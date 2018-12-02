@@ -30,9 +30,9 @@ namespace Framework
             if (!Directory.Exists(GameConfig.VersionFilePath))
             {
                 VersionInfo info = new VersionInfo();
-                SerializeUtility.SerializeXml<VersionInfo>(GameConfig.VersionFilePath, info);
+                SerializeHelper.SerializeXml<VersionInfo>(GameConfig.VersionFilePath, info);
             }
-            _localVersionInfo = SerializeUtility.DeserializeXml<VersionInfo>(GameConfig.VersionFilePath);
+            _localVersionInfo = SerializeHelper.DeserializeXml<VersionInfo>(GameConfig.VersionFilePath);
 
             CheckVersion();
         }
@@ -42,7 +42,7 @@ namespace Framework
             WWWDownLoadHelper www = new WWWDownLoadHelper();
             www.SuccessHandler = () =>
             {
-                _netVersionInfo = SerializeUtility.DeserializeXml<VersionInfo>(GameConfig.NetVersionFilePath);
+                _netVersionInfo = SerializeHelper.DeserializeXml<VersionInfo>(GameConfig.NetVersionFilePath);
                 CheckUpdate();
             };
             CoroutineMgr.Instance.StartCoroutine(www.StartDownLoad(_localVersionInfo._updateUrl, GameConfig.NetVersionFilePath));

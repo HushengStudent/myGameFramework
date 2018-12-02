@@ -14,7 +14,7 @@ namespace Framework
     {
         protected ObjectEx()
         {
-            _id = IdGenerater.GenerateId();
+            _id = IdGenerateHelper.GenerateId();
             Enable = false;
         }
 

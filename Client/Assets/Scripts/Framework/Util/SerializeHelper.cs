@@ -15,7 +15,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public static class SerializeUtility
+    public static class SerializeHelper
     {
         public static void SerializeXml<T>(string path, T data)
         {

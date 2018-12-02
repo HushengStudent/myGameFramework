@@ -54,7 +54,7 @@ namespace Framework
         {
             _dataList.Clear();
             int pos = 0;
-            int dataCount = ConverterUtility.GetInt32(bytes, pos);
+            int dataCount = ConvertHelper.GetInt32(bytes, pos);
             pos += Marshal.SizeOf(pos);//int大小;
             for (int i = 0; i < dataCount; i++)
             {

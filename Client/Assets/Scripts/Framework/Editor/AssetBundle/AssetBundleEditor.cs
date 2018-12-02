@@ -25,7 +25,7 @@ namespace Framework
                 analysiser.AnalysisAllAsset();
                 //tips:Unity5.x Scripts not need to build AssetBundle
                 //analysiser.BuildAllScripts();
-                BuildAssetBundle(FilePathUtility.AssetBundlePath);
+                BuildAssetBundle(FilePathHelper.AssetBundlePath);
             }
         }
 

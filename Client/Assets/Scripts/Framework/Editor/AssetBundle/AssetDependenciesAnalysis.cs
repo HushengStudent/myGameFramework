@@ -49,7 +49,7 @@ namespace Framework
         {
             Stopwatch watch = Stopwatch.StartNew();//开启计时;
 
-            string[] allPath = Directory.GetFiles(FilePathUtility.resPath, "*.*", SearchOption.AllDirectories);
+            string[] allPath = Directory.GetFiles(FilePathHelper.resPath, "*.*", SearchOption.AllDirectories);
 
             //剔除.meta文件;
             List<string> allAssetPath = new List<string>();
@@ -85,7 +85,7 @@ namespace Framework
                         allShaderAsset.Add(tempPath);
                         continue;
                     }
-                    if (tempPath.Contains(FilePathUtility.resPath))
+                    if (tempPath.Contains(FilePathHelper.resPath))
                     {
                         //添加依赖的资源信息;
                         allAsset[allAssetPath[i]].sonDependentAssets.Add(tempPath);
@@ -118,14 +118,14 @@ namespace Framework
                     continue;
                 }
                 */
-                if (allAssetPath[i].Contains(FilePathUtility.resPath + "Shaders") && Path.GetExtension(allAssetPath[i]) == ".shader")
+                if (allAssetPath[i].Contains(FilePathHelper.resPath + "Shaders") && Path.GetExtension(allAssetPath[i]) == ".shader")
                 {
                     allShaderAsset.Add(allAssetPath[i]);
                     continue;
                 }
                 if (allAsset[allAssetPath[i]].parentDependentAssets.Count == 0 ||//没有被依赖的资源;
                     allAsset[allAssetPath[i]].parentDependentAssets.Count > 1 ||//被超过一个资源依赖的资源;
-                    allAssetPath[i].Contains(FilePathUtility.singleResPath))//指定要求单独打包的资源;
+                    allAssetPath[i].Contains(FilePathHelper.singleResPath))//指定要求单独打包的资源;
                 {
                     independenceAsset[allAssetPath[i]] = allAsset[allAssetPath[i]];
                 }
@@ -142,7 +142,7 @@ namespace Framework
                 {
                     if (independenceAsset.ContainsKey(allAssetPath[i]))
                     {
-                        importer.assetBundleName = FilePathUtility.GetAssetBundleFileName(independenceAsset[allAssetPath[i]].type, independenceAsset[allAssetPath[i]].assetName);
+                        importer.assetBundleName = FilePathHelper.GetAssetBundleFileName(independenceAsset[allAssetPath[i]].type, independenceAsset[allAssetPath[i]].assetName);
                     }
                     else
                     {
@@ -162,7 +162,7 @@ namespace Framework
                 AssetImporter importer = AssetImporter.GetAtPath(tempPath);
                 if (importer != null)
                 {
-                    importer.assetBundleName = FilePathUtility.GetAssetBundleFileName(AssetType.Shader, "Shaders");
+                    importer.assetBundleName = FilePathHelper.GetAssetBundleFileName(AssetType.Shader, "Shaders");
                     AssetDatabase.ImportAsset(tempPath);
                 }
             }
@@ -180,24 +180,24 @@ namespace Framework
 
         private void SetLuaAssetName()
         {
-            AssetImporter importer = AssetImporter.GetAtPath(FilePathUtility.luaPath);
+            AssetImporter importer = AssetImporter.GetAtPath(FilePathHelper.luaPath);
             if (importer != null)
             {
-                importer.assetBundleName = FilePathUtility.GetAssetBundleFileName(AssetType.Lua, "lua");
-                AssetDatabase.ImportAsset(FilePathUtility.luaPath);
+                importer.assetBundleName = FilePathHelper.GetAssetBundleFileName(AssetType.Lua, "lua");
+                AssetDatabase.ImportAsset(FilePathHelper.luaPath);
             }
         }
 
         private void SetAtlasName()
         {
-            string[] allPath = Directory.GetDirectories(FilePathUtility.atlasPath);
+            string[] allPath = Directory.GetDirectories(FilePathHelper.atlasPath);
             for (int i = 0; i < allPath.Length; i++)
             {
                 AssetImporter importer = AssetImporter.GetAtPath(allPath[i]);
                 if (importer != null)
                 {
                     importer.assetBundleName = ("atlas/" + Path.GetFileName(allPath[i]) + ".assetbundle").ToLower();
-                    AssetDatabase.ImportAsset(FilePathUtility.luaPath);
+                    AssetDatabase.ImportAsset(FilePathHelper.luaPath);
                 }
             }
         }
@@ -212,7 +212,7 @@ namespace Framework
             return new AssetNode()
             {
                 type = AssetBundleDefine.GetAssetType(path),
-                assetName = path.Replace(FilePathUtility.resPath, ""),
+                assetName = path.Replace(FilePathHelper.resPath, ""),
                 assetPath = path,
                 parentDependentAssets = new HashSet<string>(),
                 sonDependentAssets = new HashSet<string>()
@@ -250,7 +250,7 @@ namespace Framework
                 if (importer != null)
                 {
                     importer.assetBundleName = null;
-                    AssetDatabase.ImportAsset(FilePathUtility.luaPath);
+                    AssetDatabase.ImportAsset(FilePathHelper.luaPath);
                 }
             }
             EditorUtility.ClearProgressBar();
@@ -258,7 +258,7 @@ namespace Framework
 
         public void DeleteAllAssetBundle()
         {
-            string[] allPath = Directory.GetFiles(FilePathUtility.AssetBundlePath, "*.*", SearchOption.AllDirectories);
+            string[] allPath = Directory.GetFiles(FilePathHelper.AssetBundlePath, "*.*", SearchOption.AllDirectories);
             foreach (string str in allPath)
             {
                 File.Delete(str);

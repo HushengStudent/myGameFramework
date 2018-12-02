@@ -28,7 +28,7 @@ namespace Framework
         {
             if (_dbDict.ContainsKey(tableName))
                 return;
-            byte[] bytes = FileUtility.ReadFromBytes(_path + tableName + ".byte");
+            byte[] bytes = FileHelper.ReadFromBytes(_path + tableName + ".byte");
             table.LoadData(bytes);
             _dbDict[tableName] = table;
         }

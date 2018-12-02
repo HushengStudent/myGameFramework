@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public static class IniUtility
+    public static class IniHelper
     {
         //去掉一行信息的开始和末尾不需要的信息;
         private static readonly char[] TrimStart = new char[] { ' ', '\t' };

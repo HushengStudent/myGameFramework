@@ -72,7 +72,7 @@ namespace Framework
         /// <returns>ctrl</returns>
         public T LoadResSync<T>(AssetType type, string assetName) where T : Object
         {
-            string path = FilePathUtility.GetResourcePath(type, assetName);
+            string path = FilePathHelper.GetResourcePath(type, assetName);
             IAssetLoader<T> loader = CreateLoader<T>(type);
             bool isInstance = false;
             if (path != null)
@@ -115,7 +115,7 @@ namespace Framework
         /// <returns></returns>
         public IEnumerator<float> LoadResAsync<T>(AssetType type, string assetName, Action<T> action, Action<float> progress) where T : Object
         {
-            string path = FilePathUtility.GetResourcePath(type, assetName);
+            string path = FilePathHelper.GetResourcePath(type, assetName);
             IAssetLoader<T> loader = CreateLoader<T>(type);
 
             T ctrl = null;

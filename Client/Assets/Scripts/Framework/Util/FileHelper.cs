@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public static class FileUtility
+    public static class FileHelper
     {
         #region Txt
 

@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public static class ConverterUtility
+    public static class ConvertHelper
     {
 
         #region bool

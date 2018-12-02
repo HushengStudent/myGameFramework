@@ -13,7 +13,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public static class ZipUtility
+    public static class ZipHelper
     {
         public static byte[] Decompress(byte[] bytes)
         {

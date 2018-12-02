@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public static class IdGenerater
+    public static class IdGenerateHelper
     {
         public static long AppId { private get; set; }
 

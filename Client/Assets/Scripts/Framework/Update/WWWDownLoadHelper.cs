@@ -60,7 +60,7 @@ namespace Framework
                 }
                 else
                 {
-                    FileUtility.Write2Bytes(filePath, _www.bytes);
+                    FileHelper.Write2Bytes(filePath, _www.bytes);
                     _isDone = true;
                     if (SuccessHandler != null)
                     {

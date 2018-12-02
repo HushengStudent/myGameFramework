@@ -51,7 +51,7 @@ namespace Framework
                     _tableTypeDict[i] = TableReader.GetTableFiledType(type);
                 }
                 int col = line.Count;
-                byte[] dataCount = ConverterUtility.GetBytes(_infoDict.Count - 2);
+                byte[] dataCount = ConvertHelper.GetBytes(_infoDict.Count - 2);
                 allBytes.AddRange(dataCount);
                 int index = 3;
                 while (_infoDict.ContainsKey(index))
@@ -69,7 +69,7 @@ namespace Framework
                     }
                     index++;
                 }
-                FileUtility.Write2Bytes(filePath, allBytes.ToArray());
+                FileHelper.Write2Bytes(filePath, allBytes.ToArray());
                 EditorUtility.DisplayDialog("提示", "byte 导出成功！", "确认");
             }
         }
@@ -81,18 +81,18 @@ namespace Framework
             switch (type)
             {
                 case TableFiledType.FLOAT:
-                    targetBytes = ConverterUtility.GetBytes(float.Parse(value));
+                    targetBytes = ConvertHelper.GetBytes(float.Parse(value));
                     break;
                 case TableFiledType.INT:
-                    targetBytes = ConverterUtility.GetBytes(int.Parse(value));
+                    targetBytes = ConvertHelper.GetBytes(int.Parse(value));
                     break;
                 case TableFiledType.BOOL:
-                    targetBytes = ConverterUtility.GetBytes((int.Parse(value)) == 1);
+                    targetBytes = ConvertHelper.GetBytes((int.Parse(value)) == 1);
                     break;
                 case TableFiledType.STRING:
                 default:
-                    targetBytes = ConverterUtility.GetBytes(value);
-                    byte[] countBytes = ConverterUtility.GetBytes(targetBytes.Length);
+                    targetBytes = ConvertHelper.GetBytes(value);
+                    byte[] countBytes = ConvertHelper.GetBytes(targetBytes.Length);
                     bytesList.AddRange(countBytes);
                     break;
             }

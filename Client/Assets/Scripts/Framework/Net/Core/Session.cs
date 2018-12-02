@@ -343,13 +343,13 @@ namespace Framework
                 using (MemoryStream memoryStream = new MemoryStream(packetBuffer, true))
                 {
                     memoryStream.Seek(_defaultPacketLength, SeekOrigin.Begin);
-                    byte[] idBytes = ConverterUtility.GetBytes(id);
+                    byte[] idBytes = ConvertHelper.GetBytes(id);
                     memoryStream.Write(idBytes, 0, idBytes.Length);
                     memoryStream.Write(bufferBytes, 0, bufferBytes.Length);
                     length = (int)memoryStream.Position;
                 }
                 packetLength = length - _defaultPacketLength;
-                ConverterUtility.GetBytes(packetLength).CopyTo(packetBuffer, 0);
+                ConvertHelper.GetBytes(packetLength).CopyTo(packetBuffer, 0);
                 Send(packetBuffer, 0, length);
             }
             catch (Exception exception)
@@ -398,7 +398,7 @@ namespace Framework
                     length = (int)memoryStream.Position;
                 }
                 packetLength = length - _defaultPacketLength;
-                ConverterUtility.GetBytes(packetLength).CopyTo(packetBuffer, 0);
+                ConvertHelper.GetBytes(packetLength).CopyTo(packetBuffer, 0);
                 Send(packetBuffer, 0, length);
             }
             catch (Exception exception)
@@ -534,7 +534,7 @@ namespace Framework
             }
             if (_receiver.Length == _defaultPacketLength)
             {
-                int packetLength = ConverterUtility.GetInt32(_receiver.GetBuffer());
+                int packetLength = ConvertHelper.GetInt32(_receiver.GetBuffer());
                 if (packetLength <= 0)
                 {
                     string errorMessage = string.Format("Packet length '{0}' is invalid.", packetLength.ToString());

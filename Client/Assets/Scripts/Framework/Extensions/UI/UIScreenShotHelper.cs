@@ -26,7 +26,7 @@ namespace Framework
 
                 byte[] texByte = tex.EncodeToPNG();
                 LogUtil.LogUtility.Print("[UIScreenShotHelper]Save Image to:" + Application.dataPath.ToLower() + "/../ScreenShot/");
-                FileUtility.Write2Bytes(Application.dataPath.ToLower() + "/../ScreenShot/ScreenShot.png", texByte);
+                FileHelper.Write2Bytes(Application.dataPath.ToLower() + "/../ScreenShot/ScreenShot.png", texByte);
 
                 if (action != null)
                 {
@@ -57,7 +57,7 @@ namespace Framework
 
                 byte[] texByte = tex.EncodeToPNG();
                 LogUtil.LogUtility.Print("[UIScreenShotHelper]Save Image to:" + Application.dataPath.ToLower() + "/../ScreenShot/");
-                FileUtility.Write2Bytes(Application.dataPath.ToLower() + "/../ScreenShot/CameraShot.png", texByte);
+                FileHelper.Write2Bytes(Application.dataPath.ToLower() + "/../ScreenShot/CameraShot.png", texByte);
 
                 if (action != null)
                 {

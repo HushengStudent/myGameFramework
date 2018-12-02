@@ -12,7 +12,7 @@ using System.Text;
 
 namespace Framework
 {
-    public static class VerifierUtility
+    public static class VerifyHelper
     {
         private static readonly byte[] _zero = new byte[] { 0, 0, 0, 0 };
 

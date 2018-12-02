@@ -18,7 +18,7 @@ namespace Framework
         public static Dictionary<int, List<string>> ReadCsvFile(string path)
         {
             Dictionary<int, List<string>> infoDict = new Dictionary<int, List<string>>();
-            string[] info = FileUtility.ReadFromTxt(path);
+            string[] info = FileHelper.ReadFromTxt(path);
             if (info.Length < 3)
             {
                 LogUtil.LogUtility.PrintError("#配置表错误#path:" + path);
