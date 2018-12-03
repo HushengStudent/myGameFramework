@@ -43,7 +43,7 @@ namespace Framework
                 var height = camera.pixelHeight;
                 var targetRt = camera.targetTexture;
                 var activeRt = RenderTexture.active;
-                RenderTexture rt = new RenderTexture(width, height, 24, RenderTextureFormat.ARGB32);
+                RenderTexture rt = RenderTexture.GetTemporary(width, height, 24, RenderTextureFormat.ARGB32);
                 camera.targetTexture = rt;
                 camera.Render();
                 RenderTexture.active = rt;
@@ -54,6 +54,8 @@ namespace Framework
 
                 camera.targetTexture = targetRt;
                 RenderTexture.active = activeRt;
+
+                RenderTexture.ReleaseTemporary(rt);
 
                 byte[] texByte = tex.EncodeToPNG();
                 LogHelper.Print("[UIScreenShotHelper]Save Image to:" + Application.dataPath.ToLower() + "/../ScreenShot/");
