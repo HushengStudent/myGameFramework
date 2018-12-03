@@ -4,54 +4,104 @@
 ** desc:  ZIP文件解压工具;
 *********************************************************************************/
 
-using ICSharpCode.SharpZipLib.GZip;
+using ICSharpCode.SharpZipLib.Core;
+using ICSharpCode.SharpZipLib.Zip;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using UnityEngine;
 
 namespace Framework
 {
     public static class ZipHelper
     {
-        public static byte[] Decompress(byte[] bytes)
+        private static float progressInterval = 0.5f;
+
+        public static void Compress(string filePath, string outPath, string fileName, Action<float> action)
         {
-            if (bytes == null || bytes.Length <= 0)
+            var compressProgress = 0f;
+            var progress = 0f;
+            string zipFile = outPath + "/" + fileName + ".zip";
+            if (!Directory.Exists(outPath))
             {
-                return bytes;
+                Directory.CreateDirectory(outPath);
             }
-            MemoryStream decompressedStream = null;
-            MemoryStream memoryStream = null;
-            try
+            if (File.Exists(zipFile))
             {
-                decompressedStream = new MemoryStream();
-                memoryStream = new MemoryStream(bytes);
-                using (GZipInputStream gZipInputStream = new GZipInputStream(memoryStream))
+                File.Delete(zipFile);
+            }
+            Thread thread = new Thread(delegate ()
+            {
+                int fileCount = RecursiveFile(filePath);
+                int finishCount = 0;
+                FastZipEvents events = new FastZipEvents();
+                events.Progress = new ProgressHandler((object sender, ProgressEventArgs e) =>
                 {
-                    memoryStream = null;
-                    int bytesRead = 0;
-                    byte[] clip = new byte[0x1000];
-                    while ((bytesRead = gZipInputStream.Read(clip, 0, clip.Length)) != 0)
+                    progress = e.PercentComplete;
+                    if (progress == 100)
                     {
-                        decompressedStream.Write(clip, 0, bytesRead);
+                        finishCount++;
+                        compressProgress = (float)finishCount / (float)fileCount;
+                        if (action != null)
+                        {
+                            action(compressProgress);
+                        }
                     }
-                }
-                return decompressedStream.ToArray();
-            }
-            finally
+                });
+                events.ProgressInterval = TimeSpan.FromSeconds(progressInterval);
+                events.ProcessFile = new ProcessFileHandler((object sender, ScanEventArgs e) => { });
+                FastZip zip = new FastZip(events);
+                zip.CreateZip(zipFile, filePath, true, "");
+            });
+            thread.IsBackground = true;
+            thread.Start();
+        }
+
+        public static void Decompress(string filePath, string outPath, Action<float> action)
+        {
+            if (Directory.Exists(outPath))
             {
-                if (decompressedStream != null)
-                {
-                    decompressedStream.Dispose();
-                    decompressedStream = null;
-                }
-                if (memoryStream != null)
-                {
-                    memoryStream.Dispose();
-                    memoryStream = null;
-                }
+                Directory.Delete(outPath, true);
             }
+            Directory.CreateDirectory(outPath);
+            var deCompressProgress = 0f;
+            var progress = 0f;
+            Thread thread = new Thread(delegate ()
+            {
+                int fileCount = (int)new ZipFile(filePath).Count;
+                int finishCount = 0;
+                FastZipEvents events = new FastZipEvents();
+                events.Progress = new ProgressHandler((object sender, ProgressEventArgs e) =>
+                {
+                    progress = e.PercentComplete;
+                    if (progress == 100)
+                    {
+                        finishCount++;
+                        deCompressProgress = (float)finishCount / (float)fileCount;
+                        if (action != null)
+                        {
+                            action(deCompressProgress);
+                        }
+                    }
+                });
+                events.ProgressInterval = TimeSpan.FromSeconds(progressInterval);
+                events.ProcessFile = new ProcessFileHandler((object sender, ScanEventArgs e) => { });
+                FastZip fastZip = new FastZip(events);
+                fastZip.ExtractZip(filePath, outPath, "");
+            });
+            thread.IsBackground = true;
+            thread.Start();
+        }
+
+        private static int RecursiveFile(string path)
+        {
+            int files = Directory.GetFiles(path).Length;
+            string[] folders = Directory.GetDirectories(path);
+            foreach (string target in folders)
+                files += RecursiveFile(target);
+            return files;
         }
     }
 }

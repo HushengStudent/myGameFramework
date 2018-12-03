@@ -14,7 +14,7 @@ namespace Framework
     public static class FilePathHelper
     {
         //AssetBundle打包存储路径;
-        private static string assetBundlePath = Application.dataPath + "/StreamingAssets/AssetBundle";
+        private static string assetBundlePath = Application.dataPath + "/../AssetBundle";
         public static string AssetBundlePath
         {
             get { return assetBundlePath; }

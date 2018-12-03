@@ -26,8 +26,7 @@ namespace Framework
         void OnGUI()
         {
             EditorGUILayout.BeginVertical();
-
-
+          
             EditorGUILayout.EndVertical();
         }
     }

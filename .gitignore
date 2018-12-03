@@ -42,3 +42,5 @@
 /Client/Assets/StreamingAssets/build_info.txt.meta
 /Tools/LogHelper/.vs
 /Tools/LogHelper/LogHelper/obj
+/Client/Assets/StreamingAssets/AssetBundle
+/Client/Assets/StreamingAssets/AssetBundle.meta
