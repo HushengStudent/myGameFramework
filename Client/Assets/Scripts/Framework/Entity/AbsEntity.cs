@@ -23,29 +23,24 @@ namespace Framework
     {
         protected AbsEntity() : base() { }
 
-        private ulong _uid;
-        private int _entityId;
-        private string _entityName = string.Empty;
-        private string _resPath = string.Empty;
-        private GameObjectEx _gameObjectEx = null;
         private EntityLoadFinishEventHandler _entityLoadFinishHandler = null;
 
-        public ulong UID { get { return _uid; } }
-        public int EntityId { get { return _entityId; } }
-        public string EntityName { get { return _entityName; } }
-        public string ResPath { get { return _resPath; } }
-        public List<AbsComponent> ComponentList = new List<AbsComponent>();
-        public GameObjectEx gameObjectEx { get { return _gameObjectEx; } }
+        public ulong UID { get; private set; }
+        public int EntityId { get; private set; }
+        public string EntityName { get; private set; }
+        public string ResPath { get; private set; }
+        public GameObjectEx gameObjectEx { get; private set; }
         public EntityInitEventHandler EntityInitHandler { get; set; }
+        public List<AbsComponent> ComponentList = new List<AbsComponent>();
         public EntityLoadFinishEventHandler EntityLoadFinishHandler
         {
             get { return _entityLoadFinishHandler; }
             set
             {
-                if (_gameObjectEx != null && _gameObjectEx.gameObject != null)
+                if (gameObjectEx != null && gameObjectEx.gameObject != null)
                 {
                     _entityLoadFinishHandler = value;
-                    _entityLoadFinishHandler(this, _gameObjectEx.gameObject);
+                    _entityLoadFinishHandler(this, gameObjectEx.gameObject);
                 }
             }
         }
@@ -63,14 +58,14 @@ namespace Framework
         /// <param name="name"></param>
         public void Init(int entityId, ulong uid, string name)
         {
-            _uid = uid;
-            _entityName = name;
-            _entityId = entityId;
+            UID = uid;
+            EntityName = name;
+            EntityId = entityId;
             ComponentList.Clear();
 
-            _gameObjectEx = PoolMgr.Instance.Get<GameObjectEx>();
-            _gameObjectEx.AddLoadFinishHandler(OnAttachGoEx);
-            _gameObjectEx.Init(this, _resPath);
+            gameObjectEx = PoolMgr.Instance.Get<GameObjectEx>();
+            gameObjectEx.AddLoadFinishHandler(OnAttachGoEx);
+            gameObjectEx.Init(this, ResPath);
 
             EventSubscribe();
             InitEx();
@@ -113,10 +108,10 @@ namespace Framework
         /// <param name="go"></param>
         protected virtual void OnAttachGoEx(GameObjectEx go)
         {
-            _gameObjectEx = go;
+            gameObjectEx = go;
             if (_entityLoadFinishHandler != null)
             {
-                _entityLoadFinishHandler(this, _gameObjectEx.gameObject);
+                _entityLoadFinishHandler(this, gameObjectEx.gameObject);
             }
         }
         /// <summary>
@@ -124,9 +119,9 @@ namespace Framework
         /// </summary>
         protected virtual void DeAttachGoEx()
         {
-            _gameObjectEx.Uninit();
-            PoolMgr.Instance.Release<GameObjectEx>(_gameObjectEx);
-            _gameObjectEx = null;
+            gameObjectEx.Uninit();
+            PoolMgr.Instance.Release<GameObjectEx>(gameObjectEx);
+            gameObjectEx = null;
         }
         /// <summary>
         /// 注册事件;

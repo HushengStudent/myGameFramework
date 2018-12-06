@@ -20,20 +20,18 @@ namespace Framework
             }
         }
 
-        private BuffComponent _buffComponent;
-
-        public BuffComponent BuffComp { get { return _buffComponent; } }
+        public BuffComponent BuffComp { get; private set; }
 
         protected override void InitEx()
         {
             base.InitEx();
-            _buffComponent = ComponentMgr.Instance.CreateComponent<BuffComponent>(this);
+            BuffComp = ComponentMgr.Instance.CreateComponent<BuffComponent>(this);
         }
 
         protected override void UninitEx()
         {
             base.UninitEx();
-            ComponentMgr.Instance.ReleaseComponent<BuffComponent>(_buffComponent);
+            ComponentMgr.Instance.ReleaseComponent<BuffComponent>(BuffComp);
         }
     }
 }

@@ -14,16 +14,13 @@ namespace Framework
 {
     public class SessionParam
     {
-        private Socket _socket;
-        private IPEndPoint _endPoint;
-
-        public Socket socket { get { return _socket; } }
-        public IPEndPoint EndPoint { get { return _endPoint; } }
+        public Socket socket { get; private set; }
+        public IPEndPoint EndPoint { get; private set; }
 
         public SessionParam(Socket socket, IPAddress addr, int port)
         {
-            _socket = socket;
-            _endPoint = new IPEndPoint(addr, port);
+            this.socket = socket;
+            EndPoint = new IPEndPoint(addr, port);
         }
     }
 }

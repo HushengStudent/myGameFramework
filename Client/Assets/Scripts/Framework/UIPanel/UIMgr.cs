@@ -12,16 +12,15 @@ namespace Framework
 {
     public class UIMgr : MonoSingleton<UIMgr>
     {
-        private BasePanel _curPanel = null;
         private PanelType _curPanelType = PanelType.Non;
 
-        public BasePanel CurPanel { get { return _curPanel; } }
+        public BasePanel CurPanel { get; private set; }
         public PanelType CurPanelType { get { return _curPanelType; } }
 
         public override void Init()
         {
             base.Init();
-            _curPanel = null;
+            CurPanel = null;
             _curPanelType = PanelType.Non;
         }
 
@@ -46,7 +45,7 @@ namespace Framework
             }
             else
             {
-                _curPanel = CreatePanel(type);
+                CurPanel = CreatePanel(type);
                 if (CurPanel == null)
                 {
                     LogHelper.PrintError(string.Format("[UIMgr]trans to panel {0} error.", type.ToString()));

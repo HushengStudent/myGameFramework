@@ -26,10 +26,8 @@ namespace Framework
         private int _defaultMaxPacketLength = 1024 * 64;
 
         private readonly string _name;
-        private SessionType _sessionType;
         private Socket _socket;
         private SessionReceiver _receiver;
-        private bool _active;
         private bool _disposed;
 
         private IPAddress _ipAddress;
@@ -45,16 +43,16 @@ namespace Framework
         public SessionSendEventHandler SendHandler;
 
         public string Name { get { return _name; } }
-        public SessionType Type { get { return _sessionType; } }
-        public bool Active { get { return _active; } }
+        public SessionType Type { get; private set; }
+        public bool Active { get; private set; }
 
         public Session(string name)
         {
             _name = name ?? string.Empty;
-            _sessionType = SessionType.Unknown;
+            Type = SessionType.Unknown;
             _socket = null;
             _receiver = null;
-            _active = false;
+            Active = false;
             _disposed = false;
             ConnectedHandler = null;
             ClosedHandler = null;
@@ -236,10 +234,10 @@ namespace Framework
             switch (addressFamily)
             {
                 case AddressFamily.InterNetwork:
-                    _sessionType = SessionType.IPv4;
+                    Type = SessionType.IPv4;
                     break;
                 case AddressFamily.InterNetworkV6:
-                    _sessionType = SessionType.IPv6;
+                    Type = SessionType.IPv6;
                     break;
                 default:
                     throw new Exception(string.Format("Not supported address family '{0}'.", addressFamily.ToString()));
@@ -262,7 +260,7 @@ namespace Framework
             }
             catch (Exception exception)
             {
-                _active = false;
+                Active = false;
                 if (ErrorHandler != null)
                 {
                     ErrorHandler(this, SessionErrorCode.ConnectError, exception.Message);
@@ -270,7 +268,7 @@ namespace Framework
                 }
                 throw;
             }
-            _active = true;
+            Active = true;
             if (ConnectedHandler != null)
             {
                 ConnectedHandler(this, param);
@@ -301,7 +299,7 @@ namespace Framework
             }
             catch (Exception exception)
             {
-                _active = false;
+                Active = false;
                 if (ErrorHandler != null)
                 {
                     ErrorHandler(this, SessionErrorCode.StateError, exception.Message);
@@ -354,7 +352,7 @@ namespace Framework
             }
             catch (Exception exception)
             {
-                _active = false;
+                Active = false;
                 if (ErrorHandler != null)
                 {
                     ErrorHandler(this, SessionErrorCode.SerializeError, exception.ToString());
@@ -403,7 +401,7 @@ namespace Framework
             }
             catch (Exception exception)
             {
-                _active = false;
+                Active = false;
                 if (ErrorHandler != null)
                 {
                     ErrorHandler(this, SessionErrorCode.SerializeError, exception.ToString());
@@ -428,7 +426,7 @@ namespace Framework
             }
             catch (Exception exception)
             {
-                _active = false;
+                Active = false;
                 if (ErrorHandler != null)
                 {
                     ErrorHandler(this, SessionErrorCode.SendError, exception.Message);
@@ -455,7 +453,7 @@ namespace Framework
             }
             catch (Exception exception)
             {
-                _active = false;
+                Active = false;
                 if (ErrorHandler != null)
                 {
                     ErrorHandler(this, SessionErrorCode.ReceiveError, exception.Message);
@@ -479,7 +477,7 @@ namespace Framework
             }
             catch (Exception exception)
             {
-                _active = false;
+                Active = false;
                 if (ErrorHandler != null)
                 {
                     ErrorHandler(this, SessionErrorCode.ReceiveError, exception.Message);
@@ -506,7 +504,7 @@ namespace Framework
             }
             catch (Exception exception)
             {
-                _active = false;
+                Active = false;
                 if (ErrorHandler != null)
                 {
                     ErrorHandler(this, SessionErrorCode.StreamError, exception.Message);
@@ -608,7 +606,7 @@ namespace Framework
             }
             catch (Exception exception)
             {
-                _active = false;
+                Active = false;
                 if (ErrorHandler != null)
                 {
                     ErrorHandler(this, SessionErrorCode.DeserializeError, exception.ToString());
@@ -629,7 +627,7 @@ namespace Framework
             {
                 return;
             }
-            _active = false;
+            Active = false;
             try
             {
                 _socket.Shutdown(SocketShutdown.Both);

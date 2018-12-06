@@ -19,9 +19,7 @@ namespace Framework
     {
         protected AbsComponent() : base() { }
 
-        private AbsEntity _entity;
-
-        public AbsEntity Entity { get { return _entity; } }
+        public AbsEntity Entity { get; private set; }
         public ComponentInitEventHandler ComponentInitHandler { get; set; }
 
         public virtual void FixedUpdateEx(float interval) { }
@@ -36,13 +34,13 @@ namespace Framework
         public void Init(AbsEntity entity)
         {
             OnAttachEntity(entity);
-            if (_entity.gameObjectEx.IsLoadFinish)
+            if (Entity.gameObjectEx.IsLoadFinish)
             {
-                OnAttachGoEx(_entity.gameObjectEx);
+                OnAttachGoEx(Entity.gameObjectEx);
             }
             else
             {
-                _entity.gameObjectEx.AddLoadFinishHandler(OnAttachGoEx);
+                Entity.gameObjectEx.AddLoadFinishHandler(OnAttachGoEx);
             }
             EventSubscribe();
             InitEx();
@@ -78,7 +76,7 @@ namespace Framework
         /// <param name="entity"></param>
         protected virtual void OnAttachEntity(AbsEntity entity)
         {
-            _entity = entity;
+            Entity = entity;
         }
         /// <summary>
         /// Component附加GameObject;
@@ -90,16 +88,16 @@ namespace Framework
         /// </summary>
         protected virtual void DeAttachEntity()
         {
-            _entity = null;
+            Entity = null;
         }
         /// <summary>
         /// 重置GameObject的附加;
         /// </summary>
         protected virtual void DeAttachGoEx()
         {
-            if (!_entity.gameObjectEx.IsLoadFinish)
+            if (!Entity.gameObjectEx.IsLoadFinish)
             {
-                _entity.gameObjectEx.RemoveLoadFinishHandler(OnAttachGoEx);
+                Entity.gameObjectEx.RemoveLoadFinishHandler(OnAttachGoEx);
             }
         }
         /// <summary>

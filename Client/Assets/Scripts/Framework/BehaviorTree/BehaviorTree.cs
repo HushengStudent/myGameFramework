@@ -13,12 +13,9 @@ namespace Framework
 {
     public sealed class BehaviorTree
     {
-        private AbsBehavior _root;
-        private AbsEntity _entity;
-
         public bool Enable { get; set; }
-        public AbsBehavior Root { get { return _root; } }
-        public AbsEntity Entity { get { return _entity; } }
+        public AbsBehavior Root { get; private set; }
+        public AbsEntity Entity { get; private set; }
 
         public OnBehaviorTreeStartHandler OnStart { get; set; }
         public OnBehaviorTreeSuccesstHandler OnSuccess { get; set; }
@@ -27,16 +24,16 @@ namespace Framework
 
         public BehaviorTree(AbsBehavior root, AbsEntity entity)
         {
-            _root = root;
-            _entity = entity;
+            Root = root;
+            Entity = entity;
             Enable = false;
         }
 
         public void Update(float interval)
         {
-            if (Enable && _entity != null && (_root.Reslut == BehaviorState.Reset || _root.Reslut == BehaviorState.Running))
+            if (Enable && Entity != null && (Root.Reslut == BehaviorState.Reset || Root.Reslut == BehaviorState.Running))
             {
-                BehaviorState reslut = _root.Behave(_entity, interval);
+                BehaviorState reslut = Root.Behave(Entity, interval);
                 switch (reslut)
                 {
                     case BehaviorState.Reset:

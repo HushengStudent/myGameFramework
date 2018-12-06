@@ -20,21 +20,17 @@ namespace Framework
 
     public abstract class AbsState
     {
-        private string _name;
-        private AbsEntity _entity = null;
-        private StateMachine _machine;
-
         public virtual StateTypeEnum FsmStateType { get { return StateTypeEnum.Idel; } }
 
-        public string Name { get { return _name; } }
-        public AbsEntity Entity { get { return _entity; } }
-        public StateMachine Machine { get { return _machine; } }
+        public string Name { get; private set; }
+        public AbsEntity Entity { get; private set; }
+        public StateMachine Machine { get; private set; }
 
         public AbsState(StateMachine machine, string name)
         {
-            _name = name;
-            _entity = machine.Entity;
-            _machine = machine;
+            Name = name;
+            Entity = machine.Entity;
+            Machine = machine;
         }
 
         private void OnEnterState(AbsState lastState)

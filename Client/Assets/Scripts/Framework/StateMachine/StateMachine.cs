@@ -12,15 +12,13 @@ namespace Framework
 {
     public sealed class StateMachine
     {
-        private string _name;
-        private AbsEntity _entity = null;
         private AbsState _defaultState = null;
         private List<AbsState> _stateList = new List<AbsState>();
         private List<AbsTransition> _transitionList = new List<AbsTransition>();
 
         public bool Enable { get; set; }
-        public string Name { get { return _name; } }
-        public AbsEntity Entity { get { return _entity; } }
+        public string Name { get; private set; }
+        public AbsEntity Entity { get; private set; }
         public AbsState CurrentState { get; set; }
         public AbsState DefaultState { get; set; }
         public List<AbsState> StateList { get { return _stateList; } }
@@ -31,8 +29,8 @@ namespace Framework
             List<AbsState> stateList, AbsState defaultState, List<AbsTransition> transitionList)
         {
             Enable = false;
-            _name = name;
-            _entity = entity;
+            Name = name;
+            Entity = entity;
             _stateList.Clear();
             _transitionList.Clear();
             _stateList = stateList;

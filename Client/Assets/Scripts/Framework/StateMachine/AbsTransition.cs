@@ -18,36 +18,31 @@ namespace Framework
 
     public abstract class AbsTransition
     {
-        private string _name;
-        private AbsState _formState;
-        private AbsState _toState;
-        private AbsEntity _entity = null;
-        private StateMachine _machine;
         private TransitionTypeEnum _transState = TransitionTypeEnum.Finish;
 
-        public string Name { get { return _name; } }
-        public AbsState FromState { get { return _formState; } }
-        public AbsState ToState { get { return _toState; } }
-        public AbsEntity Entity { get { return _entity; } }
-        public StateMachine Machine { get { return _machine; } }
+        public string Name { get; private set; }
+        public AbsState FromState { get; private set; }
+        public AbsState ToState { get; private set; }
+        public AbsEntity Entity { get; private set; }
+        public StateMachine Machine { get; private set; }
         public TransitionTypeEnum TransState { get { return _transState; } set { _transState = value; } }
 
         public AbsTransition(StateMachine machine, string name, AbsState formState, AbsState toState)
         {
-            _name = name;
-            _entity = machine.Entity;
-            _machine = machine;
+            Name = name;
+            Entity = machine.Entity;
+            Machine = machine;
             _transState = TransitionTypeEnum.Transing;
-            _formState = formState;
-            _toState = toState;
+            FromState = formState;
+            ToState = toState;
         }
 
         public virtual bool IsCanTrans() { return true; }
 
         public TransitionTypeEnum ExcuteTrans(AbsState formState, AbsState toState)
         {
-            _formState = formState;
-            _toState = toState;
+            FromState = formState;
+            ToState = toState;
             _transState = ExcuteTransEx();
             return _transState;
         }

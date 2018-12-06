@@ -12,16 +12,13 @@ namespace Framework
 {
     public class SceneDirectData : ISceneData
     {
-        private ScenePointData _from;
-        private ScenePointData _to;
-
-        public ScenePointData From { get { return _from; } }
-        public ScenePointData To { get { return _to; } }
+        public ScenePointData From { get; private set; }
+        public ScenePointData To { get; private set; }
 
         public void Serializ(object[] args)
         {
-            _from = args[0] as ScenePointData;
-            _to = args[1] as ScenePointData;
+            From = args[0] as ScenePointData;
+            To = args[1] as ScenePointData;
         }
     }
 }

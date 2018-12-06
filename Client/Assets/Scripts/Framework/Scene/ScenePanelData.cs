@@ -12,22 +12,17 @@ namespace Framework
 {
     public class ScenePanelData : ISceneData
     {
-        private ScenePointData _x;
-        private ScenePointData _y;
-        private ScenePointData _z;
-        private ScenePointData _w;
-
-        public ScenePointData X { get { return _x; } }
-        public ScenePointData Y { get { return _y; } }
-        public ScenePointData Z { get { return _z; } }
-        public ScenePointData W { get { return _w; } }
+        public ScenePointData X { get; private set; }
+        public ScenePointData Y { get; private set; }
+        public ScenePointData Z { get; private set; }
+        public ScenePointData W { get; private set; }
 
         public void Serializ(object[] args)
         {
-            _x = args[0] as ScenePointData;
-            _y = args[1] as ScenePointData;
-            _z = args[2] as ScenePointData;
-            _w = args[3] as ScenePointData;
+            X = args[0] as ScenePointData;
+            Y = args[1] as ScenePointData;
+            Z = args[2] as ScenePointData;
+            W = args[3] as ScenePointData;
         }
     }
 }

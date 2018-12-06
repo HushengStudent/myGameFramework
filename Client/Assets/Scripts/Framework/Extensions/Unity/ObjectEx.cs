@@ -14,12 +14,11 @@ namespace Framework
     {
         protected ObjectEx()
         {
-            _id = IdGenerateHelper.GenerateId();
+            ID = IdGenerateHelper.GenerateId();
             Enable = false;
         }
 
-        private long _id;
-        public long ID { get { return _id; } }
+        public long ID { get; private set; }
         public bool Enable { get; set; }
 
         /// <summary>

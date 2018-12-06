@@ -12,18 +12,16 @@ namespace Framework
 {
     public abstract class AbsDecorator : AbsBehavior
     {
-        protected AbsBehavior _nextNode = null;
-
-        public AbsBehavior NextNode { get { return _nextNode; } }
+        public AbsBehavior NextNode { get; protected set; }
 
         public AbsDecorator(Hashtable table) : base(table)
         {
-            _nextNode = null;
+            NextNode = null;
         }
 
         public void Serialize(AbsBehavior node)
         {
-            _nextNode = node;
+            NextNode = node;
         }
 
         protected sealed override void Update(float interval)
@@ -34,12 +32,12 @@ namespace Framework
             }
             else if (Reslut == BehaviorState.Finish)
             {
-                if (_nextNode == null)
+                if (NextNode == null)
                 {
                     Reslut = BehaviorState.Success;
                     return;
                 }
-                if (_nextNode != null && _nextNode.Behave(Entity, interval) == BehaviorState.Success)
+                if (NextNode != null && NextNode.Behave(Entity, interval) == BehaviorState.Success)
                 {
                     Reslut = BehaviorState.Success;
                 }

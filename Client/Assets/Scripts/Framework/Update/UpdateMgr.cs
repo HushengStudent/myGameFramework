@@ -13,11 +13,8 @@ namespace Framework
 {
     public class UpdateMgr : Singleton<UpdateMgr>
     {
-        private VersionInfo _localVersionInfo;
-        private VersionInfo _netVersionInfo;
-
-        public VersionInfo LoaclVersion { get { return _localVersionInfo; } }
-        public VersionInfo NetVersion { get { return _netVersionInfo; } }
+        public VersionInfo LoaclVersion { get; private set; }
+        public VersionInfo NetVersion { get; private set; }
 
         public UpdateStartEventHandler StartHandler;
         public UpdateErrorEventHandler ErrorHandler;
@@ -32,7 +29,7 @@ namespace Framework
                 VersionInfo info = new VersionInfo();
                 SerializeHelper.SerializeXml<VersionInfo>(GameConfig.VersionFilePath, info);
             }
-            _localVersionInfo = SerializeHelper.DeserializeXml<VersionInfo>(GameConfig.VersionFilePath);
+            LoaclVersion = SerializeHelper.DeserializeXml<VersionInfo>(GameConfig.VersionFilePath);
 
             CheckVersion();
         }
@@ -42,10 +39,10 @@ namespace Framework
             WWWDownLoadHelper www = new WWWDownLoadHelper();
             www.SuccessHandler = () =>
             {
-                _netVersionInfo = SerializeHelper.DeserializeXml<VersionInfo>(GameConfig.NetVersionFilePath);
+                NetVersion = SerializeHelper.DeserializeXml<VersionInfo>(GameConfig.NetVersionFilePath);
                 CheckUpdate();
             };
-            CoroutineMgr.Instance.StartCoroutine(www.StartDownLoad(_localVersionInfo._updateUrl, GameConfig.NetVersionFilePath));
+            CoroutineMgr.Instance.StartCoroutine(www.StartDownLoad(LoaclVersion._updateUrl, GameConfig.NetVersionFilePath));
         }
 
         public void CheckUpdate()

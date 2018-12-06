@@ -17,7 +17,6 @@ namespace Framework
 
     public class PoolMgr : MonoSingleton<PoolMgr>
     {
-        private GameObject _resPoolRoot;
         /// <summary>
         /// C# Object Pool;
         /// </summary>
@@ -28,16 +27,16 @@ namespace Framework
         /// </summary>
         private GameObjectPool _unityObjectPool = new GameObjectPool();
 
-        public GameObject Root { get { return _resPoolRoot; } }
+        public GameObject Root { get; private set; }
         public PoolClearFinishEventHandler ClearFinishHandler { get; set; }
 
         private void Awake()
         {
-            _resPoolRoot = GameObject.Find("_resPoolRoot");
-            if (_resPoolRoot == null)
+            Root = GameObject.Find("_resPoolRoot");
+            if (Root == null)
             {
-                _resPoolRoot = new GameObject("_resPoolRoot");
-                DontDestroyOnLoad(_resPoolRoot);
+                Root = new GameObject("_resPoolRoot");
+                DontDestroyOnLoad(Root);
             }
         }
 

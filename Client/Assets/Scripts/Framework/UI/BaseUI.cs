@@ -12,9 +12,7 @@ namespace Framework
 {
     public abstract class BaseUI
     {
-        private string _name = string.Empty;
-
-        public string Name { get { return _name; } }
+        public string Name { get; private set; }
         public bool Enable { get; set; }
 
         public abstract void OnInit();

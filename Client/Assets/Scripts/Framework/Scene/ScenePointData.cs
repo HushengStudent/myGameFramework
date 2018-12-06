@@ -12,19 +12,15 @@ namespace Framework
 {
     public class ScenePointData : ISceneData
     {
-        private float _x;
-        private float _y;
-        private float _z;
-        
-        public float X { get { return _x; } }
-        public float Y { get { return _y; } }
-        public float Z { get { return _z; } }
+        public float X { get; private set; }
+        public float Y { get; private set; }
+        public float Z { get; private set; }
 
         public void Serializ(object[] args)
         {
-            _x = (float)args[0];
-            _y = (float)args[1];
-            _z = (float)args[2];
+            X = (float)args[0];
+            Y = (float)args[1];
+            Z = (float)args[2];
         }
     }
 }

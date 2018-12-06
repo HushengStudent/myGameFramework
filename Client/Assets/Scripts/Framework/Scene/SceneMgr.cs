@@ -14,14 +14,12 @@ namespace Framework
 {
     public class SceneMgr : Singleton<SceneMgr>
     {
-        private Scene _scene = null;
-
-        public Scene CurScene { get { return _scene; } }
+        public Scene CurScene { get; private set; }
 
         public override void Init()
         {
             base.Init();
-            _scene = null;
+            CurScene = null;
         }
 
         public IEnumerator<float> TransToScene(int sceneId, SceneLoadEventHandler handler)
@@ -36,7 +34,7 @@ namespace Framework
             }
             else
             {
-                _scene = new Scene();
+                CurScene = new Scene();
             }
             IEnumerator<float> loadItor = CurScene.LoadScene(sceneId, handler);
             while (loadItor.MoveNext())

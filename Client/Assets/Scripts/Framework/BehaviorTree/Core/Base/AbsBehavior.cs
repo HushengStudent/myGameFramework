@@ -13,11 +13,10 @@ namespace Framework
     public abstract class AbsBehavior
     {
         private bool _awake = false;
-        private AbsEntity _entity = null;
         private BehaviorState _reslut = BehaviorState.Reset;
 
         public int Id { get; set; }
-        public AbsEntity Entity { get { return _entity; } }
+        public AbsEntity Entity { get; private set; }
         public BehaviorState Reslut { get { return _reslut; } set { _reslut = value; } }
 
         public virtual bool IsComposite { get { return false; } }
@@ -27,7 +26,7 @@ namespace Framework
             if (!_awake)
             {
                 _awake = true;
-                _entity = entity;
+                Entity = entity;
                 Reslut = BehaviorState.Running;
                 AwakeEx();
             }
@@ -41,7 +40,7 @@ namespace Framework
                 return false;
             Reset();
             _awake = false;
-            _entity = null;
+            Entity = null;
             Reslut = BehaviorState.Reset;
             return true;
         }
