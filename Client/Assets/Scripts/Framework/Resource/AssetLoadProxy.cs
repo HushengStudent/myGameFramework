@@ -1,23 +1,26 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/12/09 20:08:35
-** desc:  Resource资源加载代理;
+** date:  2018/12/10 01:03:13
+** desc:  AssetBundle资源加载代理;
 *********************************************************************************/
 
-using UnityEngine;
-using Object = UnityEngine.Object;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Framework
 {
-    public class ResourceLoadProxy : AbsLoadProxy
+    public class AssetLoadProxy : AbsLoadProxy
     {
         protected override void Unload()
         {
             if (targetObject != null)
             {
                 ResourceMgr.Instance.UnloadObject(assetType, targetObject);
+                //卸载AssetBundle;
+                AssetBundleMgr.Instance.UnloadAsset(assetType, assetName);
             }
-            PoolMgr.Instance.Release<ResourceLoadProxy>(this);
+            PoolMgr.Instance.Release<AssetLoadProxy>(this);
         }
     }
 }

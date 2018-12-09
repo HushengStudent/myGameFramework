@@ -112,11 +112,61 @@ namespace Framework
         }
 
         /// <summary>
-        /// GC;
+        /// 手动GC;
         /// </summary>
         public void GameGC()
         {
             System.GC.Collect();
+        }
+
+        /// <summary>
+        /// 卸载资源;
+        /// </summary>
+        /// <param name="assetType">资源类型</param>
+        /// <param name="asset">资源</param>
+        public void UnloadObject(AssetType assetType, Object asset)
+        {
+            if (asset != null)
+            {
+                if (assetType == AssetType.Prefab)
+                {
+                    //资源是GameObject;
+                    GameObject go = asset as GameObject;
+                    if (go)
+                    {
+                        Destroy(go);
+                        return;
+                    }
+                    //泛型加载,资源是Prefab上的MonoBehaviour脚本;
+                    MonoBehaviour monoBehaviour = (MonoBehaviour)asset;
+                    if (monoBehaviour != null)
+                    {
+                        Destroy(monoBehaviour.gameObject);
+                        return;
+                    }
+                }
+                if (assetType == AssetType.AnimeClip || assetType == AssetType.AnimeCtrl
+                    || assetType == AssetType.Audio || assetType == AssetType.Material
+                    || assetType == AssetType.Texture)
+                {
+                    UnloadObject(asset);
+                    return;
+                }
+                if (assetType == AssetType.Scripts)
+                {
+                    Destroy(asset);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 卸载不需实例化的资源(纹理,Animator);
+        /// 卸载非GameObject类型的资源,会将内存中已加载资源及其克隆体卸载;
+        /// </summary>
+        /// <param name="asset"></param>
+        public void UnloadObject(Object asset)
+        {
+            Resources.UnloadAsset(asset);
         }
 
         #endregion

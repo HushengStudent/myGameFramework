@@ -51,9 +51,9 @@ namespace Framework
         /// <param name="assetName">资源名字</param>
         /// <param name="action">资源回调</param>
         /// <returns></returns>
-        public ResourceLoadProxy LoadResourceProxyAsync<T>(AssetType assetType, string assetName, Action<T> action) where T : Object
+        public ResourceLoadProxy LoadResourceProxy<T>(AssetType assetType, string assetName, Action<T> action) where T : Object
         {
-            return LoadResourceProxyAsync<T>(assetType, assetName, action, null);
+            return LoadResourceProxy<T>(assetType, assetName, action, null);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Framework
         /// <param name="action">资源回调</param>
         /// <param name="progress">进度回调</param>
         /// <returns></returns>
-        public ResourceLoadProxy LoadResourceProxyAsync<T>(AssetType assetType, string assetName
+        public ResourceLoadProxy LoadResourceProxy<T>(AssetType assetType, string assetName
             , Action<T> action, Action<float> progress) where T : Object
         {
             ResourceLoadProxy proxy = PoolMgr.Instance.Get<ResourceLoadProxy>();
@@ -79,7 +79,7 @@ namespace Framework
         /// </summary>
         /// <typeparam name="T">ctrl</typeparam>
         /// <param name="assetType">资源类型</param>
-        /// <param name="assetName">资源名字</param>
+        /// <param name="assetName">资源类型</param>
         /// <param name="action">资源回调</param>
         /// <param name="progress">进度回调</param>
         /// <returns></returns>
@@ -117,53 +117,6 @@ namespace Framework
             {
                 proxy.OnFinish(ctrl);
             }
-        }
-
-        #endregion
-
-        #region Unload Assets
-
-        public void UnloadObject(AssetType assetType, Object asset)
-        {
-            if (asset != null)
-            {
-                if (assetType == AssetType.Prefab)
-                {
-                    GameObject go = asset as GameObject;
-                    if (go)
-                    {
-                        Destroy(go);
-                        return;
-                    }
-                    MonoBehaviour monoBehaviour = (MonoBehaviour)asset;
-                    if (monoBehaviour != null)
-                    {
-                        Destroy(monoBehaviour.gameObject);
-                        return;
-                    }
-                }
-                if (assetType == AssetType.AnimeClip || assetType == AssetType.AnimeCtrl
-                    || assetType == AssetType.Audio || assetType == AssetType.Material
-                    || assetType == AssetType.Texture)
-                {
-                    UnloadObject(asset);
-                    return;
-                }
-                if (assetType == AssetType.Scripts)
-                {
-                    Destroy(asset);
-                }
-            }
-        }
-
-        /// <summary>
-        /// 卸载不需实例化的资源(纹理,Animator);
-        /// 卸载非GameObject类型的资源,会将内存中已加载资源及其克隆体卸载;
-        /// </summary>
-        /// <param name="asset"></param>
-        public void UnloadObject(Object asset)
-        {
-            Resources.UnloadAsset(asset);
         }
 
         #endregion

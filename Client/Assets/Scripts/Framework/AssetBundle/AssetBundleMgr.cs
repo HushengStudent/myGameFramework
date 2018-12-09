@@ -280,32 +280,6 @@ namespace Framework
         #region AssetBundle Unload
 
         /// <summary>
-        /// 卸载AssetBundle资源;
-        /// </summary>
-        /// <param name="path">资源路径</param>
-        /// <param name="flag">true or false</param>
-        private void UnloadAsset(string path, bool flag)
-        {
-            int Count = 0;
-            if (assetBundleReference.TryGetValue(path, out Count))
-            {
-                Count--;
-                if (Count == 0)
-                {
-                    assetBundleReference.Remove(path);
-                    AssetBundle bundle = assetBundleCache[path];
-                    if (bundle != null) bundle.Unload(flag);
-                    assetBundleCache.Remove(path);
-                    LogHelper.Print(string.Format("[AssetBundleMgr]Unload {0} AssetBundle {1} Success!", flag, path));
-                }
-                else
-                {
-                    assetBundleReference[path] = Count;
-                }
-            }
-        }
-
-        /// <summary>
         /// 通用资源AssetBundle卸载方法[Unload(true)];
         /// </summary>
         /// <param name="type">资源类型</param>
@@ -344,6 +318,32 @@ namespace Framework
             if (assetBundlePath != null)
             {
                 UnloadAsset(assetBundlePath, false);
+            }
+        }
+
+        /// <summary>
+        /// 卸载AssetBundle资源;
+        /// </summary>
+        /// <param name="path">资源路径</param>
+        /// <param name="flag">true or false</param>
+        private void UnloadAsset(string path, bool flag)
+        {
+            int Count = 0;
+            if (assetBundleReference.TryGetValue(path, out Count))
+            {
+                Count--;
+                if (Count == 0)
+                {
+                    assetBundleReference.Remove(path);
+                    AssetBundle bundle = assetBundleCache[path];
+                    if (bundle != null) bundle.Unload(flag);
+                    assetBundleCache.Remove(path);
+                    LogHelper.Print(string.Format("[AssetBundleMgr]Unload {0} AssetBundle {1} Success!", flag, path));
+                }
+                else
+                {
+                    assetBundleReference[path] = Count;
+                }
             }
         }
 

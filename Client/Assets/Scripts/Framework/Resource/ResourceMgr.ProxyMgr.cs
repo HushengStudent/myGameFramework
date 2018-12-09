@@ -18,24 +18,24 @@ namespace Framework
     {
         public ManagerInitEventHandler ResourceMgrInitHandler { get; set; }
 
-        private List<ResourceLoadProxy> _proxyList = new List<ResourceLoadProxy>();
+        private List<AbsLoadProxy> _resourceProxyList = new List<AbsLoadProxy>();
 
         protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
-            for (int i = 0; i < _proxyList.Count; i++)
+            for (int i = 0; i < _resourceProxyList.Count; i++)
             {
-                var target = _proxyList[i];
+                var target = _resourceProxyList[i];
                 if (target.UnloadProxy())
                 {
-                    _proxyList.Remove(target);
+                    _resourceProxyList.Remove(target);
                 }
             }
         }
 
-        public void AddProxy(ResourceLoadProxy proxy)
+        public void AddProxy(AbsLoadProxy proxy)
         {
-            _proxyList.Add(proxy);
+            _resourceProxyList.Add(proxy);
         }
 
         public IEnumerator<float> CancleAllProxy()
@@ -43,7 +43,7 @@ namespace Framework
             yield return Timing.WaitForOneFrame;
             while (true)
             {
-                if (_proxyList.Count > 0)
+                if (_resourceProxyList.Count > 0)
                 {
                     yield return Timing.WaitForOneFrame;
                 }
