@@ -104,24 +104,57 @@ namespace Framework
                 }
                 ctrl = loader.GetAsset(request.asset as T);
             }
-            if (proxy != null)
-            {
-                proxy.OnFinish(ctrl);
-            }
-            if (action != null)
-            {
-                action(ctrl);
-            }
-            else
+            if (null == ctrl)
             {
                 LogHelper.PrintError(string.Format("[ResourceMgr]LoadResourceAsync Load Asset {0} failure!",
                     assetName + "." + assetType.ToString()));
+            }
+            if (!proxy.isCancel && action != null)
+            {
+                action(ctrl);
+            }
+            if (proxy != null)
+            {
+                proxy.OnFinish(ctrl);
             }
         }
 
         #endregion
 
         #region Unload Assets
+
+        public void UnloadObject(AssetType assetType, Object asset)
+        {
+            if (asset != null)
+            {
+                if (assetType == AssetType.Prefab)
+                {
+                    GameObject go = asset as GameObject;
+                    if (go)
+                    {
+                        Destroy(go);
+                        return;
+                    }
+                    MonoBehaviour monoBehaviour = (MonoBehaviour)asset;
+                    if (monoBehaviour != null)
+                    {
+                        Destroy(monoBehaviour.gameObject);
+                        return;
+                    }
+                }
+                if (assetType == AssetType.AnimeClip || assetType == AssetType.AnimeCtrl
+                    || assetType == AssetType.Audio || assetType == AssetType.Material
+                    || assetType == AssetType.Texture)
+                {
+                    UnloadObject(asset);
+                    return;
+                }
+                if (assetType == AssetType.Scripts)
+                {
+                    Destroy(asset);
+                }
+            }
+        }
 
         /// <summary>
         /// 卸载不需实例化的资源(纹理,Animator);
@@ -131,22 +164,6 @@ namespace Framework
         public void UnloadObject(Object asset)
         {
             Resources.UnloadAsset(asset);
-        }
-
-        public void UnloadObject(AssetType assetType, Object asset)
-        {
-            if (assetType == AssetType.Prefab)
-            {
-                GameObject go = asset as GameObject;
-                if (go)
-                {
-                    Destroy(go);
-                }
-            }
-            else
-            {
-                Resources.UnloadAsset(asset);
-            }
         }
 
         #endregion

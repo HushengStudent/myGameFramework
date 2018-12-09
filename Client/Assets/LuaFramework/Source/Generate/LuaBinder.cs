@@ -92,8 +92,9 @@ public static class LuaBinder
 		Framework_MonoSingleton_Framework_LuaMgrWrap.Register(L);
 		Framework_Singleton_Framework_LuaUtilityWrap.Register(L);
 		Framework_Singleton_Framework_SceneMgrWrap.Register(L);
-		Framework_Singleton_Framework_ResourceMgrWrap.Register(L);
+		Framework_MonoSingleton_Framework_ResourceMgrWrap.Register(L);
 		L.RegFunction("SceneLoadEventHandler", Framework_SceneLoadEventHandler);
+		L.RegFunction("ManagerInitEventHandler", Framework_ManagerInitEventHandler);
 		L.EndModule();
 		L.BeginModule("System");
 		L.RegFunction("Action", System_Action);
@@ -354,6 +355,33 @@ public static class LuaBinder
 			{
 				LuaTable self = ToLua.CheckLuaTable(L, 2);
 				Delegate arg1 = DelegateTraits<Framework.SceneLoadEventHandler>.Create(func, self);
+				ToLua.Push(L, arg1);
+			}
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int Framework_ManagerInitEventHandler(IntPtr L)
+	{
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+			LuaFunction func = ToLua.CheckLuaFunction(L, 1);
+
+			if (count == 1)
+			{
+				Delegate arg1 = DelegateTraits<Framework.ManagerInitEventHandler>.Create(func);
+				ToLua.Push(L, arg1);
+			}
+			else
+			{
+				LuaTable self = ToLua.CheckLuaTable(L, 2);
+				Delegate arg1 = DelegateTraits<Framework.ManagerInitEventHandler>.Create(func, self);
 				ToLua.Push(L, arg1);
 			}
 			return 1;

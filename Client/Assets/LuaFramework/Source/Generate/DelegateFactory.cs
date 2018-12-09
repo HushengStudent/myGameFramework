@@ -32,6 +32,7 @@ public class DelegateFactory
 		dict.Add(typeof(System.Action<UnityEngine.AsyncOperation>), factory.System_Action_UnityEngine_AsyncOperation);
 		dict.Add(typeof(UnityEngine.RectTransform.ReapplyDrivenProperties), factory.UnityEngine_RectTransform_ReapplyDrivenProperties);
 		dict.Add(typeof(Framework.SceneLoadEventHandler), factory.Framework_SceneLoadEventHandler);
+		dict.Add(typeof(Framework.ManagerInitEventHandler), factory.Framework_ManagerInitEventHandler);
 
 		DelegateTraits<System.Action>.Init(factory.System_Action);
 		DelegateTraits<UnityEngine.Events.UnityAction>.Init(factory.UnityEngine_Events_UnityAction);
@@ -48,6 +49,7 @@ public class DelegateFactory
 		DelegateTraits<System.Action<UnityEngine.AsyncOperation>>.Init(factory.System_Action_UnityEngine_AsyncOperation);
 		DelegateTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Init(factory.UnityEngine_RectTransform_ReapplyDrivenProperties);
 		DelegateTraits<Framework.SceneLoadEventHandler>.Init(factory.Framework_SceneLoadEventHandler);
+		DelegateTraits<Framework.ManagerInitEventHandler>.Init(factory.Framework_ManagerInitEventHandler);
 
 		TypeTraits<System.Action>.Init(factory.Check_System_Action);
 		TypeTraits<UnityEngine.Events.UnityAction>.Init(factory.Check_UnityEngine_Events_UnityAction);
@@ -64,6 +66,7 @@ public class DelegateFactory
 		TypeTraits<System.Action<UnityEngine.AsyncOperation>>.Init(factory.Check_System_Action_UnityEngine_AsyncOperation);
 		TypeTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Init(factory.Check_UnityEngine_RectTransform_ReapplyDrivenProperties);
 		TypeTraits<Framework.SceneLoadEventHandler>.Init(factory.Check_Framework_SceneLoadEventHandler);
+		TypeTraits<Framework.ManagerInitEventHandler>.Init(factory.Check_Framework_ManagerInitEventHandler);
 
 		StackTraits<System.Action>.Push = factory.Push_System_Action;
 		StackTraits<UnityEngine.Events.UnityAction>.Push = factory.Push_UnityEngine_Events_UnityAction;
@@ -80,6 +83,7 @@ public class DelegateFactory
 		StackTraits<System.Action<UnityEngine.AsyncOperation>>.Push = factory.Push_System_Action_UnityEngine_AsyncOperation;
 		StackTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Push = factory.Push_UnityEngine_RectTransform_ReapplyDrivenProperties;
 		StackTraits<Framework.SceneLoadEventHandler>.Push = factory.Push_Framework_SceneLoadEventHandler;
+		StackTraits<Framework.ManagerInitEventHandler>.Push = factory.Push_Framework_ManagerInitEventHandler;
 	}
     
     public static Delegate CreateDelegate(Type t, LuaFunction func = null)
@@ -1052,6 +1056,59 @@ public class DelegateFactory
 	}
 
 	void Push_Framework_SceneLoadEventHandler(IntPtr L, Framework.SceneLoadEventHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class Framework_ManagerInitEventHandler_Event : LuaDelegate
+	{
+		public Framework_ManagerInitEventHandler_Event(LuaFunction func) : base(func) { }
+		public Framework_ManagerInitEventHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call()
+		{
+			func.Call();
+		}
+
+		public void CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public Framework.ManagerInitEventHandler Framework_ManagerInitEventHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			Framework.ManagerInitEventHandler fn = delegate() { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			Framework_ManagerInitEventHandler_Event target = new Framework_ManagerInitEventHandler_Event(func);
+			Framework.ManagerInitEventHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			Framework_ManagerInitEventHandler_Event target = new Framework_ManagerInitEventHandler_Event(func, self);
+			Framework.ManagerInitEventHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_Framework_ManagerInitEventHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(Framework.ManagerInitEventHandler), L, pos);
+	}
+
+	void Push_Framework_ManagerInitEventHandler(IntPtr L, Framework.ManagerInitEventHandler o)
 	{
 		ToLua.Push(L, o);
 	}
