@@ -9,13 +9,12 @@ using System.Collections;
 using System;
 using Object = UnityEngine.Object;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using MEC;
 using System.IO;
 
 namespace Framework
 {
-    public class ResourceMgr : Singleton<ResourceMgr>
+    public partial class ResourceMgr : MonoSingleton<ResourceMgr>
     {
         #region Initialize
 
@@ -29,6 +28,7 @@ namespace Framework
             //GameGC();
             InitLua();
             InitShader();
+            CoroutineMgr.Instance.RunCoroutine(CancleAllProxy());
         }
 
         /// <summary>
@@ -61,187 +61,6 @@ namespace Framework
 
         #endregion
 
-        #region Resources Load
-
-        /// <summary>
-        /// Resource同步加载;
-        /// </summary>
-        /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="type">资源类型</param>
-        /// <param name="assetName">资源名字</param>
-        /// <returns>ctrl</returns>
-        public T LoadResSync<T>(AssetType type, string assetName) where T : Object
-        {
-            string path = FilePathHelper.GetResourcePath(type, assetName);
-            IAssetLoader<T> loader = CreateLoader<T>(type);
-            bool isInstance = false;
-            if (path != null)
-            {
-                T ctrl = Resources.Load<T>(path);
-                if (ctrl != null)
-                {
-                    return loader.GetAsset(ctrl);
-                }
-            }
-            LogHelper.PrintError(string.Format("[ResourceMgr]LoadResSync Load Asset {0} failure!", assetName + "." + type.ToString()));
-            return null;
-        }
-
-        /// <summary>
-        /// Resource异步加载;
-        /// </summary>
-        /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="type">资源类型</param>
-        /// <param name="assetName">资源名字</param>
-        /// <param name="action">资源回调</param>
-        /// <returns></returns>
-        public IEnumerator<float> LoadResAsync<T>(AssetType type, string assetName, Action<T> action) where T : Object
-        {
-            IEnumerator itor = LoadResAsync<T>(type, assetName, action, null);
-            while (itor.MoveNext())
-            {
-                yield return Timing.WaitForOneFrame;
-            }
-        }
-
-        /// <summary>
-        /// Resource异步加载;
-        /// </summary>
-        /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="type">资源类型</param>
-        /// <param name="assetName">资源名字</param>
-        /// <param name="action">资源回调</param>
-        /// <param name="progress">进度回调</param>
-        /// <returns></returns>
-        public IEnumerator<float> LoadResAsync<T>(AssetType type, string assetName, Action<T> action, Action<float> progress) where T : Object
-        {
-            string path = FilePathHelper.GetResourcePath(type, assetName);
-            IAssetLoader<T> loader = CreateLoader<T>(type);
-
-            T ctrl = null;
-            bool isInstance = false;
-            if (path != null)
-            {
-                ResourceRequest request = Resources.LoadAsync<T>(path);
-                while (request.progress < 0.99)
-                {
-                    if (progress != null) progress(request.progress);
-                    yield return Timing.WaitForOneFrame;
-                }
-                while (!request.isDone)
-                {
-                    yield return Timing.WaitForOneFrame;
-                }
-                ctrl = loader.GetAsset(request.asset as T);
-            }
-            if (action != null)
-            {
-                action(ctrl);
-            }
-            else
-            {
-                LogHelper.PrintError(string.Format("[ResourceMgr]LoadResAsync Load Asset {0} failure!", assetName + "." + type.ToString()));
-            }
-        }
-
-        #endregion 
-
-        #region AssetBundle Load
-
-        /// <summary>
-        /// Asset sync load from AssetBundle;
-        /// </summary>
-        /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="type">资源类型</param>
-        /// <param name="assetName">资源名字</param>
-        /// <returns>ctrl</returns>
-        public T LoadAssetSync<T>(AssetType type, string assetName) where T : Object
-        {
-            T ctrl = null;
-            IAssetLoader<T> loader = CreateLoader<T>(type);
-            AssetBundle assetBundle = AssetBundleMgr.Instance.LoadAssetBundleSync(type, assetName);
-            if (assetBundle != null)
-            {
-                T tempObject = assetBundle.LoadAsset<T>(Path.GetFileNameWithoutExtension(assetName));
-                ctrl = loader.GetAsset(tempObject);
-            }
-            if (ctrl == null)
-            {
-                LogHelper.PrintError(string.Format("[ResourceMgr]LoadAssetFromAssetBundleSync Load Asset {0} failure!", assetName + "." + type.ToString()));
-            }
-            return ctrl;
-        }
-
-        /// <summary>
-        /// Asset async load from AssetBundle;
-        /// </summary>
-        /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="type">资源类型</param>
-        /// <param name="assetName">资源名字</param>
-        /// <param name="action">资源回调</param>
-        /// <returns></returns>
-        public IEnumerator<float> LoadAssetAsync<T>(AssetType type, string assetName, Action<T> action)
-            where T : Object
-        {
-            IEnumerator itor = LoadAssetAsync<T>(type, assetName, action, null);
-            while (itor.MoveNext())
-            {
-                yield return Timing.WaitForOneFrame;
-            }
-        }
-
-        /// <summary>
-        /// Asset async load from AssetBundle;
-        /// </summary>
-        /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="type">资源类型</param>
-        /// <param name="assetName">资源名字</param>
-        /// <param name="action">资源回调</param>
-        /// <param name="progress">progress回调</param>
-        /// <returns></returns>
-        public IEnumerator<float> LoadAssetAsync<T>(AssetType type, string assetName, Action<T> action, Action<float> progress)
-            where T : Object
-        {
-            T ctrl = null;
-            AssetBundle assetBundle = null;
-            IAssetLoader<T> loader = CreateLoader<T>(type);
-
-            IEnumerator itor = AssetBundleMgr.Instance.LoadAssetBundleAsync(type, assetName,
-                ab =>
-                {
-                    assetBundle = ab;
-                },
-                null);
-            while (itor.MoveNext())
-            {
-                yield return Timing.WaitForOneFrame;
-            }
-
-            AssetBundleRequest request = assetBundle.LoadAssetAsync<T>(Path.GetFileNameWithoutExtension(assetName));
-            while (request.progress < 0.99)
-            {
-                if (progress != null)
-                    progress(request.progress);
-                yield return Timing.WaitForOneFrame;
-            }
-            while (!request.isDone)
-            {
-                yield return Timing.WaitForOneFrame;
-            }
-            ctrl = loader.GetAsset(request.asset as T);
-            if (ctrl == null)
-            {
-                LogHelper.PrintError(string.Format("[ResourceMgr]LoadAssetFromAssetBundleSync Load Asset {0} failure!", assetName + "." + type.ToString()));
-            }
-            else
-            {
-                if (action != null)
-                    action(ctrl);
-            }
-        }
-
-        #endregion
-
         #region Functions
 
         /// <summary>
@@ -264,10 +83,19 @@ namespace Framework
         /// </summary>
         /// <param name="go"></param>
         /// <returns></returns>
-        private GameObject Clone(GameObject go)
+        public GameObject Clone(GameObject go)
         {
             GameObject target = GameObject.Instantiate(go);
             return target;
+        }
+
+        /// <summary>
+        /// Destroy GameObject;
+        /// </summary>
+        /// <param name="go"></param>
+        public void Destroy(GameObject go)
+        {
+            GameObject.Destroy(go);
         }
 
         #endregion
@@ -277,9 +105,10 @@ namespace Framework
         /// <summary>
         /// 清理;
         /// </summary>
-        public void UnloadUnusedAssets()
+        public void UnloadUnusedAssets(Action<AsyncOperation> action)
         {
-            Resources.UnloadUnusedAssets();
+            AsyncOperation operation = Resources.UnloadUnusedAssets();
+            operation.completed += action;
         }
 
         /// <summary>
@@ -288,15 +117,6 @@ namespace Framework
         public void GameGC()
         {
             System.GC.Collect();
-        }
-
-        /// <summary>
-        /// 卸载不需实例化的资源(纹理,Animator);
-        /// </summary>
-        /// <param name="asset"></param>
-        public void UnloadObject(Object asset)
-        {
-            Resources.UnloadAsset(asset);
         }
 
         #endregion

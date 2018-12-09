@@ -16,7 +16,7 @@ namespace Framework
 {
     public class UpdateEditor : EditorWindow
     {
-        [MenuItem("myGameFramework/Window/UpdateEditor #u", false, 3)]
+        [MenuItem("myGameFramework/Window/UpdateEditor &#u", false, 3)]
         static void ShowWindow()
         {
             var window = GetWindowWithRect(typeof(UpdateEditor), new Rect(0, 0, 600, 630), true, "热更包导出编辑器");

@@ -63,7 +63,7 @@ public class Framework_ResourceMgrWrap
 		{
 			ToLua.CheckArgsCount(L, 1);
 			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
-			obj.UnloadUnusedAssets();
+			//obj.UnloadUnusedAssets();
 			return 0;
 		}
 		catch (Exception e)

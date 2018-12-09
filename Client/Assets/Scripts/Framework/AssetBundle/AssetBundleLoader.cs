@@ -1,21 +1,17 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/02/08 23:51:14
-** desc:  AssetBundle异步加载;
+** date:  2018/12/09 16:29:38
+** desc:  AssetBundle������;
 *********************************************************************************/
 
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Linq;
+using System.Text;
 
 namespace Framework
 {
-    public partial class AssetBundleMgr
+    public class AssetBundleLoader
     {
-        //Unity2017建议使用Task;
-
-        //伪异步,分帧同步加载;
-
-        //异步加载管理器;
     }
 }

@@ -13,8 +13,6 @@ using Object = System.Object;
 
 namespace Framework
 {
-    public delegate void PoolClearFinishEventHandler();
-
     public class PoolMgr : MonoSingleton<PoolMgr>
     {
         /// <summary>
@@ -28,7 +26,7 @@ namespace Framework
         private GameObjectPool _unityObjectPool = new GameObjectPool();
 
         public GameObject Root { get; private set; }
-        public PoolClearFinishEventHandler ClearFinishHandler { get; set; }
+        public ManagerInitEventHandler PoolMgrInitHandler { get; set; }
 
         private void Awake()
         {
@@ -152,8 +150,8 @@ namespace Framework
             }
             Resources.UnloadUnusedAssets();
             System.GC.Collect();
-            if (ClearFinishHandler != null)
-                ClearFinishHandler();
+            if (PoolMgrInitHandler != null)
+                PoolMgrInitHandler();
         }
     }
 }

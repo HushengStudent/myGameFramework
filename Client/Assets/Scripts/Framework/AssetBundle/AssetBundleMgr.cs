@@ -13,7 +13,10 @@ using UnityEngine;
 namespace Framework
 {
     /// <summary>
-    /// AssetBundle在异步加载完成时再同步加载会报错;
+    /// 1.AssetBundle加载完成后再加载AssetBundle,或开始异步加载AssetBundle后再同步加载AssetBundle,都会报错;
+    /// The AssetBundle 'xxxx' can't be loaded because another AssetBundle with the same files is already loaded.
+    /// 2.开始异步加载AssetBundle后再异步加载AssetBundle,会报错;
+    /// Unable to open archive file: xxxx;
     /// </summary>
     public partial class AssetBundleMgr : Singleton<AssetBundleMgr>
     {
@@ -105,7 +108,7 @@ namespace Framework
         /// </summary>
         /// <param name="path">AssetBundle文件路径</param>
         /// <returns>AssetBundle</returns>
-        private AssetBundle LoadSingleSync(string path)
+        private AssetBundle LoadSync(string path)
         {
             if (string.IsNullOrEmpty(path)) return null;
 
@@ -140,13 +143,41 @@ namespace Framework
         }
 
         /// <summary>
+        /// AssetBundle同步加载;
+        /// </summary>
+        /// <param name="type">资源类型</param>
+        /// <param name="assetName">资源名字</param>
+        /// <returns>AssetBundle</returns>
+        public AssetBundle LoadAssetBundleSync(AssetType type, string assetName)
+        {
+            if (type == AssetType.Non || string.IsNullOrEmpty(assetName)) return null;
+
+            string assetBundlePath = FilePathHelper.GetAssetBundlePath(type, assetName);
+            if (assetBundlePath == null) return null;
+            string assetBundleName = FilePathHelper.GetAssetBundleFileName(type, assetName);
+
+            AssetBundle assetBundle = LoadSync(assetBundlePath);
+            if (assetBundle == null) return null;
+
+            //返回AssetBundleName;
+            string[] DependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
+            foreach (string tempAssetBundle in DependentAssetBundle)
+            {
+                if (tempAssetBundle == FilePathHelper.GetAssetBundleFileName(AssetType.Shader, "Shaders")) continue;
+                string tempPtah = FilePathHelper.AssetBundlePath + tempAssetBundle;
+                LoadSync(tempPtah);
+            }
+            return assetBundle;
+        }
+
+        /// <summary>
         /// AssetBundle异步加载LoadFromFileAsync,www异步加载消耗大于LoadFromFileAsync;
         /// </summary>
         /// <param name="path">资源路径</param>
         /// <param name="action">AssetBundle回调</param>
         /// <param name="progress">progress回调</param>
         /// <returns></returns>
-        private IEnumerator<float> LoadSingleAsync(string path, Action<AssetBundle> action, Action<float> progress)
+        private IEnumerator<float> LoadAsync(string path, Action<AssetBundle> action, Action<float> progress)
         {
             if (string.IsNullOrEmpty(path)) yield break;
 
@@ -195,34 +226,6 @@ namespace Framework
         }
 
         /// <summary>
-        /// AssetBundle同步加载;
-        /// </summary>
-        /// <param name="type">资源类型</param>
-        /// <param name="assetName">资源名字</param>
-        /// <returns>AssetBundle</returns>
-        public AssetBundle LoadAssetBundleSync(AssetType type, string assetName)
-        {
-            if (type == AssetType.Non || string.IsNullOrEmpty(assetName)) return null;
-
-            string assetBundlePath = FilePathHelper.GetAssetBundlePath(type, assetName);
-            if (assetBundlePath == null) return null;
-            string assetBundleName = FilePathHelper.GetAssetBundleFileName(type, assetName);
-
-            AssetBundle assetBundle = LoadSingleSync(assetBundlePath);
-            if (assetBundle == null) return null;
-
-            //返回AssetBundleName;
-            string[] DependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
-            foreach (string tempAssetBundle in DependentAssetBundle)
-            {
-                if (tempAssetBundle == FilePathHelper.GetAssetBundleFileName(AssetType.Shader, "Shaders")) continue;
-                string tempPtah = FilePathHelper.AssetBundlePath + tempAssetBundle;
-                LoadSingleSync(tempPtah);
-            }
-            return assetBundle;
-        }
-
-        /// <summary>
         /// AssetBundle异步加载;
         /// </summary>
         /// <param name="type">资源类型</param>
@@ -242,14 +245,14 @@ namespace Framework
             {
                 if (tempAssetBundle == FilePathHelper.GetAssetBundleFileName(AssetType.Shader, "Shaders")) continue;
                 string tempPtah = FilePathHelper.AssetBundlePath + tempAssetBundle;
-                IEnumerator<float> itor = LoadSingleAsync(tempPtah, null, null);
+                IEnumerator<float> itor = LoadAsync(tempPtah, null, null);
                 while (itor.MoveNext())
                 {
                     yield return Timing.WaitForOneFrame;
                 }
             }
             //加载目标AssetBundle;
-            IEnumerator<float> itorTarget = LoadSingleAsync(assetBundlePath, action, progress);
+            IEnumerator<float> itorTarget = LoadAsync(assetBundlePath, action, progress);
             while (itorTarget.MoveNext())
             {
                 yield return Timing.WaitForOneFrame;
@@ -263,13 +266,13 @@ namespace Framework
         public AssetBundle LoadShaderAssetBundle()
         {
             string path = FilePathHelper.GetAssetBundlePath(AssetType.Shader, "Shaders");
-            return LoadSingleSync(path);
+            return LoadSync(path);
         }
 
         public AssetBundle LoadLuaAssetBundle()
         {
             string path = FilePathHelper.GetAssetBundlePath(AssetType.Lua, "lua");
-            return LoadSingleSync(path);
+            return LoadSync(path);
         }
 
         #endregion

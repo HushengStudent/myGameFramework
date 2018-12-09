@@ -34,13 +34,26 @@ namespace Framework
         {
             base.Init();
             CheckUpdateState = false;
-            PoolMgr.Instance.ClearFinishHandler = () => InitApp();
+            ResourceMgr.Instance.ResourceMgrInitHandler = () =>
+            {
+                ResourceMgr.Instance.ResourceMgrInitHandler = null;
+                InitPoolMgr();
+            };
+            ResourceMgr.Instance.Init();      //资源初始化;
+        }
+
+        private void InitPoolMgr()
+        {
+            PoolMgr.Instance.PoolMgrInitHandler = () =>
+            {
+                PoolMgr.Instance.PoolMgrInitHandler = null;
+                InitApp();
+            };
             PoolMgr.Instance.Init();          //对象池初始化;
         }
 
         private void InitApp()
         {
-            PoolMgr.Instance.ClearFinishHandler = null;
             SetGameConfig();
 #if UNITY_EDITOR
             //DebugMgr.Instance.Init();         //Debug工具初始化;
@@ -51,7 +64,6 @@ namespace Framework
             TimerMgr.Instance.Init();         //定时器初始化;
             ComponentMgr.Instance.Init();     //组件初始化;
             EntityMgr.Instance.Init();        //实体初始化;
-            ResourceMgr.Instance.Init();      //资源初始化;
             UIMgr.Instance.Init();            //UI初始化;
             SceneMgr.Instance.Init();         //场景初始化;
             LuaMgr.Instance.Init();           //lua初始化;
