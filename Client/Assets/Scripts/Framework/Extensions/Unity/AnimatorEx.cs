@@ -17,27 +17,38 @@ namespace Framework
         private AnimatorOverrideController _animatorOverrideController = null;
         private DictEx<string, AnimationClip> _AnimationInfo = new DictEx<string, AnimationClip>();
 
+        private AssetLoadProxy _runtimeAnimatorProxy;
+        private AssetLoadProxy _animationClipProxy;
+
         public void Init(Animator animator, string path)
         {
             _animator = animator;
-            RuntimeAnimatorController runtimeAnimatorController =
-                ResourceMgr.Instance.LoadAssetSync<RuntimeAnimatorController>(AssetType.AnimeCtrl, path);
-            _animator.runtimeAnimatorController = runtimeAnimatorController;
-            _animatorOverrideController = runtimeAnimatorController as AnimatorOverrideController;
-            _animator.Rebind();
+            _runtimeAnimatorProxy = ResourceMgr.Instance.LoadAssetProxy<RuntimeAnimatorController>(AssetType.AnimeCtrl, path
+                , (ctrl) =>
+            {
+                _animator.runtimeAnimatorController = ctrl;
+                _animatorOverrideController = ctrl as AnimatorOverrideController;
+                _animator.Rebind();
+            });
         }
 
-        public void OverrideAnimationCli(string name, string path, bool autoPlay = true)
+        public void OverrideAnimationClip(string name, string path, bool autoPlay = true)
         {
-            AnimationClip clip = ResourceMgr.Instance.LoadAssetSync<AnimationClip>(AssetType.AnimeClip, path);
-            _animatorOverrideController[name] = clip;
-            _animator.runtimeAnimatorController = _animatorOverrideController;
-            _AnimationInfo.Data[name] = clip;
-            _animator.Rebind();
-            if (autoPlay)
-            {
-                _animator.Play(name);
-            }
+            _animationClipProxy = ResourceMgr.Instance.LoadAssetProxy<AnimationClip>(AssetType.AnimeClip, path
+                , (clip) =>
+                {
+                    if (_animatorOverrideController)
+                    {
+                        _animatorOverrideController[name] = clip;
+                        _animator.runtimeAnimatorController = _animatorOverrideController;
+                        _AnimationInfo.Data[name] = clip;
+                        _animator.Rebind();
+                        if (autoPlay)
+                        {
+                            _animator.Play(name);
+                        }
+                    }
+                });
         }
 
         public void SetBool(int id, bool value)

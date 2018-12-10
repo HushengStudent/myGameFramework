@@ -7,10 +7,9 @@
 using UnityEngine;
 using System.Collections;
 using System;
-using Object = UnityEngine.Object;
 using System.Collections.Generic;
 using MEC;
-using System.IO;
+using Object = UnityEngine.Object;
 
 namespace Framework
 {
@@ -44,13 +43,13 @@ namespace Framework
         }
 
         /// <summary>
-        /// Resource同步加载;
+        /// Resource异步加载;
         /// </summary>
         /// <typeparam name="T">ctrl</typeparam>
         /// <param name="assetType">资源类型</param>
         /// <param name="assetName">资源名字</param>
         /// <param name="action">资源回调</param>
-        /// <returns></returns>
+        /// <returns>代理</returns>
         public ResourceLoadProxy LoadResourceProxy<T>(AssetType assetType, string assetName, Action<T> action) where T : Object
         {
             return LoadResourceProxy<T>(assetType, assetName, action, null);
@@ -63,8 +62,8 @@ namespace Framework
         /// <param name="assetType">资源类型</param>
         /// <param name="assetName">资源名字</param>
         /// <param name="action">资源回调</param>
-        /// <param name="progress">进度回调</param>
-        /// <returns></returns>
+        /// <param name="progress">progress回调</param>
+        /// <returns>代理</returns>
         public ResourceLoadProxy LoadResourceProxy<T>(AssetType assetType, string assetName
             , Action<T> action, Action<float> progress) where T : Object
         {
@@ -79,9 +78,10 @@ namespace Framework
         /// </summary>
         /// <typeparam name="T">ctrl</typeparam>
         /// <param name="assetType">资源类型</param>
-        /// <param name="assetName">资源类型</param>
+        /// <param name="assetName">资源名字</param>
+        /// <param name="proxy">代理</param>
         /// <param name="action">资源回调</param>
-        /// <param name="progress">进度回调</param>
+        /// <param name="progress">progress回调</param>
         /// <returns></returns>
         private IEnumerator<float> LoadResourceAsync<T>(AssetType assetType, string assetName, ResourceLoadProxy proxy
             , Action<T> action, Action<float> progress) where T : Object

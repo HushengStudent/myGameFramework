@@ -15,17 +15,11 @@ namespace Framework
     {
         public AssetType assetType { get; protected set; }
         public string assetName { get; protected set; }
-        /// <summary>
-        /// 是否加载完成;
-        /// </summary>
-        public bool isFinish { get; protected set; }
-        /// <summary>
-        /// 取消了就不用执行异步加载的回调了;
-        /// </summary>
-        public bool isCancel { get; protected set; }
+        public bool isFinish { get; protected set; }//是否加载完成;
+        public bool isCancel { get; protected set; }//取消了就不用执行异步加载的回调了;
         public Object targetObject { get; protected set; }
+        public Action onLoadFinish;//加载完成回调;
 
-        /// <summary>
         /// 初始化;
         /// </summary>
         /// <param name="assetType"></param>
@@ -42,6 +36,10 @@ namespace Framework
         {
             targetObject = target;
             isFinish = true;
+            if(!isCancel && onLoadFinish != null)
+            {
+                onLoadFinish();
+            }
         }
 
         public void CancelProxy()

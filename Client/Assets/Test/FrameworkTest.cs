@@ -63,7 +63,7 @@ public class FrameworkTest : MonoBehaviour
 
     private void ModelInit()
     {
-        ResourceMgr.Instance.LoadAssetSync<GameObject>(AssetType.Prefab, "Prefab/Models/Avatar/ch_pc_hou_004.prefab");
+        AssetLoadProxy proxy = ResourceMgr.Instance.LoadAssetProxy<GameObject>(AssetType.Prefab, "Prefab/Models/Avatar/ch_pc_hou_004.prefab", null);
     }
 
     public void ChangeHead()

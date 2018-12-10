@@ -148,6 +148,7 @@ namespace Framework
         /// <param name="type">资源类型</param>
         /// <param name="assetName">资源名字</param>
         /// <returns>AssetBundle</returns>
+        [Obsolete("Warning,forbid to call!")]
         public AssetBundle LoadAssetBundleSync(AssetType type, string assetName)
         {
             if (type == AssetType.Non || string.IsNullOrEmpty(assetName)) return null;
@@ -241,20 +242,34 @@ namespace Framework
             string assetBundleName = FilePathHelper.GetAssetBundleFileName(type, assetName);
             //先加载依赖的AssetBundle;
             string[] DependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
+            float count = DependentAssetBundle.Length;
+            float unit = 0.9f / (count + 1);
+            int index = 0;
             foreach (string tempAssetBundle in DependentAssetBundle)
             {
+                float dp = 0f;
                 if (tempAssetBundle == FilePathHelper.GetAssetBundleFileName(AssetType.Shader, "Shaders")) continue;
                 string tempPtah = FilePathHelper.AssetBundlePath + tempAssetBundle;
-                IEnumerator<float> itor = LoadAsync(tempPtah, null, null);
+                IEnumerator<float> itor = LoadAsync(tempPtah, null, (value) => { dp = value; });
                 while (itor.MoveNext())
                 {
+                    if (progress != null)
+                    {
+                        progress(unit * (index + dp));
+                    }
                     yield return Timing.WaitForOneFrame;
                 }
+                index++;
             }
             //加载目标AssetBundle;
-            IEnumerator<float> itorTarget = LoadAsync(assetBundlePath, action, progress);
+            float p = 0f;
+            IEnumerator<float> itorTarget = LoadAsync(assetBundlePath, action, (value) => { p = value; });
             while (itorTarget.MoveNext())
             {
+                if (progress != null)
+                {
+                    progress(unit * (count + p));
+                }
                 yield return Timing.WaitForOneFrame;
             }
         }

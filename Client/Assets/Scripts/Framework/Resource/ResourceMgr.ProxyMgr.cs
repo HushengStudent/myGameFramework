@@ -1,16 +1,15 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/12/09 22:54:09
-** desc:  Resource资源加载代理;
+** desc:  资源加载代理;
 *********************************************************************************/
 
 using UnityEngine;
 using System.Collections;
 using System;
-using Object = UnityEngine.Object;
 using System.Collections.Generic;
 using MEC;
-using System.IO;
+using Object = UnityEngine.Object;
 
 namespace Framework
 {
