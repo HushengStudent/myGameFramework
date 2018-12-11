@@ -18,55 +18,6 @@ namespace Framework
     {
         #region AssetBundle Load
 
-        private ulong _loadID = ulong.MaxValue;
-
-        private ulong LoadID
-        {
-            get
-            {
-                if (_loadID < 1)
-                    _loadID = ulong.MaxValue;
-                return _loadID--;
-            }
-        }
-
-        private ulong _curLoadID = 0;
-        private ulong CurLoadID
-        {
-            get
-            {
-                if (_curLoadID > 0)
-                {
-                    return _curLoadID;
-                }
-                if (_curLoadID == 0)
-                {
-                    if (_loadIdQueue.Count == 0)
-                    {
-                        LogHelper.PrintError("[ResourceMgr]Get CurLoadTask error!");
-                        _curLoadID = 0;
-                    }
-                    _curLoadID = _loadIdQueue.Dequeue();
-                }
-                return _curLoadID;
-            }
-            set
-            {
-                if (0 == value)
-                {
-                    _curLoadID = 0;
-                }
-            }
-        }
-
-        //维护加载资源ID队列,保证资源加载顺序,这样加载完成的回调执行的先后顺序就只与脚本调用接口的顺序有关了;
-        private Queue<ulong> _loadIdQueue = new Queue<ulong>();
-
-        private int LOAD_INTERVAL_TIME = 1000;//加载超时时间1000ms;
-        private int LOAD_MAX_VALUE = 50;//同时加载最大数;
-
-        private int _curLoadCount = 0;
-
         /// <summary>
         /// Asset sync load from AssetBundle;
         /// </summary>
@@ -78,13 +29,12 @@ namespace Framework
         public T LoadAssetSync<T>(AssetType assetType, string assetName) where T : Object
         {
             T ctrl = null;
-            IAssetLoader<T> loader = CreateLoader<T>(assetType);
             AssetBundle assetBundle = AssetBundleMgr.Instance.LoadAssetBundleSync(assetType, assetName);
             if (assetBundle != null)
             {
                 var name = Path.GetFileNameWithoutExtension(assetName);
                 T tempObject = assetBundle.LoadAsset<T>(name);
-                ctrl = loader.GetAsset(tempObject);
+                ctrl = AssetLoader.GetAsset(assetType, tempObject);
             }
             if (ctrl == null)
             {
@@ -100,7 +50,7 @@ namespace Framework
         /// <param name="assetType">资源类型</param>
         /// <param name="assetName">资源名字</param>
         /// <returns>代理</returns>
-        public AssetLoadProxy LoadAssetProxy<T>(AssetType assetType, string assetName) where T : Object
+        public AssetAsyncProxy LoadAssetProxy<T>(AssetType assetType, string assetName) where T : Object
         {
             return LoadAssetProxy<T>(assetType, assetName, null, null);
         }
@@ -113,7 +63,7 @@ namespace Framework
         /// <param name="assetName">资源名字</param>
         /// <param name="action">资源回调</param>
         /// <returns>代理</returns>
-        public AssetLoadProxy LoadAssetProxy<T>(AssetType assetType, string assetName, Action<T> action) where T : Object
+        public AssetAsyncProxy LoadAssetProxy<T>(AssetType assetType, string assetName, Action<T> action) where T : Object
         {
             return LoadAssetProxy<T>(assetType, assetName, action, null);
         }
@@ -127,10 +77,10 @@ namespace Framework
         /// <param name="action">资源回调</param>
         /// <param name="progress">progress回调</param>
         /// <returns>代理</returns>
-        public AssetLoadProxy LoadAssetProxy<T>(AssetType assetType, string assetName
+        public AssetAsyncProxy LoadAssetProxy<T>(AssetType assetType, string assetName
             , Action<T> action, Action<float> progress) where T : Object
         {
-            AssetLoadProxy proxy = PoolMgr.Instance.Get<AssetLoadProxy>();
+            AssetAsyncProxy proxy = PoolMgr.Instance.Get<AssetAsyncProxy>();
             proxy.InitProxy(assetType, assetName);
             CoroutineMgr.Instance.RunCoroutine(LoadAssetAsync<T>(assetType, assetName, proxy, action, progress));
             return proxy;
@@ -146,19 +96,21 @@ namespace Framework
         /// <param name="action">资源回调</param>
         /// <param name="progress">progress回调</param>
         /// <returns></returns>
-        private IEnumerator<float> LoadAssetAsync<T>(AssetType assetType, string assetName, AssetLoadProxy proxy
+        private IEnumerator<float> LoadAssetAsync<T>(AssetType assetType, string assetName, AssetAsyncProxy proxy
             , Action<T> action, Action<float> progress)
             where T : Object
         {
             T ctrl = null;
             AssetBundle assetBundle = null;
-            IAssetLoader<T> loader = CreateLoader<T>(assetType);
 
-            if(_curLoadCount>LOAD_MAX_VALUE)
+            //--------------------------------------------------------------------------------------
+            //正在加载的数量超出最大值,等下一帧吧;
+            if (AsyncMgr.CurCount() > AsyncMgr.ASYNC_LOAD_MAX_VALUE)
                 yield return Timing.WaitForOneFrame;
 
-            var loadID = LoadID;
-            _loadIdQueue.Enqueue(loadID);
+            var loadID = AsyncMgr.LoadID;
+            AsyncMgr.Add(loadID);
+            //--------------------------------------------------------------------------------------
 
             IEnumerator itor = AssetBundleMgr.Instance.LoadAssetBundleAsync(assetType, assetName,
                 ab => { assetBundle = ab; }, progress);//此处加载占90%;
@@ -181,29 +133,56 @@ namespace Framework
             {
                 yield return Timing.WaitForOneFrame;
             }
-            ctrl = loader.GetAsset(request.asset as T);
+            ctrl = AssetLoader.GetAsset(assetType, request.asset as T);
             if (null == ctrl)
             {
                 LogHelper.PrintError(string.Format("[ResourceMgr]LoadAssetAsync Load Asset {0} failure!", assetName));
             }
+            //--------------------------------------------------------------------------------------
             //先等一帧;
             yield return Timing.WaitForOneFrame;
-            if (CurLoadID != loadID)
+            var finishTime = AsyncMgr.GetCurTime();
+            var timeOver = false;
+            var isloading = AsyncMgr.IsContains(loadID);
+            while (isloading && !timeOver && AsyncMgr.CurLoadID != loadID)
             {
+                timeOver = AsyncMgr.IsTimeOverflows(finishTime);
+                if (timeOver)
+                {
+                    LogHelper.PrintWarning(string.Format("[ResourceMgr]LoadAssetAsync excute callback over time, type:{0},name{1}."
+                        , assetType, assetName));
+                    break;
+                }
                 yield return Timing.WaitForOneFrame;
+            }
+            //--------------------------------------------------------------------------------------
+            if (!proxy.isCancel && action != null)
+            {
+                action(ctrl);
+            }
+            if (proxy != null)
+            {
+                proxy.OnFinish(ctrl);
+            }
+            //--------------------------------------------------------------------------------------
+            if (!isloading)
+            {
+                yield break;
+            }
+            if (timeOver && AsyncMgr.CurLoadID != loadID)
+            {
+                AsyncMgr.Remove(loadID);
+
+                if (AsyncMgr.CurLoadTimeOverflows())
+                {
+                    AsyncMgr.CurLoadID = 0;
+                }
             }
             else
             {
-                if (!proxy.isCancel && action != null)
-                {
-                    action(ctrl);
-                }
-                if (proxy != null)
-                {
-                    proxy.OnFinish(ctrl);
-                }
-                CurLoadID = 0;
+                AsyncMgr.CurLoadID = 0;
             }
+            //--------------------------------------------------------------------------------------
         }
 
         #endregion

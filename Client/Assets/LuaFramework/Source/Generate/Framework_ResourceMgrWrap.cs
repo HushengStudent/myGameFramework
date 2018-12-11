@@ -10,11 +10,11 @@ public class Framework_ResourceMgrWrap
 		L.RegFunction("Init", Init);
 		L.RegFunction("Clone", Clone);
 		L.RegFunction("Destroy", Destroy);
-		L.RegFunction("UnloadUnusedAssets", UnloadUnusedAssets);
 		L.RegFunction("GameGC", GameGC);
+		L.RegFunction("UnloadUnusedAssets", UnloadUnusedAssets);
+		L.RegFunction("UnloadObject", UnloadObject);
 		L.RegFunction("AddProxy", AddProxy);
 		L.RegFunction("CancleAllProxy", CancleAllProxy);
-		L.RegFunction("UnloadObject", UnloadObject);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("ResourceMgrInitHandler", get_ResourceMgrInitHandler, set_ResourceMgrInitHandler);
@@ -73,23 +73,6 @@ public class Framework_ResourceMgrWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int UnloadUnusedAssets(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 2);
-			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
-			System.Action<UnityEngine.AsyncOperation> arg0 = (System.Action<UnityEngine.AsyncOperation>)ToLua.CheckDelegate<System.Action<UnityEngine.AsyncOperation>>(L, 2);
-			obj.UnloadUnusedAssets(arg0);
-			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GameGC(IntPtr L)
 	{
 		try
@@ -106,32 +89,15 @@ public class Framework_ResourceMgrWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int AddProxy(IntPtr L)
+	static int UnloadUnusedAssets(IntPtr L)
 	{
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
 			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
-			Framework.ResourceLoadProxy arg0 = (Framework.ResourceLoadProxy)ToLua.CheckObject<Framework.ResourceLoadProxy>(L, 2);
-			obj.AddProxy(arg0);
+			System.Action<UnityEngine.AsyncOperation> arg0 = (System.Action<UnityEngine.AsyncOperation>)ToLua.CheckDelegate<System.Action<UnityEngine.AsyncOperation>>(L, 2);
+			obj.UnloadUnusedAssets(arg0);
 			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int CancleAllProxy(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 1);
-			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
-			System.Collections.Generic.IEnumerator<float> o = obj.CancleAllProxy();
-			ToLua.PushObject(L, o);
-			return 1;
 		}
 		catch (Exception e)
 		{
@@ -165,6 +131,40 @@ public class Framework_ResourceMgrWrap
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to method: Framework.ResourceMgr.UnloadObject");
 			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int AddProxy(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+			Framework.AsyncProxy arg0 = (Framework.AsyncProxy)ToLua.CheckObject<Framework.AsyncProxy>(L, 2);
+			obj.AddProxy(arg0);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int CancleAllProxy(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+			System.Collections.Generic.IEnumerator<float> o = obj.CancleAllProxy();
+			ToLua.PushObject(L, o);
+			return 1;
 		}
 		catch (Exception e)
 		{

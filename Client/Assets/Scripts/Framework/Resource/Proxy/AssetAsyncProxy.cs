@@ -10,17 +10,23 @@ using System.Text;
 
 namespace Framework
 {
-    public class AssetLoadProxy : AbsLoadProxy
+    public class AssetAsyncProxy : AsyncProxy
     {
         protected override void Unload()
         {
+            base.Unload();
             if (targetObject != null)
             {
-                ResourceMgr.Instance.UnloadObject(assetType, targetObject);
-                //Ð¶ÔØAssetBundle;
                 AssetBundleMgr.Instance.UnloadAsset(assetType, assetName);
             }
-            PoolMgr.Instance.Release<AssetLoadProxy>(this);
+            PoolMgr.Instance.Release<AssetAsyncProxy>(this);
+        }
+
+        protected override void Unload2Pool()
+        {
+            base.Unload2Pool();
+
+            PoolMgr.Instance.Release<AssetAsyncProxy>(this);
         }
     }
 }

@@ -15,9 +15,11 @@ namespace Framework
 {
     public partial class ResourceMgr
     {
+        #region Proxy
+
         public ManagerInitEventHandler ResourceMgrInitHandler { get; set; }
 
-        private List<AbsLoadProxy> _resourceProxyList = new List<AbsLoadProxy>();
+        private List<AsyncProxy> _resourceProxyList = new List<AsyncProxy>();
 
         protected override void UpdateEx(float interval)
         {
@@ -32,7 +34,7 @@ namespace Framework
             }
         }
 
-        public void AddProxy(AbsLoadProxy proxy)
+        public void AddProxy(AsyncProxy proxy)
         {
             _resourceProxyList.Add(proxy);
         }
@@ -56,5 +58,7 @@ namespace Framework
                 }
             }
         }
+
+        #endregion
     }
 }

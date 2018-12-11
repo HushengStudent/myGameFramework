@@ -9,15 +9,16 @@ using Object = UnityEngine.Object;
 
 namespace Framework
 {
-    public class ResourceLoadProxy : AbsLoadProxy
+    public class ResourceAsyncProxy : AsyncProxy
     {
         protected override void Unload()
         {
-            if (targetObject != null)
-            {
-                ResourceMgr.Instance.UnloadObject(assetType, targetObject);
-            }
-            PoolMgr.Instance.Release<ResourceLoadProxy>(this);
+            PoolMgr.Instance.Release<ResourceAsyncProxy>(this);
+        }
+
+        protected override void Unload2Pool()
+        {
+            PoolMgr.Instance.Release<ResourceAsyncProxy>(this);
         }
     }
 }
