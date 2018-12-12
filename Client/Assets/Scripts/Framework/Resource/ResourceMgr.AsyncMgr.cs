@@ -39,12 +39,12 @@ namespace Framework
                     }
                     if (_curLoadID == 0)
                     {
-                        if (AsyncLoadIdList.Count == 0)
+                        if (AsyncLoadIdLinkedList.Count == 0)
                         {
                             LogHelper.PrintError("[ResourceMgr]Get CurLoadID error!");
                             _curLoadID = 0;
                         }
-                        _curLoadID = AsyncLoadIdList[0];
+                        _curLoadID = AsyncLoadIdLinkedList.First.Value;
                         _curStartTime = GetCurTime();
                     }
                     return _curLoadID;
@@ -60,7 +60,7 @@ namespace Framework
             }
 
             //维护加载资源ID队列,这样加载完成的回调执行的先后顺序就只与脚本调用接口的顺序有关了;
-            private static List<ulong> AsyncLoadIdList = new List<ulong>();
+            private static LinkedList<ulong> AsyncLoadIdLinkedList = new LinkedList<ulong>();
 
             //同时加载最大数;
             public static readonly int ASYNC_LOAD_MAX_VALUE = 50;
@@ -73,7 +73,7 @@ namespace Framework
             /// <param name="id"></param>
             public static void Add(ulong id)
             {
-                AsyncLoadIdList.Add(id);
+                AsyncLoadIdLinkedList.AddLast(id);
             }
 
             /// <summary>
@@ -82,7 +82,7 @@ namespace Framework
             /// <param name="id"></param>
             public static void Remove(ulong id)
             {
-                AsyncLoadIdList.Remove(id);
+                AsyncLoadIdLinkedList.Remove(id);
             }
 
             /// <summary>
@@ -91,7 +91,7 @@ namespace Framework
             /// <returns></returns>
             public static int CurCount()
             {
-                return AsyncLoadIdList.Count;
+                return AsyncLoadIdLinkedList.Count;
             }
 
             /// <summary>
@@ -101,7 +101,7 @@ namespace Framework
             /// <returns></returns>
             public static bool IsContains(ulong id)
             {
-                return AsyncLoadIdList.Contains(id);
+                return AsyncLoadIdLinkedList.Contains(id);
             }
 
             /// <summary>
