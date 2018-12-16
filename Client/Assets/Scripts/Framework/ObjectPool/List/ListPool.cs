@@ -8,19 +8,19 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Framework.Pool
+namespace Framework.ObjectPool
 {
-    internal static class ListPool<T>
+    internal class ListPool<T>
     {
         // Object pool to avoid allocations.
-        private static readonly ObjectPool<List<T>> s_ListPool = new ObjectPool<List<T>>(null, l => l.Clear());
+        private ObjectPool<List<T>> s_ListPool = new ObjectPool<List<T>>(null, l => l.Clear());
 
-        public static List<T> Get()
+        public List<T> Get()
         {
             return s_ListPool.Get();
         }
 
-        public static void Release(List<T> toRelease)
+        public void Release(List<T> toRelease)
         {
             s_ListPool.Release(toRelease);
         }

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Framework.Pool
+namespace Framework.ObjectPool
 {
     internal class ObjectPool<T> where T : new()
     {

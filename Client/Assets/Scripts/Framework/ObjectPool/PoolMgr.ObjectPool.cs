@@ -4,7 +4,7 @@
 ** desc:  C#对象池管理;
 *********************************************************************************/
 
-using Framework.Pool;
+using Framework.ObjectPool;
 using System;
 using System.Collections.Generic;
 
@@ -47,7 +47,7 @@ namespace Framework
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="type"></param>
-        public void Release<T>(T type) where T : new()
+        public void ReleaseObject<T>(T type) where T : new()
         {
             IPool target = type as IPool;
             if (target != null)

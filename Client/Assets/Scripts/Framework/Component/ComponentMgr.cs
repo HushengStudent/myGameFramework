@@ -109,7 +109,7 @@ namespace Framework
             RemoveComponent(component);
             component.Entity.ComponentList.Remove(component);
             component.Uninit();
-            PoolMgr.Instance.Release<T>(component as T);//Release To Pool;
+            PoolMgr.Instance.ReleaseObject<T>(component as T);//Release To Pool;
         }
         /// <summary>
         /// 移除Component;

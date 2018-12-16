@@ -120,7 +120,7 @@ namespace Framework
         protected virtual void DeAttachGoEx()
         {
             gameObjectEx.Uninit();
-            PoolMgr.Instance.Release<GameObjectEx>(gameObjectEx);
+            PoolMgr.Instance.ReleaseObject<GameObjectEx>(gameObjectEx);
             gameObjectEx = null;
         }
         /// <summary>

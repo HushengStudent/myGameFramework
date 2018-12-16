@@ -42,7 +42,7 @@ public class FrameworkTest : MonoBehaviour
     {
         if (_goQueue.Count > 0)
         {
-            PoolMgr.Instance.Release(_goQueue.Dequeue());
+            PoolMgr.Instance.ReleaseGameObject(_goQueue.Dequeue());
         }
     }
 

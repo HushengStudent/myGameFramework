@@ -4,7 +4,7 @@
 ** desc:  GameObject对象池管理;
 *********************************************************************************/
 
-using Framework.Pool;
+using Framework.ObjectPool;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,7 +35,7 @@ namespace Framework
         /// <param name="type"></param>
         /// <param name="assetName"></param>
         /// <param name="element"></param>
-        public void Release(GameObject element)
+        public void ReleaseGameObject(GameObject element)
         {
             _gameObjectPool.Release(element);
         }

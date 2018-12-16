@@ -110,7 +110,7 @@ namespace Framework
         {
             RemoveEntity(entity);
             entity.Uninit();
-            PoolMgr.Instance.Release<T>(entity as T);//release to pool;
+            PoolMgr.Instance.ReleaseObject<T>(entity as T);//release to pool;
         }
         /// <summary>
         /// 获取Entity;

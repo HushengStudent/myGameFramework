@@ -19,14 +19,14 @@ namespace Framework
             {
                 AssetBundleMgr.Instance.UnloadAsset(assetType, assetName);
             }
-            PoolMgr.Instance.Release<AssetAsyncProxy>(this);
+            PoolMgr.Instance.ReleaseObject<AssetAsyncProxy>(this);
         }
 
         protected override void Unload2Pool()
         {
             base.Unload2Pool();
 
-            PoolMgr.Instance.Release<AssetAsyncProxy>(this);
+            PoolMgr.Instance.ReleaseObject<AssetAsyncProxy>(this);
         }
     }
 }
