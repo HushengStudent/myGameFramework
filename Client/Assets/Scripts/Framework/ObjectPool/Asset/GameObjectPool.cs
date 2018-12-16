@@ -10,9 +10,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Framework
+namespace Framework.Pool
 {
-    public class GameObjectPool
+    internal class GameObjectPool
     {
         /// <summary>
         /// 单帧卸载数量;

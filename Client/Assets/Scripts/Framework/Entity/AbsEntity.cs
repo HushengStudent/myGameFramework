@@ -63,7 +63,7 @@ namespace Framework
             EntityId = entityId;
             ComponentList.Clear();
 
-            gameObjectEx = PoolMgr.Instance.Get<GameObjectEx>();
+            gameObjectEx = PoolMgr.Instance.GetObject<GameObjectEx>();
             gameObjectEx.AddLoadFinishHandler(OnAttachGoEx);
             gameObjectEx.Init(this, ResPath);
 

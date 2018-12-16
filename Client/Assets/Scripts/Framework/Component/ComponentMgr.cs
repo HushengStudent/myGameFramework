@@ -85,7 +85,7 @@ namespace Framework
         /// <returns></returns>
         public T CreateComponent<T>(AbsEntity entity, ComponentInitEventHandler handler = null) where T : AbsComponent, new()
         {
-            T _Component = PoolMgr.Instance.Get<T>();
+            T _Component = PoolMgr.Instance.GetObject<T>();
             if (AddComponent(_Component))
             {
                 _Component.ComponentInitHandler = handler;

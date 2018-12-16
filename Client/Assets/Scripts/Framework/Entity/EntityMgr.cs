@@ -88,7 +88,7 @@ namespace Framework
         /// <returns></returns>
         public T CreateEntity<T>(int entityId, ulong uid, string name, EntityInitEventHandler initHandler) where T : AbsEntity, new()
         {
-            T _Entity = PoolMgr.Instance.Get<T>();
+            T _Entity = PoolMgr.Instance.GetObject<T>();
             if (AddEntity(_Entity))
             {
                 _Entity.EntityInitHandler = initHandler;

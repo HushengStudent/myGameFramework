@@ -82,7 +82,7 @@ namespace Framework
         public AssetAsyncProxy LoadAssetProxy<T>(AssetType assetType, string assetName
             , Action<T> action, Action<float> progress) where T : Object
         {
-            AssetAsyncProxy proxy = PoolMgr.Instance.Get<AssetAsyncProxy>();
+            AssetAsyncProxy proxy = PoolMgr.Instance.GetObject<AssetAsyncProxy>();
             proxy.InitProxy(assetType, assetName);
             CoroutineMgr.Instance.RunCoroutine(LoadAssetAsync<T>(assetType, assetName, proxy, action, progress));
             return proxy;
