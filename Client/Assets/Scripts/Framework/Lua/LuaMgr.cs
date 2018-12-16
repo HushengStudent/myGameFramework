@@ -153,5 +153,13 @@ namespace Framework
             lua = null;
             loader = null;
         }
+
+        public void Dostring(string str)
+        {
+            if (lua != null)
+            {
+                lua.DoString(str);
+            }
+        }
     }
 }
