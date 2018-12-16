@@ -38,7 +38,8 @@ namespace Framework
             }
             if (ctrl == null)
             {
-                LogHelper.PrintError(string.Format("[ResourceMgr]LoadAssetSync Load Asset {0} failure!", assetName));
+                LogHelper.PrintError(string.Format("[ResourceMgr]LoadAssetSync Load Asset failure" +
+                    ",type:{0},name:{1}!", assetType, assetName));
             }
             return ctrl;
         }
@@ -63,7 +64,8 @@ namespace Framework
         /// <param name="assetName">资源名字</param>
         /// <param name="action">资源回调</param>
         /// <returns>代理</returns>
-        public AssetAsyncProxy LoadAssetProxy<T>(AssetType assetType, string assetName, Action<T> action) where T : Object
+        public AssetAsyncProxy LoadAssetProxy<T>(AssetType assetType, string assetName
+            , Action<T> action) where T : Object
         {
             return LoadAssetProxy<T>(assetType, assetName, action, null);
         }
@@ -136,7 +138,8 @@ namespace Framework
             ctrl = AssetLoader.GetAsset(assetType, request.asset as T);
             if (null == ctrl)
             {
-                LogHelper.PrintError(string.Format("[ResourceMgr]LoadAssetAsync Load Asset {0} failure!", assetName));
+                LogHelper.PrintError(string.Format("[ResourceMgr]LoadAssetAsync Load Asset failure," +
+                    ",type:{0},name:{1}!", assetType, assetName));
             }
             //--------------------------------------------------------------------------------------
             //先等一帧;

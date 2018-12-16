@@ -61,7 +61,8 @@ namespace Framework
         /// <param name="assetName">资源名字</param>
         /// <param name="action">资源回调</param>
         /// <returns>代理</returns>
-        public ResourceAsyncProxy LoadResourceProxy<T>(AssetType assetType, string assetName, Action<T> action) where T : Object
+        public ResourceAsyncProxy LoadResourceProxy<T>(AssetType assetType, string assetName
+            , Action<T> action) where T : Object
         {
             return LoadResourceProxy<T>(assetType, assetName, action, null);
         }

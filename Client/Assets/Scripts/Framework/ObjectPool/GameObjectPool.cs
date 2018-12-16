@@ -17,7 +17,7 @@ namespace Framework
         /// <summary>
         /// 单帧卸载数量;
         /// </summary>
-        private int _preFrameClearCount = 10;
+        private int _preFrameClearCount = 50;
 
         private Dictionary<int, Stack<GameObject>> _gameObjectPool = new Dictionary<int, Stack<GameObject>>();
 
@@ -65,7 +65,7 @@ namespace Framework
                     _gameObjectPool[instanceId] = stack;
                     parentInstanceId = instanceId;
                     LogHelper.PrintWarning(string.Format("[GameObjectPool]the game object:{0} is not create form pool " +
-                        "or it's parents destroyed,but it is trying to release to pool!",element.name));
+                        "or it's parents destroyed,but it is trying to release to pool!", element.name));
                 }
             }
             if (!_gameObjectPool.TryGetValue(parentInstanceId, out stack))
@@ -100,7 +100,7 @@ namespace Framework
                     {
                         continue;
                     }
-                    GameObject.DestroyImmediate(go);
+                    GameObject.Destroy(go);
                     index++;
                     if (index > PreFrameClearCount)
                     {
