@@ -17,6 +17,7 @@ namespace Framework
 
         public int Length;
         public int ReceivedLength;
+
         public int BufferSize { get { return _buffer.Length; } }
 
         public SessionReceiver(int bufferSize)

@@ -29,18 +29,16 @@ namespace Framework
         private Socket _socket;
         private SessionReceiver _receiver;
         private bool _disposed;
-
         private IPAddress _ipAddress;
         private int _port;
-
         private object thisLock = new object();
 
-        public SessionConnectedEventHandler ConnectedHandler;
-        public SessionClosedEventHandler ClosedHandler;
-        public SessionErrorEventHandler ErrorHandler;
-        public SessionCustomErrorEventHandler CustomErrorHandler;
-        public SessionReceiveEventHandler ReceiveHandler;
-        public SessionSendEventHandler SendHandler;
+        public SessionConnectedEventHandler ConnectedHandler = null;
+        public SessionClosedEventHandler ClosedHandler = null;
+        public SessionErrorEventHandler ErrorHandler = null;
+        public SessionCustomErrorEventHandler CustomErrorHandler = null;
+        public SessionReceiveEventHandler ReceiveHandler = null;
+        public SessionSendEventHandler SendHandler = null;
 
         public string Name { get { return _name; } }
         public SessionType Type { get; private set; }

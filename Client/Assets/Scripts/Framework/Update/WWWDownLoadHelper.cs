@@ -20,10 +20,10 @@ namespace Framework
         public float Progress { get { return _progress; } }
         public bool IsDone { get { return _isDone; } }
 
-        public DownLoadStartEventHandler StartHandler;
-        public DownLoadErrorEventHandler ErrorHandler;
-        public DownLoadProgressEventHandler ProgressHandler;
-        public DownLoadSuccessEventHandler SuccessHandler;
+        public DownLoadStartEventHandler StartHandler = null;
+        public DownLoadErrorEventHandler ErrorHandler = null;
+        public DownLoadProgressEventHandler ProgressHandler = null;
+        public DownLoadSuccessEventHandler SuccessHandler = null;
 
         public IEnumerator StartDownLoad(string url, string filePath)
         {

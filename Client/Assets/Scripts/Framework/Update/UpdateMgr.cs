@@ -16,9 +16,9 @@ namespace Framework
         public VersionInfo LoaclVersion { get; private set; }
         public VersionInfo NetVersion { get; private set; }
 
-        public UpdateStartEventHandler StartHandler;
-        public UpdateErrorEventHandler ErrorHandler;
-        public UpdateSuccessEventHandler SuccessHandler;
+        public UpdateStartEventHandler StartHandler = null;
+        public UpdateErrorEventHandler ErrorHandler = null;
+        public UpdateSuccessEventHandler SuccessHandler = null;
 
         public override void Init()
         {

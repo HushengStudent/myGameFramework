@@ -18,9 +18,7 @@ namespace Framework.ObjectPool
         /// 单帧卸载数量;
         /// </summary>
         private int _preFrameClearCount = 50;
-
         private Dictionary<int, Stack<GameObject>> _gameObjectPool = new Dictionary<int, Stack<GameObject>>();
-
         private Dictionary<int, int> _gameObjectIndex = new Dictionary<int, int>();
 
         public int PreFrameClearCount { get { return _preFrameClearCount; } set { _preFrameClearCount = value; } }

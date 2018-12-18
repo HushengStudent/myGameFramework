@@ -14,10 +14,10 @@ namespace Framework
     public sealed class BehaviorTree
     {
         public bool Enable;
-        public OnBehaviorTreeStartHandler OnStart;
-        public OnBehaviorTreeSuccesstHandler OnSuccess;
-        public OnBehaviorTreeFailureHandler OnFailure;
-        public OnBehaviorTreeResetHandler OnReset;
+        public OnBehaviorTreeStartHandler OnStart = null;
+        public OnBehaviorTreeSuccesstHandler OnSuccess = null;
+        public OnBehaviorTreeFailureHandler OnFailure = null;
+        public OnBehaviorTreeResetHandler OnReset = null;
 
         public AbsBehavior Root { get; private set; }
         public AbsEntity Entity { get; private set; }

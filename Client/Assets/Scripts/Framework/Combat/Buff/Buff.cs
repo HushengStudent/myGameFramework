@@ -16,6 +16,7 @@ namespace Framework
         private BuffEventHandler _onFinishHandler = null;
 
         public ulong LeftTime;
+
         public int BuffId { get; private set; }
 
         public void InitBuff(int buffId, ulong leftTime, BuffEventHandler onInit, BuffEventHandler onFinish)

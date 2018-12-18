@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/08/07 00:46:02
-** desc:  ×´Ì¬»ú×´Ì¬»ùÀà;
+** desc:  çŠ¶æ€æœºçŠ¶æ€åŸºç±»;
 *********************************************************************************/
 
 using System.Collections;
@@ -51,7 +51,6 @@ namespace Framework
             if (Machine.CurTrans == null)
             {
                 UpdateEx(interval);
-
             }
             else
             {

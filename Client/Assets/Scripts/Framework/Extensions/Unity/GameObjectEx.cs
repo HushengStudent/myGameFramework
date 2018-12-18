@@ -25,6 +25,7 @@ namespace Framework
         public bool IsLoadFinish;
         public GameObject gameObject;
         public Transform Trans;
+
         public AbsEntity Entity { get { return _entity; } }
         public string ResPath { get { return _resPath; } }
         public int ParentInstanceId { get { return _parentInstanceId; } }

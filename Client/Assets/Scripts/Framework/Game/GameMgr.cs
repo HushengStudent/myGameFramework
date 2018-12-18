@@ -24,11 +24,11 @@ namespace Framework
         private float _syncInterval = 0.2f;
         private MobileLevel _mobileLevelValue = MobileLevel.High;
 
+        public bool CheckUpdateState = false;
+
         public int GameFrame { get { return _gameFrame; } set { _gameFrame = value; } }
         public float SyncInterval { get { return _syncInterval; } set { _syncInterval = value; } }
         public MobileLevel MobileLevelValue { get { return _mobileLevelValue; } set { _mobileLevelValue = value; } }
-
-        public bool CheckUpdateState = false;
 
         public override void Init()
         {

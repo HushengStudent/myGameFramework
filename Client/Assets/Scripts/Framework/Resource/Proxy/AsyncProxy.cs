@@ -22,8 +22,9 @@ namespace Framework
         public bool isUsePool { get; protected set; }
         //加载完成对象;
         public Object targetObject { get; protected set; }
+
         //加载完成回调;
-        public Action<Object> onLoadFinish;
+        public Action<Object> onLoadFinish = null;
 
         /// <summary>
         /// 初始化;

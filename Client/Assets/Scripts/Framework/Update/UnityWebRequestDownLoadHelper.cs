@@ -23,10 +23,10 @@ namespace Framework
         public bool IsDone { get { return _isDone; } }
         public bool IsStop { get { return _isStop; } }
 
-        public DownLoadStartEventHandler StartHandler;
-        public DownLoadErrorEventHandler ErrorHandler;
-        public DownLoadProgressEventHandler ProgressHandler;
-        public DownLoadSuccessEventHandler SuccessHandler;
+        public DownLoadStartEventHandler StartHandler = null;
+        public DownLoadErrorEventHandler ErrorHandler = null;
+        public DownLoadProgressEventHandler ProgressHandler = null;
+        public DownLoadSuccessEventHandler SuccessHandler = null;
 
         public IEnumerator StartDownLoad(string url, string filePath)
         {
