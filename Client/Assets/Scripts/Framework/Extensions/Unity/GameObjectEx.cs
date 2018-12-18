@@ -22,10 +22,10 @@ namespace Framework
         private GameObjectExLoadFinishHandler _loadFinishHandler = null;
         private GameObjectExDestroyHandler _destroyHandler = null;
 
-        public bool IsLoadFinish { get; set; }
-        public GameObject gameObject { get; set; }
+        public bool IsLoadFinish;
+        public GameObject gameObject;
+        public Transform Trans;
         public AbsEntity Entity { get { return _entity; } }
-        public Transform Trans { get; set; }
         public string ResPath { get { return _resPath; } }
         public int ParentInstanceId { get { return _parentInstanceId; } }
 

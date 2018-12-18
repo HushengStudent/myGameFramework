@@ -17,7 +17,7 @@ namespace Framework
     {
         #region Proxy
 
-        public ManagerInitEventHandler ResourceMgrInitHandler { get; set; }
+        public ManagerInitEventHandler ResourceMgrInitHandler = null;
 
         private List<AsyncProxy> _resourceProxyList = new List<AsyncProxy>();
 

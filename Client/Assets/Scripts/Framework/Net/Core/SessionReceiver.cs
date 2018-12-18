@@ -15,9 +15,9 @@ namespace Framework
     {
         private readonly byte[] _buffer;
 
+        public int Length;
+        public int ReceivedLength;
         public int BufferSize { get { return _buffer.Length; } }
-        public int Length { get; set; }
-        public int ReceivedLength { get; set; }
 
         public SessionReceiver(int bufferSize)
         {

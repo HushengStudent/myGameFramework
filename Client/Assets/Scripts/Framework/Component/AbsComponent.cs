@@ -19,8 +19,9 @@ namespace Framework
     {
         protected AbsComponent() : base() { }
 
+        public ComponentInitEventHandler ComponentInitHandler = null;
+
         public AbsEntity Entity { get; private set; }
-        public ComponentInitEventHandler ComponentInitHandler { get; set; }
 
         public virtual void FixedUpdateEx(float interval) { }
         public virtual void UpdateEx(float interval) { }

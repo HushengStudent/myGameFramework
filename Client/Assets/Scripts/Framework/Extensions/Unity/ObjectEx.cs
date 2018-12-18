@@ -18,8 +18,9 @@ namespace Framework
             Enable = false;
         }
 
+        public bool Enable;
+
         public long ID { get; private set; }
-        public bool Enable { get; set; }
 
         /// <summary>
         /// ¶ÔÏó³ØGet;

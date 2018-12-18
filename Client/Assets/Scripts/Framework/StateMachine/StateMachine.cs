@@ -16,13 +16,14 @@ namespace Framework
         private List<AbsState> _stateList = new List<AbsState>();
         private List<AbsTransition> _transitionList = new List<AbsTransition>();
 
-        public bool Enable { get; set; }
+        public bool Enable;
+        public AbsState CurrentState;
+        public AbsState DefaultState;
+        public AbsTransition CurTrans;
+
         public string Name { get; private set; }
         public AbsEntity Entity { get; private set; }
-        public AbsState CurrentState { get; set; }
-        public AbsState DefaultState { get; set; }
         public List<AbsState> StateList { get { return _stateList; } }
-        public AbsTransition CurTrans { get; set; }
         public List<AbsTransition> TransitionList { get { return _transitionList; } }
 
         public StateMachine(AbsEntity entity, string name,

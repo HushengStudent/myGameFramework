@@ -25,12 +25,13 @@ namespace Framework
 
         private EntityLoadFinishEventHandler _entityLoadFinishHandler = null;
 
+        public EntityInitEventHandler EntityInitHandler = null;
+
         public ulong UID { get; private set; }
         public int EntityId { get; private set; }
         public string EntityName { get; private set; }
         public string ResPath { get; private set; }
         public GameObjectEx gameObjectEx { get; private set; }
-        public EntityInitEventHandler EntityInitHandler { get; set; }
         public List<AbsComponent> ComponentList = new List<AbsComponent>();
         public EntityLoadFinishEventHandler EntityLoadFinishHandler
         {

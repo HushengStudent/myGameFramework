@@ -12,8 +12,9 @@ namespace Framework
 {
     public abstract class BaseUI
     {
+        public bool Enable;
+
         public string Name { get; private set; }
-        public bool Enable { get; set; }
 
         public abstract void OnInit();
         public abstract void Update();

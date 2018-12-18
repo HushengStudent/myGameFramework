@@ -15,8 +15,9 @@ namespace Framework
 {
     public partial class PoolMgr : MonoSingleton<PoolMgr>
     {
+        public ManagerInitEventHandler PoolMgrInitHandler = null;
+
         public GameObject Root { get; private set; }
-        public ManagerInitEventHandler PoolMgrInitHandler { get; set; }
 
         private void Awake()
         {
