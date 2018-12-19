@@ -14,7 +14,7 @@ namespace Framework
 {
     /// <summary>
     /// 1.AssetBundle加载完成后再加载AssetBundle,或开始异步加载AssetBundle后再同步加载AssetBundle,都会报错;
-    /// The AssetBundle 'xxxx' can't be loaded because another AssetBundle with the same files is already loaded.
+    /// The AssetBundle xxxx can't be loaded because another AssetBundle with the same files is already loaded.(同一帧先异步加载再同步加载,异步加载成功,但是同步加载报这个错);
     /// 2.开始异步加载AssetBundle后再异步加载AssetBundle,会报错;
     /// Unable to open archive file: xxxx;
     /// </summary>

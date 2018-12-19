@@ -68,4 +68,6 @@ software：Unity2017.4.16/visual studio2017.
     (2)protoc-gen-csharp.
 	
 #### 更新记录
-    (1)branch_v1.0(更新tolua版本).
+    (1)branch_v1.0.
+    (2)branch_v2.0(更新tolua版本).
+    (3)branch_v3.0(资源管理重构(异步加载优化;对象池)).

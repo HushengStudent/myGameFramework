@@ -13,6 +13,9 @@ using Object = UnityEngine.Object;
 
 namespace Framework
 {
+    /// <summary>
+    /// 调Resources.LoadAsync加载的同一帧,调Resources.Load加载同一资源会报错;
+    /// </summary>
     public partial class ResourceMgr
     {
         #region Resources Load

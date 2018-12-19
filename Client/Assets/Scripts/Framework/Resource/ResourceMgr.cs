@@ -142,11 +142,12 @@ namespace Framework
         }
 
         /// <summary>
-        /// 卸载不需实例化的资源(纹理,Animator);
-        /// 卸载非GameObject类型的资源,会将内存中已加载资源及其克隆体卸载;
+        /// 卸载不需实例化的资源:纹理,animator,clip,material;
+        /// 卸载非GameObject类型的资源,会将内存中已加载资源及其克隆体卸载:前提是已经没有任何引用持有该资源,可以置null再卸载;
+        /// Unload Assets may only be used on individual assets and can not be used on GameObject's/Components or AssetBundles;
         /// </summary>
         /// <param name="asset"></param>
-        public void UnloadObject(Object asset)
+        private void UnloadObject(Object asset)
         {
             Resources.UnloadAsset(asset);
         }

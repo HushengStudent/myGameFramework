@@ -110,27 +110,12 @@ public class Framework_ResourceMgrWrap
 	{
 		try
 		{
-			int count = LuaDLL.lua_gettop(L);
-
-			if (count == 2)
-			{
-				Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
-				UnityEngine.Object arg0 = (UnityEngine.Object)ToLua.CheckObject<UnityEngine.Object>(L, 2);
-				obj.UnloadObject(arg0);
-				return 0;
-			}
-			else if (count == 3)
-			{
-				Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
-				Framework.AssetType arg0 = (Framework.AssetType)ToLua.CheckObject(L, 2, typeof(Framework.AssetType));
-				UnityEngine.Object arg1 = (UnityEngine.Object)ToLua.CheckObject<UnityEngine.Object>(L, 3);
-				obj.UnloadObject(arg0, arg1);
-				return 0;
-			}
-			else
-			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to method: Framework.ResourceMgr.UnloadObject");
-			}
+			ToLua.CheckArgsCount(L, 3);
+			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+			Framework.AssetType arg0 = (Framework.AssetType)ToLua.CheckObject(L, 2, typeof(Framework.AssetType));
+			UnityEngine.Object arg1 = (UnityEngine.Object)ToLua.CheckObject<UnityEngine.Object>(L, 3);
+			obj.UnloadObject(arg0, arg1);
+			return 0;
 		}
 		catch (Exception e)
 		{

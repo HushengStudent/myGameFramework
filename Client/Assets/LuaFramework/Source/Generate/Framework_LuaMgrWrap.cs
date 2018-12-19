@@ -14,6 +14,7 @@ public class Framework_LuaMgrWrap
 		L.RegFunction("CallLuaTableMethod", CallLuaTableMethod);
 		L.RegFunction("LuaGC", LuaGC);
 		L.RegFunction("Close", Close);
+		L.RegFunction("Dostring", Dostring);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.EndClass();
@@ -132,6 +133,23 @@ public class Framework_LuaMgrWrap
 			ToLua.CheckArgsCount(L, 1);
 			Framework.LuaMgr obj = (Framework.LuaMgr)ToLua.CheckObject<Framework.LuaMgr>(L, 1);
 			obj.Close();
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int Dostring(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			Framework.LuaMgr obj = (Framework.LuaMgr)ToLua.CheckObject<Framework.LuaMgr>(L, 1);
+			string arg0 = ToLua.CheckString(L, 2);
+			obj.Dostring(arg0);
 			return 0;
 		}
 		catch (Exception e)
