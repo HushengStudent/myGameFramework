@@ -51,6 +51,11 @@ namespace Framework
             }
         }
 
+        public void AddDepends(AsyncProxy proxy)
+        {
+
+        }
+
         public void CancelProxy()
         {
             isCancel = true;

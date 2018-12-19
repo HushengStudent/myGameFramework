@@ -45,7 +45,7 @@ namespace Framework
             {
                 LogHelper.PrintError("[ResourceMgr]Load Shader and WarmupAllShaders failure!");
             }
-            //AssetBundleMgr.Instance.UnloadMirroring(AssetType.Shader, "Shader");
+            AssetBundleMgr.Instance.UnloadMirroring(AssetType.Shader, "Shaders");
         }
 
         /// <summary>
@@ -80,6 +80,10 @@ namespace Framework
             GameObject.Destroy(go);
         }
 
+        #endregion
+
+        #region Unload Assets
+
         /// <summary>
         /// 手动GC;
         /// </summary>
@@ -96,10 +100,6 @@ namespace Framework
             AsyncOperation operation = Resources.UnloadUnusedAssets();
             operation.completed += action;
         }
-
-        #endregion
-
-        #region Unload Assets
 
         /// <summary>
         /// 卸载资源;
@@ -131,6 +131,7 @@ namespace Framework
                     || assetType == AssetType.Audio || assetType == AssetType.Material
                     || assetType == AssetType.Texture)
                 {
+                    //不需实例化的资源;
                     UnloadObject(asset);
                     return;
                 }
@@ -147,9 +148,18 @@ namespace Framework
         /// Unload Assets may only be used on individual assets and can not be used on GameObject's/Components or AssetBundles;
         /// </summary>
         /// <param name="asset"></param>
-        private void UnloadObject(Object asset)
+        public void UnloadObject(Object asset)
         {
             Resources.UnloadAsset(asset);
+        }
+
+        /// <summary>
+        /// 删除组件;
+        /// </summary>
+        /// <param name="comp"></param>
+        public void DestroyComponent(Component comp)
+        {
+            Destroy(comp);
         }
 
         #endregion
