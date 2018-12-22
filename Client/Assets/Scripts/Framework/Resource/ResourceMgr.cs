@@ -28,6 +28,12 @@ namespace Framework
             CoroutineMgr.Instance.RunCoroutine(CancleAllProxy());
         }
 
+        protected override void UpdateEx(float interval)
+        {
+            base.UpdateEx(interval);
+            UpdateProxy();
+        }
+
         /// <summary>
         /// 初始化Shader;
         /// </summary>

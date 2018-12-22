@@ -103,15 +103,6 @@ namespace Framework
         {
             string path = FilePathHelper.GetResourcePath(assetType, assetName);
 
-            //--------------------------------------------------------------------------------------
-            //正在加载的数量超出最大值,等下一帧吧;
-            if (AsyncMgr.CurCount() > AsyncMgr.ASYNC_LOAD_MAX_VALUE)
-                yield return Timing.WaitForOneFrame;
-
-            var loadID = AsyncMgr.LoadID;
-            AsyncMgr.Add(loadID);
-            //--------------------------------------------------------------------------------------
-
             T ctrl = null;
             if (path != null)
             {
@@ -135,20 +126,6 @@ namespace Framework
             //--------------------------------------------------------------------------------------
             //先等一帧;
             yield return Timing.WaitForOneFrame;
-            var finishTime = AsyncMgr.GetCurTime();
-            var timeOver = false;
-            var isloading = AsyncMgr.IsContains(loadID);
-            while (isloading && !timeOver && AsyncMgr.CurLoadID != loadID)
-            {
-                timeOver = AsyncMgr.IsTimeOverflows(finishTime);
-                if (timeOver)
-                {
-                    LogHelper.PrintWarning(string.Format("[ResourceMgr]LoadResourceAsync excute callback over time, type:{0},name{1}."
-                        , assetType, assetName));
-                    break;
-                }
-                yield return Timing.WaitForOneFrame;
-            }
             //--------------------------------------------------------------------------------------
             if (!proxy.isCancel && action != null)
             {
@@ -158,25 +135,6 @@ namespace Framework
             {
                 proxy.OnFinish(ctrl);
             }
-            //--------------------------------------------------------------------------------------
-            if (!isloading)
-            {
-                yield break;
-            }
-            if (timeOver && AsyncMgr.CurLoadID != loadID)
-            {
-                AsyncMgr.Remove(loadID);
-
-                if (AsyncMgr.CurLoadTimeOverflows())
-                {
-                    AsyncMgr.CurLoadID = 0;
-                }
-            }
-            else
-            {
-                AsyncMgr.CurLoadID = 0;
-            }
-            //--------------------------------------------------------------------------------------
         }
 
         #endregion

@@ -19,32 +19,39 @@ namespace Framework
 
         public ManagerInitEventHandler ResourceMgrInitHandler = null;
 
-        private List<AsyncProxy> _resourceProxyList = new List<AsyncProxy>();
+        private List<AsyncProxy> _removexyList = new List<AsyncProxy>();
 
-        protected override void UpdateEx(float interval)
+        /// <summary>
+        /// 排队删除还没加载完就删除的Proxy;
+        /// </summary>
+        private void UpdateProxy()
         {
-            base.UpdateEx(interval);
-            for (int i = 0; i < _resourceProxyList.Count; i++)
+            var count = _removexyList.Count;
+            for (int i = count - 1; i >= 0; i--)//倒序遍历删除;
             {
-                var target = _resourceProxyList[i];
+                var target = _removexyList[i];
                 if (target.UnloadProxy())
                 {
-                    _resourceProxyList.Remove(target);
+                    _removexyList.Remove(target);
                 }
             }
         }
 
         public void AddProxy(AsyncProxy proxy)
         {
-            _resourceProxyList.Add(proxy);
+            _removexyList.Add(proxy);
         }
 
+        /// <summary>
+        /// 等待加载完删除;
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator<float> CancleAllProxy()
         {
             yield return Timing.WaitForOneFrame;
             while (true)
             {
-                if (_resourceProxyList.Count > 0)
+                if (_removexyList.Count > 0)
                 {
                     yield return Timing.WaitForOneFrame;
                 }

@@ -148,7 +148,6 @@ namespace Framework
         /// <param name="type">资源类型</param>
         /// <param name="assetName">资源名字</param>
         /// <returns>AssetBundle</returns>
-        [Obsolete("Warning,forbid to call!")]
         public AssetBundle LoadAssetBundleSync(AssetType type, string assetName)
         {
             if (type == AssetType.Non || string.IsNullOrEmpty(assetName)) return null;

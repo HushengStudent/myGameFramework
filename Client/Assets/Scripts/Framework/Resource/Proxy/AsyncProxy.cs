@@ -12,6 +12,11 @@ namespace Framework
 {
     public class AsyncProxy : IPool
     {
+
+        //加载完成回调;
+        private Action<Object> _onLoadFinish = null;
+        private List<AsyncProxy> _proxyList = null;
+
         public AssetType assetType { get; protected set; }
         public string assetName { get; protected set; }
         //是否加载完成;
@@ -22,9 +27,6 @@ namespace Framework
         public bool isUsePool { get; protected set; }
         //加载完成对象;
         public Object targetObject { get; protected set; }
-
-        //加载完成回调;
-        public Action<Object> onLoadFinish = null;
 
         /// <summary>
         /// 初始化;
@@ -41,19 +43,39 @@ namespace Framework
             isFinish = false;
         }
 
-        public void OnFinish(Object target)
+        public void AddLoadFinishCallBack(Action<Object> action)
         {
-            targetObject = target;
-            isFinish = true;
-            if (!isCancel && onLoadFinish != null)
-            {
-                onLoadFinish(target);
-            }
+            _onLoadFinish += action;
         }
 
         public void AddDepends(AsyncProxy proxy)
         {
+            if (null == _proxyList)
+                _proxyList = new List<AsyncProxy>();
+            _proxyList.Add(proxy);
+        }
 
+        public bool IsDependsFinish()
+        {
+            if (null != _proxyList)
+            {
+                for (int i = 0; i < _proxyList.Count; i++)
+                {
+                    if (!_proxyList[i].isFinish)
+                        return false;
+                }
+            }
+            return true;
+        }
+
+        public void OnFinish(Object target)
+        {
+            targetObject = target;
+            isFinish = true;
+            if (!isCancel && _onLoadFinish != null)
+            {
+                _onLoadFinish(target);
+            }
         }
 
         public void CancelProxy()
@@ -87,21 +109,6 @@ namespace Framework
             UnloadProxy(assetType, targetObject);
         }
 
-        protected virtual void Unload2Pool()
-        {
-            UnloadProxy2Pool(assetType, targetObject);
-        }
-
-        public void OnGet(params object[] args) { }
-
-        public void OnRelease()
-        {
-            assetType = AssetType.Non;
-            assetName = string.Empty;
-            isCancel = false;
-            isFinish = false;
-        }
-
         /// <summary>
         /// 卸载代理;
         /// </summary>
@@ -115,12 +122,31 @@ namespace Framework
             }
         }
 
+        protected virtual void Unload2Pool()
+        {
+            UnloadProxy2Pool(assetType, targetObject);
+        }
+
         protected void UnloadProxy2Pool(AssetType assetType, Object asset)
         {
             if (asset != null)
             {
 
             }
+        }
+
+        public void OnGet(params object[] args) { }
+
+        public void OnRelease()
+        {
+            assetType = AssetType.Non;
+            assetName = string.Empty;
+            isCancel = false;
+            isFinish = false;
+            targetObject = null;
+            _onLoadFinish = null;
+            if (null != _proxyList)
+                _proxyList.Clear();
         }
     }
 }
