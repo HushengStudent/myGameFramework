@@ -49,23 +49,7 @@ namespace Framework
                     }
                     if (_curProxy.LoadNode.NodeState == AssetBundleLoadNode.AssetBundleNodeState.Finish)
                     {
-                        Object target = null;
-                        AssetBundle assetBundle = _curProxy.LoadNode.assetBundle;
-                        if (_curProxy.IsUsePool)
-                        {
-                            target = PoolMgr.Instance.GetUnityAsset(_curProxy.assetType, _curProxy.assetName);
-                        }
-                        if (null == target)
-                        {
-                            var name = Path.GetFileNameWithoutExtension(_curProxy.assetName);
-                            target = assetBundle.LoadAsset(name);
-                            if (target != null && _curProxy.IsUsePool)
-                            {
-                                PoolMgr.Instance.ReleaseUnityAsset(_curProxy.assetType, _curProxy.assetName, target);
-                                target = PoolMgr.Instance.GetUnityAsset(_curProxy.assetType, _curProxy.assetName);
-                            }
-                        }
-                        _curProxy.OnFinish(target);
+                        LoadObjectFromAssetBundleLoadNode(_curProxy);
                         _curProxy = null;
                     }
                     else
@@ -79,6 +63,27 @@ namespace Framework
                     }
                 }
             }
+        }
+
+        private void LoadObjectFromAssetBundleLoadNode(AsyncAssetProxy proxy)
+        {
+            Object target = null;
+            AssetBundle assetBundle = proxy.LoadNode.assetBundle;
+            if (proxy.IsUsePool)
+            {
+                target = PoolMgr.Instance.GetUnityAsset(proxy.assetType, proxy.assetName);
+            }
+            if (null == target)
+            {
+                var name = Path.GetFileNameWithoutExtension(proxy.assetName);
+                target = assetBundle.LoadAsset(name);
+            }
+            if (target != null && proxy.IsUsePool)
+            {
+                PoolMgr.Instance.ReleaseUnityAsset(proxy.assetType, proxy.assetName, target);
+                target = PoolMgr.Instance.GetUnityAsset(proxy.assetType, proxy.assetName);
+            }
+            proxy.OnFinish(target);
         }
 
         /// <summary>
