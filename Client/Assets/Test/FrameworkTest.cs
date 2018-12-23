@@ -66,7 +66,16 @@ public class FrameworkTest : MonoBehaviour
         AsyncAssetProxy proxy = ResourceMgr.Instance.LoadAssetProxy(AssetType.Prefab, "Prefab/Models/Avatar/ch_pc_hou_004.prefab");
         proxy.AddLoadFinishCallBack(() =>
         {
-            GameObject go = proxy.LoadUnityObject<GameObject>();
+            List<GameObject> list = new List<GameObject>();
+            for (int i = 0; i < 60; i++)
+            {
+                GameObject go = proxy.LoadUnityObject<GameObject>();
+                list.Add(go);
+            }
+            for (int i = 0; i < list.Count; i++)
+            {
+                proxy.DestroyUnityObject(list[i]);
+            }
         });
     }
 

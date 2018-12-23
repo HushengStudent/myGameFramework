@@ -45,8 +45,13 @@ namespace Framework
         {
             _csharpObjectPool.Clear();
             _csharpListPool.Clear();
-            IEnumerator<float> _goPoolItor = _unityObjectPool.ClearUnityObjectPool();
-            while (_goPoolItor.MoveNext())
+            IEnumerator<float> _unityObjectPoolItor = _unityObjectPool.ClearUnityObjectPool();
+            while (_unityObjectPoolItor.MoveNext())
+            {
+                yield return Timing.WaitForOneFrame;
+            }
+            IEnumerator<float> _unityAssetCachePoolItor = _unityAssetCachePool.ClearUnityAssetCachePool();
+            while (_unityAssetCachePoolItor.MoveNext())
             {
                 yield return Timing.WaitForOneFrame;
             }
