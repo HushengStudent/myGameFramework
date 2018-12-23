@@ -65,30 +65,6 @@ namespace Framework
 
         #endregion
 
-        #region Functions
-
-        /// <summary>
-        /// Clone GameObject;
-        /// </summary>
-        /// <param name="go"></param>
-        /// <returns></returns>
-        public GameObject Clone(GameObject go)
-        {
-            GameObject target = GameObject.Instantiate(go);
-            return target;
-        }
-
-        /// <summary>
-        /// Destroy GameObject;
-        /// </summary>
-        /// <param name="go"></param>
-        public void Destroy(GameObject go)
-        {
-            GameObject.Destroy(go);
-        }
-
-        #endregion
-
         #region Unload Assets
 
         /// <summary>
@@ -117,6 +93,21 @@ namespace Framework
         {
             if (asset != null)
             {
+                if (assetType == AssetType.Material)
+                {
+                    Destroy(asset);
+                }
+                else
+                {
+                    UnloadAsset(assetType, asset);
+                }
+            }
+        }
+
+        public void UnloadAsset(AssetType assetType, Object asset)
+        {
+            if (asset != null)
+            {
                 if (assetType == AssetType.Prefab)
                 {
                     //资源是GameObject;
@@ -135,38 +126,16 @@ namespace Framework
                     }
                 }
                 if (assetType == AssetType.AnimeClip || assetType == AssetType.AnimeCtrl
-                    || assetType == AssetType.Audio || assetType == AssetType.Material
-                    || assetType == AssetType.Texture)
+                    || assetType == AssetType.Audio || assetType == AssetType.Texture
+                    || assetType == AssetType.Material)
                 {
-                    //不需实例化的资源;
-                    UnloadAsset(asset);
+                    /// 卸载不需实例化的资源:纹理,animator,clip,material;
+                    /// 卸载非GameObject类型的资源,会将内存中已加载资源及其克隆体卸载:前提是已经没有任何引用持有该资源,可以置null再卸载;
+                    /// Unload Assets may only be used on individual assets and can not be used on GameObject's/Components or AssetBundles;
+                    Resources.UnloadAsset(asset);
                     return;
                 }
-                if (assetType == AssetType.Scripts)
-                {
-                    Destroy(asset);
-                }
             }
-        }
-
-        /// <summary>
-        /// 卸载不需实例化的资源:纹理,animator,clip,material;
-        /// 卸载非GameObject类型的资源,会将内存中已加载资源及其克隆体卸载:前提是已经没有任何引用持有该资源,可以置null再卸载;
-        /// Unload Assets may only be used on individual assets and can not be used on GameObject's/Components or AssetBundles;
-        /// </summary>
-        /// <param name="asset"></param>
-        public void UnloadAsset(Object asset)
-        {
-            Resources.UnloadAsset(asset);
-        }
-
-        /// <summary>
-        /// 删除组件;
-        /// </summary>
-        /// <param name="comp"></param>
-        public void DestroyComponent(Component comp)
-        {
-            Destroy(comp);
         }
 
         #endregion

@@ -58,7 +58,7 @@ namespace Framework
         {
             if (t != null)
             {
-                ResourceMgr.Instance.UnloadAsset(t);
+                ResourceMgr.Instance.UnloadAsset(assetType, t);
             }
         }
     }

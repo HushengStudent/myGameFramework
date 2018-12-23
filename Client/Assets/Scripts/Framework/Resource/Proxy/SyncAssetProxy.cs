@@ -90,7 +90,7 @@ namespace Framework
                 }
                 else
                 {
-                    ResourceMgr.Instance.UnloadAsset(t);
+                    ResourceMgr.Instance.UnloadAsset(assetType, t);
                 }
             }
         }

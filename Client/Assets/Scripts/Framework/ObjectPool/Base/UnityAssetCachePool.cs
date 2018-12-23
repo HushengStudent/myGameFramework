@@ -84,7 +84,7 @@ namespace Framework
             }
             if (string.IsNullOrEmpty(path))
             {
-                ResourceMgr.Instance.UnloadAsset(obj);
+                ResourceMgr.Instance.UnloadAsset(assetType, obj);
                 return;
             }
             UnityAssetCacheInfo info = null;
@@ -94,7 +94,7 @@ namespace Framework
                 {
                     LogHelper.PrintError(string.Format("[UnityAssetCachePool]Release Unity Asset:{0} error" +
                         ",same path ref multiple Object!", path));
-                    ResourceMgr.Instance.UnloadAsset(obj);
+                    ResourceMgr.Instance.UnloadAsset(assetType, obj);
                     return;
                 }
                 int count = 0;
@@ -112,7 +112,7 @@ namespace Framework
                     {
                         _unityAssetCacheDict.Remove(path);
                         _unityAssetRefCountDict.Remove(path);
-                        ResourceMgr.Instance.UnloadAsset(info.target);
+                        ResourceMgr.Instance.UnloadAsset(assetType, info.target);
                         PoolMgr.Instance.ReleaseCsharpObject<UnityAssetCacheInfo>(info);
                     }
                 }
@@ -148,7 +148,7 @@ namespace Framework
                 }
                 if (info.target != null)
                 {
-                    ResourceMgr.Instance.UnloadAsset(info.target);
+                    ResourceMgr.Instance.UnloadAsset(info.assetType, info.target);
                 }
                 PoolMgr.Instance.ReleaseCsharpObject<UnityAssetCacheInfo>(info);
                 if (_stopwatch.Elapsed.Milliseconds >= ResourceMgr.Instance.MAX_LOAD_TIME)

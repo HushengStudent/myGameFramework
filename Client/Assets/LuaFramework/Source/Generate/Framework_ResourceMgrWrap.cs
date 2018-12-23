@@ -7,45 +7,33 @@ public class Framework_ResourceMgrWrap
 	public static void Register(LuaState L)
 	{
 		L.BeginClass(typeof(Framework.ResourceMgr), typeof(Framework.MonoSingleton<Framework.ResourceMgr>));
+		L.RegFunction("LoadGameObject", LoadGameObject);
+		L.RegFunction("DestroyUnityGameObject", DestroyUnityGameObject);
 		L.RegFunction("Init", Init);
-		L.RegFunction("Clone", Clone);
-		L.RegFunction("Destroy", Destroy);
 		L.RegFunction("GameGC", GameGC);
 		L.RegFunction("UnloadUnusedAssets", UnloadUnusedAssets);
 		L.RegFunction("UnloadObject", UnloadObject);
+		L.RegFunction("UnloadAsset", UnloadAsset);
+		L.RegFunction("LoadAssetSync", LoadAssetSync);
+		L.RegFunction("LoadAssetProxy", LoadAssetProxy);
 		L.RegFunction("AddProxy", AddProxy);
 		L.RegFunction("CancleAllProxy", CancleAllProxy);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
+		L.RegVar("MAX_LOAD_TIME", get_MAX_LOAD_TIME, null);
 		L.RegVar("ResourceMgrInitHandler", get_ResourceMgrInitHandler, set_ResourceMgrInitHandler);
 		L.EndClass();
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int Init(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 1);
-			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
-			obj.Init();
-			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int Clone(IntPtr L)
+	static int LoadGameObject(IntPtr L)
 	{
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
 			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
-			UnityEngine.GameObject arg0 = (UnityEngine.GameObject)ToLua.CheckObject(L, 2, typeof(UnityEngine.GameObject));
-			UnityEngine.GameObject o = obj.Clone(arg0);
+			UnityEngine.Object arg0 = (UnityEngine.Object)ToLua.CheckObject<UnityEngine.Object>(L, 2);
+			UnityEngine.GameObject o = obj.LoadGameObject(arg0);
 			ToLua.PushSealed(L, o);
 			return 1;
 		}
@@ -56,14 +44,30 @@ public class Framework_ResourceMgrWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int Destroy(IntPtr L)
+	static int DestroyUnityGameObject(IntPtr L)
 	{
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
 			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
 			UnityEngine.GameObject arg0 = (UnityEngine.GameObject)ToLua.CheckObject(L, 2, typeof(UnityEngine.GameObject));
-			obj.Destroy(arg0);
+			obj.DestroyUnityGameObject(arg0);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int Init(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+			obj.Init();
 			return 0;
 		}
 		catch (Exception e)
@@ -124,6 +128,80 @@ public class Framework_ResourceMgrWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int UnloadAsset(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 3);
+			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+			Framework.AssetType arg0 = (Framework.AssetType)ToLua.CheckObject(L, 2, typeof(Framework.AssetType));
+			UnityEngine.Object arg1 = (UnityEngine.Object)ToLua.CheckObject<UnityEngine.Object>(L, 3);
+			obj.UnloadAsset(arg0, arg1);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int LoadAssetSync(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 3);
+			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+			Framework.AssetType arg0 = (Framework.AssetType)ToLua.CheckObject(L, 2, typeof(Framework.AssetType));
+			string arg1 = ToLua.CheckString(L, 3);
+			Framework.SyncAssetProxy o = obj.LoadAssetSync(arg0, arg1);
+			ToLua.PushObject(L, o);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int LoadAssetProxy(IntPtr L)
+	{
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 3)
+			{
+				Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+				Framework.AssetType arg0 = (Framework.AssetType)ToLua.CheckObject(L, 2, typeof(Framework.AssetType));
+				string arg1 = ToLua.CheckString(L, 3);
+				Framework.AsyncAssetProxy o = obj.LoadAssetProxy(arg0, arg1);
+				ToLua.PushObject(L, o);
+				return 1;
+			}
+			else if (count == 4)
+			{
+				Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+				Framework.AssetType arg0 = (Framework.AssetType)ToLua.CheckObject(L, 2, typeof(Framework.AssetType));
+				string arg1 = ToLua.CheckString(L, 3);
+				System.Action<float> arg2 = (System.Action<float>)ToLua.CheckDelegate<System.Action<float>>(L, 4);
+				Framework.AsyncAssetProxy o = obj.LoadAssetProxy(arg0, arg1, arg2);
+				ToLua.PushObject(L, o);
+				return 1;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: Framework.ResourceMgr.LoadAssetProxy");
+			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int AddProxy(IntPtr L)
 	{
 		try
@@ -172,6 +250,25 @@ public class Framework_ResourceMgrWrap
 		catch (Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_MAX_LOAD_TIME(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			Framework.ResourceMgr obj = (Framework.ResourceMgr)o;
+			float ret = obj.MAX_LOAD_TIME;
+			LuaDLL.lua_pushnumber(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index MAX_LOAD_TIME on a nil value");
 		}
 	}
 
