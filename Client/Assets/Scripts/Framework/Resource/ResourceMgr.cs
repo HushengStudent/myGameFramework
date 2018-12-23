@@ -32,6 +32,7 @@ namespace Framework
         {
             base.UpdateEx(interval);
             UpdateProxy();
+            UpdateLoadAssetAsync();
         }
 
         /// <summary>

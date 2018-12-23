@@ -63,7 +63,10 @@ public class FrameworkTest : MonoBehaviour
 
     private void ModelInit()
     {
-        AssetAsyncProxy proxy = ResourceMgr.Instance.LoadAssetProxy<GameObject>(AssetType.Prefab, "Prefab/Models/Avatar/ch_pc_hou_004.prefab", null);
+        AssetAsyncProxy proxy = ResourceMgr.Instance.LoadAssetProxy(AssetType.Prefab, "Prefab/Models/Avatar/ch_pc_hou_004.prefab", (obj)=> {
+            GameObject go = Object.Instantiate(obj) as GameObject;
+            
+        });
     }
 
     public void ChangeHead()

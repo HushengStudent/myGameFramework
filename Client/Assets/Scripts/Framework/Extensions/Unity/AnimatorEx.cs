@@ -23,21 +23,26 @@ namespace Framework
         public void Init(Animator animator, string path)
         {
             _animator = animator;
-            _runtimeAnimatorProxy = ResourceMgr.Instance.LoadAssetProxy<RuntimeAnimatorController>(AssetType.AnimeCtrl, path
-                , (ctrl) =>
+            _runtimeAnimatorProxy = ResourceMgr.Instance.LoadAssetProxy(AssetType.AnimeCtrl, path
+                , (obj) =>
             {
-                _animator.runtimeAnimatorController = ctrl;
-                _animatorOverrideController = ctrl as AnimatorOverrideController;
-                _animator.Rebind();
+                RuntimeAnimatorController ctrl = obj as RuntimeAnimatorController;
+                if (ctrl)
+                {
+                    _animator.runtimeAnimatorController = ctrl;
+                    _animatorOverrideController = ctrl as AnimatorOverrideController;
+                    _animator.Rebind();
+                }
             });
         }
 
         public void OverrideAnimationClip(string name, string path, bool autoPlay = true)
         {
-            _animationClipProxy = ResourceMgr.Instance.LoadAssetProxy<AnimationClip>(AssetType.AnimeClip, path
-                , (clip) =>
+            _animationClipProxy = ResourceMgr.Instance.LoadAssetProxy(AssetType.AnimeClip, path
+                , (obj) =>
                 {
-                    if (_animatorOverrideController)
+                    AnimationClip clip = obj as AnimationClip;
+                    if (_animatorOverrideController && clip)
                     {
                         _animatorOverrideController[name] = clip;
                         _animator.runtimeAnimatorController = _animatorOverrideController;

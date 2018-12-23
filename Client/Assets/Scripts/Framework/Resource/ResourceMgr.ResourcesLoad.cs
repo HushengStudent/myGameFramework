@@ -36,7 +36,7 @@ namespace Framework
                 T ctrl = Resources.Load<T>(path);
                 if (ctrl != null)
                 {
-                    return AssetLoader.GetAsset(assetType, ctrl);
+                    return ctrl;
                 }
             }
             LogHelper.PrintError(string.Format("[ResourceMgr]LoadResourceSync Load Asset {0} failure!",
@@ -102,7 +102,6 @@ namespace Framework
             , Action<T> action, Action<float> progress) where T : Object
         {
             string path = FilePathHelper.GetResourcePath(assetType, assetName);
-
             T ctrl = null;
             if (path != null)
             {
@@ -116,7 +115,7 @@ namespace Framework
                 {
                     yield return Timing.WaitForOneFrame;
                 }
-                ctrl = AssetLoader.GetAsset(assetType, request.asset as T);
+                ctrl = request.asset as T;
             }
             if (null == ctrl)
             {
@@ -126,7 +125,7 @@ namespace Framework
             //--------------------------------------------------------------------------------------
             //œ»µ»“ª÷°;
             yield return Timing.WaitForOneFrame;
-            //--------------------------------------------------------------------------------------
+
             if (!proxy.isCancel && action != null)
             {
                 action(ctrl);

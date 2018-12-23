@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/12/10 01:23:56
-** desc:  资源加载代理抽象父类;
+** desc:  资源加载代理父类;
 *********************************************************************************/
 
 using System;
@@ -12,10 +12,8 @@ namespace Framework
 {
     public class AsyncProxy : IPool
     {
-
         //加载完成回调;
         private Action<Object> _onLoadFinish = null;
-        private List<AsyncProxy> _proxyList = null;
 
         public AssetType assetType { get; protected set; }
         public string assetName { get; protected set; }
@@ -43,31 +41,19 @@ namespace Framework
             isFinish = false;
         }
 
+        /// <summary>
+        /// 添加加载完成回调;
+        /// </summary>
+        /// <param name="action"></param>
         public void AddLoadFinishCallBack(Action<Object> action)
         {
             _onLoadFinish += action;
         }
 
-        public void AddDepends(AsyncProxy proxy)
-        {
-            if (null == _proxyList)
-                _proxyList = new List<AsyncProxy>();
-            _proxyList.Add(proxy);
-        }
-
-        public bool IsDependsFinish()
-        {
-            if (null != _proxyList)
-            {
-                for (int i = 0; i < _proxyList.Count; i++)
-                {
-                    if (!_proxyList[i].isFinish)
-                        return false;
-                }
-            }
-            return true;
-        }
-
+        /// <summary>
+        /// 设置完成;
+        /// </summary>
+        /// <param name="target"></param>
         public void OnFinish(Object target)
         {
             targetObject = target;
@@ -75,9 +61,16 @@ namespace Framework
             if (!isCancel && _onLoadFinish != null)
             {
                 _onLoadFinish(target);
+                _onLoadFinish = null;
+                OnFinishEx();
             }
         }
 
+        protected virtual void OnFinishEx() { }
+
+        /// <summary>
+        /// 取消代理,会自动卸载;
+        /// </summary>
         public void CancelProxy()
         {
             isCancel = true;
@@ -87,6 +80,10 @@ namespace Framework
             }
         }
 
+        /// <summary>
+        /// 卸载代理;
+        /// </summary>
+        /// <returns></returns>
         public bool UnloadProxy()
         {
             if (isFinish)
@@ -104,49 +101,46 @@ namespace Framework
             return false;
         }
 
+        /// <summary>
+        /// 卸载;
+        /// </summary>
         protected virtual void Unload()
         {
-            UnloadProxy(assetType, targetObject);
+            if (targetObject != null)
+            {
+                ResourceMgr.Instance.UnloadObject(assetType, targetObject);
+            }
         }
 
         /// <summary>
-        /// 卸载代理;
+        /// 卸载到对象池;
         /// </summary>
-        /// <param name="assetType">资源类型</param>
-        /// <param name="asset">资源</param>
-        protected void UnloadProxy(AssetType assetType, Object asset)
-        {
-            if (asset != null)
-            {
-                ResourceMgr.Instance.UnloadObject(assetType, asset);
-            }
-        }
-
         protected virtual void Unload2Pool()
         {
-            UnloadProxy2Pool(assetType, targetObject);
-        }
-
-        protected void UnloadProxy2Pool(AssetType assetType, Object asset)
-        {
-            if (asset != null)
+            if (targetObject != null)
             {
 
             }
         }
 
-        public void OnGet(params object[] args) { }
+        public void OnGet(params object[] args)
+        {
+            OnGetEx(args);
+        }
+
+        protected virtual void OnGetEx(params object[] args) { }
 
         public void OnRelease()
         {
+            _onLoadFinish = null;
             assetType = AssetType.Non;
             assetName = string.Empty;
             isCancel = false;
             isFinish = false;
             targetObject = null;
-            _onLoadFinish = null;
-            if (null != _proxyList)
-                _proxyList.Clear();
+            OnReleaseEx();
         }
+
+        protected virtual void OnReleaseEx() { }
     }
 }
