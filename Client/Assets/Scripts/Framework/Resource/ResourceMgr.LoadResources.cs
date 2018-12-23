@@ -51,7 +51,7 @@ namespace Framework
         /// <param name="assetType">资源类型</param>
         /// <param name="assetName">资源名字</param>
         /// <returns>代理</returns>
-        public ResourceAsyncProxy LoadResourceProxy<T>(AssetType assetType, string assetName) where T : Object
+        public AsyncResourceProxy LoadResourceProxy<T>(AssetType assetType, string assetName) where T : Object
         {
             return LoadResourceProxy<T>(assetType, assetName, null, null);
         }
@@ -64,7 +64,7 @@ namespace Framework
         /// <param name="assetName">资源名字</param>
         /// <param name="action">资源回调</param>
         /// <returns>代理</returns>
-        public ResourceAsyncProxy LoadResourceProxy<T>(AssetType assetType, string assetName
+        public AsyncResourceProxy LoadResourceProxy<T>(AssetType assetType, string assetName
             , Action<T> action) where T : Object
         {
             return LoadResourceProxy<T>(assetType, assetName, action, null);
@@ -79,10 +79,10 @@ namespace Framework
         /// <param name="action">资源回调</param>
         /// <param name="progress">progress回调</param>
         /// <returns>代理</returns>
-        public ResourceAsyncProxy LoadResourceProxy<T>(AssetType assetType, string assetName
+        public AsyncResourceProxy LoadResourceProxy<T>(AssetType assetType, string assetName
             , Action<T> action, Action<float> progress) where T : Object
         {
-            ResourceAsyncProxy proxy = PoolMgr.Instance.GetCsharpObject<ResourceAsyncProxy>();
+            AsyncResourceProxy proxy = PoolMgr.Instance.GetCsharpObject<AsyncResourceProxy>();
             proxy.InitProxy(assetType, assetName);
             CoroutineMgr.Instance.RunCoroutine(LoadResourceAsync<T>(assetType, assetName, proxy, action, progress));
             return proxy;
@@ -98,7 +98,7 @@ namespace Framework
         /// <param name="action">资源回调</param>
         /// <param name="progress">progress回调</param>
         /// <returns></returns>
-        private IEnumerator<float> LoadResourceAsync<T>(AssetType assetType, string assetName, ResourceAsyncProxy proxy
+        private IEnumerator<float> LoadResourceAsync<T>(AssetType assetType, string assetName, AsyncResourceProxy proxy
             , Action<T> action, Action<float> progress) where T : Object
         {
             string path = FilePathHelper.GetResourcePath(assetType, assetName);

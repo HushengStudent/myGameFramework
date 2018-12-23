@@ -17,8 +17,8 @@ namespace Framework
         private AnimatorOverrideController _animatorOverrideController = null;
         private DictEx<string, AnimationClip> _AnimationInfo = new DictEx<string, AnimationClip>();
 
-        private AssetAsyncProxy _runtimeAnimatorProxy;
-        private AssetAsyncProxy _animationClipProxy;
+        private AsyncAssetProxy _runtimeAnimatorProxy;
+        private AsyncAssetProxy _animationClipProxy;
 
         public void Init(Animator animator, string path)
         {

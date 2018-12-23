@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/12/10 01:03:13
-** desc:  AssetBundle资源加载代理;
+** desc:  AssetBundle资源异步加载代理;
 *********************************************************************************/
 
 using System;
@@ -11,7 +11,7 @@ using Object = UnityEngine.Object;
 
 namespace Framework
 {
-    public class AssetAsyncProxy : AsyncProxy
+    public class AsyncAssetProxy : SyncAssetProxy
     {
         public AssetBundleLoadNode LoadNode { get; private set; }
 
@@ -29,14 +29,14 @@ namespace Framework
             {
                 AssetBundleMgr.Instance.UnloadAsset(assetType, assetName);
             }
-            PoolMgr.Instance.ReleaseCsharpObject<AssetAsyncProxy>(this);
+            PoolMgr.Instance.ReleaseCsharpObject<AsyncAssetProxy>(this);
         }
 
         protected override void Unload2Pool()
         {
             base.Unload2Pool();
 
-            PoolMgr.Instance.ReleaseCsharpObject<AssetAsyncProxy>(this);
+            PoolMgr.Instance.ReleaseCsharpObject<AsyncAssetProxy>(this);
         }
 
         protected override void OnReleaseEx()

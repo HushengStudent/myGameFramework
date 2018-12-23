@@ -130,7 +130,7 @@ public class Framework_ResourceMgrWrap
 		{
 			ToLua.CheckArgsCount(L, 2);
 			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
-			Framework.AsyncProxy arg0 = (Framework.AsyncProxy)ToLua.CheckObject<Framework.AsyncProxy>(L, 2);
+			Framework.AssetProxy arg0 = (Framework.AssetProxy)ToLua.CheckObject<Framework.AssetProxy>(L, 2);
 			obj.AddProxy(arg0);
 			return 0;
 		}

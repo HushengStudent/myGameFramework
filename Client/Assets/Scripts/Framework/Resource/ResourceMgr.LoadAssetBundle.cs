@@ -23,11 +23,11 @@ namespace Framework
         public readonly float MAX_LOAD_TIME = 0.16f * 1000;
 
         //资源加载队列;
-        private Queue<AssetAsyncProxy> _asyncProxyQueue = new Queue<AssetAsyncProxy>();
+        private Queue<AsyncAssetProxy> _asyncProxyQueue = new Queue<AsyncAssetProxy>();
         private Stopwatch _stopwatch = new System.Diagnostics.Stopwatch();
 
         //当前加载代理;
-        private AssetAsyncProxy _curProxy = null;
+        private AsyncAssetProxy _curProxy = null;
 
         private void UpdateLoadAssetAsync()
         {
@@ -70,10 +70,10 @@ namespace Framework
         /// </summary>
         /// <param name="assetType">资源类型</param>
         /// <param name="assetName">资源名字</param>
-        /// <returns>目标资源</returns>
-        public Object LoadAssetSync(AssetType assetType, string assetName)
+        /// <returns>代理</returns>
+        public SyncAssetProxy LoadAssetSync(AssetType assetType, string assetName)
         {
-            AssetAsyncProxy proxy = PoolMgr.Instance.GetCsharpObject<AssetAsyncProxy>();
+            SyncAssetProxy proxy = PoolMgr.Instance.GetCsharpObject<SyncAssetProxy>();
             Object ctrl = null;
             AssetBundle assetBundle = AssetBundleMgr.Instance.LoadAssetBundleSync(assetType, assetName);
             if (assetBundle != null)
@@ -86,7 +86,9 @@ namespace Framework
                 LogHelper.PrintError(string.Format("[ResourceMgr]LoadAssetSync Load Asset failure" +
                     ",type:{0},name:{1}!", assetType, assetName));
             }
-            return ctrl;
+            proxy.InitProxy(assetType, assetName);
+            proxy.OnFinish(ctrl);
+            return proxy;
         }
 
         /// <summary>
@@ -95,7 +97,7 @@ namespace Framework
         /// <param name="assetType">资源类型</param>
         /// <param name="assetName">资源名字</param>
         /// <returns>代理</returns>
-        public AssetAsyncProxy LoadAssetProxy(AssetType assetType, string assetName)
+        public AsyncAssetProxy LoadAssetProxy(AssetType assetType, string assetName)
         {
             return LoadAssetProxy(assetType, assetName, null, null);
         }
@@ -107,7 +109,7 @@ namespace Framework
         /// <param name="assetName">资源名字</param>
         /// <param name="action">资源回调</param>
         /// <returns>代理</returns>
-        public AssetAsyncProxy LoadAssetProxy(AssetType assetType, string assetName
+        public AsyncAssetProxy LoadAssetProxy(AssetType assetType, string assetName
             , Action<Object> action)
         {
             return LoadAssetProxy(assetType, assetName, action, null);
@@ -121,10 +123,10 @@ namespace Framework
         /// <param name="action">资源回调</param>
         /// <param name="progress"></param>
         /// <returns>代理</returns>
-        public AssetAsyncProxy LoadAssetProxy(AssetType assetType, string assetName
+        public AsyncAssetProxy LoadAssetProxy(AssetType assetType, string assetName
             , Action<Object> action, Action<float> progress)
         {
-            AssetAsyncProxy proxy = PoolMgr.Instance.GetCsharpObject<AssetAsyncProxy>();
+            AsyncAssetProxy proxy = PoolMgr.Instance.GetCsharpObject<AsyncAssetProxy>();
             AssetBundleLoadNode loadNode = AssetBundleMgr.Instance.GetAssetBundleLoadNode(assetType, assetName);
             proxy.AddLoadFinishCallBack(action);
             proxy.InitProxy(assetType, assetName, loadNode);
@@ -148,10 +150,10 @@ namespace Framework
         /// <param name="progress">progress回调</param>
         /// <returns>代理</returns>
         [Obsolete("warning,this method is discarded!")]
-        private AssetAsyncProxy LoadAssetProxy_discard<T>(AssetType assetType, string assetName
+        private AsyncAssetProxy LoadAssetProxy_discard<T>(AssetType assetType, string assetName
             , Action<T> action, Action<float> progress) where T : Object
         {
-            AssetAsyncProxy proxy = PoolMgr.Instance.GetCsharpObject<AssetAsyncProxy>();
+            AsyncAssetProxy proxy = PoolMgr.Instance.GetCsharpObject<AsyncAssetProxy>();
             proxy.InitProxy(assetType, assetName);
             CoroutineMgr.Instance.RunCoroutine(LoadAssetAsync_discard<T>(assetType, assetName, proxy, action, progress));
             return proxy;
@@ -167,7 +169,7 @@ namespace Framework
         /// <param name="action">资源回调</param>
         /// <param name="progress">progress回调</param>
         /// <returns></returns>
-        private IEnumerator<float> LoadAssetAsync_discard<T>(AssetType assetType, string assetName, AssetAsyncProxy proxy
+        private IEnumerator<float> LoadAssetAsync_discard<T>(AssetType assetType, string assetName, AsyncAssetProxy proxy
             , Action<T> action, Action<float> progress)
             where T : Object
         {

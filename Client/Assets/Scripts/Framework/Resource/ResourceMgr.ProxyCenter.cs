@@ -19,7 +19,7 @@ namespace Framework
 
         public ManagerInitEventHandler ResourceMgrInitHandler = null;
 
-        private List<AsyncProxy> _removexyList = new List<AsyncProxy>();
+        private List<AssetProxy> _removexyList = new List<AssetProxy>();
 
         /// <summary>
         /// 排队删除还没加载完就删除的Proxy;
@@ -37,7 +37,7 @@ namespace Framework
             }
         }
 
-        public void AddProxy(AsyncProxy proxy)
+        public void AddProxy(AssetProxy proxy)
         {
             _removexyList.Add(proxy);
         }

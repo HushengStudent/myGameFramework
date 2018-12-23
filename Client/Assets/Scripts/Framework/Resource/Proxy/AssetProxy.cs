@@ -10,7 +10,7 @@ using Object = UnityEngine.Object;
 
 namespace Framework
 {
-    public class AsyncProxy : IPool
+    public class AssetProxy : IPool
     {
         //加载完成回调;
         private Action<Object> _onLoadFinish = null;
