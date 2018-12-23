@@ -25,11 +25,11 @@ namespace Framework
         /// <returns></returns>
         public List<T> GetList<T>()
         {
-            ListPool<T> pool;
+            CsharpListPool<T> pool;
             Object temp;
             if (_listPool.TryGetValue(typeof(T), out temp))
             {
-                pool = temp as ListPool<T>;
+                pool = temp as CsharpListPool<T>;
             }
             else
             {
@@ -46,11 +46,11 @@ namespace Framework
         /// <param name="list"></param>
         public void ReleaseList<T>(List<T> list)
         {
-            ListPool<T> pool;
+            CsharpListPool<T> pool;
             Object temp;
             if (_listPool.TryGetValue(typeof(T), out temp))
             {
-                pool = temp as ListPool<T>;
+                pool = temp as CsharpListPool<T>;
             }
             else
             {
@@ -64,16 +64,16 @@ namespace Framework
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        private ListPool<T> CreateListPool<T>()
+        private CsharpListPool<T> CreateListPool<T>()
         {
             Object temp;
             if (_listPool.TryGetValue(typeof(T), out temp))
             {
-                return temp as ListPool<T>;
+                return temp as CsharpListPool<T>;
             }
             else
             {
-                ListPool<T> pool = new ListPool<T>();
+                CsharpListPool<T> pool = new CsharpListPool<T>();
                 _listPool[typeof(T)] = pool;
                 return pool;
             }

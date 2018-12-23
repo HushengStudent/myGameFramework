@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Framework.ObjectPool
 {
-    internal class ListPool<T>
+    internal class CsharpListPool<T>
     {
         // Object pool to avoid allocations.
         private CsharpObjectPool<List<T>> s_ListPool = new CsharpObjectPool<List<T>>(null, l => l.Clear());

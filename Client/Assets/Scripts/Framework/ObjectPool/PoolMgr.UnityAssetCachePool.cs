@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/12/16 20:34:27
-** desc:  ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½;
+** desc:  Unity Asset»º´æ³Ø;
 *********************************************************************************/
 
 using System;
@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace Framework
 {
-    public class AssetPool
+    public partial class PoolMgr
     {
     }
 }

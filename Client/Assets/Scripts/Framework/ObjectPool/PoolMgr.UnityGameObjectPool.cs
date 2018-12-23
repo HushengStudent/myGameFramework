@@ -16,7 +16,7 @@ namespace Framework
         /// <summary>
         /// Unity Object Pool;
         /// </summary>
-        private GameObjectPool _gameObjectPool = new GameObjectPool();
+        private UnityGameObjectPool _unityGameObjectPool = new UnityGameObjectPool();
 
         /// <summary>
         /// ªÒ»°GameObject;
@@ -26,7 +26,7 @@ namespace Framework
         /// <returns></returns>
         public GameObject Clone(GameObject go)
         {
-            return _gameObjectPool.Clone(go);
+            return _unityGameObjectPool.Clone(go);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Framework
         /// <param name="element"></param>
         public void ReleaseGameObject(GameObject element)
         {
-            _gameObjectPool.Release(element);
+            _unityGameObjectPool.Release(element);
         }
     }
 }
