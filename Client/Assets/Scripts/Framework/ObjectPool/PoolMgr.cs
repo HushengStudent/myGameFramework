@@ -43,7 +43,7 @@ namespace Framework
         /// </summary>
         public IEnumerator<float> ClearPool()
         {
-            _objectPool.Clear();
+            _csharpObjectPool.Clear();
             IEnumerator<float> _goPoolItor = _gameObjectPool.ClearGameObjectPool();
             while (_goPoolItor.MoveNext())
             {

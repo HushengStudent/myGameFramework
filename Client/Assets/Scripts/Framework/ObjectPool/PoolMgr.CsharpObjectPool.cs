@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/12/16 20:34:27
-** desc:  C#对象池管理;
+** desc:  Csharp对象池管理;
 *********************************************************************************/
 
 using Framework.ObjectPool;
@@ -13,27 +13,27 @@ namespace Framework
     public partial class PoolMgr
     {
         /// <summary>
-        /// C# Object Pool;
+        /// Csharp Object Pool;
         /// </summary>
-        private Dictionary<Type, Object> _objectPool = new Dictionary<Type, Object>();
+        private Dictionary<Type, Object> _csharpObjectPool = new Dictionary<Type, Object>();
 
         /// <summary>
-        /// 获取对象池目标组件;
+        /// 获取Csharp对象池目标组件;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="args">初始化参数</param>
         /// <returns></returns>
-        public T GetObject<T>(params Object[] args) where T : new()
+        public T GetCsharpObject<T>(params Object[] args) where T : new()
         {
-            ObjectPool<T> pool;
+            CsharpObjectPool<T> pool;
             Object temp;
-            if (_objectPool.TryGetValue(typeof(T), out temp))
+            if (_csharpObjectPool.TryGetValue(typeof(T), out temp))
             {
-                pool = temp as ObjectPool<T>;
+                pool = temp as CsharpObjectPool<T>;
             }
             else
             {
-                pool = CreatePool<T>();
+                pool = CreateCsharpPool<T>();
             }
             T t = pool.Get();
             IPool target = t as IPool;
@@ -43,44 +43,44 @@ namespace Framework
         }
 
         /// <summary>
-        /// 释放对象池组件;
+        /// 释放Csharp对象池组件;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="type"></param>
-        public void ReleaseObject<T>(T type) where T : new()
+        public void ReleaseCsharpObject<T>(T type) where T : new()
         {
             IPool target = type as IPool;
             if (target != null)
                 target.OnRelease();
-            ObjectPool<T> pool;
+            CsharpObjectPool<T> pool;
             Object temp;
-            if (_objectPool.TryGetValue(typeof(T), out temp))
+            if (_csharpObjectPool.TryGetValue(typeof(T), out temp))
             {
-                pool = temp as ObjectPool<T>;
+                pool = temp as CsharpObjectPool<T>;
             }
             else
             {
-                pool = CreatePool<T>();
+                pool = CreateCsharpPool<T>();
             }
             pool.Release(type);
         }
 
         /// <summary>
-        /// 创建对象池;
+        /// 创建Csharp对象池;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        private ObjectPool<T> CreatePool<T>() where T : new()
+        private CsharpObjectPool<T> CreateCsharpPool<T>() where T : new()
         {
             Object temp;
-            if (_objectPool.TryGetValue(typeof(T), out temp))
+            if (_csharpObjectPool.TryGetValue(typeof(T), out temp))
             {
-                return temp as ObjectPool<T>;
+                return temp as CsharpObjectPool<T>;
             }
             else
             {
-                ObjectPool<T> pool = new ObjectPool<T>(null, null);
-                _objectPool[typeof(T)] = pool;
+                CsharpObjectPool<T> pool = new CsharpObjectPool<T>(null, null);
+                _csharpObjectPool[typeof(T)] = pool;
                 return pool;
             }
         }

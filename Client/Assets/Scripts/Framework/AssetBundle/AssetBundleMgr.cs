@@ -190,11 +190,11 @@ namespace Framework
             {
                 if (tempAssetBundle == FilePathHelper.GetAssetBundleFileName(AssetType.Shader, "Shaders")) continue;
                 string tempPtah = FilePathHelper.AssetBundlePath + tempAssetBundle;
-                AssetBundleLoadNode tempNode = PoolMgr.Instance.GetObject<AssetBundleLoadNode>();
+                AssetBundleLoadNode tempNode = PoolMgr.Instance.GetCsharpObject<AssetBundleLoadNode>();
                 tempNode.Init(tempPtah);
                 nodeQueue.Enqueue(tempNode);
             }
-            AssetBundleLoadNode node = PoolMgr.Instance.GetObject<AssetBundleLoadNode>();
+            AssetBundleLoadNode node = PoolMgr.Instance.GetCsharpObject<AssetBundleLoadNode>();
             node.Init(assetBundlePath, assetBundleName, nodeQueue);
             return node;
         }

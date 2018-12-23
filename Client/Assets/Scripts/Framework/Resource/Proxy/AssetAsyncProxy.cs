@@ -29,20 +29,20 @@ namespace Framework
             {
                 AssetBundleMgr.Instance.UnloadAsset(assetType, assetName);
             }
-            PoolMgr.Instance.ReleaseObject<AssetAsyncProxy>(this);
+            PoolMgr.Instance.ReleaseCsharpObject<AssetAsyncProxy>(this);
         }
 
         protected override void Unload2Pool()
         {
             base.Unload2Pool();
 
-            PoolMgr.Instance.ReleaseObject<AssetAsyncProxy>(this);
+            PoolMgr.Instance.ReleaseCsharpObject<AssetAsyncProxy>(this);
         }
 
         protected override void OnReleaseEx()
         {
             base.OnReleaseEx();
-            PoolMgr.Instance.ReleaseObject<AssetBundleLoadNode>(LoadNode);
+            PoolMgr.Instance.ReleaseCsharpObject<AssetBundleLoadNode>(LoadNode);
             LoadNode = null;
         }
     }

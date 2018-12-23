@@ -65,7 +65,7 @@ namespace Framework
             EntityId = entityId;
             ComponentList.Clear();
 
-            gameObjectEx = PoolMgr.Instance.GetObject<GameObjectEx>();
+            gameObjectEx = PoolMgr.Instance.GetCsharpObject<GameObjectEx>();
             gameObjectEx.AddLoadFinishHandler(OnAttachGoEx);
             gameObjectEx.Init(this, ResPath);
 
@@ -122,7 +122,7 @@ namespace Framework
         protected virtual void DeAttachGoEx()
         {
             gameObjectEx.Uninit();
-            PoolMgr.Instance.ReleaseObject<GameObjectEx>(gameObjectEx);
+            PoolMgr.Instance.ReleaseCsharpObject<GameObjectEx>(gameObjectEx);
             gameObjectEx = null;
         }
         /// <summary>

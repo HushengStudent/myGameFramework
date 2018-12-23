@@ -13,7 +13,7 @@ namespace Framework.ObjectPool
     internal class ListPool<T>
     {
         // Object pool to avoid allocations.
-        private ObjectPool<List<T>> s_ListPool = new ObjectPool<List<T>>(null, l => l.Clear());
+        private CsharpObjectPool<List<T>> s_ListPool = new CsharpObjectPool<List<T>>(null, l => l.Clear());
 
         public List<T> Get()
         {

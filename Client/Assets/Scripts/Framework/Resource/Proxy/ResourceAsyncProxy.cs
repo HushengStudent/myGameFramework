@@ -13,12 +13,12 @@ namespace Framework
     {
         protected override void Unload()
         {
-            PoolMgr.Instance.ReleaseObject<ResourceAsyncProxy>(this);
+            PoolMgr.Instance.ReleaseCsharpObject<ResourceAsyncProxy>(this);
         }
 
         protected override void Unload2Pool()
         {
-            PoolMgr.Instance.ReleaseObject<ResourceAsyncProxy>(this);
+            PoolMgr.Instance.ReleaseCsharpObject<ResourceAsyncProxy>(this);
         }
     }
 }

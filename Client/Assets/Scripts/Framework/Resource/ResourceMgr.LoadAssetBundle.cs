@@ -123,7 +123,7 @@ namespace Framework
         public AssetAsyncProxy LoadAssetProxy(AssetType assetType, string assetName
             , Action<Object> action, Action<float> progress)
         {
-            AssetAsyncProxy proxy = PoolMgr.Instance.GetObject<AssetAsyncProxy>();
+            AssetAsyncProxy proxy = PoolMgr.Instance.GetCsharpObject<AssetAsyncProxy>();
             AssetBundleLoadNode loadNode = AssetBundleMgr.Instance.GetAssetBundleLoadNode(assetType, assetName);
             proxy.AddLoadFinishCallBack(action);
             proxy.InitProxy(assetType, assetName, loadNode);
@@ -150,7 +150,7 @@ namespace Framework
         private AssetAsyncProxy LoadAssetProxy_discard<T>(AssetType assetType, string assetName
             , Action<T> action, Action<float> progress) where T : Object
         {
-            AssetAsyncProxy proxy = PoolMgr.Instance.GetObject<AssetAsyncProxy>();
+            AssetAsyncProxy proxy = PoolMgr.Instance.GetCsharpObject<AssetAsyncProxy>();
             proxy.InitProxy(assetType, assetName);
             CoroutineMgr.Instance.RunCoroutine(LoadAssetAsync_discard<T>(assetType, assetName, proxy, action, progress));
             return proxy;

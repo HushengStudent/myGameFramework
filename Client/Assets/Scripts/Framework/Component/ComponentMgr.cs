@@ -85,7 +85,7 @@ namespace Framework
         /// <returns></returns>
         public T CreateComponent<T>(AbsEntity entity, ComponentInitEventHandler handler = null) where T : AbsComponent, new()
         {
-            T _Component = PoolMgr.Instance.GetObject<T>();
+            T _Component = PoolMgr.Instance.GetCsharpObject<T>();
             if (AddComponent(_Component))
             {
                 _Component.ComponentInitHandler = handler;
@@ -109,7 +109,7 @@ namespace Framework
             RemoveComponent(component);
             component.Entity.ComponentList.Remove(component);
             component.Uninit();
-            PoolMgr.Instance.ReleaseObject<T>(component as T);//Release To Pool;
+            PoolMgr.Instance.ReleaseCsharpObject<T>(component as T);//Release To Pool;
         }
         /// <summary>
         /// 移除Component;

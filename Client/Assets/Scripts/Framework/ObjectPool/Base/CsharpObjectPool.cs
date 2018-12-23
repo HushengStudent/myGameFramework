@@ -10,7 +10,7 @@ using UnityEngine.Events;
 
 namespace Framework.ObjectPool
 {
-    internal class ObjectPool<T> where T : new()
+    internal class CsharpObjectPool<T> where T : new()
     {
         private readonly Stack<T> m_Stack = new Stack<T>();
         private readonly UnityAction<T> m_ActionOnGet;
@@ -20,7 +20,7 @@ namespace Framework.ObjectPool
         public int countActive { get { return countAll - countInactive; } }
         public int countInactive { get { return m_Stack.Count; } }
 
-        public ObjectPool(UnityAction<T> actionOnGet, UnityAction<T> actionOnRelease)
+        public CsharpObjectPool(UnityAction<T> actionOnGet, UnityAction<T> actionOnRelease)
         {
             m_ActionOnGet = actionOnGet;
             m_ActionOnRelease = actionOnRelease;

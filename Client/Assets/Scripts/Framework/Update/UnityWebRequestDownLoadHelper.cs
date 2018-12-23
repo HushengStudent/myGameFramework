@@ -53,7 +53,7 @@ namespace Framework
                     fileStream.Seek(fileLength, SeekOrigin.Begin);
                     var request = UnityWebRequest.Get(url);
                     request.SetRequestHeader("Range", "bytes=" + fileLength + "-" + allLength);
-                    request.Send();
+                    request.SendWebRequest();
 
                     var index = 0;
                     while (!request.isDone)

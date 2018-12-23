@@ -91,7 +91,7 @@ namespace Framework
                         }
                         if (_curNode.NodeState == AssetBundleNodeState.Finish)
                         {
-                            PoolMgr.Instance.ReleaseObject<AssetBundleLoadNode>(_curNode);
+                            PoolMgr.Instance.ReleaseCsharpObject<AssetBundleLoadNode>(_curNode);
                             _curNode = null;
                             _loadCount++;
                             Progress = _allCount == 0 ? 1 : _loadCount / _allCount;
