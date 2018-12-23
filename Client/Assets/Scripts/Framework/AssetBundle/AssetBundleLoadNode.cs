@@ -30,13 +30,15 @@ namespace Framework
         private string _assetBundleName;
         private int _allCount = 0;
         private int _loadCount = 0;
+        //加载进度回调;
+        private Action<float> _onLoadProgress;
 
         public AssetBundleNodeState NodeState { get { return _nodeState; } }
-        public Object Target { get; private set; }
+        public AssetBundle assetBundle { get; private set; }
         public string AssetBundlePath { get; private set; }
         public float Progress { get; private set; }
 
-        public void Init(string path, string assetBundleName = null, Queue<AssetBundleLoadNode> nodeQueue = null)
+        public void Init(string path, Queue<AssetBundleLoadNode> nodeQueue = null)
         {
             AssetBundlePath = path;
             Progress = 0f;
@@ -44,8 +46,6 @@ namespace Framework
             _nodeState = AssetBundleNodeState.Waitting;
             _dependNodeQueue = nodeQueue;
             _allCount = null == _dependNodeQueue ? 0 : _dependNodeQueue.Count + 1;
-            Target = null;
-            _assetBundleName = assetBundleName;
         }
 
         public void Reset()
@@ -56,9 +56,22 @@ namespace Framework
             _loadCount = 0;
             _nodeState = AssetBundleNodeState.Non;
             _dependNodeQueue = null;
-            Target = null;
             _assetBundleName = null;
+            assetBundle = null;
+            _onLoadProgress = null;
             _stopwatch.Stop();
+        }
+
+        /// <summary>
+        /// 添加加载进度回调;
+        /// </summary>
+        /// <param name="action"></param>
+        public void AddLoadProgressCallBack(Action<float> action)
+        {
+            if (action != null)
+            {
+                _onLoadProgress += action;
+            }
         }
 
         public void Update()
@@ -94,7 +107,7 @@ namespace Framework
                             PoolMgr.Instance.ReleaseCsharpObject<AssetBundleLoadNode>(_curNode);
                             _curNode = null;
                             _loadCount++;
-                            Progress = _allCount == 0 ? 1 : _loadCount / _allCount;
+                            UpdateProgress();
                         }
                         else
                         {
@@ -107,11 +120,10 @@ namespace Framework
                         }
                     }
                     _stopwatch.Stop();
-                    AssetBundle assetBundle = AssetBundleMgr.Instance.LoadAssetBundleSync(AssetBundlePath);
-                    var name = Path.GetFileNameWithoutExtension(_assetBundleName);
-                    Target = assetBundle.LoadAsset(name);
+                    assetBundle = AssetBundleMgr.Instance.LoadAssetBundleSync(AssetBundlePath);
                     _nodeState = AssetBundleNodeState.Finish;
-                    Progress = _allCount == 0 ? 1 : _loadCount / _allCount;
+                    _loadCount++;
+                    UpdateProgress();
                     break;
                 case AssetBundleNodeState.Error:
                     LogHelper.PrintError(string.Format("[AssetBundleLoadNode]AssetBundleLoadNode load asset:{0} error!"
@@ -135,6 +147,15 @@ namespace Framework
         public void OnRelease()
         {
             Reset();
+        }
+
+        private void UpdateProgress()
+        {
+            Progress = _allCount == 0 ? 1 : _loadCount / _allCount;
+            if (_onLoadProgress != null)
+            {
+                _onLoadProgress(Progress);
+            }
         }
     }
 }

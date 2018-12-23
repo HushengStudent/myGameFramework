@@ -49,7 +49,23 @@ namespace Framework
                     }
                     if (_curProxy.LoadNode.NodeState == AssetBundleLoadNode.AssetBundleNodeState.Finish)
                     {
-                        _curProxy.OnFinish(_curProxy.LoadNode.Target);
+                        Object target = null;
+                        AssetBundle assetBundle = _curProxy.LoadNode.assetBundle;
+                        if (_curProxy.IsUsePool)
+                        {
+                            target = PoolMgr.Instance.GetUnityAsset(_curProxy.assetType, _curProxy.assetName);
+                        }
+                        if (null == target)
+                        {
+                            var name = Path.GetFileNameWithoutExtension(_curProxy.assetName);
+                            target = assetBundle.LoadAsset(name);
+                            if (target != null && _curProxy.IsUsePool)
+                            {
+                                PoolMgr.Instance.ReleaseUnityAsset(_curProxy.assetType, _curProxy.assetName, target);
+                                target = PoolMgr.Instance.GetUnityAsset(_curProxy.assetType, _curProxy.assetName);
+                            }
+                        }
+                        _curProxy.OnFinish(target);
                         _curProxy = null;
                     }
                     else
@@ -70,24 +86,12 @@ namespace Framework
         /// </summary>
         /// <param name="assetType">资源类型</param>
         /// <param name="assetName">资源名字</param>
+        /// <param name="action">资源回调</param>
         /// <returns>同步代理</returns>
         public SyncAssetProxy LoadAssetSync(AssetType assetType, string assetName)
         {
-            return LoadAssetSync(assetType, assetName);
-        }
-
-        /// <summary>
-        /// 同步从AssetBundle加载资源;
-        /// </summary>
-        /// <param name="assetType">资源类型</param>
-        /// <param name="assetName">资源名字</param>
-        /// <param name="action">资源回调</param>
-        /// <returns>同步代理</returns>
-        public SyncAssetProxy LoadAssetSync(AssetType assetType, string assetName, Action<Object> action)
-        {
             SyncAssetProxy proxy = PoolMgr.Instance.GetCsharpObject<SyncAssetProxy>();
             proxy.InitProxy(assetType, assetName);
-            proxy.AddLoadFinishCallBack(action);
 
             Object ctrl = null;
             AssetBundle assetBundle = AssetBundleMgr.Instance.LoadAssetBundleSync(assetType, assetName);
@@ -113,7 +117,7 @@ namespace Framework
         /// <returns>异步代理</returns>
         public AsyncAssetProxy LoadAssetProxy(AssetType assetType, string assetName)
         {
-            return LoadAssetProxy(assetType, assetName, null, null);
+            return LoadAssetProxy(assetType, assetName, null);
         }
 
         /// <summary>
@@ -121,28 +125,13 @@ namespace Framework
         /// </summary>
         /// <param name="assetType">资源类型</param>
         /// <param name="assetName">资源名字</param>
-        /// <param name="action">资源回调</param>
+        /// <param name="progress">加载进度</param>
         /// <returns>异步代理</returns>
-        public AsyncAssetProxy LoadAssetProxy(AssetType assetType, string assetName
-            , Action<Object> action)
-        {
-            return LoadAssetProxy(assetType, assetName, action, null);
-        }
-
-        /// <summary>
-        /// 异步从AssetBundle加载资源;
-        /// </summary>
-        /// <param name="assetType">资源类型</param>
-        /// <param name="assetName">资源名字</param>
-        /// <param name="action">资源回调</param>
-        /// <param name="progress">进度回调</param>
-        /// <returns>异步代理</returns>
-        public AsyncAssetProxy LoadAssetProxy(AssetType assetType, string assetName
-            , Action<Object> action, Action<float> progress)
+        public AsyncAssetProxy LoadAssetProxy(AssetType assetType, string assetName, Action<float> progress)
         {
             AsyncAssetProxy proxy = PoolMgr.Instance.GetCsharpObject<AsyncAssetProxy>();
             AssetBundleLoadNode loadNode = AssetBundleMgr.Instance.GetAssetBundleLoadNode(assetType, assetName);
-            proxy.AddLoadFinishCallBack(action);
+            loadNode.AddLoadProgressCallBack(progress);
             proxy.InitProxy(assetType, assetName, loadNode);
             _asyncProxyQueue.Enqueue(proxy);
             return proxy;
@@ -221,7 +210,7 @@ namespace Framework
             //先等一帧;
             yield return Timing.WaitForOneFrame;
 
-            if (!proxy.isCancel && action != null)
+            if (!proxy.IsCancel && action != null)
             {
                 action(ctrl);
             }

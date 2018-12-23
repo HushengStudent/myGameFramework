@@ -33,7 +33,7 @@ public class FrameworkTest : MonoBehaviour
     {
         if (_go)
         {
-            GameObject temp = PoolMgr.Instance.GetUnityGameObject(_go);
+            GameObject temp = PoolMgr.Instance.GetUnityObject(_go) as GameObject;
             _goQueue.Enqueue(temp);
         }
     }
@@ -42,7 +42,7 @@ public class FrameworkTest : MonoBehaviour
     {
         if (_goQueue.Count > 0)
         {
-            PoolMgr.Instance.ReleaseUnityGameObject(_goQueue.Dequeue());
+            PoolMgr.Instance.ReleaseUnityObject(_goQueue.Dequeue());
         }
     }
 
@@ -63,9 +63,10 @@ public class FrameworkTest : MonoBehaviour
 
     private void ModelInit()
     {
-        AsyncAssetProxy proxy = ResourceMgr.Instance.LoadAssetProxy(AssetType.Prefab, "Prefab/Models/Avatar/ch_pc_hou_004.prefab", (obj)=> {
-            GameObject go = Object.Instantiate(obj) as GameObject;
-            
+        AsyncAssetProxy proxy = ResourceMgr.Instance.LoadAssetProxy(AssetType.Prefab, "Prefab/Models/Avatar/ch_pc_hou_004.prefab");
+        proxy.AddLoadFinishCallBack(() =>
+        {
+            GameObject go = proxy.LoadUnityObject<GameObject>();
         });
     }
 

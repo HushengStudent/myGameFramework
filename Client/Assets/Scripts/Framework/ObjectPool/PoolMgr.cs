@@ -44,7 +44,8 @@ namespace Framework
         public IEnumerator<float> ClearPool()
         {
             _csharpObjectPool.Clear();
-            IEnumerator<float> _goPoolItor = _unityGameObjectPool.ClearUnityGameObjectPool();
+            _csharpListPool.Clear();
+            IEnumerator<float> _goPoolItor = _unityObjectPool.ClearUnityObjectPool();
             while (_goPoolItor.MoveNext())
             {
                 yield return Timing.WaitForOneFrame;

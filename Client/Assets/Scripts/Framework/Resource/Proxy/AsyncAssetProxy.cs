@@ -25,7 +25,7 @@ namespace Framework
         protected override void Unload()
         {
             base.Unload();
-            if (targetObject != null)
+            if (TargetObject != null)
             {
                 AssetBundleMgr.Instance.UnloadAsset(assetType, assetName);
             }

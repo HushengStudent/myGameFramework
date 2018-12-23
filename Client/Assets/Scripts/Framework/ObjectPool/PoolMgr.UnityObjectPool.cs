@@ -17,29 +17,29 @@ namespace Framework
         /// <summary>
         /// Unity Object Pool;
         /// </summary>
-        private UnityGameObjectPool _unityGameObjectPool = new UnityGameObjectPool();
+        private UnityObjectPool _unityObjectPool = new UnityObjectPool();
 
         /// <summary>
         /// ªÒ»°Unity GameObject;
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public GameObject GetUnityGameObject(Object obj)
+        public Object GetUnityObject(Object obj)
         {
             if (null == obj)
                 return null;
-            return _unityGameObjectPool.GetUnityGameObject(obj);
+            return _unityObjectPool.GetUnityObject(obj);
         }
 
         /// <summary>
         /// ÷¸¥ÊUnity GameObject;
         /// </summary>
         /// <param name="obj"></param>
-        public void ReleaseUnityGameObject(Object obj)
+        public void ReleaseUnityObject(Object obj)
         {
             if (null == obj)
                 return;
-            _unityGameObjectPool.ReleaseUnityGameObject(obj);
+            _unityObjectPool.ReleaseUnityObject(obj);
         }
     }
 }

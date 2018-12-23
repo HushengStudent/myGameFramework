@@ -170,14 +170,14 @@ namespace Framework
             return assetBundle;
         }
 
-        public AssetBundleLoadNode GetAssetBundleLoadNode(AssetType type, string assetName)
+        public AssetBundleLoadNode GetAssetBundleLoadNode(AssetType assetType, string assetName)
         {
-            if (type == AssetType.Non || string.IsNullOrEmpty(assetName))
+            if (assetType == AssetType.Non || string.IsNullOrEmpty(assetName))
                 return null;
-            string assetBundlePath = FilePathHelper.GetAssetBundlePath(type, assetName);
+            string assetBundlePath = FilePathHelper.GetAssetBundlePath(assetType, assetName);
             if (assetBundlePath == null)
                 return null;
-            string assetBundleName = FilePathHelper.GetAssetBundleFileName(type, assetName);
+            string assetBundleName = FilePathHelper.GetAssetBundleFileName(assetType, assetName);
 
             Queue<AssetBundleLoadNode> nodeQueue = null;
             //返回AssetBundleName;
@@ -195,7 +195,7 @@ namespace Framework
                 nodeQueue.Enqueue(tempNode);
             }
             AssetBundleLoadNode node = PoolMgr.Instance.GetCsharpObject<AssetBundleLoadNode>();
-            node.Init(assetBundlePath, assetBundleName, nodeQueue);
+            node.Init(assetBundlePath, nodeQueue);
             return node;
         }
 

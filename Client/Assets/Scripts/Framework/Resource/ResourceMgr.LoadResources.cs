@@ -126,7 +126,7 @@ namespace Framework
             //先等一帧;
             yield return Timing.WaitForOneFrame;
 
-            if (!proxy.isCancel && action != null)
+            if (!proxy.IsCancel && action != null)
             {
                 action(ctrl);
             }

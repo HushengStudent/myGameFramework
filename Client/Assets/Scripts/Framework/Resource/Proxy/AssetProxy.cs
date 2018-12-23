@@ -1,31 +1,32 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/12/10 01:23:56
-** desc:  资源加载代理父类;
+** desc:  资源加载抽象父类;
 *********************************************************************************/
 
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Framework
 {
-    public class AssetProxy : IPool
+    public abstract class AssetProxy : IPool
     {
         //加载完成回调;
-        private Action<Object> _onLoadFinish = null;
-
+        private Action _onLoadFinish = null;
+        
         public AssetType assetType { get; protected set; }
         public string assetName { get; protected set; }
         //是否加载完成;
-        public bool isFinish { get; protected set; }
+        public bool IsFinish { get; protected set; }
         //取消了就不用执行异步加载的回调了;
-        public bool isCancel { get; protected set; }
+        public bool IsCancel { get; protected set; }
         //是否使用对象池;
-        public bool isUsePool { get; protected set; }
+        public bool IsUsePool { get; protected set; }
         //加载完成对象;
-        public Object targetObject { get; protected set; }
-
+        public Object TargetObject { get; protected set; }
+        
         /// <summary>
         /// 初始化;
         /// </summary>
@@ -36,19 +37,24 @@ namespace Framework
         {
             this.assetType = assetType;
             this.assetName = assetName;
-            this.isUsePool = isUsePool;
-            isCancel = false;
-            isFinish = false;
+            this.IsUsePool = isUsePool;
+            IsCancel = false;
+            IsFinish = false;
         }
 
         /// <summary>
         /// 添加加载完成回调;
         /// </summary>
         /// <param name="action"></param>
-        public void AddLoadFinishCallBack(Action<Object> action)
+        public void AddLoadFinishCallBack(Action action)
         {
             if (action != null)
             {
+                if (IsFinish)
+                {
+                    action();
+                    return;
+                }
                 _onLoadFinish += action;
             }
         }
@@ -59,11 +65,11 @@ namespace Framework
         /// <param name="target"></param>
         public void OnFinish(Object target)
         {
-            targetObject = target;
-            isFinish = true;
-            if (!isCancel && _onLoadFinish != null)
+            TargetObject = target;
+            IsFinish = true;
+            if (!IsCancel && _onLoadFinish != null)
             {
-                _onLoadFinish(target);
+                _onLoadFinish();
                 _onLoadFinish = null;
                 OnFinishEx();
             }
@@ -76,7 +82,7 @@ namespace Framework
         /// </summary>
         public void CancelProxy()
         {
-            isCancel = true;
+            IsCancel = true;
             if (!UnloadProxy())
             {
                 ResourceMgr.Instance.AddProxy(this);
@@ -89,9 +95,9 @@ namespace Framework
         /// <returns></returns>
         public bool UnloadProxy()
         {
-            if (isFinish)
+            if (IsFinish)
             {
-                if (isUsePool)
+                if (IsUsePool)
                 {
                     Unload2Pool();
                 }
@@ -109,9 +115,9 @@ namespace Framework
         /// </summary>
         protected virtual void Unload()
         {
-            if (targetObject != null)
+            if (TargetObject != null)
             {
-                ResourceMgr.Instance.UnloadObject(assetType, targetObject);
+                ResourceMgr.Instance.UnloadObject(assetType, TargetObject);
             }
         }
 
@@ -120,7 +126,7 @@ namespace Framework
         /// </summary>
         protected virtual void Unload2Pool()
         {
-            if (targetObject != null)
+            if (TargetObject != null)
             {
 
             }
@@ -138,12 +144,18 @@ namespace Framework
             _onLoadFinish = null;
             assetType = AssetType.Non;
             assetName = string.Empty;
-            isCancel = false;
-            isFinish = false;
-            targetObject = null;
+            IsCancel = false;
+            IsFinish = false;
+            TargetObject = null;
             OnReleaseEx();
         }
 
         protected virtual void OnReleaseEx() { }
+
+        public abstract T LoadUnityObject<T>() where T : Object;
+        public abstract void DestroyUnityObject<T>(T t) where T : Object;
+
+        public abstract T LoadUnitySharedAsset<T>() where T : Object;
+        public abstract void DestroyUnitySharedAsset<T>(T t) where T : Object;
     }
 }

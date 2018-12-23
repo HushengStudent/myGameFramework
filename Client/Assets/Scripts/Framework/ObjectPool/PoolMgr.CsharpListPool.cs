@@ -13,9 +13,9 @@ namespace Framework
     public partial class PoolMgr
     {
         /// <summary>
-        /// List Pool;
+        /// Csharp List Pool;
         /// </summary>
-        private Dictionary<Type, Object> _listPool = new Dictionary<Type, Object>();
+        private Dictionary<Type, Object> _csharpListPool = new Dictionary<Type, Object>();
 
         /// <summary>
         /// 获取对象池目标组件;
@@ -23,17 +23,17 @@ namespace Framework
         /// <typeparam name="T"></typeparam>
         /// <param name="args">初始化参数</param>
         /// <returns></returns>
-        public List<T> GetList<T>()
+        public List<T> GetCsharpList<T>()
         {
             CsharpListPool<T> pool;
             Object temp;
-            if (_listPool.TryGetValue(typeof(T), out temp))
+            if (_csharpListPool.TryGetValue(typeof(T), out temp))
             {
                 pool = temp as CsharpListPool<T>;
             }
             else
             {
-                pool = CreateListPool<T>();
+                pool = CreateCsharpListPool<T>();
             }
             List<T> t = pool.Get();
             return t;
@@ -44,17 +44,17 @@ namespace Framework
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
-        public void ReleaseList<T>(List<T> list)
+        public void ReleaseCsharpList<T>(List<T> list)
         {
             CsharpListPool<T> pool;
             Object temp;
-            if (_listPool.TryGetValue(typeof(T), out temp))
+            if (_csharpListPool.TryGetValue(typeof(T), out temp))
             {
                 pool = temp as CsharpListPool<T>;
             }
             else
             {
-                pool = CreateListPool<T>();
+                pool = CreateCsharpListPool<T>();
             }
             pool.Release(list);
         }
@@ -64,17 +64,17 @@ namespace Framework
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        private CsharpListPool<T> CreateListPool<T>()
+        private CsharpListPool<T> CreateCsharpListPool<T>()
         {
             Object temp;
-            if (_listPool.TryGetValue(typeof(T), out temp))
+            if (_csharpListPool.TryGetValue(typeof(T), out temp))
             {
                 return temp as CsharpListPool<T>;
             }
             else
             {
                 CsharpListPool<T> pool = new CsharpListPool<T>();
-                _listPool[typeof(T)] = pool;
+                _csharpListPool[typeof(T)] = pool;
                 return pool;
             }
         }

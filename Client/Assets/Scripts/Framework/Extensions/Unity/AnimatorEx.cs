@@ -23,10 +23,10 @@ namespace Framework
         public void Init(Animator animator, string path)
         {
             _animator = animator;
-            _runtimeAnimatorProxy = ResourceMgr.Instance.LoadAssetProxy(AssetType.AnimeCtrl, path
-                , (obj) =>
+            _runtimeAnimatorProxy = ResourceMgr.Instance.LoadAssetProxy(AssetType.AnimeCtrl, path);
+            _runtimeAnimatorProxy.AddLoadFinishCallBack(() =>
             {
-                RuntimeAnimatorController ctrl = obj as RuntimeAnimatorController;
+                RuntimeAnimatorController ctrl = _runtimeAnimatorProxy.LoadUnitySharedAsset<RuntimeAnimatorController>();
                 if (ctrl)
                 {
                     _animator.runtimeAnimatorController = ctrl;
@@ -38,22 +38,22 @@ namespace Framework
 
         public void OverrideAnimationClip(string name, string path, bool autoPlay = true)
         {
-            _animationClipProxy = ResourceMgr.Instance.LoadAssetProxy(AssetType.AnimeClip, path
-                , (obj) =>
+            _animationClipProxy = ResourceMgr.Instance.LoadAssetProxy(AssetType.AnimeClip, path);
+            _animationClipProxy.AddLoadFinishCallBack(() =>
+            {
+                AnimationClip clip = _animationClipProxy.LoadUnitySharedAsset<AnimationClip>();
+                if (_animatorOverrideController && clip)
                 {
-                    AnimationClip clip = obj as AnimationClip;
-                    if (_animatorOverrideController && clip)
+                    _animatorOverrideController[name] = clip;
+                    _animator.runtimeAnimatorController = _animatorOverrideController;
+                    _AnimationInfo.Data[name] = clip;
+                    _animator.Rebind();
+                    if (autoPlay)
                     {
-                        _animatorOverrideController[name] = clip;
-                        _animator.runtimeAnimatorController = _animatorOverrideController;
-                        _AnimationInfo.Data[name] = clip;
-                        _animator.Rebind();
-                        if (autoPlay)
-                        {
-                            _animator.Play(name);
-                        }
+                        _animator.Play(name);
                     }
-                });
+                }
+            });
         }
 
         public void SetBool(int id, bool value)

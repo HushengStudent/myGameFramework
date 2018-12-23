@@ -139,7 +139,7 @@ namespace Framework
                     || assetType == AssetType.Texture)
                 {
                     //不需实例化的资源;
-                    UnloadObject(asset);
+                    UnloadAsset(asset);
                     return;
                 }
                 if (assetType == AssetType.Scripts)
@@ -155,7 +155,7 @@ namespace Framework
         /// Unload Assets may only be used on individual assets and can not be used on GameObject's/Components or AssetBundles;
         /// </summary>
         /// <param name="asset"></param>
-        public void UnloadObject(Object asset)
+        public void UnloadAsset(Object asset)
         {
             Resources.UnloadAsset(asset);
         }
