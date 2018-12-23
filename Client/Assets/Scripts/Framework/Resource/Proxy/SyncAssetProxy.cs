@@ -6,8 +6,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Framework
 {
@@ -28,6 +28,32 @@ namespace Framework
             base.Unload2Pool();
 
             PoolMgr.Instance.ReleaseCsharpObject<SyncAssetProxy>(this);
+        }
+
+        public GameObject LoadGameObject(bool isUsePool = true)
+        {
+            GameObject go = null;
+            if (isUsePool)
+            {
+                PoolMgr.Instance.GetUnityGameObject(targetObject);
+            }
+            else
+            {
+                go = GameObject.Instantiate(targetObject) as GameObject;
+            }
+            return go;
+        }
+
+        public void DestroyGameObject(GameObject go, bool isReturn2Pool = true)
+        {
+            if (isReturn2Pool)
+            {
+                PoolMgr.Instance.ReleaseUnityGameObject(targetObject);
+            }
+            else
+            {
+                GameObject.Destroy(go);
+            }
         }
     }
 }

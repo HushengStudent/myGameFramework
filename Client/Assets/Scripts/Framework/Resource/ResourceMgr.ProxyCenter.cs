@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/12/09 22:54:09
-** desc:  ×ÊÔ´¼ÓÔØ´úÀí;
+** desc:  èµ„æºåŠ è½½ä»£ç†;
 *********************************************************************************/
 
 using UnityEngine;
@@ -22,12 +22,12 @@ namespace Framework
         private List<AssetProxy> _removexyList = new List<AssetProxy>();
 
         /// <summary>
-        /// ÅÅ¶ÓÉ¾³ı»¹Ã»¼ÓÔØÍê¾ÍÉ¾³ıµÄProxy;
+        /// æ’é˜Ÿåˆ é™¤è¿˜æ²¡åŠ è½½å®Œå°±åˆ é™¤çš„Proxy;
         /// </summary>
         private void UpdateProxy()
         {
             var count = _removexyList.Count;
-            for (int i = count - 1; i >= 0; i--)//µ¹Ğò±éÀúÉ¾³ı;
+            for (int i = count - 1; i >= 0; i--)//å€’åºéå†åˆ é™¤;
             {
                 var target = _removexyList[i];
                 if (target.UnloadProxy())
@@ -43,7 +43,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// µÈ´ı¼ÓÔØÍêÉ¾³ı;
+        /// ç­‰å¾…åŠ è½½å®Œåˆ é™¤;
         /// </summary>
         /// <returns></returns>
         public IEnumerator<float> CancleAllProxy()

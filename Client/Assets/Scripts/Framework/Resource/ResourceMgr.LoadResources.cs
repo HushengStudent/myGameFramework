@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/12/09 16:12:18
-** desc:  Resource×ÊÔ´¼ÓÔØ;
+** desc:  Resourceèµ„æºåŠ è½½;
 *********************************************************************************/
 
 using UnityEngine;
@@ -14,25 +14,25 @@ using Object = UnityEngine.Object;
 namespace Framework
 {
     /// <summary>
-    /// µ÷Resources.LoadAsync¼ÓÔØµÄÍ¬Ò»Ö¡,µ÷Resources.Load¼ÓÔØÍ¬Ò»×ÊÔ´»á±¨´í;
+    /// è°ƒResources.LoadAsyncåŠ è½½çš„åŒä¸€å¸§,è°ƒResources.LoadåŠ è½½åŒä¸€èµ„æºä¼šæŠ¥é”™;
     /// </summary>
     public partial class ResourceMgr
     {
         #region Resources Load
 
         /// <summary>
-        /// ResourceÍ¬²½¼ÓÔØ;
+        /// ResourceåŒæ­¥åŠ è½½;
         /// </summary>
         /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="assetType">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
+        /// <param name="assetType">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
         /// <returns>ctrl</returns>
         public T LoadResourceSync<T>(AssetType assetType, string assetName) where T : Object
         {
             string path = FilePathHelper.GetResourcePath(assetType, assetName);
             if (path != null)
             {
-                //Resources.Load¼ÓÔØÍ¬Ò»×ÊÔ´,Ö»»áÓĞÒ»·İAsset,ĞèÒªÊµÀı»¯µÄ×ÊÔ´¿ÉÒÔInstantiate¶à¸ö¶ÔÏó;
+                //Resources.LoadåŠ è½½åŒä¸€èµ„æº,åªä¼šæœ‰ä¸€ä»½Asset,éœ€è¦å®ä¾‹åŒ–çš„èµ„æºå¯ä»¥Instantiateå¤šä¸ªå¯¹è±¡;
                 T ctrl = Resources.Load<T>(path);
                 if (ctrl != null)
                 {
@@ -45,25 +45,25 @@ namespace Framework
         }
 
         /// <summary>
-        /// ResourceÒì²½¼ÓÔØ;
+        /// Resourceå¼‚æ­¥åŠ è½½;
         /// </summary>
         /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="assetType">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
-        /// <returns>´úÀí</returns>
+        /// <param name="assetType">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
+        /// <returns>ä»£ç†</returns>
         public AsyncResourceProxy LoadResourceProxy<T>(AssetType assetType, string assetName) where T : Object
         {
             return LoadResourceProxy<T>(assetType, assetName, null, null);
         }
 
         /// <summary>
-        /// ResourceÒì²½¼ÓÔØ;
+        /// Resourceå¼‚æ­¥åŠ è½½;
         /// </summary>
         /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="assetType">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
-        /// <param name="action">×ÊÔ´»Øµ÷</param>
-        /// <returns>´úÀí</returns>
+        /// <param name="assetType">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
+        /// <param name="action">èµ„æºå›è°ƒ</param>
+        /// <returns>ä»£ç†</returns>
         public AsyncResourceProxy LoadResourceProxy<T>(AssetType assetType, string assetName
             , Action<T> action) where T : Object
         {
@@ -71,14 +71,14 @@ namespace Framework
         }
 
         /// <summary>
-        /// ResourceÒì²½¼ÓÔØ;
+        /// Resourceå¼‚æ­¥åŠ è½½;
         /// </summary>
         /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="assetType">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
-        /// <param name="action">×ÊÔ´»Øµ÷</param>
-        /// <param name="progress">progress»Øµ÷</param>
-        /// <returns>´úÀí</returns>
+        /// <param name="assetType">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
+        /// <param name="action">èµ„æºå›è°ƒ</param>
+        /// <param name="progress">progresså›è°ƒ</param>
+        /// <returns>ä»£ç†</returns>
         public AsyncResourceProxy LoadResourceProxy<T>(AssetType assetType, string assetName
             , Action<T> action, Action<float> progress) where T : Object
         {
@@ -89,14 +89,14 @@ namespace Framework
         }
 
         /// <summary>
-        /// ResourceÒì²½¼ÓÔØ;
+        /// Resourceå¼‚æ­¥åŠ è½½;
         /// </summary>
         /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="assetType">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
-        /// <param name="proxy">´úÀí</param>
-        /// <param name="action">×ÊÔ´»Øµ÷</param>
-        /// <param name="progress">progress»Øµ÷</param>
+        /// <param name="assetType">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
+        /// <param name="proxy">ä»£ç†</param>
+        /// <param name="action">èµ„æºå›è°ƒ</param>
+        /// <param name="progress">progresså›è°ƒ</param>
         /// <returns></returns>
         private IEnumerator<float> LoadResourceAsync<T>(AssetType assetType, string assetName, AsyncResourceProxy proxy
             , Action<T> action, Action<float> progress) where T : Object
@@ -123,7 +123,7 @@ namespace Framework
                     assetName + "." + assetType.ToString()));
             }
             //--------------------------------------------------------------------------------------
-            //ÏÈµÈÒ»Ö¡;
+            //å…ˆç­‰ä¸€å¸§;
             yield return Timing.WaitForOneFrame;
 
             if (!proxy.isCancel && action != null)

@@ -33,7 +33,7 @@ public class FrameworkTest : MonoBehaviour
     {
         if (_go)
         {
-            GameObject temp = PoolMgr.Instance.Clone(_go);
+            GameObject temp = PoolMgr.Instance.GetUnityGameObject(_go);
             _goQueue.Enqueue(temp);
         }
     }
@@ -42,7 +42,7 @@ public class FrameworkTest : MonoBehaviour
     {
         if (_goQueue.Count > 0)
         {
-            PoolMgr.Instance.ReleaseGameObject(_goQueue.Dequeue());
+            PoolMgr.Instance.ReleaseUnityGameObject(_goQueue.Dequeue());
         }
     }
 

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/12/09 16:12:18
-** desc:  AssetBundle×ÊÔ´¼ÓÔØ;
+** desc:  AssetBundleèµ„æºåŠ è½½;
 *********************************************************************************/
 
 using UnityEngine;
@@ -19,14 +19,14 @@ namespace Framework
     {
         #region AssetBundle Load
 
-        //Ò»Ãë30Ö¡,Ò»Ö¡×î¾Ã0.33Ãë;UWAÉÏÓĞ½¨Òé¼ÓÔØÎª0.16sºÏÊÊ;
+        //ä¸€ç§’30å¸§,ä¸€å¸§æœ€ä¹…0.33ç§’;UWAä¸Šæœ‰å»ºè®®åŠ è½½ä¸º0.16såˆé€‚;
         public readonly float MAX_LOAD_TIME = 0.16f * 1000;
 
-        //×ÊÔ´¼ÓÔØ¶ÓÁĞ;
+        //èµ„æºåŠ è½½é˜Ÿåˆ—;
         private Queue<AsyncAssetProxy> _asyncProxyQueue = new Queue<AsyncAssetProxy>();
         private Stopwatch _stopwatch = new System.Diagnostics.Stopwatch();
 
-        //µ±Ç°¼ÓÔØ´úÀí;
+        //å½“å‰åŠ è½½ä»£ç†;
         private AsyncAssetProxy _curProxy = null;
 
         private void UpdateLoadAssetAsync()
@@ -54,7 +54,7 @@ namespace Framework
                     }
                     else
                     {
-                        _curProxy.LoadNode.Update();//½áÊøÁË¾ÍµÈÏÂÒ»Ö¡Ö´ĞĞ»Øµ÷;
+                        _curProxy.LoadNode.Update();//ç»“æŸäº†å°±ç­‰ä¸‹ä¸€å¸§æ‰§è¡Œå›è°ƒ;
                     }
                     if (_stopwatch.Elapsed.Milliseconds >= MAX_LOAD_TIME)
                     {
@@ -66,14 +66,29 @@ namespace Framework
         }
 
         /// <summary>
-        /// Asset sync load from AssetBundle;
+        /// åŒæ­¥ä»AssetBundleåŠ è½½èµ„æº;
         /// </summary>
-        /// <param name="assetType">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
-        /// <returns>´úÀí</returns>
+        /// <param name="assetType">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
+        /// <returns>åŒæ­¥ä»£ç†</returns>
         public SyncAssetProxy LoadAssetSync(AssetType assetType, string assetName)
         {
+            return LoadAssetSync(assetType, assetName);
+        }
+
+        /// <summary>
+        /// åŒæ­¥ä»AssetBundleåŠ è½½èµ„æº;
+        /// </summary>
+        /// <param name="assetType">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
+        /// <param name="action">èµ„æºå›è°ƒ</param>
+        /// <returns>åŒæ­¥ä»£ç†</returns>
+        public SyncAssetProxy LoadAssetSync(AssetType assetType, string assetName, Action<Object> action)
+        {
             SyncAssetProxy proxy = PoolMgr.Instance.GetCsharpObject<SyncAssetProxy>();
+            proxy.InitProxy(assetType, assetName);
+            proxy.AddLoadFinishCallBack(action);
+
             Object ctrl = null;
             AssetBundle assetBundle = AssetBundleMgr.Instance.LoadAssetBundleSync(assetType, assetName);
             if (assetBundle != null)
@@ -86,29 +101,28 @@ namespace Framework
                 LogHelper.PrintError(string.Format("[ResourceMgr]LoadAssetSync Load Asset failure" +
                     ",type:{0},name:{1}!", assetType, assetName));
             }
-            proxy.InitProxy(assetType, assetName);
             proxy.OnFinish(ctrl);
             return proxy;
         }
 
         /// <summary>
-        /// AssetÒì²½¼ÓÔØ;
+        /// å¼‚æ­¥ä»AssetBundleåŠ è½½èµ„æº;
         /// </summary>
-        /// <param name="assetType">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
-        /// <returns>´úÀí</returns>
+        /// <param name="assetType">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
+        /// <returns>å¼‚æ­¥ä»£ç†</returns>
         public AsyncAssetProxy LoadAssetProxy(AssetType assetType, string assetName)
         {
             return LoadAssetProxy(assetType, assetName, null, null);
         }
 
         /// <summary>
-        /// AssetÒì²½¼ÓÔØ;
+        /// å¼‚æ­¥ä»AssetBundleåŠ è½½èµ„æº;
         /// </summary>
-        /// <param name="assetType">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
-        /// <param name="action">×ÊÔ´»Øµ÷</param>
-        /// <returns>´úÀí</returns>
+        /// <param name="assetType">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
+        /// <param name="action">èµ„æºå›è°ƒ</param>
+        /// <returns>å¼‚æ­¥ä»£ç†</returns>
         public AsyncAssetProxy LoadAssetProxy(AssetType assetType, string assetName
             , Action<Object> action)
         {
@@ -116,13 +130,13 @@ namespace Framework
         }
 
         /// <summary>
-        /// AssetÒì²½¼ÓÔØ;
+        /// å¼‚æ­¥ä»AssetBundleåŠ è½½èµ„æº;
         /// </summary>
-        /// <param name="assetType">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
-        /// <param name="action">×ÊÔ´»Øµ÷</param>
-        /// <param name="progress"></param>
-        /// <returns>´úÀí</returns>
+        /// <param name="assetType">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
+        /// <param name="action">èµ„æºå›è°ƒ</param>
+        /// <param name="progress">è¿›åº¦å›è°ƒ</param>
+        /// <returns>å¼‚æ­¥ä»£ç†</returns>
         public AsyncAssetProxy LoadAssetProxy(AssetType assetType, string assetName
             , Action<Object> action, Action<float> progress)
         {
@@ -141,14 +155,14 @@ namespace Framework
         //=======================================================Discarded=======================================================
 
         /// <summary>
-        /// AssetÒì²½¼ÓÔØ;
+        /// Assetå¼‚æ­¥åŠ è½½;
         /// </summary>
         /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="assetType">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
-        /// <param name="action">×ÊÔ´»Øµ÷</param>
-        /// <param name="progress">progress»Øµ÷</param>
-        /// <returns>´úÀí</returns>
+        /// <param name="assetType">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
+        /// <param name="action">èµ„æºå›è°ƒ</param>
+        /// <param name="progress">progresså›è°ƒ</param>
+        /// <returns>ä»£ç†</returns>
         [Obsolete("warning,this method is discarded!")]
         private AsyncAssetProxy LoadAssetProxy_discard<T>(AssetType assetType, string assetName
             , Action<T> action, Action<float> progress) where T : Object
@@ -163,11 +177,11 @@ namespace Framework
         /// Asset async load from AssetBundle;
         /// </summary>
         /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="assetType">×ÊÔ´ÀàĞÍ</param>
-        /// <param name="assetName">×ÊÔ´Ãû×Ö</param>
-        /// <param name="proxy">´úÀí</param>
-        /// <param name="action">×ÊÔ´»Øµ÷</param>
-        /// <param name="progress">progress»Øµ÷</param>
+        /// <param name="assetType">èµ„æºç±»å‹</param>
+        /// <param name="assetName">èµ„æºåå­—</param>
+        /// <param name="proxy">ä»£ç†</param>
+        /// <param name="action">èµ„æºå›è°ƒ</param>
+        /// <param name="progress">progresså›è°ƒ</param>
         /// <returns></returns>
         private IEnumerator<float> LoadAssetAsync_discard<T>(AssetType assetType, string assetName, AsyncAssetProxy proxy
             , Action<T> action, Action<float> progress)
@@ -177,14 +191,14 @@ namespace Framework
             AssetBundle assetBundle = null;
 
             IEnumerator itor = AssetBundleMgr.Instance.LoadAssetBundleAsync(assetType, assetName,
-                ab => { assetBundle = ab; }, progress);//´Ë´¦¼ÓÔØÕ¼90%;
+                ab => { assetBundle = ab; }, progress);//æ­¤å¤„åŠ è½½å 90%;
             while (itor.MoveNext())
             {
                 yield return Timing.WaitForOneFrame;
             }
             var name = Path.GetFileNameWithoutExtension(assetName);
             AssetBundleRequest request = assetBundle.LoadAssetAsync<T>(name);
-            //´Ë´¦¼ÓÔØÕ¼10%;
+            //æ­¤å¤„åŠ è½½å 10%;
             while (request.progress < 0.99)
             {
                 if (progress != null)
@@ -204,7 +218,7 @@ namespace Framework
                     ",type:{0},name:{1}!", assetType, assetName));
             }
             //--------------------------------------------------------------------------------------
-            //ÏÈµÈÒ»Ö¡;
+            //å…ˆç­‰ä¸€å¸§;
             yield return Timing.WaitForOneFrame;
 
             if (!proxy.isCancel && action != null)

@@ -47,7 +47,10 @@ namespace Framework
         /// <param name="action"></param>
         public void AddLoadFinishCallBack(Action<Object> action)
         {
-            _onLoadFinish += action;
+            if (action != null)
+            {
+                _onLoadFinish += action;
+            }
         }
 
         /// <summary>
