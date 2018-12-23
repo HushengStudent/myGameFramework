@@ -26,7 +26,7 @@ namespace Framework
         /// <returns></returns>
         public GameObject Clone(GameObject go)
         {
-            return _unityGameObjectPool.Clone(go);
+            return _unityGameObjectPool.GetUnityGameObject(go);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Framework
         /// <param name="element"></param>
         public void ReleaseGameObject(GameObject element)
         {
-            _unityGameObjectPool.Release(element);
+            _unityGameObjectPool.ReleaseUnityGameObject(element);
         }
     }
 }

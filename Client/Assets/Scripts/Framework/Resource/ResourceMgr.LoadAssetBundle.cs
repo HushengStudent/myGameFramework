@@ -73,6 +73,7 @@ namespace Framework
         /// <returns>目标资源</returns>
         public Object LoadAssetSync(AssetType assetType, string assetName)
         {
+            AssetAsyncProxy proxy = PoolMgr.Instance.GetCsharpObject<AssetAsyncProxy>();
             Object ctrl = null;
             AssetBundle assetBundle = AssetBundleMgr.Instance.LoadAssetBundleSync(assetType, assetName);
             if (assetBundle != null)

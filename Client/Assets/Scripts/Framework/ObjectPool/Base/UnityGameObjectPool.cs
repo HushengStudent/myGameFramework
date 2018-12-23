@@ -8,23 +8,30 @@ using MEC;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Framework.ObjectPool
 {
     internal class UnityGameObjectPool
     {
-        /// <summary>
-        /// 单帧卸载数量;
-        /// </summary>
-        private int _preFrameClearCount = 50;
+        private Stopwatch _stopwatch = new System.Diagnostics.Stopwatch();
+        private int _unityGameObjectPoolMaxCount = 50;
         private Dictionary<int, Stack<GameObject>> _unityGameObjectPoolPool = new Dictionary<int, Stack<GameObject>>();
         private Dictionary<int, int> _unityGameObjectPoolIndex = new Dictionary<int, int>();
 
-        public int PreFrameClearCount { get { return _preFrameClearCount; } set { _preFrameClearCount = value; } }
-
-        public GameObject Clone(GameObject go)
+        public int UnityGameObjectPoolMaxCount
         {
+            get { return _unityGameObjectPoolMaxCount; }
+            set { _unityGameObjectPoolMaxCount = value; }
+        }
+
+        public GameObject GetUnityGameObject(Object obj)
+        {
+            GameObject go = obj as GameObject;
+            if (null == go)
+                return null;
             GameObject element;
             int instanceId = go.GetInstanceID();
             Stack<GameObject> stack;
@@ -35,7 +42,7 @@ namespace Framework.ObjectPool
             }
             if (stack.Count == 0)
             {
-                element = GameObject.Instantiate(go);//clone出来的子物体instanceId == parent instanceId;
+                element = GameObject.Instantiate(go);
             }
             else
             {
@@ -46,8 +53,11 @@ namespace Framework.ObjectPool
             return element;
         }
 
-        public void Release(GameObject element)
+        public void ReleaseUnityGameObject(Object obj)
         {
+            GameObject element = obj as GameObject;
+            if (null == element)
+                return;
             int instanceId = element.GetInstanceID();
             Stack<GameObject> stack;
             int parentInstanceId;
@@ -62,7 +72,7 @@ namespace Framework.ObjectPool
                     stack = new Stack<GameObject>();
                     _unityGameObjectPoolPool[instanceId] = stack;
                     parentInstanceId = instanceId;
-                    LogHelper.PrintWarning(string.Format("[GameObjectPool]the game object:{0} is not create form pool " +
+                    LogHelper.PrintWarning(string.Format("[UnityGameObjectPool]the game object:{0} is not create form pool " +
                         "or it's parents destroyed,but it is trying to release to pool!", element.name));
                 }
             }
@@ -70,6 +80,11 @@ namespace Framework.ObjectPool
             {
                 stack = new Stack<GameObject>();
                 _unityGameObjectPoolPool[parentInstanceId] = stack;
+            }
+            if (stack.Count > UnityGameObjectPoolMaxCount)
+            {
+                GameObject.Destroy(element);
+                return;
             }
             element.transform.SetParent(PoolMgr.Instance.Root.transform);
             element.transform.position = Vector3.zero;
@@ -83,7 +98,8 @@ namespace Framework.ObjectPool
             Dictionary<int, Stack<GameObject>> stack = new Dictionary<int, Stack<GameObject>>(_unityGameObjectPoolPool);
             _unityGameObjectPoolIndex = new Dictionary<int, int>();
             _unityGameObjectPoolPool = new Dictionary<int, Stack<GameObject>>();
-            int index = 0;
+            _stopwatch.Reset();
+            _stopwatch.Start();
             foreach (var temp in stack)
             {
                 Stack<GameObject> target = temp.Value;
@@ -99,11 +115,10 @@ namespace Framework.ObjectPool
                         continue;
                     }
                     GameObject.Destroy(go);
-                    index++;
-                    if (index > PreFrameClearCount)
+                    if (_stopwatch.Elapsed.Milliseconds >= ResourceMgr.Instance.MAX_LOAD_TIME)
                     {
+                        _stopwatch.Stop();
                         yield return Timing.WaitForOneFrame;
-                        index = 0;
                     }
                 }
             }

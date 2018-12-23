@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/08/05 02:40:11
-** desc:  UnityWebRequest���ع���;
+** desc:  UnityWebRequest下载工具;
 *********************************************************************************/
 
 using System;
@@ -36,7 +36,7 @@ namespace Framework
             }
 
             var req = UnityWebRequest.Head(url);
-            yield return req.Send();
+            yield return req.SendWebRequest();
             var allLength = long.Parse(req.GetResponseHeader("Content-Length"));
             req.Dispose();
 
