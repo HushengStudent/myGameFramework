@@ -61,7 +61,7 @@ namespace Framework
             _stopwatch.Stop();
         }
 
-        public AssetBundleNodeState Update()
+        public void Update()
         {
             switch (_nodeState)
             {
@@ -71,7 +71,8 @@ namespace Framework
                     break;
                 case AssetBundleNodeState.Waitting:
                     _nodeState = AssetBundleNodeState.Loading;
-                    return Update();
+                    Update();
+                    break;
                 case AssetBundleNodeState.Loading:
                     _stopwatch.Reset();
                     _stopwatch.Start();
@@ -102,9 +103,10 @@ namespace Framework
                         if (_stopwatch.Elapsed.Milliseconds >= ResourceMgr.Instance.MAX_LOAD_TIME)
                         {
                             _stopwatch.Stop();
-                            return _nodeState;
+                            return;
                         }
                     }
+                    _stopwatch.Stop();
                     AssetBundle assetBundle = AssetBundleMgr.Instance.LoadAssetBundleSync(AssetBundlePath);
                     var name = Path.GetFileNameWithoutExtension(_assetBundleName);
                     Target = assetBundle.LoadAsset(name);
@@ -123,7 +125,7 @@ namespace Framework
                     _nodeState = AssetBundleNodeState.Finish;
                     break;
             }
-            return _nodeState;
+            return;
         }
 
         public void OnGet(params object[] args)
