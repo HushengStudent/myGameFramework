@@ -74,17 +74,18 @@ namespace Framework
             }
         }
 
-        public void ReleaseUnityAsset(AssetType assetType, string assetName, Object obj)
+        public void ReleaseUnityAsset(AssetType assetType, string assetName, Object obj, bool isUsePool)
         {
             string path = FilePathHelper.GetAssetBundlePath(assetType, assetName);
             if (null == obj)
             {
-                LogHelper.PrintError(string.Format("[UnityAssetCachePool]Release Unity Asset:{0} error!", path));
+                LogHelper.PrintError(string.Format("[UnityAssetCachePool]Release unity asset:{0} error" +
+                    ",Object is null!", path));
                 return;
             }
             if (string.IsNullOrEmpty(path))
             {
-                ResourceMgr.Instance.UnloadAsset(assetType, obj);
+                ResourceMgr.Instance.UnloadUnityAsset(assetType, obj);
                 return;
             }
             UnityAssetCacheInfo info = null;
@@ -92,28 +93,32 @@ namespace Framework
             {
                 if (info.target != obj)
                 {
-                    LogHelper.PrintError(string.Format("[UnityAssetCachePool]Release Unity Asset:{0} error" +
-                        ",same path ref multiple Object!", path));
-                    ResourceMgr.Instance.UnloadAsset(assetType, obj);
+                    LogHelper.PrintError(string.Format("[UnityAssetCachePool]Release unity asset:{0} error" +
+                        ",the path ref multiple Object!", path));
+                    ResourceMgr.Instance.UnloadUnityAsset(assetType, obj);
                     return;
                 }
                 int count = 0;
                 if (!_unityAssetRefCountDict.TryGetValue(path, out count))
                 {
-                    LogHelper.PrintError(string.Format("[UnityAssetCachePool]Release Unity Asset:{0} error" +
-                        ",ref count error,need is exist!", path));
+                    LogHelper.PrintError(string.Format("[UnityAssetCachePool]Release unity asset:{0} error" +
+                        ",ref count not exist!", path));
                     _unityAssetRefCountDict[path] = 0;
                 }
                 else
                 {
                     _unityAssetRefCountDict[path]--;
-                    //引用为0,又不是初次放入,直接回收;
-                    if (_unityAssetRefCountDict[path] == 0)
+                    if (!isUsePool)
                     {
-                        _unityAssetCacheDict.Remove(path);
-                        _unityAssetRefCountDict.Remove(path);
-                        ResourceMgr.Instance.UnloadAsset(assetType, info.target);
-                        PoolMgr.Instance.ReleaseCsharpObject<UnityAssetCacheInfo>(info);
+                        //引用为0,又不是初次放入,直接回收;
+                        if (_unityAssetRefCountDict[path] == 0)
+                        {
+                            _unityAssetCacheDict.Remove(path);
+                            _unityAssetRefCountDict.Remove(path);
+                            ResourceMgr.Instance.UnloadUnityAsset(assetType, info.target);
+                            PoolMgr.Instance.ReleaseCsharpObject<UnityAssetCacheInfo>(info);
+                            AssetBundleMgr.Instance.UnloadAsset(assetType, assetName);
+                        }
                     }
                 }
             }
@@ -125,8 +130,8 @@ namespace Framework
                 int count = 0;
                 if (_unityAssetRefCountDict.TryGetValue(path, out count))
                 {
-                    LogHelper.PrintError(string.Format("[UnityAssetCachePool]Release Unity Asset:{0} error" +
-                        ",ref count error,need is zero!", path));
+                    LogHelper.PrintError(string.Format("[UnityAssetCachePool]Release unity asset:{0} error" +
+                        ",ref count != 0!", path));
                 }
                 _unityAssetRefCountDict[path] = 0;
             }
@@ -148,7 +153,7 @@ namespace Framework
                 }
                 if (info.target != null)
                 {
-                    ResourceMgr.Instance.UnloadAsset(info.assetType, info.target);
+                    ResourceMgr.Instance.UnloadUnityAsset(info.assetType, info.target);
                 }
                 PoolMgr.Instance.ReleaseCsharpObject<UnityAssetCacheInfo>(info);
                 if (_stopwatch.Elapsed.Milliseconds >= ResourceMgr.Instance.MAX_LOAD_TIME)

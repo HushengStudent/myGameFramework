@@ -15,7 +15,7 @@ namespace Framework
     {
         //加载完成回调;
         private Action _onLoadFinish = null;
-        
+
         public AssetType assetType { get; protected set; }
         public string assetName { get; protected set; }
         //是否加载完成;
@@ -25,8 +25,8 @@ namespace Framework
         //是否使用对象池;
         public bool IsUsePool { get; protected set; }
         //加载完成对象;
-        public Object TargetObject { get; protected set; }
-        
+        protected Object TargetObject { get; set; }
+
         /// <summary>
         /// 初始化;
         /// </summary>
@@ -97,39 +97,10 @@ namespace Framework
         {
             if (IsFinish)
             {
-                if (IsUsePool)
-                {
-                    Unload2Pool();
-                }
-                else
-                {
-                    Unload();
-                }
+                Unload();
                 return true;
             }
             return false;
-        }
-
-        /// <summary>
-        /// 卸载;
-        /// </summary>
-        protected virtual void Unload()
-        {
-            if (TargetObject != null)
-            {
-                ResourceMgr.Instance.UnloadObject(assetType, TargetObject);
-            }
-        }
-
-        /// <summary>
-        /// 卸载到对象池;
-        /// </summary>
-        protected virtual void Unload2Pool()
-        {
-            if (TargetObject != null)
-            {
-
-            }
         }
 
         public void OnGet(params object[] args)
@@ -151,6 +122,8 @@ namespace Framework
         }
 
         protected virtual void OnReleaseEx() { }
+
+        protected abstract void Unload();
 
         public abstract T LoadUnityObject<T>() where T : Object;
         public abstract void DestroyUnityObject<T>(T t) where T : Object;

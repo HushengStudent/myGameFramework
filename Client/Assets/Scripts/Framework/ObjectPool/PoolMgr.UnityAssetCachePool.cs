@@ -34,9 +34,9 @@ namespace Framework
         /// <param name="assetType"></param>
         /// <param name="assetName"></param>
         /// <param name="obj"></param>
-        public void ReleaseUnityAsset(AssetType assetType, string assetName, Object obj)
+        public void ReleaseUnityAsset(AssetType assetType, string assetName, Object obj, bool isUsePool = true)
         {
-            _unityAssetCachePool.ReleaseUnityAsset(assetType, assetName, obj);
+            _unityAssetCachePool.ReleaseUnityAsset(assetType, assetName, obj, isUsePool);
         }
     }
 }

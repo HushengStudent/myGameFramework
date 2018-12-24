@@ -18,12 +18,8 @@ namespace Framework
 
         protected override void Unload()
         {
-            PoolMgr.Instance.ReleaseCsharpObject<AsyncResourceProxy>(this);
-        }
-
-        protected override void Unload2Pool()
-        {
-            PoolMgr.Instance.ReleaseCsharpObject<AsyncResourceProxy>(this);
+            ResourceMgr.Instance.UnloadUnityAsset(assetType, TargetObject);
+            PoolMgr.Instance.ReleaseCsharpObject(this);
         }
 
         public override T LoadUnityObject<T>()
@@ -58,7 +54,7 @@ namespace Framework
         {
             if (t != null)
             {
-                ResourceMgr.Instance.UnloadAsset(assetType, t);
+                ResourceMgr.Instance.UnloadUnityAsset(assetType, t);
             }
         }
     }

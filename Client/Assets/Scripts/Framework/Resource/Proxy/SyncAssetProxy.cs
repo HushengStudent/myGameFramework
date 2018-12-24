@@ -16,19 +16,8 @@ namespace Framework
     {
         protected override void Unload()
         {
-            base.Unload();
-            if (TargetObject != null)
-            {
-                AssetBundleMgr.Instance.UnloadAsset(assetType, assetName);
-            }
-            PoolMgr.Instance.ReleaseCsharpObject<SyncAssetProxy>(this);
-        }
-
-        protected override void Unload2Pool()
-        {
-            base.Unload2Pool();
-
-            PoolMgr.Instance.ReleaseCsharpObject<SyncAssetProxy>(this);
+            PoolMgr.Instance.ReleaseUnityAsset(assetType, assetName, TargetObject, IsUsePool);
+            PoolMgr.Instance.ReleaseCsharpObject(this);
         }
 
         public override T LoadUnityObject<T>()
@@ -58,7 +47,7 @@ namespace Framework
                 }
                 else
                 {
-                    Object.Destroy(t);
+                    ResourceMgr.Instance.UnloadUnityAsset(assetType, t);
                 }
             }
         }
@@ -86,11 +75,11 @@ namespace Framework
             {
                 if (IsUsePool)
                 {
-                    PoolMgr.Instance.ReleaseUnityAsset(assetType, assetName, t);
+                    PoolMgr.Instance.ReleaseUnityAsset(assetType, assetName, t, IsUsePool);
                 }
                 else
                 {
-                    ResourceMgr.Instance.UnloadAsset(assetType, t);
+                    ResourceMgr.Instance.UnloadUnityAsset(assetType, t);
                 }
             }
         }

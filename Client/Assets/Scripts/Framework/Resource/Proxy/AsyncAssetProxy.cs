@@ -24,19 +24,8 @@ namespace Framework
 
         protected override void Unload()
         {
-            base.Unload();
-            if (TargetObject != null)
-            {
-                AssetBundleMgr.Instance.UnloadAsset(assetType, assetName);
-            }
-            PoolMgr.Instance.ReleaseCsharpObject<AsyncAssetProxy>(this);
-        }
-
-        protected override void Unload2Pool()
-        {
-            base.Unload2Pool();
-
-            PoolMgr.Instance.ReleaseCsharpObject<AsyncAssetProxy>(this);
+            PoolMgr.Instance.ReleaseUnityAsset(assetType, assetName, TargetObject, IsUsePool);
+            PoolMgr.Instance.ReleaseCsharpObject(this);
         }
 
         protected override void OnReleaseEx()
