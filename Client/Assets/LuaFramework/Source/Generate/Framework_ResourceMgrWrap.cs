@@ -12,7 +12,8 @@ public class Framework_ResourceMgrWrap
 		L.RegFunction("LoadAssetProxy", LoadAssetProxy);
 		L.RegFunction("AddProxy", AddProxy);
 		L.RegFunction("CancleAllProxy", CancleAllProxy);
-		L.RegFunction("UnloadUnityAsset", UnloadUnityAsset);
+		L.RegFunction("UnloadUnityAssetMemory", UnloadUnityAssetMemory);
+		L.RegFunction("UnloadUnitySceneMemory", UnloadUnitySceneMemory);
 		L.RegFunction("GameGC", GameGC);
 		L.RegFunction("UnloadUnusedAssets", UnloadUnusedAssets);
 		L.RegFunction("__eq", op_Equality);
@@ -43,13 +44,31 @@ public class Framework_ResourceMgrWrap
 	{
 		try
 		{
-			ToLua.CheckArgsCount(L, 3);
-			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
-			Framework.AssetType arg0 = (Framework.AssetType)ToLua.CheckObject(L, 2, typeof(Framework.AssetType));
-			string arg1 = ToLua.CheckString(L, 3);
-			Framework.SyncAssetProxy o = obj.LoadAssetSync(arg0, arg1);
-			ToLua.PushObject(L, o);
-			return 1;
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 3)
+			{
+				Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+				Framework.AssetType arg0 = (Framework.AssetType)ToLua.CheckObject(L, 2, typeof(Framework.AssetType));
+				string arg1 = ToLua.CheckString(L, 3);
+				Framework.SyncAssetProxy o = obj.LoadAssetSync(arg0, arg1);
+				ToLua.PushObject(L, o);
+				return 1;
+			}
+			else if (count == 4)
+			{
+				Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+				Framework.AssetType arg0 = (Framework.AssetType)ToLua.CheckObject(L, 2, typeof(Framework.AssetType));
+				string arg1 = ToLua.CheckString(L, 3);
+				bool arg2 = LuaDLL.luaL_checkboolean(L, 4);
+				Framework.SyncAssetProxy o = obj.LoadAssetSync(arg0, arg1, arg2);
+				ToLua.PushObject(L, o);
+				return 1;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: Framework.ResourceMgr.LoadAssetSync");
+			}
 		}
 		catch (Exception e)
 		{
@@ -78,8 +97,19 @@ public class Framework_ResourceMgrWrap
 				Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
 				Framework.AssetType arg0 = (Framework.AssetType)ToLua.CheckObject(L, 2, typeof(Framework.AssetType));
 				string arg1 = ToLua.CheckString(L, 3);
-				System.Action<float> arg2 = (System.Action<float>)ToLua.CheckDelegate<System.Action<float>>(L, 4);
+				bool arg2 = LuaDLL.luaL_checkboolean(L, 4);
 				Framework.AsyncAssetProxy o = obj.LoadAssetProxy(arg0, arg1, arg2);
+				ToLua.PushObject(L, o);
+				return 1;
+			}
+			else if (count == 5)
+			{
+				Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+				Framework.AssetType arg0 = (Framework.AssetType)ToLua.CheckObject(L, 2, typeof(Framework.AssetType));
+				string arg1 = ToLua.CheckString(L, 3);
+				System.Action<float> arg2 = (System.Action<float>)ToLua.CheckDelegate<System.Action<float>>(L, 4);
+				bool arg3 = LuaDLL.luaL_checkboolean(L, 5);
+				Framework.AsyncAssetProxy o = obj.LoadAssetProxy(arg0, arg1, arg2, arg3);
 				ToLua.PushObject(L, o);
 				return 1;
 			}
@@ -129,7 +159,7 @@ public class Framework_ResourceMgrWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int UnloadUnityAsset(IntPtr L)
+	static int UnloadUnityAssetMemory(IntPtr L)
 	{
 		try
 		{
@@ -137,7 +167,25 @@ public class Framework_ResourceMgrWrap
 			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
 			Framework.AssetType arg0 = (Framework.AssetType)ToLua.CheckObject(L, 2, typeof(Framework.AssetType));
 			UnityEngine.Object arg1 = (UnityEngine.Object)ToLua.CheckObject<UnityEngine.Object>(L, 3);
-			obj.UnloadUnityAsset(arg0, arg1);
+			obj.UnloadUnityAssetMemory(arg0, arg1);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int UnloadUnitySceneMemory(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 3);
+			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+			Framework.AssetType arg0 = (Framework.AssetType)ToLua.CheckObject(L, 2, typeof(Framework.AssetType));
+			UnityEngine.Object arg1 = (UnityEngine.Object)ToLua.CheckObject<UnityEngine.Object>(L, 3);
+			obj.UnloadUnitySceneMemory(arg0, arg1);
 			return 0;
 		}
 		catch (Exception e)

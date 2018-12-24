@@ -85,7 +85,7 @@ namespace Framework
             }
             if (string.IsNullOrEmpty(path))
             {
-                ResourceMgr.Instance.UnloadUnityAsset(assetType, obj);
+                ResourceMgr.Instance.UnloadUnityAssetMemory(assetType, obj);
                 return;
             }
             UnityAssetCacheInfo info = null;
@@ -95,7 +95,7 @@ namespace Framework
                 {
                     LogHelper.PrintError(string.Format("[UnityAssetCachePool]Release unity asset:{0} error" +
                         ",the path ref multiple Object!", path));
-                    ResourceMgr.Instance.UnloadUnityAsset(assetType, obj);
+                    ResourceMgr.Instance.UnloadUnityAssetMemory(assetType, obj);
                     return;
                 }
                 int count = 0;
@@ -115,7 +115,7 @@ namespace Framework
                         {
                             _unityAssetCacheDict.Remove(path);
                             _unityAssetRefCountDict.Remove(path);
-                            ResourceMgr.Instance.UnloadUnityAsset(assetType, info.target);
+                            ResourceMgr.Instance.UnloadUnityAssetMemory(assetType, info.target);
                             PoolMgr.Instance.ReleaseCsharpObject<UnityAssetCacheInfo>(info);
                             AssetBundleMgr.Instance.UnloadAsset(assetType, assetName);
                         }
@@ -153,7 +153,10 @@ namespace Framework
                 }
                 if (info.target != null)
                 {
-                    ResourceMgr.Instance.UnloadUnityAsset(info.assetType, info.target);
+                    var assetType = info.assetType;
+                    var assetName = info.assetName;
+                    ResourceMgr.Instance.UnloadUnityAssetMemory(info.assetType, info.target);
+                    AssetBundleMgr.Instance.UnloadAsset(assetType, assetName);
                 }
                 PoolMgr.Instance.ReleaseCsharpObject<UnityAssetCacheInfo>(info);
                 if (_stopwatch.Elapsed.Milliseconds >= ResourceMgr.Instance.MAX_LOAD_TIME)

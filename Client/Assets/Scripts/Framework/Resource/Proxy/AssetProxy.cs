@@ -78,18 +78,6 @@ namespace Framework
         protected virtual void OnFinishEx() { }
 
         /// <summary>
-        /// 取消代理,会自动卸载;
-        /// </summary>
-        public void CancelProxy()
-        {
-            IsCancel = true;
-            if (!UnloadProxy())
-            {
-                ResourceMgr.Instance.AddProxy(this);
-            }
-        }
-
-        /// <summary>
         /// 卸载代理;
         /// </summary>
         /// <returns></returns>
@@ -100,7 +88,26 @@ namespace Framework
                 Unload();
                 return true;
             }
+            else
+            {
+                if (!IsCancel)
+                {
+                    CancelProxy();
+                }
+            }
             return false;
+        }
+
+        /// <summary>
+        /// 取消代理,会自动卸载;
+        /// </summary>
+        protected void CancelProxy()
+        {
+            IsCancel = true;
+            if (!UnloadProxy())
+            {
+                ResourceMgr.Instance.AddProxy(this);
+            }
         }
 
         public void OnGet(params object[] args)
@@ -130,5 +137,23 @@ namespace Framework
 
         public abstract T LoadUnitySharedAsset<T>() where T : Object;
         public abstract void DestroyUnitySharedAsset<T>(T t) where T : Object;
+
+        protected bool IsInstantiate()
+        {
+            if (null != TargetObject)
+            {
+                //GameObject允许克隆;
+                if (TargetObject as GameObject)
+                {
+                    return true;
+                }
+                //材质允许克隆;
+                if (TargetObject as Material)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

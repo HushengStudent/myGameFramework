@@ -18,14 +18,14 @@ namespace Framework
 
         protected override void Unload()
         {
-            ResourceMgr.Instance.UnloadUnityAsset(assetType, TargetObject);
+            ResourceMgr.Instance.UnloadUnityAssetMemory(assetType, TargetObject);
             PoolMgr.Instance.ReleaseCsharpObject(this);
         }
 
         public override T LoadUnityObject<T>()
         {
             T t = null;
-            if (TargetObject != null)
+            if (TargetObject != null && IsInstantiate())
             {
                 t = Object.Instantiate(TargetObject) as T;
             }
@@ -36,14 +36,14 @@ namespace Framework
         {
             if (t != null)
             {
-                Object.Destroy(t);
+                ResourceMgr.Instance.UnloadUnitySceneMemory(assetType, t);
             }
         }
 
         public override T LoadUnitySharedAsset<T>()
         {
             T t = null;
-            if (TargetObject != null)
+            if (TargetObject != null && !IsInstantiate())
             {
                 t = TargetObject as T;
             }
@@ -54,7 +54,7 @@ namespace Framework
         {
             if (t != null)
             {
-                ResourceMgr.Instance.UnloadUnityAsset(assetType, t);
+                ResourceMgr.Instance.UnloadUnityAssetMemory(assetType, t);
             }
         }
     }

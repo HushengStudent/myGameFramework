@@ -22,19 +22,11 @@ namespace Framework
 
         public override T LoadUnityObject<T>()
         {
-            T t = null;
-            if (TargetObject != null)
+            if (TargetObject != null && IsInstantiate())
             {
-                if (IsUsePool)
-                {
-                    t = PoolMgr.Instance.GetUnityObject(TargetObject) as T;
-                }
-                else
-                {
-                    t = Object.Instantiate(TargetObject) as T;
-                }
+                return PoolMgr.Instance.GetUnityObject(TargetObject) as T;
             }
-            return t;
+            return null;
         }
 
         public override void DestroyUnityObject<T>(T t)
@@ -47,40 +39,25 @@ namespace Framework
                 }
                 else
                 {
-                    ResourceMgr.Instance.UnloadUnityAsset(assetType, t);
+                    ResourceMgr.Instance.UnloadUnitySceneMemory(assetType, t);
                 }
             }
         }
 
         public override T LoadUnitySharedAsset<T>()
         {
-            T t = null;
-            if (TargetObject != null)
+            if (TargetObject != null && !IsInstantiate())
             {
-                if (IsUsePool)
-                {
-                    t = PoolMgr.Instance.GetUnityAsset(assetType, assetName) as T;
-                }
-                else
-                {
-                    t = TargetObject as T;
-                }
+                return PoolMgr.Instance.GetUnityAsset(assetType, assetName) as T;
             }
-            return t;
+            return null;
         }
 
         public override void DestroyUnitySharedAsset<T>(T t)
         {
             if (t != null)
             {
-                if (IsUsePool)
-                {
-                    PoolMgr.Instance.ReleaseUnityAsset(assetType, assetName, t, IsUsePool);
-                }
-                else
-                {
-                    ResourceMgr.Instance.UnloadUnityAsset(assetType, t);
-                }
+                PoolMgr.Instance.ReleaseUnityAsset(assetType, assetName, t, IsUsePool);
             }
         }
     }

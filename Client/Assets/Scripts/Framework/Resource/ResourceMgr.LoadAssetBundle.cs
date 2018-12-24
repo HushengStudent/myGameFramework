@@ -69,16 +69,13 @@ namespace Framework
         {
             Object target = null;
             AssetBundle assetBundle = proxy.LoadNode.assetBundle;
-            if (proxy.IsUsePool)
-            {
-                target = PoolMgr.Instance.GetUnityAsset(proxy.assetType, proxy.assetName);
-            }
+            target = PoolMgr.Instance.GetUnityAsset(proxy.assetType, proxy.assetName);
             if (null == target)
             {
                 var name = Path.GetFileNameWithoutExtension(proxy.assetName);
                 target = assetBundle.LoadAsset(name);
             }
-            if (target != null && proxy.IsUsePool)
+            if (target != null)
             {
                 PoolMgr.Instance.ReleaseUnityAsset(proxy.assetType, proxy.assetName, target);
                 target = PoolMgr.Instance.GetUnityAsset(proxy.assetType, proxy.assetName);
@@ -91,12 +88,23 @@ namespace Framework
         /// </summary>
         /// <param name="assetType">资源类型</param>
         /// <param name="assetName">资源名字</param>
-        /// <param name="action">资源回调</param>
         /// <returns>同步代理</returns>
         public SyncAssetProxy LoadAssetSync(AssetType assetType, string assetName)
         {
+            return LoadAssetSync(assetType, assetName, true);
+        }
+
+        /// <summary>
+        /// 同步从AssetBundle加载资源;
+        /// </summary>
+        /// <param name="assetType">资源类型</param>
+        /// <param name="assetName">资源名字</param>
+        /// <param name="isUsePool">资源是否使用对象池</param>
+        /// <returns>同步代理</returns>
+        public SyncAssetProxy LoadAssetSync(AssetType assetType, string assetName, bool isUsePool)
+        {
             SyncAssetProxy proxy = PoolMgr.Instance.GetCsharpObject<SyncAssetProxy>();
-            proxy.InitProxy(assetType, assetName);
+            proxy.InitProxy(assetType, assetName, isUsePool);
 
             Object ctrl = null;
             AssetBundle assetBundle = AssetBundleMgr.Instance.LoadAssetBundleSync(assetType, assetName);
@@ -122,7 +130,19 @@ namespace Framework
         /// <returns>异步代理</returns>
         public AsyncAssetProxy LoadAssetProxy(AssetType assetType, string assetName)
         {
-            return LoadAssetProxy(assetType, assetName, null);
+            return LoadAssetProxy(assetType, assetName, null, true);
+        }
+
+        /// <summary>
+        /// 异步从AssetBundle加载资源;
+        /// </summary>
+        /// <param name="assetType">资源类型</param>
+        /// <param name="assetName">资源名字</param>
+        /// <param name="isUsePool">资源是否使用对象池</param>
+        /// <returns>异步代理</returns>
+        public AsyncAssetProxy LoadAssetProxy(AssetType assetType, string assetName, bool isUsePool)
+        {
+            return LoadAssetProxy(assetType, assetName, null, isUsePool);
         }
 
         /// <summary>
@@ -131,13 +151,14 @@ namespace Framework
         /// <param name="assetType">资源类型</param>
         /// <param name="assetName">资源名字</param>
         /// <param name="progress">加载进度</param>
+        /// <param name="isUsePool">资源是否使用对象池</param>
         /// <returns>异步代理</returns>
-        public AsyncAssetProxy LoadAssetProxy(AssetType assetType, string assetName, Action<float> progress)
+        public AsyncAssetProxy LoadAssetProxy(AssetType assetType, string assetName, Action<float> progress, bool isUsePool)
         {
             AsyncAssetProxy proxy = PoolMgr.Instance.GetCsharpObject<AsyncAssetProxy>();
             AssetBundleLoadNode loadNode = AssetBundleMgr.Instance.GetAssetBundleLoadNode(assetType, assetName);
             loadNode.AddLoadProgressCallBack(progress);
-            proxy.InitProxy(assetType, assetName, loadNode);
+            proxy.InitProxy(assetType, assetName, loadNode, isUsePool);
             _asyncProxyQueue.Enqueue(proxy);
             return proxy;
         }
