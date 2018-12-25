@@ -22,8 +22,8 @@ namespace Framework
         /// <summary>
         /// 委托集合;
         /// </summary>
-        private Dictionary<AbsEntity, Dictionary<EventType, List<EventHandler>>> EventDict
-            = new Dictionary<AbsEntity, Dictionary<EventType, List<EventHandler>>>();
+        private Dictionary<ObjectEx, Dictionary<EventType, List<EventHandler>>> EventDict
+            = new Dictionary<ObjectEx, Dictionary<EventType, List<EventHandler>>>();
 
         /// <summary>
         /// 委托集合;
@@ -47,7 +47,7 @@ namespace Framework
         /// <param name="receiver">接收者</param>
         /// <param name="type">事件类型</param>
         /// <param name="callBack">事件回调</param>
-        public void AddEvent(AbsEntity receiver, EventType type, EventHandler callBack)
+        public void AddEvent(ObjectEx receiver, EventType type, EventHandler callBack)
         {
             if (null == receiver)
             {
@@ -83,7 +83,7 @@ namespace Framework
         /// </summary>
         /// <param name="receiver">接收者</param>
         /// <param name="type">事件类型</param>
-        public void RemoveEvent(AbsEntity receiver, EventType type)
+        public void RemoveEvent(ObjectEx receiver, EventType type)
         {
             if (null == receiver)
             {
@@ -107,7 +107,7 @@ namespace Framework
         /// 移除事件;
         /// </summary>
         /// <param name="receiver">接收者</param>
-        public void RemoveEvent(AbsEntity receiver)
+        public void RemoveEvent(ObjectEx receiver)
         {
             if (null == receiver)
             {
@@ -127,7 +127,7 @@ namespace Framework
         /// <param name="receiver">接收者</param>
         /// <param name="type">事件类型</param>
         /// <param name="eventArgs">事件参数</param>
-        public void FireEvent(AbsEntity receiver, EventType type, IEventArgs eventArgs)
+        public void FireEvent(ObjectEx receiver, EventType type, IEventArgs eventArgs)
         {
             if (null == receiver)
             {

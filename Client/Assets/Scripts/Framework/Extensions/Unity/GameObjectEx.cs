@@ -16,34 +16,35 @@ namespace Framework
 
     public class GameObjectEx
     {
-        private int _parentInstanceId = -1;
         private AbsEntity _entity = null;
         private string _resPath = string.Empty;
+        private AsyncAssetProxy proxy = null;
         private GameObjectExLoadFinishHandler _loadFinishHandler = null;
         private GameObjectExDestroyHandler _destroyHandler = null;
 
-        public bool IsLoadFinish;
-        public GameObject gameObject;
-        public Transform Trans;
+        public bool IsLoadFinish { get; private set; }
+        public GameObject gameObject { get; private set; }
+        public Transform Trans { get; private set; }
 
         public AbsEntity Entity { get { return _entity; } }
         public string ResPath { get { return _resPath; } }
-        public int ParentInstanceId { get { return _parentInstanceId; } }
 
         public void Init(AbsEntity entity, string path, bool isAsync = true)
         {
             _entity = entity;
             _resPath = path;
             IsLoadFinish = false;
-            //加载;
-            GameObject go = null;
-            gameObject = go;
-            IsLoadFinish = true;
-            Trans = go.transform;
-            if (_loadFinishHandler != null)
-            {
-                _loadFinishHandler(this);
-            }
+            AsyncAssetProxy proxy = ResourceMgr.Instance.LoadAssetProxy(AssetType.Prefab, _resPath);
+            proxy.AddLoadFinishCallBack(() => {
+                gameObject = proxy.LoadUnityObject<GameObject>();
+                gameObject.name = entity.EntityName;
+                IsLoadFinish = true;
+                Trans = gameObject.transform;
+                if (_loadFinishHandler != null)
+                {
+                    _loadFinishHandler(this);
+                }
+            });
         }
 
         public void Uninit()
@@ -54,13 +55,12 @@ namespace Framework
             }
             if (IsLoadFinish)
             {
-                //销毁;
+                proxy.DestroyUnityObject<GameObject>(gameObject);
             }
-            gameObject = null;
+            proxy.UnloadProxy();
             Trans = null;
             _entity = null;
             _resPath = string.Empty;
-            _parentInstanceId = -1;
             _loadFinishHandler = null;
             _destroyHandler = null;
         }

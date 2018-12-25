@@ -16,8 +16,6 @@ namespace Framework
     {
         #region Field
 
-        private Dictionary<long, AbsComponent> _componentDict = new Dictionary<long, AbsComponent>();
-
         private List<AbsComponent> _componentList = new List<AbsComponent>();
 
         #endregion
@@ -28,7 +26,6 @@ namespace Framework
         {
             base.Init();
             _componentList.Clear();
-            _componentDict.Clear();
         }
 
         protected override void FixedUpdateEx(float interval)
@@ -80,13 +77,12 @@ namespace Framework
         /// <returns></returns>
         public T CreateComponent<T>(AbsEntity entity, ComponentInitEventHandler handler = null) where T : AbsComponent, new()
         {
-            T _Component = PoolMgr.Instance.GetCsharpObject<T>();
-            if (AddComponent(_Component))
+            T _component = PoolMgr.Instance.GetCsharpObject<T>();
+            if (null != entity && entity.AddComponent(_component))
             {
-                _Component.ComponentInitHandler = handler;
-                _Component.Init(entity);
-                entity.ComponentList.Add(_Component);
-                return _Component;
+                _component.ComponentInitHandler += handler;
+                _component.Init(entity);
+                return _component;
             }
             else
             {
@@ -102,9 +98,11 @@ namespace Framework
         /// <param name="component"></param>
         public void ReleaseComponent<T>(AbsComponent component) where T : AbsComponent, new()
         {
-            RemoveComponent(component);
-            component.Entity.ComponentList.Remove(component);
-            component.Uninit();
+            if (null == component.Owner)
+            {
+                return;
+            }
+            component.Owner.RemoveComponent(component);
             PoolMgr.Instance.ReleaseCsharpObject<T>(component as T);
         }
 
@@ -114,56 +112,12 @@ namespace Framework
         /// <param name="component"></param>
         public void DestroyComponent(AbsComponent component)
         {
-            RemoveComponent(component);
+            if (null == component.Owner)
+            {
+                return;
+            }
+            component.Owner.RemoveComponent(component);
             component.Uninit();
-        }
-        /// <summary>
-        /// 添加Component;
-        /// </summary>
-        /// <param name="component"></param>
-        /// <returns></returns>
-        private bool AddComponent(AbsComponent component)
-        {
-            if (_componentDict.ContainsKey(component.ID))
-            {
-                return false;
-            }
-            _componentDict[component.ID] = component;
-            _componentList.Add(component);
-            return true;
-        }
-
-        /// <summary>
-        /// 移除Component;
-        /// </summary>
-        /// <param name="component"></param>
-        /// <returns></returns>
-        private bool RemoveComponent(AbsComponent component)
-        {
-            if (!_componentDict.ContainsKey(component.ID))
-            {
-                return false;
-            }
-            _componentList.Remove(component);
-            _componentDict.Remove(component.ID);
-            return true;
-        }
-
-        /// <summary>
-        /// 移除Component;
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        private bool RemoveComponent(long id)
-        {
-            if (!_componentDict.ContainsKey(id))
-            {
-                return false;
-            }
-            var target = _componentDict[id];
-            _componentList.Remove(target);
-            _componentDict.Remove(id);
-            return true;
         }
 
         #endregion

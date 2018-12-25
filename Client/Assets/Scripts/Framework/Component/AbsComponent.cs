@@ -15,14 +15,16 @@ namespace Framework
     /// <summary>
     /// 组件抽象基类;
     /// </summary>
-    public abstract class AbsComponent : ObjectEx
+    public abstract class AbsComponent
     {
-        protected AbsComponent() : base() { }
+        protected AbsComponent() { }
 
         public ComponentInitEventHandler ComponentInitHandler = null;
 
-        public AbsEntity Entity { get; private set; }
+        public ObjectEx Owner;
 
+        public AbsEntity Entity { get; private set; }
+        public bool Enable { get; private set; }
         public virtual void FixedUpdateEx(float interval) { }
         public virtual void UpdateEx(float interval) { }
         public virtual void LateUpdateEx(float interval) { }
@@ -32,9 +34,10 @@ namespace Framework
         /// </summary>
         /// <param name="entity">entity</param>
         /// <param name="go">gameObject</param>
-        public void Init(AbsEntity entity)
+        public void Init(ObjectEx owner)
         {
-            OnAttachEntity(entity);
+            Enable = true;
+            OnAttachObjectEx(owner);
             if (Entity.gameObjectEx.IsLoadFinish)
             {
                 OnAttachGoEx(Entity.gameObjectEx);
@@ -45,52 +48,60 @@ namespace Framework
             }
             EventSubscribe();
             InitEx();
-            Enable = true;
             if (ComponentInitHandler != null)
             {
                 ComponentInitHandler(this);
             }
         }
+
         /// <summary>
         /// 重置Component;
         /// </summary>
         public void Uninit()
         {
-            DeAttachEntity();
+            DeAttachObjectEx();
             DeAttachGoEx();
             EventUnsubscribe();
             UninitEx();
             Enable = false;
             ComponentInitHandler = null;
         }
+
         /// <summary>
         /// 初始化;
         /// </summary>
         protected virtual void InitEx() { }
+
         /// <summary>
         /// 重置;
         /// </summary>
         protected virtual void UninitEx() { }
+
         /// <summary>
         /// Component附加Entity;
         /// </summary>
         /// <param name="entity"></param>
-        protected virtual void OnAttachEntity(AbsEntity entity)
+        protected virtual void OnAttachObjectEx(ObjectEx owner)
         {
-            Entity = entity;
+            Owner = owner;
+            Entity = owner as AbsEntity;
         }
+
         /// <summary>
         /// Component附加GameObject;
         /// </summary>
         /// <param name="go"></param>
         protected virtual void OnAttachGoEx(GameObjectEx goEx) { }
+
         /// <summary>
         /// 重置Entity的附加;
         /// </summary>
-        protected virtual void DeAttachEntity()
+        protected virtual void DeAttachObjectEx()
         {
+            Owner = null;
             Entity = null;
         }
+
         /// <summary>
         /// 重置GameObject的附加;
         /// </summary>
@@ -101,19 +112,23 @@ namespace Framework
                 Entity.gameObjectEx.RemoveLoadFinishHandler(OnAttachGoEx);
             }
         }
+
         /// <summary>
         /// 注册事件;
         /// </summary>
         protected virtual void EventSubscribe() { }
+
         /// <summary>
         /// 注销事件;
         /// </summary>
         protected virtual void EventUnsubscribe() { }
+
         /// <summary>
         /// 进入场景;
         /// </summary>
         /// <param name="sceneId"></param>
         protected virtual void OnEnterScene(int sceneId) { }
+
         /// <summary>
         /// 离开场景;
         /// </summary>
@@ -122,17 +137,17 @@ namespace Framework
 
         protected void AddEvent(EventType type, EventHandler handler)
         {
-            EventMgr.Instance.AddEvent(Entity, type, handler);
+            EventMgr.Instance.AddEvent(Owner, type, handler);
         }
 
         protected void RemoveEvent(EventType type)
         {
-            EventMgr.Instance.RemoveEvent(Entity, type);
+            EventMgr.Instance.RemoveEvent(Owner, type);
         }
 
         protected void FireEvent(EventType type, IEventArgs eventArgs)
         {
-            EventMgr.Instance.FireEvent(Entity, type, eventArgs);
+            EventMgr.Instance.FireEvent(Owner, type, eventArgs);
         }
     }
 }

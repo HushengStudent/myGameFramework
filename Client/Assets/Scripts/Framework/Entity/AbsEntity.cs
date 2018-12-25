@@ -27,7 +27,6 @@ namespace Framework
 
         public EntityInitEventHandler EntityInitHandler = null;
 
-        public List<AbsComponent> ComponentList = new List<AbsComponent>();
 
         public ulong UID { get; private set; }
         public int EntityId { get; private set; }
@@ -65,8 +64,7 @@ namespace Framework
             EntityName = name;
             EntityId = entityId;
             Enable = true;
-            ComponentList.Clear();
-
+            ResPath = "Prefab/Models/Avatar/ch_pc_hou_004.prefab";
             gameObjectEx = PoolMgr.Instance.GetCsharpObject<GameObjectEx>();
             gameObjectEx.AddLoadFinishHandler(OnAttachGoEx);
             gameObjectEx.Init(this, ResPath);
@@ -101,10 +99,12 @@ namespace Framework
         /// 初始化;
         /// </summary>
         protected virtual void InitEx() { }
+
         /// <summary>
         /// 重置;
         /// </summary>
         protected virtual void UninitEx() { }
+
         /// <summary>
         /// Entity附加GameObject;
         /// </summary>
@@ -117,6 +117,7 @@ namespace Framework
                 _entityLoadFinishHandler(this, gameObjectEx.gameObject);
             }
         }
+
         /// <summary>
         /// 重置GameObject的附加;
         /// </summary>
@@ -126,38 +127,27 @@ namespace Framework
             PoolMgr.Instance.ReleaseCsharpObject<GameObjectEx>(gameObjectEx);
             gameObjectEx = null;
         }
+
         /// <summary>
         /// 注册事件;
         /// </summary>
         protected virtual void EventSubscribe() { }
+
         /// <summary>
         /// 注销事件;
         /// </summary>
         protected virtual void EventUnsubscribe() { }
+
         /// <summary>
         /// 进入场景;
         /// </summary>
         /// <param name="sceneId"></param>
         protected virtual void OnEnterScene(int sceneId) { }
+
         /// <summary>
         /// 离开场景;
         /// </summary>
         /// <param name="sceneId"></param>
         protected virtual void OnExitScene(int sceneId) { }
-
-        protected void AddEvent(EventType type, EventHandler handler)
-        {
-            EventMgr.Instance.AddEvent(this, type, handler);
-        }
-
-        protected void RemoveEvent(EventType type)
-        {
-            EventMgr.Instance.RemoveEvent(this, type);
-        }
-
-        protected void FireEvent(EventType type, IEventArgs eventArgs)
-        {
-            EventMgr.Instance.FireEvent(this, type, eventArgs);
-        }
     }
 }

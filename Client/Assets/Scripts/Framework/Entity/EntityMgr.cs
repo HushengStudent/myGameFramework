@@ -85,13 +85,13 @@ namespace Framework
         /// <param name="name">Entity名字</param>
         /// <param name="initHandler">初始化</param>
         /// <returns></returns>
-        public T CreateEntity<T>(int entityId, ulong uid, string name, EntityInitEventHandler initHandler)
+        public T CreateEntity<T>(int entityId, ulong uid, string name, EntityInitEventHandler initHandler = null)
             where T : AbsEntity, new()
         {
             T _Entity = PoolMgr.Instance.GetCsharpObject<T>();
             if (AddEntity(_Entity))
             {
-                _Entity.EntityInitHandler = initHandler;
+                _Entity.EntityInitHandler += initHandler;
                 _Entity.Init(entityId, uid, name);
                 return _Entity;
             }
