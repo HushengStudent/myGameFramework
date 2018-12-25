@@ -20,8 +20,6 @@ namespace Framework
 
         private List<AbsComponent> _componentList = new List<AbsComponent>();
 
-        private List<AbsComponent> _list = new List<AbsComponent>();
-
         #endregion
 
         #region Unity api
@@ -29,20 +27,18 @@ namespace Framework
         public override void Init()
         {
             base.Init();
-            _list.Clear();
-            _componentDict.Clear();
             _componentList.Clear();
+            _componentDict.Clear();
         }
 
         protected override void FixedUpdateEx(float interval)
         {
             base.FixedUpdateEx(interval);
-            _list.AddRange(_componentList);
-            for (int i = 0; i < _list.Count; i++)
+            for (int i = 0; i < _componentList.Count; i++)
             {
-                if (_list[i].Enable)
+                if (_componentList[i].Enable)
                 {
-                    _list[i].FixedUpdateEx(interval);
+                    _componentList[i].FixedUpdateEx(interval);
                 }
             }
         }
@@ -50,11 +46,11 @@ namespace Framework
         protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
-            for (int i = 0; i < _list.Count; i++)
+            for (int i = 0; i < _componentList.Count; i++)
             {
-                if (_list[i].Enable)
+                if (_componentList[i].Enable)
                 {
-                    _list[i].UpdateEx(interval);
+                    _componentList[i].UpdateEx(interval);
                 }
             }
         }
@@ -62,11 +58,11 @@ namespace Framework
         protected override void LateUpdateEx(float interval)
         {
             base.LateUpdateEx(interval);
-            for (int i = 0; i < _list.Count; i++)
+            for (int i = 0; i < _componentList.Count; i++)
             {
-                if (_list[i].Enable)
+                if (_componentList[i].Enable)
                 {
-                    _list[i].LateUpdateEx(interval);
+                    _componentList[i].LateUpdateEx(interval);
                 }
             }
         }
@@ -80,7 +76,6 @@ namespace Framework
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="entity"></param>
-        /// <param name="go"></param>
         /// <param name="handler"></param>
         /// <returns></returns>
         public T CreateComponent<T>(AbsEntity entity, ComponentInitEventHandler handler = null) where T : AbsComponent, new()
@@ -99,6 +94,7 @@ namespace Framework
                 return null;
             }
         }
+
         /// <summary>
         /// 移除Component;
         /// </summary>
@@ -109,8 +105,9 @@ namespace Framework
             RemoveComponent(component);
             component.Entity.ComponentList.Remove(component);
             component.Uninit();
-            PoolMgr.Instance.ReleaseCsharpObject<T>(component as T);//Release To Pool;
+            PoolMgr.Instance.ReleaseCsharpObject<T>(component as T);
         }
+
         /// <summary>
         /// 移除Component;
         /// </summary>
@@ -135,6 +132,7 @@ namespace Framework
             _componentList.Add(component);
             return true;
         }
+
         /// <summary>
         /// 移除Component;
         /// </summary>
@@ -146,10 +144,11 @@ namespace Framework
             {
                 return false;
             }
-            _componentDict.Remove(component.ID);
             _componentList.Remove(component);
+            _componentDict.Remove(component.ID);
             return true;
         }
+
         /// <summary>
         /// 移除Component;
         /// </summary>

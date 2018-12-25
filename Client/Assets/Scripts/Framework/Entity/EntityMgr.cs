@@ -14,17 +14,16 @@ namespace Framework
     public class EntityMgr : MonoSingleton<EntityMgr>
     {
         #region Fields
+
         /// <summary>
         /// EntityDict;
         /// </summary>
-        private Dictionary<long, AbsEntity> _entityDict = new Dictionary<long, AbsEntity>();
+        private Dictionary<ulong, AbsEntity> _entityDict = new Dictionary<ulong, AbsEntity>();
+
         /// <summary>
         /// EntityList;
         /// </summary>
         private List<AbsEntity> _entityList = new List<AbsEntity>();
-        private List<AbsEntity> _list = new List<AbsEntity>();
-
-        private Dictionary<ulong, AbsEntity> _entityIdDict = new Dictionary<ulong, AbsEntity>();
 
         #endregion
 
@@ -33,12 +32,11 @@ namespace Framework
         protected override void FixedUpdateEx(float interval)
         {
             base.FixedUpdateEx(interval);
-            _list.AddRange(_entityList);
-            for (int i = 0; i < _list.Count; i++)
+            for (int i = 0; i < _entityList.Count; i++)
             {
-                if (_list[i].Enable)
+                if (_entityList[i].Enable)
                 {
-                    _list[i].FixedUpdateEx(interval);
+                    _entityList[i].FixedUpdateEx(interval);
                 }
             }
         }
@@ -46,11 +44,11 @@ namespace Framework
         protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
-            for (int i = 0; i < _list.Count; i++)
+            for (int i = 0; i < _entityList.Count; i++)
             {
-                if (_list[i].Enable)
+                if (_entityList[i].Enable)
                 {
-                    _list[i].UpdateEx(interval);
+                    _entityList[i].UpdateEx(interval);
                 }
             }
         }
@@ -58,11 +56,11 @@ namespace Framework
         protected override void LateUpdateEx(float interval)
         {
             base.LateUpdateEx(interval);
-            for (int i = 0; i < _list.Count; i++)
+            for (int i = 0; i < _entityList.Count; i++)
             {
-                if (_list[i].Enable)
+                if (_entityList[i].Enable)
                 {
-                    _list[i].LateUpdateEx(interval);
+                    _entityList[i].LateUpdateEx(interval);
                 }
             }
         }
@@ -74,19 +72,21 @@ namespace Framework
         public override void Init()
         {
             base.Init();
-            _entityDict.Clear();
             _entityList.Clear();
-            _entityIdDict.Clear();
+            _entityDict.Clear();
         }
 
         /// <summary>
-        /// 创建Entity;同步/异步完善;
+        /// 创建Entity;
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="go"></param>
-        /// <param name="initHandler"></param>
+        /// <typeparam name="T">Entity类型</typeparam>
+        /// <param name="entityId">EntityID</param>
+        /// <param name="uid">UID</param>
+        /// <param name="name">Entity名字</param>
+        /// <param name="initHandler">初始化</param>
         /// <returns></returns>
-        public T CreateEntity<T>(int entityId, ulong uid, string name, EntityInitEventHandler initHandler) where T : AbsEntity, new()
+        public T CreateEntity<T>(int entityId, ulong uid, string name, EntityInitEventHandler initHandler)
+            where T : AbsEntity, new()
         {
             T _Entity = PoolMgr.Instance.GetCsharpObject<T>();
             if (AddEntity(_Entity))
@@ -97,10 +97,12 @@ namespace Framework
             }
             else
             {
-                LogHelper.PrintError("[EntityMgr]CreateEntity " + typeof(T).ToString() + " error!");
+                LogHelper.PrintError(string.Format("[EntityMgr]CreateEntity " + typeof(T).ToString() +
+                    " error,entityId:{0},uid:{1},name:{2}!", entityId, uid, name));
                 return null;
             }
         }
+
         /// <summary>
         /// 移除Entity;
         /// </summary>
@@ -110,8 +112,9 @@ namespace Framework
         {
             RemoveEntity(entity);
             entity.Uninit();
-            PoolMgr.Instance.ReleaseCsharpObject<T>(entity as T);//release to pool;
+            PoolMgr.Instance.ReleaseCsharpObject<T>(entity as T);
         }
+
         /// <summary>
         /// 获取Entity;
         /// </summary>
@@ -122,12 +125,13 @@ namespace Framework
         {
             T target = null;
             AbsEntity temp = null;
-            if (_entityIdDict.TryGetValue(uid, out temp))
+            if (_entityDict.TryGetValue(uid, out temp))
             {
                 target = temp as T;
             }
             return target;
         }
+
         /// <summary>
         /// 添加Entity;
         /// </summary>
@@ -135,29 +139,28 @@ namespace Framework
         /// <returns></returns>
         private bool AddEntity(AbsEntity entity)
         {
-            if (_entityDict.ContainsKey(entity.ID))
+            if (_entityDict.ContainsKey(entity.UID))
             {
                 return false;
             }
-            _entityDict[entity.ID] = entity;
-            _entityIdDict[entity.UID] = entity;
             _entityList.Add(entity);
+            _entityDict[entity.UID] = entity;
             return true;
         }
+
         /// <summary>
-        /// 移除Entity;
+        /// 删除Entity;
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
         private bool RemoveEntity(AbsEntity entity)
         {
-            if (!_entityDict.ContainsKey(entity.ID))
+            if (!_entityDict.ContainsKey(entity.UID))
             {
                 return false;
             }
-            _entityDict.Remove(entity.ID);
-            _entityIdDict.Remove(entity.UID);
             _entityList.Remove(entity);
+            _entityDict.Remove(entity.UID);
             return true;
         }
 

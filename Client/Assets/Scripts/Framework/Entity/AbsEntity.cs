@@ -26,6 +26,7 @@ namespace Framework
         private EntityLoadFinishEventHandler _entityLoadFinishHandler = null;
 
         public EntityInitEventHandler EntityInitHandler = null;
+
         public List<AbsComponent> ComponentList = new List<AbsComponent>();
 
         public ulong UID { get; private set; }
@@ -63,20 +64,20 @@ namespace Framework
             UID = uid;
             EntityName = name;
             EntityId = entityId;
+            Enable = true;
             ComponentList.Clear();
 
             gameObjectEx = PoolMgr.Instance.GetCsharpObject<GameObjectEx>();
             gameObjectEx.AddLoadFinishHandler(OnAttachGoEx);
             gameObjectEx.Init(this, ResPath);
-
             EventSubscribe();
             InitEx();
-            Enable = true;
             if (EntityInitHandler != null)
             {
                 EntityInitHandler(this);
             }
         }
+
         /// <summary>
         /// 重置Entity;
         /// </summary>
