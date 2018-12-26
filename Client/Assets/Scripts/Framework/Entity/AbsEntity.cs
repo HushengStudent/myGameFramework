@@ -25,9 +25,6 @@ namespace Framework
 
         private EntityLoadFinishEventHandler _entityLoadFinishHandler = null;
 
-        public EntityInitEventHandler EntityInitHandler = null;
-
-
         public ulong UID { get; private set; }
         public int EntityId { get; private set; }
         public string EntityName { get; private set; }
@@ -36,7 +33,10 @@ namespace Framework
 
         public EntityLoadFinishEventHandler EntityLoadFinishHandler
         {
-            get { return _entityLoadFinishHandler; }
+            get
+            {
+                return _entityLoadFinishHandler;
+            }
             set
             {
                 if (gameObjectEx != null && gameObjectEx.gameObject != null)
@@ -68,12 +68,7 @@ namespace Framework
             gameObjectEx = PoolMgr.Instance.GetCsharpObject<GameObjectEx>();
             gameObjectEx.AddLoadFinishHandler(OnAttachGoEx);
             gameObjectEx.Init(this, ResPath);
-            EventSubscribe();
             InitEx();
-            if (EntityInitHandler != null)
-            {
-                EntityInitHandler(this);
-            }
         }
 
         /// <summary>
@@ -82,28 +77,10 @@ namespace Framework
         public void Uninit()
         {
             DeAttachGoEx();
-            EventMgr.Instance.RemoveEvent(this);
-            for (int i = 0; i < ComponentList.Count; i++)
-            {
-                ComponentMgr.Instance.DestroyComponent(ComponentList[i]);
-            }
-            ComponentList.Clear();
-            EventUnsubscribe();
             UninitEx();
             Enable = false;
-            EntityInitHandler = null;
             EntityLoadFinishHandler = null;
         }
-
-        /// <summary>
-        /// 初始化;
-        /// </summary>
-        protected virtual void InitEx() { }
-
-        /// <summary>
-        /// 重置;
-        /// </summary>
-        protected virtual void UninitEx() { }
 
         /// <summary>
         /// Entity附加GameObject;
@@ -127,27 +104,5 @@ namespace Framework
             PoolMgr.Instance.ReleaseCsharpObject<GameObjectEx>(gameObjectEx);
             gameObjectEx = null;
         }
-
-        /// <summary>
-        /// 注册事件;
-        /// </summary>
-        protected virtual void EventSubscribe() { }
-
-        /// <summary>
-        /// 注销事件;
-        /// </summary>
-        protected virtual void EventUnsubscribe() { }
-
-        /// <summary>
-        /// 进入场景;
-        /// </summary>
-        /// <param name="sceneId"></param>
-        protected virtual void OnEnterScene(int sceneId) { }
-
-        /// <summary>
-        /// 离开场景;
-        /// </summary>
-        /// <param name="sceneId"></param>
-        protected virtual void OnExitScene(int sceneId) { }
     }
 }

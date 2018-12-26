@@ -10,5 +10,5 @@ using UnityEngine;
 
 namespace Framework
 {
-    public delegate void ComponentInitEventHandler(AbsComponent comp);
+
 }

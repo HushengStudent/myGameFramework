@@ -79,19 +79,16 @@ namespace Framework
         /// <summary>
         /// 创建Entity;
         /// </summary>
-        /// <typeparam name="T">Entity类型</typeparam>
-        /// <param name="entityId">EntityID</param>
-        /// <param name="uid">UID</param>
-        /// <param name="name">Entity名字</param>
-        /// <param name="initHandler">初始化</param>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entityId"></param>
+        /// <param name="uid"></param>
+        /// <param name="name"></param>
         /// <returns></returns>
-        public T CreateEntity<T>(int entityId, ulong uid, string name, EntityInitEventHandler initHandler = null)
-            where T : AbsEntity, new()
+        public T CreateEntity<T>(int entityId, ulong uid, string name) where T : AbsEntity, new()
         {
             T _Entity = PoolMgr.Instance.GetCsharpObject<T>();
             if (AddEntity(_Entity))
             {
-                _Entity.EntityInitHandler += initHandler;
                 _Entity.Init(entityId, uid, name);
                 return _Entity;
             }

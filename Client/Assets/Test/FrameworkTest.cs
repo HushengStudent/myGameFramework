@@ -56,7 +56,7 @@ public class FrameworkTest : MonoBehaviour
         var entity = EntityMgr.Instance.GetEntity<RoleEntity>(ulong.MaxValue);
         if (entity == null)
         {
-            entity = EntityMgr.Instance.CreateEntity<RoleEntity>(1, ulong.MaxValue, "BehaviorTree", null);
+            entity = EntityMgr.Instance.CreateEntity<RoleEntity>(1, ulong.MaxValue, "BehaviorTree");
         }
         BehaviorTreeMgr.Instance.CreateBehaviorTree(entity, "Bin/Bt/BehaviourTree.BT", true);
     }

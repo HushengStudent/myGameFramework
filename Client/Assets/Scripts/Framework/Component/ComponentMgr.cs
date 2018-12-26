@@ -72,17 +72,13 @@ namespace Framework
         /// 创建Component;
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="entity"></param>
-        /// <param name="handler"></param>
+        /// <param name="owner"></param>
         /// <returns></returns>
-        public T CreateComponent<T>(AbsEntity entity, ComponentInitEventHandler handler = null) where T : AbsComponent, new()
+        public T CreateComponent<T>(ObjectEx owner) where T : AbsComponent, new()
         {
-            T _component = PoolMgr.Instance.GetCsharpObject<T>();
-            if (null != entity && entity.AddComponent(_component))
+            if (null != owner && owner.AddComponent<T>())
             {
-                _component.ComponentInitHandler += handler;
-                _component.Init(entity);
-                return _component;
+                return owner.GetComponent<T>();
             }
             else
             {
@@ -95,29 +91,44 @@ namespace Framework
         /// 移除Component;
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="component"></param>
-        public void ReleaseComponent<T>(AbsComponent component) where T : AbsComponent, new()
+        /// <param name="owner"></param>
+        public void ReleaseComponent<T>(ObjectEx owner) where T : AbsComponent, new()
         {
-            if (null == component.Owner)
+            if (null == owner)
             {
                 return;
             }
-            component.Owner.RemoveComponent(component);
-            PoolMgr.Instance.ReleaseCsharpObject<T>(component as T);
+            owner.ReleaseComponent<T>();
         }
 
         /// <summary>
         /// 移除Component;
         /// </summary>
-        /// <param name="component"></param>
-        public void DestroyComponent(AbsComponent component)
+        /// <typeparam name="T"></typeparam>
+        /// <param name="comp"></param>
+        public void ReleaseComponent<T>(AbsComponent comp) where T : AbsComponent, new()
         {
-            if (null == component.Owner)
+            if (null == comp || null == comp.Owner)
             {
                 return;
             }
-            component.Owner.RemoveComponent(component);
-            component.Uninit();
+            if (comp.Owner.ReleaseComponent<T>(comp))
+            {
+                comp = null;
+            }
+        }
+
+        /// <summary>
+        /// 移除Component;
+        /// </summary>
+        /// <param name="comp"></param>
+        public void DestroyComponent(AbsComponent comp)
+        {
+            if (null == comp.Owner || null == comp)
+            {
+                return;
+            }
+            comp.Owner.DestroyComponent(comp);
         }
 
         #endregion

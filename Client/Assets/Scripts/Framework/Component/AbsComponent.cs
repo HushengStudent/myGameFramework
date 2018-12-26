@@ -19,12 +19,10 @@ namespace Framework
     {
         protected AbsComponent() { }
 
-        public ComponentInitEventHandler ComponentInitHandler = null;
-
-        public ObjectEx Owner;
-
+        public ObjectEx Owner { get; private set; }
         public AbsEntity Entity { get; private set; }
         public bool Enable { get; private set; }
+
         public virtual void FixedUpdateEx(float interval) { }
         public virtual void UpdateEx(float interval) { }
         public virtual void LateUpdateEx(float interval) { }
@@ -48,10 +46,6 @@ namespace Framework
             }
             EventSubscribe();
             InitEx();
-            if (ComponentInitHandler != null)
-            {
-                ComponentInitHandler(this);
-            }
         }
 
         /// <summary>
@@ -64,7 +58,6 @@ namespace Framework
             EventUnsubscribe();
             UninitEx();
             Enable = false;
-            ComponentInitHandler = null;
         }
 
         /// <summary>
