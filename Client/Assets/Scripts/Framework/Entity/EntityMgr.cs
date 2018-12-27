@@ -89,7 +89,7 @@ namespace Framework
             T _Entity = PoolMgr.Instance.GetCsharpObject<T>();
             if (AddEntity(_Entity))
             {
-                _Entity.Init(entityId, uid, name);
+                _Entity.Initialize(entityId, uid, name);
                 return _Entity;
             }
             else
@@ -108,7 +108,7 @@ namespace Framework
         public void ReleaseEntity<T>(AbsEntity entity) where T : AbsEntity, new()
         {
             RemoveEntity(entity);
-            entity.Uninit();
+            entity.UnInitialize();
             PoolMgr.Instance.ReleaseCsharpObject<T>(entity as T);
         }
 

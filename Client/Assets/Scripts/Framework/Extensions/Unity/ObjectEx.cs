@@ -28,7 +28,7 @@ namespace Framework
         /// <summary>
         /// ≥ı ºªØ;
         /// </summary>
-        protected virtual void InitEx()
+        protected virtual void InitializeEx()
         {
             _componentList.Clear();
             RegisterComponent();
@@ -38,7 +38,7 @@ namespace Framework
         /// <summary>
         /// ÷ÿ÷√;
         /// </summary>
-        protected virtual void UninitEx()
+        protected virtual void UnInitializeEx()
         {
             UnRegisterComponent();
             for (int i = 0; i < _componentList.Count; i++)
@@ -119,7 +119,7 @@ namespace Framework
                 }
             }
             T component = PoolMgr.Instance.GetCsharpObject<T>();
-            component.Init(this);
+            component.Initialize(this);
             _componentList.Add(component);
             return true;
         }
@@ -136,7 +136,7 @@ namespace Framework
                 var targetComp = _componentList[i] as T;
                 if (targetComp != null)
                 {
-                    targetComp.Uninit();
+                    targetComp.UnInitialize();
                     PoolMgr.Instance.ReleaseCsharpObject<T>(targetComp);
                     _componentList.Remove(targetComp);
                     return true;
@@ -164,7 +164,7 @@ namespace Framework
                 var targetComp = _componentList[i];
                 if (targetComp == comp)
                 {
-                    comp.Uninit();
+                    comp.UnInitialize();
                     PoolMgr.Instance.ReleaseCsharpObject<T>(comp as T);
                     _componentList.Remove(targetComp);
                     return true;
@@ -186,7 +186,7 @@ namespace Framework
                 var targetComp = _componentList[i];
                 if (targetComp == comp)
                 {
-                    comp.Uninit();
+                    comp.UnInitialize();
                     _componentList.Remove(comp);
                     return true;
                 }

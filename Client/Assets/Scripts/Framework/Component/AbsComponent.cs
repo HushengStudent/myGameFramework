@@ -32,7 +32,7 @@ namespace Framework
         /// </summary>
         /// <param name="entity">entity</param>
         /// <param name="go">gameObject</param>
-        public void Init(ObjectEx owner)
+        public void Initialize(ObjectEx owner)
         {
             Enable = true;
             OnAttachObjectEx(owner);
@@ -45,30 +45,30 @@ namespace Framework
                 Entity.gameObjectEx.AddLoadFinishHandler(OnAttachGoEx);
             }
             EventSubscribe();
-            InitEx();
+            InitializeEx();
         }
 
         /// <summary>
         /// 重置Component;
         /// </summary>
-        public void Uninit()
+        public void UnInitialize()
         {
             DeAttachObjectEx();
             DeAttachGoEx();
             EventUnsubscribe();
-            UninitEx();
+            UnInitializeEx();
             Enable = false;
         }
 
         /// <summary>
         /// 初始化;
         /// </summary>
-        protected virtual void InitEx() { }
+        protected virtual void InitializeEx() { }
 
         /// <summary>
         /// 重置;
         /// </summary>
-        protected virtual void UninitEx() { }
+        protected virtual void UnInitializeEx() { }
 
         /// <summary>
         /// Component附加Entity;

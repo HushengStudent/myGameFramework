@@ -24,24 +24,30 @@ namespace Framework
         private int _count;
         private int _needCount;
         private RectTransform _rectTrans;
-        private ScrollRect _scrollRect;
         private RectTransform _scrollTrans;
         private float _extents = 0;
         private Vector2 _size = new Vector2(10, 10);
         private Vector2 _center = new Vector2(-1, -1);
-        private List<RectTransform> _elements = new List<RectTransform>();
+        private List<RectTransform> _items = new List<RectTransform>();
 
         public delegate void OnLoopItemUpdate(GameObject item, int index);
         public OnLoopItemUpdate onLoopItemUpdate;
 
+        [Header("行/列数")]
         [SerializeField]
-        private int _fixedCount = 1;
+        private int _directionCount = 1;
+        [Header("模板")]
         [SerializeField]
         private GameObject _prefab;
+        [Header("ScrollRect")]
+        private ScrollRect _scrollRect;
+        [Header("模板大小")]
         [SerializeField]
         private Vector2 _itemSize = new Vector2(100, 100);
+        [Header("模板间隔")]
         [SerializeField]
         private Vector2 _itemOffset = new Vector2(10, -10);
+        [Header("滚动方向")]
         [SerializeField]
         private LoopDirection _direction = LoopDirection.Vertical;
 
@@ -52,15 +58,14 @@ namespace Framework
                 LogHelper.PrintError("[LoopScrollRect]prefab is empty!");
                 return false;
             }
-            if (_fixedCount <= 0)
+            if (_directionCount <= 0)
             {
-                _fixedCount = 1;
+                _directionCount = 1;
             }
-            if (_elements.Count > 0)
+            if (_items.Count > 0)
             {
                 LogHelper.PrintError("[LoopScrollRect]Init repeated!");
             }
-            _scrollRect = transform.GetComponentInParent<ScrollRect>();
             if (_scrollRect == null)
             {
                 LogHelper.PrintError("[LoopScrollRect]scrollRect is empty!");
@@ -87,15 +92,15 @@ namespace Framework
             _rectTrans.anchoredPosition = new Vector3(0, 0, 0);
             if (_direction == LoopDirection.Horizontal)
             {
-                _needCount = (int)Mathf.Ceil(_size.x / _itemSize.x + 1) * _fixedCount;
+                _needCount = (int)Mathf.Ceil(_size.x / _itemSize.x + 1) * _directionCount;
             }
             else if (_direction == LoopDirection.Vertical)
             {
-                _needCount = (int)Mathf.Ceil(_size.y / _itemSize.y + 1) * _fixedCount;
+                _needCount = (int)Mathf.Ceil(_size.y / _itemSize.y + 1) * _directionCount;
             }
             _scrollRect.onValueChanged.AddListener(delegate { UpdateLoop(false); });
             _count = 0;
-            _elements.Clear();
+            _items.Clear();
             return true;
         }
 
@@ -103,7 +108,7 @@ namespace Framework
         {
             _prefab.SetActive(false);
             int needNum = Mathf.Min(number, _needCount);
-            int nowNum = _elements.Count;
+            int nowNum = _items.Count;
             _count = number;
             for (int i = nowNum; i < needNum; i++)
             {
@@ -116,13 +121,13 @@ namespace Framework
                 rect.anchorMin = new Vector2(0, 1f);
                 rect.anchorMax = new Vector2(0, 1f);
                 rect.pivot = new Vector2(0, 1);
-                _elements.Add(rect);
+                _items.Add(rect);
             }
-            int maxCount = Mathf.Min(_needCount, _elements.Count);
+            int maxCount = Mathf.Min(_needCount, _items.Count);
             for (int i = maxCount - 1; i >= needNum; i--)
             {
-                GameObject.DestroyImmediate(_elements[i].gameObject);
-                _elements.Remove(_elements[i]);
+                GameObject.Destroy(_items[i].gameObject);
+                _items.Remove(_items[i]);
             }
             InitLoop();
             UpdateLoop(true);
@@ -133,22 +138,22 @@ namespace Framework
             int row = 1;
             int col = 1;
             Vector2 startPos = new Vector2(_itemOffset.x, _itemOffset.y);
-            int count = _elements.Count;
+            int count = _items.Count;
             if (_direction == LoopDirection.Horizontal)
             {
-                row = _fixedCount;
+                row = _directionCount;
                 col = (int)Mathf.Ceil((float)count / (float)row);
                 _extents = (float)(col * _itemSize.x) * 0.5f;
             }
             else if (_direction == LoopDirection.Vertical)
             {
-                col = _fixedCount;
+                col = _directionCount;
                 row = (int)Mathf.Ceil((float)count / (float)col);
                 _extents = (float)(row * _itemSize.y) * 0.5f;
             }
             for (int i = 0; i < count; i++)
             {
-                RectTransform trans = _elements[i];
+                RectTransform trans = _items[i];
                 int x = 0, y = 0;
                 if (_direction == LoopDirection.Vertical)
                 {
@@ -186,9 +191,9 @@ namespace Framework
             while (need2Update)
             {
                 need2Update = false;
-                for (int i = 0; i < _elements.Count; i++)
+                for (int i = 0; i < _items.Count; i++)
                 {
-                    RectTransform trans = _elements[i];
+                    RectTransform trans = _items[i];
                     Vector2 pos = trans.anchoredPosition;
                     float distance = 0;
                     if (_direction == LoopDirection.Horizontal)
@@ -252,11 +257,11 @@ namespace Framework
         {
             if (_direction == LoopDirection.Horizontal)
             {
-                _rectTrans.sizeDelta = new Vector2(pos.x + _itemSize.x, _fixedCount * _itemSize.y);
+                _rectTrans.sizeDelta = new Vector2(pos.x + _itemSize.x, _directionCount * _itemSize.y);
             }
             else
             {
-                _rectTrans.sizeDelta = new Vector2(_fixedCount * _itemSize.x, -pos.y + _itemSize.y);
+                _rectTrans.sizeDelta = new Vector2(_directionCount * _itemSize.x, -pos.y + _itemSize.y);
             }
         }
 
@@ -275,25 +280,25 @@ namespace Framework
             int realIndex;
             if (_direction == LoopDirection.Vertical)
             {
-                realIndex = x * _fixedCount + y;
+                realIndex = x * _directionCount + y;
             }
             else
             {
-                realIndex = x + _fixedCount * y;
+                realIndex = x + _directionCount * y;
             }
             return realIndex;
         }
 
         void OnDestroy()
         {
-            for (int i = 0; i < _elements.Count; i++)
+            for (int i = 0; i < _items.Count; i++)
             {
-                if (_elements[i] != null && _elements[i].gameObject != null)
+                if (_items[i] != null && _items[i].gameObject != null)
                 {
-                    GameObject.DestroyImmediate(_elements[i].gameObject);
+                    GameObject.Destroy(_items[i].gameObject);
                 }
             }
-            _elements.Clear();
+            _items.Clear();
         }
 
         [ContextMenu("TestLoopScrollRect")]

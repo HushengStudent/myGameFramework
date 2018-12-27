@@ -58,7 +58,7 @@ namespace Framework
         /// <param name="entityId"></param>
         /// <param name="uid"></param>
         /// <param name="name"></param>
-        public void Init(int entityId, ulong uid, string name)
+        public void Initialize(int entityId, ulong uid, string name)
         {
             UID = uid;
             EntityName = name;
@@ -68,16 +68,16 @@ namespace Framework
             gameObjectEx = PoolMgr.Instance.GetCsharpObject<GameObjectEx>();
             gameObjectEx.AddLoadFinishHandler(OnAttachGoEx);
             gameObjectEx.Init(this, ResPath);
-            InitEx();
+            InitializeEx();
         }
 
         /// <summary>
         /// 重置Entity;
         /// </summary>
-        public void Uninit()
+        public void UnInitialize()
         {
             DeAttachGoEx();
-            UninitEx();
+            UnInitializeEx();
             Enable = false;
             EntityLoadFinishHandler = null;
         }

@@ -14,9 +14,9 @@ namespace Framework
     {
         private Dictionary<int, Buff> _buffDict = new Dictionary<int, Buff>();
 
-        protected override void UninitEx()
+        protected override void UnInitializeEx()
         {
-            base.UninitEx();
+            base.UnInitializeEx();
             _buffDict.Clear();
         }
 
