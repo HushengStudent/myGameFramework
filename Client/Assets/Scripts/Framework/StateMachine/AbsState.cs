@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public enum StateTypeEnum
+    public enum StateMachineState
     {
         Idel = 0,
         Walk = 1,
@@ -20,7 +20,7 @@ namespace Framework
 
     public abstract class AbsState
     {
-        public virtual StateTypeEnum FsmStateType { get { return StateTypeEnum.Idel; } }
+        public virtual StateMachineState FsmStateType { get { return StateMachineState.Idel; } }
 
         public string Name { get; private set; }
         public AbsEntity Entity { get; private set; }
@@ -54,13 +54,17 @@ namespace Framework
             }
             else
             {
-                OnExitState(Machine.CurTrans.ToState);
-                TransitionTypeEnum state = Machine.CurTrans.ExcuteTrans(this, Machine.CurTrans.ToState);
-                if (state == TransitionTypeEnum.Finish)
+                if (Machine.CurTrans.TransState == StateMachineTransitionState.Ready)
                 {
-                    Machine.CurrentState.OnEnterStateEx(this);
+                    OnExitState(this);
+                    Machine.CurTrans.TransState = StateMachineTransitionState.Transing;
+                }
+                StateMachineTransitionState state = Machine.CurTrans.ExcuteTrans(this, Machine.CurTrans.ToState);
+                if (state == StateMachineTransitionState.Finish)
+                {
+                    Machine.CurrentState.OnEnterStateEx(Machine.CurTrans.ToState);
                     Machine.CurTrans = null;
-                    Machine.CurTrans.TransState = TransitionTypeEnum.Transing;
+                    Machine.CurTrans.TransState = StateMachineTransitionState.Ready;
                 }
             }
         }

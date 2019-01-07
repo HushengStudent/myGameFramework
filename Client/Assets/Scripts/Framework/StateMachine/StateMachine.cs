@@ -63,13 +63,13 @@ namespace Framework
             }
         }
 
-        private bool OnChangeState(AbsState fromState, AbsState toState)
+        public bool OnChangeState(AbsState fromState, AbsState toState)
         {
             if (CurTrans == null)
             {
                 foreach (var target in TransitionList)
                 {
-                    if (target.FromState == fromState && target.ToState == toState && target.TransState == TransitionTypeEnum.Finish && target.IsCanTrans())
+                    if (target.FromState == fromState && target.ToState == toState && target.TransState == StateMachineTransitionState.Finish && target.IsCanTrans())
                     {
                         CurTrans = target;
                         return true;

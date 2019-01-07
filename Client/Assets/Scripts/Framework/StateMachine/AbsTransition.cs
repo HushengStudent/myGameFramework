@@ -10,36 +10,37 @@ using UnityEngine;
 
 namespace Framework
 {
-    public enum TransitionTypeEnum
+    public enum StateMachineTransitionState
     {
-        Transing = 0,
-        Finish = 1
+        Ready = 0,
+        Transing = 1,
+        Finish = 2
     }
 
     public abstract class AbsTransition
     {
-        private TransitionTypeEnum _transState = TransitionTypeEnum.Finish;
+        private StateMachineTransitionState _transState = StateMachineTransitionState.Ready;
 
         public string Name { get; private set; }
         public AbsState FromState { get; private set; }
         public AbsState ToState { get; private set; }
         public AbsEntity Entity { get; private set; }
         public StateMachine Machine { get; private set; }
-        public TransitionTypeEnum TransState { get { return _transState; } set { _transState = value; } }
+        public StateMachineTransitionState TransState { get { return _transState; } set { _transState = value; } }
 
         public AbsTransition(StateMachine machine, string name, AbsState formState, AbsState toState)
         {
             Name = name;
             Entity = machine.Entity;
             Machine = machine;
-            _transState = TransitionTypeEnum.Transing;
+            _transState = StateMachineTransitionState.Ready;
             FromState = formState;
             ToState = toState;
         }
 
         public virtual bool IsCanTrans() { return true; }
 
-        public TransitionTypeEnum ExcuteTrans(AbsState formState, AbsState toState)
+        public StateMachineTransitionState ExcuteTrans(AbsState formState, AbsState toState)
         {
             FromState = formState;
             ToState = toState;
@@ -47,6 +48,6 @@ namespace Framework
             return _transState;
         }
 
-        public virtual TransitionTypeEnum ExcuteTransEx() { return TransitionTypeEnum.Finish; }
+        public virtual StateMachineTransitionState ExcuteTransEx() { return StateMachineTransitionState.Finish; }
     }
 }

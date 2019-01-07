@@ -24,7 +24,6 @@ namespace Framework
 
         public long ID { get; private set; }
 
-
         /// <summary>
         /// ≥ı ºªØ;
         /// </summary>
