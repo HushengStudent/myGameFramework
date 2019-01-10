@@ -86,11 +86,11 @@ namespace Framework
         /// <returns></returns>
         public T CreateEntity<T>(int entityId, ulong uid, string name) where T : AbsEntity, new()
         {
-            T _Entity = PoolMgr.Instance.GetCsharpObject<T>();
-            if (AddEntity(_Entity))
+            T entity = PoolMgr.Instance.GetCsharpObject<T>();
+            if (AddEntity(uid, entity))
             {
-                _Entity.Initialize(entityId, uid, name);
-                return _Entity;
+                entity.Initialize(entityId, uid, name);
+                return entity;
             }
             else
             {
@@ -132,16 +132,17 @@ namespace Framework
         /// <summary>
         /// 添加Entity;
         /// </summary>
+        /// <param name="UID"></param>
         /// <param name="entity"></param>
         /// <returns></returns>
-        private bool AddEntity(AbsEntity entity)
+        private bool AddEntity(ulong UID, AbsEntity entity)
         {
-            if (_entityDict.ContainsKey(entity.UID))
+            if (_entityDict.ContainsKey(UID))
             {
                 return false;
             }
             _entityList.Add(entity);
-            _entityDict[entity.UID] = entity;
+            _entityDict[UID] = entity;
             return true;
         }
 

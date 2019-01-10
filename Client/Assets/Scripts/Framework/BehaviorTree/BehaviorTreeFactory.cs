@@ -102,7 +102,7 @@ namespace Framework
                 target = list[i];
                 int id = target.Id;
                 List<int> connectList;
-                if(!_connectionDict.TryGetValue(id,out connectList))
+                if (!_connectionDict.TryGetValue(id, out connectList))
                 {
                     continue;
                 }
@@ -111,7 +111,7 @@ namespace Framework
                 {
                     int sonId = connectList[j];
                     AbsBehavior son;
-                    if(!_behaviorDict.TryGetValue(sonId,out son))
+                    if (!_behaviorDict.TryGetValue(sonId, out son))
                     {
                         continue;
                     }
@@ -157,30 +157,12 @@ namespace Framework
         {
             AbsBehavior behavior = null;
             string type = table["$type"].ToString();
-            switch (type)
+            string[] str = type.Split(".".ToCharArray());
+            if (3 == str.Length)
             {
-                //顺序执行节点;
-                case "NodeCanvas.BehaviourTrees.BTSequence":
-                    behavior = new BTSequence(table);
-                    break;
-                //随机执行节点;
-                case "NodeCanvas.BehaviourTrees.BTRandom":
-                    behavior = new BTRandom(table);
-                    break;
-                //选择执行节点;
-                case "NodeCanvas.BehaviourTrees.BTSelector":
-                    behavior = new BTSelector(table);
-                    break;
-                //等级条件执行节点;
-                case "NodeCanvas.BehaviourTrees.BTLevel":
-                    behavior = new BTLevel(table);
-                    break;
-                //日志执行节点;
-                case "NodeCanvas.BehaviourTrees.BTLog":
-                    behavior = new BTLog(table);
-                    break;
-                default:
-                    break;
+                string name = "Framework." + str[2];
+                Type target = Type.GetType(name);
+                behavior = Activator.CreateInstance(target, table) as AbsBehavior;
             }
             if (behavior != null)
                 behavior.Id = id;

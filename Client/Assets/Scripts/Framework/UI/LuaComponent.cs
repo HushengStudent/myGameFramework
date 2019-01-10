@@ -78,5 +78,15 @@ namespace Framework
             if (null == CurSlider) LogHelper.PrintError("[LuaComponent]Slider is null.");
             CurSlider.value = value;
         }
+
+        public void SetGray(bool gray)
+        {
+            if (null == CurImage)
+            {
+                LogHelper.PrintError("[LuaComponent]Image is null.");
+                return;
+            }
+            CurImage.color = gray ? Color.black : Color.white;
+        }
     }
 }
