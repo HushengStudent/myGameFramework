@@ -1,0 +1,16 @@
+﻿<Window x:Class="FormatTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FormatTool"
+        mc:Ignorable="d"
+        Title="格式化工具" Height="450" Width="800">
+    <Grid Name="TopGrid">
+        <Button Content="CS格式化" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140.797" Height="64.489" Margin="316.631,323.176,0,0" RenderTransformOrigin="2.393,2.124" Click="FromatTarget"/>
+        <Label Content="选择路径：" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36.622" Width="101.803" FontSize="16" RenderTransformOrigin="1.317,2.125" Margin="0,32.833,0,0" FontFamily="Microsoft YaHei"/>
+        <Button Content="..." HorizontalAlignment="Left" VerticalAlignment="Top" Width="58.588" Height="28.897" Margin="723.412,69.455,0,0" RenderTransformOrigin="1.727,-0.609" Click="SelectFilePath"/>
+        <TextBox Name="textBox" HorizontalAlignment="Left" Height="28.897" TextWrapping="Wrap" Text="请选择路径..." VerticalAlignment="Top" Width="718.412" Margin="0,69.455,0,0"/>
+
+    </Grid>
+</Window>
