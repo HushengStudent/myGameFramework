@@ -20,27 +20,38 @@ namespace Framework
         ModelWeapon
     }
 
-    public class ModelData
+    public class ModelComponent : AbsComponent
     {
         private Dictionary<ModelPart, string> _modelDataDict = new Dictionary<ModelPart, string>();
         private Dictionary<ModelPart, GameObject> _modelGoDict = new Dictionary<ModelPart, GameObject>();
         private GameObject _model;
         private bool _initModel;
 
-        public ModelData()
+        protected override void InitializeEx()
         {
-            _modelDataDict[ModelPart.ModelHead] = "ch_pc_hou_004_tou";
-            _modelDataDict[ModelPart.ModelBody] = "ch_pc_hou_004_shen";
-            _modelDataDict[ModelPart.ModelHand] = "ch_pc_hou_004_shou";
-            _modelDataDict[ModelPart.ModelFeet] = "ch_pc_hou_004_jiao";
-            _modelDataDict[ModelPart.ModelWeapon] = "ch_we_one_hou_004";
+            base.InitializeEx();
+            _modelDataDict[ModelPart.ModelHead] = ModelMgr.Instance.HeadArray[0];
+            _modelDataDict[ModelPart.ModelBody] = ModelMgr.Instance.BodyArray[0];
+            _modelDataDict[ModelPart.ModelHand] = ModelMgr.Instance.HandArray[0];
+            _modelDataDict[ModelPart.ModelFeet] = ModelMgr.Instance.FeetArray[0];
+            _modelDataDict[ModelPart.ModelWeapon] = ModelMgr.Instance.WeaponArray[0];
+
         }
 
-        public void Initialize()
+        protected override void OnAttachObjectEx(ObjectEx owner)
         {
+            base.OnAttachObjectEx(owner);
             //≥ı ºªØ;
             _initModel = true;
             CombineModel();
+        }
+
+        protected override void DeAttachObjectEx()
+        {
+            base.DeAttachObjectEx();
+            _modelDataDict.Clear();
+            _model = null;
+            _initModel = false;
         }
 
         public void SetHead(string head)
@@ -108,7 +119,7 @@ namespace Framework
         {
             if (!_initModel)
                 return;
-            
+
         }
 
         private void CombineModel(ModelPart part)

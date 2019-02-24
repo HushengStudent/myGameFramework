@@ -35,9 +35,10 @@ namespace Framework
             _resPath = path;
             IsLoadFinish = false;
             AsyncAssetProxy proxy = ResourceMgr.Instance.LoadAssetProxy(AssetType.Prefab, _resPath);
-            proxy.AddLoadFinishCallBack(() => {
+            proxy.AddLoadFinishCallBack(() =>
+            {
                 gameObject = proxy.LoadUnityObject<GameObject>();
-                gameObject.name = entity.EntityName;
+                gameObject.name = entity.UID.ToString();
                 IsLoadFinish = true;
                 Trans = gameObject.transform;
                 if (_loadFinishHandler != null)
@@ -45,6 +46,14 @@ namespace Framework
                     _loadFinishHandler(this);
                 }
             });
+        }
+
+        public void Init(AbsEntity entity, bool isAsync = true)
+        {
+            _entity = entity;
+            IsLoadFinish = false;
+            ModelComponent modelComp = entity.GetComponent<ModelComponent>();
+
         }
 
         public void Uninit()
