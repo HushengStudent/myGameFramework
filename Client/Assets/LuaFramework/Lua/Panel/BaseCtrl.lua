@@ -4,19 +4,23 @@
 ---
 
 require "Panel.CtrlEnum"
-require "Panel.Controller.LoginCtrl"
 
 BaseCtrl = class("BaseCtrl")
 
 local m_allCtrls = {} --全部ctrl
 local m_curCtrls = {} --当前打开ctrl
 
-function BaseCtrl:ctor()
-    m_allCtrls[CtrlEnum.LoginCtrl] = LoginCtrl.new()
+local l_value = 2
 
-    --注册Ctrl...
+function BaseCtrl:ctor()
+    logGreen("--->>>BaseCtrl:ctor")
+    self:PrintValue()
 end
 
 function BaseCtrl:GetCtrl(ctrlName)
 
+end
+
+function BaseCtrl:PrintValue()
+    logGreen("--->>>value:"..tostring(l_value))
 end

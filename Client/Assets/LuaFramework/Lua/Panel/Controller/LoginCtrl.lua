@@ -6,13 +6,24 @@
 require "Panel.View.LoginPanel"
 require "Panel.Data.LoginData"
 require "Protol.login_pb"
- 
-LoginCtrl = class("LoginCtrl",BaseCtrl)
+
+local super = BaseCtrl
+local l_value = 1
+LoginCtrl = class("LoginCtrl")
  
 function LoginCtrl:ctor()
- 
+       logGreen("--->>>LoginCtrl:ctor1")
+       super.ctor(self)
+       logGreen("--->>>LoginCtrl:ctor2")
+
+       self:PrintValue()
 end
- 
+
+function LoginCtrl:PrintValue()
+       super.PrintValue()
+       logGreen("--->>>value:"..tostring(l_value))
+end
+
 function LoginCtrl:Awake(msg)
        log("--->>>LoginCtrl Awake be called.")
        local l_panel = LoginPanel.new()

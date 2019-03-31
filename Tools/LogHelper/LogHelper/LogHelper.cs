@@ -14,52 +14,78 @@ public class LogHelper
     public static bool WarningEnable { get { return _warningEnable; } set { _warningEnable = value; } }
     public static bool ErrorEnable { get { return _errorEnable; } set { _errorEnable = value; } }
 
-    public static void Print(string str)
+    public static void Print(string str, string args = "")
     {
         if (_logEnable)
         {
-            Debug.Log(str);
+            StringBuilder builder = new StringBuilder();
+            builder.Append(str);
+            builder.Append(args);
+            Debug.Log(builder.ToString());
         }
     }
 
-    public static void Print(string str, LogColor color)
+    public static void Print(string str, LogColor color, string args = "")
     {
         switch (color)
         {
             case LogColor.Non:
-                Print(str);
+                Print(str, args);
                 break;
             case LogColor.Red:
-                PrintError(str);
+                PrintError(str, args);
                 break;
             case LogColor.Green:
                 if (_logEnable)
                 {
-                    Debug.Log("<color=#7FFF00> " + str + " </color>");
+                    PrintGreen(str, args);
                 }
                 break;
             case LogColor.Yellow:
-                PrintWarning(str);
+                PrintWarning(str, args);
                 break;
             default:
-                Print(str);
+                Print(str, args);
                 break;
         }
     }
 
-    public static void PrintWarning(string str)
+    public static void PrintWarning(string str, string args = "")
     {
         if (_warningEnable)
         {
-            Debug.LogWarning("<color=#EEEE00> " + str + " </color>");
+            StringBuilder builder = new StringBuilder();
+            builder.Append("<color=#EEEE00> ");
+            builder.Append(str);
+            builder.Append(" </color>\n");
+            builder.Append(args);
+            Debug.LogWarning(builder.ToString());
         }
     }
 
-    public static void PrintError(string str)
+    public static void PrintGreen(string str, string args = "")
+    {
+        if (_warningEnable)
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.Append("<color=#7FFF00> ");
+            builder.Append(str);
+            builder.Append(" </color>\n");
+            builder.Append(args);
+            Debug.Log(builder.ToString());
+        }
+    }
+
+    public static void PrintError(string str, string args = "")
     {
         if (_errorEnable)
         {
-            Debug.LogError("<color=#FF0000> " + str + " </color>");
+            StringBuilder builder = new StringBuilder();
+            builder.Append("<color=#FF0000> ");
+            builder.Append(str);
+            builder.Append(" </color>\n");
+            builder.Append(args);
+            Debug.LogError(builder.ToString());
         }
     }
 }

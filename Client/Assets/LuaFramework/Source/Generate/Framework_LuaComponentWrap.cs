@@ -10,6 +10,7 @@ public class Framework_LuaComponentWrap
 		L.RegFunction("AddClick", AddClick);
 		L.RegFunction("SetSprite", SetSprite);
 		L.RegFunction("SetSliderValue", SetSliderValue);
+		L.RegFunction("SetGray", SetGray);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("ComponentName", get_ComponentName, set_ComponentName);
@@ -60,6 +61,23 @@ public class Framework_LuaComponentWrap
 			Framework.LuaComponent obj = (Framework.LuaComponent)ToLua.CheckObject<Framework.LuaComponent>(L, 1);
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
 			obj.SetSliderValue(arg0);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int SetGray(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			Framework.LuaComponent obj = (Framework.LuaComponent)ToLua.CheckObject<Framework.LuaComponent>(L, 1);
+			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
+			obj.SetGray(arg0);
 			return 0;
 		}
 		catch (Exception e)

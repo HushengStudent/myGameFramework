@@ -9,10 +9,10 @@ require "Define"
 require "Common.Class"
 require "Common.Functions"
 --Manager
-require "Manager.GameManager"
-require "Manager.UIManager"
-require "Manager.SceneManager"
-require "Manager.NetManager"
+require "Manager.GameMgr"
+require "Manager.UIMgr"
+require "Manager.SceneMgr"
+require "Manager.NetMgr"
 
 require "UI.Canvas.BaseCanvas"
 require "Panel.BaseCtrl"
@@ -21,14 +21,16 @@ require "Protol.login_pb"
 require "Protol.ProtoDefine"
 
 ---[luaMgr]
-g_GameMgr = GameManager.new()
-g_UIMgr = UIManager.new()
-g_SceneMgr = SceneManager.new()
-g_NetMgr = NetManager.new()
+g_GameMgr = GameMgr.new()
+g_UIMgr = UIMgr.new()
+g_SceneMgr = SceneMgr.new()
+g_NetMgr = NetMgr.new()
 
 --主入口函数。从这里开始lua逻辑
 function Main()					
 	log("main logic start")
+	require("Panel.Controller.LoginCtrl")
+	local l_loginCtrl = LoginCtrl.new()
 	--g_GameMgr:StartGame()
 	--test_pblua_func()
 	TestSendPblua()
