@@ -45,4 +45,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+copy /Y $(TargetDir)\$(TargetName).pdb "$(ProjectDir)\..\..\..\Client\Assets\Plugins\$(TargetName).pdb"
+
+copy /Y $(TargetPath) "$(ProjectDir)\..\..\..\Client\Assets\Plugins\$(TargetFileName)"
+
+IF "$(ConfigurationName)"=="Debug" (
+
+copy /Y $(TargetDir)\$(TargetName).pdb "$(ProjectDir)\..\..\..\Client\Assets\Plugins\$(TargetName).pdb"
+
+copy /Y $(TargetPath) "$(ProjectDir)\..\..\..\Client\Assets\Plugins\$(TargetFileName)"
+
+)
+</PostBuildEvent>
+  </PropertyGroup>
 </Project>
