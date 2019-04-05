@@ -13,7 +13,7 @@ namespace Framework
 {
     public class LuaExcuteEditor : EditorWindow
     {
-        [MenuItem("myGameFramework/Window/LuaExcuteEditor &#e", false, 4)]
+        [MenuItem("myGameFramework/Window/LuaExcuteEditor &#e", false, 5)]
         static void ShowWindow()
         {
             var window = GetWindowWithRect(typeof(LuaExcuteEditor), new Rect(0, 0, 600, 630), true, "Lua Excute");
