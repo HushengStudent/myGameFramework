@@ -2,6 +2,9 @@
 --- Created by husheng.
 --- DateTime: 2018/1/21 0:33
 ---
+
+module("UI",package.seeall)
+
 require "UI.CanvasEnum"
 require "UI.Canvas.LoginCanvas"
 

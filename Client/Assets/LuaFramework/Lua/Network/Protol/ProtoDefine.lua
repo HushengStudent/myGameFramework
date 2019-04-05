@@ -4,7 +4,7 @@
 --- 协议序列号
 ---
 
-module("Protol.ProtoDefine", package.seeall)
+module("Protol", package.seeall)
 
 
 ProtoID =

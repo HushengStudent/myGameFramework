@@ -3,6 +3,8 @@
 --- DateTime: 2018/1/21 1:10
 ---
 
+module("UI",package.seeall)
+
 require "Panel.CtrlEnum"
 
 BaseCtrl = class("BaseCtrl")

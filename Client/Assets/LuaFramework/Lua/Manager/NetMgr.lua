@@ -4,6 +4,8 @@
 --- lua网络模块
 ---
 
+module("Manager",package.seeall)
+
 require "Protol.ProtoProcess"
 
 NetMgr = class("NetMgr")

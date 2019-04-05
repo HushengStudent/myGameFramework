@@ -4,14 +4,19 @@
 --- 管理场景scene ui
 ---
 
+module("Manager",package.seeall)
+
+require "Panel.BaseCtrl"
+require "UI.Canvas.BaseCanvas"
+
 UIMgr = class("UIMgr")
 
 local l_baseCanvas
 local l_baseCtrl
 
 function UIMgr:ctor()
-    l_baseCanvas = BaseCanvas.new()
-    l_baseCtrl = BaseCtrl.new()
+    l_baseCanvas = UI.BaseCanvas.new()
+    l_baseCtrl = UI.BaseCtrl.new()
 end
 
 function UIMgr:GetMgrName()

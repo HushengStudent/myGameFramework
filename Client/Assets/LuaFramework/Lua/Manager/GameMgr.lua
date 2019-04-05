@@ -4,6 +4,8 @@
 --- 游戏管理器
 ---
 
+module("Manager",package.seeall)
+
 GameMgr = class("GameMgr")
 
 function GameMgr:ctor() end

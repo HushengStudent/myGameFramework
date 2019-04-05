@@ -3,6 +3,8 @@
 --- DateTime: 2018/1/21 0:42
 ---
 
+module("UI",package.seeall)
+
 LoginCanvas = class("LoginCanvas",BaseCanvas)
 
 function LoginCanvas:ctor()

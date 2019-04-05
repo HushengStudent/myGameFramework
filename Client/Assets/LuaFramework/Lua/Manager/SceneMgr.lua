@@ -4,6 +4,8 @@
 --- 管理模块ui
 ---
 
+module("Manager",package.seeall)
+
 SceneMgr = class("SceneMgr")
 
 local m_curCanvas
