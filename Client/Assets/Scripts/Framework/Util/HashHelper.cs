@@ -4,6 +4,7 @@
 ** desc:  Hash工具;
 *********************************************************************************/
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -14,9 +15,44 @@ namespace Framework
 {
     public static class HashHelper
     {
+        /// <summary>
+        /// 计算二进制流的MD5;
+        /// </summary>
+        /// <param name="bytes">指定的二进制流;</param>
+        /// <returns>计算后的MD5;</returns>
+        public static string GetMD5(byte[] bytes)
+        {
+            using (MD5 alg = MD5.Create())
+            {
+                byte[] data = alg.ComputeHash(bytes);
+                StringBuilder stringBuilder = new StringBuilder();
+                for (int i = 0; i < data.Length; i++)
+                {
+                    stringBuilder.Append(data[i].ToString("x2"));
+                }
+                return stringBuilder.ToString();
+            }
+        }
+
+        /// <summary>
+        /// 计算字符串的Hash;
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public static string GetHash(string str)
         {
+
             return GetHash(Encoding.UTF8.GetBytes(str));
+        }
+
+        /// <summary>
+        /// 计算类型名的Hash;
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string GetHash(Type type)
+        {
+            return GetHash(type.Name);
         }
 
         /// <summary>
@@ -24,16 +60,18 @@ namespace Framework
         /// </summary>
         /// <param name="bytes">指定的二进制流;</param>
         /// <returns>计算后的Hash;</returns>
-        public static string GetHash(byte[] bytes)
+        public static string GetHash(byte[] textBytes)
         {
-            MD5 alg = new MD5CryptoServiceProvider();
-            byte[] data = alg.ComputeHash(bytes);
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i = 0; i < data.Length; i++)
+            using (HashAlgorithm algorithm = SHA256.Create())
             {
-                stringBuilder.Append(data[i].ToString("x2"));
+                StringBuilder stringBuilder = new StringBuilder();
+                byte[] hash = algorithm.ComputeHash(textBytes);
+                for (int i = 0; i < hash.Length; i++)
+                {
+                    stringBuilder.Append(hash[i].ToString("X2"));
+                }
+                return stringBuilder.ToString();
             }
-            return stringBuilder.ToString();
         }
     }
 }
