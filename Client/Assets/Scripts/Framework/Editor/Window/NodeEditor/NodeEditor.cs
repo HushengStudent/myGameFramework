@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/10/09 01:52:28
-** desc:  热更包导出编辑器;
+** date:  2019/04/05 22:37:11
+** desc:  节点编辑器;
 *********************************************************************************/
 
 using System;
@@ -14,21 +14,18 @@ using Object = UnityEngine.Object;
 
 namespace Framework
 {
-    public class UpdateEditor : EditorWindow
+    public class NodeEditor : EditorWindow
     {
-        [MenuItem("myGameFramework/Window/UpdateEditor &#u", false, 3)]
+        [MenuItem("myGameFramework/Window/NodeEditor &#n", false, 6)]
         static void ShowWindow()
         {
-            var window = GetWindowWithRect(typeof(UpdateEditor), new Rect(0, 0, 600, 630), true, "热更包导出编辑器");
+            var window = GetWindowWithRect(typeof(NodeEditor), new Rect(0, 0, 1280, 720), true, "节点编辑器");
             window.Show();
         }
 
         void OnGUI()
         {
-            EditorGUILayout.BeginVertical();
 
-
-            EditorGUILayout.EndVertical();
         }
     }
 }

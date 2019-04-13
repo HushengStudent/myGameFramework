@@ -19,7 +19,7 @@ namespace Framework
         [MenuItem("myGameFramework/Window/SceneEditor &#s", false, 1)]
         static void ShowWindow()
         {
-            var window = GetWindowWithRect(typeof(SceneEditor), new Rect(0, 0, 600, 630), true, "场景编辑器");
+            var window = GetWindowWithRect(typeof(SceneEditor), new Rect(0, 0, 1280, 720), true, "场景编辑器");
             window.Show();
         }
 

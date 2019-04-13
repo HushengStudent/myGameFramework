@@ -19,7 +19,7 @@ namespace Framework
         [MenuItem("myGameFramework/Window/PackEditor &#p", false, 4)]
         static void ShowWindow()
         {
-            var window = GetWindowWithRect(typeof(PackEditor), new Rect(0, 0, 600, 630), true, "打包编辑器");
+            var window = GetWindowWithRect(typeof(PackEditor), new Rect(0, 0, 1280, 720), true, "打包编辑器");
             window.Show();
         }
 

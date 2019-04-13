@@ -19,7 +19,7 @@ namespace Framework
         [MenuItem("myGameFramework/Window/SkillEditor &#k", false, 2)]
         static void ShowWindow()
         {
-            var window = GetWindowWithRect(typeof(SkillEditor), new Rect(0, 0, 600, 630), true, "技能编辑器");
+            var window = GetWindowWithRect(typeof(SkillEditor), new Rect(0, 0, 1280, 720), true, "技能编辑器");
             window.Show();
         }
 
