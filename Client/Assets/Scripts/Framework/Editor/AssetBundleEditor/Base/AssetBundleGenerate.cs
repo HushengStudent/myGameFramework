@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2017/12/26 23:24:40
-** desc:  AssetBundleæ‰“åŒ…;
+** desc:  AssetBundle´ò°ü;
 *********************************************************************************/
 
 using Framework;
@@ -10,22 +10,21 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEditor;
 using UnityEngine;
-//using Debug = UnityEngine.Debug;
 
 namespace Framework
 {
-    public static class AssetBundleEditor
+    public static class AssetBundleGenerate
     {
-        [MenuItem("myGameFramework/AssetBundleTools/Build AssetBundle", false, 0)]
-        private static void BuildAll()
+        [MenuItem("myGameFramework/AssetBundleTools/Generate AssetBundle", false, 0)]
+        private static void GenerateAll()
         {
-            if (EditorUtility.DisplayDialog("AssetBundleæ‰“åŒ…æç¤º", "å¼€å§‹æ‰“åŒ…AssetBundleï¼Ÿ", "æ‰“åŒ…AssetBundle"))
+            if (EditorUtility.DisplayDialog("AssetBundle´ò°üÌáÊ¾", "¿ªÊ¼´ò°üAssetBundle£¿", "´ò°üAssetBundle"))
             {
                 AssetDependenciesAnalysis analysiser = new AssetDependenciesAnalysis();
                 analysiser.AnalysisAllAsset();
                 //tips:Unity5.x Scripts not need to build AssetBundle
                 //analysiser.BuildAllScripts();
-                BuildAssetBundle(FilePathHelper.AssetBundlePath);
+                GenerateAssetBundle(FilePathHelper.AssetBundlePath);
             }
         }
 
@@ -46,17 +45,18 @@ namespace Framework
         }
 
         /// <summary>
-        /// æ ¹æ®AssetBundle Nameæ‰“åŒ…å…¨éƒ¨AssetBundle;
+        /// ¸ù¾İAssetBundle Name´ò°üÈ«²¿AssetBundle;
         /// </summary>
-        /// <param name="buildPath">ç›®æ ‡è·¯å¾„</param>
-        public static void BuildAssetBundle(string buildPath)
+        /// <param name="buildPath">Ä¿±êÂ·¾¶</param>
+        public static void GenerateAssetBundle(string buildPath)
         {
-            Stopwatch watch = Stopwatch.StartNew();//å¼€å¯è®¡æ—¶;
+            Stopwatch watch = Stopwatch.StartNew();//¿ªÆô¼ÆÊ±;
             BuildPipeline.BuildAssetBundles(buildPath, AssetBuildDefine.options, AssetBuildDefine.buildTarget);
             watch.Stop();
-            LogHelper.PrintWarning(string.Format("[BuildBat]BuildAllAssetBundle Spend Time:{0}s", watch.Elapsed.TotalSeconds));
+            LogHelper.PrintWarning(string.Format("GenerateAllAssetBundle Spend Time:{0}s", watch.Elapsed.TotalSeconds));
             AssetDatabase.Refresh();
             EditorUtility.UnloadUnusedAssetsImmediate();
         }
     }
 }
+

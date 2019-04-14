@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/01/28 23:02:47
-** desc:  AssetBundle查看工具;
+** desc:  AssetBundle编辑器;
 *********************************************************************************/
 
 using System.Collections;
@@ -12,12 +12,12 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class AssetBundleViewer : EditorWindow
+    public class AssetBundleEditor : EditorWindow
     {
-        [MenuItem("myGameFramework/AssetBundleTools/AssetBundle Viewer", false, 21)]
+        [MenuItem("myGameFramework/Window/AssetBundleEditor/AssetBundleViewer &#a", false, 9)]
         static void ShowWindow()
         {
-            var window = GetWindowWithRect(typeof(AssetBundleViewer), new Rect(0, 0, 600, 630), true, "AssetBundle Viewer");
+            var window = GetWindowWithRect(typeof(AssetBundleEditor), new Rect(0, 0, 1280, 720), true, "AssetBundle Viewer");
             window.Show();
         }
 

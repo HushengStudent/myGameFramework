@@ -19,7 +19,7 @@ namespace Framework
         [MenuItem("myGameFramework/Window/TableEditor &#t", false, 7)]
         static void ShowWindow()
         {
-            var window = GetWindowWithRect(typeof(TableEditor), new Rect(0, 0, 600, 630), true, "表格编辑器");
+            var window = GetWindowWithRect(typeof(TableEditor), new Rect(0, 0, 1280, 720), true, "表格编辑器");
             window.Show();
         }
 
