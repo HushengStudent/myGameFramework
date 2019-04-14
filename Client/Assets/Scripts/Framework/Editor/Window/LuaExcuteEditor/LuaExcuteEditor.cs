@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/12/16 22:01:07
-** desc:  #####
+** desc:  Lua≤‚ ‘π§æﬂ;
 *********************************************************************************/
 
 using System.Collections;
@@ -13,10 +13,10 @@ namespace Framework
 {
     public class LuaExcuteEditor : EditorWindow
     {
-        [MenuItem("myGameFramework/Window/LuaExcuteEditor &#l", false, 5)]
+        [MenuItem("myGameFramework/Window/LuaExcuteEditor &#e", false, 5)]
         static void ShowWindow()
         {
-            var window = GetWindowWithRect(typeof(LuaExcuteEditor), new Rect(0, 0, 1280, 720), true, "Lua Excute");
+            var window = GetWindowWithRect(typeof(LuaExcuteEditor), new Rect(0, 0, 640, 720), true, "Lua Excute");
             window.Show();
         }
 
