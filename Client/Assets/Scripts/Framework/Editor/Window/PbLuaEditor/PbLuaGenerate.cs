@@ -38,21 +38,7 @@ namespace Framework
             }
         }
 
-        /// <summary>
-        /// 配置环境变量;myGameFramework_PROTOC:c:/protobuf-3.0.0/src/
-        /// </summary>
-        private static string Protoc
-        {
-            get
-            {
-                string protocPath = Environment.GetEnvironmentVariable("myGameFramework_PROTOC");
-                if (string.IsNullOrEmpty(protocPath))
-                {
-                    LogHelper.PrintError(string.Format("not find Environment Variable:{0}", "myGameFramework_PROTOC"));
-                }
-                return protocPath + "protoc.exe";
-            }
-        }
+        private static string Protoc = FilePathHelper.ProtocPath + "protoc.exe";
 
         /// <summary>
         /// pblua目录;

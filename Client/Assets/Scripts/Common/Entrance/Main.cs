@@ -10,6 +10,11 @@ using UnityEngine;
 using Framework;
 using Protocol;
 
+/// <summary>
+/// 配置环境变量;
+/// myGameFramework:--->>>(工程路径)C:/Users/husheng/Desktop/MyProject/4GameFramework/myGameFramework/
+/// myGameFramework_protoc:--->>>c:/protobuf-3.0.0/src/
+/// </summary>
 public class Main : MonoBehaviour
 {
     void Awake()

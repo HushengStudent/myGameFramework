@@ -4,6 +4,7 @@
 ** desc:  文件路径管理工具;
 *********************************************************************************/
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -13,11 +14,39 @@ namespace Framework
 {
     public static class FilePathHelper
     {
-        //AssetBundle打包存储路径;
+        /// <summary>
+        /// AssetBundle打包存储路径;
+        /// </summary>
         private static string assetBundlePath = Application.dataPath + "/../AssetBundle";
         public static string AssetBundlePath
         {
             get { return assetBundlePath; }
+        }
+
+        public static string ProtocPath
+        {
+            get
+            {
+                string protocPath = Environment.GetEnvironmentVariable("myGameFramework_protoc");
+                if (string.IsNullOrEmpty(protocPath))
+                {
+                    LogHelper.PrintError(string.Format("not find Environment variable:{0}", "myGameFramework_protoc"));
+                }
+                return protocPath;
+            }
+        }
+
+        public static string GameFrameworkPath
+        {
+            get
+            {
+                string gameFrameworkPath = Environment.GetEnvironmentVariable("myGameFramework");
+                if (string.IsNullOrEmpty(gameFrameworkPath))
+                {
+                    LogHelper.PrintError(string.Format("not find Environment variable:{0}", "myGameFramework"));
+                }
+                return gameFrameworkPath;
+            }
         }
 
         /// <summary>

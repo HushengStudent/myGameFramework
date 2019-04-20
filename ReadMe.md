@@ -34,7 +34,7 @@ software：Unity2017.4.25/visual studio2017.
     (27)Buff模块.(Finish)
     (28)AI模块：FSM、行为树.(Finish)
     (29)网络同步机制：帧同步、状态同步.(TODO)
-    (30)编辑器：AI(行为树)、战斗(技能)、场景.(TODO)
+    (30)编辑器：AI(行为树)、战斗(技能)、场景、打包.(TODO)
 	
     Reference：
     (1)tolua：(https://github.com/topameng/tolua).
@@ -57,7 +57,11 @@ software：Unity2017.4.25/visual studio2017.
 	(6)Unity Particle Pack 5.x.
 	(6)Anima2D.
 	(6)PostProcessing.
-	(7)DOTween.
+	(7)DOTween.	
+	
+    环境变量配置:
+    (1)myGameFramework:(工程路径)如c:/protobuf-3.0.0/src/
+    (2)myGameFramework_protoc:(protoc.exe路径)如C:/Users/husheng/Desktop/MyProject/4GameFramework/myGameFramework/
 	
 #### Server：服务器工程使用visual studio2017创建
     Reference：
