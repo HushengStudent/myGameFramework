@@ -3,6 +3,8 @@
 ---Forbid To coding.
 ---
  
+module("UI", package.seeall)
+ 
 LoginPanel = class("LoginPanel")
  
 function LoginPanel:ctor()
@@ -23,5 +25,6 @@ function LoginPanel:BindLuaComponent(gameObject)
        self.ComponentList.GameObject7 = l_ctrl.componentArray[8]
        self.ComponentList.GameObject8 = l_ctrl.componentArray[9]
        self.ComponentList.GameObject9 = l_ctrl.componentArray[10]
+
        return self.ComponentList
 end

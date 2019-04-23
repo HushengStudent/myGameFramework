@@ -23,32 +23,6 @@ namespace Framework
             get { return assetBundlePath; }
         }
 
-        public static string ProtocPath
-        {
-            get
-            {
-                string protocPath = Environment.GetEnvironmentVariable("myGameFramework_protoc");
-                if (string.IsNullOrEmpty(protocPath))
-                {
-                    LogHelper.PrintError(string.Format("not find Environment variable:{0}", "myGameFramework_protoc"));
-                }
-                return protocPath;
-            }
-        }
-
-        public static string GameFrameworkPath
-        {
-            get
-            {
-                string gameFrameworkPath = Environment.GetEnvironmentVariable("myGameFramework");
-                if (string.IsNullOrEmpty(gameFrameworkPath))
-                {
-                    LogHelper.PrintError(string.Format("not find Environment variable:{0}", "myGameFramework"));
-                }
-                return gameFrameworkPath;
-            }
-        }
-
         /// <summary>
         /// 需要打包的资源所在的目录;
         /// </summary>

@@ -38,7 +38,7 @@ namespace Framework
             }
         }
 
-        private static string Protoc = FilePathHelper.ProtocPath + "protoc.exe";
+        private static string Protoc = EnvVariableHelper.ProtocPath + "protoc.exe";
 
         /// <summary>
         /// pbluaĿ¼;

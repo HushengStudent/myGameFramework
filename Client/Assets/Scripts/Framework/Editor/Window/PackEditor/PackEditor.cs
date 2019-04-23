@@ -2,11 +2,19 @@
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/10/21 23:40:35
 ** desc:  打包编辑器;
+* 打包流程:
+* 1.打AssetBundle;
+* 2.压缩AssetBundle;
+* 3.拷贝AssetBundle压缩包;
+* 4.打包;
+* 
+* 
 *********************************************************************************/
 
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using UnityEditor;
 using UnityEngine;
@@ -25,12 +33,25 @@ namespace Framework
 
         private enum BuildPlatform
         {
-            Android,
-            IOS,
-            Windows,
+            Android = BuildTarget.Android,
+            IOS = BuildTarget.iOS,
+            Windows64 = BuildTarget.StandaloneWindows64,
         }
 
-        private BuildPlatform platform = BuildPlatform.Windows;
+        private BuildPlatform _platform = BuildPlatform.Windows64;
+        private BuildOptions _buildOptions = BuildOptions.AllowDebugging | BuildOptions.Development;
+        private string _locationPathName = string.Empty;
+        private bool _isCompletePack = true;
+        private bool _isBuildAssetBundle = true;
+        private bool _isRelease = false;
+
+        private void OnEnable()
+        {
+            _locationPathName = Application.dataPath + "/../BuildResult";
+            _isCompletePack = true;
+            _isBuildAssetBundle = true;
+            _isRelease = false;
+        }
 
         void OnGUI()
         {
@@ -49,7 +70,51 @@ namespace Framework
                     {
                         EditorGUILayout.LabelField("选择目标平台:", style);
                         GUILayout.Space(15);
-                        this.platform = (BuildPlatform)EditorGUILayout.EnumPopup(this.platform);
+                        _platform = (BuildPlatform)EditorGUILayout.EnumPopup(_platform);
+                    }
+                    GUILayout.Space(5);
+                    using (var h = new EditorGUILayout.HorizontalScope())
+                    {
+                        EditorGUILayout.LabelField("打包选项:", style);
+                        GUILayout.Space(15);
+                        _buildOptions = (BuildOptions)EditorGUILayout.EnumFlagsField(_buildOptions);
+                    }
+                    GUILayout.Space(5);
+                    using (var h = new EditorGUILayout.HorizontalScope())
+                    {
+                        EditorGUILayout.LabelField("是否打Release包:", style);
+                        GUILayout.Space(15);
+                        bool curValue = _isRelease;
+                        _isRelease = EditorGUILayout.Toggle(_isRelease);
+                        if (_isRelease)
+                        {
+                            _buildOptions = BuildOptions.None;
+                        }
+                        else
+                        {
+                            if (curValue)
+                            {
+                                _buildOptions = BuildOptions.AllowDebugging | BuildOptions.Development;
+                            }
+                        }
+                    }
+                    GUILayout.Space(5);
+                    using (var h = new EditorGUILayout.HorizontalScope())
+                    {
+                        EditorGUILayout.LabelField("打包资源完整完整包体:", style);
+                        GUILayout.Space(15);
+                        _isCompletePack = EditorGUILayout.Toggle(_isCompletePack);
+                    }
+                    GUILayout.Space(5);
+                    using (var h = new EditorGUILayout.HorizontalScope())
+                    {
+                        EditorGUILayout.LabelField("重新打包AssetBundle:", style);
+                        GUILayout.Space(15);
+                        _isBuildAssetBundle = EditorGUILayout.Toggle(_isBuildAssetBundle);
+                        if (_isRelease)
+                        {
+                            _isBuildAssetBundle = true;
+                        }
                     }
                     GUILayout.Space(20);
                     GUI.backgroundColor = Color.green;
@@ -57,7 +122,48 @@ namespace Framework
                     {
                         if (EditorUtility.DisplayDialog("提示", "确认开始打包?", "确认"))
                         {
-
+                            _locationPathName = EditorUtility.OpenFolderPanel("选择输出文件夹", _locationPathName, "");
+                            EditorApplication.delayCall += () =>
+                            {
+                                if (string.IsNullOrEmpty(_locationPathName))
+                                {
+                                    return;
+                                }
+                                if (Directory.Exists(_locationPathName))
+                                {
+                                    Directory.Delete(_locationPathName, true);
+                                }
+                                Directory.CreateDirectory(_locationPathName);
+                                string report = string.Empty;
+                                try
+                                {
+                                    string extensionName = string.Empty;
+                                    switch (_platform)
+                                    {
+                                        case BuildPlatform.Android:
+                                            extensionName = ".apk";
+                                            break;
+                                        case BuildPlatform.Windows64:
+                                            extensionName = ".exe";
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
+                                    buildPlayerOptions.scenes = EditorBuildSettingsScene.GetActiveSceneList(EditorBuildSettings.scenes);
+                                    buildPlayerOptions.locationPathName = _locationPathName + "/" + PlayerSettings.productName + extensionName;
+                                    buildPlayerOptions.target = (BuildTarget)_platform;
+                                    buildPlayerOptions.options = _buildOptions;
+                                    report = BuildPipeline.BuildPlayer(buildPlayerOptions);
+                                }
+                                catch (Exception e)
+                                {
+                                    LogHelper.PrintError(string.Format("打包失败:{0},{1}.", report, e.ToString()));
+                                    return;
+                                }
+                                LogHelper.PrintError(string.Format("打包成功:{0}.", report));
+                            };
+                            Close();
                         }
                     }
                     GUI.backgroundColor = color;
