@@ -134,6 +134,22 @@ namespace Framework
                                     Directory.Delete(_locationPathName, true);
                                 }
                                 Directory.CreateDirectory(_locationPathName);
+
+                                if (_isBuildAssetBundle)
+                                {
+                                    AssetBundleGenerate.GenerateAll();
+                                }
+                                if (_isCompletePack)
+                                {
+                                    ExportABPackage.ExportAssetBundlePackage();
+                                }
+                                else
+                                {
+                                    if (File.Exists(ExportABPackage.ZipStreamingAssetsPath))
+                                    {
+                                        File.Delete(ExportABPackage.ZipStreamingAssetsPath);
+                                    }
+                                }
                                 string report = string.Empty;
                                 try
                                 {

@@ -24,6 +24,15 @@ namespace Framework
         }
 
         /// <summary>
+        /// StreamingAssets路径;
+        /// </summary>
+        private static string streamingAssetsPath = Application.dataPath + "/StreamingAssets";
+        public static string StreamingAssetsPath
+        {
+            get { return streamingAssetsPath; }
+        }
+
+        /// <summary>
         /// 需要打包的资源所在的目录;
         /// </summary>
         public static string resPath = "Assets/Bundles/";

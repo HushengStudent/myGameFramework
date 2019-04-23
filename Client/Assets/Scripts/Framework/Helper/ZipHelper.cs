@@ -19,7 +19,7 @@ namespace Framework
     {
         private static float progressInterval = 0.5f;
 
-        public static void Compress(string filePath, string outPath, string fileName, Action<float> action)
+        public static string Compress(string filePath, string outPath, string fileName, Action<float> action)
         {
             var compressProgress = 0f;
             var progress = 0f;
@@ -57,6 +57,7 @@ namespace Framework
             });
             thread.IsBackground = true;
             thread.Start();
+            return zipFile;
         }
 
         public static void Decompress(string filePath, string outPath, Action<float> action)

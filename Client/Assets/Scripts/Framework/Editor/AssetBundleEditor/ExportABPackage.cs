@@ -14,15 +14,17 @@ namespace Framework
 {
     public class ExportABPackage
     {
-        private static string _tempABPath = FilePathHelper.AssetBundlePath + "/../tempABPath";
-        private static string _zipABPath = FilePathHelper.AssetBundlePath + "/../AssetBundleZip";
+        public static readonly string TempABPath = FilePathHelper.AssetBundlePath + "/../tempABPath";
+        public static readonly string ZipABPath = FilePathHelper.AssetBundlePath + "/../AssetBundleZip";
+        public static readonly string AssetBundleZipFileName = "AssetBundle.zip";
+        public static readonly string ZipStreamingAssetsPath = FilePathHelper.StreamingAssetsPath + "/" + AssetBundleZipFileName;
 
         [MenuItem("myGameFramework/AssetBundleTools/Export AssetBundle Package", false, 41)]
         public static void ExportAssetBundlePackage()
         {
-            if (Directory.Exists(_tempABPath))
+            if (Directory.Exists(TempABPath))
             {
-                Directory.Delete(_tempABPath, true);
+                Directory.Delete(TempABPath, true);
             }
             string[] allFile = Directory.GetFiles(FilePathHelper.AssetBundlePath, "*.*", SearchOption.AllDirectories);
             //剔除.manifest文件;
@@ -41,7 +43,7 @@ namespace Framework
             {
                 index++;
                 EditorUtility.DisplayProgressBar("复制AssetBundle", "复制AssetBundle文件", (float)index / (float)count);
-                string target = ab.Replace(FilePathHelper.AssetBundlePath, _tempABPath + "/AssetBundle");
+                string target = ab.Replace(FilePathHelper.AssetBundlePath, TempABPath + "/AssetBundle");
                 string targetPath = Path.GetDirectoryName(target);
                 if (!Directory.Exists(targetPath))
                 {
@@ -53,7 +55,7 @@ namespace Framework
 
             bool compressState = true;
             float compressProgress = 0f;
-            ZipHelper.Compress(_tempABPath, _zipABPath, "AssetBundle", (progress) =>
+            string zipFile = ZipHelper.Compress(TempABPath, ZipABPath, "AssetBundle", (progress) =>
             {
                 compressProgress = progress;
                 if (compressProgress >= 1)
@@ -67,23 +69,28 @@ namespace Framework
             }
             EditorUtility.ClearProgressBar();
 
-            if (Directory.Exists(_tempABPath))
+            if (Directory.Exists(TempABPath))
             {
-                Directory.Delete(_tempABPath, true);
+                Directory.Delete(TempABPath, true);
             }
+            if (File.Exists(ZipStreamingAssetsPath))
+            {
+                File.Delete(ZipStreamingAssetsPath);
+            }
+            File.Copy(zipFile, ZipStreamingAssetsPath);
         }
 
         [MenuItem("myGameFramework/AssetBundleTools/Decompress AssetBundle Zip", false, 42)]
         public static void DecompressAssetBundleZip()
         {
-            if (!File.Exists(_zipABPath + "/AssetBundle.zip"))
+            if (!File.Exists(ZipABPath + "/" + AssetBundleZipFileName))
             {
                 return;
             }
             EditorUtility.ClearProgressBar();
             bool deCompressState = true;
             float deCompressProgress = 0f;
-            ZipHelper.Decompress(_zipABPath + "/AssetBundle.zip", Application.dataPath + "/StreamingAssets/AssetBundle", (progress) =>
+            ZipHelper.Decompress(ZipABPath + "/" + AssetBundleZipFileName, Application.dataPath + "/StreamingAssets/AssetBundle", (progress) =>
             {
                 deCompressProgress = progress;
                 if (deCompressProgress >= 1)

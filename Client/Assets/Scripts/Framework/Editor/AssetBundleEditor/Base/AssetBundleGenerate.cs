@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2017/12/26 23:24:40
-** desc:  AssetBundle´ò°ü;
+** desc:  AssetBundleæ‰“åŒ…;
 *********************************************************************************/
 
 using Framework;
@@ -16,9 +16,9 @@ namespace Framework
     public static class AssetBundleGenerate
     {
         [MenuItem("myGameFramework/AssetBundleTools/Generate AssetBundle", false, 0)]
-        private static void GenerateAll()
+        public static void GenerateAll()
         {
-            if (EditorUtility.DisplayDialog("AssetBundle´ò°üÌáÊ¾", "¿ªÊ¼´ò°üAssetBundle£¿", "´ò°üAssetBundle"))
+            if (EditorUtility.DisplayDialog("AssetBundleæ‰“åŒ…æç¤º", "å¼€å§‹æ‰“åŒ…AssetBundleï¼Ÿ", "æ‰“åŒ…AssetBundle"))
             {
                 AssetDependenciesAnalysis analysiser = new AssetDependenciesAnalysis();
                 analysiser.AnalysisAllAsset();
@@ -29,7 +29,7 @@ namespace Framework
         }
 
         [MenuItem("myGameFramework/AssetBundleTools/Delete AssetBundle", false, 1)]
-        private static void DeleteAll()
+        public static void DeleteAll()
         {
             AssetDependenciesAnalysis analysiser = new AssetDependenciesAnalysis();
             analysiser.DeleteAllAssetBundle();
@@ -37,7 +37,7 @@ namespace Framework
         }
 
         [MenuItem("myGameFramework/AssetBundleTools/Clear AssetName", false, 2)]
-        private static void ClearAll()
+        public static void ClearAll()
         {
             AssetDependenciesAnalysis analysiser = new AssetDependenciesAnalysis();
             analysiser.ClearAllAssetBundleName();
@@ -45,12 +45,12 @@ namespace Framework
         }
 
         /// <summary>
-        /// ¸ù¾İAssetBundle Name´ò°üÈ«²¿AssetBundle;
+        /// æ ¹æ®AssetBundle Nameæ‰“åŒ…å…¨éƒ¨AssetBundle;
         /// </summary>
-        /// <param name="buildPath">Ä¿±êÂ·¾¶</param>
-        public static void GenerateAssetBundle(string buildPath)
+        /// <param name="buildPath">ç›®æ ‡è·¯å¾„</param>
+        private static void GenerateAssetBundle(string buildPath)
         {
-            Stopwatch watch = Stopwatch.StartNew();//¿ªÆô¼ÆÊ±;
+            Stopwatch watch = Stopwatch.StartNew();//å¼€å¯è®¡æ—¶;
             BuildPipeline.BuildAssetBundles(buildPath, AssetBuildDefine.options, AssetBuildDefine.buildTarget);
             watch.Stop();
             LogHelper.PrintWarning(string.Format("GenerateAllAssetBundle Spend Time:{0}s", watch.Elapsed.TotalSeconds));
