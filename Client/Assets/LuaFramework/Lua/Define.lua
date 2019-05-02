@@ -18,6 +18,7 @@ luaUtility = Framework.LuaUtility.Instance --luaUtility
 logHelper = LogHelper
 luaBuffer = Framework.LuaBuffer
 LuaNetHelper = Framework.LuaNetHelper
+luaHelper = Framework.LuaHelper
 
 ---[Enum]
 logColor = LogColor

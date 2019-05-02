@@ -20,7 +20,7 @@ namespace Framework
         /// <param name="go"></param>
         /// <param name="t"></param>
         /// <returns></returns>
-        public static T AddOrGetComponent<T>(GameObject go, Action<T> action = null) where T : MonoBehaviour
+        public static T AddOrGetComponent<T>(this GameObject go, Action<T> action = null) where T : MonoBehaviour
         {
             T temp = null;
             if (go == null)

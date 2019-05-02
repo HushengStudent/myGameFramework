@@ -34,6 +34,7 @@ function Main()
 	local l_loginCtrl = UI.LoginCtrl.new()
 	--g_GameMgr:StartGame()
 	--test_pblua_func()
+	luaMgr.gameObject:SetLocalPosition(Vector3.New(0,0,0))
 	TestSendPblua()
 
 end

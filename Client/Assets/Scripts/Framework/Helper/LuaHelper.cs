@@ -22,7 +22,7 @@ namespace Framework
             return (int)target;
         }
 
-        public static void SetLocalPosition(GameObject target, Vector3 vect)
+        public static void SetLocalPosition(this GameObject target, Vector3 vect)
         {
             if (target)
             {

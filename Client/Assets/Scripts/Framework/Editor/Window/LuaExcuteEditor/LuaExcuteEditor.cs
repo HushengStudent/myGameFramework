@@ -26,7 +26,7 @@ namespace Framework
         {
             var color = GUI.backgroundColor;
             EditorGUILayout.BeginVertical(GUI.skin.box);
-            _luaText = EditorGUILayout.TextField(_luaText, GUILayout.Height(300));
+            _luaText = EditorGUILayout.TextArea(_luaText, GUILayout.Height(300));
             GUILayout.Space(20);
             GUI.backgroundColor = Color.green;
             if (GUILayout.Button("Excute", GUILayout.Height(30)))
