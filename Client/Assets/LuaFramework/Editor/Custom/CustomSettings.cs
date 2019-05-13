@@ -179,6 +179,10 @@ public static class CustomSettings
         //_GT(typeof(ThreadManager)),
         //_GT(typeof(NetworkManager)),
         //_GT(typeof(ResourceManager)),
+
+        //Profiler;
+        _GT(typeof(LuaProfilerExtension)),
+
     };
 
     public static List<Type> dynamicList = new List<Type>()
