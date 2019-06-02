@@ -14,7 +14,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public static class PbLuaGenerate
+    public static class ProtoGenerate
     {
         private static List<string> _paths = new List<string>();
 
@@ -105,7 +105,7 @@ namespace Framework
             Recursive(PbluaPath);
         }
 
-        [MenuItem("myGameFramework/PbTool/Generate Proto To Lua", false, 0)]
+        [MenuItem("myGameFramework/ProtoGen/Proto/Generate proto to lua", false, 0)]
         public static void GenerateProtoToLua()
         {
             InitContext();
@@ -133,7 +133,7 @@ namespace Framework
             AssetDatabase.Refresh();
         }
 
-        [MenuItem("myGameFramework/PbTool/Generate Proto To Csharp", false, 1)]
+        [MenuItem("myGameFramework/ProtoGen/Proto/Generate proto to csharp", false, 1)]
         public static void GenerateProtoToCsharp()
         {
             InitContext();
@@ -169,7 +169,7 @@ namespace Framework
             AssetDatabase.Refresh();
         }
 
-        [MenuItem("myGameFramework/PbTool/Generate All", false, 2)]
+        [MenuItem("myGameFramework/ProtoGen/Proto/Generate All", false, 2)]
         public static void GenerateAll()
         {
             GenerateProtoToLua();

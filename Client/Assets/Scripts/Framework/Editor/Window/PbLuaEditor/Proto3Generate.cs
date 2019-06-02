@@ -18,7 +18,7 @@ namespace Framework
         private static readonly string protoFilePath = Application.dataPath + "/../../Tools/proto3/Test/proto/";
         private static readonly string outPath = Application.dataPath + "/../../Tools/proto3/Test/cs/";
 
-        [MenuItem("myGameFramework/PbTool/Proto3/Generate proto3 to csharp", false, 1)]
+        [MenuItem("myGameFramework/ProtoGen/Proto3/Generate proto3 to csharp", false, 1)]
         public static void GenerateProtoToCsharp()
         {
             string[] allPath = Directory.GetFiles(protoFilePath, "*.*", SearchOption.AllDirectories);
