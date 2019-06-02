@@ -8,11 +8,11 @@ using Framework;
 using UnityEditor;
 using UnityEngine;
 
-public class MonoPInvokeCallbackEditor : Editor
+public class MonoPInvokeCallbackEditor
 {
     private static bool _isEnable;
 
-    [MenuItem("myGameFramework/Profiler/Lua Profiler Extension/Start MonoPInvokeCallback Analysis")]
+    [MenuItem("myGameFramework/Profiler/MonoPInvokeCallback Analysis/Start MonoPInvokeCallback Analysis")]
     private static void _ExecuteAttach()
     {
         if (Application.isPlaying && LuaMgr.Instance)
@@ -26,7 +26,7 @@ public class MonoPInvokeCallbackEditor : Editor
         }
     }
 
-    [MenuItem("myGameFramework/Profiler/Lua Profiler Extension/Stop MonoPInvokeCallback Analysis")]
+    [MenuItem("myGameFramework/Profiler/MonoPInvokeCallback Analysis/Stop MonoPInvokeCallback Analysis")]
     private static void _ExecuteDetach()
     {
         if (!_isEnable)

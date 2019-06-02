@@ -1,0 +1,8 @@
+syntax = "proto3"; //使用proto3语法编译
+package Framework;      //声明包名
+
+message Message    //message关键字声明类型
+{
+    int32 id = 1;  //字段得从1开始声明
+    string msg = 2;//然后依次递增，不能跳跃。
+}
