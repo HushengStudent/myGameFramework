@@ -32,6 +32,9 @@ public class UnityEngine_AudioClipWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_AudioClip(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioClip.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -56,6 +59,9 @@ public class UnityEngine_AudioClipWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadAudioData(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioClip.LoadAudioData");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -73,6 +79,9 @@ public class UnityEngine_AudioClipWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnloadAudioData(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioClip.UnloadAudioData");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -90,6 +99,9 @@ public class UnityEngine_AudioClipWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetData(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioClip.GetData");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -109,6 +121,9 @@ public class UnityEngine_AudioClipWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetData(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioClip.SetData");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -128,6 +143,9 @@ public class UnityEngine_AudioClipWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Create(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioClip.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -182,6 +200,9 @@ public class UnityEngine_AudioClipWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioClip.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -200,6 +221,9 @@ public class UnityEngine_AudioClipWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_length(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioClip.length");
+#endif
 		object o = null;
 
 		try
@@ -219,6 +243,9 @@ public class UnityEngine_AudioClipWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_samples(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioClip.samples");
+#endif
 		object o = null;
 
 		try
@@ -238,6 +265,9 @@ public class UnityEngine_AudioClipWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_channels(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioClip.channels");
+#endif
 		object o = null;
 
 		try
@@ -257,6 +287,9 @@ public class UnityEngine_AudioClipWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_frequency(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioClip.frequency");
+#endif
 		object o = null;
 
 		try
@@ -276,6 +309,9 @@ public class UnityEngine_AudioClipWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_loadType(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioClip.loadType");
+#endif
 		object o = null;
 
 		try
@@ -295,6 +331,9 @@ public class UnityEngine_AudioClipWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_preloadAudioData(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioClip.preloadAudioData");
+#endif
 		object o = null;
 
 		try
@@ -314,6 +353,9 @@ public class UnityEngine_AudioClipWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_ambisonic(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioClip.ambisonic");
+#endif
 		object o = null;
 
 		try
@@ -333,6 +375,9 @@ public class UnityEngine_AudioClipWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_loadState(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioClip.loadState");
+#endif
 		object o = null;
 
 		try
@@ -352,6 +397,9 @@ public class UnityEngine_AudioClipWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_loadInBackground(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioClip.loadInBackground");
+#endif
 		object o = null;
 
 		try
@@ -371,6 +419,9 @@ public class UnityEngine_AudioClipWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnityEngine_AudioClip_PCMReaderCallback(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioClip.UnityEngine_AudioClip_PCMReaderCallback");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -398,6 +449,9 @@ public class UnityEngine_AudioClipWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnityEngine_AudioClip_PCMSetPositionCallback(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioClip.UnityEngine_AudioClip_PCMSetPositionCallback");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);

@@ -32,6 +32,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_RectTransform(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -56,6 +59,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetLocalCorners(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -89,6 +95,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetWorldCorners(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -122,6 +131,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetInsetAndSizeFromParentEdge(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.SetInsetAndSizeFromParentEdge");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 4);
@@ -141,6 +153,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetSizeWithCurrentAnchors(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.SetSizeWithCurrentAnchors");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -159,6 +174,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ForceUpdateRectTransforms(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.ForceUpdateRectTransforms");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -175,6 +193,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -193,6 +214,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_rect(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.rect");
+#endif
 		object o = null;
 
 		try
@@ -212,6 +236,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_anchorMin(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.anchorMin");
+#endif
 		object o = null;
 
 		try
@@ -231,6 +258,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_anchorMax(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.anchorMax");
+#endif
 		object o = null;
 
 		try
@@ -250,6 +280,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_anchoredPosition3D(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.anchoredPosition3D");
+#endif
 		object o = null;
 
 		try
@@ -269,6 +302,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_anchoredPosition(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.anchoredPosition");
+#endif
 		object o = null;
 
 		try
@@ -288,6 +324,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_sizeDelta(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.sizeDelta");
+#endif
 		object o = null;
 
 		try
@@ -307,6 +346,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_pivot(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.pivot");
+#endif
 		object o = null;
 
 		try
@@ -326,6 +368,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_offsetMin(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.offsetMin");
+#endif
 		object o = null;
 
 		try
@@ -345,6 +390,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_offsetMax(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.offsetMax");
+#endif
 		object o = null;
 
 		try
@@ -364,6 +412,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_reapplyDrivenProperties(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.reapplyDrivenProperties");
+#endif
 		ToLua.Push(L, new EventObject(typeof(UnityEngine.RectTransform.ReapplyDrivenProperties)));
 		return 1;
 	}
@@ -371,6 +422,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_anchorMin(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.anchorMin");
+#endif
 		object o = null;
 
 		try
@@ -390,6 +444,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_anchorMax(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.anchorMax");
+#endif
 		object o = null;
 
 		try
@@ -409,6 +466,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_anchoredPosition3D(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.anchoredPosition3D");
+#endif
 		object o = null;
 
 		try
@@ -428,6 +488,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_anchoredPosition(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.anchoredPosition");
+#endif
 		object o = null;
 
 		try
@@ -447,6 +510,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_sizeDelta(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.sizeDelta");
+#endif
 		object o = null;
 
 		try
@@ -466,6 +532,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_pivot(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.pivot");
+#endif
 		object o = null;
 
 		try
@@ -485,6 +554,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_offsetMin(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.offsetMin");
+#endif
 		object o = null;
 
 		try
@@ -504,6 +576,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_offsetMax(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.offsetMax");
+#endif
 		object o = null;
 
 		try
@@ -523,6 +598,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_reapplyDrivenProperties(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.set_reapplyDrivenProperties");
+#endif
 		try
 		{
 			EventObject arg0 = null;
@@ -558,6 +636,9 @@ public class UnityEngine_RectTransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnityEngine_RectTransform_ReapplyDrivenProperties(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RectTransform.UnityEngine_RectTransform_ReapplyDrivenProperties");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);

@@ -26,6 +26,9 @@ public class Framework_ResourceMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Init(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.Init");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -42,6 +45,9 @@ public class Framework_ResourceMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadAssetSync(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -79,6 +85,9 @@ public class Framework_ResourceMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadAssetProxy(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -127,6 +136,9 @@ public class Framework_ResourceMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int AddProxy(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.AddProxy");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -144,6 +156,9 @@ public class Framework_ResourceMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CancleAllProxy(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.CancleAllProxy");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -161,6 +176,9 @@ public class Framework_ResourceMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnloadUnityAssetMemory(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.UnloadUnityAssetMemory");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -179,6 +197,9 @@ public class Framework_ResourceMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnloadUnitySceneMemory(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.UnloadUnitySceneMemory");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -197,6 +218,9 @@ public class Framework_ResourceMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GameGC(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.GameGC");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -213,6 +237,9 @@ public class Framework_ResourceMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnloadUnusedAssets(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.UnloadUnusedAssets");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -230,6 +257,9 @@ public class Framework_ResourceMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -248,6 +278,9 @@ public class Framework_ResourceMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_MAX_LOAD_TIME(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.MAX_LOAD_TIME");
+#endif
 		object o = null;
 
 		try
@@ -267,6 +300,9 @@ public class Framework_ResourceMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_ResourceMgrInitHandler(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.ResourceMgrInitHandler");
+#endif
 		object o = null;
 
 		try
@@ -286,6 +322,9 @@ public class Framework_ResourceMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_ResourceMgrInitHandler(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.ResourceMgrInitHandler");
+#endif
 		object o = null;
 
 		try

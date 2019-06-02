@@ -15,6 +15,9 @@ public class Framework_LuaNetHelperWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SendLuaReq(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaNetHelper.SendLuaReq");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -32,6 +35,9 @@ public class Framework_LuaNetHelperWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Send2Lua(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaNetHelper.Send2Lua");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);

@@ -18,6 +18,9 @@ public class UnityEngine_SphereColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_SphereCollider(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SphereCollider.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -42,6 +45,9 @@ public class UnityEngine_SphereColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SphereCollider.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -60,6 +66,9 @@ public class UnityEngine_SphereColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_center(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SphereCollider.center");
+#endif
 		object o = null;
 
 		try
@@ -79,6 +88,9 @@ public class UnityEngine_SphereColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_radius(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SphereCollider.radius");
+#endif
 		object o = null;
 
 		try
@@ -98,6 +110,9 @@ public class UnityEngine_SphereColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_center(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SphereCollider.center");
+#endif
 		object o = null;
 
 		try
@@ -117,6 +132,9 @@ public class UnityEngine_SphereColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_radius(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SphereCollider.radius");
+#endif
 		object o = null;
 
 		try

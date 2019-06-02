@@ -63,6 +63,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Quit(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.Quit");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 0);
@@ -78,6 +81,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CancelQuit(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.CancelQuit");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 0);
@@ -93,6 +99,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Unload(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.Unload");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 0);
@@ -108,6 +117,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetStreamProgressForLevel(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -140,6 +152,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CanStreamedLevelBeLoaded(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -172,6 +187,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetBuildTags(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.GetBuildTags");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 0);
@@ -188,6 +206,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetBuildTags(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.SetBuildTags");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -204,6 +225,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int HasProLicense(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.HasProLicense");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 0);
@@ -220,6 +244,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RequestAdvertisingIdentifierAsync(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.RequestAdvertisingIdentifierAsync");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -237,6 +264,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int OpenURL(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.OpenURL");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -253,6 +283,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetStackTraceLogType(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.GetStackTraceLogType");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -270,6 +303,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetStackTraceLogType(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.SetStackTraceLogType");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -287,6 +323,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RequestUserAuthorization(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.RequestUserAuthorization");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -304,6 +343,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int HasUserAuthorization(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.HasUserAuthorization");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -321,6 +363,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_streamedBytes(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.streamedBytes");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.Application.streamedBytes);
@@ -335,6 +380,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isPlaying(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.isPlaying");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.Application.isPlaying);
@@ -349,6 +397,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isFocused(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.isFocused");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.Application.isFocused);
@@ -363,6 +414,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isEditor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.isEditor");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.Application.isEditor);
@@ -377,6 +431,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_platform(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.platform");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.Application.platform);
@@ -391,6 +448,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_buildGUID(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.buildGUID");
+#endif
 		try
 		{
 			LuaDLL.lua_pushstring(L, UnityEngine.Application.buildGUID);
@@ -405,6 +465,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isMobilePlatform(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.isMobilePlatform");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.Application.isMobilePlatform);
@@ -419,6 +482,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isConsolePlatform(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.isConsolePlatform");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.Application.isConsolePlatform);
@@ -433,6 +499,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_runInBackground(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.runInBackground");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.Application.runInBackground);
@@ -447,6 +516,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_dataPath(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.dataPath");
+#endif
 		try
 		{
 			LuaDLL.lua_pushstring(L, UnityEngine.Application.dataPath);
@@ -461,6 +533,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_streamingAssetsPath(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.streamingAssetsPath");
+#endif
 		try
 		{
 			LuaDLL.lua_pushstring(L, UnityEngine.Application.streamingAssetsPath);
@@ -475,6 +550,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_persistentDataPath(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.persistentDataPath");
+#endif
 		try
 		{
 			LuaDLL.lua_pushstring(L, UnityEngine.Application.persistentDataPath);
@@ -489,6 +567,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_temporaryCachePath(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.temporaryCachePath");
+#endif
 		try
 		{
 			LuaDLL.lua_pushstring(L, UnityEngine.Application.temporaryCachePath);
@@ -503,6 +584,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_absoluteURL(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.absoluteURL");
+#endif
 		try
 		{
 			LuaDLL.lua_pushstring(L, UnityEngine.Application.absoluteURL);
@@ -517,6 +601,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_unityVersion(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.unityVersion");
+#endif
 		try
 		{
 			LuaDLL.lua_pushstring(L, UnityEngine.Application.unityVersion);
@@ -531,6 +618,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_version(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.version");
+#endif
 		try
 		{
 			LuaDLL.lua_pushstring(L, UnityEngine.Application.version);
@@ -545,6 +635,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_installerName(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.installerName");
+#endif
 		try
 		{
 			LuaDLL.lua_pushstring(L, UnityEngine.Application.installerName);
@@ -559,6 +652,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_identifier(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.identifier");
+#endif
 		try
 		{
 			LuaDLL.lua_pushstring(L, UnityEngine.Application.identifier);
@@ -573,6 +669,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_installMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.installMode");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.Application.installMode);
@@ -587,6 +686,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_sandboxType(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.sandboxType");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.Application.sandboxType);
@@ -601,6 +703,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_productName(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.productName");
+#endif
 		try
 		{
 			LuaDLL.lua_pushstring(L, UnityEngine.Application.productName);
@@ -615,6 +720,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_companyName(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.companyName");
+#endif
 		try
 		{
 			LuaDLL.lua_pushstring(L, UnityEngine.Application.companyName);
@@ -629,6 +737,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_cloudProjectId(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.cloudProjectId");
+#endif
 		try
 		{
 			LuaDLL.lua_pushstring(L, UnityEngine.Application.cloudProjectId);
@@ -643,6 +754,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_targetFrameRate(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.targetFrameRate");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.Application.targetFrameRate);
@@ -657,6 +771,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_systemLanguage(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.systemLanguage");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.Application.systemLanguage);
@@ -671,6 +788,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_backgroundLoadingPriority(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.backgroundLoadingPriority");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.Application.backgroundLoadingPriority);
@@ -685,6 +805,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_internetReachability(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.internetReachability");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.Application.internetReachability);
@@ -699,6 +822,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_genuine(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.genuine");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.Application.genuine);
@@ -713,6 +839,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_genuineCheckAvailable(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.genuineCheckAvailable");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.Application.genuineCheckAvailable);
@@ -727,6 +856,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_lowMemory(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.lowMemory");
+#endif
 		ToLua.Push(L, new EventObject(typeof(UnityEngine.Application.LowMemoryCallback)));
 		return 1;
 	}
@@ -734,6 +866,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_logMessageReceived(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.logMessageReceived");
+#endif
 		ToLua.Push(L, new EventObject(typeof(UnityEngine.Application.LogCallback)));
 		return 1;
 	}
@@ -741,6 +876,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_logMessageReceivedThreaded(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.logMessageReceivedThreaded");
+#endif
 		ToLua.Push(L, new EventObject(typeof(UnityEngine.Application.LogCallback)));
 		return 1;
 	}
@@ -748,6 +886,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_onBeforeRender(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.onBeforeRender");
+#endif
 		ToLua.Push(L, new EventObject(typeof(UnityEngine.Events.UnityAction)));
 		return 1;
 	}
@@ -755,6 +896,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_runInBackground(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.runInBackground");
+#endif
 		try
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
@@ -770,6 +914,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_targetFrameRate(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.targetFrameRate");
+#endif
 		try
 		{
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
@@ -785,6 +932,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_backgroundLoadingPriority(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.backgroundLoadingPriority");
+#endif
 		try
 		{
 			UnityEngine.ThreadPriority arg0 = (UnityEngine.ThreadPriority)ToLua.CheckObject(L, 2, typeof(UnityEngine.ThreadPriority));
@@ -800,6 +950,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_lowMemory(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.set_lowMemory");
+#endif
 		try
 		{
 			EventObject arg0 = null;
@@ -835,6 +988,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_logMessageReceived(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.set_logMessageReceived");
+#endif
 		try
 		{
 			EventObject arg0 = null;
@@ -870,6 +1026,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_logMessageReceivedThreaded(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.set_logMessageReceivedThreaded");
+#endif
 		try
 		{
 			EventObject arg0 = null;
@@ -905,6 +1064,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_onBeforeRender(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.set_onBeforeRender");
+#endif
 		try
 		{
 			EventObject arg0 = null;
@@ -940,6 +1102,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnityEngine_Application_AdvertisingIdentifierCallback(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.UnityEngine_Application_AdvertisingIdentifierCallback");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -967,6 +1132,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnityEngine_Application_LogCallback(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.UnityEngine_Application_LogCallback");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -994,6 +1162,9 @@ public class UnityEngine_ApplicationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnityEngine_Application_LowMemoryCallback(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Application.UnityEngine_Application_LowMemoryCallback");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);

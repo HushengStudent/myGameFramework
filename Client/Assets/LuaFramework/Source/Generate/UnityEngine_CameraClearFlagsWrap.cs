@@ -31,6 +31,9 @@ public class UnityEngine_CameraClearFlagsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Skybox(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CameraClearFlags.Skybox");
+#endif
 		ToLua.Push(L, UnityEngine.CameraClearFlags.Skybox);
 		return 1;
 	}
@@ -38,6 +41,9 @@ public class UnityEngine_CameraClearFlagsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Color(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CameraClearFlags.Color");
+#endif
 		ToLua.Push(L, UnityEngine.CameraClearFlags.Color);
 		return 1;
 	}
@@ -45,6 +51,9 @@ public class UnityEngine_CameraClearFlagsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_SolidColor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CameraClearFlags.SolidColor");
+#endif
 		ToLua.Push(L, UnityEngine.CameraClearFlags.SolidColor);
 		return 1;
 	}
@@ -52,6 +61,9 @@ public class UnityEngine_CameraClearFlagsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Depth(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CameraClearFlags.Depth");
+#endif
 		ToLua.Push(L, UnityEngine.CameraClearFlags.Depth);
 		return 1;
 	}
@@ -59,6 +71,9 @@ public class UnityEngine_CameraClearFlagsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Nothing(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CameraClearFlags.Nothing");
+#endif
 		ToLua.Push(L, UnityEngine.CameraClearFlags.Nothing);
 		return 1;
 	}
@@ -66,6 +81,9 @@ public class UnityEngine_CameraClearFlagsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IntToEnum(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CameraClearFlags.IntToEnum");
+#endif
 		int arg0 = (int)LuaDLL.lua_tonumber(L, 1);
 		UnityEngine.CameraClearFlags o = (UnityEngine.CameraClearFlags)arg0;
 		ToLua.Push(L, o);

@@ -37,6 +37,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_Texture2D(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -84,6 +87,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CreateExternalTexture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.CreateExternalTexture");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 6);
@@ -106,6 +112,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UpdateExternalTexture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.UpdateExternalTexture");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -123,6 +132,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetPixel(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.SetPixel");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 4);
@@ -142,6 +154,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetPixel(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.GetPixel");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -161,6 +176,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetPixelBilinear(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.GetPixelBilinear");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -180,6 +198,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetPixels(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -236,6 +257,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetPixels32(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -292,6 +316,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadRawTextureData(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -325,6 +352,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetRawTextureData(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.GetRawTextureData");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -342,6 +372,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetPixels(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -398,6 +431,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetPixels32(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -431,6 +467,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Apply(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -470,6 +509,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Resize(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -508,6 +550,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Compress(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.Compress");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -525,6 +570,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int PackTextures(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -573,6 +621,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GenerateAtlas(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.GenerateAtlas");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 4);
@@ -593,6 +644,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ReadPixels(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -630,6 +684,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -648,6 +705,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_mipmapCount(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.mipmapCount");
+#endif
 		object o = null;
 
 		try
@@ -667,6 +727,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_format(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.format");
+#endif
 		object o = null;
 
 		try
@@ -686,6 +749,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_whiteTexture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.whiteTexture");
+#endif
 		try
 		{
 			ToLua.PushSealed(L, UnityEngine.Texture2D.whiteTexture);
@@ -700,6 +766,9 @@ public class UnityEngine_Texture2DWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_blackTexture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture2D.blackTexture");
+#endif
 		try
 		{
 			ToLua.PushSealed(L, UnityEngine.Texture2D.blackTexture);

@@ -4,9 +4,7 @@
 ** desc:  tolua profiler;
 *********************************************************************************/
 
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public static class ToluaProfiler
 {
@@ -19,12 +17,13 @@ public static class ToluaProfiler
     private static Dictionary<string, CallInfo> _luaCallCountDict = new Dictionary<string, CallInfo>();
     private static Dictionary<string, ulong> _frameCallCountDict = new Dictionary<string, ulong>();
     private static ulong _allFrame = 0;
-    private static bool _profilerEnable = false;
+
+    public static bool ProfilerEnable = false;
 
     public static void AddCallRecord(string name)
     {
 #if UNITY_EDITOR
-        if (_profilerEnable)
+        if (ProfilerEnable)
         {
             ulong count = 0;
             _frameCallCountDict.TryGetValue(name, out count);
@@ -48,7 +47,7 @@ public static class ToluaProfiler
     public static void Update()
     {
 #if UNITY_EDITOR
-        if (_profilerEnable)
+        if (ProfilerEnable)
         {
             foreach (var target in _frameCallCountDict)
             {

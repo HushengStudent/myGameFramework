@@ -43,6 +43,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_Light(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -67,6 +70,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int AddCommandBuffer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -102,6 +108,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RemoveCommandBuffer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.RemoveCommandBuffer");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -120,6 +129,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RemoveCommandBuffers(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.RemoveCommandBuffers");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -137,6 +149,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RemoveAllCommandBuffers(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.RemoveAllCommandBuffers");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -153,6 +168,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetCommandBuffers(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.GetCommandBuffers");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -171,6 +189,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetLights(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.GetLights");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -189,6 +210,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -207,6 +231,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_shadows(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.shadows");
+#endif
 		object o = null;
 
 		try
@@ -226,6 +253,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_shadowStrength(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.shadowStrength");
+#endif
 		object o = null;
 
 		try
@@ -245,6 +275,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_shadowResolution(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.shadowResolution");
+#endif
 		object o = null;
 
 		try
@@ -264,6 +297,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_cookieSize(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.cookieSize");
+#endif
 		object o = null;
 
 		try
@@ -283,6 +319,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_cookie(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.cookie");
+#endif
 		object o = null;
 
 		try
@@ -302,6 +341,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_renderMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.renderMode");
+#endif
 		object o = null;
 
 		try
@@ -321,6 +363,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_commandBufferCount(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.commandBufferCount");
+#endif
 		object o = null;
 
 		try
@@ -340,6 +385,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_type(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.type");
+#endif
 		object o = null;
 
 		try
@@ -359,6 +407,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_spotAngle(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.spotAngle");
+#endif
 		object o = null;
 
 		try
@@ -378,6 +429,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_color(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.color");
+#endif
 		object o = null;
 
 		try
@@ -397,6 +451,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_colorTemperature(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.colorTemperature");
+#endif
 		object o = null;
 
 		try
@@ -416,6 +473,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_intensity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.intensity");
+#endif
 		object o = null;
 
 		try
@@ -435,6 +495,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_bounceIntensity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.bounceIntensity");
+#endif
 		object o = null;
 
 		try
@@ -454,6 +517,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_shadowCustomResolution(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.shadowCustomResolution");
+#endif
 		object o = null;
 
 		try
@@ -473,6 +539,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_shadowBias(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.shadowBias");
+#endif
 		object o = null;
 
 		try
@@ -492,6 +561,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_shadowNormalBias(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.shadowNormalBias");
+#endif
 		object o = null;
 
 		try
@@ -511,6 +583,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_shadowNearPlane(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.shadowNearPlane");
+#endif
 		object o = null;
 
 		try
@@ -530,6 +605,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_range(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.range");
+#endif
 		object o = null;
 
 		try
@@ -549,6 +627,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_flare(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.flare");
+#endif
 		object o = null;
 
 		try
@@ -568,6 +649,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_bakingOutput(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.bakingOutput");
+#endif
 		object o = null;
 
 		try
@@ -587,6 +671,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_cullingMask(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.cullingMask");
+#endif
 		object o = null;
 
 		try
@@ -606,6 +693,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_shadows(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.shadows");
+#endif
 		object o = null;
 
 		try
@@ -625,6 +715,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_shadowStrength(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.shadowStrength");
+#endif
 		object o = null;
 
 		try
@@ -644,6 +737,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_shadowResolution(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.shadowResolution");
+#endif
 		object o = null;
 
 		try
@@ -663,6 +759,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_cookieSize(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.cookieSize");
+#endif
 		object o = null;
 
 		try
@@ -682,6 +781,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_cookie(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.cookie");
+#endif
 		object o = null;
 
 		try
@@ -701,6 +803,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_renderMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.renderMode");
+#endif
 		object o = null;
 
 		try
@@ -720,6 +825,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_type(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.type");
+#endif
 		object o = null;
 
 		try
@@ -739,6 +847,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_spotAngle(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.spotAngle");
+#endif
 		object o = null;
 
 		try
@@ -758,6 +869,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_color(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.color");
+#endif
 		object o = null;
 
 		try
@@ -777,6 +891,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_colorTemperature(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.colorTemperature");
+#endif
 		object o = null;
 
 		try
@@ -796,6 +913,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_intensity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.intensity");
+#endif
 		object o = null;
 
 		try
@@ -815,6 +935,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_bounceIntensity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.bounceIntensity");
+#endif
 		object o = null;
 
 		try
@@ -834,6 +957,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_shadowCustomResolution(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.shadowCustomResolution");
+#endif
 		object o = null;
 
 		try
@@ -853,6 +979,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_shadowBias(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.shadowBias");
+#endif
 		object o = null;
 
 		try
@@ -872,6 +1001,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_shadowNormalBias(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.shadowNormalBias");
+#endif
 		object o = null;
 
 		try
@@ -891,6 +1023,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_shadowNearPlane(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.shadowNearPlane");
+#endif
 		object o = null;
 
 		try
@@ -910,6 +1045,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_range(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.range");
+#endif
 		object o = null;
 
 		try
@@ -929,6 +1067,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_flare(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.flare");
+#endif
 		object o = null;
 
 		try
@@ -948,6 +1089,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_bakingOutput(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.bakingOutput");
+#endif
 		object o = null;
 
 		try
@@ -967,6 +1111,9 @@ public class UnityEngine_LightWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_cullingMask(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Light.cullingMask");
+#endif
 		object o = null;
 
 		try

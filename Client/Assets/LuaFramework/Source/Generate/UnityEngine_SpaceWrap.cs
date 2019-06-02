@@ -28,6 +28,9 @@ public class UnityEngine_SpaceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_World(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Space.World");
+#endif
 		ToLua.Push(L, UnityEngine.Space.World);
 		return 1;
 	}
@@ -35,6 +38,9 @@ public class UnityEngine_SpaceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Self(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Space.Self");
+#endif
 		ToLua.Push(L, UnityEngine.Space.Self);
 		return 1;
 	}
@@ -42,6 +48,9 @@ public class UnityEngine_SpaceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IntToEnum(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Space.IntToEnum");
+#endif
 		int arg0 = (int)LuaDLL.lua_tonumber(L, 1);
 		UnityEngine.Space o = (UnityEngine.Space)arg0;
 		ToLua.Push(L, o);

@@ -38,6 +38,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -56,6 +59,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_ambientProbe(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.ambientProbe");
+#endif
 		try
 		{
 			ToLua.PushValue(L, UnityEngine.RenderSettings.ambientProbe);
@@ -70,6 +76,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_customReflection(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.customReflection");
+#endif
 		try
 		{
 			ToLua.PushSealed(L, UnityEngine.RenderSettings.customReflection);
@@ -84,6 +93,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_fog(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.fog");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.RenderSettings.fog);
@@ -98,6 +110,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_fogStartDistance(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.fogStartDistance");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.RenderSettings.fogStartDistance);
@@ -112,6 +127,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_fogEndDistance(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.fogEndDistance");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.RenderSettings.fogEndDistance);
@@ -126,6 +144,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_fogMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.fogMode");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.RenderSettings.fogMode);
@@ -140,6 +161,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_fogColor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.fogColor");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.RenderSettings.fogColor);
@@ -154,6 +178,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_fogDensity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.fogDensity");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.RenderSettings.fogDensity);
@@ -168,6 +195,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_ambientMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.ambientMode");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.RenderSettings.ambientMode);
@@ -182,6 +212,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_ambientSkyColor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.ambientSkyColor");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.RenderSettings.ambientSkyColor);
@@ -196,6 +229,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_ambientEquatorColor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.ambientEquatorColor");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.RenderSettings.ambientEquatorColor);
@@ -210,6 +246,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_ambientGroundColor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.ambientGroundColor");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.RenderSettings.ambientGroundColor);
@@ -224,6 +263,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_ambientIntensity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.ambientIntensity");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.RenderSettings.ambientIntensity);
@@ -238,6 +280,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_ambientLight(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.ambientLight");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.RenderSettings.ambientLight);
@@ -252,6 +297,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_subtractiveShadowColor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.subtractiveShadowColor");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.RenderSettings.subtractiveShadowColor);
@@ -266,6 +314,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_skybox(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.skybox");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.RenderSettings.skybox);
@@ -280,6 +331,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_sun(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.sun");
+#endif
 		try
 		{
 			ToLua.PushSealed(L, UnityEngine.RenderSettings.sun);
@@ -294,6 +348,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_reflectionIntensity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.reflectionIntensity");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.RenderSettings.reflectionIntensity);
@@ -308,6 +365,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_reflectionBounces(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.reflectionBounces");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.RenderSettings.reflectionBounces);
@@ -322,6 +382,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_defaultReflectionMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.defaultReflectionMode");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.RenderSettings.defaultReflectionMode);
@@ -336,6 +399,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_defaultReflectionResolution(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.defaultReflectionResolution");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.RenderSettings.defaultReflectionResolution);
@@ -350,6 +416,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_haloStrength(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.haloStrength");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.RenderSettings.haloStrength);
@@ -364,6 +433,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_flareStrength(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.flareStrength");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.RenderSettings.flareStrength);
@@ -378,6 +450,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_flareFadeSpeed(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.flareFadeSpeed");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.RenderSettings.flareFadeSpeed);
@@ -392,6 +467,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_ambientProbe(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.ambientProbe");
+#endif
 		try
 		{
 			UnityEngine.Rendering.SphericalHarmonicsL2 arg0 = StackTraits<UnityEngine.Rendering.SphericalHarmonicsL2>.Check(L, 2);
@@ -407,6 +485,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_customReflection(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.customReflection");
+#endif
 		try
 		{
 			UnityEngine.Cubemap arg0 = (UnityEngine.Cubemap)ToLua.CheckObject(L, 2, typeof(UnityEngine.Cubemap));
@@ -422,6 +503,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_fog(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.fog");
+#endif
 		try
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
@@ -437,6 +521,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_fogStartDistance(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.fogStartDistance");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
@@ -452,6 +539,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_fogEndDistance(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.fogEndDistance");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
@@ -467,6 +557,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_fogMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.fogMode");
+#endif
 		try
 		{
 			UnityEngine.FogMode arg0 = (UnityEngine.FogMode)ToLua.CheckObject(L, 2, typeof(UnityEngine.FogMode));
@@ -482,6 +575,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_fogColor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.fogColor");
+#endif
 		try
 		{
 			UnityEngine.Color arg0 = ToLua.ToColor(L, 2);
@@ -497,6 +593,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_fogDensity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.fogDensity");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
@@ -512,6 +611,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_ambientMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.ambientMode");
+#endif
 		try
 		{
 			UnityEngine.Rendering.AmbientMode arg0 = (UnityEngine.Rendering.AmbientMode)ToLua.CheckObject(L, 2, typeof(UnityEngine.Rendering.AmbientMode));
@@ -527,6 +629,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_ambientSkyColor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.ambientSkyColor");
+#endif
 		try
 		{
 			UnityEngine.Color arg0 = ToLua.ToColor(L, 2);
@@ -542,6 +647,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_ambientEquatorColor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.ambientEquatorColor");
+#endif
 		try
 		{
 			UnityEngine.Color arg0 = ToLua.ToColor(L, 2);
@@ -557,6 +665,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_ambientGroundColor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.ambientGroundColor");
+#endif
 		try
 		{
 			UnityEngine.Color arg0 = ToLua.ToColor(L, 2);
@@ -572,6 +683,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_ambientIntensity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.ambientIntensity");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
@@ -587,6 +701,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_ambientLight(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.ambientLight");
+#endif
 		try
 		{
 			UnityEngine.Color arg0 = ToLua.ToColor(L, 2);
@@ -602,6 +719,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_subtractiveShadowColor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.subtractiveShadowColor");
+#endif
 		try
 		{
 			UnityEngine.Color arg0 = ToLua.ToColor(L, 2);
@@ -617,6 +737,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_skybox(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.skybox");
+#endif
 		try
 		{
 			UnityEngine.Material arg0 = (UnityEngine.Material)ToLua.CheckObject<UnityEngine.Material>(L, 2);
@@ -632,6 +755,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_sun(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.sun");
+#endif
 		try
 		{
 			UnityEngine.Light arg0 = (UnityEngine.Light)ToLua.CheckObject(L, 2, typeof(UnityEngine.Light));
@@ -647,6 +773,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_reflectionIntensity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.reflectionIntensity");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
@@ -662,6 +791,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_reflectionBounces(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.reflectionBounces");
+#endif
 		try
 		{
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
@@ -677,6 +809,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_defaultReflectionMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.defaultReflectionMode");
+#endif
 		try
 		{
 			UnityEngine.Rendering.DefaultReflectionMode arg0 = (UnityEngine.Rendering.DefaultReflectionMode)ToLua.CheckObject(L, 2, typeof(UnityEngine.Rendering.DefaultReflectionMode));
@@ -692,6 +827,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_defaultReflectionResolution(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.defaultReflectionResolution");
+#endif
 		try
 		{
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
@@ -707,6 +845,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_haloStrength(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.haloStrength");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
@@ -722,6 +863,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_flareStrength(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.flareStrength");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
@@ -737,6 +881,9 @@ public class UnityEngine_RenderSettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_flareFadeSpeed(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.flareFadeSpeed");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);

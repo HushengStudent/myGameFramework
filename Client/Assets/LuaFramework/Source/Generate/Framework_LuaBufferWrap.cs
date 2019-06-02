@@ -36,6 +36,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateFramework_LuaBuffer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -67,6 +70,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Close(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.Close");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -83,6 +89,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int WriteByte(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.WriteByte");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -100,6 +109,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int WriteInt(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.WriteInt");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -117,6 +129,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int WriteShort(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.WriteShort");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -134,6 +149,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int WriteLong(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.WriteLong");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -151,6 +169,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int WriteFloat(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.WriteFloat");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -168,6 +189,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int WriteDouble(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.WriteDouble");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -185,6 +209,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int WriteString(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.WriteString");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -202,6 +229,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int WriteBytes(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.WriteBytes");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -219,6 +249,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int WriteBuffer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.WriteBuffer");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -236,6 +269,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ReadByte(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ReadByte");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -253,6 +289,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ReadInt(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ReadInt");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -270,6 +309,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ReadShort(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ReadShort");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -287,6 +329,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ReadLong(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ReadLong");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -304,6 +349,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ReadFloat(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ReadFloat");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -321,6 +369,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ReadDouble(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ReadDouble");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -338,6 +389,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ReadString(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ReadString");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -355,6 +409,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ReadBytes(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ReadBytes");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -372,6 +429,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ReadBuffer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ReadBuffer");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -389,6 +449,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ToBytes(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ToBytes");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -406,6 +469,9 @@ public class Framework_LuaBufferWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Flush(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.Flush");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);

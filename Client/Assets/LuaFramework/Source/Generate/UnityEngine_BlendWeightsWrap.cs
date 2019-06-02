@@ -29,6 +29,9 @@ public class UnityEngine_BlendWeightsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_OneBone(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.BlendWeights.OneBone");
+#endif
 		ToLua.Push(L, UnityEngine.BlendWeights.OneBone);
 		return 1;
 	}
@@ -36,6 +39,9 @@ public class UnityEngine_BlendWeightsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_TwoBones(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.BlendWeights.TwoBones");
+#endif
 		ToLua.Push(L, UnityEngine.BlendWeights.TwoBones);
 		return 1;
 	}
@@ -43,6 +49,9 @@ public class UnityEngine_BlendWeightsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_FourBones(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.BlendWeights.FourBones");
+#endif
 		ToLua.Push(L, UnityEngine.BlendWeights.FourBones);
 		return 1;
 	}
@@ -50,6 +59,9 @@ public class UnityEngine_BlendWeightsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IntToEnum(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.BlendWeights.IntToEnum");
+#endif
 		int arg0 = (int)LuaDLL.lua_tonumber(L, 1);
 		UnityEngine.BlendWeights o = (UnityEngine.BlendWeights)arg0;
 		ToLua.Push(L, o);

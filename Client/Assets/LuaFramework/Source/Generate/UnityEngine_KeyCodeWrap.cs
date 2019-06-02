@@ -347,6 +347,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_None(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.None");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.None);
 		return 1;
 	}
@@ -354,6 +357,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Backspace(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Backspace");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Backspace);
 		return 1;
 	}
@@ -361,6 +367,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Delete(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Delete");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Delete);
 		return 1;
 	}
@@ -368,6 +377,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Tab(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Tab");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Tab);
 		return 1;
 	}
@@ -375,6 +387,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Clear(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Clear");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Clear);
 		return 1;
 	}
@@ -382,6 +397,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Return(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Return");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Return);
 		return 1;
 	}
@@ -389,6 +407,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Pause(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Pause");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Pause);
 		return 1;
 	}
@@ -396,6 +417,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Escape(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Escape");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Escape);
 		return 1;
 	}
@@ -403,6 +427,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Space(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Space");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Space);
 		return 1;
 	}
@@ -410,6 +437,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Keypad0(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Keypad0");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Keypad0);
 		return 1;
 	}
@@ -417,6 +447,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Keypad1(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Keypad1");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Keypad1);
 		return 1;
 	}
@@ -424,6 +457,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Keypad2(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Keypad2");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Keypad2);
 		return 1;
 	}
@@ -431,6 +467,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Keypad3(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Keypad3");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Keypad3);
 		return 1;
 	}
@@ -438,6 +477,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Keypad4(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Keypad4");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Keypad4);
 		return 1;
 	}
@@ -445,6 +487,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Keypad5(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Keypad5");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Keypad5);
 		return 1;
 	}
@@ -452,6 +497,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Keypad6(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Keypad6");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Keypad6);
 		return 1;
 	}
@@ -459,6 +507,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Keypad7(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Keypad7");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Keypad7);
 		return 1;
 	}
@@ -466,6 +517,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Keypad8(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Keypad8");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Keypad8);
 		return 1;
 	}
@@ -473,6 +527,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Keypad9(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Keypad9");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Keypad9);
 		return 1;
 	}
@@ -480,6 +537,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_KeypadPeriod(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.KeypadPeriod");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.KeypadPeriod);
 		return 1;
 	}
@@ -487,6 +547,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_KeypadDivide(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.KeypadDivide");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.KeypadDivide);
 		return 1;
 	}
@@ -494,6 +557,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_KeypadMultiply(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.KeypadMultiply");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.KeypadMultiply);
 		return 1;
 	}
@@ -501,6 +567,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_KeypadMinus(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.KeypadMinus");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.KeypadMinus);
 		return 1;
 	}
@@ -508,6 +577,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_KeypadPlus(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.KeypadPlus");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.KeypadPlus);
 		return 1;
 	}
@@ -515,6 +587,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_KeypadEnter(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.KeypadEnter");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.KeypadEnter);
 		return 1;
 	}
@@ -522,6 +597,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_KeypadEquals(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.KeypadEquals");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.KeypadEquals);
 		return 1;
 	}
@@ -529,6 +607,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_UpArrow(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.UpArrow");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.UpArrow);
 		return 1;
 	}
@@ -536,6 +617,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_DownArrow(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.DownArrow");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.DownArrow);
 		return 1;
 	}
@@ -543,6 +627,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_RightArrow(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.RightArrow");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.RightArrow);
 		return 1;
 	}
@@ -550,6 +637,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_LeftArrow(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.LeftArrow");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.LeftArrow);
 		return 1;
 	}
@@ -557,6 +647,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Insert(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Insert");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Insert);
 		return 1;
 	}
@@ -564,6 +657,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Home(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Home");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Home);
 		return 1;
 	}
@@ -571,6 +667,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_End(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.End");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.End);
 		return 1;
 	}
@@ -578,6 +677,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_PageUp(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.PageUp");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.PageUp);
 		return 1;
 	}
@@ -585,6 +687,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_PageDown(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.PageDown");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.PageDown);
 		return 1;
 	}
@@ -592,6 +697,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_F1(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.F1");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.F1);
 		return 1;
 	}
@@ -599,6 +707,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_F2(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.F2");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.F2);
 		return 1;
 	}
@@ -606,6 +717,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_F3(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.F3");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.F3);
 		return 1;
 	}
@@ -613,6 +727,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_F4(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.F4");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.F4);
 		return 1;
 	}
@@ -620,6 +737,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_F5(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.F5");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.F5);
 		return 1;
 	}
@@ -627,6 +747,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_F6(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.F6");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.F6);
 		return 1;
 	}
@@ -634,6 +757,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_F7(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.F7");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.F7);
 		return 1;
 	}
@@ -641,6 +767,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_F8(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.F8");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.F8);
 		return 1;
 	}
@@ -648,6 +777,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_F9(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.F9");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.F9);
 		return 1;
 	}
@@ -655,6 +787,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_F10(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.F10");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.F10);
 		return 1;
 	}
@@ -662,6 +797,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_F11(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.F11");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.F11);
 		return 1;
 	}
@@ -669,6 +807,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_F12(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.F12");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.F12);
 		return 1;
 	}
@@ -676,6 +817,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_F13(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.F13");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.F13);
 		return 1;
 	}
@@ -683,6 +827,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_F14(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.F14");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.F14);
 		return 1;
 	}
@@ -690,6 +837,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_F15(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.F15");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.F15);
 		return 1;
 	}
@@ -697,6 +847,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Alpha0(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Alpha0");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Alpha0);
 		return 1;
 	}
@@ -704,6 +857,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Alpha1(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Alpha1");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Alpha1);
 		return 1;
 	}
@@ -711,6 +867,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Alpha2(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Alpha2");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Alpha2);
 		return 1;
 	}
@@ -718,6 +877,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Alpha3(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Alpha3");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Alpha3);
 		return 1;
 	}
@@ -725,6 +887,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Alpha4(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Alpha4");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Alpha4);
 		return 1;
 	}
@@ -732,6 +897,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Alpha5(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Alpha5");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Alpha5);
 		return 1;
 	}
@@ -739,6 +907,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Alpha6(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Alpha6");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Alpha6);
 		return 1;
 	}
@@ -746,6 +917,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Alpha7(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Alpha7");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Alpha7);
 		return 1;
 	}
@@ -753,6 +927,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Alpha8(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Alpha8");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Alpha8);
 		return 1;
 	}
@@ -760,6 +937,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Alpha9(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Alpha9");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Alpha9);
 		return 1;
 	}
@@ -767,6 +947,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Exclaim(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Exclaim");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Exclaim);
 		return 1;
 	}
@@ -774,6 +957,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_DoubleQuote(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.DoubleQuote");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.DoubleQuote);
 		return 1;
 	}
@@ -781,6 +967,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Hash(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Hash");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Hash);
 		return 1;
 	}
@@ -788,6 +977,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Dollar(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Dollar");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Dollar);
 		return 1;
 	}
@@ -795,6 +987,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Ampersand(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Ampersand");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Ampersand);
 		return 1;
 	}
@@ -802,6 +997,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Quote(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Quote");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Quote);
 		return 1;
 	}
@@ -809,6 +1007,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_LeftParen(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.LeftParen");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.LeftParen);
 		return 1;
 	}
@@ -816,6 +1017,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_RightParen(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.RightParen");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.RightParen);
 		return 1;
 	}
@@ -823,6 +1027,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Asterisk(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Asterisk");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Asterisk);
 		return 1;
 	}
@@ -830,6 +1037,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Plus(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Plus");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Plus);
 		return 1;
 	}
@@ -837,6 +1047,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Comma(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Comma");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Comma);
 		return 1;
 	}
@@ -844,6 +1057,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Minus(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Minus");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Minus);
 		return 1;
 	}
@@ -851,6 +1067,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Period(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Period");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Period);
 		return 1;
 	}
@@ -858,6 +1077,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Slash(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Slash");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Slash);
 		return 1;
 	}
@@ -865,6 +1087,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Colon(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Colon");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Colon);
 		return 1;
 	}
@@ -872,6 +1097,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Semicolon(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Semicolon");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Semicolon);
 		return 1;
 	}
@@ -879,6 +1107,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Less(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Less");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Less);
 		return 1;
 	}
@@ -886,6 +1117,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Equals(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Equals");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Equals);
 		return 1;
 	}
@@ -893,6 +1127,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Greater(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Greater");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Greater);
 		return 1;
 	}
@@ -900,6 +1137,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Question(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Question");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Question);
 		return 1;
 	}
@@ -907,6 +1147,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_At(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.At");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.At);
 		return 1;
 	}
@@ -914,6 +1157,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_LeftBracket(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.LeftBracket");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.LeftBracket);
 		return 1;
 	}
@@ -921,6 +1167,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Backslash(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Backslash");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Backslash);
 		return 1;
 	}
@@ -928,6 +1177,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_RightBracket(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.RightBracket");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.RightBracket);
 		return 1;
 	}
@@ -935,6 +1187,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Caret(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Caret");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Caret);
 		return 1;
 	}
@@ -942,6 +1197,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Underscore(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Underscore");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Underscore);
 		return 1;
 	}
@@ -949,6 +1207,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_BackQuote(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.BackQuote");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.BackQuote);
 		return 1;
 	}
@@ -956,6 +1217,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_A(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.A");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.A);
 		return 1;
 	}
@@ -963,6 +1227,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_B(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.B");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.B);
 		return 1;
 	}
@@ -970,6 +1237,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_C(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.C");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.C);
 		return 1;
 	}
@@ -977,6 +1247,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_D(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.D");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.D);
 		return 1;
 	}
@@ -984,6 +1257,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_E(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.E");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.E);
 		return 1;
 	}
@@ -991,6 +1267,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_F(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.F");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.F);
 		return 1;
 	}
@@ -998,6 +1277,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_G(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.G");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.G);
 		return 1;
 	}
@@ -1005,6 +1287,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_H(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.H");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.H);
 		return 1;
 	}
@@ -1012,6 +1297,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_I(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.I");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.I);
 		return 1;
 	}
@@ -1019,6 +1307,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_J(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.J");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.J);
 		return 1;
 	}
@@ -1026,6 +1317,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_K(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.K");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.K);
 		return 1;
 	}
@@ -1033,6 +1327,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_L(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.L");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.L);
 		return 1;
 	}
@@ -1040,6 +1337,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_M(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.M");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.M);
 		return 1;
 	}
@@ -1047,6 +1347,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_N(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.N");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.N);
 		return 1;
 	}
@@ -1054,6 +1357,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_O(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.O");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.O);
 		return 1;
 	}
@@ -1061,6 +1367,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_P(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.P");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.P);
 		return 1;
 	}
@@ -1068,6 +1377,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Q(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Q");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Q);
 		return 1;
 	}
@@ -1075,6 +1387,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_R(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.R");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.R);
 		return 1;
 	}
@@ -1082,6 +1397,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_S(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.S");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.S);
 		return 1;
 	}
@@ -1089,6 +1407,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_T(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.T");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.T);
 		return 1;
 	}
@@ -1096,6 +1417,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_U(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.U");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.U);
 		return 1;
 	}
@@ -1103,6 +1427,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_V(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.V");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.V);
 		return 1;
 	}
@@ -1110,6 +1437,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_W(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.W");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.W);
 		return 1;
 	}
@@ -1117,6 +1447,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_X(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.X");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.X);
 		return 1;
 	}
@@ -1124,6 +1457,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Y(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Y");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Y);
 		return 1;
 	}
@@ -1131,6 +1467,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Z(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Z");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Z);
 		return 1;
 	}
@@ -1138,6 +1477,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Numlock(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Numlock");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Numlock);
 		return 1;
 	}
@@ -1145,6 +1487,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_CapsLock(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.CapsLock");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.CapsLock);
 		return 1;
 	}
@@ -1152,6 +1497,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_ScrollLock(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.ScrollLock");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.ScrollLock);
 		return 1;
 	}
@@ -1159,6 +1507,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_RightShift(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.RightShift");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.RightShift);
 		return 1;
 	}
@@ -1166,6 +1517,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_LeftShift(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.LeftShift");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.LeftShift);
 		return 1;
 	}
@@ -1173,6 +1527,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_RightControl(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.RightControl");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.RightControl);
 		return 1;
 	}
@@ -1180,6 +1537,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_LeftControl(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.LeftControl");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.LeftControl);
 		return 1;
 	}
@@ -1187,6 +1547,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_RightAlt(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.RightAlt");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.RightAlt);
 		return 1;
 	}
@@ -1194,6 +1557,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_LeftAlt(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.LeftAlt");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.LeftAlt);
 		return 1;
 	}
@@ -1201,6 +1567,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_LeftCommand(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.LeftCommand");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.LeftCommand);
 		return 1;
 	}
@@ -1208,6 +1577,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_LeftApple(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.LeftApple");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.LeftApple);
 		return 1;
 	}
@@ -1215,6 +1587,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_LeftWindows(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.LeftWindows");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.LeftWindows);
 		return 1;
 	}
@@ -1222,6 +1597,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_RightCommand(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.RightCommand");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.RightCommand);
 		return 1;
 	}
@@ -1229,6 +1607,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_RightApple(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.RightApple");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.RightApple);
 		return 1;
 	}
@@ -1236,6 +1617,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_RightWindows(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.RightWindows");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.RightWindows);
 		return 1;
 	}
@@ -1243,6 +1627,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_AltGr(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.AltGr");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.AltGr);
 		return 1;
 	}
@@ -1250,6 +1637,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Help(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Help");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Help);
 		return 1;
 	}
@@ -1257,6 +1647,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Print(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Print");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Print);
 		return 1;
 	}
@@ -1264,6 +1657,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_SysReq(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.SysReq");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.SysReq);
 		return 1;
 	}
@@ -1271,6 +1667,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Break(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Break");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Break);
 		return 1;
 	}
@@ -1278,6 +1677,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Menu(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Menu");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Menu);
 		return 1;
 	}
@@ -1285,6 +1687,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Mouse0(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Mouse0");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Mouse0);
 		return 1;
 	}
@@ -1292,6 +1697,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Mouse1(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Mouse1");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Mouse1);
 		return 1;
 	}
@@ -1299,6 +1707,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Mouse2(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Mouse2");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Mouse2);
 		return 1;
 	}
@@ -1306,6 +1717,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Mouse3(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Mouse3");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Mouse3);
 		return 1;
 	}
@@ -1313,6 +1727,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Mouse4(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Mouse4");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Mouse4);
 		return 1;
 	}
@@ -1320,6 +1737,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Mouse5(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Mouse5");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Mouse5);
 		return 1;
 	}
@@ -1327,6 +1747,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Mouse6(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Mouse6");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Mouse6);
 		return 1;
 	}
@@ -1334,6 +1757,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_JoystickButton0(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.JoystickButton0");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.JoystickButton0);
 		return 1;
 	}
@@ -1341,6 +1767,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_JoystickButton1(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.JoystickButton1");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.JoystickButton1);
 		return 1;
 	}
@@ -1348,6 +1777,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_JoystickButton2(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.JoystickButton2");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.JoystickButton2);
 		return 1;
 	}
@@ -1355,6 +1787,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_JoystickButton3(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.JoystickButton3");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.JoystickButton3);
 		return 1;
 	}
@@ -1362,6 +1797,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_JoystickButton4(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.JoystickButton4");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.JoystickButton4);
 		return 1;
 	}
@@ -1369,6 +1807,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_JoystickButton5(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.JoystickButton5");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.JoystickButton5);
 		return 1;
 	}
@@ -1376,6 +1817,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_JoystickButton6(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.JoystickButton6");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.JoystickButton6);
 		return 1;
 	}
@@ -1383,6 +1827,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_JoystickButton7(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.JoystickButton7");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.JoystickButton7);
 		return 1;
 	}
@@ -1390,6 +1837,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_JoystickButton8(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.JoystickButton8");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.JoystickButton8);
 		return 1;
 	}
@@ -1397,6 +1847,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_JoystickButton9(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.JoystickButton9");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.JoystickButton9);
 		return 1;
 	}
@@ -1404,6 +1857,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_JoystickButton10(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.JoystickButton10");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.JoystickButton10);
 		return 1;
 	}
@@ -1411,6 +1867,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_JoystickButton11(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.JoystickButton11");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.JoystickButton11);
 		return 1;
 	}
@@ -1418,6 +1877,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_JoystickButton12(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.JoystickButton12");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.JoystickButton12);
 		return 1;
 	}
@@ -1425,6 +1887,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_JoystickButton13(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.JoystickButton13");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.JoystickButton13);
 		return 1;
 	}
@@ -1432,6 +1897,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_JoystickButton14(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.JoystickButton14");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.JoystickButton14);
 		return 1;
 	}
@@ -1439,6 +1907,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_JoystickButton15(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.JoystickButton15");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.JoystickButton15);
 		return 1;
 	}
@@ -1446,6 +1917,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_JoystickButton16(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.JoystickButton16");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.JoystickButton16);
 		return 1;
 	}
@@ -1453,6 +1927,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_JoystickButton17(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.JoystickButton17");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.JoystickButton17);
 		return 1;
 	}
@@ -1460,6 +1937,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_JoystickButton18(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.JoystickButton18");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.JoystickButton18);
 		return 1;
 	}
@@ -1467,6 +1947,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_JoystickButton19(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.JoystickButton19");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.JoystickButton19);
 		return 1;
 	}
@@ -1474,6 +1957,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick1Button0(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick1Button0");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick1Button0);
 		return 1;
 	}
@@ -1481,6 +1967,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick1Button1(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick1Button1");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick1Button1);
 		return 1;
 	}
@@ -1488,6 +1977,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick1Button2(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick1Button2");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick1Button2);
 		return 1;
 	}
@@ -1495,6 +1987,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick1Button3(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick1Button3");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick1Button3);
 		return 1;
 	}
@@ -1502,6 +1997,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick1Button4(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick1Button4");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick1Button4);
 		return 1;
 	}
@@ -1509,6 +2007,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick1Button5(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick1Button5");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick1Button5);
 		return 1;
 	}
@@ -1516,6 +2017,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick1Button6(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick1Button6");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick1Button6);
 		return 1;
 	}
@@ -1523,6 +2027,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick1Button7(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick1Button7");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick1Button7);
 		return 1;
 	}
@@ -1530,6 +2037,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick1Button8(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick1Button8");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick1Button8);
 		return 1;
 	}
@@ -1537,6 +2047,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick1Button9(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick1Button9");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick1Button9);
 		return 1;
 	}
@@ -1544,6 +2057,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick1Button10(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick1Button10");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick1Button10);
 		return 1;
 	}
@@ -1551,6 +2067,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick1Button11(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick1Button11");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick1Button11);
 		return 1;
 	}
@@ -1558,6 +2077,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick1Button12(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick1Button12");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick1Button12);
 		return 1;
 	}
@@ -1565,6 +2087,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick1Button13(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick1Button13");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick1Button13);
 		return 1;
 	}
@@ -1572,6 +2097,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick1Button14(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick1Button14");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick1Button14);
 		return 1;
 	}
@@ -1579,6 +2107,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick1Button15(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick1Button15");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick1Button15);
 		return 1;
 	}
@@ -1586,6 +2117,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick1Button16(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick1Button16");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick1Button16);
 		return 1;
 	}
@@ -1593,6 +2127,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick1Button17(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick1Button17");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick1Button17);
 		return 1;
 	}
@@ -1600,6 +2137,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick1Button18(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick1Button18");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick1Button18);
 		return 1;
 	}
@@ -1607,6 +2147,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick1Button19(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick1Button19");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick1Button19);
 		return 1;
 	}
@@ -1614,6 +2157,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick2Button0(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick2Button0");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick2Button0);
 		return 1;
 	}
@@ -1621,6 +2167,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick2Button1(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick2Button1");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick2Button1);
 		return 1;
 	}
@@ -1628,6 +2177,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick2Button2(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick2Button2");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick2Button2);
 		return 1;
 	}
@@ -1635,6 +2187,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick2Button3(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick2Button3");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick2Button3);
 		return 1;
 	}
@@ -1642,6 +2197,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick2Button4(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick2Button4");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick2Button4);
 		return 1;
 	}
@@ -1649,6 +2207,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick2Button5(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick2Button5");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick2Button5);
 		return 1;
 	}
@@ -1656,6 +2217,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick2Button6(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick2Button6");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick2Button6);
 		return 1;
 	}
@@ -1663,6 +2227,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick2Button7(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick2Button7");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick2Button7);
 		return 1;
 	}
@@ -1670,6 +2237,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick2Button8(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick2Button8");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick2Button8);
 		return 1;
 	}
@@ -1677,6 +2247,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick2Button9(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick2Button9");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick2Button9);
 		return 1;
 	}
@@ -1684,6 +2257,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick2Button10(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick2Button10");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick2Button10);
 		return 1;
 	}
@@ -1691,6 +2267,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick2Button11(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick2Button11");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick2Button11);
 		return 1;
 	}
@@ -1698,6 +2277,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick2Button12(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick2Button12");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick2Button12);
 		return 1;
 	}
@@ -1705,6 +2287,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick2Button13(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick2Button13");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick2Button13);
 		return 1;
 	}
@@ -1712,6 +2297,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick2Button14(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick2Button14");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick2Button14);
 		return 1;
 	}
@@ -1719,6 +2307,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick2Button15(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick2Button15");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick2Button15);
 		return 1;
 	}
@@ -1726,6 +2317,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick2Button16(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick2Button16");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick2Button16);
 		return 1;
 	}
@@ -1733,6 +2327,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick2Button17(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick2Button17");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick2Button17);
 		return 1;
 	}
@@ -1740,6 +2337,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick2Button18(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick2Button18");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick2Button18);
 		return 1;
 	}
@@ -1747,6 +2347,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick2Button19(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick2Button19");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick2Button19);
 		return 1;
 	}
@@ -1754,6 +2357,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick3Button0(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick3Button0");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick3Button0);
 		return 1;
 	}
@@ -1761,6 +2367,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick3Button1(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick3Button1");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick3Button1);
 		return 1;
 	}
@@ -1768,6 +2377,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick3Button2(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick3Button2");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick3Button2);
 		return 1;
 	}
@@ -1775,6 +2387,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick3Button3(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick3Button3");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick3Button3);
 		return 1;
 	}
@@ -1782,6 +2397,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick3Button4(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick3Button4");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick3Button4);
 		return 1;
 	}
@@ -1789,6 +2407,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick3Button5(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick3Button5");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick3Button5);
 		return 1;
 	}
@@ -1796,6 +2417,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick3Button6(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick3Button6");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick3Button6);
 		return 1;
 	}
@@ -1803,6 +2427,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick3Button7(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick3Button7");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick3Button7);
 		return 1;
 	}
@@ -1810,6 +2437,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick3Button8(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick3Button8");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick3Button8);
 		return 1;
 	}
@@ -1817,6 +2447,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick3Button9(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick3Button9");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick3Button9);
 		return 1;
 	}
@@ -1824,6 +2457,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick3Button10(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick3Button10");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick3Button10);
 		return 1;
 	}
@@ -1831,6 +2467,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick3Button11(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick3Button11");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick3Button11);
 		return 1;
 	}
@@ -1838,6 +2477,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick3Button12(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick3Button12");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick3Button12);
 		return 1;
 	}
@@ -1845,6 +2487,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick3Button13(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick3Button13");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick3Button13);
 		return 1;
 	}
@@ -1852,6 +2497,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick3Button14(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick3Button14");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick3Button14);
 		return 1;
 	}
@@ -1859,6 +2507,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick3Button15(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick3Button15");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick3Button15);
 		return 1;
 	}
@@ -1866,6 +2517,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick3Button16(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick3Button16");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick3Button16);
 		return 1;
 	}
@@ -1873,6 +2527,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick3Button17(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick3Button17");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick3Button17);
 		return 1;
 	}
@@ -1880,6 +2537,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick3Button18(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick3Button18");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick3Button18);
 		return 1;
 	}
@@ -1887,6 +2547,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick3Button19(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick3Button19");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick3Button19);
 		return 1;
 	}
@@ -1894,6 +2557,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick4Button0(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick4Button0");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick4Button0);
 		return 1;
 	}
@@ -1901,6 +2567,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick4Button1(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick4Button1");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick4Button1);
 		return 1;
 	}
@@ -1908,6 +2577,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick4Button2(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick4Button2");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick4Button2);
 		return 1;
 	}
@@ -1915,6 +2587,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick4Button3(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick4Button3");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick4Button3);
 		return 1;
 	}
@@ -1922,6 +2597,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick4Button4(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick4Button4");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick4Button4);
 		return 1;
 	}
@@ -1929,6 +2607,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick4Button5(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick4Button5");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick4Button5);
 		return 1;
 	}
@@ -1936,6 +2617,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick4Button6(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick4Button6");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick4Button6);
 		return 1;
 	}
@@ -1943,6 +2627,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick4Button7(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick4Button7");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick4Button7);
 		return 1;
 	}
@@ -1950,6 +2637,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick4Button8(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick4Button8");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick4Button8);
 		return 1;
 	}
@@ -1957,6 +2647,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick4Button9(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick4Button9");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick4Button9);
 		return 1;
 	}
@@ -1964,6 +2657,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick4Button10(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick4Button10");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick4Button10);
 		return 1;
 	}
@@ -1971,6 +2667,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick4Button11(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick4Button11");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick4Button11);
 		return 1;
 	}
@@ -1978,6 +2677,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick4Button12(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick4Button12");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick4Button12);
 		return 1;
 	}
@@ -1985,6 +2687,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick4Button13(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick4Button13");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick4Button13);
 		return 1;
 	}
@@ -1992,6 +2697,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick4Button14(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick4Button14");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick4Button14);
 		return 1;
 	}
@@ -1999,6 +2707,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick4Button15(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick4Button15");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick4Button15);
 		return 1;
 	}
@@ -2006,6 +2717,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick4Button16(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick4Button16");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick4Button16);
 		return 1;
 	}
@@ -2013,6 +2727,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick4Button17(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick4Button17");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick4Button17);
 		return 1;
 	}
@@ -2020,6 +2737,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick4Button18(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick4Button18");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick4Button18);
 		return 1;
 	}
@@ -2027,6 +2747,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick4Button19(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick4Button19");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick4Button19);
 		return 1;
 	}
@@ -2034,6 +2757,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick5Button0(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick5Button0");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick5Button0);
 		return 1;
 	}
@@ -2041,6 +2767,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick5Button1(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick5Button1");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick5Button1);
 		return 1;
 	}
@@ -2048,6 +2777,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick5Button2(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick5Button2");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick5Button2);
 		return 1;
 	}
@@ -2055,6 +2787,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick5Button3(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick5Button3");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick5Button3);
 		return 1;
 	}
@@ -2062,6 +2797,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick5Button4(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick5Button4");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick5Button4);
 		return 1;
 	}
@@ -2069,6 +2807,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick5Button5(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick5Button5");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick5Button5);
 		return 1;
 	}
@@ -2076,6 +2817,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick5Button6(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick5Button6");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick5Button6);
 		return 1;
 	}
@@ -2083,6 +2827,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick5Button7(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick5Button7");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick5Button7);
 		return 1;
 	}
@@ -2090,6 +2837,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick5Button8(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick5Button8");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick5Button8);
 		return 1;
 	}
@@ -2097,6 +2847,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick5Button9(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick5Button9");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick5Button9);
 		return 1;
 	}
@@ -2104,6 +2857,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick5Button10(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick5Button10");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick5Button10);
 		return 1;
 	}
@@ -2111,6 +2867,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick5Button11(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick5Button11");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick5Button11);
 		return 1;
 	}
@@ -2118,6 +2877,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick5Button12(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick5Button12");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick5Button12);
 		return 1;
 	}
@@ -2125,6 +2887,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick5Button13(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick5Button13");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick5Button13);
 		return 1;
 	}
@@ -2132,6 +2897,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick5Button14(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick5Button14");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick5Button14);
 		return 1;
 	}
@@ -2139,6 +2907,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick5Button15(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick5Button15");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick5Button15);
 		return 1;
 	}
@@ -2146,6 +2917,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick5Button16(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick5Button16");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick5Button16);
 		return 1;
 	}
@@ -2153,6 +2927,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick5Button17(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick5Button17");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick5Button17);
 		return 1;
 	}
@@ -2160,6 +2937,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick5Button18(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick5Button18");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick5Button18);
 		return 1;
 	}
@@ -2167,6 +2947,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick5Button19(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick5Button19");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick5Button19);
 		return 1;
 	}
@@ -2174,6 +2957,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick6Button0(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick6Button0");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick6Button0);
 		return 1;
 	}
@@ -2181,6 +2967,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick6Button1(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick6Button1");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick6Button1);
 		return 1;
 	}
@@ -2188,6 +2977,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick6Button2(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick6Button2");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick6Button2);
 		return 1;
 	}
@@ -2195,6 +2987,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick6Button3(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick6Button3");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick6Button3);
 		return 1;
 	}
@@ -2202,6 +2997,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick6Button4(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick6Button4");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick6Button4);
 		return 1;
 	}
@@ -2209,6 +3007,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick6Button5(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick6Button5");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick6Button5);
 		return 1;
 	}
@@ -2216,6 +3017,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick6Button6(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick6Button6");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick6Button6);
 		return 1;
 	}
@@ -2223,6 +3027,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick6Button7(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick6Button7");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick6Button7);
 		return 1;
 	}
@@ -2230,6 +3037,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick6Button8(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick6Button8");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick6Button8);
 		return 1;
 	}
@@ -2237,6 +3047,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick6Button9(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick6Button9");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick6Button9);
 		return 1;
 	}
@@ -2244,6 +3057,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick6Button10(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick6Button10");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick6Button10);
 		return 1;
 	}
@@ -2251,6 +3067,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick6Button11(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick6Button11");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick6Button11);
 		return 1;
 	}
@@ -2258,6 +3077,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick6Button12(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick6Button12");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick6Button12);
 		return 1;
 	}
@@ -2265,6 +3087,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick6Button13(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick6Button13");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick6Button13);
 		return 1;
 	}
@@ -2272,6 +3097,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick6Button14(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick6Button14");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick6Button14);
 		return 1;
 	}
@@ -2279,6 +3107,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick6Button15(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick6Button15");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick6Button15);
 		return 1;
 	}
@@ -2286,6 +3117,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick6Button16(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick6Button16");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick6Button16);
 		return 1;
 	}
@@ -2293,6 +3127,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick6Button17(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick6Button17");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick6Button17);
 		return 1;
 	}
@@ -2300,6 +3137,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick6Button18(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick6Button18");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick6Button18);
 		return 1;
 	}
@@ -2307,6 +3147,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick6Button19(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick6Button19");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick6Button19);
 		return 1;
 	}
@@ -2314,6 +3157,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick7Button0(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick7Button0");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick7Button0);
 		return 1;
 	}
@@ -2321,6 +3167,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick7Button1(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick7Button1");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick7Button1);
 		return 1;
 	}
@@ -2328,6 +3177,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick7Button2(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick7Button2");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick7Button2);
 		return 1;
 	}
@@ -2335,6 +3187,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick7Button3(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick7Button3");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick7Button3);
 		return 1;
 	}
@@ -2342,6 +3197,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick7Button4(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick7Button4");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick7Button4);
 		return 1;
 	}
@@ -2349,6 +3207,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick7Button5(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick7Button5");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick7Button5);
 		return 1;
 	}
@@ -2356,6 +3217,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick7Button6(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick7Button6");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick7Button6);
 		return 1;
 	}
@@ -2363,6 +3227,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick7Button7(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick7Button7");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick7Button7);
 		return 1;
 	}
@@ -2370,6 +3237,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick7Button8(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick7Button8");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick7Button8);
 		return 1;
 	}
@@ -2377,6 +3247,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick7Button9(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick7Button9");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick7Button9);
 		return 1;
 	}
@@ -2384,6 +3257,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick7Button10(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick7Button10");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick7Button10);
 		return 1;
 	}
@@ -2391,6 +3267,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick7Button11(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick7Button11");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick7Button11);
 		return 1;
 	}
@@ -2398,6 +3277,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick7Button12(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick7Button12");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick7Button12);
 		return 1;
 	}
@@ -2405,6 +3287,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick7Button13(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick7Button13");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick7Button13);
 		return 1;
 	}
@@ -2412,6 +3297,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick7Button14(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick7Button14");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick7Button14);
 		return 1;
 	}
@@ -2419,6 +3307,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick7Button15(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick7Button15");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick7Button15);
 		return 1;
 	}
@@ -2426,6 +3317,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick7Button16(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick7Button16");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick7Button16);
 		return 1;
 	}
@@ -2433,6 +3327,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick7Button17(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick7Button17");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick7Button17);
 		return 1;
 	}
@@ -2440,6 +3337,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick7Button18(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick7Button18");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick7Button18);
 		return 1;
 	}
@@ -2447,6 +3347,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick7Button19(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick7Button19");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick7Button19);
 		return 1;
 	}
@@ -2454,6 +3357,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick8Button0(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick8Button0");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick8Button0);
 		return 1;
 	}
@@ -2461,6 +3367,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick8Button1(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick8Button1");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick8Button1);
 		return 1;
 	}
@@ -2468,6 +3377,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick8Button2(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick8Button2");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick8Button2);
 		return 1;
 	}
@@ -2475,6 +3387,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick8Button3(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick8Button3");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick8Button3);
 		return 1;
 	}
@@ -2482,6 +3397,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick8Button4(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick8Button4");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick8Button4);
 		return 1;
 	}
@@ -2489,6 +3407,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick8Button5(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick8Button5");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick8Button5);
 		return 1;
 	}
@@ -2496,6 +3417,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick8Button6(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick8Button6");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick8Button6);
 		return 1;
 	}
@@ -2503,6 +3427,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick8Button7(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick8Button7");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick8Button7);
 		return 1;
 	}
@@ -2510,6 +3437,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick8Button8(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick8Button8");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick8Button8);
 		return 1;
 	}
@@ -2517,6 +3447,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick8Button9(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick8Button9");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick8Button9);
 		return 1;
 	}
@@ -2524,6 +3457,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick8Button10(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick8Button10");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick8Button10);
 		return 1;
 	}
@@ -2531,6 +3467,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick8Button11(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick8Button11");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick8Button11);
 		return 1;
 	}
@@ -2538,6 +3477,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick8Button12(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick8Button12");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick8Button12);
 		return 1;
 	}
@@ -2545,6 +3487,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick8Button13(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick8Button13");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick8Button13);
 		return 1;
 	}
@@ -2552,6 +3497,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick8Button14(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick8Button14");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick8Button14);
 		return 1;
 	}
@@ -2559,6 +3507,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick8Button15(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick8Button15");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick8Button15);
 		return 1;
 	}
@@ -2566,6 +3517,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick8Button16(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick8Button16");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick8Button16);
 		return 1;
 	}
@@ -2573,6 +3527,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick8Button17(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick8Button17");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick8Button17);
 		return 1;
 	}
@@ -2580,6 +3537,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick8Button18(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick8Button18");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick8Button18);
 		return 1;
 	}
@@ -2587,6 +3547,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Joystick8Button19(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.Joystick8Button19");
+#endif
 		ToLua.Push(L, UnityEngine.KeyCode.Joystick8Button19);
 		return 1;
 	}
@@ -2594,6 +3557,9 @@ public class UnityEngine_KeyCodeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IntToEnum(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.KeyCode.IntToEnum");
+#endif
 		int arg0 = (int)LuaDLL.lua_tonumber(L, 1);
 		UnityEngine.KeyCode o = (UnityEngine.KeyCode)arg0;
 		ToLua.Push(L, o);

@@ -24,6 +24,9 @@ public class UnityEngine_MonoBehaviourWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Invoke(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MonoBehaviour.Invoke");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -42,6 +45,9 @@ public class UnityEngine_MonoBehaviourWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int InvokeRepeating(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MonoBehaviour.InvokeRepeating");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 4);
@@ -61,6 +67,9 @@ public class UnityEngine_MonoBehaviourWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CancelInvoke(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MonoBehaviour.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -92,6 +101,9 @@ public class UnityEngine_MonoBehaviourWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IsInvoking(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MonoBehaviour.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -125,6 +137,9 @@ public class UnityEngine_MonoBehaviourWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int StartCoroutine(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MonoBehaviour.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -168,6 +183,9 @@ public class UnityEngine_MonoBehaviourWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int StopCoroutine(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MonoBehaviour.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -207,6 +225,9 @@ public class UnityEngine_MonoBehaviourWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int StopAllCoroutines(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MonoBehaviour.StopAllCoroutines");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -223,6 +244,9 @@ public class UnityEngine_MonoBehaviourWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int print(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MonoBehaviour.print");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -239,6 +263,9 @@ public class UnityEngine_MonoBehaviourWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MonoBehaviour.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -257,6 +284,9 @@ public class UnityEngine_MonoBehaviourWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_useGUILayout(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MonoBehaviour.useGUILayout");
+#endif
 		object o = null;
 
 		try
@@ -276,6 +306,9 @@ public class UnityEngine_MonoBehaviourWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_useGUILayout(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MonoBehaviour.useGUILayout");
+#endif
 		object o = null;
 
 		try

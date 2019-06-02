@@ -20,6 +20,9 @@ public class UnityEngine_AsyncOperationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_AsyncOperation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AsyncOperation.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -44,6 +47,9 @@ public class UnityEngine_AsyncOperationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isDone(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AsyncOperation.isDone");
+#endif
 		object o = null;
 
 		try
@@ -63,6 +69,9 @@ public class UnityEngine_AsyncOperationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_progress(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AsyncOperation.progress");
+#endif
 		object o = null;
 
 		try
@@ -82,6 +91,9 @@ public class UnityEngine_AsyncOperationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_priority(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AsyncOperation.priority");
+#endif
 		object o = null;
 
 		try
@@ -101,6 +113,9 @@ public class UnityEngine_AsyncOperationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_allowSceneActivation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AsyncOperation.allowSceneActivation");
+#endif
 		object o = null;
 
 		try
@@ -120,6 +135,9 @@ public class UnityEngine_AsyncOperationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_completed(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AsyncOperation.completed");
+#endif
 		ToLua.Push(L, new EventObject(typeof(System.Action<UnityEngine.AsyncOperation>)));
 		return 1;
 	}
@@ -127,6 +145,9 @@ public class UnityEngine_AsyncOperationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_priority(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AsyncOperation.priority");
+#endif
 		object o = null;
 
 		try
@@ -146,6 +167,9 @@ public class UnityEngine_AsyncOperationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_allowSceneActivation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AsyncOperation.allowSceneActivation");
+#endif
 		object o = null;
 
 		try
@@ -165,6 +189,9 @@ public class UnityEngine_AsyncOperationWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_completed(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AsyncOperation.set_completed");
+#endif
 		try
 		{
 			UnityEngine.AsyncOperation obj = (UnityEngine.AsyncOperation)ToLua.CheckObject(L, 1, typeof(UnityEngine.AsyncOperation));

@@ -21,6 +21,9 @@ public class UnityEngine_MeshColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_MeshCollider(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MeshCollider.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -45,6 +48,9 @@ public class UnityEngine_MeshColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MeshCollider.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -63,6 +69,9 @@ public class UnityEngine_MeshColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_sharedMesh(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MeshCollider.sharedMesh");
+#endif
 		object o = null;
 
 		try
@@ -82,6 +91,9 @@ public class UnityEngine_MeshColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_convex(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MeshCollider.convex");
+#endif
 		object o = null;
 
 		try
@@ -101,6 +113,9 @@ public class UnityEngine_MeshColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_cookingOptions(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MeshCollider.cookingOptions");
+#endif
 		object o = null;
 
 		try
@@ -120,6 +135,9 @@ public class UnityEngine_MeshColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_inflateMesh(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MeshCollider.inflateMesh");
+#endif
 		object o = null;
 
 		try
@@ -139,6 +157,9 @@ public class UnityEngine_MeshColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_skinWidth(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MeshCollider.skinWidth");
+#endif
 		object o = null;
 
 		try
@@ -158,6 +179,9 @@ public class UnityEngine_MeshColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_sharedMesh(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MeshCollider.sharedMesh");
+#endif
 		object o = null;
 
 		try
@@ -177,6 +201,9 @@ public class UnityEngine_MeshColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_convex(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MeshCollider.convex");
+#endif
 		object o = null;
 
 		try
@@ -196,6 +223,9 @@ public class UnityEngine_MeshColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_cookingOptions(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MeshCollider.cookingOptions");
+#endif
 		object o = null;
 
 		try
@@ -215,6 +245,9 @@ public class UnityEngine_MeshColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_inflateMesh(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MeshCollider.inflateMesh");
+#endif
 		object o = null;
 
 		try
@@ -234,6 +267,9 @@ public class UnityEngine_MeshColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_skinWidth(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MeshCollider.skinWidth");
+#endif
 		object o = null;
 
 		try

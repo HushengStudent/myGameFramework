@@ -20,6 +20,9 @@ public class UnityEngine_ResourcesWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int FindObjectsOfTypeAll(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Resources.FindObjectsOfTypeAll");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -37,6 +40,9 @@ public class UnityEngine_ResourcesWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Load(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Resources.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -70,6 +76,9 @@ public class UnityEngine_ResourcesWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadAsync(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Resources.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -103,6 +112,9 @@ public class UnityEngine_ResourcesWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadAll(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Resources.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -136,6 +148,9 @@ public class UnityEngine_ResourcesWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetBuiltinResource(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Resources.GetBuiltinResource");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -154,6 +169,9 @@ public class UnityEngine_ResourcesWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnloadAsset(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Resources.UnloadAsset");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -170,6 +188,9 @@ public class UnityEngine_ResourcesWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnloadUnusedAssets(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Resources.UnloadUnusedAssets");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 0);

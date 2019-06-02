@@ -17,6 +17,9 @@ public class Framework_LuaHelperWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Long(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaHelper.Long");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -34,6 +37,9 @@ public class Framework_LuaHelperWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Int(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaHelper.Int");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -51,6 +57,9 @@ public class Framework_LuaHelperWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetLocalPosition(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaHelper.SetLocalPosition");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -68,6 +77,9 @@ public class Framework_LuaHelperWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetTransParent(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaHelper.SetTransParent");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);

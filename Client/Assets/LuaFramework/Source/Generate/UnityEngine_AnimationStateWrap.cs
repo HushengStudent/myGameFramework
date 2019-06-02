@@ -30,6 +30,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_AnimationState(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -54,6 +57,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int AddMixingTransform(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -87,6 +93,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RemoveMixingTransform(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.RemoveMixingTransform");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -104,6 +113,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -122,6 +134,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_enabled(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.enabled");
+#endif
 		object o = null;
 
 		try
@@ -141,6 +156,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_weight(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.weight");
+#endif
 		object o = null;
 
 		try
@@ -160,6 +178,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_wrapMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.wrapMode");
+#endif
 		object o = null;
 
 		try
@@ -179,6 +200,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_time(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.time");
+#endif
 		object o = null;
 
 		try
@@ -198,6 +222,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_normalizedTime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.normalizedTime");
+#endif
 		object o = null;
 
 		try
@@ -217,6 +244,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_speed(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.speed");
+#endif
 		object o = null;
 
 		try
@@ -236,6 +266,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_normalizedSpeed(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.normalizedSpeed");
+#endif
 		object o = null;
 
 		try
@@ -255,6 +288,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_length(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.length");
+#endif
 		object o = null;
 
 		try
@@ -274,6 +310,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_layer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.layer");
+#endif
 		object o = null;
 
 		try
@@ -293,6 +332,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_clip(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.clip");
+#endif
 		object o = null;
 
 		try
@@ -312,6 +354,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_name(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.name");
+#endif
 		object o = null;
 
 		try
@@ -331,6 +376,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_blendMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.blendMode");
+#endif
 		object o = null;
 
 		try
@@ -350,6 +398,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_enabled(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.enabled");
+#endif
 		object o = null;
 
 		try
@@ -369,6 +420,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_weight(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.weight");
+#endif
 		object o = null;
 
 		try
@@ -388,6 +442,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_wrapMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.wrapMode");
+#endif
 		object o = null;
 
 		try
@@ -407,6 +464,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_time(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.time");
+#endif
 		object o = null;
 
 		try
@@ -426,6 +486,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_normalizedTime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.normalizedTime");
+#endif
 		object o = null;
 
 		try
@@ -445,6 +508,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_speed(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.speed");
+#endif
 		object o = null;
 
 		try
@@ -464,6 +530,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_normalizedSpeed(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.normalizedSpeed");
+#endif
 		object o = null;
 
 		try
@@ -483,6 +552,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_layer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.layer");
+#endif
 		object o = null;
 
 		try
@@ -502,6 +574,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_name(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.name");
+#endif
 		object o = null;
 
 		try
@@ -521,6 +596,9 @@ public class UnityEngine_AnimationStateWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_blendMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationState.blendMode");
+#endif
 		object o = null;
 
 		try

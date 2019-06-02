@@ -20,6 +20,9 @@ public class UnityEngine_CapsuleColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_CapsuleCollider(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CapsuleCollider.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -44,6 +47,9 @@ public class UnityEngine_CapsuleColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CapsuleCollider.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -62,6 +68,9 @@ public class UnityEngine_CapsuleColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_center(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CapsuleCollider.center");
+#endif
 		object o = null;
 
 		try
@@ -81,6 +90,9 @@ public class UnityEngine_CapsuleColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_radius(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CapsuleCollider.radius");
+#endif
 		object o = null;
 
 		try
@@ -100,6 +112,9 @@ public class UnityEngine_CapsuleColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_height(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CapsuleCollider.height");
+#endif
 		object o = null;
 
 		try
@@ -119,6 +134,9 @@ public class UnityEngine_CapsuleColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_direction(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CapsuleCollider.direction");
+#endif
 		object o = null;
 
 		try
@@ -138,6 +156,9 @@ public class UnityEngine_CapsuleColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_center(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CapsuleCollider.center");
+#endif
 		object o = null;
 
 		try
@@ -157,6 +178,9 @@ public class UnityEngine_CapsuleColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_radius(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CapsuleCollider.radius");
+#endif
 		object o = null;
 
 		try
@@ -176,6 +200,9 @@ public class UnityEngine_CapsuleColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_height(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CapsuleCollider.height");
+#endif
 		object o = null;
 
 		try
@@ -195,6 +222,9 @@ public class UnityEngine_CapsuleColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_direction(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CapsuleCollider.direction");
+#endif
 		object o = null;
 
 		try

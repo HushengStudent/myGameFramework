@@ -47,6 +47,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetQualityLevel(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.GetQualityLevel");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 0);
@@ -63,6 +66,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetQualityLevel(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -94,6 +100,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IncreaseLevel(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -123,6 +132,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int DecreaseLevel(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -152,6 +164,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -170,6 +185,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_names(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.names");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.QualitySettings.names);
@@ -184,6 +202,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_shadowCascade4Split(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.shadowCascade4Split");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.QualitySettings.shadowCascade4Split);
@@ -198,6 +219,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_anisotropicFiltering(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.anisotropicFiltering");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.QualitySettings.anisotropicFiltering);
@@ -212,6 +236,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_maxQueuedFrames(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.maxQueuedFrames");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.QualitySettings.maxQueuedFrames);
@@ -226,6 +253,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_blendWeights(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.blendWeights");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.QualitySettings.blendWeights);
@@ -240,6 +270,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_pixelLightCount(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.pixelLightCount");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.QualitySettings.pixelLightCount);
@@ -254,6 +287,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_shadows(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.shadows");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.QualitySettings.shadows);
@@ -268,6 +304,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_shadowProjection(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.shadowProjection");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.QualitySettings.shadowProjection);
@@ -282,6 +321,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_shadowCascades(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.shadowCascades");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.QualitySettings.shadowCascades);
@@ -296,6 +338,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_shadowDistance(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.shadowDistance");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.QualitySettings.shadowDistance);
@@ -310,6 +355,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_shadowResolution(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.shadowResolution");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.QualitySettings.shadowResolution);
@@ -324,6 +372,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_shadowmaskMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.shadowmaskMode");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.QualitySettings.shadowmaskMode);
@@ -338,6 +389,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_shadowNearPlaneOffset(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.shadowNearPlaneOffset");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.QualitySettings.shadowNearPlaneOffset);
@@ -352,6 +406,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_shadowCascade2Split(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.shadowCascade2Split");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.QualitySettings.shadowCascade2Split);
@@ -366,6 +423,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_lodBias(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.lodBias");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.QualitySettings.lodBias);
@@ -380,6 +440,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_masterTextureLimit(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.masterTextureLimit");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.QualitySettings.masterTextureLimit);
@@ -394,6 +457,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_maximumLODLevel(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.maximumLODLevel");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.QualitySettings.maximumLODLevel);
@@ -408,6 +474,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_particleRaycastBudget(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.particleRaycastBudget");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.QualitySettings.particleRaycastBudget);
@@ -422,6 +491,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_softParticles(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.softParticles");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.QualitySettings.softParticles);
@@ -436,6 +508,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_softVegetation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.softVegetation");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.QualitySettings.softVegetation);
@@ -450,6 +525,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_vSyncCount(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.vSyncCount");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.QualitySettings.vSyncCount);
@@ -464,6 +542,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_antiAliasing(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.antiAliasing");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.QualitySettings.antiAliasing);
@@ -478,6 +559,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_asyncUploadTimeSlice(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.asyncUploadTimeSlice");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.QualitySettings.asyncUploadTimeSlice);
@@ -492,6 +576,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_asyncUploadBufferSize(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.asyncUploadBufferSize");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.QualitySettings.asyncUploadBufferSize);
@@ -506,6 +593,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_realtimeReflectionProbes(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.realtimeReflectionProbes");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.QualitySettings.realtimeReflectionProbes);
@@ -520,6 +610,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_billboardsFaceCameraPosition(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.billboardsFaceCameraPosition");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.QualitySettings.billboardsFaceCameraPosition);
@@ -534,6 +627,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_resolutionScalingFixedDPIFactor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.resolutionScalingFixedDPIFactor");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.QualitySettings.resolutionScalingFixedDPIFactor);
@@ -548,6 +644,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_desiredColorSpace(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.desiredColorSpace");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.QualitySettings.desiredColorSpace);
@@ -562,6 +661,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_activeColorSpace(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.activeColorSpace");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.QualitySettings.activeColorSpace);
@@ -576,6 +678,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_shadowCascade4Split(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.shadowCascade4Split");
+#endif
 		try
 		{
 			UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
@@ -591,6 +696,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_anisotropicFiltering(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.anisotropicFiltering");
+#endif
 		try
 		{
 			UnityEngine.AnisotropicFiltering arg0 = (UnityEngine.AnisotropicFiltering)ToLua.CheckObject(L, 2, typeof(UnityEngine.AnisotropicFiltering));
@@ -606,6 +714,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_maxQueuedFrames(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.maxQueuedFrames");
+#endif
 		try
 		{
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
@@ -621,6 +732,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_blendWeights(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.blendWeights");
+#endif
 		try
 		{
 			UnityEngine.BlendWeights arg0 = (UnityEngine.BlendWeights)ToLua.CheckObject(L, 2, typeof(UnityEngine.BlendWeights));
@@ -636,6 +750,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_pixelLightCount(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.pixelLightCount");
+#endif
 		try
 		{
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
@@ -651,6 +768,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_shadows(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.shadows");
+#endif
 		try
 		{
 			UnityEngine.ShadowQuality arg0 = (UnityEngine.ShadowQuality)ToLua.CheckObject(L, 2, typeof(UnityEngine.ShadowQuality));
@@ -666,6 +786,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_shadowProjection(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.shadowProjection");
+#endif
 		try
 		{
 			UnityEngine.ShadowProjection arg0 = (UnityEngine.ShadowProjection)ToLua.CheckObject(L, 2, typeof(UnityEngine.ShadowProjection));
@@ -681,6 +804,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_shadowCascades(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.shadowCascades");
+#endif
 		try
 		{
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
@@ -696,6 +822,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_shadowDistance(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.shadowDistance");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
@@ -711,6 +840,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_shadowResolution(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.shadowResolution");
+#endif
 		try
 		{
 			UnityEngine.ShadowResolution arg0 = (UnityEngine.ShadowResolution)ToLua.CheckObject(L, 2, typeof(UnityEngine.ShadowResolution));
@@ -726,6 +858,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_shadowmaskMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.shadowmaskMode");
+#endif
 		try
 		{
 			UnityEngine.ShadowmaskMode arg0 = (UnityEngine.ShadowmaskMode)ToLua.CheckObject(L, 2, typeof(UnityEngine.ShadowmaskMode));
@@ -741,6 +876,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_shadowNearPlaneOffset(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.shadowNearPlaneOffset");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
@@ -756,6 +894,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_shadowCascade2Split(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.shadowCascade2Split");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
@@ -771,6 +912,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_lodBias(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.lodBias");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
@@ -786,6 +930,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_masterTextureLimit(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.masterTextureLimit");
+#endif
 		try
 		{
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
@@ -801,6 +948,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_maximumLODLevel(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.maximumLODLevel");
+#endif
 		try
 		{
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
@@ -816,6 +966,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_particleRaycastBudget(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.particleRaycastBudget");
+#endif
 		try
 		{
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
@@ -831,6 +984,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_softParticles(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.softParticles");
+#endif
 		try
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
@@ -846,6 +1002,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_softVegetation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.softVegetation");
+#endif
 		try
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
@@ -861,6 +1020,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_vSyncCount(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.vSyncCount");
+#endif
 		try
 		{
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
@@ -876,6 +1038,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_antiAliasing(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.antiAliasing");
+#endif
 		try
 		{
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
@@ -891,6 +1056,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_asyncUploadTimeSlice(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.asyncUploadTimeSlice");
+#endif
 		try
 		{
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
@@ -906,6 +1074,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_asyncUploadBufferSize(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.asyncUploadBufferSize");
+#endif
 		try
 		{
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
@@ -921,6 +1092,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_realtimeReflectionProbes(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.realtimeReflectionProbes");
+#endif
 		try
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
@@ -936,6 +1110,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_billboardsFaceCameraPosition(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.billboardsFaceCameraPosition");
+#endif
 		try
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
@@ -951,6 +1128,9 @@ public class UnityEngine_QualitySettingsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_resolutionScalingFixedDPIFactor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QualitySettings.resolutionScalingFixedDPIFactor");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);

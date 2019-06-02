@@ -58,6 +58,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_Rigidbody(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -82,6 +85,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetDensity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.SetDensity");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -99,6 +105,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int AddForce(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -151,6 +160,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int AddRelativeForce(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -203,6 +215,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int AddTorque(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -255,6 +270,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int AddRelativeTorque(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -307,6 +325,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int AddForceAtPosition(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -342,6 +363,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int AddExplosionForce(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -390,6 +414,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ClosestPointOnBounds(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.ClosestPointOnBounds");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -408,6 +435,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetRelativePointVelocity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.GetRelativePointVelocity");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -426,6 +456,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetPointVelocity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.GetPointVelocity");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -444,6 +477,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int MovePosition(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.MovePosition");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -461,6 +497,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int MoveRotation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.MoveRotation");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -478,6 +517,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Sleep(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.Sleep");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -494,6 +536,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IsSleeping(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.IsSleeping");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -511,6 +556,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int WakeUp(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.WakeUp");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -527,6 +575,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ResetCenterOfMass(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.ResetCenterOfMass");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -543,6 +594,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ResetInertiaTensor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.ResetInertiaTensor");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -559,6 +613,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SweepTest(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -610,6 +667,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SweepTestAll(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -655,6 +715,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -673,6 +736,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_velocity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.velocity");
+#endif
 		object o = null;
 
 		try
@@ -692,6 +758,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_angularVelocity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.angularVelocity");
+#endif
 		object o = null;
 
 		try
@@ -711,6 +780,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_drag(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.drag");
+#endif
 		object o = null;
 
 		try
@@ -730,6 +802,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_angularDrag(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.angularDrag");
+#endif
 		object o = null;
 
 		try
@@ -749,6 +824,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_mass(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.mass");
+#endif
 		object o = null;
 
 		try
@@ -768,6 +846,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_useGravity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.useGravity");
+#endif
 		object o = null;
 
 		try
@@ -787,6 +868,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_maxDepenetrationVelocity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.maxDepenetrationVelocity");
+#endif
 		object o = null;
 
 		try
@@ -806,6 +890,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isKinematic(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.isKinematic");
+#endif
 		object o = null;
 
 		try
@@ -825,6 +912,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_freezeRotation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.freezeRotation");
+#endif
 		object o = null;
 
 		try
@@ -844,6 +934,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_constraints(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.constraints");
+#endif
 		object o = null;
 
 		try
@@ -863,6 +956,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_collisionDetectionMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.collisionDetectionMode");
+#endif
 		object o = null;
 
 		try
@@ -882,6 +978,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_centerOfMass(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.centerOfMass");
+#endif
 		object o = null;
 
 		try
@@ -901,6 +1000,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_worldCenterOfMass(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.worldCenterOfMass");
+#endif
 		object o = null;
 
 		try
@@ -920,6 +1022,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_inertiaTensorRotation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.inertiaTensorRotation");
+#endif
 		object o = null;
 
 		try
@@ -939,6 +1044,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_inertiaTensor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.inertiaTensor");
+#endif
 		object o = null;
 
 		try
@@ -958,6 +1066,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_detectCollisions(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.detectCollisions");
+#endif
 		object o = null;
 
 		try
@@ -977,6 +1088,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_position(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.position");
+#endif
 		object o = null;
 
 		try
@@ -996,6 +1110,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_rotation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.rotation");
+#endif
 		object o = null;
 
 		try
@@ -1015,6 +1132,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_interpolation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.interpolation");
+#endif
 		object o = null;
 
 		try
@@ -1034,6 +1154,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_solverIterations(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.solverIterations");
+#endif
 		object o = null;
 
 		try
@@ -1053,6 +1176,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_solverVelocityIterations(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.solverVelocityIterations");
+#endif
 		object o = null;
 
 		try
@@ -1072,6 +1198,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_sleepThreshold(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.sleepThreshold");
+#endif
 		object o = null;
 
 		try
@@ -1091,6 +1220,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_maxAngularVelocity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.maxAngularVelocity");
+#endif
 		object o = null;
 
 		try
@@ -1110,6 +1242,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_velocity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.velocity");
+#endif
 		object o = null;
 
 		try
@@ -1129,6 +1264,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_angularVelocity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.angularVelocity");
+#endif
 		object o = null;
 
 		try
@@ -1148,6 +1286,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_drag(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.drag");
+#endif
 		object o = null;
 
 		try
@@ -1167,6 +1308,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_angularDrag(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.angularDrag");
+#endif
 		object o = null;
 
 		try
@@ -1186,6 +1330,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_mass(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.mass");
+#endif
 		object o = null;
 
 		try
@@ -1205,6 +1352,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_useGravity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.useGravity");
+#endif
 		object o = null;
 
 		try
@@ -1224,6 +1374,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_maxDepenetrationVelocity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.maxDepenetrationVelocity");
+#endif
 		object o = null;
 
 		try
@@ -1243,6 +1396,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_isKinematic(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.isKinematic");
+#endif
 		object o = null;
 
 		try
@@ -1262,6 +1418,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_freezeRotation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.freezeRotation");
+#endif
 		object o = null;
 
 		try
@@ -1281,6 +1440,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_constraints(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.constraints");
+#endif
 		object o = null;
 
 		try
@@ -1300,6 +1462,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_collisionDetectionMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.collisionDetectionMode");
+#endif
 		object o = null;
 
 		try
@@ -1319,6 +1484,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_centerOfMass(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.centerOfMass");
+#endif
 		object o = null;
 
 		try
@@ -1338,6 +1506,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_inertiaTensorRotation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.inertiaTensorRotation");
+#endif
 		object o = null;
 
 		try
@@ -1357,6 +1528,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_inertiaTensor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.inertiaTensor");
+#endif
 		object o = null;
 
 		try
@@ -1376,6 +1550,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_detectCollisions(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.detectCollisions");
+#endif
 		object o = null;
 
 		try
@@ -1395,6 +1572,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_position(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.position");
+#endif
 		object o = null;
 
 		try
@@ -1414,6 +1594,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_rotation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.rotation");
+#endif
 		object o = null;
 
 		try
@@ -1433,6 +1616,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_interpolation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.interpolation");
+#endif
 		object o = null;
 
 		try
@@ -1452,6 +1638,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_solverIterations(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.solverIterations");
+#endif
 		object o = null;
 
 		try
@@ -1471,6 +1660,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_solverVelocityIterations(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.solverVelocityIterations");
+#endif
 		object o = null;
 
 		try
@@ -1490,6 +1682,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_sleepThreshold(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.sleepThreshold");
+#endif
 		object o = null;
 
 		try
@@ -1509,6 +1704,9 @@ public class UnityEngine_RigidbodyWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_maxAngularVelocity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Rigidbody.maxAngularVelocity");
+#endif
 		object o = null;
 
 		try

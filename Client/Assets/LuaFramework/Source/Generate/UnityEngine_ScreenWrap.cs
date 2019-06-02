@@ -27,6 +27,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetResolution(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -62,6 +65,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_resolutions(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.resolutions");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.Screen.resolutions);
@@ -76,6 +82,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_currentResolution(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.currentResolution");
+#endif
 		try
 		{
 			ToLua.PushValue(L, UnityEngine.Screen.currentResolution);
@@ -90,6 +99,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_fullScreen(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.fullScreen");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.Screen.fullScreen);
@@ -104,6 +116,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_width(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.width");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.Screen.width);
@@ -118,6 +133,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_height(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.height");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.Screen.height);
@@ -132,6 +150,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_dpi(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.dpi");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Screen.dpi);
@@ -146,6 +167,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_orientation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.orientation");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.Screen.orientation);
@@ -160,6 +184,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_sleepTimeout(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.sleepTimeout");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.Screen.sleepTimeout);
@@ -174,6 +201,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_autorotateToPortrait(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.autorotateToPortrait");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.Screen.autorotateToPortrait);
@@ -188,6 +218,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_autorotateToPortraitUpsideDown(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.autorotateToPortraitUpsideDown");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.Screen.autorotateToPortraitUpsideDown);
@@ -202,6 +235,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_autorotateToLandscapeLeft(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.autorotateToLandscapeLeft");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.Screen.autorotateToLandscapeLeft);
@@ -216,6 +252,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_autorotateToLandscapeRight(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.autorotateToLandscapeRight");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.Screen.autorotateToLandscapeRight);
@@ -230,6 +269,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_safeArea(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.safeArea");
+#endif
 		try
 		{
 			ToLua.PushValue(L, UnityEngine.Screen.safeArea);
@@ -244,6 +286,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_fullScreen(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.fullScreen");
+#endif
 		try
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
@@ -259,6 +304,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_orientation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.orientation");
+#endif
 		try
 		{
 			UnityEngine.ScreenOrientation arg0 = (UnityEngine.ScreenOrientation)ToLua.CheckObject(L, 2, typeof(UnityEngine.ScreenOrientation));
@@ -274,6 +322,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_sleepTimeout(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.sleepTimeout");
+#endif
 		try
 		{
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
@@ -289,6 +340,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_autorotateToPortrait(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.autorotateToPortrait");
+#endif
 		try
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
@@ -304,6 +358,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_autorotateToPortraitUpsideDown(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.autorotateToPortraitUpsideDown");
+#endif
 		try
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
@@ -319,6 +376,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_autorotateToLandscapeLeft(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.autorotateToLandscapeLeft");
+#endif
 		try
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
@@ -334,6 +394,9 @@ public class UnityEngine_ScreenWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_autorotateToLandscapeRight(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.autorotateToLandscapeRight");
+#endif
 		try
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);

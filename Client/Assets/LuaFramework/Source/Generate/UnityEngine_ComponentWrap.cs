@@ -29,6 +29,9 @@ public class UnityEngine_ComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_Component(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Component.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -53,6 +56,9 @@ public class UnityEngine_ComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetComponent(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Component.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -87,6 +93,9 @@ public class UnityEngine_ComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetComponentInChildren(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Component.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -122,6 +131,9 @@ public class UnityEngine_ComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetComponentsInChildren(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Component.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -157,6 +169,9 @@ public class UnityEngine_ComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetComponentInParent(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Component.GetComponentInParent");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -175,6 +190,9 @@ public class UnityEngine_ComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetComponentsInParent(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Component.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -210,6 +228,9 @@ public class UnityEngine_ComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetComponents(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Component.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -244,6 +265,9 @@ public class UnityEngine_ComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CompareTag(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Component.CompareTag");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -262,6 +286,9 @@ public class UnityEngine_ComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SendMessageUpwards(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Component.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -312,6 +339,9 @@ public class UnityEngine_ComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SendMessage(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Component.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -362,6 +392,9 @@ public class UnityEngine_ComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int BroadcastMessage(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Component.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -412,6 +445,9 @@ public class UnityEngine_ComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Component.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -430,6 +466,9 @@ public class UnityEngine_ComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_transform(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Component.transform");
+#endif
 		object o = null;
 
 		try
@@ -449,6 +488,9 @@ public class UnityEngine_ComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_gameObject(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Component.gameObject");
+#endif
 		object o = null;
 
 		try
@@ -468,6 +510,9 @@ public class UnityEngine_ComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_tag(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Component.tag");
+#endif
 		object o = null;
 
 		try
@@ -487,6 +532,9 @@ public class UnityEngine_ComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_tag(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Component.tag");
+#endif
 		object o = null;
 
 		try

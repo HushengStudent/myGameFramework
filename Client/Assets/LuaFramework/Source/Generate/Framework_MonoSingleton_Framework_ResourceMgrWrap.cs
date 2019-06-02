@@ -17,6 +17,9 @@ public class Framework_MonoSingleton_Framework_ResourceMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Init(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.Init");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -33,6 +36,9 @@ public class Framework_MonoSingleton_Framework_ResourceMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -51,6 +57,9 @@ public class Framework_MonoSingleton_Framework_ResourceMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Instance(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.Instance");
+#endif
 		try
 		{
 			ToLua.Push(L, Framework.MonoSingleton<Framework.ResourceMgr>.Instance);

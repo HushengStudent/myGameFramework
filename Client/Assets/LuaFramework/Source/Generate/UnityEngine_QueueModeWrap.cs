@@ -28,6 +28,9 @@ public class UnityEngine_QueueModeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_CompleteOthers(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QueueMode.CompleteOthers");
+#endif
 		ToLua.Push(L, UnityEngine.QueueMode.CompleteOthers);
 		return 1;
 	}
@@ -35,6 +38,9 @@ public class UnityEngine_QueueModeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_PlayNow(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QueueMode.PlayNow");
+#endif
 		ToLua.Push(L, UnityEngine.QueueMode.PlayNow);
 		return 1;
 	}
@@ -42,6 +48,9 @@ public class UnityEngine_QueueModeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IntToEnum(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.QueueMode.IntToEnum");
+#endif
 		int arg0 = (int)LuaDLL.lua_tonumber(L, 1);
 		UnityEngine.QueueMode o = (UnityEngine.QueueMode)arg0;
 		ToLua.Push(L, o);

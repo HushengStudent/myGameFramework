@@ -17,6 +17,9 @@ public class UnityEngine_MeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_MeshRenderer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MeshRenderer.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -41,6 +44,9 @@ public class UnityEngine_MeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MeshRenderer.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -59,6 +65,9 @@ public class UnityEngine_MeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_additionalVertexStreams(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MeshRenderer.additionalVertexStreams");
+#endif
 		object o = null;
 
 		try
@@ -78,6 +87,9 @@ public class UnityEngine_MeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_additionalVertexStreams(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.MeshRenderer.additionalVertexStreams");
+#endif
 		object o = null;
 
 		try

@@ -22,6 +22,9 @@ public class LogHelperWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateLogHelper(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LogHelper.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -46,6 +49,9 @@ public class LogHelperWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Print(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LogHelper.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -92,6 +98,9 @@ public class LogHelperWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int PrintWarning(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LogHelper.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -123,6 +132,9 @@ public class LogHelperWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int PrintGreen(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LogHelper.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -154,6 +166,9 @@ public class LogHelperWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int PrintError(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LogHelper.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -185,6 +200,9 @@ public class LogHelperWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_LogEnable(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LogHelper.LogEnable");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, LogHelper.LogEnable);
@@ -199,6 +217,9 @@ public class LogHelperWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_WarningEnable(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LogHelper.WarningEnable");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, LogHelper.WarningEnable);
@@ -213,6 +234,9 @@ public class LogHelperWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_ErrorEnable(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LogHelper.ErrorEnable");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, LogHelper.ErrorEnable);
@@ -227,6 +251,9 @@ public class LogHelperWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_LogEnable(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LogHelper.LogEnable");
+#endif
 		try
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
@@ -242,6 +269,9 @@ public class LogHelperWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_WarningEnable(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LogHelper.WarningEnable");
+#endif
 		try
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
@@ -257,6 +287,9 @@ public class LogHelperWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_ErrorEnable(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LogHelper.ErrorEnable");
+#endif
 		try
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);

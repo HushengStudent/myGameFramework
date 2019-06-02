@@ -26,6 +26,9 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_SkinnedMeshRenderer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -50,6 +53,9 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetBlendShapeWeight(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.GetBlendShapeWeight");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -68,6 +74,9 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetBlendShapeWeight(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.SetBlendShapeWeight");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -86,6 +95,9 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int BakeMesh(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.BakeMesh");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -103,6 +115,9 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -121,6 +136,9 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_bones(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.bones");
+#endif
 		object o = null;
 
 		try
@@ -140,6 +158,9 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_quality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.quality");
+#endif
 		object o = null;
 
 		try
@@ -159,6 +180,9 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_updateWhenOffscreen(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.updateWhenOffscreen");
+#endif
 		object o = null;
 
 		try
@@ -178,6 +202,9 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_rootBone(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.rootBone");
+#endif
 		object o = null;
 
 		try
@@ -197,6 +224,9 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_sharedMesh(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.sharedMesh");
+#endif
 		object o = null;
 
 		try
@@ -216,6 +246,9 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_skinnedMotionVectors(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.skinnedMotionVectors");
+#endif
 		object o = null;
 
 		try
@@ -235,6 +268,9 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_localBounds(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.localBounds");
+#endif
 		object o = null;
 
 		try
@@ -254,6 +290,9 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_bones(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.bones");
+#endif
 		object o = null;
 
 		try
@@ -273,6 +312,9 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_quality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.quality");
+#endif
 		object o = null;
 
 		try
@@ -292,6 +334,9 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_updateWhenOffscreen(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.updateWhenOffscreen");
+#endif
 		object o = null;
 
 		try
@@ -311,6 +356,9 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_rootBone(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.rootBone");
+#endif
 		object o = null;
 
 		try
@@ -330,6 +378,9 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_sharedMesh(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.sharedMesh");
+#endif
 		object o = null;
 
 		try
@@ -349,6 +400,9 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_skinnedMotionVectors(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.skinnedMotionVectors");
+#endif
 		object o = null;
 
 		try
@@ -368,6 +422,9 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_localBounds(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.localBounds");
+#endif
 		object o = null;
 
 		try

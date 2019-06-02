@@ -65,6 +65,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_Material(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -97,6 +100,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int HasProperty(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -131,6 +137,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetTag(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -168,6 +177,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetOverrideTag(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.SetOverrideTag");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -186,6 +198,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetShaderPassEnabled(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.SetShaderPassEnabled");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -204,6 +219,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetShaderPassEnabled(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.GetShaderPassEnabled");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -222,6 +240,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Lerp(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Lerp");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 4);
@@ -241,6 +262,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetPass(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.SetPass");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -259,6 +283,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetPassName(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.GetPassName");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -277,6 +304,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int FindPass(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.FindPass");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -295,6 +325,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CopyPropertiesFromMaterial(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.CopyPropertiesFromMaterial");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -312,6 +345,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int EnableKeyword(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.EnableKeyword");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -329,6 +365,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int DisableKeyword(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.DisableKeyword");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -346,6 +385,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IsKeywordEnabled(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.IsKeywordEnabled");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -364,6 +406,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetFloat(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -398,6 +443,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetInt(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -432,6 +480,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetColor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -466,6 +517,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetVector(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -500,6 +554,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -534,6 +591,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetTexture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -568,6 +628,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetBuffer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -602,6 +665,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetTextureOffset(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -636,6 +702,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetTextureScale(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -670,6 +739,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetFloatArray(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -720,6 +792,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetColorArray(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -770,6 +845,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetVectorArray(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -820,6 +898,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetMatrixArray(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -870,6 +951,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetFloat(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -904,6 +988,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetInt(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -938,6 +1025,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetColor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -972,6 +1062,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetVector(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1006,6 +1099,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1040,6 +1136,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetFloatArray(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1090,6 +1189,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetVectorArray(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1140,6 +1242,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetColorArray(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1190,6 +1295,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetMatrixArray(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1240,6 +1348,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetTexture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1274,6 +1385,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetTextureOffset(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1308,6 +1422,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetTextureScale(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1342,6 +1459,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -1360,6 +1480,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_shader(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.shader");
+#endif
 		object o = null;
 
 		try
@@ -1379,6 +1502,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_color(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.color");
+#endif
 		object o = null;
 
 		try
@@ -1398,6 +1524,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_mainTexture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.mainTexture");
+#endif
 		object o = null;
 
 		try
@@ -1417,6 +1546,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_mainTextureOffset(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.mainTextureOffset");
+#endif
 		object o = null;
 
 		try
@@ -1436,6 +1568,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_mainTextureScale(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.mainTextureScale");
+#endif
 		object o = null;
 
 		try
@@ -1455,6 +1590,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_passCount(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.passCount");
+#endif
 		object o = null;
 
 		try
@@ -1474,6 +1612,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_renderQueue(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.renderQueue");
+#endif
 		object o = null;
 
 		try
@@ -1493,6 +1634,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_shaderKeywords(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.shaderKeywords");
+#endif
 		object o = null;
 
 		try
@@ -1512,6 +1656,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_globalIlluminationFlags(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.globalIlluminationFlags");
+#endif
 		object o = null;
 
 		try
@@ -1531,6 +1678,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_enableInstancing(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.enableInstancing");
+#endif
 		object o = null;
 
 		try
@@ -1550,6 +1700,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_doubleSidedGI(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.doubleSidedGI");
+#endif
 		object o = null;
 
 		try
@@ -1569,6 +1722,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_shader(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.shader");
+#endif
 		object o = null;
 
 		try
@@ -1588,6 +1744,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_color(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.color");
+#endif
 		object o = null;
 
 		try
@@ -1607,6 +1766,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_mainTexture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.mainTexture");
+#endif
 		object o = null;
 
 		try
@@ -1626,6 +1788,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_mainTextureOffset(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.mainTextureOffset");
+#endif
 		object o = null;
 
 		try
@@ -1645,6 +1810,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_mainTextureScale(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.mainTextureScale");
+#endif
 		object o = null;
 
 		try
@@ -1664,6 +1832,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_renderQueue(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.renderQueue");
+#endif
 		object o = null;
 
 		try
@@ -1683,6 +1854,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_shaderKeywords(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.shaderKeywords");
+#endif
 		object o = null;
 
 		try
@@ -1702,6 +1876,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_globalIlluminationFlags(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.globalIlluminationFlags");
+#endif
 		object o = null;
 
 		try
@@ -1721,6 +1898,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_enableInstancing(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.enableInstancing");
+#endif
 		object o = null;
 
 		try
@@ -1740,6 +1920,9 @@ public class UnityEngine_MaterialWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_doubleSidedGI(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Material.doubleSidedGI");
+#endif
 		object o = null;
 
 		try

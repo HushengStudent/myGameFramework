@@ -58,6 +58,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_ParticleSystem(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -82,6 +85,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetParticles(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.SetParticles");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -100,6 +106,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetParticles(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.GetParticles");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -118,6 +127,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetCustomParticleData(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.SetCustomParticleData");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -136,6 +148,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetCustomParticleData(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.GetCustomParticleData");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -155,6 +170,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Simulate(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -207,6 +225,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Play(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -238,6 +259,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Pause(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -269,6 +293,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Stop(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -308,6 +335,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Clear(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -339,6 +369,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IsAlive(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -372,6 +405,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Emit(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -405,6 +441,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int EnableMeshNonUniformScaleFix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.EnableMeshNonUniformScaleFix");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -421,6 +460,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -439,6 +481,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isPlaying(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.isPlaying");
+#endif
 		object o = null;
 
 		try
@@ -458,6 +503,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isEmitting(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.isEmitting");
+#endif
 		object o = null;
 
 		try
@@ -477,6 +525,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isStopped(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.isStopped");
+#endif
 		object o = null;
 
 		try
@@ -496,6 +547,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isPaused(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.isPaused");
+#endif
 		object o = null;
 
 		try
@@ -515,6 +569,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_time(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.time");
+#endif
 		object o = null;
 
 		try
@@ -534,6 +591,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_particleCount(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.particleCount");
+#endif
 		object o = null;
 
 		try
@@ -553,6 +613,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_randomSeed(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.randomSeed");
+#endif
 		object o = null;
 
 		try
@@ -572,6 +635,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_useAutoRandomSeed(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.useAutoRandomSeed");
+#endif
 		object o = null;
 
 		try
@@ -591,6 +657,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_main(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.main");
+#endif
 		object o = null;
 
 		try
@@ -610,6 +679,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_emission(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.emission");
+#endif
 		object o = null;
 
 		try
@@ -629,6 +701,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_shape(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.shape");
+#endif
 		object o = null;
 
 		try
@@ -648,6 +723,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_velocityOverLifetime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.velocityOverLifetime");
+#endif
 		object o = null;
 
 		try
@@ -667,6 +745,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_limitVelocityOverLifetime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.limitVelocityOverLifetime");
+#endif
 		object o = null;
 
 		try
@@ -686,6 +767,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_inheritVelocity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.inheritVelocity");
+#endif
 		object o = null;
 
 		try
@@ -705,6 +789,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_forceOverLifetime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.forceOverLifetime");
+#endif
 		object o = null;
 
 		try
@@ -724,6 +811,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_colorOverLifetime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.colorOverLifetime");
+#endif
 		object o = null;
 
 		try
@@ -743,6 +833,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_colorBySpeed(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.colorBySpeed");
+#endif
 		object o = null;
 
 		try
@@ -762,6 +855,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_sizeOverLifetime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.sizeOverLifetime");
+#endif
 		object o = null;
 
 		try
@@ -781,6 +877,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_sizeBySpeed(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.sizeBySpeed");
+#endif
 		object o = null;
 
 		try
@@ -800,6 +899,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_rotationOverLifetime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.rotationOverLifetime");
+#endif
 		object o = null;
 
 		try
@@ -819,6 +921,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_rotationBySpeed(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.rotationBySpeed");
+#endif
 		object o = null;
 
 		try
@@ -838,6 +943,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_externalForces(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.externalForces");
+#endif
 		object o = null;
 
 		try
@@ -857,6 +965,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_noise(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.noise");
+#endif
 		object o = null;
 
 		try
@@ -876,6 +987,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_collision(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.collision");
+#endif
 		object o = null;
 
 		try
@@ -895,6 +1009,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_trigger(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.trigger");
+#endif
 		object o = null;
 
 		try
@@ -914,6 +1031,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_subEmitters(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.subEmitters");
+#endif
 		object o = null;
 
 		try
@@ -933,6 +1053,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_textureSheetAnimation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.textureSheetAnimation");
+#endif
 		object o = null;
 
 		try
@@ -952,6 +1075,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_lights(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.lights");
+#endif
 		object o = null;
 
 		try
@@ -971,6 +1097,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_trails(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.trails");
+#endif
 		object o = null;
 
 		try
@@ -990,6 +1119,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_customData(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.customData");
+#endif
 		object o = null;
 
 		try
@@ -1009,6 +1141,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_time(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.time");
+#endif
 		object o = null;
 
 		try
@@ -1028,6 +1163,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_randomSeed(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.randomSeed");
+#endif
 		object o = null;
 
 		try
@@ -1047,6 +1185,9 @@ public class UnityEngine_ParticleSystemWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_useAutoRandomSeed(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.ParticleSystem.useAutoRandomSeed");
+#endif
 		object o = null;
 
 		try

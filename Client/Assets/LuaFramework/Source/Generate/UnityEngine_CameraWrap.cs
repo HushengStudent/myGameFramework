@@ -113,6 +113,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_Camera(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -137,6 +140,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetTargetBuffers(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -171,6 +177,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ResetWorldToCameraMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.ResetWorldToCameraMatrix");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -187,6 +196,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ResetProjectionMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.ResetProjectionMatrix");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -203,6 +215,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ResetAspect(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.ResetAspect");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -219,6 +234,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetStereoViewMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.GetStereoViewMatrix");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -237,6 +255,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetStereoViewMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.SetStereoViewMatrix");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -255,6 +276,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ResetStereoViewMatrices(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.ResetStereoViewMatrices");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -271,6 +295,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetStereoProjectionMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.GetStereoProjectionMatrix");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -289,6 +316,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetStereoProjectionMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.SetStereoProjectionMatrix");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -307,6 +337,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CalculateFrustumCorners(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.CalculateFrustumCorners");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 5);
@@ -327,6 +360,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ResetStereoProjectionMatrices(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.ResetStereoProjectionMatrices");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -343,6 +379,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ResetTransparencySortSettings(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.ResetTransparencySortSettings");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -359,6 +398,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int WorldToScreenPoint(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.WorldToScreenPoint");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -377,6 +419,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int WorldToViewportPoint(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.WorldToViewportPoint");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -395,6 +440,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ViewportToWorldPoint(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.ViewportToWorldPoint");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -413,6 +461,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ScreenToWorldPoint(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.ScreenToWorldPoint");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -431,6 +482,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ScreenToViewportPoint(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.ScreenToViewportPoint");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -449,6 +503,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ViewportToScreenPoint(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.ViewportToScreenPoint");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -467,6 +524,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ViewportPointToRay(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.ViewportPointToRay");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -485,6 +545,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ScreenPointToRay(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.ScreenPointToRay");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -503,6 +566,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetAllCameras(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.GetAllCameras");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -520,6 +586,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Render(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.Render");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -536,6 +605,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RenderWithShader(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.RenderWithShader");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -554,6 +626,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetReplacementShader(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.SetReplacementShader");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -572,6 +647,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ResetReplacementShader(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.ResetReplacementShader");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -588,6 +666,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ResetCullingMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.ResetCullingMatrix");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -604,6 +685,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RenderDontRestore(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.RenderDontRestore");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -620,6 +704,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetupCurrent(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.SetupCurrent");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -636,6 +723,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RenderToCubemap(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -688,6 +778,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CopyFrom(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.CopyFrom");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -705,6 +798,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int AddCommandBuffer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.AddCommandBuffer");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -723,6 +819,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RemoveCommandBuffer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.RemoveCommandBuffer");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -741,6 +840,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RemoveCommandBuffers(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.RemoveCommandBuffers");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -758,6 +860,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RemoveAllCommandBuffers(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.RemoveAllCommandBuffers");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -774,6 +879,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetCommandBuffers(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.GetCommandBuffers");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -792,6 +900,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CalculateObliqueMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.CalculateObliqueMatrix");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -810,6 +921,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetStereoNonJitteredProjectionMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.GetStereoNonJitteredProjectionMatrix");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -828,6 +942,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CopyStereoDeviceProjectionMatrixToNonJittered(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.CopyStereoDeviceProjectionMatrixToNonJittered");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -845,6 +962,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -863,6 +983,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_onPreCull(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.onPreCull");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.Camera.onPreCull);
@@ -877,6 +1000,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_onPreRender(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.onPreRender");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.Camera.onPreRender);
@@ -891,6 +1017,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_onPostRender(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.onPostRender");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.Camera.onPostRender);
@@ -905,6 +1034,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_fieldOfView(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.fieldOfView");
+#endif
 		object o = null;
 
 		try
@@ -924,6 +1056,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_nearClipPlane(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.nearClipPlane");
+#endif
 		object o = null;
 
 		try
@@ -943,6 +1078,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_farClipPlane(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.farClipPlane");
+#endif
 		object o = null;
 
 		try
@@ -962,6 +1100,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_renderingPath(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.renderingPath");
+#endif
 		object o = null;
 
 		try
@@ -981,6 +1122,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_actualRenderingPath(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.actualRenderingPath");
+#endif
 		object o = null;
 
 		try
@@ -1000,6 +1144,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_allowHDR(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.allowHDR");
+#endif
 		object o = null;
 
 		try
@@ -1019,6 +1166,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_forceIntoRenderTexture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.forceIntoRenderTexture");
+#endif
 		object o = null;
 
 		try
@@ -1038,6 +1188,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_allowMSAA(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.allowMSAA");
+#endif
 		object o = null;
 
 		try
@@ -1057,6 +1210,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_allowDynamicResolution(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.allowDynamicResolution");
+#endif
 		object o = null;
 
 		try
@@ -1076,6 +1232,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_orthographicSize(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.orthographicSize");
+#endif
 		object o = null;
 
 		try
@@ -1095,6 +1254,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_orthographic(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.orthographic");
+#endif
 		object o = null;
 
 		try
@@ -1114,6 +1276,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_opaqueSortMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.opaqueSortMode");
+#endif
 		object o = null;
 
 		try
@@ -1133,6 +1298,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_transparencySortMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.transparencySortMode");
+#endif
 		object o = null;
 
 		try
@@ -1152,6 +1320,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_transparencySortAxis(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.transparencySortAxis");
+#endif
 		object o = null;
 
 		try
@@ -1171,6 +1342,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_depth(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.depth");
+#endif
 		object o = null;
 
 		try
@@ -1190,6 +1364,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_aspect(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.aspect");
+#endif
 		object o = null;
 
 		try
@@ -1209,6 +1386,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_cullingMask(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.cullingMask");
+#endif
 		object o = null;
 
 		try
@@ -1228,6 +1408,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_scene(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.scene");
+#endif
 		object o = null;
 
 		try
@@ -1247,6 +1430,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_eventMask(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.eventMask");
+#endif
 		object o = null;
 
 		try
@@ -1266,6 +1452,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_backgroundColor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.backgroundColor");
+#endif
 		object o = null;
 
 		try
@@ -1285,6 +1474,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_rect(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.rect");
+#endif
 		object o = null;
 
 		try
@@ -1304,6 +1496,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_pixelRect(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.pixelRect");
+#endif
 		object o = null;
 
 		try
@@ -1323,6 +1518,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_targetTexture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.targetTexture");
+#endif
 		object o = null;
 
 		try
@@ -1342,6 +1540,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_activeTexture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.activeTexture");
+#endif
 		object o = null;
 
 		try
@@ -1361,6 +1562,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_pixelWidth(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.pixelWidth");
+#endif
 		object o = null;
 
 		try
@@ -1380,6 +1584,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_pixelHeight(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.pixelHeight");
+#endif
 		object o = null;
 
 		try
@@ -1399,6 +1606,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_scaledPixelWidth(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.scaledPixelWidth");
+#endif
 		object o = null;
 
 		try
@@ -1418,6 +1628,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_scaledPixelHeight(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.scaledPixelHeight");
+#endif
 		object o = null;
 
 		try
@@ -1437,6 +1650,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_cameraToWorldMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.cameraToWorldMatrix");
+#endif
 		object o = null;
 
 		try
@@ -1456,6 +1672,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_worldToCameraMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.worldToCameraMatrix");
+#endif
 		object o = null;
 
 		try
@@ -1475,6 +1694,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_projectionMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.projectionMatrix");
+#endif
 		object o = null;
 
 		try
@@ -1494,6 +1716,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_nonJitteredProjectionMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.nonJitteredProjectionMatrix");
+#endif
 		object o = null;
 
 		try
@@ -1513,6 +1738,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_useJitteredProjectionMatrixForTransparentRendering(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.useJitteredProjectionMatrixForTransparentRendering");
+#endif
 		object o = null;
 
 		try
@@ -1532,6 +1760,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_previousViewProjectionMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.previousViewProjectionMatrix");
+#endif
 		object o = null;
 
 		try
@@ -1551,6 +1782,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_velocity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.velocity");
+#endif
 		object o = null;
 
 		try
@@ -1570,6 +1804,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_clearFlags(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.clearFlags");
+#endif
 		object o = null;
 
 		try
@@ -1589,6 +1826,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_stereoEnabled(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.stereoEnabled");
+#endif
 		object o = null;
 
 		try
@@ -1608,6 +1848,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_stereoSeparation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.stereoSeparation");
+#endif
 		object o = null;
 
 		try
@@ -1627,6 +1870,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_stereoConvergence(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.stereoConvergence");
+#endif
 		object o = null;
 
 		try
@@ -1646,6 +1892,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_cameraType(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.cameraType");
+#endif
 		object o = null;
 
 		try
@@ -1665,6 +1914,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_stereoTargetEye(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.stereoTargetEye");
+#endif
 		object o = null;
 
 		try
@@ -1684,6 +1936,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_areVRStereoViewMatricesWithinSingleCullTolerance(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.areVRStereoViewMatricesWithinSingleCullTolerance");
+#endif
 		object o = null;
 
 		try
@@ -1703,6 +1958,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_stereoActiveEye(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.stereoActiveEye");
+#endif
 		object o = null;
 
 		try
@@ -1722,6 +1980,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_targetDisplay(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.targetDisplay");
+#endif
 		object o = null;
 
 		try
@@ -1741,6 +2002,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_main(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.main");
+#endif
 		try
 		{
 			ToLua.PushSealed(L, UnityEngine.Camera.main);
@@ -1755,6 +2019,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_current(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.current");
+#endif
 		try
 		{
 			ToLua.PushSealed(L, UnityEngine.Camera.current);
@@ -1769,6 +2036,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_allCameras(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.allCameras");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.Camera.allCameras);
@@ -1783,6 +2053,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_allCamerasCount(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.allCamerasCount");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.Camera.allCamerasCount);
@@ -1797,6 +2070,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_useOcclusionCulling(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.useOcclusionCulling");
+#endif
 		object o = null;
 
 		try
@@ -1816,6 +2092,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_cullingMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.cullingMatrix");
+#endif
 		object o = null;
 
 		try
@@ -1835,6 +2114,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_layerCullDistances(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.layerCullDistances");
+#endif
 		object o = null;
 
 		try
@@ -1854,6 +2136,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_layerCullSpherical(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.layerCullSpherical");
+#endif
 		object o = null;
 
 		try
@@ -1873,6 +2158,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_depthTextureMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.depthTextureMode");
+#endif
 		object o = null;
 
 		try
@@ -1892,6 +2180,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_clearStencilAfterLightingPass(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.clearStencilAfterLightingPass");
+#endif
 		object o = null;
 
 		try
@@ -1911,6 +2202,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_commandBufferCount(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.commandBufferCount");
+#endif
 		object o = null;
 
 		try
@@ -1930,6 +2224,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_onPreCull(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.onPreCull");
+#endif
 		try
 		{
 			UnityEngine.Camera.CameraCallback arg0 = (UnityEngine.Camera.CameraCallback)ToLua.CheckDelegate<UnityEngine.Camera.CameraCallback>(L, 2);
@@ -1945,6 +2242,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_onPreRender(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.onPreRender");
+#endif
 		try
 		{
 			UnityEngine.Camera.CameraCallback arg0 = (UnityEngine.Camera.CameraCallback)ToLua.CheckDelegate<UnityEngine.Camera.CameraCallback>(L, 2);
@@ -1960,6 +2260,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_onPostRender(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.onPostRender");
+#endif
 		try
 		{
 			UnityEngine.Camera.CameraCallback arg0 = (UnityEngine.Camera.CameraCallback)ToLua.CheckDelegate<UnityEngine.Camera.CameraCallback>(L, 2);
@@ -1975,6 +2278,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_fieldOfView(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.fieldOfView");
+#endif
 		object o = null;
 
 		try
@@ -1994,6 +2300,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_nearClipPlane(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.nearClipPlane");
+#endif
 		object o = null;
 
 		try
@@ -2013,6 +2322,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_farClipPlane(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.farClipPlane");
+#endif
 		object o = null;
 
 		try
@@ -2032,6 +2344,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_renderingPath(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.renderingPath");
+#endif
 		object o = null;
 
 		try
@@ -2051,6 +2366,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_allowHDR(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.allowHDR");
+#endif
 		object o = null;
 
 		try
@@ -2070,6 +2388,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_forceIntoRenderTexture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.forceIntoRenderTexture");
+#endif
 		object o = null;
 
 		try
@@ -2089,6 +2410,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_allowMSAA(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.allowMSAA");
+#endif
 		object o = null;
 
 		try
@@ -2108,6 +2432,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_allowDynamicResolution(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.allowDynamicResolution");
+#endif
 		object o = null;
 
 		try
@@ -2127,6 +2454,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_orthographicSize(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.orthographicSize");
+#endif
 		object o = null;
 
 		try
@@ -2146,6 +2476,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_orthographic(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.orthographic");
+#endif
 		object o = null;
 
 		try
@@ -2165,6 +2498,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_opaqueSortMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.opaqueSortMode");
+#endif
 		object o = null;
 
 		try
@@ -2184,6 +2520,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_transparencySortMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.transparencySortMode");
+#endif
 		object o = null;
 
 		try
@@ -2203,6 +2542,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_transparencySortAxis(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.transparencySortAxis");
+#endif
 		object o = null;
 
 		try
@@ -2222,6 +2564,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_depth(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.depth");
+#endif
 		object o = null;
 
 		try
@@ -2241,6 +2586,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_aspect(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.aspect");
+#endif
 		object o = null;
 
 		try
@@ -2260,6 +2608,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_cullingMask(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.cullingMask");
+#endif
 		object o = null;
 
 		try
@@ -2279,6 +2630,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_scene(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.scene");
+#endif
 		object o = null;
 
 		try
@@ -2298,6 +2652,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_eventMask(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.eventMask");
+#endif
 		object o = null;
 
 		try
@@ -2317,6 +2674,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_backgroundColor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.backgroundColor");
+#endif
 		object o = null;
 
 		try
@@ -2336,6 +2696,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_rect(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.rect");
+#endif
 		object o = null;
 
 		try
@@ -2355,6 +2718,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_pixelRect(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.pixelRect");
+#endif
 		object o = null;
 
 		try
@@ -2374,6 +2740,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_targetTexture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.targetTexture");
+#endif
 		object o = null;
 
 		try
@@ -2393,6 +2762,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_worldToCameraMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.worldToCameraMatrix");
+#endif
 		object o = null;
 
 		try
@@ -2412,6 +2784,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_projectionMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.projectionMatrix");
+#endif
 		object o = null;
 
 		try
@@ -2431,6 +2806,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_nonJitteredProjectionMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.nonJitteredProjectionMatrix");
+#endif
 		object o = null;
 
 		try
@@ -2450,6 +2828,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_useJitteredProjectionMatrixForTransparentRendering(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.useJitteredProjectionMatrixForTransparentRendering");
+#endif
 		object o = null;
 
 		try
@@ -2469,6 +2850,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_clearFlags(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.clearFlags");
+#endif
 		object o = null;
 
 		try
@@ -2488,6 +2872,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_stereoSeparation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.stereoSeparation");
+#endif
 		object o = null;
 
 		try
@@ -2507,6 +2894,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_stereoConvergence(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.stereoConvergence");
+#endif
 		object o = null;
 
 		try
@@ -2526,6 +2916,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_cameraType(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.cameraType");
+#endif
 		object o = null;
 
 		try
@@ -2545,6 +2938,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_stereoTargetEye(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.stereoTargetEye");
+#endif
 		object o = null;
 
 		try
@@ -2564,6 +2960,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_targetDisplay(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.targetDisplay");
+#endif
 		object o = null;
 
 		try
@@ -2583,6 +2982,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_useOcclusionCulling(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.useOcclusionCulling");
+#endif
 		object o = null;
 
 		try
@@ -2602,6 +3004,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_cullingMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.cullingMatrix");
+#endif
 		object o = null;
 
 		try
@@ -2621,6 +3026,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_layerCullDistances(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.layerCullDistances");
+#endif
 		object o = null;
 
 		try
@@ -2640,6 +3048,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_layerCullSpherical(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.layerCullSpherical");
+#endif
 		object o = null;
 
 		try
@@ -2659,6 +3070,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_depthTextureMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.depthTextureMode");
+#endif
 		object o = null;
 
 		try
@@ -2678,6 +3092,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_clearStencilAfterLightingPass(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.clearStencilAfterLightingPass");
+#endif
 		object o = null;
 
 		try
@@ -2697,6 +3114,9 @@ public class UnityEngine_CameraWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnityEngine_Camera_CameraCallback(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Camera.UnityEngine_Camera_CameraCallback");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);

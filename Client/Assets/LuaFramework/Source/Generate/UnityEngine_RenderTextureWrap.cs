@@ -48,6 +48,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_RenderTexture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -110,6 +113,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetTemporary(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -227,6 +233,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ReleaseTemporary(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.ReleaseTemporary");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -243,6 +252,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ResolveAntiAliasedSurface(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -274,6 +286,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Create(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.Create");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -291,6 +306,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Release(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.Release");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -307,6 +325,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IsCreated(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.IsCreated");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -324,6 +345,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int DiscardContents(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -356,6 +380,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int MarkRestoreExpected(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.MarkRestoreExpected");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -372,6 +399,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GenerateMips(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.GenerateMips");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -388,6 +418,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetNativeDepthBufferPtr(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.GetNativeDepthBufferPtr");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -405,6 +438,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetGlobalShaderProperty(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.SetGlobalShaderProperty");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -422,6 +458,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SupportsStencil(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.SupportsStencil");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -439,6 +478,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -457,6 +499,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_width(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.width");
+#endif
 		object o = null;
 
 		try
@@ -476,6 +521,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_height(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.height");
+#endif
 		object o = null;
 
 		try
@@ -495,6 +543,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_vrUsage(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.vrUsage");
+#endif
 		object o = null;
 
 		try
@@ -514,6 +565,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_depth(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.depth");
+#endif
 		object o = null;
 
 		try
@@ -533,6 +587,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isPowerOfTwo(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.isPowerOfTwo");
+#endif
 		object o = null;
 
 		try
@@ -552,6 +609,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_sRGB(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.sRGB");
+#endif
 		object o = null;
 
 		try
@@ -571,6 +631,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_format(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.format");
+#endif
 		object o = null;
 
 		try
@@ -590,6 +653,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_useMipMap(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.useMipMap");
+#endif
 		object o = null;
 
 		try
@@ -609,6 +675,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_autoGenerateMips(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.autoGenerateMips");
+#endif
 		object o = null;
 
 		try
@@ -628,6 +697,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_dimension(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.dimension");
+#endif
 		object o = null;
 
 		try
@@ -647,6 +719,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_volumeDepth(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.volumeDepth");
+#endif
 		object o = null;
 
 		try
@@ -666,6 +741,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_memorylessMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.memorylessMode");
+#endif
 		object o = null;
 
 		try
@@ -685,6 +763,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_antiAliasing(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.antiAliasing");
+#endif
 		object o = null;
 
 		try
@@ -704,6 +785,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_bindTextureMS(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.bindTextureMS");
+#endif
 		object o = null;
 
 		try
@@ -723,6 +807,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_enableRandomWrite(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.enableRandomWrite");
+#endif
 		object o = null;
 
 		try
@@ -742,6 +829,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_useDynamicScale(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.useDynamicScale");
+#endif
 		object o = null;
 
 		try
@@ -761,6 +851,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_colorBuffer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.colorBuffer");
+#endif
 		object o = null;
 
 		try
@@ -780,6 +873,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_depthBuffer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.depthBuffer");
+#endif
 		object o = null;
 
 		try
@@ -799,6 +895,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_active(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.active");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.RenderTexture.active);
@@ -813,6 +912,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_descriptor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.descriptor");
+#endif
 		object o = null;
 
 		try
@@ -832,6 +934,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_width(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.width");
+#endif
 		object o = null;
 
 		try
@@ -851,6 +956,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_height(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.height");
+#endif
 		object o = null;
 
 		try
@@ -870,6 +978,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_vrUsage(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.vrUsage");
+#endif
 		object o = null;
 
 		try
@@ -889,6 +1000,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_depth(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.depth");
+#endif
 		object o = null;
 
 		try
@@ -908,6 +1022,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_isPowerOfTwo(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.isPowerOfTwo");
+#endif
 		object o = null;
 
 		try
@@ -927,6 +1044,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_format(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.format");
+#endif
 		object o = null;
 
 		try
@@ -946,6 +1066,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_useMipMap(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.useMipMap");
+#endif
 		object o = null;
 
 		try
@@ -965,6 +1088,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_autoGenerateMips(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.autoGenerateMips");
+#endif
 		object o = null;
 
 		try
@@ -984,6 +1110,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_dimension(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.dimension");
+#endif
 		object o = null;
 
 		try
@@ -1003,6 +1132,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_volumeDepth(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.volumeDepth");
+#endif
 		object o = null;
 
 		try
@@ -1022,6 +1154,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_memorylessMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.memorylessMode");
+#endif
 		object o = null;
 
 		try
@@ -1041,6 +1176,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_antiAliasing(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.antiAliasing");
+#endif
 		object o = null;
 
 		try
@@ -1060,6 +1198,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_bindTextureMS(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.bindTextureMS");
+#endif
 		object o = null;
 
 		try
@@ -1079,6 +1220,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_enableRandomWrite(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.enableRandomWrite");
+#endif
 		object o = null;
 
 		try
@@ -1098,6 +1242,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_useDynamicScale(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.useDynamicScale");
+#endif
 		object o = null;
 
 		try
@@ -1117,6 +1264,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_active(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.active");
+#endif
 		try
 		{
 			UnityEngine.RenderTexture arg0 = (UnityEngine.RenderTexture)ToLua.CheckObject<UnityEngine.RenderTexture>(L, 2);
@@ -1132,6 +1282,9 @@ public class UnityEngine_RenderTextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_descriptor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderTexture.descriptor");
+#endif
 		object o = null;
 
 		try

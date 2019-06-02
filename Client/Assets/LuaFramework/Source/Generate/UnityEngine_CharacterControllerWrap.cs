@@ -30,6 +30,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_CharacterController(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -54,6 +57,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SimpleMove(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.SimpleMove");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -72,6 +78,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Move(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.Move");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -90,6 +99,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -108,6 +120,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isGrounded(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.isGrounded");
+#endif
 		object o = null;
 
 		try
@@ -127,6 +142,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_velocity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.velocity");
+#endif
 		object o = null;
 
 		try
@@ -146,6 +164,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_collisionFlags(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.collisionFlags");
+#endif
 		object o = null;
 
 		try
@@ -165,6 +186,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_radius(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.radius");
+#endif
 		object o = null;
 
 		try
@@ -184,6 +208,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_height(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.height");
+#endif
 		object o = null;
 
 		try
@@ -203,6 +230,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_center(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.center");
+#endif
 		object o = null;
 
 		try
@@ -222,6 +252,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_slopeLimit(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.slopeLimit");
+#endif
 		object o = null;
 
 		try
@@ -241,6 +274,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_stepOffset(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.stepOffset");
+#endif
 		object o = null;
 
 		try
@@ -260,6 +296,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_skinWidth(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.skinWidth");
+#endif
 		object o = null;
 
 		try
@@ -279,6 +318,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_minMoveDistance(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.minMoveDistance");
+#endif
 		object o = null;
 
 		try
@@ -298,6 +340,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_detectCollisions(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.detectCollisions");
+#endif
 		object o = null;
 
 		try
@@ -317,6 +362,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_enableOverlapRecovery(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.enableOverlapRecovery");
+#endif
 		object o = null;
 
 		try
@@ -336,6 +384,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_radius(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.radius");
+#endif
 		object o = null;
 
 		try
@@ -355,6 +406,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_height(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.height");
+#endif
 		object o = null;
 
 		try
@@ -374,6 +428,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_center(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.center");
+#endif
 		object o = null;
 
 		try
@@ -393,6 +450,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_slopeLimit(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.slopeLimit");
+#endif
 		object o = null;
 
 		try
@@ -412,6 +472,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_stepOffset(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.stepOffset");
+#endif
 		object o = null;
 
 		try
@@ -431,6 +494,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_skinWidth(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.skinWidth");
+#endif
 		object o = null;
 
 		try
@@ -450,6 +516,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_minMoveDistance(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.minMoveDistance");
+#endif
 		object o = null;
 
 		try
@@ -469,6 +538,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_detectCollisions(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.detectCollisions");
+#endif
 		object o = null;
 
 		try
@@ -488,6 +560,9 @@ public class UnityEngine_CharacterControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_enableOverlapRecovery(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.CharacterController.enableOverlapRecovery");
+#endif
 		object o = null;
 
 		try

@@ -16,6 +16,9 @@ public class Framework_LuaControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaController.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -34,6 +37,9 @@ public class Framework_LuaControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_componentArray(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaController.componentArray");
+#endif
 		object o = null;
 
 		try
@@ -53,6 +59,9 @@ public class Framework_LuaControllerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_componentArray(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaController.componentArray");
+#endif
 		object o = null;
 
 		try

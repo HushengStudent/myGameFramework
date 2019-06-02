@@ -62,6 +62,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_AudioSource(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -86,6 +89,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Play(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -117,6 +123,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int PlayDelayed(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.PlayDelayed");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -134,6 +143,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int PlayScheduled(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.PlayScheduled");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -151,6 +163,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetScheduledStartTime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.SetScheduledStartTime");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -168,6 +183,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetScheduledEndTime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.SetScheduledEndTime");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -185,6 +203,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Stop(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.Stop");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -201,6 +222,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Pause(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.Pause");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -217,6 +241,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnPause(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.UnPause");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -233,6 +260,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int PlayOneShot(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -266,6 +296,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int PlayClipAtPoint(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -299,6 +332,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetCustomCurve(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.SetCustomCurve");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -317,6 +353,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetCustomCurve(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.GetCustomCurve");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -335,6 +374,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetOutputData(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.GetOutputData");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -353,6 +395,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetSpectrumData(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.GetSpectrumData");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 4);
@@ -372,6 +417,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetSpatializerFloat(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.SetSpatializerFloat");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -391,6 +439,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetSpatializerFloat(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.GetSpatializerFloat");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -411,6 +462,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetAmbisonicDecoderFloat(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.SetAmbisonicDecoderFloat");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -430,6 +484,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetAmbisonicDecoderFloat(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.GetAmbisonicDecoderFloat");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -450,6 +507,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -468,6 +528,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_volume(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.volume");
+#endif
 		object o = null;
 
 		try
@@ -487,6 +550,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_pitch(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.pitch");
+#endif
 		object o = null;
 
 		try
@@ -506,6 +572,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_time(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.time");
+#endif
 		object o = null;
 
 		try
@@ -525,6 +594,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_timeSamples(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.timeSamples");
+#endif
 		object o = null;
 
 		try
@@ -544,6 +616,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_clip(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.clip");
+#endif
 		object o = null;
 
 		try
@@ -563,6 +638,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_outputAudioMixerGroup(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.outputAudioMixerGroup");
+#endif
 		object o = null;
 
 		try
@@ -582,6 +660,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isPlaying(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.isPlaying");
+#endif
 		object o = null;
 
 		try
@@ -601,6 +682,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isVirtual(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.isVirtual");
+#endif
 		object o = null;
 
 		try
@@ -620,6 +704,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_loop(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.loop");
+#endif
 		object o = null;
 
 		try
@@ -639,6 +726,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_ignoreListenerVolume(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.ignoreListenerVolume");
+#endif
 		object o = null;
 
 		try
@@ -658,6 +748,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_playOnAwake(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.playOnAwake");
+#endif
 		object o = null;
 
 		try
@@ -677,6 +770,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_ignoreListenerPause(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.ignoreListenerPause");
+#endif
 		object o = null;
 
 		try
@@ -696,6 +792,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_velocityUpdateMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.velocityUpdateMode");
+#endif
 		object o = null;
 
 		try
@@ -715,6 +814,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_panStereo(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.panStereo");
+#endif
 		object o = null;
 
 		try
@@ -734,6 +836,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_spatialBlend(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.spatialBlend");
+#endif
 		object o = null;
 
 		try
@@ -753,6 +858,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_spatialize(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.spatialize");
+#endif
 		object o = null;
 
 		try
@@ -772,6 +880,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_spatializePostEffects(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.spatializePostEffects");
+#endif
 		object o = null;
 
 		try
@@ -791,6 +902,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_reverbZoneMix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.reverbZoneMix");
+#endif
 		object o = null;
 
 		try
@@ -810,6 +924,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_bypassEffects(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.bypassEffects");
+#endif
 		object o = null;
 
 		try
@@ -829,6 +946,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_bypassListenerEffects(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.bypassListenerEffects");
+#endif
 		object o = null;
 
 		try
@@ -848,6 +968,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_bypassReverbZones(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.bypassReverbZones");
+#endif
 		object o = null;
 
 		try
@@ -867,6 +990,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_dopplerLevel(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.dopplerLevel");
+#endif
 		object o = null;
 
 		try
@@ -886,6 +1012,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_spread(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.spread");
+#endif
 		object o = null;
 
 		try
@@ -905,6 +1034,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_priority(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.priority");
+#endif
 		object o = null;
 
 		try
@@ -924,6 +1056,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_mute(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.mute");
+#endif
 		object o = null;
 
 		try
@@ -943,6 +1078,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_minDistance(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.minDistance");
+#endif
 		object o = null;
 
 		try
@@ -962,6 +1100,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_maxDistance(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.maxDistance");
+#endif
 		object o = null;
 
 		try
@@ -981,6 +1122,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_rolloffMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.rolloffMode");
+#endif
 		object o = null;
 
 		try
@@ -1000,6 +1144,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_volume(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.volume");
+#endif
 		object o = null;
 
 		try
@@ -1019,6 +1166,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_pitch(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.pitch");
+#endif
 		object o = null;
 
 		try
@@ -1038,6 +1188,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_time(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.time");
+#endif
 		object o = null;
 
 		try
@@ -1057,6 +1210,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_timeSamples(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.timeSamples");
+#endif
 		object o = null;
 
 		try
@@ -1076,6 +1232,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_clip(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.clip");
+#endif
 		object o = null;
 
 		try
@@ -1095,6 +1254,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_outputAudioMixerGroup(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.outputAudioMixerGroup");
+#endif
 		object o = null;
 
 		try
@@ -1114,6 +1276,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_loop(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.loop");
+#endif
 		object o = null;
 
 		try
@@ -1133,6 +1298,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_ignoreListenerVolume(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.ignoreListenerVolume");
+#endif
 		object o = null;
 
 		try
@@ -1152,6 +1320,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_playOnAwake(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.playOnAwake");
+#endif
 		object o = null;
 
 		try
@@ -1171,6 +1342,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_ignoreListenerPause(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.ignoreListenerPause");
+#endif
 		object o = null;
 
 		try
@@ -1190,6 +1364,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_velocityUpdateMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.velocityUpdateMode");
+#endif
 		object o = null;
 
 		try
@@ -1209,6 +1386,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_panStereo(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.panStereo");
+#endif
 		object o = null;
 
 		try
@@ -1228,6 +1408,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_spatialBlend(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.spatialBlend");
+#endif
 		object o = null;
 
 		try
@@ -1247,6 +1430,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_spatialize(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.spatialize");
+#endif
 		object o = null;
 
 		try
@@ -1266,6 +1452,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_spatializePostEffects(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.spatializePostEffects");
+#endif
 		object o = null;
 
 		try
@@ -1285,6 +1474,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_reverbZoneMix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.reverbZoneMix");
+#endif
 		object o = null;
 
 		try
@@ -1304,6 +1496,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_bypassEffects(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.bypassEffects");
+#endif
 		object o = null;
 
 		try
@@ -1323,6 +1518,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_bypassListenerEffects(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.bypassListenerEffects");
+#endif
 		object o = null;
 
 		try
@@ -1342,6 +1540,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_bypassReverbZones(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.bypassReverbZones");
+#endif
 		object o = null;
 
 		try
@@ -1361,6 +1562,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_dopplerLevel(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.dopplerLevel");
+#endif
 		object o = null;
 
 		try
@@ -1380,6 +1584,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_spread(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.spread");
+#endif
 		object o = null;
 
 		try
@@ -1399,6 +1606,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_priority(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.priority");
+#endif
 		object o = null;
 
 		try
@@ -1418,6 +1628,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_mute(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.mute");
+#endif
 		object o = null;
 
 		try
@@ -1437,6 +1650,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_minDistance(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.minDistance");
+#endif
 		object o = null;
 
 		try
@@ -1456,6 +1672,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_maxDistance(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.maxDistance");
+#endif
 		object o = null;
 
 		try
@@ -1475,6 +1694,9 @@ public class UnityEngine_AudioSourceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_rolloffMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.rolloffMode");
+#endif
 		object o = null;
 
 		try

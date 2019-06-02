@@ -18,6 +18,9 @@ public class UnityEngine_BehaviourWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_Behaviour(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Behaviour.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -42,6 +45,9 @@ public class UnityEngine_BehaviourWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Behaviour.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -60,6 +66,9 @@ public class UnityEngine_BehaviourWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_enabled(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Behaviour.enabled");
+#endif
 		object o = null;
 
 		try
@@ -79,6 +88,9 @@ public class UnityEngine_BehaviourWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isActiveAndEnabled(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Behaviour.isActiveAndEnabled");
+#endif
 		object o = null;
 
 		try
@@ -98,6 +110,9 @@ public class UnityEngine_BehaviourWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_enabled(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Behaviour.enabled");
+#endif
 		object o = null;
 
 		try

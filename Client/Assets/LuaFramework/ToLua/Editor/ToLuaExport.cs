@@ -1430,7 +1430,7 @@ public static class ToLuaExport
         sb.AppendLineEx("\t{");
 
         sb.AppendLine("#if UNITY_EDITOR");
-        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, "Register"));
+        sb.AppendLine(string.Format("        ToluaProfiler.AddCallRecord(\"{0}.{1}\");", className, name));
         sb.AppendLine("#endif");
 
         if (HasAttribute(m.Method, typeof(UseDefinedAttribute)))
@@ -1674,7 +1674,7 @@ public static class ToLuaExport
         sb.AppendLineEx("\t{");
 
         sb.AppendLine("#if UNITY_EDITOR");
-        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, "ctor"));
+        sb.AppendLine(string.Format("        ToluaProfiler.AddCallRecord(\"{0}.{1}\");", className, "ctor"));
         sb.AppendLine("#endif");
 
         sb.AppendFormat("\t\t{0} obj = new {0}();\r\n", className);
@@ -1705,7 +1705,7 @@ public static class ToLuaExport
         sb.AppendLineEx("\t{");
 
         sb.AppendLine("#if UNITY_EDITOR");
-        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, "get_out"));
+        sb.AppendLine(string.Format("        ToluaProfiler.AddCallRecord(\"{0}.{1}\");", className, "get_out"));
         sb.AppendLine("#endif");
 
         sb.AppendFormat("\t\tToLua.PushOut<{0}>(L, new LuaOut<{0}>());\r\n", className);
@@ -1795,7 +1795,7 @@ public static class ToLuaExport
                 sb.AppendLineEx("\t{");
 
                 sb.AppendLine("#if UNITY_EDITOR");
-                sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, extendName));
+                sb.AppendLine(string.Format("        ToluaProfiler.AddCallRecord(\"{0}.{1}\");", className, extendName));
                 sb.AppendLine("#endif");
 
                 FieldInfo field = extendType.GetField(extendName + "Defined");
@@ -1823,7 +1823,7 @@ public static class ToLuaExport
         sb.AppendLineEx("\t{");
 
         sb.AppendLine("#if UNITY_EDITOR");
-        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, "ctor"));
+        sb.AppendLine(string.Format("        ToluaProfiler.AddCallRecord(\"{0}.{1}\");", className, "ctor"));
         sb.AppendLine("#endif");
 
         BeginTry();
@@ -1943,7 +1943,7 @@ public static class ToLuaExport
             sb.AppendLineEx("\t{");
 
             sb.AppendLine("#if UNITY_EDITOR");
-            sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, "get_this"));
+            sb.AppendLine(string.Format("        ToluaProfiler.AddCallRecord(\"{0}.{1}\");", className, "get_this"));
             sb.AppendLine("#endif");
 
             BeginTry();
@@ -1987,7 +1987,7 @@ public static class ToLuaExport
             sb.AppendLineEx("\t{");
 
             sb.AppendLine("#if UNITY_EDITOR");
-            sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, "set_this"));
+            sb.AppendLine(string.Format("        ToluaProfiler.AddCallRecord(\"{0}.{1}\");", className, "set_this"));
             sb.AppendLine("#endif");
 
             BeginTry();
@@ -2032,7 +2032,7 @@ public static class ToLuaExport
             sb.AppendLineEx("\t{");
 
             sb.AppendLine("#if UNITY_EDITOR");
-            sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, "this"));
+            sb.AppendLine(string.Format("        ToluaProfiler.AddCallRecord(\"{0}.{1}\");", className, "this"));
             sb.AppendLine("#endif");
 
             BeginTry();
@@ -2915,7 +2915,7 @@ public static class ToLuaExport
         sb.AppendLineEx("\t{");
 
         sb.AppendLine("#if UNITY_EDITOR");
-        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, "Register"));
+        sb.AppendLine(string.Format("        ToluaProfiler.AddCallRecord(\"{0}.{1}\");", className, "Register"));
         sb.AppendLine("#endif");
 
         BeginTry();
@@ -3081,7 +3081,7 @@ public static class ToLuaExport
         sb.AppendLineEx("\t{");
 
         sb.AppendLine("#if UNITY_EDITOR");
-        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, varName));
+        sb.AppendLine(string.Format("        ToluaProfiler.AddCallRecord(\"{0}.{1}\");", className, varName));
         sb.AppendLine("#endif");
 
         if (isStatic)
@@ -3120,7 +3120,7 @@ public static class ToLuaExport
         sb.AppendLineEx("\t{");
 
         sb.AppendLine("#if UNITY_EDITOR");
-        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, varName));
+        sb.AppendLine(string.Format("        ToluaProfiler.AddCallRecord(\"{0}.{1}\");", className, varName));
         sb.AppendLine("#endif");
 
         sb.AppendFormat("\t\tToLua.Push(L, new EventObject(typeof({0})));\r\n",GetTypeStr(varType));
@@ -3175,7 +3175,7 @@ public static class ToLuaExport
         sb.AppendLineEx("\t{");
 
         sb.AppendLine("#if UNITY_EDITOR");
-        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, varName));
+        sb.AppendLine(string.Format("        ToluaProfiler.AddCallRecord(\"{0}.{1}\");", className, varName));
         sb.AppendLine("#endif");
 
         if (!isStatic)
@@ -3217,7 +3217,7 @@ public static class ToLuaExport
         sb.AppendLineEx("\t{");
 
         sb.AppendLine("#if UNITY_EDITOR");
-        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.set_{1})", className, varName));
+        sb.AppendLine(string.Format("        ToluaProfiler.AddCallRecord(\"{0}.set_{1}\");", className, varName));
         sb.AppendLine("#endif");
 
         BeginTry();
@@ -3809,7 +3809,7 @@ public static class ToLuaExport
             sb.AppendLineEx("\t{");
 
             sb.AppendLine("#if UNITY_EDITOR");
-            sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})",className,fields[i].Name));
+            sb.AppendLine(string.Format("        ToluaProfiler.AddCallRecord(\"{0}.{1}\");", className,fields[i].Name));
             sb.AppendLine("#endif");
 
             sb.AppendFormat("\t\tToLua.Push(L, {0}.{1});\r\n", className, fields[i].Name);
@@ -3822,7 +3822,7 @@ public static class ToLuaExport
         sb.AppendLineEx("\t{");
 
         sb.AppendLine("#if UNITY_EDITOR");
-        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.IntToEnum)", className));
+        sb.AppendLine(string.Format("        ToluaProfiler.AddCallRecord(\"{0}.IntToEnum\");", className));
         sb.AppendLine("#endif");
 
         sb.AppendLineEx("\t\tint arg0 = (int)LuaDLL.lua_tonumber(L, 1);");
@@ -4387,7 +4387,7 @@ public static class ToLuaExport
         sb.AppendLineEx("\t{");
 
         sb.AppendLine("#if UNITY_EDITOR");
-        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, funcName));
+        sb.AppendLine(string.Format("        ToluaProfiler.AddCallRecord(\"{0}.{1}\");", className, funcName));
         sb.AppendLine("#endif");
 
         sb.AppendLineEx("\t\ttry");

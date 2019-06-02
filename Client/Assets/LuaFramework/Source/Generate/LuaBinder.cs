@@ -128,6 +128,9 @@ public static class LuaBinder
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnityEngine_Events_UnityAction(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.UnityEngine_Events_UnityAction");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -155,6 +158,9 @@ public static class LuaBinder
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnityEngine_Camera_CameraCallback(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.UnityEngine_Camera_CameraCallback");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -182,6 +188,9 @@ public static class LuaBinder
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnityEngine_Application_LowMemoryCallback(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.UnityEngine_Application_LowMemoryCallback");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -209,6 +218,9 @@ public static class LuaBinder
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnityEngine_Application_AdvertisingIdentifierCallback(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.UnityEngine_Application_AdvertisingIdentifierCallback");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -236,6 +248,9 @@ public static class LuaBinder
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnityEngine_Application_LogCallback(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.UnityEngine_Application_LogCallback");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -263,6 +278,9 @@ public static class LuaBinder
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnityEngine_AudioClip_PCMReaderCallback(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.UnityEngine_AudioClip_PCMReaderCallback");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -290,6 +308,9 @@ public static class LuaBinder
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnityEngine_AudioClip_PCMSetPositionCallback(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.UnityEngine_AudioClip_PCMSetPositionCallback");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -317,6 +338,9 @@ public static class LuaBinder
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnityEngine_RectTransform_ReapplyDrivenProperties(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.UnityEngine_RectTransform_ReapplyDrivenProperties");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -344,6 +368,9 @@ public static class LuaBinder
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Framework_SceneLoadEventHandler(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.Framework_SceneLoadEventHandler");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -371,6 +398,9 @@ public static class LuaBinder
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Framework_ManagerInitEventHandler(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.Framework_ManagerInitEventHandler");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -398,6 +428,9 @@ public static class LuaBinder
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int System_Action(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.System_Action");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -425,6 +458,9 @@ public static class LuaBinder
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int System_Predicate_int(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.System_Predicate_int");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -452,6 +488,9 @@ public static class LuaBinder
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int System_Action_int(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.System_Action_int");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -479,6 +518,9 @@ public static class LuaBinder
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int System_Comparison_int(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.System_Comparison_int");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -506,6 +548,9 @@ public static class LuaBinder
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int System_Func_int_int(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.System_Func_int_int");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -533,6 +578,9 @@ public static class LuaBinder
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int System_Action_UnityEngine_AsyncOperation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.System_Action_UnityEngine_AsyncOperation");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -560,6 +608,9 @@ public static class LuaBinder
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int System_Action_float(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.System_Action_float");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);

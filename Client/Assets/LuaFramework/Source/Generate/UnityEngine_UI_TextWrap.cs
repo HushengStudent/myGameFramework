@@ -44,6 +44,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int FontTextureChanged(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.FontTextureChanged");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -60,6 +63,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetGenerationSettings(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.GetGenerationSettings");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -78,6 +84,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetTextAnchorPivot(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.GetTextAnchorPivot");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -95,6 +104,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CalculateLayoutInputHorizontal(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.CalculateLayoutInputHorizontal");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -111,6 +123,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CalculateLayoutInputVertical(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.CalculateLayoutInputVertical");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -127,6 +142,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -145,6 +163,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_cachedTextGenerator(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.cachedTextGenerator");
+#endif
 		object o = null;
 
 		try
@@ -164,6 +185,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_cachedTextGeneratorForLayout(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.cachedTextGeneratorForLayout");
+#endif
 		object o = null;
 
 		try
@@ -183,6 +207,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_mainTexture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.mainTexture");
+#endif
 		object o = null;
 
 		try
@@ -202,6 +229,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_font(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.font");
+#endif
 		object o = null;
 
 		try
@@ -221,6 +251,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_text(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.text");
+#endif
 		object o = null;
 
 		try
@@ -240,6 +273,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_supportRichText(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.supportRichText");
+#endif
 		object o = null;
 
 		try
@@ -259,6 +295,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_resizeTextForBestFit(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.resizeTextForBestFit");
+#endif
 		object o = null;
 
 		try
@@ -278,6 +317,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_resizeTextMinSize(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.resizeTextMinSize");
+#endif
 		object o = null;
 
 		try
@@ -297,6 +339,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_resizeTextMaxSize(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.resizeTextMaxSize");
+#endif
 		object o = null;
 
 		try
@@ -316,6 +361,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_alignment(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.alignment");
+#endif
 		object o = null;
 
 		try
@@ -335,6 +383,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_alignByGeometry(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.alignByGeometry");
+#endif
 		object o = null;
 
 		try
@@ -354,6 +405,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_fontSize(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.fontSize");
+#endif
 		object o = null;
 
 		try
@@ -373,6 +427,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_horizontalOverflow(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.horizontalOverflow");
+#endif
 		object o = null;
 
 		try
@@ -392,6 +449,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_verticalOverflow(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.verticalOverflow");
+#endif
 		object o = null;
 
 		try
@@ -411,6 +471,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_lineSpacing(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.lineSpacing");
+#endif
 		object o = null;
 
 		try
@@ -430,6 +493,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_fontStyle(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.fontStyle");
+#endif
 		object o = null;
 
 		try
@@ -449,6 +515,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_pixelsPerUnit(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.pixelsPerUnit");
+#endif
 		object o = null;
 
 		try
@@ -468,6 +537,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_minWidth(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.minWidth");
+#endif
 		object o = null;
 
 		try
@@ -487,6 +559,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_preferredWidth(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.preferredWidth");
+#endif
 		object o = null;
 
 		try
@@ -506,6 +581,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_flexibleWidth(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.flexibleWidth");
+#endif
 		object o = null;
 
 		try
@@ -525,6 +603,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_minHeight(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.minHeight");
+#endif
 		object o = null;
 
 		try
@@ -544,6 +625,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_preferredHeight(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.preferredHeight");
+#endif
 		object o = null;
 
 		try
@@ -563,6 +647,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_flexibleHeight(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.flexibleHeight");
+#endif
 		object o = null;
 
 		try
@@ -582,6 +669,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_layoutPriority(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.layoutPriority");
+#endif
 		object o = null;
 
 		try
@@ -601,6 +691,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_font(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.font");
+#endif
 		object o = null;
 
 		try
@@ -620,6 +713,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_text(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.text");
+#endif
 		object o = null;
 
 		try
@@ -639,6 +735,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_supportRichText(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.supportRichText");
+#endif
 		object o = null;
 
 		try
@@ -658,6 +757,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_resizeTextForBestFit(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.resizeTextForBestFit");
+#endif
 		object o = null;
 
 		try
@@ -677,6 +779,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_resizeTextMinSize(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.resizeTextMinSize");
+#endif
 		object o = null;
 
 		try
@@ -696,6 +801,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_resizeTextMaxSize(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.resizeTextMaxSize");
+#endif
 		object o = null;
 
 		try
@@ -715,6 +823,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_alignment(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.alignment");
+#endif
 		object o = null;
 
 		try
@@ -734,6 +845,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_alignByGeometry(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.alignByGeometry");
+#endif
 		object o = null;
 
 		try
@@ -753,6 +867,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_fontSize(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.fontSize");
+#endif
 		object o = null;
 
 		try
@@ -772,6 +889,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_horizontalOverflow(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.horizontalOverflow");
+#endif
 		object o = null;
 
 		try
@@ -791,6 +911,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_verticalOverflow(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.verticalOverflow");
+#endif
 		object o = null;
 
 		try
@@ -810,6 +933,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_lineSpacing(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.lineSpacing");
+#endif
 		object o = null;
 
 		try
@@ -829,6 +955,9 @@ public class UnityEngine_UI_TextWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_fontStyle(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Text.fontStyle");
+#endif
 		object o = null;
 
 		try

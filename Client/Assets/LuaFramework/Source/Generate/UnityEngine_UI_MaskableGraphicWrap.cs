@@ -22,6 +22,9 @@ public class UnityEngine_UI_MaskableGraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetModifiedMaterial(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.MaskableGraphic.GetModifiedMaterial");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -40,6 +43,9 @@ public class UnityEngine_UI_MaskableGraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Cull(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.MaskableGraphic.Cull");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -58,6 +64,9 @@ public class UnityEngine_UI_MaskableGraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetClipRect(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.MaskableGraphic.SetClipRect");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -76,6 +85,9 @@ public class UnityEngine_UI_MaskableGraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RecalculateClipping(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.MaskableGraphic.RecalculateClipping");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -92,6 +104,9 @@ public class UnityEngine_UI_MaskableGraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RecalculateMasking(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.MaskableGraphic.RecalculateMasking");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -108,6 +123,9 @@ public class UnityEngine_UI_MaskableGraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.MaskableGraphic.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -126,6 +144,9 @@ public class UnityEngine_UI_MaskableGraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_onCullStateChanged(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.MaskableGraphic.onCullStateChanged");
+#endif
 		object o = null;
 
 		try
@@ -145,6 +166,9 @@ public class UnityEngine_UI_MaskableGraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_maskable(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.MaskableGraphic.maskable");
+#endif
 		object o = null;
 
 		try
@@ -164,6 +188,9 @@ public class UnityEngine_UI_MaskableGraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_onCullStateChanged(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.MaskableGraphic.onCullStateChanged");
+#endif
 		object o = null;
 
 		try
@@ -183,6 +210,9 @@ public class UnityEngine_UI_MaskableGraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_maskable(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.MaskableGraphic.maskable");
+#endif
 		object o = null;
 
 		try

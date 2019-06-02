@@ -20,6 +20,9 @@ public class Framework_LuaComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int AddClick(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaComponent.AddClick");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -37,6 +40,9 @@ public class Framework_LuaComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetSprite(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaComponent.SetSprite");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -55,6 +61,9 @@ public class Framework_LuaComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetSliderValue(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaComponent.SetSliderValue");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -72,6 +81,9 @@ public class Framework_LuaComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetGray(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaComponent.SetGray");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -89,6 +101,9 @@ public class Framework_LuaComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaComponent.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -107,6 +122,9 @@ public class Framework_LuaComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_ComponentName(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaComponent.ComponentName");
+#endif
 		object o = null;
 
 		try
@@ -126,6 +144,9 @@ public class Framework_LuaComponentWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_ComponentName(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaComponent.ComponentName");
+#endif
 		object o = null;
 
 		try

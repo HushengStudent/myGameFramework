@@ -17,6 +17,9 @@ public class UnityEngine_TrackedReferenceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.TrackedReference.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -35,6 +38,9 @@ public class UnityEngine_TrackedReferenceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Equals(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.TrackedReference.Equals");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -53,6 +59,9 @@ public class UnityEngine_TrackedReferenceWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetHashCode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.TrackedReference.GetHashCode");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);

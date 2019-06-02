@@ -46,6 +46,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetAllDirty(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.SetAllDirty");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -62,6 +65,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetLayoutDirty(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.SetLayoutDirty");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -78,6 +84,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetVerticesDirty(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.SetVerticesDirty");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -94,6 +103,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetMaterialDirty(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.SetMaterialDirty");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -110,6 +122,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int OnCullingChanged(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.OnCullingChanged");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -126,6 +141,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Rebuild(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.Rebuild");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -143,6 +161,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LayoutComplete(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.LayoutComplete");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -159,6 +180,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GraphicUpdateComplete(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.GraphicUpdateComplete");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -175,6 +199,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetNativeSize(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.SetNativeSize");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -191,6 +218,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Raycast(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.Raycast");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -210,6 +240,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int PixelAdjustPoint(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.PixelAdjustPoint");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -228,6 +261,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetPixelAdjustedRect(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.GetPixelAdjustedRect");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -245,6 +281,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CrossFadeColor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -284,6 +323,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CrossFadeAlpha(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.CrossFadeAlpha");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 4);
@@ -303,6 +345,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RegisterDirtyLayoutCallback(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.RegisterDirtyLayoutCallback");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -320,6 +365,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnregisterDirtyLayoutCallback(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.UnregisterDirtyLayoutCallback");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -337,6 +385,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RegisterDirtyVerticesCallback(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.RegisterDirtyVerticesCallback");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -354,6 +405,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnregisterDirtyVerticesCallback(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.UnregisterDirtyVerticesCallback");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -371,6 +425,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RegisterDirtyMaterialCallback(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.RegisterDirtyMaterialCallback");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -388,6 +445,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnregisterDirtyMaterialCallback(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.UnregisterDirtyMaterialCallback");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -405,6 +465,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -423,6 +486,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_defaultGraphicMaterial(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.defaultGraphicMaterial");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.UI.Graphic.defaultGraphicMaterial);
@@ -437,6 +503,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_color(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.color");
+#endif
 		object o = null;
 
 		try
@@ -456,6 +525,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_raycastTarget(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.raycastTarget");
+#endif
 		object o = null;
 
 		try
@@ -475,6 +547,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_depth(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.depth");
+#endif
 		object o = null;
 
 		try
@@ -494,6 +569,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_rectTransform(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.rectTransform");
+#endif
 		object o = null;
 
 		try
@@ -513,6 +591,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_canvas(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.canvas");
+#endif
 		object o = null;
 
 		try
@@ -532,6 +613,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_canvasRenderer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.canvasRenderer");
+#endif
 		object o = null;
 
 		try
@@ -551,6 +635,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_defaultMaterial(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.defaultMaterial");
+#endif
 		object o = null;
 
 		try
@@ -570,6 +657,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_material(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.material");
+#endif
 		object o = null;
 
 		try
@@ -589,6 +679,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_materialForRendering(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.materialForRendering");
+#endif
 		object o = null;
 
 		try
@@ -608,6 +701,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_mainTexture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.mainTexture");
+#endif
 		object o = null;
 
 		try
@@ -627,6 +723,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_color(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.color");
+#endif
 		object o = null;
 
 		try
@@ -646,6 +745,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_raycastTarget(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.raycastTarget");
+#endif
 		object o = null;
 
 		try
@@ -665,6 +767,9 @@ public class UnityEngine_UI_GraphicWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_material(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.Graphic.material");
+#endif
 		object o = null;
 
 		try

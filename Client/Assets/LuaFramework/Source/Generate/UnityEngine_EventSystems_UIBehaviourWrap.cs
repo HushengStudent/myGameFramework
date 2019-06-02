@@ -17,6 +17,9 @@ public class UnityEngine_EventSystems_UIBehaviourWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IsActive(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.EventSystems.UIBehaviour.IsActive");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -34,6 +37,9 @@ public class UnityEngine_EventSystems_UIBehaviourWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IsDestroyed(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.EventSystems.UIBehaviour.IsDestroyed");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -51,6 +57,9 @@ public class UnityEngine_EventSystems_UIBehaviourWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.EventSystems.UIBehaviour.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);

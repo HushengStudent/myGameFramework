@@ -20,6 +20,9 @@ public class LuaInterface_DebuggerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Log(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LuaInterface.Debugger.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -81,6 +84,9 @@ public class LuaInterface_DebuggerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LogWarning(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LuaInterface.Debugger.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -142,6 +148,9 @@ public class LuaInterface_DebuggerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LogError(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LuaInterface.Debugger.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -203,6 +212,9 @@ public class LuaInterface_DebuggerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LogException(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LuaInterface.Debugger.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -234,6 +246,9 @@ public class LuaInterface_DebuggerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_useLog(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LuaInterface.Debugger.useLog");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, LuaInterface.Debugger.useLog);
@@ -248,6 +263,9 @@ public class LuaInterface_DebuggerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_threadStack(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LuaInterface.Debugger.threadStack");
+#endif
 		try
 		{
 			LuaDLL.lua_pushstring(L, LuaInterface.Debugger.threadStack);
@@ -262,6 +280,9 @@ public class LuaInterface_DebuggerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_logger(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LuaInterface.Debugger.logger");
+#endif
 		try
 		{
 			ToLua.PushObject(L, LuaInterface.Debugger.logger);
@@ -276,6 +297,9 @@ public class LuaInterface_DebuggerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_useLog(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LuaInterface.Debugger.useLog");
+#endif
 		try
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
@@ -291,6 +315,9 @@ public class LuaInterface_DebuggerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_threadStack(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LuaInterface.Debugger.threadStack");
+#endif
 		try
 		{
 			string arg0 = ToLua.CheckString(L, 2);
@@ -306,6 +333,9 @@ public class LuaInterface_DebuggerWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_logger(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LuaInterface.Debugger.logger");
+#endif
 		try
 		{
 			LuaInterface.ILogger arg0 = (LuaInterface.ILogger)ToLua.CheckObject<LuaInterface.ILogger>(L, 2);

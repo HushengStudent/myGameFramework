@@ -43,6 +43,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_GameObject(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -82,6 +85,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CreatePrimitive(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.CreatePrimitive");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -99,6 +105,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetComponent(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -133,6 +142,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetComponentInChildren(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -168,6 +180,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetComponentInParent(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.GetComponentInParent");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -186,6 +201,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetComponents(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -220,6 +238,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetComponentsInChildren(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -255,6 +276,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetComponentsInParent(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -290,6 +314,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetActive(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.SetActive");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -307,6 +334,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CompareTag(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.CompareTag");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -325,6 +355,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int FindGameObjectWithTag(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.FindGameObjectWithTag");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -342,6 +375,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int FindWithTag(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.FindWithTag");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -359,6 +395,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int FindGameObjectsWithTag(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.FindGameObjectsWithTag");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -376,6 +415,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Find(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.Find");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -393,6 +435,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int AddComponent(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.AddComponent");
+#endif
 		IntPtr L0 = LuaException.L;
 
         try
@@ -427,6 +472,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int BroadcastMessage(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.BroadcastMessage");
+#endif
 		IntPtr L0 = LuaException.L;
     
 		try
@@ -525,6 +573,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SendMessageUpwards(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.SendMessageUpwards");
+#endif
 		IntPtr L0 = LuaException.L;
 
 		try
@@ -623,6 +674,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SendMessage(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.SendMessage");
+#endif
 		IntPtr L0 = LuaException.L;
 
 		try
@@ -721,6 +775,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetLocalPosition(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.SetLocalPosition");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -738,6 +795,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -756,6 +816,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_transform(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.transform");
+#endif
 		object o = null;
 
 		try
@@ -775,6 +838,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_layer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.layer");
+#endif
 		object o = null;
 
 		try
@@ -794,6 +860,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_activeSelf(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.activeSelf");
+#endif
 		object o = null;
 
 		try
@@ -813,6 +882,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_activeInHierarchy(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.activeInHierarchy");
+#endif
 		object o = null;
 
 		try
@@ -832,6 +904,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isStatic(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.isStatic");
+#endif
 		object o = null;
 
 		try
@@ -851,6 +926,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_tag(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.tag");
+#endif
 		object o = null;
 
 		try
@@ -870,6 +948,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_scene(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.scene");
+#endif
 		object o = null;
 
 		try
@@ -889,6 +970,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_gameObject(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.gameObject");
+#endif
 		object o = null;
 
 		try
@@ -908,6 +992,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_layer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.layer");
+#endif
 		object o = null;
 
 		try
@@ -927,6 +1014,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_isStatic(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.isStatic");
+#endif
 		object o = null;
 
 		try
@@ -946,6 +1036,9 @@ public class UnityEngine_GameObjectWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_tag(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.tag");
+#endif
 		object o = null;
 
 		try

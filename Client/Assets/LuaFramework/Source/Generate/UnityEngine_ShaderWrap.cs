@@ -46,6 +46,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_Shader(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -70,6 +73,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Find(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.Find");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -87,6 +93,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int EnableKeyword(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.EnableKeyword");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -103,6 +112,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int DisableKeyword(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.DisableKeyword");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -119,6 +131,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IsKeywordEnabled(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.IsKeywordEnabled");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -136,6 +151,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetGlobalBuffer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -168,6 +186,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int PropertyToID(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.PropertyToID");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -185,6 +206,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int WarmupAllShaders(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.WarmupAllShaders");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 0);
@@ -200,6 +224,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetGlobalFloat(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -232,6 +259,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetGlobalInt(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -264,6 +294,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetGlobalVector(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -296,6 +329,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetGlobalColor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -328,6 +364,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetGlobalMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -360,6 +399,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetGlobalTexture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -392,6 +434,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetGlobalFloatArray(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -438,6 +483,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetGlobalVectorArray(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -484,6 +532,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetGlobalMatrixArray(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -530,6 +581,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetGlobalFloat(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -562,6 +616,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetGlobalInt(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -594,6 +651,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetGlobalVector(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -626,6 +686,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetGlobalColor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -658,6 +721,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetGlobalMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -690,6 +756,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetGlobalTexture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -722,6 +791,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetGlobalFloatArray(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -768,6 +840,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetGlobalVectorArray(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -814,6 +889,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetGlobalMatrixArray(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -860,6 +938,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -878,6 +959,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isSupported(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.isSupported");
+#endif
 		object o = null;
 
 		try
@@ -897,6 +981,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_maximumLOD(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.maximumLOD");
+#endif
 		object o = null;
 
 		try
@@ -916,6 +1003,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_globalMaximumLOD(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.globalMaximumLOD");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.Shader.globalMaximumLOD);
@@ -930,6 +1020,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_globalRenderPipeline(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.globalRenderPipeline");
+#endif
 		try
 		{
 			LuaDLL.lua_pushstring(L, UnityEngine.Shader.globalRenderPipeline);
@@ -944,6 +1037,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_renderQueue(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.renderQueue");
+#endif
 		object o = null;
 
 		try
@@ -963,6 +1059,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_maximumLOD(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.maximumLOD");
+#endif
 		object o = null;
 
 		try
@@ -982,6 +1081,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_globalMaximumLOD(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.globalMaximumLOD");
+#endif
 		try
 		{
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
@@ -997,6 +1099,9 @@ public class UnityEngine_ShaderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_globalRenderPipeline(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Shader.globalRenderPipeline");
+#endif
 		try
 		{
 			string arg0 = ToLua.CheckString(L, 2);

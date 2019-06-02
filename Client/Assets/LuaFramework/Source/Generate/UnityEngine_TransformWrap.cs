@@ -55,6 +55,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetParent(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -88,6 +91,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetPositionAndRotation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.SetPositionAndRotation");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -106,6 +112,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Translate(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -176,6 +185,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Rotate(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -245,6 +257,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RotateAround(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.RotateAround");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 4);
@@ -264,6 +279,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LookAt(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -312,6 +330,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int TransformDirection(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -348,6 +369,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int InverseTransformDirection(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -384,6 +408,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int TransformVector(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -420,6 +447,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int InverseTransformVector(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -456,6 +486,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int TransformPoint(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -492,6 +525,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int InverseTransformPoint(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -528,6 +564,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int DetachChildren(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.DetachChildren");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -544,6 +583,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetAsFirstSibling(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.SetAsFirstSibling");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -560,6 +602,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetAsLastSibling(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.SetAsLastSibling");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -576,6 +621,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetSiblingIndex(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.SetSiblingIndex");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -593,6 +641,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetSiblingIndex(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.GetSiblingIndex");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -610,6 +661,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Find(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.Find");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -628,6 +682,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IsChildOf(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.IsChildOf");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -646,6 +703,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetEnumerator(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.GetEnumerator");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -663,6 +723,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetChild(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.GetChild");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -681,6 +744,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -699,6 +765,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_position(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.position");
+#endif
 		object o = null;
 
 		try
@@ -718,6 +787,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_localPosition(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.localPosition");
+#endif
 		object o = null;
 
 		try
@@ -737,6 +809,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_eulerAngles(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.eulerAngles");
+#endif
 		object o = null;
 
 		try
@@ -756,6 +831,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_localEulerAngles(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.localEulerAngles");
+#endif
 		object o = null;
 
 		try
@@ -775,6 +853,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_right(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.right");
+#endif
 		object o = null;
 
 		try
@@ -794,6 +875,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_up(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.up");
+#endif
 		object o = null;
 
 		try
@@ -813,6 +897,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_forward(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.forward");
+#endif
 		object o = null;
 
 		try
@@ -832,6 +919,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_rotation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.rotation");
+#endif
 		object o = null;
 
 		try
@@ -851,6 +941,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_localRotation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.localRotation");
+#endif
 		object o = null;
 
 		try
@@ -870,6 +963,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_localScale(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.localScale");
+#endif
 		object o = null;
 
 		try
@@ -889,6 +985,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_parent(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.parent");
+#endif
 		object o = null;
 
 		try
@@ -908,6 +1007,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_worldToLocalMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.worldToLocalMatrix");
+#endif
 		object o = null;
 
 		try
@@ -927,6 +1029,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_localToWorldMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.localToWorldMatrix");
+#endif
 		object o = null;
 
 		try
@@ -946,6 +1051,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_root(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.root");
+#endif
 		object o = null;
 
 		try
@@ -965,6 +1073,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_childCount(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.childCount");
+#endif
 		object o = null;
 
 		try
@@ -984,6 +1095,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_lossyScale(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.lossyScale");
+#endif
 		object o = null;
 
 		try
@@ -1003,6 +1117,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_hasChanged(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.hasChanged");
+#endif
 		object o = null;
 
 		try
@@ -1022,6 +1139,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_hierarchyCapacity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.hierarchyCapacity");
+#endif
 		object o = null;
 
 		try
@@ -1041,6 +1161,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_hierarchyCount(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.hierarchyCount");
+#endif
 		object o = null;
 
 		try
@@ -1060,6 +1183,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_position(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.position");
+#endif
 		object o = null;
 
 		try
@@ -1079,6 +1205,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_localPosition(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.localPosition");
+#endif
 		object o = null;
 
 		try
@@ -1098,6 +1227,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_eulerAngles(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.eulerAngles");
+#endif
 		object o = null;
 
 		try
@@ -1117,6 +1249,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_localEulerAngles(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.localEulerAngles");
+#endif
 		object o = null;
 
 		try
@@ -1136,6 +1271,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_right(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.right");
+#endif
 		object o = null;
 
 		try
@@ -1155,6 +1293,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_up(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.up");
+#endif
 		object o = null;
 
 		try
@@ -1174,6 +1315,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_forward(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.forward");
+#endif
 		object o = null;
 
 		try
@@ -1193,6 +1337,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_rotation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.rotation");
+#endif
 		object o = null;
 
 		try
@@ -1212,6 +1359,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_localRotation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.localRotation");
+#endif
 		object o = null;
 
 		try
@@ -1231,6 +1381,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_localScale(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.localScale");
+#endif
 		object o = null;
 
 		try
@@ -1250,6 +1403,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_parent(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.parent");
+#endif
 		object o = null;
 
 		try
@@ -1269,6 +1425,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_hasChanged(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.hasChanged");
+#endif
 		object o = null;
 
 		try
@@ -1288,6 +1447,9 @@ public class UnityEngine_TransformWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_hierarchyCapacity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Transform.hierarchyCapacity");
+#endif
 		object o = null;
 
 		try

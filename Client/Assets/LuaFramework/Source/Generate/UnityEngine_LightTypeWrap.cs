@@ -30,6 +30,9 @@ public class UnityEngine_LightTypeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Spot(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.LightType.Spot");
+#endif
 		ToLua.Push(L, UnityEngine.LightType.Spot);
 		return 1;
 	}
@@ -37,6 +40,9 @@ public class UnityEngine_LightTypeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Directional(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.LightType.Directional");
+#endif
 		ToLua.Push(L, UnityEngine.LightType.Directional);
 		return 1;
 	}
@@ -44,6 +50,9 @@ public class UnityEngine_LightTypeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Point(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.LightType.Point");
+#endif
 		ToLua.Push(L, UnityEngine.LightType.Point);
 		return 1;
 	}
@@ -51,6 +60,9 @@ public class UnityEngine_LightTypeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Area(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.LightType.Area");
+#endif
 		ToLua.Push(L, UnityEngine.LightType.Area);
 		return 1;
 	}
@@ -58,6 +70,9 @@ public class UnityEngine_LightTypeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IntToEnum(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.LightType.IntToEnum");
+#endif
 		int arg0 = (int)LuaDLL.lua_tonumber(L, 1);
 		UnityEngine.LightType o = (UnityEngine.LightType)arg0;
 		ToLua.Push(L, o);

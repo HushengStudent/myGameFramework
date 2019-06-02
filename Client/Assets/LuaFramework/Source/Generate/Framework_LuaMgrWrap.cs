@@ -23,6 +23,9 @@ public class Framework_LuaMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Init(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaMgr.Init");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -39,6 +42,9 @@ public class Framework_LuaMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int DoFile(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaMgr.DoFile");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -56,6 +62,9 @@ public class Framework_LuaMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CallFunction(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaMgr.CallFunction");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -75,6 +84,9 @@ public class Framework_LuaMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CallLuaModuleMethod(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaMgr.CallLuaModuleMethod");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -93,6 +105,9 @@ public class Framework_LuaMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CallLuaTableMethod(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaMgr.CallLuaTableMethod");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -112,6 +127,9 @@ public class Framework_LuaMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LuaGC(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaMgr.LuaGC");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -128,6 +146,9 @@ public class Framework_LuaMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Close(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaMgr.Close");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -144,6 +165,9 @@ public class Framework_LuaMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Dostring(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaMgr.Dostring");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -161,6 +185,9 @@ public class Framework_LuaMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaMgr.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);

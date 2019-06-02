@@ -59,6 +59,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Raycast(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -237,6 +240,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RaycastAll(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -327,6 +333,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RaycastNonAlloc(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -425,6 +434,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Linecast(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -503,6 +515,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int OverlapSphere(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -548,6 +563,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int OverlapSphereNonAlloc(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -596,6 +614,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int OverlapCapsule(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -644,6 +665,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int OverlapCapsuleNonAlloc(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -695,6 +719,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CapsuleCast(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -813,6 +840,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SphereCast(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -965,6 +995,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CapsuleCastAll(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1029,6 +1062,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CapsuleCastNonAlloc(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1097,6 +1133,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SphereCastAll(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1195,6 +1234,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SphereCastNonAlloc(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1301,6 +1343,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CheckSphere(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1346,6 +1391,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CheckCapsule(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1394,6 +1442,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CheckBox(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1450,6 +1501,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int OverlapBox(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1506,6 +1560,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int OverlapBoxNonAlloc(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1566,6 +1623,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int BoxCastAll(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1639,6 +1699,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int BoxCastNonAlloc(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1717,6 +1780,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int BoxCast(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1855,6 +1921,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IgnoreCollision(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1888,6 +1957,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IgnoreLayerCollision(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -1921,6 +1993,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetIgnoreLayerCollision(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.GetIgnoreLayerCollision");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -1939,6 +2014,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ComputePenetration(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.ComputePenetration");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 8);
@@ -1965,6 +2043,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ClosestPoint(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.ClosestPoint");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 4);
@@ -1985,6 +2066,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Simulate(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.Simulate");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -2001,6 +2085,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SyncTransforms(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.SyncTransforms");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 0);
@@ -2016,6 +2103,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int RebuildBroadphaseRegions(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.RebuildBroadphaseRegions");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -2033,6 +2123,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_gravity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.gravity");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.Physics.gravity);
@@ -2047,6 +2140,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_defaultContactOffset(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.defaultContactOffset");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Physics.defaultContactOffset);
@@ -2061,6 +2157,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_bounceThreshold(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.bounceThreshold");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Physics.bounceThreshold);
@@ -2075,6 +2174,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_defaultSolverIterations(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.defaultSolverIterations");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.Physics.defaultSolverIterations);
@@ -2089,6 +2191,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_defaultSolverVelocityIterations(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.defaultSolverVelocityIterations");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.Physics.defaultSolverVelocityIterations);
@@ -2103,6 +2208,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_sleepThreshold(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.sleepThreshold");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Physics.sleepThreshold);
@@ -2117,6 +2225,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_queriesHitTriggers(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.queriesHitTriggers");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.Physics.queriesHitTriggers);
@@ -2131,6 +2242,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_queriesHitBackfaces(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.queriesHitBackfaces");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.Physics.queriesHitBackfaces);
@@ -2145,6 +2259,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_interCollisionDistance(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.interCollisionDistance");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Physics.interCollisionDistance);
@@ -2159,6 +2276,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_interCollisionStiffness(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.interCollisionStiffness");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Physics.interCollisionStiffness);
@@ -2173,6 +2293,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_interCollisionSettingsToggle(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.interCollisionSettingsToggle");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.Physics.interCollisionSettingsToggle);
@@ -2187,6 +2310,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_autoSimulation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.autoSimulation");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.Physics.autoSimulation);
@@ -2201,6 +2327,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_autoSyncTransforms(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.autoSyncTransforms");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.Physics.autoSyncTransforms);
@@ -2215,6 +2344,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_gravity(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.gravity");
+#endif
 		try
 		{
 			UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
@@ -2230,6 +2362,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_defaultContactOffset(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.defaultContactOffset");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
@@ -2245,6 +2380,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_bounceThreshold(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.bounceThreshold");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
@@ -2260,6 +2398,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_defaultSolverIterations(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.defaultSolverIterations");
+#endif
 		try
 		{
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
@@ -2275,6 +2416,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_defaultSolverVelocityIterations(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.defaultSolverVelocityIterations");
+#endif
 		try
 		{
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
@@ -2290,6 +2434,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_sleepThreshold(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.sleepThreshold");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
@@ -2305,6 +2452,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_queriesHitTriggers(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.queriesHitTriggers");
+#endif
 		try
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
@@ -2320,6 +2470,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_queriesHitBackfaces(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.queriesHitBackfaces");
+#endif
 		try
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
@@ -2335,6 +2488,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_interCollisionDistance(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.interCollisionDistance");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
@@ -2350,6 +2506,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_interCollisionStiffness(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.interCollisionStiffness");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
@@ -2365,6 +2524,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_interCollisionSettingsToggle(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.interCollisionSettingsToggle");
+#endif
 		try
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
@@ -2380,6 +2542,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_autoSimulation(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.autoSimulation");
+#endif
 		try
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
@@ -2395,6 +2560,9 @@ public class UnityEngine_PhysicsWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_autoSyncTransforms(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Physics.autoSyncTransforms");
+#endif
 		try
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);

@@ -31,6 +31,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_Texture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -55,6 +58,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetGlobalAnisotropicFilteringLimits(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.SetGlobalAnisotropicFilteringLimits");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -72,6 +78,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetNativeTexturePtr(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.GetNativeTexturePtr");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -89,6 +98,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -107,6 +119,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_masterTextureLimit(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.masterTextureLimit");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.Texture.masterTextureLimit);
@@ -121,6 +136,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_anisotropicFiltering(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.anisotropicFiltering");
+#endif
 		try
 		{
 			ToLua.Push(L, UnityEngine.Texture.anisotropicFiltering);
@@ -135,6 +153,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_width(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.width");
+#endif
 		object o = null;
 
 		try
@@ -154,6 +175,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_height(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.height");
+#endif
 		object o = null;
 
 		try
@@ -173,6 +197,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_dimension(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.dimension");
+#endif
 		object o = null;
 
 		try
@@ -192,6 +219,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_filterMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.filterMode");
+#endif
 		object o = null;
 
 		try
@@ -211,6 +241,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_anisoLevel(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.anisoLevel");
+#endif
 		object o = null;
 
 		try
@@ -230,6 +263,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_wrapMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.wrapMode");
+#endif
 		object o = null;
 
 		try
@@ -249,6 +285,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_wrapModeU(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.wrapModeU");
+#endif
 		object o = null;
 
 		try
@@ -268,6 +307,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_wrapModeV(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.wrapModeV");
+#endif
 		object o = null;
 
 		try
@@ -287,6 +329,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_wrapModeW(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.wrapModeW");
+#endif
 		object o = null;
 
 		try
@@ -306,6 +351,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_mipMapBias(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.mipMapBias");
+#endif
 		object o = null;
 
 		try
@@ -325,6 +373,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_texelSize(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.texelSize");
+#endif
 		object o = null;
 
 		try
@@ -344,6 +395,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_masterTextureLimit(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.masterTextureLimit");
+#endif
 		try
 		{
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
@@ -359,6 +413,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_anisotropicFiltering(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.anisotropicFiltering");
+#endif
 		try
 		{
 			UnityEngine.AnisotropicFiltering arg0 = (UnityEngine.AnisotropicFiltering)ToLua.CheckObject(L, 2, typeof(UnityEngine.AnisotropicFiltering));
@@ -374,6 +431,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_width(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.width");
+#endif
 		object o = null;
 
 		try
@@ -393,6 +453,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_height(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.height");
+#endif
 		object o = null;
 
 		try
@@ -412,6 +475,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_dimension(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.dimension");
+#endif
 		object o = null;
 
 		try
@@ -431,6 +497,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_filterMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.filterMode");
+#endif
 		object o = null;
 
 		try
@@ -450,6 +519,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_anisoLevel(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.anisoLevel");
+#endif
 		object o = null;
 
 		try
@@ -469,6 +541,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_wrapMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.wrapMode");
+#endif
 		object o = null;
 
 		try
@@ -488,6 +563,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_wrapModeU(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.wrapModeU");
+#endif
 		object o = null;
 
 		try
@@ -507,6 +585,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_wrapModeV(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.wrapModeV");
+#endif
 		object o = null;
 
 		try
@@ -526,6 +607,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_wrapModeW(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.wrapModeW");
+#endif
 		object o = null;
 
 		try
@@ -545,6 +629,9 @@ public class UnityEngine_TextureWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_mipMapBias(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.mipMapBias");
+#endif
 		object o = null;
 
 		try

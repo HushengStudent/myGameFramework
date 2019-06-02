@@ -18,6 +18,9 @@ public class UnityEngine_BoxColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_BoxCollider(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.BoxCollider.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -42,6 +45,9 @@ public class UnityEngine_BoxColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.BoxCollider.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -60,6 +66,9 @@ public class UnityEngine_BoxColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_center(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.BoxCollider.center");
+#endif
 		object o = null;
 
 		try
@@ -79,6 +88,9 @@ public class UnityEngine_BoxColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_size(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.BoxCollider.size");
+#endif
 		object o = null;
 
 		try
@@ -98,6 +110,9 @@ public class UnityEngine_BoxColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_center(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.BoxCollider.center");
+#endif
 		object o = null;
 
 		try
@@ -117,6 +132,9 @@ public class UnityEngine_BoxColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_size(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.BoxCollider.size");
+#endif
 		object o = null;
 
 		try

@@ -28,6 +28,9 @@ public class UnityEngine_PlayModeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_StopSameLayer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.PlayMode.StopSameLayer");
+#endif
 		ToLua.Push(L, UnityEngine.PlayMode.StopSameLayer);
 		return 1;
 	}
@@ -35,6 +38,9 @@ public class UnityEngine_PlayModeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_StopAll(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.PlayMode.StopAll");
+#endif
 		ToLua.Push(L, UnityEngine.PlayMode.StopAll);
 		return 1;
 	}
@@ -42,6 +48,9 @@ public class UnityEngine_PlayModeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IntToEnum(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.PlayMode.IntToEnum");
+#endif
 		int arg0 = (int)LuaDLL.lua_tonumber(L, 1);
 		UnityEngine.PlayMode o = (UnityEngine.PlayMode)arg0;
 		ToLua.Push(L, o);

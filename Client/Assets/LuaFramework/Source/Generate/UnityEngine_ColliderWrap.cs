@@ -26,6 +26,9 @@ public class UnityEngine_ColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_Collider(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -50,6 +53,9 @@ public class UnityEngine_ColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ClosestPointOnBounds(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.ClosestPointOnBounds");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -68,6 +74,9 @@ public class UnityEngine_ColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ClosestPoint(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.ClosestPoint");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -86,6 +95,9 @@ public class UnityEngine_ColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Raycast(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.Raycast");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 4);
@@ -107,6 +119,9 @@ public class UnityEngine_ColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -125,6 +140,9 @@ public class UnityEngine_ColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_enabled(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.enabled");
+#endif
 		object o = null;
 
 		try
@@ -144,6 +162,9 @@ public class UnityEngine_ColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_attachedRigidbody(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.attachedRigidbody");
+#endif
 		object o = null;
 
 		try
@@ -163,6 +184,9 @@ public class UnityEngine_ColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isTrigger(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.isTrigger");
+#endif
 		object o = null;
 
 		try
@@ -182,6 +206,9 @@ public class UnityEngine_ColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_contactOffset(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.contactOffset");
+#endif
 		object o = null;
 
 		try
@@ -201,6 +228,9 @@ public class UnityEngine_ColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_material(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.material");
+#endif
 		object o = null;
 
 		try
@@ -220,6 +250,9 @@ public class UnityEngine_ColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_sharedMaterial(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.sharedMaterial");
+#endif
 		object o = null;
 
 		try
@@ -239,6 +272,9 @@ public class UnityEngine_ColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_bounds(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.bounds");
+#endif
 		object o = null;
 
 		try
@@ -258,6 +294,9 @@ public class UnityEngine_ColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_enabled(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.enabled");
+#endif
 		object o = null;
 
 		try
@@ -277,6 +316,9 @@ public class UnityEngine_ColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_isTrigger(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.isTrigger");
+#endif
 		object o = null;
 
 		try
@@ -296,6 +338,9 @@ public class UnityEngine_ColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_contactOffset(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.contactOffset");
+#endif
 		object o = null;
 
 		try
@@ -315,6 +360,9 @@ public class UnityEngine_ColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_material(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.material");
+#endif
 		object o = null;
 
 		try
@@ -334,6 +382,9 @@ public class UnityEngine_ColliderWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_sharedMaterial(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.sharedMaterial");
+#endif
 		object o = null;
 
 		try

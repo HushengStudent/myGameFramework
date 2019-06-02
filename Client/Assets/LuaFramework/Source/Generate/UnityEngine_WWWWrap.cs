@@ -36,6 +36,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_WWW(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -86,6 +89,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int EscapeURL(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -119,6 +125,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnEscapeURL(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -152,6 +161,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadFromCacheOrDownload(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -221,6 +233,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadImageIntoTexture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.LoadImageIntoTexture");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -238,6 +253,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Dispose(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.Dispose");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -254,6 +272,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetAudioClip(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -306,6 +327,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetAudioClipCompressed(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -348,6 +372,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_assetBundle(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.assetBundle");
+#endif
 		object o = null;
 
 		try
@@ -367,6 +394,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_bytes(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.bytes");
+#endif
 		object o = null;
 
 		try
@@ -386,6 +416,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_bytesDownloaded(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.bytesDownloaded");
+#endif
 		object o = null;
 
 		try
@@ -405,6 +438,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_error(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.error");
+#endif
 		object o = null;
 
 		try
@@ -424,6 +460,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isDone(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.isDone");
+#endif
 		object o = null;
 
 		try
@@ -443,6 +482,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_progress(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.progress");
+#endif
 		object o = null;
 
 		try
@@ -462,6 +504,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_responseHeaders(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.responseHeaders");
+#endif
 		object o = null;
 
 		try
@@ -481,6 +526,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_text(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.text");
+#endif
 		object o = null;
 
 		try
@@ -500,6 +548,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_texture(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.texture");
+#endif
 		object o = null;
 
 		try
@@ -519,6 +570,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_textureNonReadable(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.textureNonReadable");
+#endif
 		object o = null;
 
 		try
@@ -538,6 +592,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_threadPriority(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.threadPriority");
+#endif
 		object o = null;
 
 		try
@@ -557,6 +614,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_uploadProgress(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.uploadProgress");
+#endif
 		object o = null;
 
 		try
@@ -576,6 +636,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_url(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.url");
+#endif
 		object o = null;
 
 		try
@@ -595,6 +658,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_keepWaiting(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.keepWaiting");
+#endif
 		object o = null;
 
 		try
@@ -614,6 +680,9 @@ public class UnityEngine_WWWWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_threadPriority(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WWW.threadPriority");
+#endif
 		object o = null;
 
 		try

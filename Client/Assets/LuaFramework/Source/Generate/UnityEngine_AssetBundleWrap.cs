@@ -36,6 +36,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_AssetBundle(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -60,6 +63,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int UnloadAllAssetBundles(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.UnloadAllAssetBundles");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -76,6 +82,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetAllLoadedAssetBundles(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.GetAllLoadedAssetBundles");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 0);
@@ -92,6 +101,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadFromFileAsync(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -134,6 +146,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadFromFile(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -176,6 +191,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadFromMemoryAsync(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -209,6 +227,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadFromMemory(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -242,6 +263,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadFromStreamAsync(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -284,6 +308,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadFromStream(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -326,6 +353,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Contains(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.Contains");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -344,6 +374,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadAsset(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -379,6 +412,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadAssetAsync(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -414,6 +450,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadAssetWithSubAssets(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -449,6 +488,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadAssetWithSubAssetsAsync(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -484,6 +526,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadAllAssets(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -517,6 +562,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadAllAssetsAsync(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -550,6 +598,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Unload(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.Unload");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -567,6 +618,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetAllAssetNames(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.GetAllAssetNames");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -584,6 +638,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetAllScenePaths(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.GetAllScenePaths");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -601,6 +658,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -619,6 +679,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_mainAsset(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.mainAsset");
+#endif
 		object o = null;
 
 		try
@@ -638,6 +701,9 @@ public class UnityEngine_AssetBundleWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isStreamedSceneAssetBundle(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.isStreamedSceneAssetBundle");
+#endif
 		object o = null;
 
 		try

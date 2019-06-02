@@ -28,6 +28,9 @@ public class UnityEngine_AnimationBlendModeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Blend(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationBlendMode.Blend");
+#endif
 		ToLua.Push(L, UnityEngine.AnimationBlendMode.Blend);
 		return 1;
 	}
@@ -35,6 +38,9 @@ public class UnityEngine_AnimationBlendModeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Additive(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationBlendMode.Additive");
+#endif
 		ToLua.Push(L, UnityEngine.AnimationBlendMode.Additive);
 		return 1;
 	}
@@ -42,6 +48,9 @@ public class UnityEngine_AnimationBlendModeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IntToEnum(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AnimationBlendMode.IntToEnum");
+#endif
 		int arg0 = (int)LuaDLL.lua_tonumber(L, 1);
 		UnityEngine.AnimationBlendMode o = (UnityEngine.AnimationBlendMode)arg0;
 		ToLua.Push(L, o);

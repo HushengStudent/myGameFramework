@@ -30,6 +30,9 @@ public class LogColorWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Non(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LogColor.Non");
+#endif
 		ToLua.Push(L, LogColor.Non);
 		return 1;
 	}
@@ -37,6 +40,9 @@ public class LogColorWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Red(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LogColor.Red");
+#endif
 		ToLua.Push(L, LogColor.Red);
 		return 1;
 	}
@@ -44,6 +50,9 @@ public class LogColorWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Green(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LogColor.Green");
+#endif
 		ToLua.Push(L, LogColor.Green);
 		return 1;
 	}
@@ -51,6 +60,9 @@ public class LogColorWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Yellow(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LogColor.Yellow");
+#endif
 		ToLua.Push(L, LogColor.Yellow);
 		return 1;
 	}
@@ -58,6 +70,9 @@ public class LogColorWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IntToEnum(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LogColor.IntToEnum");
+#endif
 		int arg0 = (int)LuaDLL.lua_tonumber(L, 1);
 		LogColor o = (LogColor)arg0;
 		ToLua.Push(L, o);

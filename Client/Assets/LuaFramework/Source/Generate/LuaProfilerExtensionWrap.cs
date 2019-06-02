@@ -15,6 +15,9 @@ public class LuaProfilerExtensionWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int BeginSample(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LuaProfilerExtension.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -46,6 +49,9 @@ public class LuaProfilerExtensionWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int EndSample(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LuaProfilerExtension.EndSample");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 0);

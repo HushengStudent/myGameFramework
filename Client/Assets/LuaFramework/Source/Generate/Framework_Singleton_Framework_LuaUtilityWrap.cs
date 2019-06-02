@@ -16,6 +16,9 @@ public class Framework_Singleton_Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Init(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.Singleton<Framework.LuaUtility>.Init");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -32,6 +35,9 @@ public class Framework_Singleton_Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Instance(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.Singleton<Framework.LuaUtility>.Instance");
+#endif
 		try
 		{
 			ToLua.PushObject(L, Framework.Singleton<Framework.LuaUtility>.Instance);

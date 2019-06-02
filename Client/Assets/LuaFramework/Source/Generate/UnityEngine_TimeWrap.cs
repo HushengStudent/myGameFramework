@@ -31,6 +31,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_time(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.time");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Time.time);
@@ -45,6 +48,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_timeSinceLevelLoad(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.timeSinceLevelLoad");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Time.timeSinceLevelLoad);
@@ -59,6 +65,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_deltaTime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.deltaTime");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Time.deltaTime);
@@ -73,6 +82,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_fixedTime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.fixedTime");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Time.fixedTime);
@@ -87,6 +99,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_unscaledTime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.unscaledTime");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Time.unscaledTime);
@@ -101,6 +116,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_fixedUnscaledTime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.fixedUnscaledTime");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Time.fixedUnscaledTime);
@@ -115,6 +133,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_unscaledDeltaTime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.unscaledDeltaTime");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Time.unscaledDeltaTime);
@@ -129,6 +150,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_fixedUnscaledDeltaTime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.fixedUnscaledDeltaTime");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Time.fixedUnscaledDeltaTime);
@@ -143,6 +167,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_fixedDeltaTime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.fixedDeltaTime");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Time.fixedDeltaTime);
@@ -157,6 +184,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_maximumDeltaTime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.maximumDeltaTime");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Time.maximumDeltaTime);
@@ -171,6 +201,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_smoothDeltaTime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.smoothDeltaTime");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Time.smoothDeltaTime);
@@ -185,6 +218,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_maximumParticleDeltaTime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.maximumParticleDeltaTime");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Time.maximumParticleDeltaTime);
@@ -199,6 +235,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_timeScale(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.timeScale");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Time.timeScale);
@@ -213,6 +252,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_frameCount(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.frameCount");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.Time.frameCount);
@@ -227,6 +269,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_renderedFrameCount(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.renderedFrameCount");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.Time.renderedFrameCount);
@@ -241,6 +286,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_realtimeSinceStartup(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.realtimeSinceStartup");
+#endif
 		try
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.Time.realtimeSinceStartup);
@@ -255,6 +303,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_captureFramerate(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.captureFramerate");
+#endif
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.Time.captureFramerate);
@@ -269,6 +320,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_inFixedTimeStep(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.inFixedTimeStep");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, UnityEngine.Time.inFixedTimeStep);
@@ -283,6 +337,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_fixedDeltaTime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.fixedDeltaTime");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
@@ -298,6 +355,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_maximumDeltaTime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.maximumDeltaTime");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
@@ -313,6 +373,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_maximumParticleDeltaTime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.maximumParticleDeltaTime");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
@@ -328,6 +391,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_timeScale(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.timeScale");
+#endif
 		try
 		{
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
@@ -343,6 +409,9 @@ public class UnityEngine_TimeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_captureFramerate(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Time.captureFramerate");
+#endif
 		try
 		{
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);

@@ -44,6 +44,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateUnityEngine_Renderer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -68,6 +71,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetPropertyBlock(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.SetPropertyBlock");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -85,6 +91,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetPropertyBlock(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.GetPropertyBlock");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -102,6 +111,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetClosestReflectionProbes(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.GetClosestReflectionProbes");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -119,6 +131,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.op_Equality");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -137,6 +152,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_bounds(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.bounds");
+#endif
 		object o = null;
 
 		try
@@ -156,6 +174,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_enabled(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.enabled");
+#endif
 		object o = null;
 
 		try
@@ -175,6 +196,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isVisible(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.isVisible");
+#endif
 		object o = null;
 
 		try
@@ -194,6 +218,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_shadowCastingMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.shadowCastingMode");
+#endif
 		object o = null;
 
 		try
@@ -213,6 +240,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_receiveShadows(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.receiveShadows");
+#endif
 		object o = null;
 
 		try
@@ -232,6 +262,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_motionVectorGenerationMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.motionVectorGenerationMode");
+#endif
 		object o = null;
 
 		try
@@ -251,6 +284,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_lightProbeUsage(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.lightProbeUsage");
+#endif
 		object o = null;
 
 		try
@@ -270,6 +306,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_reflectionProbeUsage(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.reflectionProbeUsage");
+#endif
 		object o = null;
 
 		try
@@ -289,6 +328,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_sortingLayerName(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.sortingLayerName");
+#endif
 		object o = null;
 
 		try
@@ -308,6 +350,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_sortingLayerID(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.sortingLayerID");
+#endif
 		object o = null;
 
 		try
@@ -327,6 +372,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_sortingOrder(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.sortingOrder");
+#endif
 		object o = null;
 
 		try
@@ -346,6 +394,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_allowOcclusionWhenDynamic(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.allowOcclusionWhenDynamic");
+#endif
 		object o = null;
 
 		try
@@ -365,6 +416,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_isPartOfStaticBatch(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.isPartOfStaticBatch");
+#endif
 		object o = null;
 
 		try
@@ -384,6 +438,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_worldToLocalMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.worldToLocalMatrix");
+#endif
 		object o = null;
 
 		try
@@ -403,6 +460,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_localToWorldMatrix(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.localToWorldMatrix");
+#endif
 		object o = null;
 
 		try
@@ -422,6 +482,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_lightProbeProxyVolumeOverride(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.lightProbeProxyVolumeOverride");
+#endif
 		object o = null;
 
 		try
@@ -441,6 +504,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_probeAnchor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.probeAnchor");
+#endif
 		object o = null;
 
 		try
@@ -460,6 +526,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_lightmapIndex(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.lightmapIndex");
+#endif
 		object o = null;
 
 		try
@@ -479,6 +548,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_realtimeLightmapIndex(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.realtimeLightmapIndex");
+#endif
 		object o = null;
 
 		try
@@ -498,6 +570,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_lightmapScaleOffset(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.lightmapScaleOffset");
+#endif
 		object o = null;
 
 		try
@@ -517,6 +592,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_realtimeLightmapScaleOffset(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.realtimeLightmapScaleOffset");
+#endif
 		object o = null;
 
 		try
@@ -536,6 +614,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_material(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.material");
+#endif
 		object o = null;
 
 		try
@@ -555,6 +636,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_sharedMaterial(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.sharedMaterial");
+#endif
 		object o = null;
 
 		try
@@ -574,6 +658,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_materials(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.materials");
+#endif
 		object o = null;
 
 		try
@@ -593,6 +680,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_sharedMaterials(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.sharedMaterials");
+#endif
 		object o = null;
 
 		try
@@ -612,6 +702,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_enabled(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.enabled");
+#endif
 		object o = null;
 
 		try
@@ -631,6 +724,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_shadowCastingMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.shadowCastingMode");
+#endif
 		object o = null;
 
 		try
@@ -650,6 +746,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_receiveShadows(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.receiveShadows");
+#endif
 		object o = null;
 
 		try
@@ -669,6 +768,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_motionVectorGenerationMode(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.motionVectorGenerationMode");
+#endif
 		object o = null;
 
 		try
@@ -688,6 +790,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_lightProbeUsage(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.lightProbeUsage");
+#endif
 		object o = null;
 
 		try
@@ -707,6 +812,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_reflectionProbeUsage(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.reflectionProbeUsage");
+#endif
 		object o = null;
 
 		try
@@ -726,6 +834,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_sortingLayerName(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.sortingLayerName");
+#endif
 		object o = null;
 
 		try
@@ -745,6 +856,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_sortingLayerID(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.sortingLayerID");
+#endif
 		object o = null;
 
 		try
@@ -764,6 +878,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_sortingOrder(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.sortingOrder");
+#endif
 		object o = null;
 
 		try
@@ -783,6 +900,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_allowOcclusionWhenDynamic(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.allowOcclusionWhenDynamic");
+#endif
 		object o = null;
 
 		try
@@ -802,6 +922,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_lightProbeProxyVolumeOverride(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.lightProbeProxyVolumeOverride");
+#endif
 		object o = null;
 
 		try
@@ -821,6 +944,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_probeAnchor(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.probeAnchor");
+#endif
 		object o = null;
 
 		try
@@ -840,6 +966,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_lightmapIndex(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.lightmapIndex");
+#endif
 		object o = null;
 
 		try
@@ -859,6 +988,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_realtimeLightmapIndex(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.realtimeLightmapIndex");
+#endif
 		object o = null;
 
 		try
@@ -878,6 +1010,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_lightmapScaleOffset(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.lightmapScaleOffset");
+#endif
 		object o = null;
 
 		try
@@ -897,6 +1032,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_realtimeLightmapScaleOffset(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.realtimeLightmapScaleOffset");
+#endif
 		object o = null;
 
 		try
@@ -916,6 +1054,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_material(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.material");
+#endif
 		object o = null;
 
 		try
@@ -935,6 +1076,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_sharedMaterial(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.sharedMaterial");
+#endif
 		object o = null;
 
 		try
@@ -954,6 +1098,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_materials(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.materials");
+#endif
 		object o = null;
 
 		try
@@ -973,6 +1120,9 @@ public class UnityEngine_RendererWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_sharedMaterials(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Renderer.sharedMaterials");
+#endif
 		object o = null;
 
 		try

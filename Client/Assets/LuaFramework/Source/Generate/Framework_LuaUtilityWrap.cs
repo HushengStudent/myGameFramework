@@ -36,6 +36,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateFramework_LuaUtility(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -60,6 +63,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Int(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.Int");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -77,6 +83,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Float(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.Float");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -94,6 +103,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Long(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.Long");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -111,6 +123,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Random(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.Random");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -129,6 +144,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Child(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -163,6 +181,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Peer(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.Register");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -197,6 +218,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ClearChild(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.ClearChild");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -213,6 +237,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Uid(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.Uid");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -230,6 +257,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetTime(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.GetTime");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 0);
@@ -246,6 +276,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int md5(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.md5");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -263,6 +296,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int md5file(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.md5file");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -280,6 +316,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int ClearMemory(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.ClearMemory");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 0);
@@ -295,6 +334,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetFileText(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.GetFileText");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -312,6 +354,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int AppContentPath(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.AppContentPath");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 0);
@@ -328,6 +373,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CallMethod(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.CallMethod");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -347,6 +395,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CallLuaModuleMethod(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.CallLuaModuleMethod");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -365,6 +416,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int CallLuaTableMethod(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.CallLuaTableMethod");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -383,6 +437,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int OnCallLuaFunc(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.OnCallLuaFunc");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -400,6 +457,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int OnJsonCallFunc(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.OnJsonCallFunc");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
@@ -417,6 +477,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_NetAvailable(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.NetAvailable");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, Framework.LuaUtility.NetAvailable);
@@ -431,6 +494,9 @@ public class Framework_LuaUtilityWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_IsWifi(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.IsWifi");
+#endif
 		try
 		{
 			LuaDLL.lua_pushboolean(L, Framework.LuaUtility.IsWifi);

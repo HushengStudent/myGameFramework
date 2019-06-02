@@ -32,6 +32,9 @@ public class UnityEngine_WrapModeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Once(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WrapMode.Once");
+#endif
 		ToLua.Push(L, UnityEngine.WrapMode.Once);
 		return 1;
 	}
@@ -39,6 +42,9 @@ public class UnityEngine_WrapModeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Loop(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WrapMode.Loop");
+#endif
 		ToLua.Push(L, UnityEngine.WrapMode.Loop);
 		return 1;
 	}
@@ -46,6 +52,9 @@ public class UnityEngine_WrapModeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_PingPong(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WrapMode.PingPong");
+#endif
 		ToLua.Push(L, UnityEngine.WrapMode.PingPong);
 		return 1;
 	}
@@ -53,6 +62,9 @@ public class UnityEngine_WrapModeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Default(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WrapMode.Default");
+#endif
 		ToLua.Push(L, UnityEngine.WrapMode.Default);
 		return 1;
 	}
@@ -60,6 +72,9 @@ public class UnityEngine_WrapModeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_ClampForever(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WrapMode.ClampForever");
+#endif
 		ToLua.Push(L, UnityEngine.WrapMode.ClampForever);
 		return 1;
 	}
@@ -67,6 +82,9 @@ public class UnityEngine_WrapModeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_Clamp(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WrapMode.Clamp");
+#endif
 		ToLua.Push(L, UnityEngine.WrapMode.Clamp);
 		return 1;
 	}
@@ -74,6 +92,9 @@ public class UnityEngine_WrapModeWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int IntToEnum(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.WrapMode.IntToEnum");
+#endif
 		int arg0 = (int)LuaDLL.lua_tonumber(L, 1);
 		UnityEngine.WrapMode o = (UnityEngine.WrapMode)arg0;
 		ToLua.Push(L, o);

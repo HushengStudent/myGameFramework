@@ -18,6 +18,9 @@ public class Framework_SceneMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int _CreateFramework_SceneMgr(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.SceneMgr.ctor");
+#endif
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
@@ -42,6 +45,9 @@ public class Framework_SceneMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int Init(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.SceneMgr.Init");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
@@ -58,6 +64,9 @@ public class Framework_SceneMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int TransToScene(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.SceneMgr.TransToScene");
+#endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
@@ -77,6 +86,9 @@ public class Framework_SceneMgrWrap
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_CurScene(IntPtr L)
 	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.SceneMgr.CurScene");
+#endif
 		object o = null;
 
 		try
