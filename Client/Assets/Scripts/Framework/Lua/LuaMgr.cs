@@ -44,6 +44,12 @@ namespace Framework
             LuaCoroutine.Register(lua, this);
         }
 
+        protected override void UpdateEx(float interval)
+        {
+            base.UpdateEx(interval);
+            ToluaProfiler.Update();
+        }
+
         /// <summary>
         /// 初始化加载第三方库;
         /// </summary>

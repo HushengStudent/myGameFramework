@@ -4,10 +4,8 @@
 ** desc:  Unity Profiler扩展;
 *********************************************************************************/
 
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using UnityEngine;
 using UnityEngine.Profiling;
 
 public static class LuaProfilerExtension

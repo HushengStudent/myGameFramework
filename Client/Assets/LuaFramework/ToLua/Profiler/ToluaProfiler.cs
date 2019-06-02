@@ -50,7 +50,17 @@ public static class ToluaProfiler
 #if UNITY_EDITOR
         if (_profilerEnable)
         {
-            
+            foreach (var target in _frameCallCountDict)
+            {
+                var name = target.Key;
+                var count = target.Value;
+                CallInfo info;
+                if (_luaCallCountDict.TryGetValue(name, out info))
+                {
+                    info.FrameCount = info.FrameCount > count ? info.FrameCount : count;
+                }
+            }
+            _frameCallCountDict.Clear();
         }
 #endif
     }

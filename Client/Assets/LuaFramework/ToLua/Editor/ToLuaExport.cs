@@ -1429,6 +1429,10 @@ public static class ToLuaExport
         sb.AppendFormat("\tstatic int {0}(IntPtr L)\r\n", name == "Register" ? "_Register" : name);
         sb.AppendLineEx("\t{");
 
+        sb.AppendLine("#if UNITY_EDITOR");
+        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, "Register"));
+        sb.AppendLine("#endif");
+
         if (HasAttribute(m.Method, typeof(UseDefinedAttribute)))
         {
             FieldInfo field = extendType.GetField(name + "Defined");
@@ -1667,7 +1671,12 @@ public static class ToLuaExport
     {
         sb.AppendLineEx("\r\n\t[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]");
         sb.AppendFormat("\tstatic int _Create{0}(IntPtr L)\r\n", wrapClassName);
-        sb.AppendLineEx("\t{");        
+        sb.AppendLineEx("\t{");
+
+        sb.AppendLine("#if UNITY_EDITOR");
+        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, "ctor"));
+        sb.AppendLine("#endif");
+
         sb.AppendFormat("\t\t{0} obj = new {0}();\r\n", className);
         GenPushStr(type, "obj", "\t\t");
         sb.AppendLineEx("\t\treturn 1;");
@@ -1694,6 +1703,11 @@ public static class ToLuaExport
         sb.AppendLineEx("\r\n\t[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]");
         sb.AppendLineEx("\tstatic int get_out(IntPtr L)");
         sb.AppendLineEx("\t{");
+
+        sb.AppendLine("#if UNITY_EDITOR");
+        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, "get_out"));
+        sb.AppendLine("#endif");
+
         sb.AppendFormat("\t\tToLua.PushOut<{0}>(L, new LuaOut<{0}>());\r\n", className);
         sb.AppendLineEx("\t\treturn 1;");
         sb.AppendLineEx("\t}");
@@ -1780,6 +1794,10 @@ public static class ToLuaExport
                 sb.AppendFormat("\tstatic int _Create{0}(IntPtr L)\r\n", wrapClassName);
                 sb.AppendLineEx("\t{");
 
+                sb.AppendLine("#if UNITY_EDITOR");
+                sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, extendName));
+                sb.AppendLine("#endif");
+
                 FieldInfo field = extendType.GetField(extendName + "Defined");
                 string strfun = field.GetValue(null) as string;
                 sb.AppendLineEx(strfun);
@@ -1803,6 +1821,10 @@ public static class ToLuaExport
         sb.AppendLineEx("\r\n\t[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]");
         sb.AppendFormat("\tstatic int _Create{0}(IntPtr L)\r\n", wrapClassName);
         sb.AppendLineEx("\t{");
+
+        sb.AppendLine("#if UNITY_EDITOR");
+        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, "ctor"));
+        sb.AppendLine("#endif");
 
         BeginTry();
         sb.AppendLineEx("\t\t\tint count = LuaDLL.lua_gettop(L);");          
@@ -1919,6 +1941,11 @@ public static class ToLuaExport
             sb.AppendLineEx("\r\n\t[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]");
             sb.AppendLineEx("\tstatic int _get_this(IntPtr L)");
             sb.AppendLineEx("\t{");
+
+            sb.AppendLine("#if UNITY_EDITOR");
+            sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, "get_this"));
+            sb.AppendLine("#endif");
+
             BeginTry();
 
             if (getItems.Count == 1)
@@ -1958,6 +1985,11 @@ public static class ToLuaExport
             sb.AppendLineEx("\r\n\t[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]");
             sb.AppendLineEx("\tstatic int _set_this(IntPtr L)");
             sb.AppendLineEx("\t{");
+
+            sb.AppendLine("#if UNITY_EDITOR");
+            sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, "set_this"));
+            sb.AppendLine("#endif");
+
             BeginTry();
 
             if (setItems.Count == 1)
@@ -1998,6 +2030,11 @@ public static class ToLuaExport
             sb.AppendLineEx("\r\n\t[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]");
             sb.AppendLineEx("\tstatic int _this(IntPtr L)");
             sb.AppendLineEx("\t{");
+
+            sb.AppendLine("#if UNITY_EDITOR");
+            sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, "this"));
+            sb.AppendLine("#endif");
+
             BeginTry();
             sb.AppendLineEx("\t\t\tLuaDLL.lua_pushvalue(L, 1);");
             sb.AppendFormat("\t\t\tLuaDLL.tolua_bindthis(L, {0}, {1});\r\n", (flag & 1) == 1 ? "_get_this" : "null", (flag & 2) == 2 ? "_set_this" : "null");
@@ -2877,6 +2914,10 @@ public static class ToLuaExport
         sb.AppendFormat("\tstatic int {0}(IntPtr L)\r\n", name == "Register" ? "_Register" : name);
         sb.AppendLineEx("\t{");
 
+        sb.AppendLine("#if UNITY_EDITOR");
+        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, "Register"));
+        sb.AppendLine("#endif");
+
         BeginTry();
         sb.AppendLineEx("\t\t\tint count = LuaDLL.lua_gettop(L);");        
         sb.AppendLineEx();        
@@ -3039,6 +3080,10 @@ public static class ToLuaExport
         sb.AppendFormat("\tstatic int {0}_{1}(IntPtr L)\r\n", beOverride ? "_get" : "get", varName);
         sb.AppendLineEx("\t{");
 
+        sb.AppendLine("#if UNITY_EDITOR");
+        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, varName));
+        sb.AppendLine("#endif");
+
         if (isStatic)
         {
             string arg = string.Format("{0}.{1}", className, varName);
@@ -3072,7 +3117,12 @@ public static class ToLuaExport
     {
         sb.AppendLineEx("\r\n\t[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]");
         sb.AppendFormat("\tstatic int get_{0}(IntPtr L)\r\n", varName);
-        sb.AppendLineEx("\t{");                
+        sb.AppendLineEx("\t{");
+
+        sb.AppendLine("#if UNITY_EDITOR");
+        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, varName));
+        sb.AppendLine("#endif");
+
         sb.AppendFormat("\t\tToLua.Push(L, new EventObject(typeof({0})));\r\n",GetTypeStr(varType));
         sb.AppendLineEx("\t\treturn 1;");
         sb.AppendLineEx("\t}");
@@ -3122,7 +3172,11 @@ public static class ToLuaExport
     {
         sb.AppendLineEx("\r\n\t[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]");
         sb.AppendFormat("\tstatic int {0}_{1}(IntPtr L)\r\n", beOverride ? "_set" : "set",  varName);        
-        sb.AppendLineEx("\t{");        
+        sb.AppendLineEx("\t{");
+
+        sb.AppendLine("#if UNITY_EDITOR");
+        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, varName));
+        sb.AppendLine("#endif");
 
         if (!isStatic)
         {            
@@ -3161,6 +3215,11 @@ public static class ToLuaExport
         sb.AppendLineEx("\r\n\t[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]");
         sb.AppendFormat("\tstatic int set_{0}(IntPtr L)\r\n", varName);
         sb.AppendLineEx("\t{");
+
+        sb.AppendLine("#if UNITY_EDITOR");
+        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.set_{1})", className, varName));
+        sb.AppendLine("#endif");
+
         BeginTry();
 
         if (!isStatic)
@@ -3748,6 +3807,11 @@ public static class ToLuaExport
             sb.AppendLineEx("\r\n\t[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]");
             sb.AppendFormat("\tstatic int get_{0}(IntPtr L)\r\n", fields[i].Name);
             sb.AppendLineEx("\t{");
+
+            sb.AppendLine("#if UNITY_EDITOR");
+            sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})",className,fields[i].Name));
+            sb.AppendLine("#endif");
+
             sb.AppendFormat("\t\tToLua.Push(L, {0}.{1});\r\n", className, fields[i].Name);
             sb.AppendLineEx("\t\treturn 1;");
             sb.AppendLineEx("\t}");            
@@ -3756,6 +3820,11 @@ public static class ToLuaExport
         sb.AppendLineEx("\r\n\t[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]");
         sb.AppendLineEx("\tstatic int IntToEnum(IntPtr L)");
         sb.AppendLineEx("\t{");
+
+        sb.AppendLine("#if UNITY_EDITOR");
+        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.IntToEnum)", className));
+        sb.AppendLine("#endif");
+
         sb.AppendLineEx("\t\tint arg0 = (int)LuaDLL.lua_tonumber(L, 1);");
         sb.AppendFormat("\t\t{0} o = ({0})arg0;\r\n", className);
         sb.AppendLineEx("\t\tToLua.Push(L, o);");
@@ -4316,6 +4385,11 @@ public static class ToLuaExport
         sb.AppendLineEx("\r\n\t[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]");
         sb.AppendFormat("\tstatic int {0}(IntPtr L)\r\n", funcName);
         sb.AppendLineEx("\t{");
+
+        sb.AppendLine("#if UNITY_EDITOR");
+        sb.AppendLine(string.Format("    ToluaProfiler.AddCallRecord({0}.{1})", className, funcName));
+        sb.AppendLine("#endif");
+
         sb.AppendLineEx("\t\ttry");
         sb.AppendLineEx("\t\t{");
         sb.AppendLineEx("\t\t\tint count = LuaDLL.lua_gettop(L);");
