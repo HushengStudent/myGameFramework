@@ -4,7 +4,6 @@
 ** desc:  UI复用;
 *********************************************************************************/
 
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,7 +18,7 @@ namespace Framework
         Horizontal = 1
     }
 
-    public class LoopScrollRect : MonoBehaviour
+    public class ScrollRectEx : MonoBehaviour
     {
         private int _count;
         private int _needCount;
@@ -112,7 +111,7 @@ namespace Framework
             _count = number;
             for (int i = nowNum; i < needNum; i++)
             {
-                GameObject item = GameObject.Instantiate(_prefab) as GameObject;
+                GameObject item = Instantiate(_prefab) as GameObject;
                 item.SetActive(true);
                 item.transform.SetParent(_prefab.transform.parent);
                 item.transform.localScale = _prefab.transform.localScale;
@@ -126,7 +125,7 @@ namespace Framework
             int maxCount = Mathf.Min(_needCount, _items.Count);
             for (int i = maxCount - 1; i >= needNum; i--)
             {
-                GameObject.Destroy(_items[i].gameObject);
+                Destroy(_items[i].gameObject);
                 _items.Remove(_items[i]);
             }
             InitLoop();

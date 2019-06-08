@@ -37,5 +37,10 @@ namespace Framework
                 trans.parent = parent;
             }
         }
+
+        public static bool IsNull(object obj)
+        {
+            return obj == null || ReferenceEquals(obj, null);
+        }
     }
 }
