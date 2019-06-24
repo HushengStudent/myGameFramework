@@ -42,8 +42,11 @@ namespace Framework
             else
             {
                 LogHelper.Print((typeof(T)).ToString() + " singleton Instance created.");
+                CreateInstance();
             }
         }
+
+        protected virtual void CreateInstance() { }
 
         public virtual void Init()
         {

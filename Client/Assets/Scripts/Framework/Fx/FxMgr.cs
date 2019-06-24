@@ -32,7 +32,7 @@ namespace Framework
                 GameObject target = temp.Value;
                 if (target)
                 {
-                    GameObject.DestroyImmediate(target);
+                    Object.DestroyImmediate(target);
                 }
             }
             _fxDict.Clear();

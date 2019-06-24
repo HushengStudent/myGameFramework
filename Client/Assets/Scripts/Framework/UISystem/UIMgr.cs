@@ -14,6 +14,7 @@ namespace Framework
     {
         private PanelType _curPanelType = PanelType.Non;
 
+        public GameObject UIRoot { get; private set; }
         public BasePanel CurPanel { get; private set; }
         public PanelType CurPanelType { get { return _curPanelType; } }
 

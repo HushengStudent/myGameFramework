@@ -1,6 +1,5 @@
 using Framework;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 public class ProtoHelper

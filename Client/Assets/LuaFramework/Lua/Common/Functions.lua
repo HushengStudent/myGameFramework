@@ -66,3 +66,7 @@ function table.dump(t)
         logGreen("--->>>key:"..tostring(k).." --->>>value:"..tostring(v))
     end
 end
+
+function IsNil(uObj)
+    return uObj == nil or uObj:Equals(nil)
+end

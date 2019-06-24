@@ -42,5 +42,26 @@ namespace Framework
         {
             return obj == null || ReferenceEquals(obj, null);
         }
+
+        public static Vector2 WorldToScreenPoint(Vector3 position)
+        {
+            var mainCamera = CameraMgr.Instance.MainCamera;
+            if (mainCamera)
+            {
+                position = mainCamera.WorldToScreenPoint(position);
+                var mainUICamera = CameraMgr.Instance.MainUICamera;
+                if (mainUICamera)
+                {
+                    var uiRoot = UIMgr.Instance.UIRoot;
+                    if (uiRoot.transform as RectTransform)
+                    {
+                        Vector2 localPoint = Vector2.zero;
+                        RectTransformUtility.ScreenPointToLocalPointInRectangle(uiRoot.transform as RectTransform, position, mainUICamera, out localPoint);
+                        return localPoint;
+                    }
+                }
+            }
+            return Vector2.zero;
+        }
     }
 }

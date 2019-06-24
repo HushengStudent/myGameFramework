@@ -7,9 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Framework
 {
