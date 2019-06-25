@@ -15,7 +15,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class LuaUtility : Singleton<LuaUtility>
+    public class LuaUtility : Singleton<LuaUtility>, ISingleton
     {
         #region Math
 
@@ -339,6 +339,10 @@ namespace Framework
         {
             Debug.LogWarning("OnJsonCallback data:>>" + data + " lenght:>>" + data.Length);
             if (func != null) func.Call(data);
+        }
+
+        public void OnInitialize()
+        {
         }
 
         #endregion

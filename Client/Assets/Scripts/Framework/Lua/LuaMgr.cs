@@ -12,7 +12,7 @@ using UnityEngine;
 namespace Framework
 {
     //参考(https://github.com/jarjin/LuaFramework_UGUI)集成tolua;
-    public class LuaMgr : MonoSingleton<LuaMgr>
+    public class LuaMgr : MonoSingleton<LuaMgr>, ISingleton
     {
         private LuaState lua;
         private LuaLoaderHelper loader;
@@ -21,14 +21,13 @@ namespace Framework
         /// <summary>
         /// 初始化;
         /// </summary>
-        public override void Init()
+        public void OnInitialize()
         {
-            base.Init();
             InitLuaPath();
             InitLuaBundle();
-            this.lua.Start();    //启动LUAVM;
-            this.StartMain();
-            this.StartLooper();
+            lua.Start();    //启动LUAVM;
+            StartMain();
+            StartLooper();
         }
 
         protected override void AwakeEx()

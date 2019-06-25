@@ -10,8 +10,12 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class BuffMgr : Singleton<BuffMgr>
+    public class BuffMgr : Singleton<BuffMgr>, ISingleton
     {
+        public void OnInitialize()
+        {
+        }
+
         public void AddBuff(ulong uid, int buffId)
         {
             RoleEntity entity = EntityMgr.Instance.GetEntity<RoleEntity>(uid);

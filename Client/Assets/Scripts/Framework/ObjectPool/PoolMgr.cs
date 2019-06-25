@@ -13,7 +13,7 @@ using Object = System.Object;
 
 namespace Framework
 {
-    public partial class PoolMgr : MonoSingleton<PoolMgr>
+    public partial class PoolMgr : MonoSingleton<PoolMgr>, ISingleton
     {
         public ManagerInitEventHandler PoolMgrInitHandler = null;
 
@@ -32,9 +32,8 @@ namespace Framework
         /// <summary>
         /// 初始化;
         /// </summary>
-        public override void Init()
+        public void OnInitialize()
         {
-            base.Init();
             CoroutineMgr.Instance.RunCoroutine(ClearPool());
         }
 

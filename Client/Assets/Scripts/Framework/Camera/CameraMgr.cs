@@ -8,9 +8,13 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class CameraMgr : MonoSingleton<CameraMgr>
+    public class CameraMgr : MonoSingleton<CameraMgr>, ISingleton
     {
         public Camera MainCamera { get; private set; }
         public Camera MainUICamera { get; private set; }
+
+        public void OnInitialize()
+        {
+        }
     }
 }

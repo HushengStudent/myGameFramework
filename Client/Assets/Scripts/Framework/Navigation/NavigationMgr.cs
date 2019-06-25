@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class NavigationMgr : Singleton<NavigationMgr>
+    public class NavigationMgr : Singleton<NavigationMgr>, ISingleton
     {
 
         private static void NavigationTest()
@@ -77,6 +77,10 @@ namespace Framework
             if (v < 0 || v > 1)
                 return false;
             return u + v <= 1;
+        }
+
+        public void OnInitialize()
+        {
         }
     }
 }

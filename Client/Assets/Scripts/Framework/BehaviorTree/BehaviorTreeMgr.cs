@@ -19,15 +19,19 @@ namespace Framework
         Success = 4,
     }
 
-    public class BehaviorTreeMgr : MonoSingleton<BehaviorTreeMgr>
+    public class BehaviorTreeMgr : MonoSingleton<BehaviorTreeMgr>, ISingleton
     {
         private Dictionary<AbsEntity, BehaviorTree> _treeDict = new Dictionary<AbsEntity, BehaviorTree>();
         private List<BehaviorTree> _treeList = new List<BehaviorTree>();
 
-        public override void Init()
+        protected override void CreateInstance()
         {
-            base.Init();
+            base.CreateInstance();
             _treeDict.Clear();
+        }
+
+        public void OnInitialize()
+        {
         }
 
         protected override void UpdateEx(float interval)

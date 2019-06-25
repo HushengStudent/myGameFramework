@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class UpdateMgr : Singleton<UpdateMgr>
+    public class UpdateMgr : Singleton<UpdateMgr>, ISingleton
     {
         public VersionInfo LoaclVersion { get; private set; }
         public VersionInfo NetVersion { get; private set; }
@@ -20,9 +20,8 @@ namespace Framework
         public UpdateErrorEventHandler ErrorHandler = null;
         public UpdateSuccessEventHandler SuccessHandler = null;
 
-        public override void Init()
+        public void OnInitialize()
         {
-            base.Init();
             SuccessHandler = () => { GameMgr.Instance.EnterGame(); };
             if (!Directory.Exists(GameConfig.VersionFilePath))
             {

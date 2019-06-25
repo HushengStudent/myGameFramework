@@ -12,7 +12,7 @@ using MEC;
 
 namespace Framework
 {
-    public class ComponentMgr : MonoSingleton<ComponentMgr>
+    public class ComponentMgr : MonoSingleton<ComponentMgr>, ISingleton
     {
         #region Field
 
@@ -22,10 +22,14 @@ namespace Framework
 
         #region Unity api
 
-        public override void Init()
+        protected override void CreateInstance()
         {
-            base.Init();
+            base.CreateInstance();
             _componentList.Clear();
+        }
+
+        public void OnInitialize()
+        {
         }
 
         protected override void FixedUpdateEx(float interval)

@@ -10,13 +10,12 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class StateMachineMgr : MonoSingleton<StateMachineMgr>
+    public class StateMachineMgr : MonoSingleton<StateMachineMgr>, ISingleton
     {
         private Dictionary<AbsEntity, StateMachine> _fsmDict = new Dictionary<AbsEntity, StateMachine>();
 
-        public override void Init()
+        public void OnInitialize()
         {
-            base.Init();
             _fsmDict.Clear();
         }
 

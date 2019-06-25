@@ -17,7 +17,7 @@ namespace Framework
     /// <returns></returns>
     public delegate bool EventHandler(IEventArgs eventArgs);
 
-    public class EventMgr : Singleton<EventMgr>
+    public class EventMgr : Singleton<EventMgr>, ISingleton
     {
         /// <summary>
         /// 委托集合;
@@ -31,14 +31,15 @@ namespace Framework
         private Dictionary<EventType, List<EventHandler>> GlobalEventDict
             = new Dictionary<EventType, List<EventHandler>>();
 
-        /// <summary>
-        /// 初始化;
-        /// </summary>
-        public override void Init()
+        protected override void CreateInstance()
         {
-            base.Init();
+            base.CreateInstance();
             EventDict.Clear();
             GlobalEventDict.Clear();
+        }
+
+        public void OnInitialize()
+        {
         }
 
         /// <summary>

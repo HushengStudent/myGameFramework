@@ -4,13 +4,9 @@
 ** desc:  单例模板;
 *********************************************************************************/
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace Framework
 {
-    public class Singleton<T> where T : class, new()
+    public class Singleton<T> where T : class, ISingleton, new()
     {
         private static T _instance = null;
         private static object _lock = new object();
@@ -25,6 +21,8 @@ namespace Framework
                     {
                         _instance = new T(); //调用构造函数;
                     }
+                    LogHelper.Print((typeof(T)).ToString() + " singleton instance Initialize.");
+                    _instance.OnInitialize();
                 }
                 return _instance;
             }
@@ -35,22 +33,13 @@ namespace Framework
         /// </summary>
         protected Singleton()
         {
-            if (null != _instance)
+            if (null == _instance)
             {
-                LogHelper.PrintWarning((typeof(T)).ToString() + " singleton Instance is not null.");
-            }
-            else
-            {
-                LogHelper.Print((typeof(T)).ToString() + " singleton Instance created.");
+                LogHelper.Print((typeof(T)).ToString() + " singleton instance created.");
                 CreateInstance();
             }
         }
 
         protected virtual void CreateInstance() { }
-
-        public virtual void Init()
-        {
-            LogHelper.Print((typeof(T)).ToString() + " singleton Instance Init.");
-        }
     }
 }

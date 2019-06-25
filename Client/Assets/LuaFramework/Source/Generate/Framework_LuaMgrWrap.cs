@@ -7,7 +7,7 @@ public class Framework_LuaMgrWrap
 	public static void Register(LuaState L)
 	{
 		L.BeginClass(typeof(Framework.LuaMgr), typeof(Framework.MonoSingleton<Framework.LuaMgr>));
-		L.RegFunction("Init", Init);
+		L.RegFunction("OnInitialize", OnInitialize);
 		L.RegFunction("DoFile", DoFile);
 		L.RegFunction("CallFunction", CallFunction);
 		L.RegFunction("CallLuaModuleMethod", CallLuaModuleMethod);
@@ -21,16 +21,16 @@ public class Framework_LuaMgrWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int Init(IntPtr L)
+	static int OnInitialize(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaMgr.Init");
+        ToluaProfiler.AddCallRecord("Framework.LuaMgr.OnInitialize");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
 			Framework.LuaMgr obj = (Framework.LuaMgr)ToLua.CheckObject<Framework.LuaMgr>(L, 1);
-			obj.Init();
+			obj.OnInitialize();
 			return 0;
 		}
 		catch (Exception e)

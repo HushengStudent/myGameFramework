@@ -11,7 +11,7 @@ using System;
 
 namespace Framework
 {
-    public class EntityMgr : MonoSingleton<EntityMgr>
+    public class EntityMgr : MonoSingleton<EntityMgr>, ISingleton
     {
         #region Fields
 
@@ -69,11 +69,15 @@ namespace Framework
 
         #region Functions
 
-        public override void Init()
+        protected override void CreateInstance()
         {
-            base.Init();
+            base.CreateInstance();
             _entityList.Clear();
             _entityDict.Clear();
+        }
+
+        public void OnInitialize()
+        {
         }
 
         /// <summary>

@@ -7,7 +7,7 @@ public class Framework_ResourceMgrWrap
 	public static void Register(LuaState L)
 	{
 		L.BeginClass(typeof(Framework.ResourceMgr), typeof(Framework.MonoSingleton<Framework.ResourceMgr>));
-		L.RegFunction("Init", Init);
+		L.RegFunction("OnInitialize", OnInitialize);
 		L.RegFunction("LoadAssetSync", LoadAssetSync);
 		L.RegFunction("LoadAssetProxy", LoadAssetProxy);
 		L.RegFunction("AddProxy", AddProxy);
@@ -24,16 +24,16 @@ public class Framework_ResourceMgrWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int Init(IntPtr L)
+	static int OnInitialize(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.Init");
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.OnInitialize");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
 			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
-			obj.Init();
+			obj.OnInitialize();
 			return 0;
 		}
 		catch (Exception e)

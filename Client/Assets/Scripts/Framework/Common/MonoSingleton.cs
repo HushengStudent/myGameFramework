@@ -4,15 +4,16 @@
 ** desc:  单例模板;
 *********************************************************************************/
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Framework
 {
-    public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
+    public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour, ISingleton
     {
         protected static T _instance = null;
+
+        private bool _applicationIsPlaying = true;
+        public bool ApplicationIsPlaying { get { return _applicationIsPlaying; } }
 
         public static T Instance
         {
@@ -27,6 +28,8 @@ namespace Framework
                         DontDestroyOnLoad(go);
                     }
                     _instance = go.AddComponent<T>();
+                    LogHelper.Print((typeof(T)).ToString() + " singleton instance Initialize.");
+                    _instance.OnInitialize();
                 }
                 return _instance;
             }
@@ -37,13 +40,9 @@ namespace Framework
         /// </summary>
         protected MonoSingleton()
         {
-            if (null != _instance)
+            if (null == _instance)
             {
-                LogHelper.PrintWarning((typeof(T)).ToString() + " singleton Instance is not null.");
-            }
-            else
-            {
-                LogHelper.Print((typeof(T)).ToString() + " singleton Instance created.");
+                LogHelper.Print((typeof(T)).ToString() + " singleton instance created.");
                 CreateInstance();
             }
         }
@@ -63,8 +62,14 @@ namespace Framework
         {
             AwakeEx();
         }
-        void Start() { StartEx(); }
-        void OnEnable() { OnEnableEx(); }
+        void Start()
+        {
+            StartEx();
+        }
+        void OnEnable()
+        {
+            OnEnableEx();
+        }
         void FixedUpdate()
         {
             FixedUpdateEx(Time.deltaTime);
@@ -77,16 +82,15 @@ namespace Framework
         {
             LateUpdateEx(Time.deltaTime);
         }
-        void OnDisable() { OnDisableEx(); }
+        void OnDisable()
+        {
+            OnDisableEx();
+        }
         void OnDestroy()
         {
+            _applicationIsPlaying = false;
             _instance = null;
             OnDestroyEx();
-        }
-
-        public virtual void Init()
-        {
-            LogHelper.Print((typeof(T)).ToString() + " singleton Instance Init.");
         }
     }
 }

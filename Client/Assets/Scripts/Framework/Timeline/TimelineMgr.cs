@@ -10,8 +10,10 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class TimelineMgr : Singleton<TimelineMgr>
+    public class TimelineMgr : Singleton<TimelineMgr>, ISingleton
     {
-
+        public void OnInitialize()
+        {
+        }
     }
 }

@@ -13,16 +13,15 @@ using Object = UnityEngine.Object;
 
 namespace Framework
 {
-    public partial class ResourceMgr : MonoSingleton<ResourceMgr>
+    public partial class ResourceMgr : MonoSingleton<ResourceMgr>, ISingleton
     {
         #region Initialize
 
         /// <summary>
         /// 初始化;
         /// </summary>
-        public override void Init()
+        public void OnInitialize()
         {
-            base.Init();
             InitLua();
             InitShader();
             CoroutineMgr.Instance.RunCoroutine(CancleAllProxy());

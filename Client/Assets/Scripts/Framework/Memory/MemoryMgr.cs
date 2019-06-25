@@ -11,7 +11,7 @@ using UnityEngine.Profiling;
 
 namespace Framework
 {
-    public class MemoryMgr : MonoSingleton<MemoryMgr>
+    public class MemoryMgr : MonoSingleton<MemoryMgr>, ISingleton
     {
         private int _maxMemoryUse = 1024;
         private int _monitTime = 10;
@@ -20,9 +20,8 @@ namespace Framework
 
         public int MaxMemoryUse { get { return _maxMemoryUse; } set { _maxMemoryUse = value; } }
 
-        public override void Init()
+        public void OnInitialize()
         {
-            base.Init();
             float allMenory = GetAllMemory();
             LogHelper.Print(string.Format("Used Heap Size: {0} MB", allMenory.ToString("F3")));
         }

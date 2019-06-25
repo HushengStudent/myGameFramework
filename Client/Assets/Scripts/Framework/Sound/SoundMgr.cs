@@ -10,8 +10,10 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class SoundMgr : Singleton<SoundMgr>
+    public class SoundMgr : Singleton<SoundMgr>, ISingleton
     {
-
+        public void OnInitialize()
+        {
+        }
     }
 }
