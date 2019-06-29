@@ -11,7 +11,7 @@ using UnityEngine.Rendering;
 
 namespace Framework
 {
-    public class CommandBufferMgr : MonoSingleton<CommandBufferMgr>, ISingleton
+    public class CommandBufferMgr : MonoSingleton<CommandBufferMgr>
     {
         private CommandBuffer _commandBuffer = null;
         private RenderTexture _renderTexture = null;
@@ -20,10 +20,6 @@ namespace Framework
         public Material _replaceMaterial = null;
 
         public void DrawRenderer()
-        {
-        }
-
-        public void OnInitialize()
         {
         }
     }

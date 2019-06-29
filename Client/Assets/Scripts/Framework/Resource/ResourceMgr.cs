@@ -5,22 +5,17 @@
 *********************************************************************************/
 
 using UnityEngine;
-using System.Collections;
-using System;
-using System.Collections.Generic;
-using MEC;
-using Object = UnityEngine.Object;
 
 namespace Framework
 {
-    public partial class ResourceMgr : MonoSingleton<ResourceMgr>, ISingleton
+    public partial class ResourceMgr : MonoSingleton<ResourceMgr>
     {
         #region Initialize
 
         /// <summary>
         /// 初始化;
         /// </summary>
-        public void OnInitialize()
+        protected override void OnInitializeEx()
         {
             InitLua();
             InitShader();

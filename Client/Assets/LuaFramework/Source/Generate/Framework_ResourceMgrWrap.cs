@@ -7,7 +7,6 @@ public class Framework_ResourceMgrWrap
 	public static void Register(LuaState L)
 	{
 		L.BeginClass(typeof(Framework.ResourceMgr), typeof(Framework.MonoSingleton<Framework.ResourceMgr>));
-		L.RegFunction("OnInitialize", OnInitialize);
 		L.RegFunction("LoadAssetSync", LoadAssetSync);
 		L.RegFunction("LoadAssetProxy", LoadAssetProxy);
 		L.RegFunction("AddProxy", AddProxy);
@@ -19,27 +18,8 @@ public class Framework_ResourceMgrWrap
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("MAX_LOAD_TIME", get_MAX_LOAD_TIME, null);
-		L.RegVar("ResourceMgrInitHandler", get_ResourceMgrInitHandler, set_ResourceMgrInitHandler);
+		L.RegVar("onResourceInitAction", get_onResourceInitAction, set_onResourceInitAction);
 		L.EndClass();
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int OnInitialize(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.OnInitialize");
-#endif
-		try
-		{
-			ToLua.CheckArgsCount(L, 1);
-			Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
-			obj.OnInitialize();
-			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -298,10 +278,10 @@ public class Framework_ResourceMgrWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_ResourceMgrInitHandler(IntPtr L)
+	static int get_onResourceInitAction(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.ResourceMgrInitHandler");
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.onResourceInitAction");
 #endif
 		object o = null;
 
@@ -309,21 +289,21 @@ public class Framework_ResourceMgrWrap
 		{
 			o = ToLua.ToObject(L, 1);
 			Framework.ResourceMgr obj = (Framework.ResourceMgr)o;
-			Framework.ManagerInitEventHandler ret = obj.ResourceMgrInitHandler;
+			System.Action ret = obj.onResourceInitAction;
 			ToLua.Push(L, ret);
 			return 1;
 		}
 		catch(Exception e)
 		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index ResourceMgrInitHandler on a nil value");
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index onResourceInitAction on a nil value");
 		}
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_ResourceMgrInitHandler(IntPtr L)
+	static int set_onResourceInitAction(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.ResourceMgrInitHandler");
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.onResourceInitAction");
 #endif
 		object o = null;
 
@@ -331,13 +311,13 @@ public class Framework_ResourceMgrWrap
 		{
 			o = ToLua.ToObject(L, 1);
 			Framework.ResourceMgr obj = (Framework.ResourceMgr)o;
-			Framework.ManagerInitEventHandler arg0 = (Framework.ManagerInitEventHandler)ToLua.CheckDelegate<Framework.ManagerInitEventHandler>(L, 2);
-			obj.ResourceMgrInitHandler = arg0;
+			System.Action arg0 = (System.Action)ToLua.CheckDelegate<System.Action>(L, 2);
+			obj.onResourceInitAction = arg0;
 			return 0;
 		}
 		catch(Exception e)
 		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index ResourceMgrInitHandler on a nil value");
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index onResourceInitAction on a nil value");
 		}
 	}
 }

@@ -17,7 +17,7 @@ namespace Framework
     {
         #region Proxy
 
-        public ManagerInitEventHandler ResourceMgrInitHandler = null;
+        public Action onResourceInitAction = null;
 
         private List<AssetProxy> _removexyList = new List<AssetProxy>();
 
@@ -57,9 +57,9 @@ namespace Framework
                 }
                 else
                 {
-                    if (ResourceMgrInitHandler != null)
+                    if (onResourceInitAction != null)
                     {
-                        ResourceMgrInitHandler();
+                        onResourceInitAction();
                     }
                     break;
                 }

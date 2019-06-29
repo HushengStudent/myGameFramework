@@ -6,7 +6,7 @@ public class Framework_MonoSingleton_Framework_ResourceMgrWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginClass(typeof(Framework.MonoSingleton<Framework.ResourceMgr>), typeof(UnityEngine.MonoBehaviour), "MonoSingleton_Framework_ResourceMgr");
+		L.BeginClass(typeof(Framework.MonoSingleton<Framework.ResourceMgr>), typeof(Framework.MonoSingletonBase), "MonoSingleton_Framework_ResourceMgr");
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("ApplicationIsPlaying", get_ApplicationIsPlaying, null);
@@ -41,19 +41,14 @@ public class Framework_MonoSingleton_Framework_ResourceMgrWrap
 #if UNITY_EDITOR
         ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.ApplicationIsPlaying");
 #endif
-		object o = null;
-
 		try
 		{
-			o = ToLua.ToObject(L, 1);
-			Framework.MonoSingleton<Framework.ResourceMgr> obj = (Framework.MonoSingleton<Framework.ResourceMgr>)o;
-			bool ret = obj.ApplicationIsPlaying;
-			LuaDLL.lua_pushboolean(L, ret);
+			LuaDLL.lua_pushboolean(L, Framework.MonoSingleton<Framework.ResourceMgr>.ApplicationIsPlaying);
 			return 1;
 		}
-		catch(Exception e)
+		catch (Exception e)
 		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index ApplicationIsPlaying on a nil value");
+			return LuaDLL.toluaL_exception(L, e);
 		}
 	}
 

@@ -18,7 +18,7 @@ namespace Framework
         High
     }
 
-    public class GameMgr : Singleton<GameMgr>, ISingleton
+    public class GameMgr : Singleton<GameMgr>
     {
         private int _gameFrame = 60;
         private float _syncInterval = 0.2f;
@@ -30,25 +30,25 @@ namespace Framework
         public float SyncInterval { get { return _syncInterval; } set { _syncInterval = value; } }
         public MobileLevel MobileLevelValue { get { return _mobileLevelValue; } set { _mobileLevelValue = value; } }
 
-        public void OnInitialize()
+        protected override void OnInitializeEx()
         {
             CheckUpdateState = false;
-            ResourceMgr.Instance.ResourceMgrInitHandler = () =>
+            ResourceMgr.Instance.onResourceInitAction = () =>
             {
-                ResourceMgr.Instance.ResourceMgrInitHandler = null;
+                ResourceMgr.Instance.onResourceInitAction = null;
                 InitPoolMgr();
             };
-            ResourceMgr.Instance.OnInitialize();      //资源初始化;
+            ResourceMgr.Instance.Launch();      //资源初始化;
         }
 
         private void InitPoolMgr()
         {
-            PoolMgr.Instance.PoolMgrInitHandler = () =>
+            PoolMgr.Instance.onPoolInitAction = () =>
             {
-                PoolMgr.Instance.PoolMgrInitHandler = null;
+                PoolMgr.Instance.onPoolInitAction = null;
                 InitApp();
             };
-            PoolMgr.Instance.OnInitialize();          //对象池初始化;
+            PoolMgr.Instance.Launch();          //对象池初始化;
         }
 
         private void InitApp()
@@ -57,22 +57,22 @@ namespace Framework
 #if UNITY_EDITOR
             //DebugMgr.Instance.Init();         //Debug工具初始化;
 #endif
-            EventMgr.Instance.OnInitialize();         //事件系统初始化;
+            EventMgr.Instance.Launch();         //事件系统初始化;
             UIEventMgr<int>.Init();           //UI事件系统初始化;
-            SdkMgr.Instance.OnInitialize();           //平台初始化;
-            TimerMgr.Instance.OnInitialize();         //定时器初始化;
-            ComponentMgr.Instance.OnInitialize();     //组件初始化;
-            EntityMgr.Instance.OnInitialize();        //实体初始化;
-            UIMgr.Instance.OnInitialize();            //UI初始化;
-            SceneMgr.Instance.OnInitialize();         //场景初始化;
-            LuaMgr.Instance.OnInitialize();           //lua初始化;
-            MemoryMgr.Instance.OnInitialize();
-            NetMgr.Instance.OnInitialize();           //网络初始化;
+            SdkMgr.Instance.Launch();           //平台初始化;
+            TimerMgr.Instance.Launch();         //定时器初始化;
+            ComponentMgr.Instance.Launch();     //组件初始化;
+            EntityMgr.Instance.Launch();        //实体初始化;
+            UIMgr.Instance.Launch();            //UI初始化;
+            SceneMgr.Instance.Launch();         //场景初始化;
+            LuaMgr.Instance.Launch();           //lua初始化;
+            MemoryMgr.Instance.Launch();
+            NetMgr.Instance.Launch();           //网络初始化;
         }
 
         public void CheckUpdate()
         {
-            UpdateMgr.Instance.OnInitialize();
+            UpdateMgr.Instance.Launch();
         }
 
         public void EnterGame()

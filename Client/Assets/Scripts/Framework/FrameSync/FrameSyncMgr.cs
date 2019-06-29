@@ -10,10 +10,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class FrameSyncMgr : Singleton<FrameSyncMgr>, ISingleton
+    public class FrameSyncMgr : Singleton<FrameSyncMgr>
     {
-        public void OnInitialize()
-        {
-        }
     }
 }

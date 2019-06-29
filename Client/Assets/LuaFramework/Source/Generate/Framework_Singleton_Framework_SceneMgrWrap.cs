@@ -6,7 +6,7 @@ public class Framework_Singleton_Framework_SceneMgrWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginClass(typeof(Framework.Singleton<Framework.SceneMgr>), typeof(System.Object), "Singleton_Framework_SceneMgr");
+		L.BeginClass(typeof(Framework.Singleton<Framework.SceneMgr>), typeof(Framework.SingletonBase), "Singleton_Framework_SceneMgr");
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("Instance", get_Instance, null);
 		L.EndClass();

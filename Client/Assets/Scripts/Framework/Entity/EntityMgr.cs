@@ -11,7 +11,7 @@ using System;
 
 namespace Framework
 {
-    public class EntityMgr : MonoSingleton<EntityMgr>, ISingleton
+    public class EntityMgr : MonoSingleton<EntityMgr>
     {
         #region Fields
 
@@ -74,10 +74,6 @@ namespace Framework
             base.CreateInstance();
             _entityList.Clear();
             _entityDict.Clear();
-        }
-
-        public void OnInitialize()
-        {
         }
 
         /// <summary>

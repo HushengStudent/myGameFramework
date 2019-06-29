@@ -11,14 +11,14 @@ using System;
 
 namespace Framework
 {
-    public class SdkMgr : Singleton<SdkMgr>, ISingleton
+    public class SdkMgr : Singleton<SdkMgr>
     {
         private Dictionary<string, Action<string>> SdkCallBack = new Dictionary<string, Action<string>>();
 
-        public void OnInitialize()
+        protected override void CreateInstance()
         {
+            base.CreateInstance();
             SdkCallBack.Clear();
-
         }
 
         public void RegisterCallBack(Action<string> cb)

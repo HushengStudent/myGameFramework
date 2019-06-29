@@ -13,9 +13,9 @@ using Object = System.Object;
 
 namespace Framework
 {
-    public partial class PoolMgr : MonoSingleton<PoolMgr>, ISingleton
+    public partial class PoolMgr : MonoSingleton<PoolMgr>
     {
-        public ManagerInitEventHandler PoolMgrInitHandler = null;
+        public Action onPoolInitAction = null;
 
         public GameObject Root { get; private set; }
 
@@ -32,7 +32,7 @@ namespace Framework
         /// <summary>
         /// 初始化;
         /// </summary>
-        public void OnInitialize()
+        protected override void OnInitializeEx()
         {
             CoroutineMgr.Instance.RunCoroutine(ClearPool());
         }
@@ -56,8 +56,8 @@ namespace Framework
             }
             Resources.UnloadUnusedAssets();
             System.GC.Collect();
-            if (PoolMgrInitHandler != null)
-                PoolMgrInitHandler();
+            if (onPoolInitAction != null)
+                onPoolInitAction();
         }
     }
 }

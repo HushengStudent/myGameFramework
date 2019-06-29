@@ -12,7 +12,7 @@ using MEC;
 
 namespace Framework
 {
-    public class ComponentMgr : MonoSingleton<ComponentMgr>, ISingleton
+    public class ComponentMgr : MonoSingleton<ComponentMgr>
     {
         #region Field
 
@@ -26,10 +26,6 @@ namespace Framework
         {
             base.CreateInstance();
             _componentList.Clear();
-        }
-
-        public void OnInitialize()
-        {
         }
 
         protected override void FixedUpdateEx(float interval)

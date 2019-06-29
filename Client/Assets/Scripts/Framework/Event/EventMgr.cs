@@ -17,7 +17,7 @@ namespace Framework
     /// <returns></returns>
     public delegate bool EventHandler(IEventArgs eventArgs);
 
-    public class EventMgr : Singleton<EventMgr>, ISingleton
+    public class EventMgr : Singleton<EventMgr>
     {
         /// <summary>
         /// 委托集合;
@@ -36,10 +36,6 @@ namespace Framework
             base.CreateInstance();
             EventDict.Clear();
             GlobalEventDict.Clear();
-        }
-
-        public void OnInitialize()
-        {
         }
 
         /// <summary>

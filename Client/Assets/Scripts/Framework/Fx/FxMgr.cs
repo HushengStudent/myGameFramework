@@ -10,11 +10,11 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class FxMgr : Singleton<FxMgr>,ISingleton
+    public class FxMgr : Singleton<FxMgr>
     {
         private Dictionary<string, GameObject> _fxDict = new Dictionary<string, GameObject>();
 
-        public void OnInitialize()
+        protected override void OnInitializeEx()
         {
             Clear();
         }

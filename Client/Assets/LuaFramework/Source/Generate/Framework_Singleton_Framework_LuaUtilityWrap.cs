@@ -6,7 +6,7 @@ public class Framework_Singleton_Framework_LuaUtilityWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginClass(typeof(Framework.Singleton<Framework.LuaUtility>), typeof(System.Object), "Singleton_Framework_LuaUtility");
+		L.BeginClass(typeof(Framework.Singleton<Framework.LuaUtility>), typeof(Framework.SingletonBase), "Singleton_Framework_LuaUtility");
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("Instance", get_Instance, null);
 		L.EndClass();

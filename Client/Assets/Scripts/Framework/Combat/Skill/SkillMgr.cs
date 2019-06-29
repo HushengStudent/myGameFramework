@@ -11,10 +11,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class SkillMgr : Singleton<SkillMgr>, ISingleton
+    public class SkillMgr : Singleton<SkillMgr>
     {
-        public void OnInitialize()
-        {
-        }
     }
 }

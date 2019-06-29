@@ -8,12 +8,12 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour, ISingleton
+    public class MonoSingleton<T> : MonoSingletonBase where T : MonoBehaviour
     {
         protected static T _instance = null;
 
-        private bool _applicationIsPlaying = true;
-        public bool ApplicationIsPlaying { get { return _applicationIsPlaying; } }
+        private static bool _applicationIsPlaying = true;
+        public static bool ApplicationIsPlaying { get { return _applicationIsPlaying; } }
 
         public static T Instance
         {
@@ -28,8 +28,11 @@ namespace Framework
                         DontDestroyOnLoad(go);
                     }
                     _instance = go.AddComponent<T>();
-                    LogHelper.Print((typeof(T)).ToString() + " singleton instance Initialize.");
-                    _instance.OnInitialize();
+                    Singletoninterface singleton = _instance as Singletoninterface;
+                    if (singleton != null)
+                    {
+                        singleton.OnInitialize();
+                    }
                 }
                 return _instance;
             }
@@ -89,6 +92,11 @@ namespace Framework
         void OnDestroy()
         {
             _applicationIsPlaying = false;
+            Singletoninterface singleton = _instance as Singletoninterface;
+            if (singleton != null)
+            {
+                singleton.OnUninitialize();
+            }
             _instance = null;
             OnDestroyEx();
         }

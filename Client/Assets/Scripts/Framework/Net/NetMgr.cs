@@ -12,7 +12,7 @@ using UnityEngine;
 namespace Framework
 {
     //TODO:协议池+buff池自己实现,以解耦,或许更好;
-    public class NetMgr : MonoSingleton<NetMgr>, ISingleton
+    public class NetMgr : MonoSingleton<NetMgr>
     {
         private Session _session;
         private bool _checkUpdateState = false;
@@ -114,10 +114,6 @@ namespace Framework
                 LogHelper.PrintError(string.Format("[NetMgr]Send {0} error!", e.ToString()));
                 _session.Dispose();
             }
-        }
-
-        public void OnInitialize()
-        {
         }
     }
 }

@@ -9,7 +9,7 @@ using System.Collections;
 
 namespace Framework
 {
-    public partial class DebugMgr : MonoSingleton<DebugMgr>, ISingleton
+    public partial class DebugMgr : MonoSingleton<DebugMgr>
     {
         private DebugFps _fpsInfo = null;
         private DebugSystem _sysInfo = new DebugSystem();
@@ -128,10 +128,6 @@ namespace Framework
             {
                 SetShowType(ShowType.ShowSelect);
             }
-        }
-
-        public void OnInitialize()
-        {
         }
     }
 }

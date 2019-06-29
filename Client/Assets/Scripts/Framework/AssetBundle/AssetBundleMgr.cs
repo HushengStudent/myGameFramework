@@ -17,7 +17,7 @@ namespace Framework
     /// 2.开始异步加载AssetBundle后再异步加载AssetBundle,会报错;
     /// Unable to open archive file: xxxx;
     /// </summary>
-    public partial class AssetBundleMgr : Singleton<AssetBundleMgr>, ISingleton
+    public partial class AssetBundleMgr : Singleton<AssetBundleMgr>
     {
         #region Fields
 
@@ -87,10 +87,6 @@ namespace Framework
         #endregion
 
         #region Functions
-
-        public void OnInitialize()
-        {
-        }
 
         /// <summary>
         /// AssetBundle是否正在加载;

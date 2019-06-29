@@ -6,7 +6,7 @@
 
 namespace Framework
 {
-    public class Singleton<T> where T : class, ISingleton, new()
+    public class Singleton<T> : SingletonBase where T : class, new()
     {
         private static T _instance = null;
         private static object _lock = new object();
@@ -20,9 +20,13 @@ namespace Framework
                     lock (_lock)
                     {
                         _instance = new T(); //调用构造函数;
+
+                        Singletoninterface singleton = _instance as Singletoninterface;
+                        if (singleton != null)
+                        {
+                            singleton.OnInitialize();
+                        }
                     }
-                    LogHelper.Print((typeof(T)).ToString() + " singleton instance Initialize.");
-                    _instance.OnInitialize();
                 }
                 return _instance;
             }

@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class CoroutineMgr : MonoSingleton<CoroutineMgr>, ISingleton
+    public class CoroutineMgr : MonoSingleton<CoroutineMgr>
     {
         public CoroutineHandle RunCoroutine(IEnumerator<float> coroutine)
         {
@@ -46,10 +46,6 @@ namespace Framework
         public int KillCoroutines(string tag)
         {
             return Timing.KillCoroutines(tag);
-        }
-
-        public void OnInitialize()
-        {
         }
     }
 }

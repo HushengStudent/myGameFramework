@@ -15,7 +15,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class LuaUtility : Singleton<LuaUtility>, ISingleton
+    public class LuaUtility : Singleton<LuaUtility>
     {
         #region Math
 
