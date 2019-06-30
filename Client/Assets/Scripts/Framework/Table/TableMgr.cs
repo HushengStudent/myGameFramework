@@ -17,7 +17,7 @@ namespace Framework
 
         private Dictionary<string, Table> _dbDict = new Dictionary<string, Table>();
 
-        protected override void OnInitializeEx()
+        protected override void OnInitialize()
         {
             _dbDict.Clear();
             PreLoad();

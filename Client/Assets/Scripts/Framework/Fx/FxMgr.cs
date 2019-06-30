@@ -14,7 +14,7 @@ namespace Framework
     {
         private Dictionary<string, GameObject> _fxDict = new Dictionary<string, GameObject>();
 
-        protected override void OnInitializeEx()
+        protected override void OnInitialize()
         {
             Clear();
         }

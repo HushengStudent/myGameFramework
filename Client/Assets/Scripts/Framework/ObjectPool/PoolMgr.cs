@@ -34,7 +34,7 @@ namespace Framework
         /// <summary>
         /// 初始化;
         /// </summary>
-        protected override void OnInitializeEx()
+        protected override void OnInitialize()
         {
             CoroutineMgr.Instance.RunCoroutine(ClearPool());
         }

@@ -33,7 +33,7 @@ namespace Framework
                     MonoSingletoninterface singleton = _instance as MonoSingletoninterface;
                     if (singleton != null)
                     {
-                        singleton.OnInitialize();
+                        singleton.MonoSingletoninterfaceOnInitialize();
                     }
                 }
                 return _instance;
@@ -97,7 +97,7 @@ namespace Framework
             MonoSingletoninterface singleton = _instance as MonoSingletoninterface;
             if (singleton != null)
             {
-                singleton.OnUninitialize();
+                singleton.MonoSingletoninterfaceOnUninitialize();
             }
             _instance = null;
             OnDestroyEx();

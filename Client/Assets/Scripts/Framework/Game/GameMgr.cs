@@ -30,7 +30,7 @@ namespace Framework
         public float SyncInterval { get { return _syncInterval; } set { _syncInterval = value; } }
         public MobileLevel MobileLevelValue { get { return _mobileLevelValue; } set { _mobileLevelValue = value; } }
 
-        protected override void OnInitializeEx()
+        protected override void OnInitialize()
         {
             CheckUpdateState = false;
             ResourceMgr.onResourceInitAction = () =>
@@ -72,12 +72,13 @@ namespace Framework
 
         public void CheckUpdate()
         {
-            UpdateMgr.Instance.Launch();
+            //UpdateMgr.Instance.Launch();
+            EnterGame();
         }
 
         public void EnterGame()
         {
-
+            ResourceMgr.Instance.LoadAssetProxy(AssetType.Scene, "Scene/Level01.unity");
         }
 
         /// <summary>

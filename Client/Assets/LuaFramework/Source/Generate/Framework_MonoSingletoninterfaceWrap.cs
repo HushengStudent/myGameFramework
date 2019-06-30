@@ -8,8 +8,8 @@ public class Framework_MonoSingletoninterfaceWrap
 	{
 		L.BeginClass(typeof(Framework.MonoSingletoninterface), typeof(UnityEngine.MonoBehaviour));
 		L.RegFunction("Launch", Launch);
-		L.RegFunction("OnInitialize", OnInitialize);
-		L.RegFunction("OnUninitialize", OnUninitialize);
+		L.RegFunction("MonoSingletoninterfaceOnInitialize", MonoSingletoninterfaceOnInitialize);
+		L.RegFunction("MonoSingletoninterfaceOnUninitialize", MonoSingletoninterfaceOnUninitialize);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.EndClass();
@@ -35,16 +35,16 @@ public class Framework_MonoSingletoninterfaceWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int OnInitialize(IntPtr L)
+	static int MonoSingletoninterfaceOnInitialize(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingletoninterface.OnInitialize");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingletoninterface.MonoSingletoninterfaceOnInitialize");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
 			Framework.MonoSingletoninterface obj = (Framework.MonoSingletoninterface)ToLua.CheckObject<Framework.MonoSingletoninterface>(L, 1);
-			obj.OnInitialize();
+			obj.MonoSingletoninterfaceOnInitialize();
 			return 0;
 		}
 		catch (Exception e)
@@ -54,16 +54,16 @@ public class Framework_MonoSingletoninterfaceWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int OnUninitialize(IntPtr L)
+	static int MonoSingletoninterfaceOnUninitialize(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingletoninterface.OnUninitialize");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingletoninterface.MonoSingletoninterfaceOnUninitialize");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
 			Framework.MonoSingletoninterface obj = (Framework.MonoSingletoninterface)ToLua.CheckObject<Framework.MonoSingletoninterface>(L, 1);
-			obj.OnUninitialize();
+			obj.MonoSingletoninterfaceOnUninitialize();
 			return 0;
 		}
 		catch (Exception e)

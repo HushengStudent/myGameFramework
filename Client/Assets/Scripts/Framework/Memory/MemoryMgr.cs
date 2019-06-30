@@ -20,7 +20,7 @@ namespace Framework
 
         public int MaxMemoryUse { get { return _maxMemoryUse; } set { _maxMemoryUse = value; } }
 
-        protected override void OnInitializeEx()
+        protected override void OnInitialize()
         {
             float allMenory = GetAllMemory();
             LogHelper.Print(string.Format("Used Heap Size: {0} MB", allMenory.ToString("F3")));

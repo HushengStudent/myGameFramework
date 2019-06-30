@@ -8,8 +8,8 @@ public class Framework_MonoSingletonBaseWrap
 	{
 		L.BeginClass(typeof(Framework.MonoSingletonBase), typeof(Framework.MonoSingletoninterface));
 		L.RegFunction("Launch", Launch);
-		L.RegFunction("OnInitialize", OnInitialize);
-		L.RegFunction("OnUninitialize", OnUninitialize);
+		L.RegFunction("MonoSingletoninterfaceOnInitialize", MonoSingletoninterfaceOnInitialize);
+		L.RegFunction("MonoSingletoninterfaceOnUninitialize", MonoSingletoninterfaceOnUninitialize);
 		L.RegFunction("RegisterOnInitialize", RegisterOnInitialize);
 		L.RegFunction("UnRegisterOnInitialize", UnRegisterOnInitialize);
 		L.RegFunction("RegisterOnUninitialize", RegisterOnUninitialize);
@@ -39,16 +39,16 @@ public class Framework_MonoSingletonBaseWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int OnInitialize(IntPtr L)
+	static int MonoSingletoninterfaceOnInitialize(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingletonBase.OnInitialize");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingletonBase.MonoSingletoninterfaceOnInitialize");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
 			Framework.MonoSingletonBase obj = (Framework.MonoSingletonBase)ToLua.CheckObject<Framework.MonoSingletonBase>(L, 1);
-			obj.OnInitialize();
+			obj.MonoSingletoninterfaceOnInitialize();
 			return 0;
 		}
 		catch (Exception e)
@@ -58,16 +58,16 @@ public class Framework_MonoSingletonBaseWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int OnUninitialize(IntPtr L)
+	static int MonoSingletoninterfaceOnUninitialize(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingletonBase.OnUninitialize");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingletonBase.MonoSingletoninterfaceOnUninitialize");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
 			Framework.MonoSingletonBase obj = (Framework.MonoSingletonBase)ToLua.CheckObject<Framework.MonoSingletonBase>(L, 1);
-			obj.OnUninitialize();
+			obj.MonoSingletoninterfaceOnUninitialize();
 			return 0;
 		}
 		catch (Exception e)

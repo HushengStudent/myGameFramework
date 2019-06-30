@@ -24,7 +24,7 @@ namespace Framework
                         Singletoninterface singleton = _instance as Singletoninterface;
                         if (singleton != null)
                         {
-                            singleton.OnInitialize();
+                            singleton.SingletoninterfaceOnInitialize();
                         }
                     }
                 }

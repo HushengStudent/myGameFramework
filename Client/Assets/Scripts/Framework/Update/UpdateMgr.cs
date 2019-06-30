@@ -20,7 +20,7 @@ namespace Framework
         public UpdateErrorEventHandler ErrorHandler = null;
         public UpdateSuccessEventHandler SuccessHandler = null;
 
-        protected override void OnInitializeEx()
+        protected override void OnInitialize()
         {
             SuccessHandler = () => { GameMgr.Instance.EnterGame(); };
             if (!Directory.Exists(GameConfig.VersionFilePath))

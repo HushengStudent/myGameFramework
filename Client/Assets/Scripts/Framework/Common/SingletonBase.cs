@@ -13,8 +13,8 @@ namespace Framework
     public class Singletoninterface
     {
         public virtual void Launch() { }
-        public virtual void OnInitialize() { }
-        public virtual void OnUninitialize() { }
+        public virtual void SingletoninterfaceOnInitialize() { }
+        public virtual void SingletoninterfaceOnUninitialize() { }
     }
 
     public class SingletonBase : Singletoninterface
@@ -27,12 +27,12 @@ namespace Framework
 
         public sealed override void Launch() { }
 
-        public sealed override void OnInitialize()
+        public sealed override void SingletoninterfaceOnInitialize()
         {
             if (!isInit)
             {
                 isInit = true;
-                OnInitializeEx();
+                OnInitialize();
                 if (_onInitializeFinishedHandler != null)
                 {
                     _onInitializeFinishedHandler();
@@ -40,7 +40,7 @@ namespace Framework
             }
         }
 
-        public sealed override void OnUninitialize()
+        public sealed override void SingletoninterfaceOnUninitialize()
         {
             if (!isUninit)
             {
@@ -49,12 +49,12 @@ namespace Framework
                 {
                     _onUninitializeStartHandler();
                 }
-                OnUninitializeEx();
+                OnUninitialize();
             }
         }
 
-        protected virtual void OnInitializeEx() { }
-        protected virtual void OnUninitializeEx() { }
+        protected virtual void OnInitialize() { }
+        protected virtual void OnUninitialize() { }
 
         public void RegisterOnInitialize(onInitializeFinishedHandler handler)
         {

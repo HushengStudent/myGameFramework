@@ -26,7 +26,6 @@ public class Framework_LuaUtilityWrap
 		L.RegFunction("CallLuaTableMethod", CallLuaTableMethod);
 		L.RegFunction("OnCallLuaFunc", OnCallLuaFunc);
 		L.RegFunction("OnJsonCallFunc", OnJsonCallFunc);
-		L.RegFunction("OnInitialize", OnInitialize);
 		L.RegFunction("New", _CreateFramework_LuaUtility);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("NetAvailable", get_NetAvailable, null);
@@ -467,25 +466,6 @@ public class Framework_LuaUtilityWrap
 			string arg0 = ToLua.CheckString(L, 1);
 			LuaFunction arg1 = ToLua.CheckLuaFunction(L, 2);
 			Framework.LuaUtility.OnJsonCallFunc(arg0, arg1);
-			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int OnInitialize(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaUtility.OnInitialize");
-#endif
-		try
-		{
-			ToLua.CheckArgsCount(L, 1);
-			Framework.LuaUtility obj = (Framework.LuaUtility)ToLua.CheckObject<Framework.LuaUtility>(L, 1);
-			obj.OnInitialize();
 			return 0;
 		}
 		catch (Exception e)

@@ -8,8 +8,8 @@ public class Framework_SingletonBaseWrap
 	{
 		L.BeginClass(typeof(Framework.SingletonBase), typeof(Framework.Singletoninterface));
 		L.RegFunction("Launch", Launch);
-		L.RegFunction("OnInitialize", OnInitialize);
-		L.RegFunction("OnUninitialize", OnUninitialize);
+		L.RegFunction("SingletoninterfaceOnInitialize", SingletoninterfaceOnInitialize);
+		L.RegFunction("SingletoninterfaceOnUninitialize", SingletoninterfaceOnUninitialize);
 		L.RegFunction("RegisterOnInitialize", RegisterOnInitialize);
 		L.RegFunction("UnRegisterOnInitialize", UnRegisterOnInitialize);
 		L.RegFunction("RegisterOnUninitialize", RegisterOnUninitialize);
@@ -66,16 +66,16 @@ public class Framework_SingletonBaseWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int OnInitialize(IntPtr L)
+	static int SingletoninterfaceOnInitialize(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.SingletonBase.OnInitialize");
+        ToluaProfiler.AddCallRecord("Framework.SingletonBase.SingletoninterfaceOnInitialize");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
 			Framework.SingletonBase obj = (Framework.SingletonBase)ToLua.CheckObject<Framework.SingletonBase>(L, 1);
-			obj.OnInitialize();
+			obj.SingletoninterfaceOnInitialize();
 			return 0;
 		}
 		catch (Exception e)
@@ -85,16 +85,16 @@ public class Framework_SingletonBaseWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int OnUninitialize(IntPtr L)
+	static int SingletoninterfaceOnUninitialize(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.SingletonBase.OnUninitialize");
+        ToluaProfiler.AddCallRecord("Framework.SingletonBase.SingletoninterfaceOnUninitialize");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
 			Framework.SingletonBase obj = (Framework.SingletonBase)ToLua.CheckObject<Framework.SingletonBase>(L, 1);
-			obj.OnUninitialize();
+			obj.SingletoninterfaceOnUninitialize();
 			return 0;
 		}
 		catch (Exception e)
