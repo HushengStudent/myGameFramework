@@ -283,19 +283,14 @@ public class Framework_ResourceMgrWrap
 #if UNITY_EDITOR
         ToluaProfiler.AddCallRecord("Framework.ResourceMgr.onResourceInitAction");
 #endif
-		object o = null;
-
 		try
 		{
-			o = ToLua.ToObject(L, 1);
-			Framework.ResourceMgr obj = (Framework.ResourceMgr)o;
-			System.Action ret = obj.onResourceInitAction;
-			ToLua.Push(L, ret);
+			ToLua.Push(L, Framework.ResourceMgr.onResourceInitAction);
 			return 1;
 		}
-		catch(Exception e)
+		catch (Exception e)
 		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index onResourceInitAction on a nil value");
+			return LuaDLL.toluaL_exception(L, e);
 		}
 	}
 
@@ -305,19 +300,15 @@ public class Framework_ResourceMgrWrap
 #if UNITY_EDITOR
         ToluaProfiler.AddCallRecord("Framework.ResourceMgr.onResourceInitAction");
 #endif
-		object o = null;
-
 		try
 		{
-			o = ToLua.ToObject(L, 1);
-			Framework.ResourceMgr obj = (Framework.ResourceMgr)o;
 			System.Action arg0 = (System.Action)ToLua.CheckDelegate<System.Action>(L, 2);
-			obj.onResourceInitAction = arg0;
+			Framework.ResourceMgr.onResourceInitAction = arg0;
 			return 0;
 		}
-		catch(Exception e)
+		catch (Exception e)
 		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index onResourceInitAction on a nil value");
+			return LuaDLL.toluaL_exception(L, e);
 		}
 	}
 }

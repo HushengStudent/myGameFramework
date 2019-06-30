@@ -7,6 +7,7 @@ public class Framework_MonoSingletonBaseWrap
 	public static void Register(LuaState L)
 	{
 		L.BeginClass(typeof(Framework.MonoSingletonBase), typeof(Framework.MonoSingletoninterface));
+		L.RegFunction("Launch", Launch);
 		L.RegFunction("OnInitialize", OnInitialize);
 		L.RegFunction("OnUninitialize", OnUninitialize);
 		L.RegFunction("RegisterOnInitialize", RegisterOnInitialize);
@@ -16,6 +17,25 @@ public class Framework_MonoSingletonBaseWrap
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.EndClass();
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int Launch(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.MonoSingletonBase.Launch");
+#endif
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			Framework.MonoSingletonBase obj = (Framework.MonoSingletonBase)ToLua.CheckObject<Framework.MonoSingletonBase>(L, 1);
+			obj.Launch();
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]

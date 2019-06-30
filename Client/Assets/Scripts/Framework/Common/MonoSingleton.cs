@@ -28,7 +28,7 @@ namespace Framework
                         DontDestroyOnLoad(go);
                     }
                     _instance = go.AddComponent<T>();
-                    Singletoninterface singleton = _instance as Singletoninterface;
+                    MonoSingletoninterface singleton = _instance as MonoSingletoninterface;
                     if (singleton != null)
                     {
                         singleton.OnInitialize();
@@ -92,7 +92,7 @@ namespace Framework
         void OnDestroy()
         {
             _applicationIsPlaying = false;
-            Singletoninterface singleton = _instance as Singletoninterface;
+            MonoSingletoninterface singleton = _instance as MonoSingletoninterface;
             if (singleton != null)
             {
                 singleton.OnUninitialize();

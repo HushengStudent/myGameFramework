@@ -15,7 +15,7 @@ namespace Framework
 {
     public partial class PoolMgr : MonoSingleton<PoolMgr>
     {
-        public Action onPoolInitAction = null;
+        public static Action onPoolInitAction = null;
 
         public GameObject Root { get; private set; }
 

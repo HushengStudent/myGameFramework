@@ -7,6 +7,7 @@ public class Framework_SingletonBaseWrap
 	public static void Register(LuaState L)
 	{
 		L.BeginClass(typeof(Framework.SingletonBase), typeof(Framework.Singletoninterface));
+		L.RegFunction("Launch", Launch);
 		L.RegFunction("OnInitialize", OnInitialize);
 		L.RegFunction("OnUninitialize", OnUninitialize);
 		L.RegFunction("RegisterOnInitialize", RegisterOnInitialize);
@@ -38,6 +39,25 @@ public class Framework_SingletonBaseWrap
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: Framework.SingletonBase.New");
 			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int Launch(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.SingletonBase.Launch");
+#endif
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			Framework.SingletonBase obj = (Framework.SingletonBase)ToLua.CheckObject<Framework.SingletonBase>(L, 1);
+			obj.Launch();
+			return 0;
 		}
 		catch (Exception e)
 		{

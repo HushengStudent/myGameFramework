@@ -17,7 +17,7 @@ namespace Framework
     {
         #region Proxy
 
-        public Action onResourceInitAction = null;
+        public static Action onResourceInitAction = null;
 
         private List<AssetProxy> _removexyList = new List<AssetProxy>();
 

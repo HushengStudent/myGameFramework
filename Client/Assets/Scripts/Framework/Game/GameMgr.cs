@@ -33,9 +33,9 @@ namespace Framework
         protected override void OnInitializeEx()
         {
             CheckUpdateState = false;
-            ResourceMgr.Instance.onResourceInitAction = () =>
+            ResourceMgr.onResourceInitAction = () =>
             {
-                ResourceMgr.Instance.onResourceInitAction = null;
+                ResourceMgr.onResourceInitAction = null;
                 InitPoolMgr();
             };
             ResourceMgr.Instance.Launch();      //资源初始化;
@@ -43,9 +43,9 @@ namespace Framework
 
         private void InitPoolMgr()
         {
-            PoolMgr.Instance.onPoolInitAction = () =>
+            PoolMgr.onPoolInitAction = () =>
             {
-                PoolMgr.Instance.onPoolInitAction = null;
+                PoolMgr.onPoolInitAction = null;
                 InitApp();
             };
             PoolMgr.Instance.Launch();          //对象池初始化;
