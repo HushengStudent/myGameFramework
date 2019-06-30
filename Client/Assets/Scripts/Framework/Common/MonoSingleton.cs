@@ -10,6 +10,8 @@ namespace Framework
 {
     public class MonoSingleton<T> : MonoSingletonBase where T : MonoBehaviour
     {
+        private static readonly string _monoSingletonRoot = "@MonoSingletonRoot";
+
         protected static T _instance = null;
 
         private static bool _applicationIsPlaying = true;
@@ -21,10 +23,10 @@ namespace Framework
             {
                 if (null == _instance)
                 {
-                    GameObject go = GameObject.Find("~!@#$%^&*()_+_monoSingleton_");
+                    GameObject go = GameObject.Find(_monoSingletonRoot);
                     if (null == go)
                     {
-                        go = new GameObject("~!@#$%^&*()_+_monoSingleton_");
+                        go = new GameObject(_monoSingletonRoot);
                         DontDestroyOnLoad(go);
                     }
                     _instance = go.AddComponent<T>();

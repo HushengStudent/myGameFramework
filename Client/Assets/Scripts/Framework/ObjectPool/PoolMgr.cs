@@ -15,16 +15,18 @@ namespace Framework
 {
     public partial class PoolMgr : MonoSingleton<PoolMgr>
     {
+        private readonly string _poolRoot = "@ResourcePoolRoot";
+
         public static Action onPoolInitAction = null;
 
         public GameObject Root { get; private set; }
 
         private void Awake()
         {
-            Root = GameObject.Find("_resPoolRoot");
+            Root = GameObject.Find(_poolRoot);
             if (Root == null)
             {
-                Root = new GameObject("_resPoolRoot");
+                Root = new GameObject(_poolRoot);
                 DontDestroyOnLoad(Root);
             }
         }
