@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 2489895226
+CRC: 3907374152
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -135,4 +135,7 @@ AssetBundleManifest:
       Dependencies: {}
     Info_43:
       Name: lua/f8dbbbdb3b80b4f170a8272978f579eb.ab
+      Dependencies: {}
+    Info_44:
+      Name: scene/2afa760b08bdf4edb5456f0be8f120b1.ab
       Dependencies: {}
