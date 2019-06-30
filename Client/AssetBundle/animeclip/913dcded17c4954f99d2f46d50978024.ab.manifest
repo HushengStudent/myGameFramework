@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 884448513
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ca9a593eddfb57c7f02c2c336652c169
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 57cc261e7722b8429fae0fb29649ddb8
+HashAppended: 0
+ClassTypes:
+- Class: 74
+  Script: {instanceID: 0}
+Assets:
+- Assets/Bundles/Anim/Skeleton/Damage.anim
+Dependencies: []

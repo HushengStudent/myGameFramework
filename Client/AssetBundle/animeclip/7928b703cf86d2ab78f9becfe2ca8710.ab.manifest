@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 178163487
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7dacf67e33544d04489bac6d748aa23b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 57cc261e7722b8429fae0fb29649ddb8
+HashAppended: 0
+ClassTypes:
+- Class: 74
+  Script: {instanceID: 0}
+Assets:
+- Assets/Bundles/Anim/Skeleton/Attack.anim
+Dependencies: []

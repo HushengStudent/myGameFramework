@@ -1,138 +1,138 @@
 ManifestFileVersion: 0
-CRC: 1910102313
+CRC: 2489895226
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: lua/lua.assetbundle
+      Name: animeclip/60ee80ca632fa403d4df24648c35c077.ab
       Dependencies: {}
     Info_1:
-      Name: animeclip/anim/avatar/attack1.anim.assetbundle
+      Name: animeclip/5c0ca1baf05d6de32b5497444c0604dd.ab
       Dependencies: {}
     Info_2:
-      Name: animeclip/anim/avatar/attack2.anim.assetbundle
+      Name: animeclip/6e13a23e86aa158675e7dcb820ebe284.ab
       Dependencies: {}
     Info_3:
-      Name: animeclip/anim/avatar/attack3.anim.assetbundle
+      Name: animeclip/629e36a0c6f97dd44129772a6e0c34d7.ab
       Dependencies: {}
     Info_4:
-      Name: animeclip/anim/avatar/attack4.anim.assetbundle
+      Name: animeclip/5682d4ac787fc467505e0b82371227ae.ab
       Dependencies: {}
     Info_5:
-      Name: animeclip/anim/avatar/breath.anim.assetbundle
+      Name: animeclip/36e312d420e4a7965667248f9cadfc78.ab
       Dependencies: {}
     Info_6:
-      Name: animeclip/anim/avatar/run.anim.assetbundle
+      Name: animeclip/7928b703cf86d2ab78f9becfe2ca8710.ab
       Dependencies: {}
     Info_7:
-      Name: animeclip/anim/skeleton/attack.anim.assetbundle
+      Name: animeclip/913dcded17c4954f99d2f46d50978024.ab
       Dependencies: {}
     Info_8:
-      Name: animeclip/anim/skeleton/damage.anim.assetbundle
+      Name: animeclip/2d221603638332bda36e877d1509c06b.ab
       Dependencies: {}
     Info_9:
-      Name: animeclip/anim/skeleton/death.anim.assetbundle
+      Name: animeclip/8c77d92a4776877c8c7ad76c661c1150.ab
       Dependencies: {}
     Info_10:
-      Name: animeclip/anim/skeleton/idle.anim.assetbundle
+      Name: animeclip/4442916af919ccfefde04f2dc7b5fcb0.ab
       Dependencies: {}
     Info_11:
-      Name: animeclip/anim/skeleton/knockback.anim.assetbundle
+      Name: animeclip/d00c462131dbe74b205e498cebeff1b8.ab
       Dependencies: {}
     Info_12:
-      Name: animeclip/anim/skeleton/run.anim.assetbundle
+      Name: animeclip/e602c535de4262a439046496ea11015e.ab
       Dependencies: {}
     Info_13:
-      Name: animeclip/anim/skeleton/skill.anim.assetbundle
+      Name: animeclip/7e23aa0ff91ee892ed6a91b714bbe161.ab
       Dependencies: {}
     Info_14:
-      Name: animeclip/anim/skeleton/stand.anim.assetbundle
+      Name: animeclip/e6659fcacd4ccf5c025c4ca54a81d2aa.ab
       Dependencies: {}
     Info_15:
-      Name: animeclip/anim/skeleton/walk.anim.assetbundle
+      Name: animectrl/e6b756472792db88aecfb4b2ca28adc1.ab
       Dependencies: {}
     Info_16:
-      Name: animectrl/animator/common/player.controller.assetbundle
+      Name: audio/4da9c5ea6369679a2f0f7776c433dfb1.ab
       Dependencies: {}
     Info_17:
-      Name: audio/audio/common/test.wav.assetbundle
-      Dependencies: {}
+      Name: material/dd01e64d3786e9ca30b161132fbcd2fa.ab
+      Dependencies:
+        Dependency_0: shader/ecee0a84af1bbe31d8aec4ce303fad9d.ab
     Info_18:
-      Name: material/material/atlas/number.mat.assetbundle
+      Name: material/9e27c99d3d8fb423540020773fbe88b1.ab
       Dependencies:
-        Dependency_0: shader/shaders.assetbundle
+        Dependency_0: shader/ecee0a84af1bbe31d8aec4ce303fad9d.ab
     Info_19:
-      Name: material/material/emoji/uguiemoji.mat.assetbundle
-      Dependencies:
-        Dependency_0: shader/shaders.assetbundle
+      Name: prefab/ca1008d8d932a66e8a39fa4d4e2bd318.ab
+      Dependencies: {}
     Info_20:
-      Name: prefab/prefab/models/avatar/ch_pc_hou.prefab.assetbundle
+      Name: prefab/85668f835839e756546d313c8ec1a9b0.ab
       Dependencies: {}
     Info_21:
-      Name: prefab/prefab/models/avatar/ch_pc_hou_004.prefab.assetbundle
+      Name: prefab/b1545b57fa52cd9f6f896173fcae705f.ab
       Dependencies: {}
     Info_22:
-      Name: prefab/prefab/models/avatar/ch_pc_hou_004_jiao.prefab.assetbundle
+      Name: prefab/dc2a3e1d518870f751cc67bd474b9c41.ab
       Dependencies: {}
     Info_23:
-      Name: prefab/prefab/models/avatar/ch_pc_hou_004_shen.prefab.assetbundle
+      Name: prefab/2b53aae69b82017c2305f4e266decc5b.ab
       Dependencies: {}
     Info_24:
-      Name: prefab/prefab/models/avatar/ch_pc_hou_004_shou.prefab.assetbundle
+      Name: prefab/efb5e50c4b58f6c49a1f13e0c44db158.ab
       Dependencies: {}
     Info_25:
-      Name: prefab/prefab/models/avatar/ch_pc_hou_004_tou.prefab.assetbundle
+      Name: prefab/091539aef8ebb898e97dd8d06c20fd67.ab
       Dependencies: {}
     Info_26:
-      Name: prefab/prefab/models/avatar/ch_pc_hou_006.prefab.assetbundle
+      Name: prefab/64d283299620f2ca77e01402fc1eacbf.ab
       Dependencies: {}
     Info_27:
-      Name: prefab/prefab/models/avatar/ch_pc_hou_006_jiao.prefab.assetbundle
+      Name: prefab/c4db6afee889adad3b52c1498112445c.ab
       Dependencies: {}
     Info_28:
-      Name: prefab/prefab/models/avatar/ch_pc_hou_006_shen.prefab.assetbundle
+      Name: prefab/081d1d30ef85a3dad068aec365707719.ab
       Dependencies: {}
     Info_29:
-      Name: prefab/prefab/models/avatar/ch_pc_hou_006_shou.prefab.assetbundle
+      Name: prefab/9dcb2210c95c84f85c11e88c2a35866a.ab
       Dependencies: {}
     Info_30:
-      Name: prefab/prefab/models/avatar/ch_pc_hou_006_tou.prefab.assetbundle
+      Name: prefab/357f8f2c7fe7a6bb51b7682a01213b76.ab
       Dependencies: {}
     Info_31:
-      Name: prefab/prefab/models/avatar/ch_pc_hou_008.prefab.assetbundle
+      Name: prefab/61e2564a0220c05d4c44b1f824886c94.ab
       Dependencies: {}
     Info_32:
-      Name: prefab/prefab/models/avatar/ch_pc_hou_008_jiao.prefab.assetbundle
+      Name: prefab/ce817664287a63da814b712f9a60e93c.ab
       Dependencies: {}
     Info_33:
-      Name: prefab/prefab/models/avatar/ch_pc_hou_008_shen.prefab.assetbundle
+      Name: prefab/2c7f7700533534a6f9ea637601a5af00.ab
       Dependencies: {}
     Info_34:
-      Name: prefab/prefab/models/avatar/ch_pc_hou_008_shou.prefab.assetbundle
+      Name: prefab/aa4756334ffdf7626acbe2e1f3f4606e.ab
       Dependencies: {}
     Info_35:
-      Name: prefab/prefab/models/avatar/ch_pc_hou_008_tou.prefab.assetbundle
+      Name: prefab/e67dd497a304ed6cb355ef55a5becfbc.ab
       Dependencies: {}
     Info_36:
-      Name: prefab/prefab/models/avatar/ch_we_one_hou_004.prefab.assetbundle
+      Name: prefab/5068f372021c1db80eb6d72ecd643789.ab
       Dependencies: {}
     Info_37:
-      Name: prefab/prefab/models/avatar/ch_we_one_hou_006.prefab.assetbundle
+      Name: prefab/e12bddedfc60058bc5f5f51c41601fc2.ab
       Dependencies: {}
     Info_38:
-      Name: prefab/prefab/models/avatar/ch_we_one_hou_008.prefab.assetbundle
+      Name: prefab/5c1fa1f0d4de90ca99ebe08a4c2ce53a.ab
       Dependencies: {}
     Info_39:
-      Name: prefab/prefab/models/common/skeleton.prefab.assetbundle
+      Name: prefab/81311bcaa12dc1e1e3cd4292acd2d8bd.ab
       Dependencies: {}
     Info_40:
-      Name: prefab/prefab/ui/common/login.prefab.assetbundle
+      Name: font/a08cb6b4078ced257c60ed3be71ad99b.ab
       Dependencies: {}
     Info_41:
-      Name: font/single/font/fzy4jw.ttf.assetbundle
+      Name: texture/a7417b17b7f8bd77ffa067f63c3d2a48.ab
       Dependencies: {}
     Info_42:
-      Name: texture/single/tex/test.png.assetbundle
+      Name: shader/ecee0a84af1bbe31d8aec4ce303fad9d.ab
       Dependencies: {}
     Info_43:
-      Name: shader/shaders.assetbundle
+      Name: lua/f8dbbbdb3b80b4f170a8272978f579eb.ab
       Dependencies: {}

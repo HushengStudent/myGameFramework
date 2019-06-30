@@ -263,6 +263,7 @@ namespace Framework
             {
                 File.Delete(str);
             }
+            Directory.Delete(FilePathHelper.AssetBundlePath, true);
         }
     }
 

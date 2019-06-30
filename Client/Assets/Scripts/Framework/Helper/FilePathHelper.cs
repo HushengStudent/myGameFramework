@@ -75,7 +75,7 @@ namespace Framework
             if (type == AssetType.Non || string.IsNullOrEmpty(assetName)) return assetBundleName;
             //AssetBundle的名字不支持大写;
             //AssetBundle打包命名方式为[assetType/assetName.assetbundle],每个文件夹下的资源都带有相同的前缀,不同文件夹下,资源前缀不同;
-            assetBundleName = (type.ToString() + "/" + assetName + ".assetbundle").ToLower();
+            assetBundleName = (type.ToString() + "/" + HashHelper.GetMD5(assetName) + ".ab").ToLower();
             return assetBundleName;
         }
 

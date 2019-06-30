@@ -8,6 +8,7 @@ using Framework;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -51,6 +52,10 @@ namespace Framework
         private static void GenerateAssetBundle(string buildPath)
         {
             Stopwatch watch = Stopwatch.StartNew();//开启计时;
+            if (!Directory.Exists(buildPath))
+            {
+                Directory.CreateDirectory(buildPath);
+            }
             BuildPipeline.BuildAssetBundles(buildPath, AssetBuildDefine.options, AssetBuildDefine.buildTarget);
             watch.Stop();
             LogHelper.PrintWarning(string.Format("GenerateAllAssetBundle Spend Time:{0}s", watch.Elapsed.TotalSeconds));

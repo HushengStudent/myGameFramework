@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1138560008
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 3124b1933a5ddfb25e49d4d21a6fe4f4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 57cc261e7722b8429fae0fb29649ddb8
+HashAppended: 0
+ClassTypes:
+- Class: 74
+  Script: {instanceID: 0}
+Assets:
+- Assets/Bundles/Anim/Skeleton/Idle.anim
+Dependencies: []

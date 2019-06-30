@@ -15,6 +15,12 @@ namespace Framework
 {
     public static class HashHelper
     {
+        public static string GetMD5(string str)
+        {
+
+            return GetMD5(Encoding.UTF8.GetBytes(str));
+        }
+
         /// <summary>
         /// 计算二进制流的MD5;
         /// </summary>
