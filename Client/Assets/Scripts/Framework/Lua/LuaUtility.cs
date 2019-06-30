@@ -341,10 +341,6 @@ namespace Framework
             if (func != null) func.Call(data);
         }
 
-        public void OnInitialize()
-        {
-        }
-
         #endregion
 
     }

@@ -38,5 +38,19 @@ namespace Framework
                 action(temp);
             return temp;
         }
+
+        /// <summary>
+        /// 正交相机大小计算;
+        /// </summary>
+        /// <param name="camera"></param>
+        /// <returns></returns>
+        public static Vector2 GetCameraSize(Camera camera)
+        {
+            float orthographicSize = camera.orthographicSize;
+            float aspectRatio = Screen.width * 1.0f / Screen.height;
+            float height = orthographicSize * 2;
+            float width = height * aspectRatio;
+            return new Vector2(height, width);
+        }
     }
 }
