@@ -165,7 +165,9 @@ namespace Framework
                 behavior = Activator.CreateInstance(target, table) as AbsBehavior;
             }
             if (behavior != null)
+            {
                 behavior.Id = id;
+            }
             return behavior;
         }
     }

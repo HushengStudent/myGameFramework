@@ -4,8 +4,6 @@
 ** desc:  Lua帮助类;
 *********************************************************************************/
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Framework
@@ -27,6 +25,14 @@ namespace Framework
             if (target)
             {
                 target.transform.localPosition = vect;
+            }
+        }
+
+        public static void SetLocalRotation(this GameObject target, Vector3 vect)
+        {
+            if (target)
+            {
+                target.transform.localRotation = Quaternion.Euler(vect);
             }
         }
 

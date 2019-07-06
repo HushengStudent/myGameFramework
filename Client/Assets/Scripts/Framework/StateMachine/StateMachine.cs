@@ -4,15 +4,13 @@
 ** desc:  状态机;
 *********************************************************************************/
 
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Framework
 {
     public sealed class StateMachine
     {
-        private AbsState _defaultState = null;
+        private AbsState _defaultState;
         private List<AbsState> _stateList = new List<AbsState>();
         private List<AbsTransition> _transitionList = new List<AbsTransition>();
 

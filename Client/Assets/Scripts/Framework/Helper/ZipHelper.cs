@@ -7,17 +7,14 @@
 using ICSharpCode.SharpZipLib.Core;
 using ICSharpCode.SharpZipLib.Zip;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Threading;
-using UnityEngine;
 
 namespace Framework
 {
     public static class ZipHelper
     {
-        private static float progressInterval = 0.5f;
+        private static float _progressInterval = 0.5f;
 
         public static string Compress(string filePath, string outPath, string fileName, Action<float> action)
         {
@@ -50,12 +47,14 @@ namespace Framework
                         }
                     }
                 });
-                events.ProgressInterval = TimeSpan.FromSeconds(progressInterval);
+                events.ProgressInterval = TimeSpan.FromSeconds(_progressInterval);
                 events.ProcessFile = new ProcessFileHandler((object sender, ScanEventArgs e) => { });
                 FastZip zip = new FastZip(events);
                 zip.CreateZip(zipFile, filePath, true, "");
-            });
-            thread.IsBackground = true;
+            })
+            {
+                IsBackground = true
+            };
             thread.Start();
             return zipFile;
         }
@@ -87,7 +86,7 @@ namespace Framework
                         }
                     }
                 });
-                events.ProgressInterval = TimeSpan.FromSeconds(progressInterval);
+                events.ProgressInterval = TimeSpan.FromSeconds(_progressInterval);
                 events.ProcessFile = new ProcessFileHandler((object sender, ScanEventArgs e) => { });
                 FastZip fastZip = new FastZip(events);
                 fastZip.ExtractZip(filePath, outPath, "");
@@ -101,7 +100,9 @@ namespace Framework
             int files = Directory.GetFiles(path).Length;
             string[] folders = Directory.GetDirectories(path);
             foreach (string target in folders)
+            {
                 files += RecursiveFile(target);
+            }
             return files;
         }
     }

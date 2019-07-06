@@ -36,7 +36,6 @@ namespace Framework
                     _onInitializeFinishedHandler();
                 }
             }
-
         }
 
         public sealed override void MonoSingletoninterfaceOnUninitialize()

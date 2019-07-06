@@ -5,7 +5,6 @@
 *********************************************************************************/
 
 using UnityEngine;
-using System.Collections;
 using System;
 using System.Collections.Generic;
 
@@ -25,12 +24,12 @@ namespace Framework
 
             public void DrawLog(int windowId)
             {
-                GUI.DragWindow(DebugMgr.Instance._dragRect);
+                GUI.DragWindow(Instance._dragRect);
 
                 if (GUILayout.Button("返回上级", GUILayout.Width(100f), GUILayout.Height(35f)))
                 {
                     //click button
-                    DebugMgr.Instance.SetShowType(ShowType.ShowSelect);
+                    Instance.SetShowType(ShowType.ShowSelect);
                 }
                 GUILayout.Space(10);
                 _automaticPopUp = GUILayout.Toggle(_automaticPopUp, "[error]弹出", GUILayout.Width(150f), GUILayout.Height(35f));
@@ -97,7 +96,7 @@ namespace Framework
                 }
                 if (logType == LogType.Error && _automaticPopUp)
                 {
-                    DebugMgr.Instance._showType = ShowType.ShowLog;
+                    Instance._showType = ShowType.ShowLog;
                 }
             }
 
@@ -142,50 +141,21 @@ namespace Framework
 
             private class LogNode
             {
-                private DateTime logTime;
-                private LogType logType;
-                private string logMessage;
-                private string stackTrack;
-
                 public LogNode(LogType logType, string logMessage, string stackTrack)
                 {
-                    this.logTime = DateTime.Now;
-                    this.logType = logType;
-                    this.logMessage = logMessage;
-                    this.stackTrack = stackTrack;
+                    LogTime = DateTime.Now;
+                    LogType = logType;
+                    LogMessage = logMessage;
+                    StackTrack = stackTrack;
                 }
 
-                public DateTime LogTime
-                {
-                    get
-                    {
-                        return logTime;
-                    }
-                }
+                public DateTime LogTime { get; private set; }
 
-                public LogType LogType
-                {
-                    get
-                    {
-                        return logType;
-                    }
-                }
+                public LogType LogType { get; private set; }
 
-                public string LogMessage
-                {
-                    get
-                    {
-                        return logMessage;
-                    }
-                }
+                public string LogMessage { get; private set; }
 
-                public string StackTrack
-                {
-                    get
-                    {
-                        return stackTrack;
-                    }
-                }
+                public string StackTrack { get; private set; }
             }
         }
     }

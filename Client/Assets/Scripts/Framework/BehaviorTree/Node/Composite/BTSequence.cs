@@ -4,10 +4,7 @@
 ** desc:  顺序执行节点;
 *********************************************************************************/
 
-using Framework;
 using ParadoxNotion.Design;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace NodeCanvas.BehaviourTrees

@@ -6,7 +6,7 @@ public class ProtoHelper
 {
     private static Dictionary<int, PacketFactory> _factory = new Dictionary<int, PacketFactory>();
 
-    private static object thisLock = new object();
+    private static object _thisLock = new object();
 
     private static void RegisterProto(Type type)
     {
@@ -19,13 +19,13 @@ public class ProtoHelper
         }
         else
         {
-            LogHelper.PrintError(string.Format("[ProtoRegister]Register {0} error!", type.ToString()));
+            LogHelper.PrintError(string.Format("[ProtoHelper]Register {0} error!", type.ToString()));
         }
     }
 
     public static Packet GetPacket(int type)
     {
-        lock (thisLock)
+        lock (_thisLock)
         {
             if (_factory.ContainsKey(type))
             {
@@ -33,7 +33,7 @@ public class ProtoHelper
             }
             else
             {
-                LogHelper.PrintError(string.Format("[ProtoRegister]UnRegister {0}!", type.ToString()));
+                LogHelper.PrintError(string.Format("[ProtoHelper]UnRegister {0}!", type.ToString()));
                 return null;
             }
         }
@@ -41,7 +41,7 @@ public class ProtoHelper
 
     public static void ReturnPacket(Packet packet)
     {
-        lock (thisLock)
+        lock (_thisLock)
         {
             int type = packet.GetPacketId();
             if (_factory.ContainsKey(type))
@@ -50,7 +50,7 @@ public class ProtoHelper
             }
             else
             {
-                LogHelper.PrintError(string.Format("[ProtoRegister]UnRegister {0}!", type.ToString()));
+                LogHelper.PrintError(string.Format("[ProtoHelper]UnRegister {0}!", type.ToString()));
             }
         }
     }

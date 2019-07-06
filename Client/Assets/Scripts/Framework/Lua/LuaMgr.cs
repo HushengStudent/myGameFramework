@@ -5,8 +5,6 @@
 *********************************************************************************/
 
 using LuaInterface;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Framework
@@ -120,7 +118,7 @@ namespace Framework
             LuaFunction func = lua.GetFunction(funcName);
             if (func != null)
             {
-                return func.LazyCall(args);
+                return func.Invoke<object[], object[]>(args);
             }
             return null;
         }
@@ -168,3 +166,4 @@ namespace Framework
         }
     }
 }
+

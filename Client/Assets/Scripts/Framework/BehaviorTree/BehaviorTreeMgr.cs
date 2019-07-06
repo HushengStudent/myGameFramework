@@ -4,9 +4,7 @@
 ** desc:  行为树管理;
 *********************************************************************************/
 
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Framework
 {
@@ -35,7 +33,9 @@ namespace Framework
             base.UpdateEx(interval);
             _treeList.Clear();
             foreach (var temp in _treeDict.Values)
+            {
                 if (temp.Enable) _treeList.Add(temp);
+            }
             for (int i = 0; i < _treeList.Count; i++)
             {
                 _treeList[i].Update(interval);

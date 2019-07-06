@@ -4,9 +4,6 @@
 ** desc:  GameObject扩展;
 *********************************************************************************/
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Framework
@@ -16,25 +13,25 @@ namespace Framework
 
     public class GameObjectEx
     {
-        private AbsEntity _entity = null;
-        private string _resPath = string.Empty;
-        private AsyncAssetProxy proxy = null;
-        private GameObjectExLoadFinishHandler _loadFinishHandler = null;
-        private GameObjectExDestroyHandler _destroyHandler = null;
+        private Vector3 _position = Vector3.zero;
+        private Vector3 _scale = Vector3.zero;
+        private Vector3 _rotation = Vector3.zero;
+        private AsyncAssetProxy proxy;
+        private GameObjectExLoadFinishHandler _loadFinishHandler;
+        private GameObjectExDestroyHandler _destroyHandler;
 
         public bool IsLoadFinish { get; private set; }
         public GameObject gameObject { get; private set; }
         public Transform Trans { get; private set; }
-
-        public AbsEntity Entity { get { return _entity; } }
-        public string ResPath { get { return _resPath; } }
+        public AbsEntity Entity { get; private set; }
+        public string ResPath { get; private set; }
 
         public void Init(AbsEntity entity, string path, bool isAsync = true)
         {
-            _entity = entity;
-            _resPath = path;
+            Entity = entity;
+            ResPath = path;
             IsLoadFinish = false;
-            AsyncAssetProxy proxy = ResourceMgr.Instance.LoadAssetProxy(AssetType.Prefab, _resPath);
+            proxy = ResourceMgr.Instance.LoadAssetProxy(AssetType.Prefab, ResPath);
             proxy.AddLoadFinishCallBack(() =>
             {
                 gameObject = proxy.LoadUnityObject<GameObject>();
@@ -50,7 +47,7 @@ namespace Framework
 
         public void Init(AbsEntity entity, bool isAsync = true)
         {
-            _entity = entity;
+            Entity = entity;
             IsLoadFinish = false;
             ModelComponent modelComp = entity.GetComponent<ModelComponent>();
 
@@ -68,8 +65,8 @@ namespace Framework
             }
             proxy.UnloadProxy();
             Trans = null;
-            _entity = null;
-            _resPath = string.Empty;
+            Entity = null;
+            ResPath = string.Empty;
             _loadFinishHandler = null;
             _destroyHandler = null;
         }
@@ -91,25 +88,28 @@ namespace Framework
 
         public void SetLocalPosition(float x, float y, float z)
         {
+            _position = new Vector3(x, y, z);
             if (gameObject)
             {
-                gameObject.transform.localPosition = new Vector3(x, y, z);
+                gameObject.transform.localPosition = _position;
             }
         }
 
         public void SetLocalScale(float x, float y, float z)
         {
+            _scale = new Vector3(x, y, z);
             if (gameObject)
             {
-                gameObject.transform.localScale = new Vector3(x, y, z);
+                gameObject.transform.localScale = _scale;
             }
         }
 
-        public void SetLocalRotation(float x, float y, float z, float w)
+        public void SetLocalRotation(float x, float y, float z)
         {
+            _rotation = new Vector3(x, y, z);
             if (gameObject)
             {
-                gameObject.transform.localRotation = new Quaternion(x, y, z, w);
+                gameObject.transform.localRotation = Quaternion.Euler(_rotation);
             }
         }
     }

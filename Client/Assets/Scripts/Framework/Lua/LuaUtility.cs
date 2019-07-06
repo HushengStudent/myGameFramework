@@ -6,8 +6,6 @@
 
 using LuaInterface;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -299,19 +297,28 @@ namespace Framework
         /// </summary>
         public static object[] CallMethod(string module, string func, params object[] args)
         {
-            if (LuaMgr.Instance == null) return null;
+            if (LuaMgr.Instance == null)
+            {
+                return null;
+            }
             return LuaMgr.Instance.CallFunction(module + "." + func, args);
         }
 
         public static void CallLuaModuleMethod(string module, string func, params object[] args)
         {
-            if (LuaMgr.Instance == null) return;
+            if (LuaMgr.Instance == null)
+            {
+                return;
+            }
             LuaMgr.Instance.CallLuaModuleMethod(module + "." + func, args);
         }
 
         public static void CallLuaTableMethod(string module, string func, params object[] args)
         {
-            if (LuaMgr.Instance == null) return;
+            if (LuaMgr.Instance == null)
+            {
+                return;
+            }
             LuaMgr.Instance.CallLuaTableMethod(module, func, args);
         }
 

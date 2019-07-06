@@ -4,11 +4,6 @@
 ** desc:  ECS实体抽象基类;
 *********************************************************************************/
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace Framework
 {
     public enum EntityTypeEnum : byte
@@ -39,9 +34,10 @@ namespace Framework
             }
             set
             {
+                _entityLoadFinishHandler = value;
+
                 if (gameObjectEx != null && gameObjectEx.gameObject != null)
                 {
-                    _entityLoadFinishHandler = value;
                     _entityLoadFinishHandler(this, gameObjectEx.gameObject);
                 }
             }

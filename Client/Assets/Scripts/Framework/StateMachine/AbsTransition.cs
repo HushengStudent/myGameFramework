@@ -4,10 +4,6 @@
 ** desc:  状态机状态转换基类;
 *********************************************************************************/
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace Framework
 {
     public enum StateMachineTransitionState

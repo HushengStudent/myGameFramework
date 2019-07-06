@@ -4,11 +4,7 @@
 ** desc:  ECS组件管理;
 *********************************************************************************/
 
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using System;
-using MEC;
 
 namespace Framework
 {

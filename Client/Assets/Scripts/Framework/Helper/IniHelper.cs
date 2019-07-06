@@ -4,7 +4,6 @@
 ** desc:  ini文件读取工具;
 *********************************************************************************/
 
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
