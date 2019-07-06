@@ -3,26 +3,36 @@
 --- DateTime: 2018/1/21 1:10
 ---
 
-module("UI",package.seeall)
+module("UI", package.seeall)
 
 require "Panel.CtrlEnum"
 
 BaseCtrl = class("BaseCtrl")
 
-local m_allCtrls = {} --全部ctrl
-local m_curCtrls = {} --当前打开ctrl
-
-local l_value = 2
-
 function BaseCtrl:ctor()
-    logGreen("--->>>BaseCtrl:ctor")
-    self:PrintValue()
+
 end
 
 function BaseCtrl:GetCtrl(ctrlName)
 
 end
 
-function BaseCtrl:PrintValue()
-    logGreen("--->>>value:"..tostring(l_value))
+function BaseCtrl:OnInitialize(args)
+
+end
+
+function BaseCtrl:OnUpdate(interval)
+
+end
+
+function BaseCtrl:OnHide()
+
+end
+
+function BaseCtrl:OnResume()
+
+end
+
+function BaseCtrl:UnInitialize()
+
 end

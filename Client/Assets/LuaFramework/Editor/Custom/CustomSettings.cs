@@ -159,8 +159,8 @@ public static class CustomSettings
         _GT(typeof(LuaUtility)),
         _GT(typeof(LogHelper)),
         _GT(typeof(LogColor)),
-        _GT(typeof(LuaController)),
-        _GT(typeof(LuaComponent)),
+        _GT(typeof(LuaUIPanel)),
+        _GT(typeof(LuaUICom)),
         _GT(typeof(SceneMgr)),
         _GT(typeof(ResourceMgr)),
 

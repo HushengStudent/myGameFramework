@@ -10,6 +10,7 @@ public class Framework_LuaHelperWrap
 		L.RegFunction("Long", Long);
 		L.RegFunction("Int", Int);
 		L.RegFunction("SetLocalPosition", SetLocalPosition);
+		L.RegFunction("SetLocalRotation", SetLocalRotation);
 		L.RegFunction("SetTransParent", SetTransParent);
 		L.RegFunction("IsNull", IsNull);
 		L.RegFunction("WorldToScreenPoint", WorldToScreenPoint);
@@ -68,6 +69,26 @@ public class Framework_LuaHelperWrap
 			UnityEngine.GameObject arg0 = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
 			UnityEngine.Vector3 arg1 = ToLua.ToVector3(L, 2);
 			Framework.LuaHelper.SetLocalPosition(arg0, arg1);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int SetLocalRotation(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaHelper.SetLocalRotation");
+#endif
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			UnityEngine.GameObject arg0 = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
+			UnityEngine.Vector3 arg1 = ToLua.ToVector3(L, 2);
+			Framework.LuaHelper.SetLocalRotation(arg0, arg1);
 			return 0;
 		}
 		catch (Exception e)

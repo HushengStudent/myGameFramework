@@ -4,16 +4,14 @@
 ** desc:  Lua控制器;
 *********************************************************************************/
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Framework
 {
-	public class LuaController : MonoBehaviour
+    public class LuaUIPanel : MonoBehaviour
     {
         [SerializeField]
-        public LuaComponent[] componentArray;
+        public LuaUICom[] luaUIComArray;
 
     }
 }

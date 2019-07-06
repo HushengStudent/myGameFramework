@@ -2,14 +2,14 @@
 using System;
 using LuaInterface;
 
-public class Framework_LuaControllerWrap
+public class Framework_LuaUIPanelWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginClass(typeof(Framework.LuaController), typeof(UnityEngine.MonoBehaviour));
+		L.BeginClass(typeof(Framework.LuaUIPanel), typeof(UnityEngine.MonoBehaviour));
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
-		L.RegVar("componentArray", get_componentArray, set_componentArray);
+		L.RegVar("luaUIComArray", get_luaUIComArray, set_luaUIComArray);
 		L.EndClass();
 	}
 
@@ -17,7 +17,7 @@ public class Framework_LuaControllerWrap
 	static int op_Equality(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaController.op_Equality");
+        ToluaProfiler.AddCallRecord("Framework.LuaUIPanel.op_Equality");
 #endif
 		try
 		{
@@ -35,46 +35,46 @@ public class Framework_LuaControllerWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_componentArray(IntPtr L)
+	static int get_luaUIComArray(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaController.componentArray");
+        ToluaProfiler.AddCallRecord("Framework.LuaUIPanel.luaUIComArray");
 #endif
 		object o = null;
 
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			Framework.LuaController obj = (Framework.LuaController)o;
-			Framework.LuaComponent[] ret = obj.componentArray;
+			Framework.LuaUIPanel obj = (Framework.LuaUIPanel)o;
+			Framework.LuaUICom[] ret = obj.luaUIComArray;
 			ToLua.Push(L, ret);
 			return 1;
 		}
 		catch(Exception e)
 		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index componentArray on a nil value");
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index luaUIComArray on a nil value");
 		}
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_componentArray(IntPtr L)
+	static int set_luaUIComArray(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaController.componentArray");
+        ToluaProfiler.AddCallRecord("Framework.LuaUIPanel.luaUIComArray");
 #endif
 		object o = null;
 
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			Framework.LuaController obj = (Framework.LuaController)o;
-			Framework.LuaComponent[] arg0 = ToLua.CheckObjectArray<Framework.LuaComponent>(L, 2);
-			obj.componentArray = arg0;
+			Framework.LuaUIPanel obj = (Framework.LuaUIPanel)o;
+			Framework.LuaUICom[] arg0 = ToLua.CheckObjectArray<Framework.LuaUICom>(L, 2);
+			obj.luaUIComArray = arg0;
 			return 0;
 		}
 		catch(Exception e)
 		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index componentArray on a nil value");
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index luaUIComArray on a nil value");
 		}
 	}
 }

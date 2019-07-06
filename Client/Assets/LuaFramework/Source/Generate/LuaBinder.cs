@@ -84,8 +84,8 @@ public static class LuaBinder
 		L.BeginModule("Framework");
 		Framework_LuaMgrWrap.Register(L);
 		Framework_LuaUtilityWrap.Register(L);
-		Framework_LuaControllerWrap.Register(L);
-		Framework_LuaComponentWrap.Register(L);
+		Framework_LuaUIPanelWrap.Register(L);
+		Framework_LuaUIComWrap.Register(L);
 		Framework_SceneMgrWrap.Register(L);
 		Framework_ResourceMgrWrap.Register(L);
 		Framework_LuaBufferWrap.Register(L);

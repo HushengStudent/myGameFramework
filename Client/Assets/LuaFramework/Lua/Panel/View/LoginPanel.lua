@@ -11,20 +11,19 @@ function LoginPanel:ctor()
  
 end
  
-function LoginPanel:BindLuaComponent(gameObject)
-       local l_ctrl = gameObject:GetComponent("LuaController")
-       self.ComponentList = {}
-       self.ComponentList.Login = l_ctrl.componentArray[0]
-       self.ComponentList.GameObject = l_ctrl.componentArray[1]
-       self.ComponentList.GameObject1 = l_ctrl.componentArray[2]
-       self.ComponentList.GameObject2 = l_ctrl.componentArray[3]
-       self.ComponentList.GameObject3 = l_ctrl.componentArray[4]
-       self.ComponentList.GameObject4 = l_ctrl.componentArray[5]
-       self.ComponentList.GameObject5 = l_ctrl.componentArray[6]
-       self.ComponentList.GameObject6 = l_ctrl.componentArray[7]
-       self.ComponentList.GameObject7 = l_ctrl.componentArray[8]
-       self.ComponentList.GameObject8 = l_ctrl.componentArray[9]
-       self.ComponentList.GameObject9 = l_ctrl.componentArray[10]
+function LoginPanel:BindLuaCom(gameObject)
+       local l_ctrl = gameObject:GetComponent("LuaUIPanel")
+       self.panel = {}
+       self.panel.GameObject = l_ctrl.luaUIComArray[0]
+       self.panel.GameObject1 = l_ctrl.luaUIComArray[1]
+       self.panel.GameObject2 = l_ctrl.luaUIComArray[2]
+       self.panel.GameObject3 = l_ctrl.luaUIComArray[3]
+       self.panel.GameObject4 = l_ctrl.luaUIComArray[4]
+       self.panel.GameObject5 = l_ctrl.luaUIComArray[5]
+       self.panel.GameObject6 = l_ctrl.luaUIComArray[6]
+       self.panel.GameObject7 = l_ctrl.luaUIComArray[7]
+       self.panel.GameObject8 = l_ctrl.luaUIComArray[8]
+       self.panel.GameObject9 = l_ctrl.luaUIComArray[9]
 
-       return self.ComponentList
+       return self.panel
 end

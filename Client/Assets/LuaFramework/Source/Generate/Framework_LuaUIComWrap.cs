@@ -2,18 +2,18 @@
 using System;
 using LuaInterface;
 
-public class Framework_LuaComponentWrap
+public class Framework_LuaUIComWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginClass(typeof(Framework.LuaComponent), typeof(UnityEngine.MonoBehaviour));
+		L.BeginClass(typeof(Framework.LuaUICom), typeof(UnityEngine.MonoBehaviour));
 		L.RegFunction("AddClick", AddClick);
 		L.RegFunction("SetSprite", SetSprite);
 		L.RegFunction("SetSliderValue", SetSliderValue);
 		L.RegFunction("SetGray", SetGray);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
-		L.RegVar("ComponentName", get_ComponentName, set_ComponentName);
+		L.RegVar("LuaUIComName", get_LuaUIComName, set_LuaUIComName);
 		L.EndClass();
 	}
 
@@ -21,12 +21,12 @@ public class Framework_LuaComponentWrap
 	static int AddClick(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaComponent.AddClick");
+        ToluaProfiler.AddCallRecord("Framework.LuaUICom.AddClick");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			Framework.LuaComponent obj = (Framework.LuaComponent)ToLua.CheckObject<Framework.LuaComponent>(L, 1);
+			Framework.LuaUICom obj = (Framework.LuaUICom)ToLua.CheckObject<Framework.LuaUICom>(L, 1);
 			UnityEngine.Events.UnityAction arg0 = (UnityEngine.Events.UnityAction)ToLua.CheckDelegate<UnityEngine.Events.UnityAction>(L, 2);
 			obj.AddClick(arg0);
 			return 0;
@@ -41,12 +41,12 @@ public class Framework_LuaComponentWrap
 	static int SetSprite(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaComponent.SetSprite");
+        ToluaProfiler.AddCallRecord("Framework.LuaUICom.SetSprite");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
-			Framework.LuaComponent obj = (Framework.LuaComponent)ToLua.CheckObject<Framework.LuaComponent>(L, 1);
+			Framework.LuaUICom obj = (Framework.LuaUICom)ToLua.CheckObject<Framework.LuaUICom>(L, 1);
 			string arg0 = ToLua.CheckString(L, 2);
 			string arg1 = ToLua.CheckString(L, 3);
 			obj.SetSprite(arg0, arg1);
@@ -62,12 +62,12 @@ public class Framework_LuaComponentWrap
 	static int SetSliderValue(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaComponent.SetSliderValue");
+        ToluaProfiler.AddCallRecord("Framework.LuaUICom.SetSliderValue");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			Framework.LuaComponent obj = (Framework.LuaComponent)ToLua.CheckObject<Framework.LuaComponent>(L, 1);
+			Framework.LuaUICom obj = (Framework.LuaUICom)ToLua.CheckObject<Framework.LuaUICom>(L, 1);
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
 			obj.SetSliderValue(arg0);
 			return 0;
@@ -82,12 +82,12 @@ public class Framework_LuaComponentWrap
 	static int SetGray(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaComponent.SetGray");
+        ToluaProfiler.AddCallRecord("Framework.LuaUICom.SetGray");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			Framework.LuaComponent obj = (Framework.LuaComponent)ToLua.CheckObject<Framework.LuaComponent>(L, 1);
+			Framework.LuaUICom obj = (Framework.LuaUICom)ToLua.CheckObject<Framework.LuaUICom>(L, 1);
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
 			obj.SetGray(arg0);
 			return 0;
@@ -102,7 +102,7 @@ public class Framework_LuaComponentWrap
 	static int op_Equality(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaComponent.op_Equality");
+        ToluaProfiler.AddCallRecord("Framework.LuaUICom.op_Equality");
 #endif
 		try
 		{
@@ -120,46 +120,46 @@ public class Framework_LuaComponentWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_ComponentName(IntPtr L)
+	static int get_LuaUIComName(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaComponent.ComponentName");
+        ToluaProfiler.AddCallRecord("Framework.LuaUICom.LuaUIComName");
 #endif
 		object o = null;
 
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			Framework.LuaComponent obj = (Framework.LuaComponent)o;
-			string ret = obj.ComponentName;
+			Framework.LuaUICom obj = (Framework.LuaUICom)o;
+			string ret = obj.LuaUIComName;
 			LuaDLL.lua_pushstring(L, ret);
 			return 1;
 		}
 		catch(Exception e)
 		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index ComponentName on a nil value");
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index LuaUIComName on a nil value");
 		}
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_ComponentName(IntPtr L)
+	static int set_LuaUIComName(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaComponent.ComponentName");
+        ToluaProfiler.AddCallRecord("Framework.LuaUICom.LuaUIComName");
 #endif
 		object o = null;
 
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			Framework.LuaComponent obj = (Framework.LuaComponent)o;
+			Framework.LuaUICom obj = (Framework.LuaUICom)o;
 			string arg0 = ToLua.CheckString(L, 2);
-			obj.ComponentName = arg0;
+			obj.LuaUIComName = arg0;
 			return 0;
 		}
 		catch(Exception e)
 		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index ComponentName on a nil value");
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index LuaUIComName on a nil value");
 		}
 	}
 }
