@@ -64,7 +64,7 @@ function LoginCtrl:OnInitializeEx(args)
     --buffer:WriteShort(10011);
     --buffer:WriteBuffer(msg);
     --networkMgr:SendMessage(buffer);
-    
+
 end
 
 function LoginCtrl:OnUpdateEx(interval)
