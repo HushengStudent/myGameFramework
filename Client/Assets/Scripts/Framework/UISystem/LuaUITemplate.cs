@@ -1,14 +1,16 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/01/11 00:53:47
-** desc:  Lua UIÈù¢Êùø;
+** date:  2019/07/07 11:48:33
+** desc:   Lua UIƒ£∞Â;
 *********************************************************************************/
 
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Framework
 {
-    public class LuaUIPanel : MonoBehaviour
+    public class LuaUITemplate : MonoBehaviour
     {
         [SerializeField]
         public LuaUICom[] luaUIComArray;

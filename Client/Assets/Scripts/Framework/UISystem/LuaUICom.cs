@@ -16,7 +16,7 @@ namespace Framework
         public LuaUIPanel LuaUIPanel;
         [SerializeField]
         public string LuaUIComName;
-        
+
         private Button _button;
         private Image _image;
         private Slider _slider;

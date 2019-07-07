@@ -1,17 +1,19 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/01/11 00:53:47
-** desc:  Lua UI面板;
+** date:  2019/07/07 11:52:12
+** desc:  #####
 *********************************************************************************/
 
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace Framework
 {
-    public class LuaUIPanel : MonoBehaviour
+    [CustomEditor(typeof(LuaUITemplate))]
+    public class LuaUITemplateEditor : Editor
     {
-        [SerializeField]
-        public LuaUICom[] luaUIComArray;
 
     }
 }
