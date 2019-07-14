@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 4215427286
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2e984d9d3cef5614d9d363048dcbbe19
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Bundles/Binary/Table/ItemTable.byte.txt
+Dependencies: []

@@ -55,15 +55,15 @@ end
 function LoginCtrl:OnInitializeEx(args)
 
     --Test Net
-    local login = login_pb.LoginRequest();
-    login.id = 2000;
-    login.name = 'husheng';
-    local msg = login:SerializeToString();
+    local login = login_pb.LoginRequest()
+    login.id = 2000
+    login.name = 'husheng'
+    local msg = login:SerializeToString()
     ----------------------------------------------------------------
-    local buffer = luaBuff.New();
-    --buffer:WriteShort(10011);
-    --buffer:WriteBuffer(msg);
-    --networkMgr:SendMessage(buffer);
+    local buffer = luaBuff.New()
+    --buffer:WriteShort(10011)
+    --buffer:WriteBuffer(msg)
+    --networkMgr:SendMessage(buffer)
 
 end
 

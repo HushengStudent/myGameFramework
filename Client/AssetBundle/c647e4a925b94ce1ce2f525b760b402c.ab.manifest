@@ -1,0 +1,32 @@
+ManifestFileVersion: 0
+CRC: 665653422
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 79b8573724b3a8577a12b91514504949
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 964894c6c3477b577f14a63c14c1b2a2
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+Assets:
+- Assets/Art/Model/Avatar/Character/ch_pc_hou_004.fbx
+Dependencies:
+- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/d62fc569cfc035838f2a1212091711e4.ab
+- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/6376c9d251b6e5c609042ca40f7edf8c.ab
+- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/801dc83d61e56d0722712df4d5bfe2b4.ab
+- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/0f09ccff2b746e350803c3e0eb5b2db8.ab

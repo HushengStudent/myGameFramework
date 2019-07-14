@@ -26,7 +26,6 @@ namespace Framework
         {
             base.UpdateEx(interval);
             UpdateProxy();
-            UpdateLoadAssetAsync();
         }
 
         /// <summary>
@@ -46,7 +45,7 @@ namespace Framework
             {
                 LogHelper.PrintError("[ResourceMgr]Load Shader and WarmupAllShaders failure!");
             }
-            AssetBundleMgr.Instance.UnloadMirroring(AssetType.Shader, "Shaders");
+            AssetBundleMgr.Instance.UnloadMirroring(FilePathHelper.shaderAssetBundleName);
         }
 
         /// <summary>
@@ -54,7 +53,18 @@ namespace Framework
         /// </summary>
         private void InitLua()
         {
-            //TODO...
+            //Lua初始化;
+            AssetBundle luaAssetBundle = AssetBundleMgr.Instance.LoadLuaAssetBundle();
+            if (luaAssetBundle != null)
+            {
+                luaAssetBundle.LoadAllAssets();
+                LogHelper.Print("[ResourceMgr]Load Lua Success!");
+            }
+            else
+            {
+                LogHelper.PrintError("[ResourceMgr]Load Lua failure!");
+            }
+            AssetBundleMgr.Instance.UnloadMirroring(FilePathHelper.luaAssetBundleName);
         }
 
         #endregion

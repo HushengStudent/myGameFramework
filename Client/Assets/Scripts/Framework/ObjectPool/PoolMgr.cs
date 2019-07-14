@@ -6,16 +6,14 @@
 
 using MEC;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Object = System.Object;
 
 namespace Framework
 {
     public partial class PoolMgr : MonoSingleton<PoolMgr>
     {
-        private readonly string _poolRoot = "@ResourcePoolRoot";
+        private readonly string _poolRoot = "@AssetPoolRoot";
 
         public static Action onPoolInitAction = null;
 
@@ -46,20 +44,12 @@ namespace Framework
         {
             _csharpObjectPool.Clear();
             _csharpListPool.Clear();
-            IEnumerator<float> _unityObjectPoolItor = _unityObjectPool.ClearUnityObjectPool();
-            while (_unityObjectPoolItor.MoveNext())
+            IEnumerator<float> itor = _unityObjectPool.ClearUnityObjectPool();
+            while (itor.MoveNext())
             {
                 yield return Timing.WaitForOneFrame;
             }
-            IEnumerator<float> _unityAssetCachePoolItor = _unityAssetCachePool.ClearUnityAssetCachePool();
-            while (_unityAssetCachePoolItor.MoveNext())
-            {
-                yield return Timing.WaitForOneFrame;
-            }
-            Resources.UnloadUnusedAssets();
-            System.GC.Collect();
-            if (onPoolInitAction != null)
-                onPoolInitAction();
+            ResourceMgr.Instance.UnloadUnusedAssets(onPoolInitAction);
         }
     }
 }

@@ -5,9 +5,6 @@
 *********************************************************************************/
 
 using Framework.ObjectPool;
-using System;
-using System.Collections.Generic;
-using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Framework
@@ -22,24 +19,28 @@ namespace Framework
         /// <summary>
         /// ªÒ»°Unity GameObject;
         /// </summary>
-        /// <param name="obj"></param>
+        /// <param name="asset"></param>
         /// <returns></returns>
-        public Object GetUnityObject(Object obj)
+        public Object GetUnityObject(Object asset)
         {
-            if (null == obj)
+            if (null == asset)
+            {
                 return null;
-            return _unityObjectPool.GetUnityObject(obj);
+            }
+            return _unityObjectPool.GetUnityObject(asset);
         }
 
         /// <summary>
         /// ÷¸¥ÊUnity GameObject;
         /// </summary>
-        /// <param name="obj"></param>
-        public void ReleaseUnityObject(Object obj)
+        /// <param name="asset"></param>
+        public void ReleaseUnityObject(Object asset)
         {
-            if (null == obj)
+            if (null == asset)
+            {
                 return;
-            _unityObjectPool.ReleaseUnityObject(obj);
+            }
+            _unityObjectPool.ReleaseUnityObject(asset);
         }
     }
 }

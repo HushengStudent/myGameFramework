@@ -93,14 +93,14 @@ namespace Framework
         }
         void OnDestroy()
         {
-            _applicationIsPlaying = false;
             MonoSingletoninterface singleton = _instance as MonoSingletoninterface;
             if (singleton != null)
             {
                 singleton.MonoSingletoninterfaceOnUninitialize();
             }
-            _instance = null;
             OnDestroyEx();
+            _applicationIsPlaying = false;
+            _instance = null;
         }
     }
 }

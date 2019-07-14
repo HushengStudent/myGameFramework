@@ -4,13 +4,10 @@
 ** desc:  AssetBundle打包;
 *********************************************************************************/
 
-using Framework;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using UnityEditor;
-using UnityEngine;
 
 namespace Framework
 {
@@ -21,11 +18,14 @@ namespace Framework
         {
             if (EditorUtility.DisplayDialog("AssetBundle打包提示", "开始打包AssetBundle？", "打包AssetBundle"))
             {
+                ToLuaMenu.BuildLuaToResources();
+
                 AssetDependenciesAnalysis analysiser = new AssetDependenciesAnalysis();
-                analysiser.AnalysisAllAsset();
+                List<AssetBundleBuild> list = analysiser.AnalysisAllAsset();
+
                 //tips:Unity5.x Scripts not need to build AssetBundle
                 //analysiser.BuildAllScripts();
-                GenerateAssetBundle(FilePathHelper.AssetBundlePath);
+                GenerateAssetBundle(FilePathHelper.AssetBundlePath, list);
             }
         }
 
@@ -45,18 +45,14 @@ namespace Framework
             AssetDatabase.Refresh();
         }
 
-        /// <summary>
-        /// 根据AssetBundle Name打包全部AssetBundle;
-        /// </summary>
-        /// <param name="buildPath">目标路径</param>
-        private static void GenerateAssetBundle(string buildPath)
+        private static void GenerateAssetBundle(string buildPath, List<AssetBundleBuild> list)
         {
             Stopwatch watch = Stopwatch.StartNew();//开启计时;
             if (!Directory.Exists(buildPath))
             {
                 Directory.CreateDirectory(buildPath);
             }
-            BuildPipeline.BuildAssetBundles(buildPath, AssetBuildDefine.options, AssetBuildDefine.buildTarget);
+            BuildPipeline.BuildAssetBundles(buildPath, list.ToArray(), AssetBuildDefine.options, AssetBuildDefine.buildTarget);
             watch.Stop();
             LogHelper.PrintWarning(string.Format("GenerateAllAssetBundle Spend Time:{0}s", watch.Elapsed.TotalSeconds));
             AssetDatabase.Refresh();

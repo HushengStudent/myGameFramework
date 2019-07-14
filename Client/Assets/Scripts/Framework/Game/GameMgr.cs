@@ -75,7 +75,7 @@ namespace Framework
 
         public void EnterGame()
         {
-            ResourceMgr.Instance.LoadAssetProxy(AssetType.Scene, "Scene/Level01.unity");
+            //ResourceMgr.Instance.LoadAssetProxy(AssetType.Scene, "Scene/Level01.unity");
         }
 
         /// <summary>

@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2292391003
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 85d60a1876bec510db3e796ce6249f0d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 57cc261e7722b8429fae0fb29649ddb8
+HashAppended: 0
+ClassTypes:
+- Class: 74
+  Script: {instanceID: 0}
+Assets:
+- Assets/Bundles/Animation/Skeleton/Skill.anim
+Dependencies: []

@@ -14,16 +14,16 @@ namespace Framework
         private AnimatorOverrideController _animatorOverrideController = null;
         private DictEx<string, AnimationClip> _AnimationInfo = new DictEx<string, AnimationClip>();
 
-        private AsyncAssetProxy _runtimeAnimatorProxy;
-        private AsyncAssetProxy _animationClipProxy;
+        private AssetBundleAssetProxy _runtimeAnimatorProxy;
+        private AssetBundleAssetProxy _animationClipProxy;
 
         public void Init(Animator animator, string path)
         {
             _animator = animator;
-            _runtimeAnimatorProxy = ResourceMgr.Instance.LoadAssetProxy(AssetType.AnimeCtrl, path);
+            _runtimeAnimatorProxy = ResourceMgr.Instance.LoadAssetAsync(path);
             _runtimeAnimatorProxy.AddLoadFinishCallBack(() =>
             {
-                RuntimeAnimatorController ctrl = _runtimeAnimatorProxy.LoadUnitySharedAsset<RuntimeAnimatorController>();
+                RuntimeAnimatorController ctrl = _runtimeAnimatorProxy.GetUnityAsset<RuntimeAnimatorController>();
                 if (ctrl)
                 {
                     _animator.runtimeAnimatorController = ctrl;
@@ -35,10 +35,10 @@ namespace Framework
 
         public void OverrideAnimationClip(string name, string path, bool autoPlay = true)
         {
-            _animationClipProxy = ResourceMgr.Instance.LoadAssetProxy(AssetType.AnimeClip, path);
+            _animationClipProxy = ResourceMgr.Instance.LoadAssetAsync(path);
             _animationClipProxy.AddLoadFinishCallBack(() =>
             {
-                AnimationClip clip = _animationClipProxy.LoadUnitySharedAsset<AnimationClip>();
+                AnimationClip clip = _animationClipProxy.GetUnityAsset<AnimationClip>();
                 if (_animatorOverrideController && clip)
                 {
                     _animatorOverrideController[name] = clip;

@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 4247379361
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 60b0f20b283b839eb373e49f147d54e2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 246de495eba2b6a7dad156162e94d512
+HashAppended: 0
+ClassTypes:
+- Class: 91
+  Script: {instanceID: 0}
+Assets:
+- Assets/Bundles/Animator/Common/Player.controller
+Dependencies: []

@@ -5,8 +5,6 @@
 *********************************************************************************/
 
 using MEC;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
@@ -16,38 +14,43 @@ namespace Framework.ObjectPool
 {
     internal class UnityObjectPool
     {
-        private Stopwatch _stopwatch = new System.Diagnostics.Stopwatch();
-        private int _unityObjectPoolMaxCount = 50;
-        private Dictionary<int, Stack<Object>> _unityObjectPoolPool = new Dictionary<int, Stack<Object>>();
-        private Dictionary<int, int> _unityObjectPoolIndex = new Dictionary<int, int>();
+        private Stopwatch _stopwatch;
+        private Dictionary<int, Stack<Object>> _unityObjectDict;
+        private Dictionary<int, int> _unityObjectRefDict;
 
-        public int UnityObjectPoolMaxCount
+        public int UnityObjectPoolMaxCount { get; set; }
+
+        public UnityObjectPool()
         {
-            get { return _unityObjectPoolMaxCount; }
-            set { _unityObjectPoolMaxCount = value; }
+            UnityObjectPoolMaxCount = 50;
+            _stopwatch = new Stopwatch();
+            _unityObjectDict = new Dictionary<int, Stack<Object>>();
+            _unityObjectRefDict = new Dictionary<int, int>();
         }
 
-        public Object GetUnityObject(Object obj)
+        public Object GetUnityObject(Object asset)
         {
-            if (null == obj)
+            if (null == asset)
+            {
                 return null;
-            Object element;
-            int instanceId = obj.GetInstanceID();
+            }
+            int instanceID = asset.GetInstanceID();
             Stack<Object> stack;
-            if (!_unityObjectPoolPool.TryGetValue(instanceId, out stack))
+            if (!_unityObjectDict.TryGetValue(instanceID, out stack))
             {
                 stack = new Stack<Object>();
-                _unityObjectPoolPool[instanceId] = stack;
+                _unityObjectDict[instanceID] = stack;
             }
+            Object element;
             if (stack.Count == 0)
             {
-                element = Object.Instantiate(obj);
+                element = Object.Instantiate(asset);
             }
             else
             {
                 element = stack.Pop();
             }
-            _unityObjectPoolIndex[element.GetInstanceID()] = instanceId;
+            _unityObjectRefDict[element.GetInstanceID()] = instanceID;
             GameObject go = element as GameObject;
             if (go)
             {
@@ -56,39 +59,42 @@ namespace Framework.ObjectPool
             return element;
         }
 
-        public void ReleaseUnityObject(Object obj)
+        public void ReleaseUnityObject(Object asset)
         {
-            Object element = obj;
-            if (null == obj)
-                return;
-            int instanceId = element.GetInstanceID();
-            Stack<Object> stack;
-            int parentInstanceId;
-            if (_unityObjectPoolPool.ContainsKey(instanceId))
+            Object element = asset;
+            if (null == element)
             {
-                parentInstanceId = instanceId;
+                return;
+            }
+            int instanceID = element.GetInstanceID();
+            Stack<Object> stack;
+            int parentInstanceID;
+            if (_unityObjectDict.ContainsKey(instanceID))
+            {
+                parentInstanceID = instanceID;
             }
             else
             {
-                if (!_unityObjectPoolIndex.TryGetValue(instanceId, out parentInstanceId))
+                if (!_unityObjectRefDict.TryGetValue(instanceID, out parentInstanceID))
                 {
                     /*
                     stack = new Stack<Object>();
                     _unityObjectPoolPool[instanceId] = stack;
                     parentInstanceId = instanceId;
                     */
-                    LogHelper.PrintWarning(string.Format("[UnityObjectPool]Release Unity Object:{0} is not create form pool " +
-                                        "or it's parents destroyed,but it is trying to release to pool!", element.name));
 
+                    /// not create form pool or parents destroyed;
+                    LogHelper.PrintWarning(string.Format("[UnityObjectPool]Release unity object error:{0}.", element.name));
 
                     Object.Destroy(element);
+
                     return;
                 }
             }
-            if (!_unityObjectPoolPool.TryGetValue(parentInstanceId, out stack))
+            if (!_unityObjectDict.TryGetValue(parentInstanceID, out stack))
             {
                 stack = new Stack<Object>();
-                _unityObjectPoolPool[parentInstanceId] = stack;
+                _unityObjectDict[parentInstanceID] = stack;
             }
             if (stack.Count > UnityObjectPoolMaxCount)
             {
@@ -108,12 +114,12 @@ namespace Framework.ObjectPool
 
         public IEnumerator<float> ClearUnityObjectPool()
         {
-            Dictionary<int, Stack<Object>> stack = new Dictionary<int, Stack<Object>>(_unityObjectPoolPool);
-            _unityObjectPoolIndex = new Dictionary<int, int>();
-            _unityObjectPoolPool = new Dictionary<int, Stack<Object>>();
+            Dictionary<int, Stack<Object>> objectPool = new Dictionary<int, Stack<Object>>(_unityObjectDict);
+            _unityObjectRefDict = new Dictionary<int, int>();
+            _unityObjectDict = new Dictionary<int, Stack<Object>>();
             _stopwatch.Reset();
             _stopwatch.Start();
-            foreach (var temp in stack)
+            foreach (var temp in objectPool)
             {
                 Stack<Object> target = temp.Value;
                 if (target == null || target.Count < 1)

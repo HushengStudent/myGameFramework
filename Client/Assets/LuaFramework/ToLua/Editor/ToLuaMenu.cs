@@ -1055,7 +1055,7 @@ public static class ToLuaMenu
     {
         ClearAllLuaFiles();
         string tempDir = CreateStreamDir("Lua");
-        string destDir = Application.dataPath + "/Resources" + "/Lua";        
+        string destDir = Application.dataPath + "/Bundles" + "/Lua";        
 
         string path = Application.dataPath.Replace('\\', '/');
         path = path.Substring(0, path.LastIndexOf('/'));

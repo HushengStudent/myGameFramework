@@ -4,31 +4,27 @@
 ** desc:  资源依赖关系分析;
 *********************************************************************************/
 
-using UnityEngine;
-using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using UnityEditor;
-using System.Diagnostics;
-//using Debug = UnityEngine.Debug;
-using System.Collections.Generic;
 
 namespace Framework
 {
     /// <summary>
     /// 依赖关系分析机制;
     /// 获取打包目录下的全部资源,分析全部的依赖关系,其中脚本,Shader和需要单独打包的资源需要特殊处理;
-    /// 1.读取全部资源,分析依赖关系,ps:项目AssetBundle打包目录下的资源,不应该引用非打包目录下的资源,如APrefab在打包目录,BPrefab在Resource目录下,
-    ///   APrefab依赖于BPrefab,则会导致BPrefab资源冗余;
-    /// 2.找出parentDependentAssets==0,parentDependentAssets>1和在需要单独打包的资源目录下的资源,这些资源是需要单独打包的,脚本单独打包,在游戏
-    ///   开始时全部加载常驻,Shader资源单独打包,在游戏开始时全部加载常驻;
-    /// 3.遍历全部资源,设置资源AssetBundle Name,其中全部Shader设置为同一AssetBundle Name,不需要单独打包的资源AssetBundle Name设置为None;
-    /// 4.存储依赖关系;
-    /// 5.开始打包;
+    /// 1.读取全部资源,分析依赖关系,ps:项目AssetBundle打包目录下的资源,不应该引用特殊目录下的资源;
+    ///   如APrefab在打包目录,BPrefab在Resource目录下,APrefab依赖于BPrefab,则会导致BPrefab资源冗余;
+    /// 2.找出parentDependentAssets==0,parentDependentAssets>1和在Bundles资源目录下的资源;
+    ///   这些资源是需要单独打包的,脚本单独打包,在游戏开始时全部加载常驻,Shader资源单独打包,在游戏开始时全部加载常驻;
+    /// 3.存储依赖关系;
+    /// 4.开始打包;
     /// </summary>
     public class AssetDependenciesAnalysis
     {
         /// <summary>
-        /// 打包路径下的全部资源;
+        /// 打包的全部资源;
         /// </summary>
         public Dictionary<string, AssetNode> allAsset = new Dictionary<string, AssetNode>();
 
@@ -43,9 +39,15 @@ namespace Framework
         public HashSet<string> allShaderAsset = new HashSet<string>();
 
         /// <summary>
+        /// 全部引用的Lua资源;
+        /// </summary>
+        public HashSet<string> allLuaAsset = new HashSet<string>();
+
+        /// <summary>
         /// 分析全部资源依赖关系;
         /// </summary>
-        public void AnalysisAllAsset()
+        /// <returns></returns>
+        public List<AssetBundleBuild> AnalysisAllAsset()
         {
             Stopwatch watch = Stopwatch.StartNew();//开启计时;
 
@@ -56,167 +58,138 @@ namespace Framework
             foreach (string tempPath in allPath)
             {
                 string path = tempPath.Replace("\\", "/");
-                if (Path.GetExtension(path) == ".meta") continue;
+                if (Path.GetExtension(path) == ".meta")
+                {
+                    continue;
+                }
                 allAssetPath.Add(path);
             }
 
             //开始分析资源依赖关系;
             for (int i = 0; i < allAssetPath.Count; i++)
             {
-                EditorUtility.DisplayProgressBar("AssetBundle打包提示", "获取需要打包的资源", ((float)i / (float)allAssetPath.Count));
+                if (!CheckAssetNode(allAssetPath[i]))
+                {
+                    continue;
+                }
 
                 //还未遍历到该资源;
                 if (!allAsset.ContainsKey(allAssetPath[i]))
                 {
                     allAsset[allAssetPath[i]] = CreateNewAssetNode(allAssetPath[i]);
                 }
+
                 //获取依赖关系;
                 string[] allDirectDependencies = AssetDatabase.GetDependencies(allAssetPath[i], false);
+
                 foreach (string tempPath in allDirectDependencies)
                 {
-                    //依赖脚本直接添加到脚本队列;
-                    if (AssetBundleDefine.GetAssetType(tempPath) == AssetType.Scripts)
+                    if (!CheckAssetNode(tempPath))
                     {
                         continue;
                     }
-                    //依赖Shader直接添加到Shader队列;
-                    if (AssetBundleDefine.GetAssetType(tempPath) == AssetType.Shader)
+
+                    //添加依赖的资源信息;
+                    allAsset[allAssetPath[i]].sonDependentAssets.Add(tempPath);
+                    //添加被依赖的资源信息;
+                    if (!allAsset.ContainsKey(tempPath))
                     {
-                        allShaderAsset.Add(tempPath);
-                        continue;
+                        allAsset[tempPath] = CreateNewAssetNode(tempPath);
                     }
-                    if (tempPath.Contains(FilePathHelper.resPath))
-                    {
-                        //添加依赖的资源信息;
-                        allAsset[allAssetPath[i]].sonDependentAssets.Add(tempPath);
-                        //添加被依赖的资源信息;
-                        if (!allAsset.ContainsKey(tempPath))
-                        {
-                            allAsset[tempPath] = CreateNewAssetNode(tempPath);
-                        }
-                        allAsset[tempPath].parentDependentAssets.Add(allAssetPath[i]);
-                    }
-                    else
-                    {
-                        //需要打包AssetBundle的资源目录下的资源,引用非该目录下的资源;
-                        LogHelper.PrintGreen("[Asset Dependencies Analysis] path:" + allAssetPath[i] + "--->>>reference--->>>: " + tempPath);
-                    }
+                    allAsset[tempPath].parentDependentAssets.Add(allAssetPath[i]);
                 }
             }
-            EditorUtility.ClearProgressBar();
 
-            //找出需要打包的资源;
-            for (int i = 0; i < allAssetPath.Count; i++)
+            foreach (var tempAsset in allAsset)
             {
-                EditorUtility.DisplayProgressBar("AssetBundle打包提示", "分析需要打包的资源", ((float)i / (float)allAssetPath.Count));
-
-                //图集特殊处理;
-                /*
-                if (allAssetPath[i].Contains("Atlas") && Path.GetExtension(allAssetPath[i]) == ".prefab")//ngui
+                if (tempAsset.Value.parentDependentAssets.Count == 0 ||//没有被依赖的资源;
+                    tempAsset.Value.parentDependentAssets.Count > 1 ||//被超过一个资源依赖的资源;
+                    tempAsset.Key.Contains(FilePathHelper.resPath))//Bundles资源目录下的资源,允许加载所以单独打包;
                 {
-                    independenceAsset[allAssetPath[i]] = allAsset[allAssetPath[i]];
-                    continue;
-                }
-                */
-                if (allAssetPath[i].Contains(FilePathHelper.resPath + "Shaders") && Path.GetExtension(allAssetPath[i]) == ".shader")
-                {
-                    allShaderAsset.Add(allAssetPath[i]);
-                    continue;
-                }
-                if (allAsset[allAssetPath[i]].parentDependentAssets.Count == 0 ||//没有被依赖的资源;
-                    allAsset[allAssetPath[i]].parentDependentAssets.Count > 1 ||//被超过一个资源依赖的资源;
-                    allAssetPath[i].Contains(FilePathHelper.singleResPath))//指定要求单独打包的资源;
-                {
-                    independenceAsset[allAssetPath[i]] = allAsset[allAssetPath[i]];
+                    independenceAsset[tempAsset.Key] = tempAsset.Value;
                 }
             }
-            EditorUtility.ClearProgressBar();
 
-            //设置资源AssetBundle Name;
-            for (int i = 0; i < allAssetPath.Count; i++)
+            List<AssetBundleBuild> builderList = new List<AssetBundleBuild>();
+
+            foreach (var asset in independenceAsset)
             {
-                EditorUtility.DisplayProgressBar("AssetBundle打包提示", "设置AssetBundle Name", ((float)i / (float)allAssetPath.Count));
+                var node = asset.Value;
+                AssetBundleBuild build = new AssetBundleBuild();
+                build.assetBundleName = FilePathHelper.GetAssetBundleFileName(node.assetPath);
+                List<string> assetLis = new List<string>();
+                assetLis.Add(node.assetPath);
 
-                AssetImporter importer = AssetImporter.GetAtPath(allAssetPath[i]);
-                if (importer != null)
+                foreach (var tempAsset in node.sonDependentAssets)
                 {
-                    if (independenceAsset.ContainsKey(allAssetPath[i]))
+                    if (!independenceAsset.ContainsKey(tempAsset))
                     {
-                        importer.assetBundleName = FilePathHelper.GetAssetBundleFileName(independenceAsset[allAssetPath[i]].type, independenceAsset[allAssetPath[i]].assetName);
+                        assetLis.Add(tempAsset);
                     }
-                    else
-                    {
-                        importer.assetBundleName = null;
-                    }
-                    AssetDatabase.ImportAsset(allAssetPath[i]);
                 }
+                build.assetNames = assetLis.ToArray();
+                builderList.Add(build);
             }
-            EditorUtility.ClearProgressBar();
 
-            int index = 0;
-            //设置Shader AssetBundle Name;
-            foreach (string tempPath in allShaderAsset)
+            AssetBundleBuild shaderBuild = new AssetBundleBuild();
+            shaderBuild.assetBundleName = FilePathHelper.GetAssetBundleFileName(FilePathHelper.shaderAssetBundleName);
+            List<string> shaderList = new List<string>();
+            foreach (var shader in allShaderAsset)
             {
-                index++;
-                EditorUtility.DisplayProgressBar("AssetBundle打包提示", "设置Shader AssetBundle Name", ((float)index / (float)allShaderAsset.Count));
-                AssetImporter importer = AssetImporter.GetAtPath(tempPath);
-                if (importer != null)
-                {
-                    importer.assetBundleName = FilePathHelper.GetAssetBundleFileName(AssetType.Shader, "Shaders");
-                    AssetDatabase.ImportAsset(tempPath);
-                }
+                shaderList.Add(shader);
             }
+            shaderBuild.assetNames = shaderList.ToArray();
 
-            SetLuaAssetName();
-            //SetAtlasName();
-
-            EditorUtility.ClearProgressBar();
+            AssetBundleBuild luaBuild = new AssetBundleBuild();
+            luaBuild.assetBundleName = FilePathHelper.GetAssetBundleFileName(FilePathHelper.luaAssetBundleName);
+            List<string> luaList = new List<string>();
+            foreach (var lua in allLuaAsset)
+            {
+                luaList.Add(lua);
+            }
+            luaBuild.assetNames = luaList.ToArray();
 
             watch.Stop();
+
             LogHelper.PrintWarning(string.Format("[AssetDependenciesAnalysis]Asset Dependencies Analysis Spend Time:{0}s", watch.Elapsed.TotalSeconds));
 
-            AssetDatabase.Refresh();
-        }
-
-        private void SetLuaAssetName()
-        {
-            AssetImporter importer = AssetImporter.GetAtPath(FilePathHelper.luaPath);
-            if (importer != null)
-            {
-                importer.assetBundleName = FilePathHelper.GetAssetBundleFileName(AssetType.Lua, "lua");
-                AssetDatabase.ImportAsset(FilePathHelper.luaPath);
-            }
-        }
-
-        private void SetAtlasName()
-        {
-            string[] allPath = Directory.GetDirectories(FilePathHelper.atlasPath);
-            for (int i = 0; i < allPath.Length; i++)
-            {
-                AssetImporter importer = AssetImporter.GetAtPath(allPath[i]);
-                if (importer != null)
-                {
-                    importer.assetBundleName = ("atlas/" + Path.GetFileName(allPath[i]) + ".assetbundle").ToLower();
-                    AssetDatabase.ImportAsset(FilePathHelper.luaPath);
-                }
-            }
+            return builderList;
         }
 
         /// <summary>
         /// 根据路径创建新的资源;
         /// </summary>
-        /// <param name="path">资源路径</param>
-        /// <returns>资源节点</returns>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public AssetNode CreateNewAssetNode(string path)
         {
             return new AssetNode()
             {
-                type = AssetBundleDefine.GetAssetType(path),
-                assetName = path.Replace(FilePathHelper.resPath, ""),
                 assetPath = path,
                 parentDependentAssets = new HashSet<string>(),
                 sonDependentAssets = new HashSet<string>()
             };
+        }
+
+        private bool CheckAssetNode(string path)
+        {
+            //依赖脚本直接添加到脚本队列;
+            if (Path.GetExtension(path) == ".cs")
+            {
+                return false;
+            }
+            //依赖Shader直接添加到Shader队列;
+            if (Path.GetExtension(path) == ".shader")
+            {
+                allShaderAsset.Add(path);
+                return false;
+            }
+            if (Path.GetExtension(path) == ".bytes" && path.Contains(FilePathHelper.luaPath))
+            {
+                allLuaAsset.Add(path);
+                return false;
+            }
+            return true;
         }
 
         /// <summary>
@@ -238,9 +211,13 @@ namespace Framework
             foreach (string tempPath in allPath)
             {
                 string path = tempPath.Replace("\\", "/");
-                if (Path.GetExtension(path) == ".meta" || Path.GetExtension(path) == ".cs") continue;
+                if (Path.GetExtension(path) == ".meta" || Path.GetExtension(path) == ".cs")
+                {
+                    continue;
+                }
                 allAssetPath.Add(path);
             }
+
             float i = 0;
             foreach (string str in allAssetPath)
             {
@@ -250,7 +227,7 @@ namespace Framework
                 if (importer != null)
                 {
                     importer.assetBundleName = null;
-                    AssetDatabase.ImportAsset(FilePathHelper.luaPath);
+                    AssetDatabase.ImportAsset(str);
                 }
             }
             EditorUtility.ClearProgressBar();
@@ -273,21 +250,15 @@ namespace Framework
     public class AssetNode
     {
         /// <summary>
-        /// 资源类型;
-        /// </summary>
-        public AssetType type;
-        /// <summary>
-        /// 资源名字;
-        /// </summary>
-        public string assetName;
-        /// <summary>
         /// 资源路径;
         /// </summary>
         public string assetPath;
+
         /// <summary>
         /// 被依赖的全部资源节点信息;
         /// </summary>
         public HashSet<string> parentDependentAssets;
+
         /// <summary>
         /// 依赖的全部资源节点信息;
         /// </summary>

@@ -5,7 +5,6 @@
 *********************************************************************************/
 
 using UnityEngine;
-using System.Collections;
 using System;
 using System.Collections.Generic;
 using MEC;
@@ -23,116 +22,96 @@ namespace Framework
         /// <summary>
         /// Resource同步加载;
         /// </summary>
-        /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="assetType">资源类型</param>
-        /// <param name="assetName">资源名字</param>
-        /// <returns>ctrl</returns>
-        public T LoadResourceSync<T>(AssetType assetType, string assetName) where T : Object
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public ResourceAssetProxy LoadResourceProxy(string path)
         {
-            string path = FilePathHelper.GetResourcePath(assetType, assetName);
-            if (path != null)
+            if (string.IsNullOrEmpty(path))
             {
-                //Resources.Load加载同一资源,只会有一份Asset,需要实例化的资源可以Instantiate多个对象;
-                T ctrl = Resources.Load<T>(path);
-                if (ctrl != null)
-                {
-                    return ctrl;
-                }
+                return null;
             }
-            LogHelper.PrintError(string.Format("[ResourceMgr]LoadResourceSync Load Asset {0} failure!",
-                assetName + "." + assetType.ToString()));
-            return null;
-        }
-
-        /// <summary>
-        /// Resource异步加载;
-        /// </summary>
-        /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="assetType">资源类型</param>
-        /// <param name="assetName">资源名字</param>
-        /// <returns>代理</returns>
-        public AsyncResourceProxy LoadResourceProxy<T>(AssetType assetType, string assetName) where T : Object
-        {
-            return LoadResourceProxy<T>(assetType, assetName, null, null);
-        }
-
-        /// <summary>
-        /// Resource异步加载;
-        /// </summary>
-        /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="assetType">资源类型</param>
-        /// <param name="assetName">资源名字</param>
-        /// <param name="action">资源回调</param>
-        /// <returns>代理</returns>
-        public AsyncResourceProxy LoadResourceProxy<T>(AssetType assetType, string assetName
-            , Action<T> action) where T : Object
-        {
-            return LoadResourceProxy<T>(assetType, assetName, action, null);
-        }
-
-        /// <summary>
-        /// Resource异步加载;
-        /// </summary>
-        /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="assetType">资源类型</param>
-        /// <param name="assetName">资源名字</param>
-        /// <param name="action">资源回调</param>
-        /// <param name="progress">progress回调</param>
-        /// <returns>代理</returns>
-        public AsyncResourceProxy LoadResourceProxy<T>(AssetType assetType, string assetName
-            , Action<T> action, Action<float> progress) where T : Object
-        {
-            AsyncResourceProxy proxy = PoolMgr.Instance.GetCsharpObject<AsyncResourceProxy>();
-            proxy.InitProxy(assetType, assetName);
-            CoroutineMgr.Instance.RunCoroutine(LoadResourceAsync<T>(assetType, assetName, proxy, action, progress));
+            ResourceAssetProxy proxy = PoolMgr.Instance.GetCsharpObject<ResourceAssetProxy>();
+            proxy.Initialize(path);
+            Object asset = Resources.Load(path);
+            if (asset == null)
+            {
+                LogHelper.PrintError(string.Format("[ResourceMgr]LoadResourceProxy load asset:{0} failure.", path));
+            }
+            proxy.OnFinish(asset);
             return proxy;
         }
 
         /// <summary>
         /// Resource异步加载;
         /// </summary>
-        /// <typeparam name="T">ctrl</typeparam>
-        /// <param name="assetType">资源类型</param>
-        /// <param name="assetName">资源名字</param>
-        /// <param name="proxy">代理</param>
-        /// <param name="action">资源回调</param>
-        /// <param name="progress">progress回调</param>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="path"></param>
         /// <returns></returns>
-        private IEnumerator<float> LoadResourceAsync<T>(AssetType assetType, string assetName, AsyncResourceProxy proxy
-            , Action<T> action, Action<float> progress) where T : Object
+        public ResourceAssetProxy LoadResourceAsync(string path)
         {
-            string path = FilePathHelper.GetResourcePath(assetType, assetName);
-            T ctrl = null;
-            if (path != null)
+            if (string.IsNullOrEmpty(path))
             {
-                ResourceRequest request = Resources.LoadAsync<T>(path);
-                while (request.progress < 0.99)
-                {
-                    if (progress != null) progress(request.progress);
-                    yield return Timing.WaitForOneFrame;
-                }
-                while (!request.isDone)
-                {
-                    yield return Timing.WaitForOneFrame;
-                }
-                ctrl = request.asset as T;
+                return null;
             }
-            if (null == ctrl)
+            return LoadResourceAsync(path, null);
+        }
+
+        /// <summary>
+        /// Resource异步加载;
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="progress"></param>
+        /// <returns></returns>
+        public ResourceAssetProxy LoadResourceAsync(string path, Action<float> progress)
+        {
+            if (string.IsNullOrEmpty(path))
             {
-                LogHelper.PrintError(string.Format("[ResourceMgr]LoadResourceAsync Load Asset {0} failure!",
-                    assetName + "." + assetType.ToString()));
+                return null;
             }
-            //--------------------------------------------------------------------------------------
+            ResourceAssetProxy proxy = PoolMgr.Instance.GetCsharpObject<ResourceAssetProxy>();
+            proxy.Initialize(path);
+            CoroutineMgr.Instance.RunCoroutine(LoadAsync(path, proxy, progress));
+            return proxy;
+        }
+
+        /// <summary>
+        /// Resource异步加载;
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="proxy"></param>
+        /// <param name="progress"></param>
+        /// <returns></returns>
+        private IEnumerator<float> LoadAsync(string path, ResourceAssetProxy proxy, Action<float> progress)
+        {
+            if (string.IsNullOrEmpty(path))
+            {
+                yield break;
+            }
+            ResourceRequest request = Resources.LoadAsync(path);
+            while (request.progress < 0.99)
+            {
+                if (progress != null) progress(request.progress);
+                yield return Timing.WaitForOneFrame;
+            }
+            while (!request.isDone)
+            {
+                yield return Timing.WaitForOneFrame;
+            }
+            if (null == request.asset)
+            {
+                LogHelper.PrintError(string.Format("[ResourceMgr]LoadAsync load asset:{0} failure.", path));
+            }
+
             //先等一帧;
             yield return Timing.WaitForOneFrame;
 
-            if (!proxy.IsCancel && action != null)
-            {
-                action(ctrl);
-            }
             if (proxy != null)
             {
-                proxy.OnFinish(ctrl);
+                proxy.OnFinish(request.asset);
+            }
+            else
+            {
+                LogHelper.PrintError(string.Format("[ResourceMgr]LoadAsync proxy is null:{0}.", path));
             }
         }
 

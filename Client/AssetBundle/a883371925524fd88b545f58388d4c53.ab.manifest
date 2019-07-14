@@ -1,0 +1,24 @@
+ManifestFileVersion: 0
+CRC: 240353857
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2748bed2725f7f0d9088b736a622298d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2f7348f50283c9ded0f2ce3650cbec72
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 26cc75dcc48514f419441f0b66791b6b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b310211d93371404f92f7805dafcdf0b, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Bundles/Prefab/UI/Common/Login.prefab
+Dependencies: []

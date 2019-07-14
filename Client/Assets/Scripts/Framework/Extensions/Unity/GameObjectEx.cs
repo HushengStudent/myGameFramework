@@ -16,7 +16,7 @@ namespace Framework
         private Vector3 _position = Vector3.zero;
         private Vector3 _scale = Vector3.zero;
         private Vector3 _rotation = Vector3.zero;
-        private AsyncAssetProxy proxy;
+        private AssetBundleAssetProxy proxy;
         private GameObjectExLoadFinishHandler _loadFinishHandler;
         private GameObjectExDestroyHandler _destroyHandler;
 
@@ -31,10 +31,10 @@ namespace Framework
             Entity = entity;
             ResPath = path;
             IsLoadFinish = false;
-            proxy = ResourceMgr.Instance.LoadAssetProxy(AssetType.Prefab, ResPath);
+            proxy = ResourceMgr.Instance.LoadAssetAsync(ResPath);
             proxy.AddLoadFinishCallBack(() =>
             {
-                gameObject = proxy.LoadUnityObject<GameObject>();
+                gameObject = proxy.GetInstantiateObject<GameObject>();
                 gameObject.name = entity.UID.ToString();
                 IsLoadFinish = true;
                 Trans = gameObject.transform;
@@ -61,7 +61,7 @@ namespace Framework
             }
             if (IsLoadFinish)
             {
-                proxy.DestroyUnityObject<GameObject>(gameObject);
+                proxy.ReleaseInstantiateObject<GameObject>(gameObject);
             }
             proxy.UnloadProxy();
             Trans = null;
