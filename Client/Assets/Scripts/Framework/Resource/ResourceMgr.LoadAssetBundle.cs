@@ -162,3 +162,32 @@ namespace Framework
         #endregion
     }
 }
+
+/*
+
+结论:1、多次从AssetBundle加载同一个资源,返回的资源是同一个资源实例;
+
+2、Resources.UnloadUnusedAssets();当资源被MonoBehavior脚本非局部变量,静态变量等持有的时候,该接口不能销毁该资源;
+An asset is deemed to be unused if it isn't reached after walking the whole game object hierarchy,
+including script components. Static variables are also examined;
+如果它没有达到遍历整个游戏对象层级之后,一个资源被视为卸载,包含脚本组件,静态变量也被检查;
+
+遍历对象InstaceID到指针的全局表,收集仍未销毁的Object对象到资源回收表中;
+在资源回收表中查找所有仍挂接在场景中的根节点对象,并递归遍历其下引用的所有Object对象,将其标记为被引用对象;
+遍历资源回收表,卸载表中所有不存在任何引用的对象;
+
+3、Resources.UnloadAsset();The referenced asset(assetToUnload) will be unloaded from memory.The object will become invalid and can't be loaded back from disk.
+Any subsequently loaded scenes or assets that reference the asset on disk will cause a new instance of the object to be loaded from disk.
+This new instance will not be connected to the previously unloaded object;
+
+4、Resources.UnloadUnusedAssets同样可以卸载由AssetBundle.Load加载的资源,
+只是前提是其对应的AssetBundle已经调用Unload(false),且并没有被引用;切场景时,就算没有Unload(false),也会被卸载;
+
+1）静态变量引用的资源:Monobehavior中变量/属性引用的资源视为used;
+2）被C#层强引用的资源,视为used;
+3) 弱引用被Unity视为unused,是会被清掉的;
+但是(先GC.Collect，再UnloadUnusedAssets则暂时清不掉,下次GC.Collect才能,或者交换顺序就能立刻清掉);
+
+每一个load出来的asset难道不是同一个C#对象？为啥WeakReference的target变成null了???
+
+ */

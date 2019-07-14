@@ -35,6 +35,7 @@ public class DelegateFactory
 		dict.Add(typeof(Framework.onUninitializeStartHandler), factory.Framework_onUninitializeStartHandler);
 		dict.Add(typeof(Framework.SceneLoadEventHandler), factory.Framework_SceneLoadEventHandler);
 		dict.Add(typeof(System.Action<float>), factory.System_Action_float);
+		dict.Add(typeof(System.Action<UnityEngine.SceneManagement.Scene>), factory.System_Action_UnityEngine_SceneManagement_Scene);
 
 		DelegateTraits<System.Action>.Init(factory.System_Action);
 		DelegateTraits<UnityEngine.Events.UnityAction>.Init(factory.UnityEngine_Events_UnityAction);
@@ -54,6 +55,7 @@ public class DelegateFactory
 		DelegateTraits<Framework.onUninitializeStartHandler>.Init(factory.Framework_onUninitializeStartHandler);
 		DelegateTraits<Framework.SceneLoadEventHandler>.Init(factory.Framework_SceneLoadEventHandler);
 		DelegateTraits<System.Action<float>>.Init(factory.System_Action_float);
+		DelegateTraits<System.Action<UnityEngine.SceneManagement.Scene>>.Init(factory.System_Action_UnityEngine_SceneManagement_Scene);
 
 		TypeTraits<System.Action>.Init(factory.Check_System_Action);
 		TypeTraits<UnityEngine.Events.UnityAction>.Init(factory.Check_UnityEngine_Events_UnityAction);
@@ -73,6 +75,7 @@ public class DelegateFactory
 		TypeTraits<Framework.onUninitializeStartHandler>.Init(factory.Check_Framework_onUninitializeStartHandler);
 		TypeTraits<Framework.SceneLoadEventHandler>.Init(factory.Check_Framework_SceneLoadEventHandler);
 		TypeTraits<System.Action<float>>.Init(factory.Check_System_Action_float);
+		TypeTraits<System.Action<UnityEngine.SceneManagement.Scene>>.Init(factory.Check_System_Action_UnityEngine_SceneManagement_Scene);
 
 		StackTraits<System.Action>.Push = factory.Push_System_Action;
 		StackTraits<UnityEngine.Events.UnityAction>.Push = factory.Push_UnityEngine_Events_UnityAction;
@@ -92,6 +95,7 @@ public class DelegateFactory
 		StackTraits<Framework.onUninitializeStartHandler>.Push = factory.Push_Framework_onUninitializeStartHandler;
 		StackTraits<Framework.SceneLoadEventHandler>.Push = factory.Push_Framework_SceneLoadEventHandler;
 		StackTraits<System.Action<float>>.Push = factory.Push_System_Action_float;
+		StackTraits<System.Action<UnityEngine.SceneManagement.Scene>>.Push = factory.Push_System_Action_UnityEngine_SceneManagement_Scene;
 	}
     
     public static Delegate CreateDelegate(Type t, LuaFunction func = null)
@@ -1227,6 +1231,63 @@ public class DelegateFactory
 	}
 
 	void Push_System_Action_float(IntPtr L, System.Action<float> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class System_Action_UnityEngine_SceneManagement_Scene_Event : LuaDelegate
+	{
+		public System_Action_UnityEngine_SceneManagement_Scene_Event(LuaFunction func) : base(func) { }
+		public System_Action_UnityEngine_SceneManagement_Scene_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(UnityEngine.SceneManagement.Scene param0)
+		{
+			func.BeginPCall();
+			func.PushValue(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(UnityEngine.SceneManagement.Scene param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushValue(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public System.Action<UnityEngine.SceneManagement.Scene> System_Action_UnityEngine_SceneManagement_Scene(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			System.Action<UnityEngine.SceneManagement.Scene> fn = delegate(UnityEngine.SceneManagement.Scene param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			System_Action_UnityEngine_SceneManagement_Scene_Event target = new System_Action_UnityEngine_SceneManagement_Scene_Event(func);
+			System.Action<UnityEngine.SceneManagement.Scene> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			System_Action_UnityEngine_SceneManagement_Scene_Event target = new System_Action_UnityEngine_SceneManagement_Scene_Event(func, self);
+			System.Action<UnityEngine.SceneManagement.Scene> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_System_Action_UnityEngine_SceneManagement_Scene(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(System.Action<UnityEngine.SceneManagement.Scene>), L, pos);
+	}
+
+	void Push_System_Action_UnityEngine_SceneManagement_Scene(IntPtr L, System.Action<UnityEngine.SceneManagement.Scene> o)
 	{
 		ToLua.Push(L, o);
 	}

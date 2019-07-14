@@ -401,7 +401,7 @@ namespace Framework
                         {
                             list.RemoveAt(i);
                             //需要UnloadAsset?
-                            Resources.UnloadAsset(asset);
+                            //Resources.UnloadAsset(asset);
                             break;
                         }
                     }

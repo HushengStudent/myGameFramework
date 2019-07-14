@@ -10,6 +10,8 @@ public class Framework_ResourceMgrWrap
 		L.RegFunction("LoadAssetAsync", LoadAssetAsync);
 		L.RegFunction("LoadResourceProxy", LoadResourceProxy);
 		L.RegFunction("LoadResourceAsync", LoadResourceAsync);
+		L.RegFunction("LoadSceneAsync", LoadSceneAsync);
+		L.RegFunction("UnloadSceneAsync", UnloadSceneAsync);
 		L.RegFunction("DestroyUnityAsset", DestroyUnityAsset);
 		L.RegFunction("DestroyInstantiateObject", DestroyInstantiateObject);
 		L.RegFunction("GameGC", GameGC);
@@ -122,6 +124,89 @@ public class Framework_ResourceMgrWrap
 			else
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to method: Framework.ResourceMgr.LoadResourceAsync");
+			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int LoadSceneAsync(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.Register");
+#endif
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 2)
+			{
+				Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+				string arg0 = ToLua.CheckString(L, 2);
+				obj.LoadSceneAsync(arg0);
+				return 0;
+			}
+			else if (count == 3)
+			{
+				Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+				string arg0 = ToLua.CheckString(L, 2);
+				System.Action<float> arg1 = (System.Action<float>)ToLua.CheckDelegate<System.Action<float>>(L, 3);
+				obj.LoadSceneAsync(arg0, arg1);
+				return 0;
+			}
+			else if (count == 4)
+			{
+				Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+				string arg0 = ToLua.CheckString(L, 2);
+				System.Action<UnityEngine.SceneManagement.Scene> arg1 = (System.Action<UnityEngine.SceneManagement.Scene>)ToLua.CheckDelegate<System.Action<UnityEngine.SceneManagement.Scene>>(L, 3);
+				System.Action<float> arg2 = (System.Action<float>)ToLua.CheckDelegate<System.Action<float>>(L, 4);
+				obj.LoadSceneAsync(arg0, arg1, arg2);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: Framework.ResourceMgr.LoadSceneAsync");
+			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int UnloadSceneAsync(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.Register");
+#endif
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 3)
+			{
+				Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+				string arg0 = ToLua.CheckString(L, 2);
+				System.Action<UnityEngine.SceneManagement.Scene> arg1 = (System.Action<UnityEngine.SceneManagement.Scene>)ToLua.CheckDelegate<System.Action<UnityEngine.SceneManagement.Scene>>(L, 3);
+				obj.UnloadSceneAsync(arg0, arg1);
+				return 0;
+			}
+			else if (count == 4)
+			{
+				Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
+				string arg0 = ToLua.CheckString(L, 2);
+				System.Action<UnityEngine.SceneManagement.Scene> arg1 = (System.Action<UnityEngine.SceneManagement.Scene>)ToLua.CheckDelegate<System.Action<UnityEngine.SceneManagement.Scene>>(L, 3);
+				System.Action<float> arg2 = (System.Action<float>)ToLua.CheckDelegate<System.Action<float>>(L, 4);
+				obj.UnloadSceneAsync(arg0, arg1, arg2);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: Framework.ResourceMgr.UnloadSceneAsync");
 			}
 		}
 		catch (Exception e)

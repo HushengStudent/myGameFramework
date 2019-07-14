@@ -33,6 +33,8 @@ namespace Framework
         /// </summary>
         public static readonly string resPath = "Assets/Bundles/";
 
+        public static readonly string scenePath = "Assets/Bundles/Scene";
+
         /// <summary>
         /// 需要打包的lua文件;
         /// </summary>
