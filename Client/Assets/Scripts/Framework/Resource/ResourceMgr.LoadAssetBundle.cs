@@ -124,7 +124,7 @@ namespace Framework
             AssetBundleRequest request = assetBundle.LoadAssetAsync(name);
 
             //此处加载占10%;
-            while (request.progress < 0.99)
+            while (request.progress < 0.99f)
             {
                 if (progress != null)
                 {

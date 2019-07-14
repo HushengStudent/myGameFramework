@@ -65,17 +65,20 @@ namespace Framework
             LuaMgr.Instance.Launch();           //lua初始化;
             MemoryMgr.Instance.Launch();
             NetMgr.Instance.Launch();           //网络初始化;
+
+
+            //EnterGame();
+
         }
 
         public void CheckUpdate()
         {
-            //UpdateMgr.Instance.Launch();
-            EnterGame();
+            UpdateMgr.Instance.Launch();
         }
 
         public void EnterGame()
         {
-            //ResourceMgr.Instance.LoadAssetProxy(AssetType.Scene, "Scene/Level01.unity");
+            ResourceMgr.Instance.LoadSceneAsync("Assets/Bundles/Scene/Level01.unity");
         }
 
         /// <summary>
