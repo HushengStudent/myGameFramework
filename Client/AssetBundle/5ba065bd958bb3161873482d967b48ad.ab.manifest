@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3158760964
+CRC: 4140702121
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c2b5fb9f3644db8b22ec7431f52b1edc
+    Hash: 0e88f10d41675022b26ac1a75a5a5001
   TypeTreeHash:
     serializedVersion: 2
     Hash: 6f165f44e4778b6c9d85e7a145a54cb1
@@ -19,4 +19,5 @@ Assets:
 - Assets/Art/Emoji/Output/emoji_data.png
 - Assets/Bundles/Material/Emoji/UGUIEmoji.mat
 - Assets/Art/Emoji/Output/emoji_tex.png
-Dependencies: []
+Dependencies:
+- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/ecee0a84af1bbe31d8aec4ce303fad9d.ab

@@ -7,7 +7,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 using UnityEditor;
+using UnityEngine;
 
 namespace Framework
 {
@@ -139,6 +141,7 @@ namespace Framework
                 shaderList.Add(shader);
             }
             shaderBuild.assetNames = shaderList.ToArray();
+            builderList.Add(shaderBuild);
 
             AssetBundleBuild luaBuild = new AssetBundleBuild();
             luaBuild.assetBundleName = FilePathHelper.GetAssetBundleFileName(FilePathHelper.luaAssetBundleName);
@@ -148,10 +151,13 @@ namespace Framework
                 luaList.Add(lua);
             }
             luaBuild.assetNames = luaList.ToArray();
+            builderList.Add(luaBuild);
 
             watch.Stop();
 
             LogHelper.PrintWarning(string.Format("[AssetDependenciesAnalysis]Asset Dependencies Analysis Spend Time:{0}s", watch.Elapsed.TotalSeconds));
+
+            SaveBuildInfo(builderList);
 
             return builderList;
         }
@@ -241,6 +247,22 @@ namespace Framework
                 File.Delete(str);
             }
             Directory.Delete(FilePathHelper.AssetBundlePath, true);
+        }
+
+        private void SaveBuildInfo(List<AssetBundleBuild> info)
+        {
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < info.Count; i++)
+            {
+                builder.AppendLine("");
+                builder.AppendLine(i.ToString());
+                builder.AppendLine(info[i].assetBundleName);
+                for (int j = 0; j < info[i].assetNames.Length; j++)
+                {
+                    builder.AppendLine(info[i].assetNames[j]);
+                }
+            }
+            FileHelper.Write2Txt(Application.dataPath + "/Editor/AssetBundleBuild.txt", builder.ToString());
         }
     }
 

@@ -41,7 +41,7 @@ namespace Framework
             {
                 if (null == mainAssetBundle)
                 {
-                    mainAssetBundle = AssetBundle.LoadFromFile(FilePathHelper.AssetBundlePath);
+                    mainAssetBundle = AssetBundle.LoadFromFile(FilePathHelper.AssetBundlePath + "/AssetBundle");
                 }
                 if (mainAssetBundle == null)
                 {
@@ -92,8 +92,7 @@ namespace Framework
         /// <returns>AssetBundle</returns>
         public AssetBundle LoadShaderAssetBundle()
         {
-            string path = FilePathHelper.GetAssetBundlePath(FilePathHelper.shaderAssetBundleName);
-            return LoadFromFile(path);
+            return LoadFromFile(FilePathHelper.shaderAssetBundleName);
         }
 
         /// <summary>
@@ -102,8 +101,7 @@ namespace Framework
         /// <returns></returns>
         public AssetBundle LoadLuaAssetBundle()
         {
-            string path = FilePathHelper.GetAssetBundlePath(FilePathHelper.luaAssetBundleName);
-            return LoadFromFile(path);
+            return LoadFromFile(FilePathHelper.luaAssetBundleName);
         }
 
         /// <summary>
@@ -231,7 +229,7 @@ namespace Framework
             }
             string assetBundleName = FilePathHelper.GetAssetBundleFileName(path);
 
-            AssetBundle assetBundle = LoadFromFile(assetBundlePath);
+            AssetBundle assetBundle = LoadSync(assetBundlePath);
             if (assetBundle == null)
             {
                 return null;
