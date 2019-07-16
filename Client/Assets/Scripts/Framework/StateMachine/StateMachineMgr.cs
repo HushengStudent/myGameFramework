@@ -12,9 +12,9 @@ namespace Framework
     {
         private Dictionary<AbsEntity, StateMachine> _fsmDict = new Dictionary<AbsEntity, StateMachine>();
 
-        protected override void CreateInstance()
+        protected override void OnInitialize()
         {
-            base.CreateInstance();
+            base.OnInitialize();
             _fsmDict.Clear();
         }
 

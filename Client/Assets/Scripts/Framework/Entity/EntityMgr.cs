@@ -66,9 +66,9 @@ namespace Framework
 
         #region Functions
 
-        protected override void CreateInstance()
+        protected override void OnInitialize()
         {
-            base.CreateInstance();
+            base.OnInitialize();
             _entityList.Clear();
             _entityDict.Clear();
         }

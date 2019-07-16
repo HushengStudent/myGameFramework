@@ -46,9 +46,9 @@ namespace Framework
             ShowProfiler,
         }
 
-        protected override void CreateInstance()
+        protected override void OnInitialize()
         {
-            base.CreateInstance();
+            base.OnInitialize();
             _fpsInfo = new DebugFps(0.5f);
             Application.logMessageReceived += _logInfo.OnLogMessageReceived;
             SetShowType(ShowType.ShowNon);

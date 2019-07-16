@@ -81,9 +81,7 @@ namespace Framework
             ResourceMgr.Instance.LoadSceneAsync("Assets/Bundles/Scene/Level01.unity");
         }
 
-        /// <summary>
         /// 设置游戏配置;
-        /// </summary>
         private void SetGameConfig()
         {
             SetGameFrame(GameConfig.GameFrame);

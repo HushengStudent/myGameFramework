@@ -18,9 +18,9 @@ namespace Framework
 
         #region Unity api
 
-        protected override void CreateInstance()
+        protected override void OnInitialize()
         {
-            base.CreateInstance();
+            base.OnInitialize();
             _componentList.Clear();
         }
 

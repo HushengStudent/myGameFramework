@@ -48,11 +48,8 @@ namespace Framework
             if (null == _instance)
             {
                 LogHelper.Print((typeof(T)).ToString() + " singleton instance created.");
-                CreateInstance();
             }
         }
-
-        protected virtual void CreateInstance() { }
 
         protected virtual void StartEx() { }
         protected virtual void AwakeEx() { }

@@ -16,9 +16,9 @@ namespace Framework
     {
         public Scene CurScene { get; private set; }
 
-        protected override void CreateInstance()
+        protected override void OnInitialize()
         {
-            base.CreateInstance();
+            base.OnInitialize();
             CurScene = null;
         }
 

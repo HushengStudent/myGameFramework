@@ -31,9 +31,9 @@ namespace Framework
         private Dictionary<EventType, List<EventHandler>> GlobalEventDict
             = new Dictionary<EventType, List<EventHandler>>();
 
-        protected override void CreateInstance()
+        protected override void OnInitialize()
         {
-            base.CreateInstance();
+            base.OnInitialize();
             EventDict.Clear();
             GlobalEventDict.Clear();
         }

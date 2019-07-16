@@ -211,9 +211,9 @@ namespace Framework
 
         private List<TimerEvent> EventLists = new List<TimerEvent>();
 
-        protected override void CreateInstance()
+        protected override void OnInitialize()
         {
-            base.CreateInstance();
+            base.OnInitialize();
             EventLists.Clear();
         }
 

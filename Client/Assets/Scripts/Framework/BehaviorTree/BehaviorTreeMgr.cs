@@ -22,9 +22,9 @@ namespace Framework
         private Dictionary<AbsEntity, BehaviorTree> _treeDict = new Dictionary<AbsEntity, BehaviorTree>();
         private List<BehaviorTree> _treeList = new List<BehaviorTree>();
 
-        protected override void CreateInstance()
+        protected override void OnInitialize()
         {
-            base.CreateInstance();
+            base.OnInitialize();
             _treeDict.Clear();
         }
 

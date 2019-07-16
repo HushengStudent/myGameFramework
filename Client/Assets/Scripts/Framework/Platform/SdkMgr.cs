@@ -14,9 +14,9 @@ namespace Framework
     {
         private Dictionary<string, Action<string>> SdkCallBack = new Dictionary<string, Action<string>>();
 
-        protected override void CreateInstance()
+        protected override void OnInitialize()
         {
-            base.CreateInstance();
+            base.OnInitialize();
             SdkCallBack.Clear();
         }
 
