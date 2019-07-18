@@ -337,7 +337,8 @@ namespace Framework
             //先加载依赖的AssetBundle;
             string[] DependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
             float count = DependentAssetBundle.Length;
-            float unit = 0.9f / (count + 1);
+            var precent = ResourceMgr.Instance.LOAD_BUNDLE_PRECENT;
+            float unit = precent / (count + 1);
             int index = 0;
             foreach (string tempAssetBundle in DependentAssetBundle)
             {

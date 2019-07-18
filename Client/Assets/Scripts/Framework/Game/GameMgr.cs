@@ -27,6 +27,30 @@ namespace Framework
         public float SyncInterval { get { return _syncInterval; } set { _syncInterval = value; } }
         public MobileLevel MobileLevelValue { get { return _mobileLevelValue; } set { _mobileLevelValue = value; } }
 
+        public bool IsEditor
+        {
+            get
+            {
+#if UNITY_EDITOR
+                return true;
+#else
+                return false;
+#endif
+            }
+        }
+
+        public bool IsDebug
+        {
+            get
+            {
+#if DEBUG
+                return true;
+#else
+                return false;
+#endif
+            }
+        }
+
         protected override void OnInitialize()
         {
             CheckUpdateState = false;

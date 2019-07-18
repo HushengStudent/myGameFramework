@@ -18,8 +18,12 @@ namespace Framework
     {
         #region AssetBundle Load
 
-        //一秒30帧,一帧最久0.33秒;UWA上有建议加载为0.16s合适;
+        /// 一秒30帧,一帧最久0.33秒;UWA上有建议加载为0.16s合适;
         public readonly float MAX_LOAD_TIME = 0.16f * 1000;
+
+        public readonly float LOAD_BUNDLE_PRECENT = 0.8f;
+
+        public readonly float LOAD_ASSET_PRECENT = 0.2f;
 
         /// <summary>
         /// 同步从AssetBundle加载资源;
@@ -113,7 +117,7 @@ namespace Framework
         {
             AssetBundle assetBundle = null;
 
-            //此处加载占90%;
+            //此处加载占0.8;
             IEnumerator itor = AssetBundleMgr.Instance.LoadFromFileAsync(path,
                 bundle => { assetBundle = bundle; }, progress);
             while (itor.MoveNext())
@@ -123,12 +127,12 @@ namespace Framework
             var name = Path.GetFileNameWithoutExtension(path);
             AssetBundleRequest request = assetBundle.LoadAssetAsync(name);
 
-            //此处加载占10%;
+            //此处加载占0.2;
             while (request.progress < 0.99f)
             {
                 if (progress != null)
                 {
-                    progress(0.9f + 0.1f * request.progress);
+                    progress(LOAD_BUNDLE_PRECENT + LOAD_ASSET_PRECENT * request.progress);
                 }
                 yield return Timing.WaitForOneFrame;
             }

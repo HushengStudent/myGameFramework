@@ -32,14 +32,12 @@ namespace Framework
             }
         }
 
-        /// <summary>
         /// 构造函数;
-        /// </summary>
         protected Singleton()
         {
             if (null == _instance)
             {
-                LogHelper.Print((typeof(T)).ToString() + " singleton instance created.");
+                LogHelper.PrintError("[Singleton]" + (typeof(T)).ToString() + " singleton instance created.");
             }
         }
     }
