@@ -12,6 +12,8 @@ namespace Framework
     {
         #region Initialize
 
+        public AssetBundle LuaAssetBundle { get; private set; }
+
         /// <summary>
         /// 初始化;
         /// </summary>
@@ -43,24 +45,24 @@ namespace Framework
             {
                 LogHelper.PrintError("[ResourceMgr]Load Shader and WarmupAllShaders failure!");
             }
-            AssetBundleMgr.Instance.UnloadMirroring(FilePathHelper.shaderAssetBundleName);
+            //AssetBundleMgr.Instance.UnloadMirroring(FilePathHelper.shaderAssetBundleName);
         }
 
         /// 初始化Lua;
         private void InitLua()
         {
             //Lua初始化;
-            AssetBundle luaAssetBundle = AssetBundleMgr.Instance.LoadLuaAssetBundle();
-            if (luaAssetBundle != null)
+            LuaAssetBundle = AssetBundleMgr.Instance.LoadLuaAssetBundle();
+            if (LuaAssetBundle != null)
             {
-                luaAssetBundle.LoadAllAssets();
+                var a = LuaAssetBundle.LoadAllAssets();
                 LogHelper.Print("[ResourceMgr]Load Lua Success!");
             }
             else
             {
                 LogHelper.PrintError("[ResourceMgr]Load Lua failure!");
             }
-            AssetBundleMgr.Instance.UnloadMirroring(FilePathHelper.luaAssetBundleName);
+            //AssetBundleMgr.Instance.UnloadMirroring(FilePathHelper.luaAssetBundleName);
         }
 
         #endregion

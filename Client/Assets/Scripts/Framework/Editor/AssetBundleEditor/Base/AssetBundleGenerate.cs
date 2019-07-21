@@ -16,9 +16,11 @@ namespace Framework
         [MenuItem("myGameFramework/AssetBundleTools/Generate AssetBundle", false, 0)]
         public static void GenerateAll()
         {
-            if (EditorUtility.DisplayDialog("AssetBundle打包提示", "开始打包AssetBundle？", "打包AssetBundle"))
+            if (EditorUtility.DisplayDialog("AssetBundle Build", "开始打包AssetBundle？", "Build AssetBundle"))
             {
-                ToLuaMenu.BuildLuaToResources();
+                //ToLuaMenu.BuildLuaToBundles();
+
+                ToLuaMenu.CopyLuaFilesToBundles();
 
                 AssetDependenciesAnalysis analysiser = new AssetDependenciesAnalysis();
                 List<AssetBundleBuild> list = analysiser.AnalysisAllAsset();

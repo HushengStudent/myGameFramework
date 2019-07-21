@@ -5,6 +5,7 @@
 *********************************************************************************/
 
 using LuaInterface;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Framework
@@ -16,9 +17,8 @@ namespace Framework
         private LuaLoaderHelper loader;
         private LuaLooper loop = null;
 
-        /// <summary>
-        /// 初始化;
-        /// </summary>
+        public List<string> RequirePathList { get; private set; }
+
         protected override void OnInitialize()
         {
             InitLuaPath();
@@ -31,10 +31,9 @@ namespace Framework
         protected override void AwakeEx()
         {
             base.AwakeEx();
-            //初始化LuaMgr;
-            loader = new LuaLoaderHelper();//TODO:Lua AssetBundle的使用;
+            loader = new LuaLoaderHelper();
             lua = new LuaState();
-            this.OpenLibs();
+            OpenLibs();
             lua.LuaSetTop(0);
             LuaBinder.Bind(lua);
             DelegateFactory.Init();
@@ -72,9 +71,19 @@ namespace Framework
         /// 初始化Lua代码加载路径;
         void InitLuaPath()
         {
-            lua.AddSearchPath(LuaConst.luaDir);
-            lua.AddSearchPath(LuaConst.luaResDir);
-            lua.AddSearchPath(Application.dataPath + "/LuaFramework/Lua/NetWork");
+#if UNITY_EDITOR
+            RequirePathList = new List<string>();
+            RequirePathList.Add(LuaConst.luaDir);
+            RequirePathList.Add(LuaConst.luaResDir);
+            RequirePathList.Add(Application.dataPath + "/LuaFramework/Lua/NetWork");
+            if (!loader.beZip)
+            {
+                foreach(var path in RequirePathList)
+                {
+                    lua.AddSearchPath(path);
+                }
+            }
+#endif
         }
 
         /// 初始化LuaBundle;
@@ -82,7 +91,9 @@ namespace Framework
         {
             if (loader.beZip)
             {
-                //loader.AddBundle("lua/lua.unity3d");
+                var name = FilePathHelper.luaAssetBundleName;
+                var ab = ResourceMgr.Instance.LuaAssetBundle;
+                loader.AddSearchBundle(name, ab);
             }
         }
 

@@ -978,11 +978,11 @@ public static class ToLuaMenu
     }
 
 
-    [MenuItem("Lua/Copy Lua  files to Resources", false, 51)]
-    public static void CopyLuaFilesToRes()
+    [MenuItem("Lua/Copy Lua  files to Bundles", false, 51)]
+    public static void CopyLuaFilesToBundles()
     {
         ClearAllLuaFiles();
-        string destDir = Application.dataPath + "/Resources" + "/Lua";
+        string destDir = Application.dataPath + "/Bundles" + "/Lua";
         CopyLuaBytesFiles(LuaConst.luaDir, destDir);
         CopyLuaBytesFiles(LuaConst.toluaDir, destDir);
         AssetDatabase.Refresh();
@@ -1050,8 +1050,8 @@ public static class ToLuaMenu
 
     }
 
-    [MenuItem("Lua/Build Lua files to Resources (PC) (Lua->Lua bytecode)", false, 53)]
-    public static void BuildLuaToResources()
+    [MenuItem("Lua/Build Lua files to Bundles (PC) (Lua->Lua bytecode)", false, 53)]
+    public static void BuildLuaToBundles()
     {
         ClearAllLuaFiles();
         string tempDir = CreateStreamDir("Lua");

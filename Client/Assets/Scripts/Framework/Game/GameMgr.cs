@@ -51,9 +51,29 @@ namespace Framework
             }
         }
 
+        public static bool _assetBundleModel;
+        public static bool AssetBundleModel
+        {
+            get
+            {
+#if !UNITY_EDITOR
+                return true;
+#else
+                return _assetBundleModel;
+#endif
+            }
+            set
+            {
+#if UNITY_EDITOR
+                _assetBundleModel = value;
+#endif
+            }
+        }
+
         protected override void OnInitialize()
         {
             CheckUpdateState = false;
+
             ResourceMgr.onResourceInitAction = () =>
             {
                 ResourceMgr.onResourceInitAction = null;

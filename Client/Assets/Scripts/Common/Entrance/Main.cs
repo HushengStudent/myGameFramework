@@ -18,6 +18,10 @@ using Framework;
 
 public class Main : MonoBehaviour
 {
+
+    [SerializeField]
+    public bool AssetBundleModel = false;
+
     void Awake()
     {
         StartGame();
@@ -26,6 +30,8 @@ public class Main : MonoBehaviour
     /// 初始化游戏;
     private void StartGame()
     {
+        GameMgr.AssetBundleModel = AssetBundleModel;
+
         GameMgr.Instance.Launch();
     }
 }

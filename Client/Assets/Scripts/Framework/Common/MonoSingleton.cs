@@ -33,6 +33,7 @@ namespace Framework
                     MonoSingletoninterface singleton = _instance as MonoSingletoninterface;
                     if (singleton != null)
                     {
+                        //OnInitialize晚于Awake执行;
                         singleton.MonoSingletoninterfaceOnInitialize();
                     }
                 }
@@ -45,7 +46,7 @@ namespace Framework
         {
             if (null == _instance)
             {
-                LogHelper.PrintError("[MonoSingleton]" + (typeof(T)).ToString() + " singleton instance created.");
+                LogHelper.Print("[MonoSingleton]" + (typeof(T)).ToString() + " singleton instance created.");
             }
         }
 
