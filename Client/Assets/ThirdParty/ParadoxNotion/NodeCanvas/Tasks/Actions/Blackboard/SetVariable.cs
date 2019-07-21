@@ -1,22 +1,24 @@
 ﻿using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 
-namespace NodeCanvas.Tasks.Actions{
+namespace NodeCanvas.Tasks.Actions
+{
 
-	[Category("✫ Blackboard")]
-	public class SetVariable<T> : ActionTask {
+    [Category("✫ Blackboard")]
+    public class SetVariable<T> : ActionTask
+    {
 
-		[BlackboardOnly]
-		public BBParameter<T> valueA;
-		public BBParameter<T> valueB;
+        [BlackboardOnly]
+        public BBParameter<T> valueA;
+        public BBParameter<T> valueB;
 
-		protected override string info{
-			get {return valueA + " = " + valueB;}
-		}
+        protected override string info {
+            get { return valueA + " = " + valueB; }
+        }
 
-		protected override void OnExecute(){
-			valueA.value = valueB.value;
-			EndAction();
-		}
-	}
+        protected override void OnExecute() {
+            valueA.value = valueB.value;
+            EndAction();
+        }
+    }
 }

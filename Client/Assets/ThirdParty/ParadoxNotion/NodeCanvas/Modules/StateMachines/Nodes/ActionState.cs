@@ -3,84 +3,86 @@ using ParadoxNotion.Design;
 using UnityEngine;
 
 
-namespace NodeCanvas.StateMachines{
+namespace NodeCanvas.StateMachines
+{
 
-	[Name("Action State")]
-	[Description("Execute a number of Action Tasks OnEnter. All actions will be stoped OnExit. This state is Finished when all Actions are finished as well")]
-	public class ActionState : FSMState, ITaskAssignable{
+    [Name("Action State")]
+    [Description("Execute a number of Action Tasks OnEnter. All actions will be stoped OnExit. This state is Finished when all Actions are finished as well")]
+    public class ActionState : FSMState, ITaskAssignable
+    {
 
-		[SerializeField]
-		private ActionList _actionList;
-		[SerializeField]
-		private bool _repeatStateActions;
+        [SerializeField]
+        private ActionList _actionList;
+        [SerializeField]
+        private bool _repeatStateActions;
 
-		public Task task{
-			get {return actionList;}
-			set {actionList = (ActionList)value;}
-		}
-		
-		public ActionList actionList{
-			get { return _actionList; }
-			set { _actionList = value; }
-		}
+        public Task task {
+            get { return actionList; }
+            set { actionList = (ActionList)value; }
+        }
 
-		public bool repeatStateActions{
-			get {return _repeatStateActions;}
-			set {_repeatStateActions = value;}
-		}
+        public ActionList actionList {
+            get { return _actionList; }
+            set { _actionList = value; }
+        }
 
-		public override void OnValidate(Graph assignedGraph){
-			if (actionList == null){
-				actionList = (ActionList)Task.Create(typeof(ActionList), assignedGraph);
-				actionList.executionMode = ActionList.ActionsExecutionMode.ActionsRunInParallel;
-			}
-		}
+        public bool repeatStateActions {
+            get { return _repeatStateActions; }
+            set { _repeatStateActions = value; }
+        }
 
-		protected override void OnEnter(){ OnUpdate(); }
+        public override void OnValidate(Graph assignedGraph) {
+            if ( actionList == null ) {
+                actionList = (ActionList)Task.Create(typeof(ActionList), assignedGraph);
+                actionList.executionMode = ActionList.ActionsExecutionMode.ActionsRunInParallel;
+            }
+        }
 
-		protected override void OnUpdate(){
-			var actionListStatus = actionList.ExecuteAction(graphAgent, graphBlackboard);
-			if (!repeatStateActions && actionListStatus != Status.Running){
-				Finish(actionListStatus == Status.Success? true : false);
-			}
-		}
+        protected override void OnEnter() { OnUpdate(); }
 
-		protected override void OnExit(){
-			actionList.EndAction(null);
-		}
+        protected override void OnUpdate() {
+            var actionListStatus = actionList.ExecuteAction(graphAgent, graphBlackboard);
+            if ( !repeatStateActions && actionListStatus != Status.Running ) {
+                Finish(actionListStatus == Status.Success ? true : false);
+            }
+        }
 
-		protected override void OnPause(){
-			actionList.PauseAction();
-		}
+        protected override void OnExit() {
+            actionList.EndAction(null);
+        }
 
-		////////////////////////////////////////
-		///////////GUI AND EDITOR STUFF/////////
-		////////////////////////////////////////
-		#if UNITY_EDITOR
+        protected override void OnPause() {
+            actionList.PauseAction();
+        }
 
-		protected override void OnNodeGUI(){
-			if (repeatStateActions){
-				GUILayout.Label("<b>[REPEAT]</b>");
-			}
-			base.OnNodeGUI();
-		}
+        ////////////////////////////////////////
+        ///////////GUI AND EDITOR STUFF/////////
+        ////////////////////////////////////////
+#if UNITY_EDITOR
 
-		protected override void OnNodeInspectorGUI(){
+        protected override void OnNodeGUI() {
+            if ( repeatStateActions ) {
+                GUILayout.Label("<b>[REPEAT]</b>");
+            }
+            base.OnNodeGUI();
+        }
 
-			ShowBaseFSMInspectorGUI();
+        protected override void OnNodeInspectorGUI() {
 
-			if (actionList == null){
-				return;
-			}
+            ShowBaseFSMInspectorGUI();
 
-			EditorUtils.CoolLabel("Actions");
-			GUI.color = repeatStateActions? GUI.color : new Color(1,1,1,0.5f);
-			repeatStateActions = UnityEditor.EditorGUILayout.ToggleLeft("Repeat State Actions", repeatStateActions);
-			GUI.color = Color.white;
-			actionList.ShowListGUI();
-			actionList.ShowNestedActionsGUI();
-		}
+            if ( actionList == null ) {
+                return;
+            }
 
-		#endif
-	}
+            EditorUtils.CoolLabel("Actions");
+            GUI.color = repeatStateActions ? GUI.color : new Color(1, 1, 1, 0.5f);
+            repeatStateActions = UnityEditor.EditorGUILayout.ToggleLeft("Repeat State Actions", repeatStateActions);
+            GUI.color = Color.white;
+            actionList.ShowListGUI();
+            actionList.ShowNestedActionsGUI();
+        }
+
+#endif
+    }
 }

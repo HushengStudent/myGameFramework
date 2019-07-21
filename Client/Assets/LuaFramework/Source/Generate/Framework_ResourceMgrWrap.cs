@@ -21,6 +21,8 @@ public class Framework_ResourceMgrWrap
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("MAX_LOAD_TIME", get_MAX_LOAD_TIME, null);
+		L.RegVar("LOAD_BUNDLE_PRECENT", get_LOAD_BUNDLE_PRECENT, null);
+		L.RegVar("LOAD_ASSET_PRECENT", get_LOAD_ASSET_PRECENT, null);
 		L.RegVar("onResourceInitAction", get_onResourceInitAction, set_onResourceInitAction);
 		L.EndClass();
 	}
@@ -374,6 +376,50 @@ public class Framework_ResourceMgrWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o, "attempt to index MAX_LOAD_TIME on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_LOAD_BUNDLE_PRECENT(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.LOAD_BUNDLE_PRECENT");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			Framework.ResourceMgr obj = (Framework.ResourceMgr)o;
+			float ret = obj.LOAD_BUNDLE_PRECENT;
+			LuaDLL.lua_pushnumber(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index LOAD_BUNDLE_PRECENT on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_LOAD_ASSET_PRECENT(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.LOAD_ASSET_PRECENT");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			Framework.ResourceMgr obj = (Framework.ResourceMgr)o;
+			float ret = obj.LOAD_ASSET_PRECENT;
+			LuaDLL.lua_pushnumber(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index LOAD_ASSET_PRECENT on a nil value");
 		}
 	}
 

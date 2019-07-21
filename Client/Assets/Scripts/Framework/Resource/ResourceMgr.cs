@@ -28,9 +28,7 @@ namespace Framework
             UpdateProxy();
         }
 
-        /// <summary>
         /// 初始化Shader;
-        /// </summary>
         private void InitShader()
         {
             //Shader初始化;
@@ -48,9 +46,7 @@ namespace Framework
             AssetBundleMgr.Instance.UnloadMirroring(FilePathHelper.shaderAssetBundleName);
         }
 
-        /// <summary>
         /// 初始化Lua;
-        /// </summary>
         private void InitLua()
         {
             //Lua初始化;

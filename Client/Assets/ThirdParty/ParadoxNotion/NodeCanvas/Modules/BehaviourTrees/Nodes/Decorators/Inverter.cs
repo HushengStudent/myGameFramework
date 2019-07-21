@@ -3,30 +3,31 @@ using ParadoxNotion.Design;
 using UnityEngine;
 
 
-namespace NodeCanvas.BehaviourTrees{
+namespace NodeCanvas.BehaviourTrees
+{
 
-	[Name("Invert")]
-	[Category("Decorators")]
-	[Description("Inverts Success to Failure and Failure to Success")]
-	[Icon("Remap")]
-	public class Inverter : BTDecorator {
+    [Name("Invert")]
+    [Category("Decorators")]
+    [Description("Inverts Success to Failure and Failure to Success")]
+    [Icon("Remap")]
+    public class Inverter : BTDecorator
+    {
 
-		protected override Status OnExecute(Component agent, IBlackboard blackboard){
+        protected override Status OnExecute(Component agent, IBlackboard blackboard) {
 
-			if (decoratedConnection == null)
-				return Status.Resting;
+            if ( decoratedConnection == null )
+                return Status.Optional;
 
-			status = decoratedConnection.Execute(agent, blackboard);
-			
-			switch(status)
-            {
-			    case Status.Success:
-			        return Status.Failure;
-			    case Status.Failure:
-			        return Status.Success;
-			}
+            status = decoratedConnection.Execute(agent, blackboard);
 
-		    return status;
-		}
-	}
+            switch ( status ) {
+                case Status.Success:
+                    return Status.Failure;
+                case Status.Failure:
+                    return Status.Success;
+            }
+
+            return status;
+        }
+    }
 }

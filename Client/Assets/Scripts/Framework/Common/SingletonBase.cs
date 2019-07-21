@@ -19,8 +19,8 @@ namespace Framework
 
     public class SingletonBase : Singletoninterface
     {
-        private onInitializeFinishedHandler _onInitializeFinishedHandler = delegate { };
-        private onUninitializeStartHandler _onUninitializeStartHandler = delegate { };
+        public onInitializeFinishedHandler _onInitializeFinishedHandler = delegate { };
+        public onUninitializeStartHandler _onUninitializeStartHandler = delegate { };
 
         private bool isInit = false;
         private bool isUninit = false;
@@ -55,22 +55,5 @@ namespace Framework
 
         protected virtual void OnInitialize() { }
         protected virtual void OnUninitialize() { }
-
-        public void RegisterOnInitialize(onInitializeFinishedHandler handler)
-        {
-            _onInitializeFinishedHandler += handler;
-        }
-        public void UnRegisterOnInitialize(onInitializeFinishedHandler handler)
-        {
-            _onInitializeFinishedHandler -= handler;
-        }
-        public void RegisterOnUninitialize(onUninitializeStartHandler handler)
-        {
-            _onUninitializeStartHandler += handler;
-        }
-        public void UnRegisterOnUninitialize(onUninitializeStartHandler handler)
-        {
-            _onUninitializeStartHandler -= handler;
-        }
     }
 }

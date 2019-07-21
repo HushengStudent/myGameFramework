@@ -87,7 +87,7 @@ namespace Framework
             .AppendLine("end")
             .AppendLine(" ")
 
-            .AppendLine("-----------------------------beautiful line-----------------------------")
+            .AppendLine("-----------------------------///beautiful line///-----------------------------")
 
             .AppendLine(" ")
             .AppendLine(" ")

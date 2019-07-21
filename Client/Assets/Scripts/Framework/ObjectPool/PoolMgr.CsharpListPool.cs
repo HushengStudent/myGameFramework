@@ -59,11 +59,7 @@ namespace Framework
             pool.Release(list);
         }
 
-        /// <summary>
         /// 创建对象池;
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
         private CsharpListPool<T> CreateCsharpListPool<T>()
         {
             Object temp;

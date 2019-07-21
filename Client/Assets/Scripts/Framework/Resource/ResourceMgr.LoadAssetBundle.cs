@@ -102,16 +102,7 @@ namespace Framework
             return proxy;
         }
 
-        /// <summary>
         /// Asset async load from AssetBundle;
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="assetType"></param>
-        /// <param name="path"></param>
-        /// <param name="proxy"></param>
-        /// <param name="action"></param>
-        /// <param name="progress"></param>
-        /// <returns></returns>
         private IEnumerator<float> LoadFromFileAsync(string path, AssetBundleAssetProxy proxy
             , Action<float> progress)
         {

@@ -3,27 +3,29 @@ using ParadoxNotion.Design;
 using UnityEngine;
 
 
-namespace NodeCanvas.Tasks.Actions{
+namespace NodeCanvas.Tasks.Actions
+{
 
-	[Name("Set IK")]
-	[Category("Animator")]
-	[EventReceiver("OnAnimatorIK")]
-	public class MecanimSetIK : ActionTask<Animator> {
+    [Name("Set IK")]
+    [Category("Animator")]
+    [EventReceiver("OnAnimatorIK")]
+    public class MecanimSetIK : ActionTask<Animator>
+    {
 
-		public AvatarIKGoal IKGoal;
-		[RequiredField]
-		public BBParameter<GameObject> goal;
-		public BBParameter<float> weight;
+        public AvatarIKGoal IKGoal;
+        [RequiredField]
+        public BBParameter<GameObject> goal;
+        public BBParameter<float> weight;
 
-		protected override string info{
-			get{return "Set '" + IKGoal + "' " + goal;}
-		}
+        protected override string info {
+            get { return "Set '" + IKGoal + "' " + goal; }
+        }
 
-		public void OnAnimatorIK(){
+        public void OnAnimatorIK() {
 
-			agent.SetIKPositionWeight(IKGoal, weight.value);
-			agent.SetIKPosition(IKGoal, goal.value.transform.position);
-			EndAction();
-		}
-	}
+            agent.SetIKPositionWeight(IKGoal, weight.value);
+            agent.SetIKPosition(IKGoal, goal.value.transform.position);
+            EndAction();
+        }
+    }
 }

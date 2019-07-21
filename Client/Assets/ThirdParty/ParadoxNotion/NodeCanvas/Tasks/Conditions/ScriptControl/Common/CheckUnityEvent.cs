@@ -7,283 +7,287 @@ using ParadoxNotion.Design;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace NodeCanvas.Tasks.Conditions{
+namespace NodeCanvas.Tasks.Conditions
+{
 
-	[Category("✫ Script Control/Common")]
-	[Description("Will subscribe to a public UnityEvent and return true when that event is raised.")]
-	public class CheckUnityEvent : ConditionTask {
+    [Category("✫ Script Control/Common")]
+    [Description("Will subscribe to a public UnityEvent and return true when that event is raised.")]
+    public class CheckUnityEvent : ConditionTask
+    {
 
-		[SerializeField]
-		private System.Type targetType = null;
-		[SerializeField]
-		private string eventName = null;
+        [SerializeField]
+        private System.Type targetType = null;
+        [SerializeField]
+        private string eventName = null;
 
-		public override Type agentType{
-			get {return targetType ?? typeof(Transform);}
-		}
-		
-		protected override string info{
-			get
-			{
-				if (string.IsNullOrEmpty(eventName)){
-					return "No Event Selected";
-				}
-				return string.Format("'{0}' Raised", eventName);
-			}
-		}
+        public override Type agentType {
+            get { return targetType ?? typeof(Transform); }
+        }
 
-
-		protected override string OnInit(){
-			
-			if (eventName == null){
-				return "No Event Selected";
-			}
-
-			var eventField = agentType.RTGetField(eventName);
-			if (eventField == null){
-				return "Event was not found";
-			}
-			var unityEvent = (UnityEvent)eventField.GetValue(agent);
-			unityEvent.AddListener(Raised);
-			return null;
-		}
-
-		public void Raised(){
-			YieldReturn(true);
-		}
-
-		protected override bool OnCheck(){
-			return false;
-		}
-
-		////////////////////////////////////////
-		///////////GUI AND EDITOR STUFF/////////
-		////////////////////////////////////////
-		#if UNITY_EDITOR
-		
-		protected override void OnTaskInspectorGUI(){
-
-			if (!Application.isPlaying && GUILayout.Button("Select Event")){
-				Action<FieldInfo> Selected = (f)=> {
-					targetType = f.DeclaringType;
-					eventName = f.Name;
-				};
-
-				var menu = new UnityEditor.GenericMenu();
-				if (agent != null){
-					foreach(var comp in agent.GetComponents(typeof(Component)).Where(c => c.hideFlags == 0) ){
-						menu = EditorUtils.GetInstanceFieldSelectionMenu(comp.GetType(), typeof(UnityEvent), Selected, menu);
-					}
-					menu.AddSeparator("/");
-				}
-				foreach (var t in UserTypePrefs.GetPreferedTypesList(typeof(Component))){
-					menu = EditorUtils.GetInstanceFieldSelectionMenu(t, typeof(UnityEvent), Selected, menu);
-				}
-
-				if ( NodeCanvas.Editor.NCPrefs.useBrowser){ menu.ShowAsBrowser("Select Event", this.GetType()); }
-				else { menu.ShowAsContext(); }
-				Event.current.Use();
-			}
-
-			if (targetType != null){
-				GUILayout.BeginVertical("box");
-				UnityEditor.EditorGUILayout.LabelField("Selected Type", agentType.FriendlyName());
-				UnityEditor.EditorGUILayout.LabelField("Selected Event", eventName);
-				GUILayout.EndVertical();
-			}
-		}
-		
-		#endif
-	}
+        protected override string info {
+            get
+            {
+                if ( string.IsNullOrEmpty(eventName) ) {
+                    return "No Event Selected";
+                }
+                return string.Format("'{0}' Raised", eventName);
+            }
+        }
 
 
-	[Category("✫ Script Control/Common")]
-	[Description("Will subscribe to a public UnityEvent<T> and return true when that event is raised.")]
-	public class CheckUnityEvent<T> : ConditionTask {
+        protected override string OnInit() {
 
-		[SerializeField]
-		private System.Type targetType = null;
-		[SerializeField]
-		private string eventName = null;
-		[SerializeField]
-		private BBParameter<T> saveAs = null;
+            if ( eventName == null ) {
+                return "No Event Selected";
+            }
 
-		public override Type agentType{
-			get {return targetType ?? typeof(Transform);}
-		}
-		
-		protected override string info{
-			get
-			{
-				if (string.IsNullOrEmpty(eventName)){
-					return "No Event Selected";
-				}
-				return string.Format("'{0}' Raised", eventName);
-			}
-		}
+            var eventField = agentType.RTGetField(eventName);
+            if ( eventField == null ) {
+                return "Event was not found";
+            }
+            var unityEvent = (UnityEvent)eventField.GetValue(agent);
+            unityEvent.AddListener(Raised);
+            return null;
+        }
 
+        public void Raised() {
+            YieldReturn(true);
+        }
 
-		protected override string OnInit(){
+        protected override bool OnCheck() {
+            return false;
+        }
 
-			if (eventName == null){
-				return "No Event Selected";
-			}
+        ////////////////////////////////////////
+        ///////////GUI AND EDITOR STUFF/////////
+        ////////////////////////////////////////
+#if UNITY_EDITOR
 
-			var eventField = agentType.RTGetField(eventName);
-			if (eventField == null){
-				return "Event was not found";
-			}
+        protected override void OnTaskInspectorGUI() {
 
-			var unityEvent = (UnityEvent<T>)eventField.GetValue(agent);
-			unityEvent.AddListener(Raised);
-			return null;
-		}
+            if ( !Application.isPlaying && GUILayout.Button("Select Event") ) {
+                Action<FieldInfo> Selected = (f) =>
+                {
+                    targetType = f.DeclaringType;
+                    eventName = f.Name;
+                };
 
-		public void Raised(T eventValue){
-			saveAs.value = eventValue;
-			YieldReturn(true);
-		}
+                var menu = new UnityEditor.GenericMenu();
+                if ( agent != null ) {
+                    foreach ( var comp in agent.GetComponents(typeof(Component)).Where(c => c.hideFlags == 0) ) {
+                        menu = EditorUtils.GetInstanceFieldSelectionMenu(comp.GetType(), typeof(UnityEvent), Selected, menu);
+                    }
+                    menu.AddSeparator("/");
+                }
+                foreach ( var t in TypePrefs.GetPreferedTypesList(typeof(Component)) ) {
+                    menu = EditorUtils.GetInstanceFieldSelectionMenu(t, typeof(UnityEvent), Selected, menu);
+                }
 
-		protected override bool OnCheck(){
-			return false;
-		}
+                menu.ShowAsBrowser("Select Event", this.GetType());
+                Event.current.Use();
+            }
 
-		////////////////////////////////////////
-		///////////GUI AND EDITOR STUFF/////////
-		////////////////////////////////////////
-		#if UNITY_EDITOR
-		
-		protected override void OnTaskInspectorGUI(){
+            if ( targetType != null ) {
+                GUILayout.BeginVertical("box");
+                UnityEditor.EditorGUILayout.LabelField("Selected Type", agentType.FriendlyName());
+                UnityEditor.EditorGUILayout.LabelField("Selected Event", eventName);
+                GUILayout.EndVertical();
+            }
+        }
 
-			if (!Application.isPlaying && GUILayout.Button("Select Event")){
-				Action<FieldInfo> Selected = (f)=> {
-					targetType = f.DeclaringType;
-					eventName = f.Name;
-				};
-
-				var menu = new UnityEditor.GenericMenu();
-				if (agent != null){
-					foreach(var comp in agent.GetComponents(typeof(Component)).Where(c => c.hideFlags == 0) ){
-						menu = EditorUtils.GetInstanceFieldSelectionMenu(comp.GetType(), typeof(UnityEvent<T>), Selected, menu);
-					}
-					menu.AddSeparator("/");
-				}
-				foreach (var t in UserTypePrefs.GetPreferedTypesList(typeof(Component))){
-					menu = EditorUtils.GetInstanceFieldSelectionMenu(t, typeof(UnityEvent<T>), Selected, menu);
-				}
-
-				if ( NodeCanvas.Editor.NCPrefs.useBrowser){ menu.ShowAsBrowser("Select Event", this.GetType()); }
-				else { menu.ShowAsContext(); }
-				Event.current.Use();
-			}
-
-			if (targetType != null){
-				GUILayout.BeginVertical("box");
-				UnityEditor.EditorGUILayout.LabelField("Selected Type", agentType.FriendlyName());
-				UnityEditor.EditorGUILayout.LabelField("Selected Event", eventName);
-				GUILayout.EndVertical();
-
-				NodeCanvas.Editor.BBParameterEditor.ParameterField("Save Value As", saveAs, true);
-			}
-		}
-		
-		#endif
-	}
+#endif
+    }
 
 
+    [Category("✫ Script Control/Common")]
+    [Description("Will subscribe to a public UnityEvent<T> and return true when that event is raised.")]
+    public class CheckUnityEvent<T> : ConditionTask
+    {
 
-	[Category("✫ Script Control/Common")]
-	[Description("Will subscribe to a public UnityEvent<T> and return true when that event is raised and it's value is equal to provided value as well.")]
-	public class CheckUnityEventValue<T> : ConditionTask {
+        [SerializeField]
+        private System.Type targetType = null;
+        [SerializeField]
+        private string eventName = null;
+        [SerializeField]
+        private BBParameter<T> saveAs = null;
 
-		[SerializeField]
-		private System.Type targetType = null;
-		[SerializeField]
-		private string eventName = null;
-		[SerializeField]
-		private BBParameter<T> checkValue = null;
+        public override Type agentType {
+            get { return targetType ?? typeof(Transform); }
+        }
 
-		public override Type agentType{
-			get {return targetType ?? typeof(Transform);}
-		}
-		
-		protected override string info{
-			get
-			{
-				if (string.IsNullOrEmpty(eventName)){
-					return "No Event Selected";
-				}
-				return string.Format("'{0}' Raised && Value == {1}", eventName, checkValue);
-			}
-		}
+        protected override string info {
+            get
+            {
+                if ( string.IsNullOrEmpty(eventName) ) {
+                    return "No Event Selected";
+                }
+                return string.Format("'{0}' Raised", eventName);
+            }
+        }
 
 
-		protected override string OnInit(){
+        protected override string OnInit() {
 
-			if (eventName == null){
-				return "No Event Selected";			
-			}
+            if ( eventName == null ) {
+                return "No Event Selected";
+            }
 
-			var eventField = agentType.RTGetField(eventName);
-			if (eventField == null){
-				return "Event was not found";
-			}
+            var eventField = agentType.RTGetField(eventName);
+            if ( eventField == null ) {
+                return "Event was not found";
+            }
 
-			var unityEvent = (UnityEvent<T>)eventField.GetValue(agent);
-			unityEvent.AddListener(Raised);
-			return null;
-		}
+            var unityEvent = (UnityEvent<T>)eventField.GetValue(agent);
+            unityEvent.AddListener(Raised);
+            return null;
+        }
 
-		public void Raised(T eventValue){
-			if (Equals(checkValue.value, eventValue)){
-				YieldReturn(true);
-			}
-		}
+        public void Raised(T eventValue) {
+            saveAs.value = eventValue;
+            YieldReturn(true);
+        }
 
-		protected override bool OnCheck(){
-			return false;
-		}
+        protected override bool OnCheck() {
+            return false;
+        }
 
-		////////////////////////////////////////
-		///////////GUI AND EDITOR STUFF/////////
-		////////////////////////////////////////
-		#if UNITY_EDITOR
-		
-		protected override void OnTaskInspectorGUI(){
+        ////////////////////////////////////////
+        ///////////GUI AND EDITOR STUFF/////////
+        ////////////////////////////////////////
+#if UNITY_EDITOR
 
-			if (!Application.isPlaying && GUILayout.Button("Select Event")){
-				Action<FieldInfo> Selected = (f)=> {
-					targetType = f.DeclaringType;
-					eventName = f.Name;
-				};
+        protected override void OnTaskInspectorGUI() {
 
-				var menu = new UnityEditor.GenericMenu();
-				if (agent != null){
-					foreach(var comp in agent.GetComponents(typeof(Component)).Where(c => c.hideFlags == 0) ){
-						menu = EditorUtils.GetInstanceFieldSelectionMenu(comp.GetType(), typeof(UnityEvent<T>), Selected, menu);
-					}
-					menu.AddSeparator("/");
-				}
-				foreach (var t in UserTypePrefs.GetPreferedTypesList(typeof(Component))){
-					menu = EditorUtils.GetInstanceFieldSelectionMenu(t, typeof(UnityEvent<T>), Selected, menu);
-				}
+            if ( !Application.isPlaying && GUILayout.Button("Select Event") ) {
+                Action<FieldInfo> Selected = (f) =>
+                {
+                    targetType = f.DeclaringType;
+                    eventName = f.Name;
+                };
 
-				if ( NodeCanvas.Editor.NCPrefs.useBrowser){ menu.ShowAsBrowser("Select Event", this.GetType()); }
-				else { menu.ShowAsContext(); }
-				Event.current.Use();
-			}
+                var menu = new UnityEditor.GenericMenu();
+                if ( agent != null ) {
+                    foreach ( var comp in agent.GetComponents(typeof(Component)).Where(c => c.hideFlags == 0) ) {
+                        menu = EditorUtils.GetInstanceFieldSelectionMenu(comp.GetType(), typeof(UnityEvent<T>), Selected, menu);
+                    }
+                    menu.AddSeparator("/");
+                }
+                foreach ( var t in TypePrefs.GetPreferedTypesList(typeof(Component)) ) {
+                    menu = EditorUtils.GetInstanceFieldSelectionMenu(t, typeof(UnityEvent<T>), Selected, menu);
+                }
 
-			if (targetType != null){
-				GUILayout.BeginVertical("box");
-				UnityEditor.EditorGUILayout.LabelField("Selected Type", agentType.FriendlyName());
-				UnityEditor.EditorGUILayout.LabelField("Selected Event", eventName);
-				GUILayout.EndVertical();
+                menu.ShowAsBrowser("Select Event", this.GetType());
+                Event.current.Use();
+            }
 
-				NodeCanvas.Editor.BBParameterEditor.ParameterField("Check Value", checkValue);
-			}
-		}
-		
-		#endif
-	}
+            if ( targetType != null ) {
+                GUILayout.BeginVertical("box");
+                UnityEditor.EditorGUILayout.LabelField("Selected Type", agentType.FriendlyName());
+                UnityEditor.EditorGUILayout.LabelField("Selected Event", eventName);
+                GUILayout.EndVertical();
+
+                NodeCanvas.Editor.BBParameterEditor.ParameterField("Save Value As", saveAs, true);
+            }
+        }
+
+#endif
+    }
+
+
+
+    [Category("✫ Script Control/Common")]
+    [Description("Will subscribe to a public UnityEvent<T> and return true when that event is raised and it's value is equal to provided value as well.")]
+    public class CheckUnityEventValue<T> : ConditionTask
+    {
+
+        [SerializeField]
+        private System.Type targetType = null;
+        [SerializeField]
+        private string eventName = null;
+        [SerializeField]
+        private BBParameter<T> checkValue = null;
+
+        public override Type agentType {
+            get { return targetType ?? typeof(Transform); }
+        }
+
+        protected override string info {
+            get
+            {
+                if ( string.IsNullOrEmpty(eventName) ) {
+                    return "No Event Selected";
+                }
+                return string.Format("'{0}' Raised && Value == {1}", eventName, checkValue);
+            }
+        }
+
+
+        protected override string OnInit() {
+
+            if ( eventName == null ) {
+                return "No Event Selected";
+            }
+
+            var eventField = agentType.RTGetField(eventName);
+            if ( eventField == null ) {
+                return "Event was not found";
+            }
+
+            var unityEvent = (UnityEvent<T>)eventField.GetValue(agent);
+            unityEvent.AddListener(Raised);
+            return null;
+        }
+
+        public void Raised(T eventValue) {
+            if ( ObjectUtils.TrueEquals(checkValue.value, eventValue) ) {
+                YieldReturn(true);
+            }
+        }
+
+        protected override bool OnCheck() {
+            return false;
+        }
+
+        ////////////////////////////////////////
+        ///////////GUI AND EDITOR STUFF/////////
+        ////////////////////////////////////////
+#if UNITY_EDITOR
+
+        protected override void OnTaskInspectorGUI() {
+
+            if ( !Application.isPlaying && GUILayout.Button("Select Event") ) {
+                Action<FieldInfo> Selected = (f) =>
+                {
+                    targetType = f.DeclaringType;
+                    eventName = f.Name;
+                };
+
+                var menu = new UnityEditor.GenericMenu();
+                if ( agent != null ) {
+                    foreach ( var comp in agent.GetComponents(typeof(Component)).Where(c => c.hideFlags == 0) ) {
+                        menu = EditorUtils.GetInstanceFieldSelectionMenu(comp.GetType(), typeof(UnityEvent<T>), Selected, menu);
+                    }
+                    menu.AddSeparator("/");
+                }
+                foreach ( var t in TypePrefs.GetPreferedTypesList(typeof(Component)) ) {
+                    menu = EditorUtils.GetInstanceFieldSelectionMenu(t, typeof(UnityEvent<T>), Selected, menu);
+                }
+
+                menu.ShowAsBrowser("Select Event", this.GetType());
+                Event.current.Use();
+            }
+
+            if ( targetType != null ) {
+                GUILayout.BeginVertical("box");
+                UnityEditor.EditorGUILayout.LabelField("Selected Type", agentType.FriendlyName());
+                UnityEditor.EditorGUILayout.LabelField("Selected Event", eventName);
+                GUILayout.EndVertical();
+
+                NodeCanvas.Editor.BBParameterEditor.ParameterField("Check Value", checkValue);
+            }
+        }
+
+#endif
+    }
 
 }

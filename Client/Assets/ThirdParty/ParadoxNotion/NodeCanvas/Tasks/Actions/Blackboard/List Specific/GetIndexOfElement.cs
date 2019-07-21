@@ -2,20 +2,23 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 
-namespace NodeCanvas.Tasks.Actions{
+namespace NodeCanvas.Tasks.Actions
+{
 
-	[Category("✫ Blackboard/Lists")]
-	public class GetIndexOfElement<T> : ActionTask{
-		[RequiredField] [BlackboardOnly]
-		public BBParameter<List<T>> targetList;
-		public BBParameter<T> targetElement;
-		[BlackboardOnly]
+    [Category("✫ Blackboard/Lists")]
+    public class GetIndexOfElement<T> : ActionTask
+    {
+        [RequiredField]
+        [BlackboardOnly]
+        public BBParameter<List<T>> targetList;
+        public BBParameter<T> targetElement;
+        [BlackboardOnly]
         public BBParameter<int> saveIndexAs;
 
-		protected override void OnExecute(){
+        protected override void OnExecute() {
 
-			saveIndexAs.value = targetList.value.IndexOf(targetElement.value);
-			EndAction(true);
-		}
-	}
+            saveIndexAs.value = targetList.value.IndexOf(targetElement.value);
+            EndAction(true);
+        }
+    }
 }

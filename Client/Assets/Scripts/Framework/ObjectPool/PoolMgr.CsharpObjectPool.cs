@@ -65,11 +65,7 @@ namespace Framework
             pool.Release(type);
         }
 
-        /// <summary>
         /// 创建Csharp对象池;
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
         private CsharpObjectPool<T> CreateCsharpPool<T>() where T : new()
         {
             Object temp;

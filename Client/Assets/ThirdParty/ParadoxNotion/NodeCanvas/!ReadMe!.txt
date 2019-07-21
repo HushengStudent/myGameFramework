@@ -1,16 +1,16 @@
 -------------------------------------------------------------
-AOT PLATFORMS (eg iOS, xBox)
+QUICK START
 -------------------------------------------------------------
-To make NodeCanvas work with these platforms, please open "Tools/ParadoxNotion/NodeCanvas/Preferred Types Editor".
-Then press the "Generate AOTClasses and link.xml Files" button in there to automaticaly create the required files.
-All *struct* types with which you are working with within NodeCanvas, should be in that list before generating the file.
-You can of course re-generate the file any time you wish.
-
+1. To get started, all you have to do is add either 'BehaviourTreeOwner', or 'FSMOwner' component on the gameobject you want to control.
+2. Press 'Create New' in the inspector of that added component.
+3. Select 'Bound' in the dialog box that will pop up.
+4. The editor is now open. You can start creating your Behaviour Tree, or FSM!
+(For the Dialogue Tree System, add the 'DialogueTreeController' on a preferrably empty gameobject)
 
 -------------------------------------------------------------
 FULL DOCUMENTATION
 -------------------------------------------------------------
-You can find the full documentation online at:
+For the Full Documentation please visit:
 http://nodecanvas.paradoxnotion.com/documentation/
 
 
@@ -24,7 +24,7 @@ http://nodecanvas.paradoxnotion.com/change-log/
 -------------------------------------------------------------
 RESOURCES
 -------------------------------------------------------------
-You can download example demo scenes, 3rd party integration extensions as well as other resources, online at:
+For 3rd Party Integrations, Examples, and other Resources:
 http://nodecanvas.paradoxnotion.com/downloads/
 
 
@@ -33,15 +33,17 @@ UPDATING
 -------------------------------------------------------------
 To update NodeCanvas you should preferrably:
 - Backup your project.
-- Remove previous NodeCanvas folder.
+- Remove previous "ParadoxNotion/CanvasCore" and "ParadoxNotion/NodeCanvas" folders.
 - Re-import NodeCanvas package anew.
 
 
 -------------------------------------------------------------
-USING WITH FLOWCANVAS
+AOT PLATFORMS (eg iOS, xBox)
 -------------------------------------------------------------
-If you have both NodeCanvas and FlowCanvas in your project and considering you are getting a compile error, please do the following:
-- Locate and delete the sub-folder named "Framework" either in 'NodeCanvas', or in 'FlowCanvas' main folder.
+To make NodeCanvas work with these platforms, please open "Tools/ParadoxNotion/NodeCanvas/Preferred Types Editor".
+Then press the "Generate AOTClasses and link.xml Files" button in there to automaticaly create the required files.
+All *struct* types with which you are working with within NodeCanvas, should be in that list before generating the file.
+You can of course re-generate the file any time you wish.
 
 
 -------------------------------------------------------------

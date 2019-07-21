@@ -170,11 +170,7 @@ namespace Framework
 
         #region Sync Load
 
-        /// <summary>
         /// 单个AssetBundle同步加载;
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
         private AssetBundle LoadSync(string path)
         {
             if (string.IsNullOrEmpty(path))
@@ -253,13 +249,7 @@ namespace Framework
 
         #region Async Load
 
-        /// <summary>
         /// AssetBundle异步加载LoadFromFileAsync,www异步加载消耗大于LoadFromFileAsync;
-        /// </summary>
-        /// <param name="path"></param>
-        /// <param name="action"></param>
-        /// <param name="progress"></param>
-        /// <returns></returns>
         private IEnumerator<float> LoadAsync(string path, Action<AssetBundle> action, Action<float> progress)
         {
             if (string.IsNullOrEmpty(path))
@@ -446,11 +436,7 @@ namespace Framework
             }
         }
 
-        /// <summary>
         /// 卸载AssetBundle资源;
-        /// </summary>
-        /// <param name="path"></param>
-        /// <param name="flag"></param>
         private void UnloadAsset(string path, bool flag)
         {
             int Count = 0;

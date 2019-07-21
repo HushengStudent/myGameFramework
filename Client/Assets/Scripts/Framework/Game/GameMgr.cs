@@ -79,7 +79,7 @@ namespace Framework
             //DebugMgr.Instance.Init();         //Debug工具初始化;
 #endif
             EventMgr.Instance.Launch();         //事件系统初始化;
-            UIEventMgr<int>.Init();           //UI事件系统初始化;
+            UIEventMgr<int>.Init();             //UI事件系统初始化;
             SdkMgr.Instance.Launch();           //平台初始化;
             TimerMgr.Instance.Launch();         //定时器初始化;
             ComponentMgr.Instance.Launch();     //组件初始化;

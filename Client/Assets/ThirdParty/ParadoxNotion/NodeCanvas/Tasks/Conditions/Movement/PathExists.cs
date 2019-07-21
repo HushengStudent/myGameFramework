@@ -10,21 +10,23 @@ using NavMeshPath = UnityEngine.AI.NavMeshPath;
 using NavMeshPathStatus = UnityEngine.AI.NavMeshPathStatus;
 #endif
 
-namespace NodeCanvas.Tasks.Conditions{
+namespace NodeCanvas.Tasks.Conditions
+{
 
-	[Category("Movement")]
-	[Description("Check if a path exists for the agent and optionaly save the resulting path positions")]
-	public class PathExists : ConditionTask<NavMeshAgent> {
+    [Category("Movement")]
+    [Description("Check if a path exists for the agent and optionaly save the resulting path positions")]
+    public class PathExists : ConditionTask<NavMeshAgent>
+    {
 
-		public BBParameter<Vector3> targetPosition;
-		[BlackboardOnly]
-		public BBParameter<List<Vector3>> savePathAs;
+        public BBParameter<Vector3> targetPosition;
+        [BlackboardOnly]
+        public BBParameter<List<Vector3>> savePathAs;
 
-		protected override bool OnCheck(){
-			var path = new NavMeshPath();
-			agent.CalculatePath(targetPosition.value, path);
-			savePathAs.value = path.corners.ToList();
-			return path.status == NavMeshPathStatus.PathComplete;
-		}
-	}
+        protected override bool OnCheck() {
+            var path = new NavMeshPath();
+            agent.CalculatePath(targetPosition.value, path);
+            savePathAs.value = path.corners.ToList();
+            return path.status == NavMeshPathStatus.PathComplete;
+        }
+    }
 }

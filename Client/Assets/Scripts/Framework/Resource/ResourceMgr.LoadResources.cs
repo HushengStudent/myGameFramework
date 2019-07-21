@@ -74,13 +74,7 @@ namespace Framework
             return proxy;
         }
 
-        /// <summary>
         /// Resource异步加载;
-        /// </summary>
-        /// <param name="path"></param>
-        /// <param name="proxy"></param>
-        /// <param name="progress"></param>
-        /// <returns></returns>
         private IEnumerator<float> LoadAsync(string path, ResourceAssetProxy proxy, Action<float> progress)
         {
             if (string.IsNullOrEmpty(path))

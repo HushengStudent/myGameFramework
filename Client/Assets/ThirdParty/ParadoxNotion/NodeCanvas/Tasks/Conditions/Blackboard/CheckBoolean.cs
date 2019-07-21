@@ -2,22 +2,24 @@
 using ParadoxNotion.Design;
 
 
-namespace NodeCanvas.Tasks.Conditions{
+namespace NodeCanvas.Tasks.Conditions
+{
 
-	[Category("✫ Blackboard")]
-	public class CheckBoolean : ConditionTask{
+    [Category("✫ Blackboard")]
+    public class CheckBoolean : ConditionTask
+    {
 
-		[BlackboardOnly]
-		public BBParameter<bool> valueA;
-		public BBParameter<bool> valueB = true;
+        [BlackboardOnly]
+        public BBParameter<bool> valueA;
+        public BBParameter<bool> valueB = true;
 
-		protected override string info{
-			get {return valueA + " == " + valueB;}
-		}
+        protected override string info {
+            get { return valueA + " == " + valueB; }
+        }
 
-		protected override bool OnCheck(){
+        protected override bool OnCheck() {
 
-			return valueA.value == valueB.value;
-		}
-	}
+            return valueA.value == valueB.value;
+        }
+    }
 }

@@ -33,24 +33,75 @@ namespace Framework
             {
                 int fileCount = RecursiveFile(filePath);
                 int finishCount = 0;
-                FastZipEvents events = new FastZipEvents();
-                events.Progress = new ProgressHandler((object sender, ProgressEventArgs e) =>
+                FastZipEvents events = new FastZipEvents
                 {
-                    progress = e.PercentComplete;
-                    if (progress == 100)
+                    Progress = new ProgressHandler((object sender, ProgressEventArgs e) =>
                     {
-                        finishCount++;
-                        compressProgress = (float)finishCount / (float)fileCount;
-                        if (action != null)
+                        progress = e.PercentComplete;
+                        if (progress == 100)
                         {
-                            action(compressProgress);
+                            finishCount++;
+                            compressProgress = finishCount / (float)fileCount;
+                            if (action != null)
+                            {
+                                action(compressProgress);
+                            }
                         }
-                    }
-                });
-                events.ProgressInterval = TimeSpan.FromSeconds(_progressInterval);
-                events.ProcessFile = new ProcessFileHandler((object sender, ScanEventArgs e) => { });
+                    }),
+                    ProgressInterval = TimeSpan.FromSeconds(_progressInterval),
+                    ProcessFile = new ProcessFileHandler((object sender, ScanEventArgs e) => { })
+                };
                 FastZip zip = new FastZip(events);
                 zip.CreateZip(zipFile, filePath, true, "");
+            })
+            {
+                IsBackground = true
+            };
+            thread.Start();
+            return zipFile;
+        }
+
+        public static string CompressStream(string filePath, string outPath, string fileName, Action<float> action)
+        {
+            var compressProgress = 0f;
+            var progress = 0f;
+            string zipFile = outPath + "/" + fileName + ".zip";
+            if (!Directory.Exists(outPath))
+            {
+                Directory.CreateDirectory(outPath);
+            }
+            if (File.Exists(zipFile))
+            {
+                File.Delete(zipFile);
+            }
+            Thread thread = new Thread(delegate ()
+            {
+                int fileCount = RecursiveFile(filePath);
+                int finishCount = 0;
+                FastZipEvents events = new FastZipEvents
+                {
+                    Progress = new ProgressHandler((object sender, ProgressEventArgs e) =>
+                    {
+                        progress = e.PercentComplete;
+                        if (progress == 100)
+                        {
+                            finishCount++;
+                            compressProgress = finishCount / (float)fileCount;
+                            if (action != null)
+                            {
+                                action(compressProgress);
+                            }
+                        }
+                    }),
+                    ProgressInterval = TimeSpan.FromSeconds(_progressInterval),
+                    ProcessFile = new ProcessFileHandler((object sender, ScanEventArgs e) => { })
+                };
+                using (Stream stream = File.Create(zipFile))
+                {
+                    FastZip zip = new FastZip(events);
+                    zip.CreateZip(stream, outPath, true, "", "");
+                    stream.Close();
+                }
             })
             {
                 IsBackground = true
@@ -72,26 +123,70 @@ namespace Framework
             {
                 int fileCount = (int)new ZipFile(filePath).Count;
                 int finishCount = 0;
-                FastZipEvents events = new FastZipEvents();
-                events.Progress = new ProgressHandler((object sender, ProgressEventArgs e) =>
+                FastZipEvents events = new FastZipEvents
                 {
-                    progress = e.PercentComplete;
-                    if (progress == 100)
+                    Progress = new ProgressHandler((object sender, ProgressEventArgs e) =>
                     {
-                        finishCount++;
-                        deCompressProgress = (float)finishCount / (float)fileCount;
-                        if (action != null)
+                        progress = e.PercentComplete;
+                        if (progress == 100)
                         {
-                            action(deCompressProgress);
+                            finishCount++;
+                            deCompressProgress = finishCount / (float)fileCount;
+                            if (action != null)
+                            {
+                                action(deCompressProgress);
+                            }
                         }
-                    }
-                });
-                events.ProgressInterval = TimeSpan.FromSeconds(_progressInterval);
-                events.ProcessFile = new ProcessFileHandler((object sender, ScanEventArgs e) => { });
+                    }),
+                    ProgressInterval = TimeSpan.FromSeconds(_progressInterval),
+                    ProcessFile = new ProcessFileHandler((object sender, ScanEventArgs e) => { })
+                };
                 FastZip fastZip = new FastZip(events);
                 fastZip.ExtractZip(filePath, outPath, "");
-            });
-            thread.IsBackground = true;
+            })
+            {
+                IsBackground = true
+            };
+            thread.Start();
+        }
+
+        public static void Decompress(Stream stream, string outPath, Action<float> action)
+        {
+            if (Directory.Exists(outPath))
+            {
+                Directory.Delete(outPath, true);
+            }
+            Directory.CreateDirectory(outPath);
+            var deCompressProgress = 0f;
+            var progress = 0f;
+            Thread thread = new Thread(delegate ()
+            {
+                int fileCount = (int)new ZipFile(stream).Count;
+                int finishCount = 0;
+                FastZipEvents events = new FastZipEvents
+                {
+                    Progress = new ProgressHandler((object sender, ProgressEventArgs e) =>
+                    {
+                        progress = e.PercentComplete;
+                        if (progress == 100)
+                        {
+                            finishCount++;
+                            deCompressProgress = finishCount / (float)fileCount;
+                            if (action != null)
+                            {
+                                action(deCompressProgress);
+                            }
+                        }
+                    }),
+                    ProgressInterval = TimeSpan.FromSeconds(_progressInterval),
+                    ProcessFile = new ProcessFileHandler((object sender, ScanEventArgs e) => { })
+                };
+                FastZip fastZip = new FastZip(events);
+                fastZip.ExtractZip(stream, outPath, FastZip.Overwrite.Always, null, "", "", false, true);
+            })
+            {
+                IsBackground = true
+            };
             thread.Start();
         }
 

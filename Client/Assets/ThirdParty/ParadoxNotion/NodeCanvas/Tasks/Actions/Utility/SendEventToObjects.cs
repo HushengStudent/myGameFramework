@@ -3,60 +3,63 @@ using System.Collections.Generic;
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 
-namespace NodeCanvas.Tasks.Actions{
+namespace NodeCanvas.Tasks.Actions
+{
 
-	[Category("✫ Utility")]
-	[Description("Send a Graph Event to multiple gameobjects which should have a GraphOwner component attached.")]
-	public class SendEventToObjects : ActionTask{
+    [Category("✫ Utility")]
+    [Description("Send a Graph Event to multiple gameobjects which should have a GraphOwner component attached.")]
+    public class SendEventToObjects : ActionTask
+    {
 
-		[RequiredField]
-		public BBParameter<List<GameObject>> targetObjects;
-		[RequiredField]
-		public BBParameter<string> eventName;
+        [RequiredField]
+        public BBParameter<List<GameObject>> targetObjects;
+        [RequiredField]
+        public BBParameter<string> eventName;
 
-		protected override string info{
-			get {return string.Format("Send Event [{0}] to {1}", eventName, targetObjects);}
-		}
+        protected override string info {
+            get { return string.Format("Send Event [{0}] to {1}", eventName, targetObjects); }
+        }
 
-		protected override void OnExecute(){
-			
-			foreach(var target in targetObjects.value){
-				if (target != null){
-					var owner = target.GetComponent<GraphOwner>();
-					if (owner != null){
-						owner.SendEvent(eventName.value);
-					}
-				}
-			}
+        protected override void OnExecute() {
 
-			EndAction();
-		}
-	}
+            foreach ( var target in targetObjects.value ) {
+                if ( target != null ) {
+                    var owner = target.GetComponent<GraphOwner>();
+                    if ( owner != null ) {
+                        owner.SendEvent(new ParadoxNotion.EventData(eventName.value), this);
+                    }
+                }
+            }
 
-	[Category("✫ Utility")]
-	[Description("Send a Graph Event to multiple gameobjects which should have a GraphOwner component attached.")]
-	public class SendEventToObjects<T> : ActionTask{
+            EndAction();
+        }
+    }
 
-		[RequiredField]
-		public BBParameter<List<GameObject>> targetObjects;
-		[RequiredField]
-		public BBParameter<string> eventName;
-		public BBParameter<T> eventValue;
+    [Category("✫ Utility")]
+    [Description("Send a Graph Event to multiple gameobjects which should have a GraphOwner component attached.")]
+    public class SendEventToObjects<T> : ActionTask
+    {
 
-		protected override string info{
-			get {return string.Format("Send Event [{0}]({1}) to {2}", eventName, eventValue, targetObjects);}
-		}
+        [RequiredField]
+        public BBParameter<List<GameObject>> targetObjects;
+        [RequiredField]
+        public BBParameter<string> eventName;
+        public BBParameter<T> eventValue;
 
-		protected override void OnExecute(){
-			
-			foreach(var target in targetObjects.value){
-				var owner = target.GetComponent<GraphOwner>();
-				if (owner != null){
-					owner.SendEvent<T>(eventName.value, eventValue.value);
-				}
-			}
+        protected override string info {
+            get { return string.Format("Send Event [{0}]({1}) to {2}", eventName, eventValue, targetObjects); }
+        }
 
-			EndAction();
-		}
-	}
+        protected override void OnExecute() {
+
+            foreach ( var target in targetObjects.value ) {
+                var owner = target.GetComponent<GraphOwner>();
+                if ( owner != null ) {
+                    owner.SendEvent(new ParadoxNotion.EventData<T>(eventName.value, eventValue.value), this);
+                }
+            }
+
+            EndAction();
+        }
+    }
 }

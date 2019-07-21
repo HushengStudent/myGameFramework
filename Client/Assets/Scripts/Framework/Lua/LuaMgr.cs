@@ -47,9 +47,7 @@ namespace Framework
             ToluaProfiler.Update();
         }
 
-        /// <summary>
         /// 初始化加载第三方库;
-        /// </summary>
         void OpenLibs()
         {
             lua.OpenLibs(LuaDLL.luaopen_pb);
@@ -71,9 +69,7 @@ namespace Framework
             lua.LuaSetField(-2, "cjson.safe");
         }
 
-        /// <summary>
         /// 初始化Lua代码加载路径;
-        /// </summary>
         void InitLuaPath()
         {
             lua.AddSearchPath(LuaConst.luaDir);
@@ -81,9 +77,7 @@ namespace Framework
             lua.AddSearchPath(Application.dataPath + "/LuaFramework/Lua/NetWork");
         }
 
-        /// <summary>
         /// 初始化LuaBundle;
-        /// </summary>
         void InitLuaBundle()
         {
             if (loader.beZip)

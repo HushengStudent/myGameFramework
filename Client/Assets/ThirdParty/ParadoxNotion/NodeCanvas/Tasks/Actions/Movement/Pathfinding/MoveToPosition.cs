@@ -6,54 +6,56 @@ using UnityEngine;
 using NavMeshAgent = UnityEngine.AI.NavMeshAgent;
 #endif
 
-namespace NodeCanvas.Tasks.Actions{
+namespace NodeCanvas.Tasks.Actions
+{
 
-	[Name("Seek (Vector3)")]
-	[Category("Movement/Pathfinding")]
-	public class MoveToPosition : ActionTask<NavMeshAgent> {
+    [Name("Seek (Vector3)")]
+    [Category("Movement/Pathfinding")]
+    public class MoveToPosition : ActionTask<NavMeshAgent>
+    {
 
-		public BBParameter<Vector3> targetPosition;
-		public BBParameter<float> speed = 4;
-		public float keepDistance = 0.1f;
+        public BBParameter<Vector3> targetPosition;
+        public BBParameter<float> speed = 4;
+        public BBParameter<float> keepDistance = 0.1f;
 
-		private Vector3? lastRequest;
+        private Vector3? lastRequest;
 
-		protected override string info{
-			get {return "Seek " + targetPosition;}
-		}
+        protected override string info {
+            get { return "Seek " + targetPosition; }
+        }
 
-		protected override void OnExecute(){
-			agent.speed = speed.value;
-			if ( Vector3.Distance(agent.transform.position, targetPosition.value) < agent.stoppingDistance + keepDistance ){
-				EndAction(true);
-				return;
-			}
-		}
+        protected override void OnExecute() {
+            agent.speed = speed.value;
+            if ( Vector3.Distance(agent.transform.position, targetPosition.value) < agent.stoppingDistance + keepDistance.value ) {
+                EndAction(true);
+                return;
+            }
+        }
 
-		protected override void OnUpdate(){
-			if (lastRequest != targetPosition.value){
-				if ( !agent.SetDestination( targetPosition.value) ){
-					EndAction(false);
-					return;
-				}
-			}
+        protected override void OnUpdate() {
+            if ( lastRequest != targetPosition.value ) {
+                if ( !agent.SetDestination(targetPosition.value) ) {
+                    EndAction(false);
+                    return;
+                }
+            }
 
-			lastRequest = targetPosition.value;
+            lastRequest = targetPosition.value;
 
-			if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance + keepDistance){
-				EndAction(true);
-			}
-		}
+            if ( !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance + keepDistance.value ) {
+                EndAction(true);
+            }
+        }
 
-		protected override void OnStop(){
-			if (lastRequest != null && agent.gameObject.activeSelf){
-				agent.ResetPath();
-			}
-			lastRequest = null;
-		}
+        protected override void OnStop() {
+            if ( lastRequest != null && agent.gameObject.activeSelf ) {
+                agent.ResetPath();
+            }
+            lastRequest = null;
+        }
 
-		protected override void OnPause(){
-			OnStop();
-		}
-	}
+        protected override void OnPause() {
+            OnStop();
+        }
+    }
 }

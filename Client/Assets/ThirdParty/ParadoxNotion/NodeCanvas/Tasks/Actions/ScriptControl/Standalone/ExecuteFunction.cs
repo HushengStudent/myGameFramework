@@ -9,199 +9,205 @@ using ParadoxNotion.Design;
 using UnityEngine;
 
 
-namespace NodeCanvas.Tasks.Actions{
+namespace NodeCanvas.Tasks.Actions
+{
 
-	[Category("✫ Script Control/Standalone Only")]
-	[Description("Execute a function on a script, of up to 6 parameters and save the return if any. If function is an IEnumerator it will execute as a coroutine.")]
-	public class ExecuteFunction : ActionTask, ISubParametersContainer {
+    [Category("✫ Script Control/Standalone Only")]
+    [Description("Execute a function on a script, of up to 6 parameters and save the return if any. If function is an IEnumerator it will execute as a coroutine.")]
+    public class ExecuteFunction : ActionTask, ISubParametersContainer, IReflectedWrapper
+    {
 
-		[SerializeField] /* [IncludeParseVariables] */
-		protected ReflectedWrapper functionWrapper;
-		private bool routineRunning;
+        [SerializeField] /* [IncludeParseVariables] */
+        protected ReflectedWrapper functionWrapper;
+        private bool routineRunning;
 
-		BBParameter[] ISubParametersContainer.GetSubParameters(){
-			return functionWrapper != null? functionWrapper.GetVariables() : null;
-		}
+        MemberInfo IReflectedWrapper.GetMemberInfo() {
+            return targetMethod;
+        }
 
-		private MethodInfo targetMethod{
-			get {return functionWrapper != null? functionWrapper.GetMethod() : null;}
-		}
+        BBParameter[] ISubParametersContainer.GetSubParameters() {
+            return functionWrapper != null ? functionWrapper.GetVariables() : null;
+        }
 
-		public override System.Type agentType{
-			get
-			{
-				if (targetMethod == null){ return typeof(Transform); }
-				return targetMethod.IsStatic? null : targetMethod.RTReflectedType();
-			}
-		}
+        private MethodInfo targetMethod {
+            get { return functionWrapper != null ? functionWrapper.GetMethod() : null; }
+        }
 
-		protected override string info{
-			get
-			{
-				if (functionWrapper == null){
-					return "No Method Selected";
-				}
-				if (targetMethod == null){
-					return string.Format("<color=#ff6457>* {0} *</color>", functionWrapper.GetMethodString() );
-				}
+        public override System.Type agentType {
+            get
+            {
+                if ( targetMethod == null ) { return typeof(Transform); }
+                return targetMethod.IsStatic ? null : targetMethod.RTReflectedOrDeclaredType();
+            }
+        }
 
-				var variables = functionWrapper.GetVariables();
-				var returnInfo = "";
-				var paramInfo = "";
-				if (targetMethod.ReturnType == typeof(void)){
-					for (var i = 0; i < variables.Length; i++){
-						paramInfo += (i != 0? ", " : "") + variables[i].ToString();
-					}
-				} else {
-					returnInfo = targetMethod.ReturnType == typeof(void) || targetMethod.ReturnType == typeof(IEnumerator) || variables[0].isNone? "" : variables[0] + " = ";
-					for (var i = 1; i < variables.Length; i++){
-						paramInfo += (i != 1? ", " : "") + variables[i].ToString();
-					}
-				}
+        protected override string info {
+            get
+            {
+                if ( functionWrapper == null ) {
+                    return "No Method Selected";
+                }
+                if ( targetMethod == null ) {
+                    return string.Format("<color=#ff6457>* {0} *</color>", functionWrapper.GetMethodString());
+                }
 
-				var mInfo = targetMethod.IsStatic? targetMethod.RTReflectedType().FriendlyName() : agentInfo;
-				return string.Format("{0}{1}.{2}({3})", returnInfo, mInfo, targetMethod.Name, paramInfo );
-			}
-		}
+                var variables = functionWrapper.GetVariables();
+                var returnInfo = "";
+                var paramInfo = "";
+                if ( targetMethod.ReturnType == typeof(void) ) {
+                    for ( var i = 0; i < variables.Length; i++ ) {
+                        paramInfo += ( i != 0 ? ", " : "" ) + variables[i].ToString();
+                    }
+                } else {
+                    returnInfo = targetMethod.ReturnType == typeof(void) || targetMethod.ReturnType == typeof(IEnumerator) || variables[0].isNone ? "" : variables[0] + " = ";
+                    for ( var i = 1; i < variables.Length; i++ ) {
+                        paramInfo += ( i != 1 ? ", " : "" ) + variables[i].ToString();
+                    }
+                }
 
-		public override void OnValidate(ITaskSystem ownerSystem){
-			if (functionWrapper != null && functionWrapper.HasChanged()){	
-				SetMethod(functionWrapper.GetMethod());
-			}
-			if (functionWrapper != null && targetMethod == null){
-				Error(string.Format("Missing Method '{0}'", functionWrapper.GetMethodString()));
-			}
-		}
+                var mInfo = targetMethod.IsStatic ? targetMethod.RTReflectedOrDeclaredType().FriendlyName() : agentInfo;
+                return string.Format("{0}{1}.{2}({3})", returnInfo, mInfo, targetMethod.Name, paramInfo);
+            }
+        }
 
-		//store the method info on init
-		protected override string OnInit(){
+        public override void OnValidate(ITaskSystem ownerSystem) {
+            if ( functionWrapper != null && functionWrapper.HasChanged() ) {
+                SetMethod(functionWrapper.GetMethod());
+            }
+            if ( functionWrapper != null && targetMethod == null ) {
+                Error(string.Format("Missing Method '{0}'", functionWrapper.GetMethodString()));
+            }
+        }
 
-			if (functionWrapper == null){
-				return "No Method selected";
-			}
-			if (targetMethod == null){
-				return string.Format("Missing Method '{0}'", functionWrapper.GetMethodString());
-			}
+        //store the method info on init
+        protected override string OnInit() {
 
-			try
-			{
-				functionWrapper.Init(targetMethod.IsStatic? null : agent);
-				return null;
-			}
-			catch {return "ExecuteFunction Error";}
-		}
+            if ( functionWrapper == null ) {
+                return "No Method selected";
+            }
+            if ( targetMethod == null ) {
+                return string.Format("Missing Method '{0}'", functionWrapper.GetMethodString());
+            }
 
-		//do it by calling delegate or invoking method
-		protected override void OnExecute(){
+            try {
+                functionWrapper.Init(targetMethod.IsStatic ? null : agent);
+                return null;
+            }
+            catch { return "ExecuteFunction Error"; }
+        }
 
-			if (targetMethod == null){
-				EndAction(false);
-				return;
-			}
+        //do it by calling delegate or invoking method
+        protected override void OnExecute() {
 
-			try
-			{
-				if (targetMethod.ReturnType == typeof(IEnumerator)){
-					StartCoroutine( InternalCoroutine( (IEnumerator)((ReflectedFunctionWrapper)functionWrapper).Call() ));
-					return;
-				}
+            if ( targetMethod == null ) {
+                EndAction(false);
+                return;
+            }
 
-				if (targetMethod.ReturnType == typeof(void)){
-					((ReflectedActionWrapper)functionWrapper).Call();
-				} else {
-					((ReflectedFunctionWrapper)functionWrapper).Call();
-				}
-				
-				EndAction(true);
-			}
+            try {
+                if ( targetMethod.ReturnType == typeof(IEnumerator) ) {
+                    StartCoroutine(InternalCoroutine((IEnumerator)( (ReflectedFunctionWrapper)functionWrapper ).Call()));
+                    return;
+                }
 
-			catch (System.Exception e)
-			{
-				Debug.LogError(string.Format("{0}\n{1}", e.Message, e.StackTrace));
-				EndAction(false);
-			}
-		}
+                if ( targetMethod.ReturnType == typeof(void) ) {
+                    ( (ReflectedActionWrapper)functionWrapper ).Call();
+                } else {
+                    ( (ReflectedFunctionWrapper)functionWrapper ).Call();
+                }
 
-		protected override void OnStop(){
-			routineRunning = false;
-		}
+                EndAction(true);
+            }
 
-		IEnumerator InternalCoroutine(IEnumerator routine){
-			routineRunning = true;
-			while(routineRunning && routine.MoveNext()){
-				if (routineRunning == false){
-					yield break;
-				}
-				yield return routine.Current;
-			}
+            catch ( System.Exception e ) {
+                Debug.LogError(string.Format("{0}\n{1}", e.Message, e.StackTrace));
+                EndAction(false);
+            }
+        }
 
-			if (routineRunning){
-				EndAction();
-			}
-		}
+        protected override void OnStop() {
+            routineRunning = false;
+        }
 
-		void SetMethod(MethodInfo method){
-			if (method != null){
-				functionWrapper = ReflectedWrapper.Create(method, blackboard);
-			}
-		}
+        IEnumerator InternalCoroutine(IEnumerator routine) {
+            routineRunning = true;
+            while ( routineRunning && routine.MoveNext() ) {
+                if ( routineRunning == false ) {
+                    yield break;
+                }
+                yield return routine.Current;
+            }
+
+            if ( routineRunning ) {
+                EndAction();
+            }
+        }
+
+        void SetMethod(MethodInfo method) {
+            if ( method != null ) {
+                functionWrapper = ReflectedWrapper.Create(method, blackboard);
+            }
+        }
 
 
-		///----------------------------------------------------------------------------------------------
-		///---------------------------------------UNITY EDITOR-------------------------------------------
-		#if UNITY_EDITOR
-		
-		protected override void OnTaskInspectorGUI(){
+        ///----------------------------------------------------------------------------------------------
+        ///---------------------------------------UNITY EDITOR-------------------------------------------
+#if UNITY_EDITOR
 
-			if (!Application.isPlaying && GUILayout.Button("Select Method")){
-				var menu = new UnityEditor.GenericMenu();
-				if (agent != null){
-					foreach(var comp in agent.GetComponents(typeof(Component)).Where(c => c.hideFlags != HideFlags.HideInInspector) ){
-						menu = EditorUtils.GetInstanceMethodSelectionMenu(comp.GetType(), typeof(object), typeof(object), SetMethod, 6, false, false, menu);
-					}
-					menu.AddSeparator("/");
-				}
+        protected override void OnTaskInspectorGUI() {
 
-				foreach (var t in UserTypePrefs.GetPreferedTypesList(typeof(Component))){
-					menu = EditorUtils.GetStaticMethodSelectionMenu(t, typeof(object), typeof(object), SetMethod, 6, false, false, menu);
-					menu = EditorUtils.GetInstanceMethodSelectionMenu(t, typeof(object), typeof(object), SetMethod, 6, false, false, menu);
-				}
-				if ( NodeCanvas.Editor.NCPrefs.useBrowser){ menu.ShowAsBrowser("Select Method", this.GetType()); }
-				else { menu.ShowAsContext(); }
-				Event.current.Use();
-			}
+            if ( !Application.isPlaying && GUILayout.Button("Select Method") ) {
+                var menu = new UnityEditor.GenericMenu();
+                if ( agent != null ) {
+                    foreach ( var comp in agent.GetComponents(typeof(Component)).Where(c => c.hideFlags != HideFlags.HideInInspector) ) {
+                        menu = EditorUtils.GetInstanceMethodSelectionMenu(comp.GetType(), typeof(object), typeof(object), SetMethod, 6, false, false, menu);
+                    }
+                    menu.AddSeparator("/");
+                }
 
-			var m = targetMethod;
-			if (m != null){
-				GUILayout.BeginVertical("box");
-				UnityEditor.EditorGUILayout.LabelField("Type", targetMethod.RTReflectedType().FriendlyName());
-				UnityEditor.EditorGUILayout.LabelField("Method", m.Name);
-				UnityEditor.EditorGUILayout.LabelField("Returns", m.ReturnType.FriendlyName());
+                foreach ( var t in TypePrefs.GetPreferedTypesList(typeof(object)) ) {
+                    menu = EditorUtils.GetStaticMethodSelectionMenu(t, typeof(object), typeof(object), SetMethod, 6, false, false, menu);
+                    if ( typeof(UnityEngine.Component).IsAssignableFrom(t) ) {
+                        menu = EditorUtils.GetInstanceMethodSelectionMenu(t, typeof(object), typeof(object), SetMethod, 6, false, false, menu);
+                    }
+                }
+                menu.ShowAsBrowser("Select Method", this.GetType());
+                Event.current.Use();
+            }
 
-				if (m.ReturnType == typeof(IEnumerator)){
-					GUILayout.Label("<b>This will execute as a Coroutine!</b>");
-				}
+            var m = targetMethod;
+            if ( m != null ) {
+                GUILayout.BeginVertical("box");
+                UnityEditor.EditorGUILayout.LabelField("Type", targetMethod.RTReflectedOrDeclaredType().FriendlyName());
+                UnityEditor.EditorGUILayout.LabelField("Method", m.Name);
+                UnityEditor.EditorGUILayout.LabelField("Returns", m.ReturnType.FriendlyName());
 
-				GUILayout.EndVertical();
+                UnityEditor.EditorGUILayout.HelpBox(DocsByReflection.GetMemberSummary(targetMethod), UnityEditor.MessageType.None);
 
-				var paramNames = m.GetParameters().Select(p => p.Name.SplitCamelCase() ).ToArray();
-				var variables = functionWrapper.GetVariables();
-				if (m.ReturnType == typeof(void)){
-					for (var i = 0; i < paramNames.Length; i++){
-						NodeCanvas.Editor.BBParameterEditor.ParameterField(paramNames[i], variables[i]);
-					}
-				} else {
-					for (var i = 0; i < paramNames.Length; i++){
-						NodeCanvas.Editor.BBParameterEditor.ParameterField(paramNames[i], variables[i+1]);
-					}
-					
-					if (m.ReturnType != typeof(IEnumerator)){
-						NodeCanvas.Editor.BBParameterEditor.ParameterField("Save Return Value", variables[0], true);
-					}
-				}
-			}
-		}
+                if ( m.ReturnType == typeof(IEnumerator) ) {
+                    GUILayout.Label("<b>This will execute as a Coroutine!</b>");
+                }
 
-		#endif
-	}
+                GUILayout.EndVertical();
+
+                var paramNames = m.GetParameters().Select(p => p.Name.SplitCamelCase()).ToArray();
+                var variables = functionWrapper.GetVariables();
+                if ( m.ReturnType == typeof(void) ) {
+                    for ( var i = 0; i < paramNames.Length; i++ ) {
+                        NodeCanvas.Editor.BBParameterEditor.ParameterField(paramNames[i], variables[i]);
+                    }
+                } else {
+                    for ( var i = 0; i < paramNames.Length; i++ ) {
+                        NodeCanvas.Editor.BBParameterEditor.ParameterField(paramNames[i], variables[i + 1]);
+                    }
+
+                    if ( m.ReturnType != typeof(IEnumerator) ) {
+                        NodeCanvas.Editor.BBParameterEditor.ParameterField("Save Return Value", variables[0], true);
+                    }
+                }
+            }
+        }
+
+#endif
+    }
 }

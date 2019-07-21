@@ -3,19 +3,21 @@ using ParadoxNotion.Design;
 using UnityEngine;
 
 
-namespace NodeCanvas.Tasks.Actions{
+namespace NodeCanvas.Tasks.Actions
+{
 
-	[Category("✫ Utility")]
-	public class DebugDrawLine : ActionTask {
+    [Category("✫ Utility")]
+    public class DebugDrawLine : ActionTask
+    {
 
-		public BBParameter<Vector3> from;
-		public BBParameter<Vector3> to;
-		public Color color = Color.white;
-		public float timeToShow = 0.1f;
+        public BBParameter<Vector3> from;
+        public BBParameter<Vector3> to;
+        public Color color = Color.white;
+        public float timeToShow = 0.1f;
 
-		protected override void OnExecute(){
-			Debug.DrawLine(from.value, to.value, color, timeToShow);
-			EndAction(true);
-		}
-	}
+        protected override void OnExecute() {
+            Debug.DrawLine(from.value, to.value, color, timeToShow);
+            EndAction(true);
+        }
+    }
 }

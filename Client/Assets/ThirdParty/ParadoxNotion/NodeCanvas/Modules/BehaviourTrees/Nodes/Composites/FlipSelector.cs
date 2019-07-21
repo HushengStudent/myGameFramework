@@ -3,48 +3,46 @@ using ParadoxNotion.Design;
 using UnityEngine;
 
 
-namespace NodeCanvas.BehaviourTrees{
+namespace NodeCanvas.BehaviourTrees
+{
 
-	[Category("Composites")]
-	[Description("Works like a normal Selector, but when a child node returns Success, that child will be moved to the end.\nAs a result, previously Failed children will always be checked first and recently Successful children last")]
-	[Icon("FlipSelector")]
-	[Color("b3ff7f")]
-	public class FlipSelector : BTComposite {
+    [Category("Composites")]
+    [Description("Works like a normal Selector, but when a child node returns Success, that child will be moved to the end.\nAs a result, previously Failed children will always be checked first and recently Successful children last")]
+    [Icon("FlipSelector")]
+    [Color("b3ff7f")]
+    public class FlipSelector : BTComposite
+    {
 
-		private int current;
+        private int current;
 
-		public override string name{
-			get{return base.name.ToUpper();}
-		}
+        protected override Status OnExecute(Component agent, IBlackboard blackboard) {
 
-		protected override Status OnExecute(Component agent, IBlackboard blackboard){
-		
-			for (var i = current; i < outConnections.Count; i++){
+            for ( var i = current; i < outConnections.Count; i++ ) {
 
-				status = outConnections[i].Execute(agent, blackboard);
-				
-				if (status == Status.Running){
-					current = i;
-					return Status.Running;
-				}
+                status = outConnections[i].Execute(agent, blackboard);
 
-				if (status == Status.Success){
-					SendToBack(i);
-					return Status.Success;
-				}
-			}
+                if ( status == Status.Running ) {
+                    current = i;
+                    return Status.Running;
+                }
 
-			return Status.Failure;
-		}
+                if ( status == Status.Success ) {
+                    SendToBack(i);
+                    return Status.Success;
+                }
+            }
 
-		void SendToBack(int i){
-			var c = outConnections[i];
-			outConnections.RemoveAt(i);
-			outConnections.Add(c);
-		}
+            return Status.Failure;
+        }
 
-		protected override void OnReset(){
-			current = 0;
-		}
-	}
+        void SendToBack(int i) {
+            var c = outConnections[i];
+            outConnections.RemoveAt(i);
+            outConnections.Add(c);
+        }
+
+        protected override void OnReset() {
+            current = 0;
+        }
+    }
 }

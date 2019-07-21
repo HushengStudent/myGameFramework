@@ -3,22 +3,24 @@ using ParadoxNotion;
 using ParadoxNotion.Design;
 
 
-namespace NodeCanvas.Tasks.Actions{
+namespace NodeCanvas.Tasks.Actions
+{
 
-	[Category("✫ Utility")]
-	public class Wait : ActionTask {
+    [Category("✫ Utility")]
+    public class Wait : ActionTask
+    {
 
-		public BBParameter<float> waitTime = 1f;
-		public CompactStatus finishStatus = CompactStatus.Success;
+        public BBParameter<float> waitTime = 1f;
+        public CompactStatus finishStatus = CompactStatus.Success;
 
-		protected override string info{
-			get {return "Wait " + waitTime + " sec.";}
-		}
+        protected override string info {
+            get { return string.Format("Wait {0} sec.", waitTime); }
+        }
 
-		protected override void OnUpdate(){
-			if (elapsedTime >= waitTime.value){
-				EndAction(finishStatus == CompactStatus.Success? true : false);
-			}
-		}
-	}
+        protected override void OnUpdate() {
+            if ( elapsedTime >= waitTime.value ) {
+                EndAction(finishStatus == CompactStatus.Success ? true : false);
+            }
+        }
+    }
 }

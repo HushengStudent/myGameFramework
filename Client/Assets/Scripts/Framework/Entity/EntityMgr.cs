@@ -12,14 +12,10 @@ namespace Framework
     {
         #region Fields
 
-        /// <summary>
         /// EntityDict;
-        /// </summary>
         private Dictionary<ulong, AbsEntity> _entityDict = new Dictionary<ulong, AbsEntity>();
 
-        /// <summary>
         /// EntityList;
-        /// </summary>
         private List<AbsEntity> _entityList = new List<AbsEntity>();
 
         #endregion
@@ -126,12 +122,7 @@ namespace Framework
             return target;
         }
 
-        /// <summary>
         /// 添加Entity;
-        /// </summary>
-        /// <param name="UID"></param>
-        /// <param name="entity"></param>
-        /// <returns></returns>
         private bool AddEntity(ulong UID, AbsEntity entity)
         {
             if (_entityDict.ContainsKey(UID))
@@ -143,11 +134,7 @@ namespace Framework
             return true;
         }
 
-        /// <summary>
         /// 删除Entity;
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
         private bool RemoveEntity(AbsEntity entity)
         {
             if (!_entityDict.ContainsKey(entity.UID))
