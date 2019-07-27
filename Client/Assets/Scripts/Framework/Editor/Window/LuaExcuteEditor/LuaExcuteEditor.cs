@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/12/16 22:01:07
-** desc:  Lua²âÊÔ¹¤¾ß;
+** desc:  Luaæµ‹è¯•å·¥å…·;
 *********************************************************************************/
 
 using System.Collections;
@@ -26,6 +26,7 @@ namespace Framework
         {
             var color = GUI.backgroundColor;
             EditorGUILayout.BeginVertical(GUI.skin.box);
+            EditorGUILayout.HelpBox("Lua æ‰§è¡Œå·¥å…·.", MessageType.Warning);
             _luaText = EditorGUILayout.TextArea(_luaText, GUILayout.Height(300));
             GUILayout.Space(20);
             GUI.backgroundColor = Color.green;
