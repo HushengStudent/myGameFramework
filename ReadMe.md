@@ -48,16 +48,25 @@ software：Unity2017.4.25/visual studio2017.
     (9)Lua Profiler：(https://github.com/yaukeywang/LuaMemorySnapshotDump).
     (10)Navigation：(https://github.com/LingJiJian/NavmeshExport).
 	
-    Asset Store:
-    (1)More Effective Coroutine.
-    (2)Fast Shadow Projector.
-    (3)A* Pathfinding Project.
-    (4)FlowCanvas/NodeCanvas.
-    (5)Behavior Designer.
-	(6)Unity Particle Pack 5.x.
-	(6)Anima2D.
-	(6)PostProcessing.
-	(7)DOTween.	
+    Third Party:
+    (1)Anima2D.
+    (2)AssetBundle Browser.
+    (3)Astar Pathfinding Project.
+    (4)Build Report.
+    (5)Cinemachine.
+	(6)DOTween.
+	(7)Effect Examples.
+	(8)Fast Shadow Projector.
+	(9)Node Editor.
+    (10)FlowCanvas/NodeCanvas.
+	(11)PostProcessing.
+	(12)TextMesh Pro.
+	(13)TexturePacker Importer.
+    (14)More Effective Coroutine.
+    (15)Behavior Designer.
+	(16)Unity Particle Pack 5.x.
+	(17)Unity Logs Viewer.
+	(18)Odin Inspector and Serializer 2.1.	
 	
     环境变量配置:
     (1)myGameFramework:(工程路径)如C:/Users/husheng/Desktop/MyProject/4GameFramework/myGameFramework/
