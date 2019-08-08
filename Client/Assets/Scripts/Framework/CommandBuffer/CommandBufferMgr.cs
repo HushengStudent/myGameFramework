@@ -16,6 +16,7 @@ namespace Framework
         private CommandBuffer _commandBuffer = null;
         private RenderTexture _renderTexture = null;
         private Renderer _renderer = null;
+
         public GameObject _targetObject = null;
         public Material _replaceMaterial = null;
 
