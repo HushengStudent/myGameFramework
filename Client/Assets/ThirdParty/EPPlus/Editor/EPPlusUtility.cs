@@ -244,7 +244,7 @@ namespace OfficeOpenXml
                 cell.Comment.AutoFit = true;
                 cell.Comment.Visible = true;
             }
-            cell.Value = elementInfo.ToString();
+            cell.Value = elementInfo.Value;
         }
     }
 }

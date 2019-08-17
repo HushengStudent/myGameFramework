@@ -21,5 +21,38 @@ namespace OfficeOpenXml
             SheetName = sheetName;
             Info = new List<List<ExcelElementInfo>>(info);
         }
+
+        public List<ExcelElementInfo> GetRow(int row)
+        {
+            if (Info == null || Info.Count < row)
+            {
+                return null;
+            }
+            return Info[row - 1];
+        }
+
+        public List<ExcelElementInfo> GetColumn(int column)
+        {
+            if (Info == null || Info.Count < column)
+            {
+                return null;
+            }
+            var list = new List<ExcelElementInfo>();
+            for (int i = 0; i < Info.Count; i++)
+            {
+                if (Info[i] != null)
+                {
+                    for (int j = 0; j < Info[i].Count; i++)
+                    {
+                        var element = Info[i][j];
+                        if (element != null)
+                        {
+                            list.Add(element);
+                        }
+                    }
+                }
+            }
+            return list;
+        }
     }
 }
