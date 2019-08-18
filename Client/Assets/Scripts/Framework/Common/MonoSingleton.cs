@@ -33,7 +33,7 @@ namespace Framework
                     MonoSingletoninterface singleton = _instance as MonoSingletoninterface;
                     if (singleton != null)
                     {
-                        //OnInitialize晚于Awake执行;
+                        //OnInitialize晚于AwakeEx执行;
                         singleton.MonoSingletoninterfaceOnInitialize();
                     }
                 }
@@ -50,43 +50,41 @@ namespace Framework
             }
         }
 
-        protected virtual void StartEx() { }
-        protected virtual void AwakeEx() { }
-        protected virtual void OnEnableEx() { }
-        protected virtual void FixedUpdateEx(float interval) { }
-        protected virtual void UpdateEx(float interval) { }
-        protected virtual void LateUpdateEx(float interval) { }
-        protected virtual void OnDisableEx() { }
-        protected virtual void OnDestroyEx() { }
-
         void Awake()
         {
             AwakeEx();
         }
+
         void Start()
         {
             StartEx();
         }
+
         void OnEnable()
         {
             OnEnableEx();
         }
+
         void FixedUpdate()
         {
             FixedUpdateEx(Time.deltaTime);
         }
+
         void Update()
         {
             UpdateEx(Time.deltaTime);
         }
+
         void LateUpdate()
         {
             LateUpdateEx(Time.deltaTime);
         }
+
         void OnDisable()
         {
             OnDisableEx();
         }
+
         void OnDestroy()
         {
             MonoSingletoninterface singleton = _instance as MonoSingletoninterface;
@@ -98,5 +96,14 @@ namespace Framework
             _applicationIsPlaying = false;
             _instance = null;
         }
+
+        protected virtual void AwakeEx() { }
+        protected virtual void StartEx() { }
+        protected virtual void OnEnableEx() { }
+        protected virtual void FixedUpdateEx(float interval) { }
+        protected virtual void UpdateEx(float interval) { }
+        protected virtual void LateUpdateEx(float interval) { }
+        protected virtual void OnDisableEx() { }
+        protected virtual void OnDestroyEx() { }
     }
 }
