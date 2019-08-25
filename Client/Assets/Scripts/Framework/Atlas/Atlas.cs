@@ -49,6 +49,10 @@ namespace Framework
                 {
                     Deprecated = true;
                 }
+                else
+                {
+                    _atlasPrefab.transform.SetParent(AtlasMgr.Instance.AtlasRoot.transform);
+                }
             }
             if (!Deprecated)
             {
