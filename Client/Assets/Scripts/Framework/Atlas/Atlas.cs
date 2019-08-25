@@ -4,7 +4,6 @@
 ** desc:  图集;
 *********************************************************************************/
 
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,9 +14,8 @@ namespace Framework
     {
         private Dictionary<string, Sprite> _spriteDict = new Dictionary<string, Sprite>();
         private Dictionary<Object, string> _objectRefDict = new Dictionary<Object, string>();
-        private Texture _texture;
+        private GameObject _atlasPrefab;
         private AssetBundleAssetProxy _proxy;
-
 
         public string AtlasPath { get; private set; }
         public int RefCount { get; private set; }
@@ -27,7 +25,7 @@ namespace Framework
         {
             _objectRefDict.Clear();
             _spriteDict.Clear();
-            _texture = null;
+            _atlasPrefab = null;
             _proxy = null;
             AtlasPath = atlasPath;
             RefCount = 0;
@@ -46,24 +44,44 @@ namespace Framework
         {
             if (_proxy == null)
             {
-                _texture = _proxy.GetUnityAsset<Texture>();
-                if (_texture == null)
+                _atlasPrefab = _proxy.GetInstantiateObject<GameObject>();
+                if (_atlasPrefab == null)
                 {
-                    _proxy.UnloadProxy();
                     Deprecated = true;
                 }
             }
             if (!Deprecated)
             {
-
+                var behaviour = _atlasPrefab.GetComponent<AtlasBehaviour>();
+                if (behaviour == null)
+                {
+                    Deprecated = true;
+                }
+                for (int i = 0; i < behaviour._spriteList.Count; i++)
+                {
+                    var sprite = behaviour._spriteList[i];
+                    if (sprite)
+                    {
+                        _spriteDict[sprite.name] = sprite;
+                    }
+                }
+                foreach (var temp in _objectRefDict)
+                {
+                    TrySetSprite(temp.Key, temp.Value);
+                }
             }
         }
 
         public void OnUninitialize()
         {
+            if (_atlasPrefab != null)
+            {
+                ResourceMgr.Instance.DestroyInstantiateObject(_atlasPrefab);
+            }
+
             _objectRefDict.Clear();
             _spriteDict.Clear();
-            _texture = null;
+            _atlasPrefab = null;
             _proxy.UnloadProxy();
             _proxy = null;
             AtlasPath = null;
@@ -73,13 +91,9 @@ namespace Framework
 
         public void SetSprite(Object target, string spriteName)
         {
-            if (_texture == null)
+            _objectRefDict[target] = spriteName;
+            if (_atlasPrefab == null)
             {
-                string name;
-                if (!_objectRefDict.TryGetValue(target, out name))
-                {
-                    _objectRefDict[target] = spriteName;
-                }
                 return;
             }
 
@@ -95,10 +109,42 @@ namespace Framework
                 return;
             }
 
-            if(target is Image)
+            if (target is Image)
             {
                 (target as Image).sprite = sprite;
             }
+        }
+
+        public void ReleaseSprite(Object target)
+        {
+            string name;
+            if (_objectRefDict.TryGetValue(target, out name))
+            {
+                _objectRefDict.Remove(target);
+                TryReleaseAtlas();
+            }
+        }
+
+        /// 切场景时卸载一次;
+        public bool TryReleaseAtlas()
+        {
+            var list = PoolMgr.Instance.GetCsharpList<Object>();
+            foreach (var temp in _objectRefDict)
+            {
+                if (temp.Key == null)
+                {
+                    list.Add(temp.Key);
+                }
+            }
+            for (int i = 0; i < list.Count; i++)
+            {
+                _objectRefDict.Remove(list[i]);
+            }
+            if (_objectRefDict.Count == 0)
+            {
+                Deprecated = true;
+            }
+            return Deprecated;
         }
 
         public void OnGet(params object[] args)

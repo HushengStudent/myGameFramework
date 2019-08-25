@@ -10,6 +10,7 @@ namespace OfficeOpenXml
         private static readonly string _defaultFont = "微软雅黑";
         private static readonly Color _defaultColor = Color.White;
 
+        /// 读Excel;
         public static ExcelSheetInfo ReadExcelSheet(string excelPath, string sheetName)
         {
             if (string.IsNullOrEmpty(excelPath) || string.IsNullOrEmpty(sheetName))
@@ -50,6 +51,7 @@ namespace OfficeOpenXml
             }
         }
 
+        /// 写Excel;
         public static bool WriteExcelSheet(ExcelSheetInfo sheetInfo)
         {
             if (sheetInfo == null || string.IsNullOrEmpty(sheetInfo.ExcelPath)
@@ -115,6 +117,7 @@ namespace OfficeOpenXml
             }
         }
 
+        /// 创建Excel;
         private static bool CreateExcelSheet(ExcelSheetInfo sheetInfo)
         {
             if (sheetInfo == null || string.IsNullOrEmpty(sheetInfo.ExcelPath)
@@ -193,6 +196,9 @@ namespace OfficeOpenXml
                     }
                 }
             }
+
+            // 自适应;
+            excelSheet.Cells.AutoFitColumns();
         }
 
         private static void StandardFormatExcelWorksheet(ref ExcelWorksheet excelSheet)

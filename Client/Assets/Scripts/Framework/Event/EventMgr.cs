@@ -15,7 +15,7 @@ namespace Framework
     /// </summary>
     /// <param name="eventArgs">事件参数</param>
     /// <returns></returns>
-    public delegate bool EventHandler(IEventArgs eventArgs);
+    public delegate void EventHandler(IEventArgs eventArgs);
 
     public class EventMgr : Singleton<EventMgr>
     {

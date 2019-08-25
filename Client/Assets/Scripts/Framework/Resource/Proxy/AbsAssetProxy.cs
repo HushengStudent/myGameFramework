@@ -20,6 +20,8 @@ namespace Framework
         public bool IsFinish { get; protected set; }
         /// 取消了就不用执行异步加载的回调了;
         public bool IsCancel { get; protected set; }
+        /// 是否卸载;
+        public bool IsUnload { get; protected set; }
         /// 是否使用对象池;
         public bool IsUsePool { get; protected set; }
         /// 加载完成对象;
@@ -32,6 +34,7 @@ namespace Framework
             IsUsePool = isUsePool;
             IsCancel = false;
             IsFinish = false;
+            IsUnload = false;
         }
 
         /// <summary>
@@ -56,7 +59,7 @@ namespace Framework
         {
             AssetObject = target;
             IsFinish = true;
-            if (!IsCancel && _onLoadFinish != null)
+            if (!IsCancel && !IsUnload && _onLoadFinish != null)
             {
                 _onLoadFinish();
                 _onLoadFinish = null;
@@ -72,9 +75,15 @@ namespace Framework
         /// <returns></returns>
         public bool UnloadProxy()
         {
+            if (IsUnload)
+            {
+                LogHelper.PrintError("[AbsAssetProxy]UnloadProxy error,proxy is Unload.");
+                return false;
+            }
             if (IsFinish)
             {
                 Unload();
+                IsUnload = true;
                 return true;
             }
             else
@@ -108,6 +117,7 @@ namespace Framework
             AssetPath = string.Empty;
             IsCancel = false;
             IsFinish = false;
+            IsUnload = false;
             AssetObject = null;
             OnReleaseEx();
         }
@@ -118,16 +128,54 @@ namespace Framework
 
         protected abstract void Unload();
 
-        public abstract T GetInstantiateObject<T>() where T : Object;
-        public abstract void ReleaseInstantiateObject<T>(T t) where T : Object;
+        public virtual T GetInstantiateObject<T>() where T : Object
+        {
+            if (CanGet())
+            {
+                return GetInstantiateObjectEx<T>();
+            }
+            else
+            {
+                return null;
+            }
+        }
+        protected abstract T GetInstantiateObjectEx<T>() where T : Object;
 
-        public abstract T GetUnityAsset<T>() where T : Object;
+        public virtual T GetUnityAsset<T>() where T : Object
+        {
+            if (CanGet())
+            {
+                return GetUnityAssetEx<T>();
+            }
+            else
+            {
+                return null;
+            }
+        }
+        protected abstract T GetUnityAssetEx<T>() where T : Object;
+
+        public abstract void ReleaseInstantiateObject<T>(T t) where T : Object;
 
         protected bool CanInstantiate()
         {
             return AssetObject != null && (AssetObject is GameObject ||
                 AssetObject is Material ||
                 AssetObject is Mesh);
+        }
+
+        private bool CanGet()
+        {
+            if (IsUnload)
+            {
+                LogHelper.PrintError("[AbsAssetProxy]Get error,proxy is Unload.");
+                return false;
+            }
+            if (!IsFinish)
+            {
+                LogHelper.PrintError("[AbsAssetProxy]Get error,proxy is not finish.");
+                return false;
+            }
+            return true;
         }
     }
 }

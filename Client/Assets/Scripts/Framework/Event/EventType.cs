@@ -13,5 +13,8 @@ namespace Framework
     public enum EventType : int
     {
         INIT_GAME_EVENT      = 1,   //初始化游戏;
+
+        ON_SCENE_UNLOAD      = 2,   //卸载场景;
+        ON_SCENE_LOADED      = 3,   //加载场景;
     }
 }

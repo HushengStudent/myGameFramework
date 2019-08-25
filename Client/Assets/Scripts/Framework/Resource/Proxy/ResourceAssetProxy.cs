@@ -21,7 +21,7 @@ namespace Framework
             PoolMgr.Instance.ReleaseCsharpObject(this);
         }
 
-        public override T GetInstantiateObject<T>()
+        protected override T GetInstantiateObjectEx<T>()
         {
             T t = null;
             if (AssetObject != null && CanInstantiate())
@@ -39,7 +39,7 @@ namespace Framework
             }
         }
 
-        public override T GetUnityAsset<T>()
+        protected override T GetUnityAssetEx<T>()
         {
             T t = null;
             if (AssetObject != null && !CanInstantiate())

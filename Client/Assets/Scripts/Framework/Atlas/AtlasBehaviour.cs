@@ -4,14 +4,14 @@
 ** desc:  Í¼¼¯¼¯ºÏ;
 *********************************************************************************/
 
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Framework
 {
-    public class AtlasBehaviour
+    public class AtlasBehaviour : MonoBehaviour
     {
-
+        [SerializeField]
+        public List<Sprite> _spriteList = new List<Sprite>();
     }
 }
