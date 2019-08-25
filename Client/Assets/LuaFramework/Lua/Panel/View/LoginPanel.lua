@@ -27,3 +27,5 @@ function LoginPanel:BindLuaCom(gameObject)
 
        return self.panel
 end
+
+return LoginPanel

@@ -18,6 +18,4 @@ function GameMgr:StartGame()
     g_UIMgr:OnEnterCanvas(CanvasEnum.LoginCanvas)
 end
 
-
-
-
+return GameMgr

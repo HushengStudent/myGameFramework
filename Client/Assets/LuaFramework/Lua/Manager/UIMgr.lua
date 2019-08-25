@@ -46,3 +46,5 @@ end
 function UIMgr:OnDeActiveCtrl(ctrlEnum)
 
 end
+
+return UIMgr
