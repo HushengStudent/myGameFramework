@@ -70,3 +70,38 @@ end
 function IsNil(uObj)
     return uObj == nil or uObj:Equals(nil)
 end
+
+function ListToTable(list)
+    local t = {}
+    if list then
+        for i = 0, list.Count - 1 do
+            table.insert(t, list[i])
+        end
+    end
+    return t
+end
+
+function ArrayToTable(array)
+    local t = {}
+    if array then
+        for i = 0, array.Length - 1 do
+            table.insert(t, array[i])
+        end
+    end
+    return t
+end
+
+function DictToTable(dict)
+    local t = {}
+    if dict then
+        local e = dict:GetEnumerator()
+        while (e:MoveNext())
+        do
+            local current = e.Current
+            local k = current.Key
+            local v = current.Value
+            table.insert(t, { k, v })
+        end
+    end
+    return t
+end

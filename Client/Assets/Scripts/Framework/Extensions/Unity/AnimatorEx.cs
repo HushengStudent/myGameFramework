@@ -27,7 +27,7 @@ namespace Framework
                 if (ctrl)
                 {
                     _animator.runtimeAnimatorController = ctrl;
-                    _animatorOverrideController = ctrl as AnimatorOverrideController;
+                    _animatorOverrideController = new AnimatorOverrideController(ctrl);
                     _animator.Rebind();
                 }
             });
@@ -44,10 +44,11 @@ namespace Framework
                     _animatorOverrideController[name] = clip;
                     _animator.runtimeAnimatorController = _animatorOverrideController;
                     _AnimationInfo.Data[name] = clip;
-                    _animator.Rebind();
+                    //_animator.Rebind();
+
                     if (autoPlay)
                     {
-                        _animator.Play(name);
+                        _animator.Play(name, 0, 0f);
                     }
                 }
             });
