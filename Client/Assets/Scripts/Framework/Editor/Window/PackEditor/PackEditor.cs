@@ -12,13 +12,9 @@
 *********************************************************************************/
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using UnityEditor;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Framework
 {
@@ -55,9 +51,32 @@ namespace Framework
 
         void OnGUI()
         {
-            GUIStyle style = new GUIStyle();
-            style.fontSize = 18;
+            GUIStyle style = new GUIStyle
+            {
+                fontSize = 18
+            };
             var color = GUI.backgroundColor;
+
+            //搜索框;
+            GUILayout.BeginHorizontal(GUI.skin.FindStyle("Toolbar"));
+            string searchString = "";
+            searchString = GUILayout.TextField(searchString, GUI.skin.FindStyle("ToolbarSeachTextField"));
+            if (GUILayout.Button("", GUI.skin.FindStyle("ToolbarSeachCancelButton")))
+            {
+                searchString = "";
+                GUI.FocusControl(null);
+            }
+            GUILayout.EndHorizontal();
+
+            if (GUILayout.Button("File", EditorStyles.toolbarDropDown, GUILayout.Width(50)))
+            {
+                var menu = new GenericMenu();
+                menu.AddItem(new GUIContent("设置"), false, () =>
+                {
+                    LogHelper.PrintError("File->设置");
+                });
+                menu.ShowAsContext();
+            }
 
             using (var v = new EditorGUILayout.VerticalScope(GUI.skin.box))
             {
