@@ -27,7 +27,7 @@ software：Unity2017.4.25/visual studio2017.
     (20)T4M.(TODO)
     (21)FairyGUI.(TODO)
     (22)KCP.(TODO)
-    (23)换装模块.(TODO)
+    (23)换装/染色模块.(TODO)
     (24)寻路模块.(Finish)
     (25)ILRuntime.(TODO)
     (26)技能模块.(TODO)
