@@ -80,10 +80,6 @@ software：Unity2017.4.25/visual studio2017.
     (1)protoc-gen-lua.
     (2)protoc-gen-csharp.
 	
-#### 配置环境变量：
-    (1)myGameFramework：(工程路径)如C:/myGameFramework/
-    (2)myGameFramework_protoc：(protoc.exe路径)如c:/protobuf-3.0.0/src/
-	
 #### 更新记录
     (1)branch_v1.0.
     (2)branch_v2.0(更新tolua版本).
