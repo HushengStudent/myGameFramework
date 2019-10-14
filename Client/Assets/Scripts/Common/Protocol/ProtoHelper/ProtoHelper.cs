@@ -6,7 +6,7 @@ public class ProtoHelper
 {
     private static Dictionary<int, PacketFactory> _factory = new Dictionary<int, PacketFactory>();
 
-    private static object _thisLock = new object();
+    private static readonly object _thisLock = new object();
 
     private static void RegisterProto(Type type)
     {
