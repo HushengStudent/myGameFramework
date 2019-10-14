@@ -46,9 +46,9 @@ namespace Framework
             CombineModel();
         }
 
-        protected override void DeAttachObjectEx()
+        protected override void DetachObjectEx()
         {
-            base.DeAttachObjectEx();
+            base.DetachObjectEx();
             _modelDataDict.Clear();
             _model = null;
             _initModel = false;

@@ -12,11 +12,11 @@ namespace Framework
 {
     public class MonsterEntity : AbsEntity
     {
-        public override EntityTypeEnum EntityType
+        public override EntityType EntityType
         {
             get
             {
-                return EntityTypeEnum.Monster;
+                return EntityType.Monster;
             }
         }
     }

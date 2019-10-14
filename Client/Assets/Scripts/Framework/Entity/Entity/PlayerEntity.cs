@@ -12,11 +12,11 @@ namespace Framework
 {
     public class PlayerEntity : RoleEntity
     {
-        public override EntityTypeEnum EntityType
+        public override EntityType EntityType
         {
             get
             {
-                return base.EntityType | EntityTypeEnum.Player;
+                return base.EntityType | EntityType.Player;
             }
         }
     }

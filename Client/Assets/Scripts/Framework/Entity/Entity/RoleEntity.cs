@@ -12,11 +12,11 @@ namespace Framework
 {
     public class RoleEntity : AbsEntity
     {
-        public override EntityTypeEnum EntityType
+        public override EntityType EntityType
         {
             get
             {
-                return EntityTypeEnum.Role;
+                return EntityType.Role;
             }
         }
 

@@ -6,7 +6,7 @@
 
 namespace Framework
 {
-    public enum EntityTypeEnum : byte
+    public enum EntityType : byte
     {
         Non = 0,
         Role = 1,
@@ -42,7 +42,7 @@ namespace Framework
                 }
             }
         }
-        public virtual EntityTypeEnum EntityType { get { return EntityTypeEnum.Non; } }
+        public virtual EntityType EntityType { get { return EntityType.Non; } }
 
         public virtual void FixedUpdateEx(float interval) { }
         public virtual void UpdateEx(float interval) { }
@@ -72,7 +72,7 @@ namespace Framework
         /// </summary>
         public void UnInitialize()
         {
-            DeAttachGoEx();
+            DetachGoEx();
             UnInitializeEx();
             Enable = false;
             EntityLoadFinishHandler = null;
@@ -94,7 +94,7 @@ namespace Framework
         /// <summary>
         /// 重置GameObject的附加;
         /// </summary>
-        protected virtual void DeAttachGoEx()
+        protected virtual void DetachGoEx()
         {
             gameObjectEx.Uninit();
             PoolMgr.Instance.ReleaseCsharpObject<GameObjectEx>(gameObjectEx);

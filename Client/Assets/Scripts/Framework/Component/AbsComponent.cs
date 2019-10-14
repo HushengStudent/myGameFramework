@@ -47,8 +47,8 @@ namespace Framework
         /// </summary>
         public void UnInitialize()
         {
-            DeAttachObjectEx();
-            DeAttachGoEx();
+            DetachObjectEx();
+            DetachGoEx();
             EventUnsubscribe();
             UnInitializeEx();
             Enable = false;
@@ -83,7 +83,7 @@ namespace Framework
         /// <summary>
         /// 重置Entity的附加;
         /// </summary>
-        protected virtual void DeAttachObjectEx()
+        protected virtual void DetachObjectEx()
         {
             Owner = null;
             Entity = null;
@@ -92,7 +92,7 @@ namespace Framework
         /// <summary>
         /// 重置GameObject的附加;
         /// </summary>
-        protected virtual void DeAttachGoEx()
+        protected virtual void DetachGoEx()
         {
             if (!Entity.gameObjectEx.IsLoadFinish)
             {
