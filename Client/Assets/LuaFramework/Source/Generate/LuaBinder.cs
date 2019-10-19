@@ -384,13 +384,13 @@ public static class LuaBinder
 
 			if (count == 1)
 			{
-				Delegate arg1 = DelegateTraits<Framework.onInitializeFinishedHandler>.Create(func);
+				Delegate arg1 = DelegateTraits<Framework.OnInitializeFinishedHandler>.Create(func);
 				ToLua.Push(L, arg1);
 			}
 			else
 			{
 				LuaTable self = ToLua.CheckLuaTable(L, 2);
-				Delegate arg1 = DelegateTraits<Framework.onInitializeFinishedHandler>.Create(func, self);
+				Delegate arg1 = DelegateTraits<Framework.OnInitializeFinishedHandler>.Create(func, self);
 				ToLua.Push(L, arg1);
 			}
 			return 1;
@@ -414,13 +414,13 @@ public static class LuaBinder
 
 			if (count == 1)
 			{
-				Delegate arg1 = DelegateTraits<Framework.onUninitializeStartHandler>.Create(func);
+				Delegate arg1 = DelegateTraits<Framework.OnUninitializeStartHandler>.Create(func);
 				ToLua.Push(L, arg1);
 			}
 			else
 			{
 				LuaTable self = ToLua.CheckLuaTable(L, 2);
-				Delegate arg1 = DelegateTraits<Framework.onUninitializeStartHandler>.Create(func, self);
+				Delegate arg1 = DelegateTraits<Framework.OnUninitializeStartHandler>.Create(func, self);
 				ToLua.Push(L, arg1);
 			}
 			return 1;

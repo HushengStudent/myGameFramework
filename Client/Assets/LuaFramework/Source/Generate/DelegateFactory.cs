@@ -31,8 +31,8 @@ public class DelegateFactory
 		dict.Add(typeof(UnityEngine.AudioClip.PCMSetPositionCallback), factory.UnityEngine_AudioClip_PCMSetPositionCallback);
 		dict.Add(typeof(System.Action<UnityEngine.AsyncOperation>), factory.System_Action_UnityEngine_AsyncOperation);
 		dict.Add(typeof(UnityEngine.RectTransform.ReapplyDrivenProperties), factory.UnityEngine_RectTransform_ReapplyDrivenProperties);
-		dict.Add(typeof(Framework.onInitializeFinishedHandler), factory.Framework_onInitializeFinishedHandler);
-		dict.Add(typeof(Framework.onUninitializeStartHandler), factory.Framework_onUninitializeStartHandler);
+		dict.Add(typeof(Framework.OnInitializeFinishedHandler), factory.Framework_onInitializeFinishedHandler);
+		dict.Add(typeof(Framework.OnUninitializeStartHandler), factory.Framework_onUninitializeStartHandler);
 		dict.Add(typeof(Framework.SceneLoadEventHandler), factory.Framework_SceneLoadEventHandler);
 		dict.Add(typeof(System.Action<float>), factory.System_Action_float);
 		dict.Add(typeof(System.Action<UnityEngine.SceneManagement.Scene>), factory.System_Action_UnityEngine_SceneManagement_Scene);
@@ -51,8 +51,8 @@ public class DelegateFactory
 		DelegateTraits<UnityEngine.AudioClip.PCMSetPositionCallback>.Init(factory.UnityEngine_AudioClip_PCMSetPositionCallback);
 		DelegateTraits<System.Action<UnityEngine.AsyncOperation>>.Init(factory.System_Action_UnityEngine_AsyncOperation);
 		DelegateTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Init(factory.UnityEngine_RectTransform_ReapplyDrivenProperties);
-		DelegateTraits<Framework.onInitializeFinishedHandler>.Init(factory.Framework_onInitializeFinishedHandler);
-		DelegateTraits<Framework.onUninitializeStartHandler>.Init(factory.Framework_onUninitializeStartHandler);
+		DelegateTraits<Framework.OnInitializeFinishedHandler>.Init(factory.Framework_onInitializeFinishedHandler);
+		DelegateTraits<Framework.OnUninitializeStartHandler>.Init(factory.Framework_onUninitializeStartHandler);
 		DelegateTraits<Framework.SceneLoadEventHandler>.Init(factory.Framework_SceneLoadEventHandler);
 		DelegateTraits<System.Action<float>>.Init(factory.System_Action_float);
 		DelegateTraits<System.Action<UnityEngine.SceneManagement.Scene>>.Init(factory.System_Action_UnityEngine_SceneManagement_Scene);
@@ -71,8 +71,8 @@ public class DelegateFactory
 		TypeTraits<UnityEngine.AudioClip.PCMSetPositionCallback>.Init(factory.Check_UnityEngine_AudioClip_PCMSetPositionCallback);
 		TypeTraits<System.Action<UnityEngine.AsyncOperation>>.Init(factory.Check_System_Action_UnityEngine_AsyncOperation);
 		TypeTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Init(factory.Check_UnityEngine_RectTransform_ReapplyDrivenProperties);
-		TypeTraits<Framework.onInitializeFinishedHandler>.Init(factory.Check_Framework_onInitializeFinishedHandler);
-		TypeTraits<Framework.onUninitializeStartHandler>.Init(factory.Check_Framework_onUninitializeStartHandler);
+		TypeTraits<Framework.OnInitializeFinishedHandler>.Init(factory.Check_Framework_onInitializeFinishedHandler);
+		TypeTraits<Framework.OnUninitializeStartHandler>.Init(factory.Check_Framework_onUninitializeStartHandler);
 		TypeTraits<Framework.SceneLoadEventHandler>.Init(factory.Check_Framework_SceneLoadEventHandler);
 		TypeTraits<System.Action<float>>.Init(factory.Check_System_Action_float);
 		TypeTraits<System.Action<UnityEngine.SceneManagement.Scene>>.Init(factory.Check_System_Action_UnityEngine_SceneManagement_Scene);
@@ -91,8 +91,8 @@ public class DelegateFactory
 		StackTraits<UnityEngine.AudioClip.PCMSetPositionCallback>.Push = factory.Push_UnityEngine_AudioClip_PCMSetPositionCallback;
 		StackTraits<System.Action<UnityEngine.AsyncOperation>>.Push = factory.Push_System_Action_UnityEngine_AsyncOperation;
 		StackTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Push = factory.Push_UnityEngine_RectTransform_ReapplyDrivenProperties;
-		StackTraits<Framework.onInitializeFinishedHandler>.Push = factory.Push_Framework_onInitializeFinishedHandler;
-		StackTraits<Framework.onUninitializeStartHandler>.Push = factory.Push_Framework_onUninitializeStartHandler;
+		StackTraits<Framework.OnInitializeFinishedHandler>.Push = factory.Push_Framework_onInitializeFinishedHandler;
+		StackTraits<Framework.OnUninitializeStartHandler>.Push = factory.Push_Framework_onUninitializeStartHandler;
 		StackTraits<Framework.SceneLoadEventHandler>.Push = factory.Push_Framework_SceneLoadEventHandler;
 		StackTraits<System.Action<float>>.Push = factory.Push_System_Action_float;
 		StackTraits<System.Action<UnityEngine.SceneManagement.Scene>>.Push = factory.Push_System_Action_UnityEngine_SceneManagement_Scene;
@@ -1034,25 +1034,25 @@ public class DelegateFactory
 		}
 	}
 
-	public Framework.onInitializeFinishedHandler Framework_onInitializeFinishedHandler(LuaFunction func, LuaTable self, bool flag)
+	public Framework.OnInitializeFinishedHandler Framework_onInitializeFinishedHandler(LuaFunction func, LuaTable self, bool flag)
 	{
 		if (func == null)
 		{
-			Framework.onInitializeFinishedHandler fn = delegate() { };
+			Framework.OnInitializeFinishedHandler fn = delegate() { };
 			return fn;
 		}
 
 		if(!flag)
 		{
 			Framework_onInitializeFinishedHandler_Event target = new Framework_onInitializeFinishedHandler_Event(func);
-			Framework.onInitializeFinishedHandler d = target.Call;
+			Framework.OnInitializeFinishedHandler d = target.Call;
 			target.method = d.Method;
 			return d;
 		}
 		else
 		{
 			Framework_onInitializeFinishedHandler_Event target = new Framework_onInitializeFinishedHandler_Event(func, self);
-			Framework.onInitializeFinishedHandler d = target.CallWithSelf;
+			Framework.OnInitializeFinishedHandler d = target.CallWithSelf;
 			target.method = d.Method;
 			return d;
 		}
@@ -1060,10 +1060,10 @@ public class DelegateFactory
 
 	bool Check_Framework_onInitializeFinishedHandler(IntPtr L, int pos)
 	{
-		return TypeChecker.CheckDelegateType(typeof(Framework.onInitializeFinishedHandler), L, pos);
+		return TypeChecker.CheckDelegateType(typeof(Framework.OnInitializeFinishedHandler), L, pos);
 	}
 
-	void Push_Framework_onInitializeFinishedHandler(IntPtr L, Framework.onInitializeFinishedHandler o)
+	void Push_Framework_onInitializeFinishedHandler(IntPtr L, Framework.OnInitializeFinishedHandler o)
 	{
 		ToLua.Push(L, o);
 	}
@@ -1087,25 +1087,25 @@ public class DelegateFactory
 		}
 	}
 
-	public Framework.onUninitializeStartHandler Framework_onUninitializeStartHandler(LuaFunction func, LuaTable self, bool flag)
+	public Framework.OnUninitializeStartHandler Framework_onUninitializeStartHandler(LuaFunction func, LuaTable self, bool flag)
 	{
 		if (func == null)
 		{
-			Framework.onUninitializeStartHandler fn = delegate() { };
+			Framework.OnUninitializeStartHandler fn = delegate() { };
 			return fn;
 		}
 
 		if(!flag)
 		{
 			Framework_onUninitializeStartHandler_Event target = new Framework_onUninitializeStartHandler_Event(func);
-			Framework.onUninitializeStartHandler d = target.Call;
+			Framework.OnUninitializeStartHandler d = target.Call;
 			target.method = d.Method;
 			return d;
 		}
 		else
 		{
 			Framework_onUninitializeStartHandler_Event target = new Framework_onUninitializeStartHandler_Event(func, self);
-			Framework.onUninitializeStartHandler d = target.CallWithSelf;
+			Framework.OnUninitializeStartHandler d = target.CallWithSelf;
 			target.method = d.Method;
 			return d;
 		}
@@ -1113,10 +1113,10 @@ public class DelegateFactory
 
 	bool Check_Framework_onUninitializeStartHandler(IntPtr L, int pos)
 	{
-		return TypeChecker.CheckDelegateType(typeof(Framework.onUninitializeStartHandler), L, pos);
+		return TypeChecker.CheckDelegateType(typeof(Framework.OnUninitializeStartHandler), L, pos);
 	}
 
-	void Push_Framework_onUninitializeStartHandler(IntPtr L, Framework.onUninitializeStartHandler o)
+	void Push_Framework_onUninitializeStartHandler(IntPtr L, Framework.OnUninitializeStartHandler o)
 	{
 		ToLua.Push(L, o);
 	}

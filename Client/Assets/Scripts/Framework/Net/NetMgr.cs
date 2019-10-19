@@ -42,12 +42,12 @@ namespace Framework
 
         private void InitHandler()
         {
-            _session.ConnectedHandler += OnConnected;
-            _session.ClosedHandler += OnClosed;
-            _session.ErrorHandler += OnError;
-            _session.CustomErrorHandler += OnCustomError;
-            _session.ReceiveHandler += OnReceive;
-            _session.SendHandler += OnSend;
+            _session.ConnectedHandler = OnConnected;
+            _session.ClosedHandler = OnClosed;
+            _session.ErrorHandler = OnError;
+            _session.CustomErrorHandler = OnCustomError;
+            _session.ReceiveHandler = OnReceive;
+            _session.SendHandler = OnSend;
         }
 
         private void OnSend(Session session, int count, SessionParam args)

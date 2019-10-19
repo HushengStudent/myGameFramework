@@ -69,7 +69,7 @@ software：Unity2017.4.25/visual studio2017.
 	(18)Odin Inspector and Serializer 2.1.	
 	
     环境变量配置:
-    (1)myGameFramework:(工程路径)如C:/Users/husheng/Desktop/MyProject/4GameFramework/myGameFramework/
+    (1)myGameFramework:(工程路径)如C:/myGameFramework/
     (2)myGameFramework_protoc:(protoc.exe路径)如c:/protobuf-3.0.0/src/
 	
 #### Server：服务器工程使用visual studio2017创建

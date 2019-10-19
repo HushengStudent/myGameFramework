@@ -113,7 +113,7 @@ public class Framework_SingletonBaseWrap
 		{
 			o = ToLua.ToObject(L, 1);
 			Framework.SingletonBase obj = (Framework.SingletonBase)o;
-			Framework.onInitializeFinishedHandler ret = obj._onInitializeFinishedHandler;
+			Framework.OnInitializeFinishedHandler ret = obj.OnInitializeHandler;
 			ToLua.Push(L, ret);
 			return 1;
 		}
@@ -135,7 +135,7 @@ public class Framework_SingletonBaseWrap
 		{
 			o = ToLua.ToObject(L, 1);
 			Framework.SingletonBase obj = (Framework.SingletonBase)o;
-			Framework.onUninitializeStartHandler ret = obj._onUninitializeStartHandler;
+			Framework.OnUninitializeStartHandler ret = obj.OnUninitializeHandler;
 			ToLua.Push(L, ret);
 			return 1;
 		}
@@ -157,8 +157,8 @@ public class Framework_SingletonBaseWrap
 		{
 			o = ToLua.ToObject(L, 1);
 			Framework.SingletonBase obj = (Framework.SingletonBase)o;
-			Framework.onInitializeFinishedHandler arg0 = (Framework.onInitializeFinishedHandler)ToLua.CheckDelegate<Framework.onInitializeFinishedHandler>(L, 2);
-			obj._onInitializeFinishedHandler = arg0;
+			Framework.OnInitializeFinishedHandler arg0 = (Framework.OnInitializeFinishedHandler)ToLua.CheckDelegate<Framework.OnInitializeFinishedHandler>(L, 2);
+			obj.OnInitializeHandler = arg0;
 			return 0;
 		}
 		catch(Exception e)
@@ -179,8 +179,8 @@ public class Framework_SingletonBaseWrap
 		{
 			o = ToLua.ToObject(L, 1);
 			Framework.SingletonBase obj = (Framework.SingletonBase)o;
-			Framework.onUninitializeStartHandler arg0 = (Framework.onUninitializeStartHandler)ToLua.CheckDelegate<Framework.onUninitializeStartHandler>(L, 2);
-			obj._onUninitializeStartHandler = arg0;
+			Framework.OnUninitializeStartHandler arg0 = (Framework.OnUninitializeStartHandler)ToLua.CheckDelegate<Framework.OnUninitializeStartHandler>(L, 2);
+			obj.OnUninitializeHandler = arg0;
 			return 0;
 		}
 		catch(Exception e)

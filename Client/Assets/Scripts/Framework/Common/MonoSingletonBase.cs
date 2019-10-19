@@ -17,8 +17,8 @@ namespace Framework
 
     public class MonoSingletonBase : MonoSingletoninterface
     {
-        public onInitializeFinishedHandler _onInitializeFinishedHandler = delegate { };
-        public onUninitializeStartHandler _onUninitializeStartHandler = delegate { };
+        public event OnInitializeFinishedHandler OnInitializeHandler;
+        public event OnUninitializeStartHandler OnUninitializeHandler;
 
         private bool isInit = false;
         private bool isUninit = false;
@@ -31,9 +31,9 @@ namespace Framework
             {
                 isInit = true;
                 OnInitialize();
-                if (_onInitializeFinishedHandler != null)
+                if (OnInitializeHandler != null)
                 {
-                    _onInitializeFinishedHandler();
+                    OnInitializeHandler();
                 }
             }
         }
@@ -43,9 +43,9 @@ namespace Framework
             if (!isUninit)
             {
                 isUninit = true;
-                if (_onUninitializeStartHandler != null)
+                if (OnUninitializeHandler != null)
                 {
-                    _onUninitializeStartHandler();
+                    OnUninitializeHandler();
                 }
                 OnUninitialize();
             }

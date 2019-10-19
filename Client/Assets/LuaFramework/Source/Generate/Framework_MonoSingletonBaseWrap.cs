@@ -107,7 +107,7 @@ public class Framework_MonoSingletonBaseWrap
 		{
 			o = ToLua.ToObject(L, 1);
 			Framework.MonoSingletonBase obj = (Framework.MonoSingletonBase)o;
-			Framework.onInitializeFinishedHandler ret = obj._onInitializeFinishedHandler;
+			Framework.OnInitializeFinishedHandler ret = obj._onInitializeFinishedHandler;
 			ToLua.Push(L, ret);
 			return 1;
 		}
@@ -129,7 +129,7 @@ public class Framework_MonoSingletonBaseWrap
 		{
 			o = ToLua.ToObject(L, 1);
 			Framework.MonoSingletonBase obj = (Framework.MonoSingletonBase)o;
-			Framework.onUninitializeStartHandler ret = obj._onUninitializeStartHandler;
+			Framework.OnUninitializeStartHandler ret = obj._onUninitializeStartHandler;
 			ToLua.Push(L, ret);
 			return 1;
 		}
@@ -151,7 +151,7 @@ public class Framework_MonoSingletonBaseWrap
 		{
 			o = ToLua.ToObject(L, 1);
 			Framework.MonoSingletonBase obj = (Framework.MonoSingletonBase)o;
-			Framework.onInitializeFinishedHandler arg0 = (Framework.onInitializeFinishedHandler)ToLua.CheckDelegate<Framework.onInitializeFinishedHandler>(L, 2);
+			Framework.OnInitializeFinishedHandler arg0 = (Framework.OnInitializeFinishedHandler)ToLua.CheckDelegate<Framework.OnInitializeFinishedHandler>(L, 2);
 			obj._onInitializeFinishedHandler = arg0;
 			return 0;
 		}
@@ -173,7 +173,7 @@ public class Framework_MonoSingletonBaseWrap
 		{
 			o = ToLua.ToObject(L, 1);
 			Framework.MonoSingletonBase obj = (Framework.MonoSingletonBase)o;
-			Framework.onUninitializeStartHandler arg0 = (Framework.onUninitializeStartHandler)ToLua.CheckDelegate<Framework.onUninitializeStartHandler>(L, 2);
+			Framework.OnUninitializeStartHandler arg0 = (Framework.OnUninitializeStartHandler)ToLua.CheckDelegate<Framework.OnUninitializeStartHandler>(L, 2);
 			obj._onUninitializeStartHandler = arg0;
 			return 0;
 		}
