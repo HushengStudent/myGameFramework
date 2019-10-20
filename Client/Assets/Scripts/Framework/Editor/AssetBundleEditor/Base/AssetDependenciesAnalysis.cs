@@ -112,6 +112,7 @@ namespace Framework
                 }
             }
 
+            //TODO:AssetBundleBuild修改为可以包含多个资源.
             List<AssetBundleBuild> builderList = new List<AssetBundleBuild>();
 
             foreach (var asset in independenceAsset)
