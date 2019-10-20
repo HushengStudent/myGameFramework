@@ -99,8 +99,8 @@ public static class LuaBinder
 		Framework_SingletoninterfaceWrap.Register(L);
 		Framework_Singleton_Framework_SceneMgrWrap.Register(L);
 		Framework_MonoSingleton_Framework_ResourceMgrWrap.Register(L);
-		L.RegFunction("onInitializeFinishedHandler", Framework_onInitializeFinishedHandler);
-		L.RegFunction("onUninitializeStartHandler", Framework_onUninitializeStartHandler);
+		L.RegFunction("OnInitializeFinishedHandler", Framework_OnInitializeFinishedHandler);
+		L.RegFunction("OnUninitializeStartHandler", Framework_OnUninitializeStartHandler);
 		L.RegFunction("SceneLoadEventHandler", Framework_SceneLoadEventHandler);
 		L.EndModule();
 		L.BeginModule("System");
@@ -372,10 +372,10 @@ public static class LuaBinder
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int Framework_onInitializeFinishedHandler(IntPtr L)
+	static int Framework_OnInitializeFinishedHandler(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.Framework_onInitializeFinishedHandler");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.Framework_OnInitializeFinishedHandler");
 #endif
 		try
 		{
@@ -402,10 +402,10 @@ public static class LuaBinder
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int Framework_onUninitializeStartHandler(IntPtr L)
+	static int Framework_OnUninitializeStartHandler(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.Framework_onUninitializeStartHandler");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.Framework_OnUninitializeStartHandler");
 #endif
 		try
 		{

@@ -16,6 +16,7 @@ public class Framework_LuaMgrWrap
 		L.RegFunction("Dostring", Dostring);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
+		L.RegVar("RequirePathList", get_RequirePathList, null);
 		L.EndClass();
 	}
 
@@ -180,6 +181,28 @@ public class Framework_LuaMgrWrap
 		catch (Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_RequirePathList(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaMgr.RequirePathList");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			Framework.LuaMgr obj = (Framework.LuaMgr)o;
+			System.Collections.Generic.List<string> ret = obj.RequirePathList;
+			ToLua.PushSealed(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index RequirePathList on a nil value");
 		}
 	}
 }

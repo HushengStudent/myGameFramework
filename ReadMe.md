@@ -23,7 +23,7 @@ software：Unity2017.4.25/visual studio2017.
     (16)配置表工具.(Finish)
     (17)实时阴影.(Finish)
     (18)Timeline.(TODO)
-    (19)FMOD.(TODO)
+    (19)FMOD/Wwise.(TODO)
     (20)T4M.(TODO)
     (21)FairyGUI.(TODO)
     (22)KCP.(TODO)

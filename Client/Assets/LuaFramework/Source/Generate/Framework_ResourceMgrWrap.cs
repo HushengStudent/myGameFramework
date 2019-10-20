@@ -24,6 +24,7 @@ public class Framework_ResourceMgrWrap
 		L.RegVar("LOAD_BUNDLE_PRECENT", get_LOAD_BUNDLE_PRECENT, null);
 		L.RegVar("LOAD_ASSET_PRECENT", get_LOAD_ASSET_PRECENT, null);
 		L.RegVar("onResourceInitAction", get_onResourceInitAction, set_onResourceInitAction);
+		L.RegVar("LuaAssetBundle", get_LuaAssetBundle, null);
 		L.EndClass();
 	}
 
@@ -437,6 +438,28 @@ public class Framework_ResourceMgrWrap
 		catch (Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_LuaAssetBundle(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.LuaAssetBundle");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			Framework.ResourceMgr obj = (Framework.ResourceMgr)o;
+			UnityEngine.AssetBundle ret = obj.LuaAssetBundle;
+			ToLua.PushSealed(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index LuaAssetBundle on a nil value");
 		}
 	}
 
