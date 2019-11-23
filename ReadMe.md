@@ -3,7 +3,7 @@
 
 software：Unity2017.4.25/visual studio2017.
 
-#### Client：客户端工程使用Unity2017.4.16创建
+#### Client：客户端工程使用Unity2017.4.25创建
     Module：
     (1)资源管理：AB打包、资源加载、资源卸载.(Finish)
     (2)tolua接入.(Finish)
