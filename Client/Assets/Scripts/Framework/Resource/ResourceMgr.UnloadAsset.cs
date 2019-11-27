@@ -49,10 +49,7 @@ namespace Framework
             UnloadUnusedAssets((option) =>
             {
                 AssetBundleMgr.Instance.AutoUnloadAsset();
-                if (onFinish != null)
-                {
-                    onFinish();
-                }
+                onFinish?.Invoke();
             });
         }
 
@@ -61,10 +58,7 @@ namespace Framework
             AsyncOperation operation = Resources.UnloadUnusedAssets();
             if (operation.isDone)
             {
-                if (action != null)
-                {
-                    action(operation);
-                }
+                action?.Invoke(operation);
             }
             else
             {

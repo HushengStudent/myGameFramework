@@ -84,7 +84,7 @@ namespace Framework
             ResourceRequest request = Resources.LoadAsync(path);
             while (request.progress < 0.99f)
             {
-                if (progress != null) progress(request.progress);
+                progress?.Invoke(request.progress);
                 yield return Timing.WaitForOneFrame;
             }
             while (!request.isDone)

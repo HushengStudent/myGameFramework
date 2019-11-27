@@ -13,9 +13,7 @@ namespace Framework
         private static readonly string _monoSingletonRoot = "@MonoSingletonRoot";
 
         protected static T _instance = null;
-
-        private static bool _applicationIsPlaying = true;
-        public static bool ApplicationIsPlaying { get { return _applicationIsPlaying; } }
+        public static bool ApplicationIsPlaying { get; private set; } = true;
 
         public static T Instance
         {
@@ -93,7 +91,7 @@ namespace Framework
                 singleton.MonoSingletoninterfaceOnUninitialize();
             }
             OnDestroyEx();
-            _applicationIsPlaying = false;
+            ApplicationIsPlaying = false;
             _instance = null;
         }
 

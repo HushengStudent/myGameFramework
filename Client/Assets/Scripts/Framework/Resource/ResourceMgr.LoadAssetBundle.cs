@@ -121,10 +121,7 @@ namespace Framework
             //此处加载占0.2;
             while (request.progress < 0.99f)
             {
-                if (progress != null)
-                {
-                    progress(LOAD_BUNDLE_PRECENT + LOAD_ASSET_PRECENT * request.progress);
-                }
+                progress?.Invoke(LOAD_BUNDLE_PRECENT + LOAD_ASSET_PRECENT * request.progress);
                 yield return Timing.WaitForOneFrame;
             }
             while (!request.isDone)

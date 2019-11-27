@@ -16,9 +16,9 @@ namespace Framework.ObjectPool
         private readonly UnityAction<T> m_ActionOnGet;
         private readonly UnityAction<T> m_ActionOnRelease;
 
-        public int countAll { get; private set; }
-        public int countActive { get { return countAll - countInactive; } }
-        public int countInactive { get { return m_Stack.Count; } }
+        public int CountAll { get; private set; }
+        public int CountActive { get { return CountAll - CountInactive; } }
+        public int CountInactive { get { return m_Stack.Count; } }
 
         public CsharpObjectPool(UnityAction<T> actionOnGet, UnityAction<T> actionOnRelease)
         {
@@ -32,7 +32,7 @@ namespace Framework.ObjectPool
             if (m_Stack.Count == 0)
             {
                 element = new T();
-                countAll++;
+                CountAll++;
             }
             else
             {
@@ -47,8 +47,7 @@ namespace Framework.ObjectPool
         {
             if (m_Stack.Count > 0 && ReferenceEquals(m_Stack.Peek(), element))
                 Debug.LogError("Internal error. Trying to destroy object that is already released to pool.");
-            if (m_ActionOnRelease != null)
-                m_ActionOnRelease(element);
+            m_ActionOnRelease?.Invoke(element);
             m_Stack.Push(element);
         }
     }

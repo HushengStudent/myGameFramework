@@ -26,10 +26,7 @@ namespace Framework
                 LogHelper.Print("[UIScreenShotHelper]Save Image to:" + Application.dataPath.ToLower() + "/../ScreenShot/");
                 FileHelper.Write2Bytes(Application.dataPath.ToLower() + "/../ScreenShot/ScreenShot.png", texByte);
 
-                if (action != null)
-                {
-                    action(tex);
-                }
+                action?.Invoke(tex);
             }));
         }
 
@@ -59,20 +56,14 @@ namespace Framework
                 LogHelper.Print("[UIScreenShotHelper]Save Image to:" + Application.dataPath.ToLower() + "/../ScreenShot/");
                 FileHelper.Write2Bytes(Application.dataPath.ToLower() + "/../ScreenShot/CameraShot.png", texByte);
 
-                if (action != null)
-                {
-                    action(tex);
-                }
+                action?.Invoke(tex);
             }));
         }
 
         public static IEnumerator WaitForEndOfFrameItor(Action action)
         {
             yield return new WaitForEndOfFrame();
-            if (action != null)
-            {
-                action();
-            }
+            action?.Invoke();
         }
     }
 }

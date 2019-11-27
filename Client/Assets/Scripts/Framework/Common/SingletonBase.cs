@@ -33,10 +33,7 @@ namespace Framework
             {
                 isInit = true;
                 OnInitialize();
-                if (OnInitializeHandler != null)
-                {
-                    OnInitializeHandler();
-                }
+                OnInitializeHandler?.Invoke();
             }
         }
 
@@ -45,10 +42,7 @@ namespace Framework
             if (!isUninit)
             {
                 isUninit = true;
-                if (OnUninitializeHandler != null)
-                {
-                    OnUninitializeHandler();
-                }
+                OnUninitializeHandler?.Invoke();
                 OnUninitialize();
             }
         }

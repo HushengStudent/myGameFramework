@@ -15,21 +15,19 @@ namespace Framework
 
     public abstract class AbsTransition
     {
-        private StateMachineTransitionState _transState = StateMachineTransitionState.Ready;
-
         public string Name { get; private set; }
         public AbsState FromState { get; private set; }
         public AbsState ToState { get; private set; }
         public AbsEntity Entity { get; private set; }
         public StateMachine Machine { get; private set; }
-        public StateMachineTransitionState TransState { get { return _transState; } set { _transState = value; } }
+        public StateMachineTransitionState TransState { get; set; } = StateMachineTransitionState.Ready;
 
         public AbsTransition(StateMachine machine, string name, AbsState formState, AbsState toState)
         {
             Name = name;
             Entity = machine.Entity;
             Machine = machine;
-            _transState = StateMachineTransitionState.Ready;
+            TransState = StateMachineTransitionState.Ready;
             FromState = formState;
             ToState = toState;
         }
@@ -40,8 +38,8 @@ namespace Framework
         {
             FromState = formState;
             ToState = toState;
-            _transState = ExcuteTransEx();
-            return _transState;
+            TransState = ExcuteTransEx();
+            return TransState;
         }
 
         public virtual StateMachineTransitionState ExcuteTransEx() { return StateMachineTransitionState.Finish; }

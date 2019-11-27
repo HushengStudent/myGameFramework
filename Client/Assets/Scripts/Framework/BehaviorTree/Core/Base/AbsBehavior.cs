@@ -11,12 +11,10 @@ namespace Framework
     public abstract class AbsBehavior
     {
         private bool _awake = false;
-        private BehaviorState _reslut = BehaviorState.Reset;
-
         public int Id;
 
         public AbsEntity Entity { get; private set; }
-        public BehaviorState Reslut { get { return _reslut; } set { _reslut = value; } }
+        public BehaviorState Reslut { get; set; } = BehaviorState.Reset;
 
         public virtual bool IsComposite { get { return false; } }
 

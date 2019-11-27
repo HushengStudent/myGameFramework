@@ -342,10 +342,7 @@ namespace Framework
                 IEnumerator<float> itor = LoadAsync(tempPtah, null, (value) => { dp = value; });
                 while (itor.MoveNext())
                 {
-                    if (progress != null)
-                    {
-                        progress(unit * (index + dp));
-                    }
+                    progress?.Invoke(unit * (index + dp));
                     yield return Timing.WaitForOneFrame;
                 }
                 index++;
@@ -355,10 +352,7 @@ namespace Framework
             IEnumerator<float> itorTarget = LoadAsync(assetBundlePath, action, (value) => { p = value; });
             while (itorTarget.MoveNext())
             {
-                if (progress != null)
-                {
-                    progress(unit * (count + p));
-                }
+                progress?.Invoke(unit * (count + p));
                 yield return Timing.WaitForOneFrame;
             }
         }

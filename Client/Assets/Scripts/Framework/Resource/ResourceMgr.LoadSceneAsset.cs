@@ -84,20 +84,14 @@ namespace Framework
 
             SceneManager.sceneLoaded += (scene, mode) =>
             {
-                if (onSceneLoaded != null)
-                {
-                    onSceneLoaded(scene);
-                }
+                onSceneLoaded?.Invoke(scene);
             };
             AsyncOperation operation = SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
 
             //此处加载占10%;
             while (operation.progress < 0.99f)
             {
-                if (progress != null)
-                {
-                    progress(0.9f + 0.1f * operation.progress);
-                }
+                progress?.Invoke(0.9f + 0.1f * operation.progress);
                 yield return Timing.WaitForOneFrame;
             }
             while (!operation.isDone)
@@ -147,19 +141,13 @@ namespace Framework
                 {
                     AssetBundleMgr.Instance.UnloadAsset(path, null);
                 }
-                if (onSceneUnloaded != null)
-                {
-                    onSceneUnloaded(scene);
-                }
+                onSceneUnloaded?.Invoke(scene);
             };
             AsyncOperation operation = SceneManager.UnloadSceneAsync(name);
 
             while (operation.progress < 0.99f)
             {
-                if (progress != null)
-                {
-                    progress(operation.progress);
-                }
+                progress?.Invoke(operation.progress);
                 yield return Timing.WaitForOneFrame;
             }
             while (!operation.isDone)

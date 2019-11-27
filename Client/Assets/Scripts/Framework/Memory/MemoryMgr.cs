@@ -11,12 +11,11 @@ namespace Framework
 {
     public class MemoryMgr : MonoSingleton<MemoryMgr>
     {
-        private int _maxMemoryUse = 1024;
-        private int _monitTime = 10;
+        private readonly int _monitTime = 10;
         private float _lastUpdateTimer;
         private const int MBSize = 1024 * 1024;
 
-        public int MaxMemoryUse { get { return _maxMemoryUse; } set { _maxMemoryUse = value; } }
+        public int MaxMemoryUse { get; set; } = 1024;
 
         protected override void OnInitialize()
         {
@@ -43,7 +42,7 @@ namespace Framework
         private void MonitorMemorySize()
         {
             float allMenory = GetAllMemory();
-            if (allMenory > _maxMemoryUse)
+            if (allMenory > MaxMemoryUse)
             {
                 LogHelper.PrintError(string.Format("Used Heap Size: {0} MB", allMenory.ToString("F3")));
                 FreeMemory();

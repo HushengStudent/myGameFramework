@@ -54,10 +54,7 @@ namespace Framework
                 }
                 else
                 {
-                    if (onResourceInitAction != null)
-                    {
-                        onResourceInitAction();
-                    }
+                    onResourceInitAction?.Invoke();
                     break;
                 }
             }

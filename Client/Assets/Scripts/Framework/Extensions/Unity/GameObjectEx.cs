@@ -38,10 +38,7 @@ namespace Framework
                 gameObject.name = entity.UID.ToString();
                 IsLoadFinish = true;
                 Trans = gameObject.transform;
-                if (_loadFinishHandler != null)
-                {
-                    _loadFinishHandler(this);
-                }
+                _loadFinishHandler?.Invoke(this);
             });
         }
 
@@ -55,10 +52,7 @@ namespace Framework
 
         public void Uninit()
         {
-            if (_destroyHandler != null)
-            {
-                _destroyHandler(this);
-            }
+            _destroyHandler?.Invoke(this);
             if (IsLoadFinish)
             {
                 proxy.ReleaseInstantiateObject<GameObject>(gameObject);

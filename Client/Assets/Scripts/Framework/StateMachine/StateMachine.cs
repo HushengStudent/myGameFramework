@@ -11,9 +11,6 @@ namespace Framework
     public sealed class StateMachine
     {
         private AbsState _defaultState;
-        private List<AbsState> _stateList = new List<AbsState>();
-        private List<AbsTransition> _transitionList = new List<AbsTransition>();
-
         public bool Enable;
         public AbsState CurrentState;
         public AbsState DefaultState;
@@ -21,8 +18,9 @@ namespace Framework
 
         public string Name { get; private set; }
         public AbsEntity Entity { get; private set; }
-        public List<AbsState> StateList { get { return _stateList; } }
-        public List<AbsTransition> TransitionList { get { return _transitionList; } }
+        public List<AbsState> StateList { get; } = new List<AbsState>();
+
+        public List<AbsTransition> TransitionList { get; } = new List<AbsTransition>();
 
         public StateMachine(AbsEntity entity, string name,
             List<AbsState> stateList, AbsState defaultState, List<AbsTransition> transitionList)
@@ -30,13 +28,13 @@ namespace Framework
             Enable = false;
             Name = name;
             Entity = entity;
-            _stateList.Clear();
-            _transitionList.Clear();
-            _stateList = stateList;
+            StateList.Clear();
+            TransitionList.Clear();
+            StateList = stateList;
             _defaultState = defaultState;
             CurTrans = null;
             CurrentState = _defaultState;
-            _transitionList = transitionList;
+            TransitionList = transitionList;
         }
 
         public void Update(float interval)

@@ -17,15 +17,11 @@ namespace Framework
 
     public class GameMgr : Singleton<GameMgr>
     {
-        private int _gameFrame = 60;
-        private float _syncInterval = 0.2f;
-        private MobileLevel _mobileLevelValue = MobileLevel.High;
-
         public bool CheckUpdateState = false;
 
-        public int GameFrame { get { return _gameFrame; } set { _gameFrame = value; } }
-        public float SyncInterval { get { return _syncInterval; } set { _syncInterval = value; } }
-        public MobileLevel MobileLevelValue { get { return _mobileLevelValue; } set { _mobileLevelValue = value; } }
+        public int GameFrame { get; set; } = 60;
+        public float SyncInterval { get; set; } = 0.2f;
+        public MobileLevel MobileLevelValue { get; set; } = MobileLevel.High;
 
         public bool IsEditor
         {
