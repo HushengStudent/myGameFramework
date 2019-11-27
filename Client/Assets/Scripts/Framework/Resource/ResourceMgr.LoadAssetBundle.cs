@@ -98,7 +98,7 @@ namespace Framework
         {
             AssetBundleAssetProxy proxy = PoolMgr.Instance.GetCsharpObject<AssetBundleAssetProxy>();
             proxy.Initialize(path, isUsePool);
-            CoroutineMgr.Instance.RunCoroutine(LoadFromFileAsync(path, proxy, progress));
+            CoroutineMgr.Instance.RunCoroutine(LoadFromFileAsyncEntrance(path, proxy, progress));
             return proxy;
         }
 
@@ -152,6 +152,42 @@ namespace Framework
             {
                 LogHelper.PrintError(string.Format("[ResourceMgr]LoadFromFileAsync proxy is null:{0}.", path));
             }
+        }
+
+        private IEnumerator<float> LoadFromFileAsyncEntrance(string path, AssetBundleAssetProxy proxy
+            , Action<float> progress)
+        {
+#if !UNITY_EDITOR
+            IEnumerator itor = LoadFromFileAsync(path, proxy, progress);
+            while (itor.MoveNext())
+            {
+                yield return Timing.WaitForOneFrame;
+            }
+#else
+            if (!GameMgr.AssetBundleModel)
+            {
+                var asset = UnityEditor.AssetDatabase.LoadAssetAtPath<Object>("Assets/Bundles/" + path);
+                //先等一帧;
+                yield return Timing.WaitForOneFrame;
+
+                if (proxy != null)
+                {
+                    proxy.OnFinish(asset);
+                }
+                else
+                {
+                    LogHelper.PrintError(string.Format("[ResourceMgr]LoadFromFileAsync proxy is null:{0}.", path));
+                }
+            }
+            else
+            {
+                IEnumerator itor = LoadFromFileAsync(path, proxy, progress);
+                while (itor.MoveNext())
+                {
+                    yield return Timing.WaitForOneFrame;
+                }
+            }
+#endif
         }
 
         #endregion

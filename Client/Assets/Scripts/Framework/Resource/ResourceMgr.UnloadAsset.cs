@@ -18,7 +18,7 @@ namespace Framework
         {
             if (asset != null)
             {
-                if(asset is GameObject)
+                if (asset is GameObject)
                 {
                     return;
                 }
