@@ -151,17 +151,17 @@ public class Framework_LuaUtilityWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 2 && TypeChecker.CheckTypes<UnityEngine.Transform, string>(L, 1))
+			if (count == 2 && TypeChecker.CheckTypes<UnityEngine.GameObject, string>(L, 1))
 			{
-				UnityEngine.Transform arg0 = (UnityEngine.Transform)ToLua.ToObject(L, 1);
+				UnityEngine.GameObject arg0 = (UnityEngine.GameObject)ToLua.ToObject(L, 1);
 				string arg1 = ToLua.ToString(L, 2);
 				UnityEngine.GameObject o = Framework.LuaUtility.Child(arg0, arg1);
 				ToLua.PushSealed(L, o);
 				return 1;
 			}
-			else if (count == 2 && TypeChecker.CheckTypes<UnityEngine.GameObject, string>(L, 1))
+			else if (count == 2 && TypeChecker.CheckTypes<UnityEngine.Transform, string>(L, 1))
 			{
-				UnityEngine.GameObject arg0 = (UnityEngine.GameObject)ToLua.ToObject(L, 1);
+				UnityEngine.Transform arg0 = (UnityEngine.Transform)ToLua.ToObject(L, 1);
 				string arg1 = ToLua.ToString(L, 2);
 				UnityEngine.GameObject o = Framework.LuaUtility.Child(arg0, arg1);
 				ToLua.PushSealed(L, o);
@@ -188,17 +188,17 @@ public class Framework_LuaUtilityWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 2 && TypeChecker.CheckTypes<UnityEngine.Transform, string>(L, 1))
+			if (count == 2 && TypeChecker.CheckTypes<UnityEngine.GameObject, string>(L, 1))
 			{
-				UnityEngine.Transform arg0 = (UnityEngine.Transform)ToLua.ToObject(L, 1);
+				UnityEngine.GameObject arg0 = (UnityEngine.GameObject)ToLua.ToObject(L, 1);
 				string arg1 = ToLua.ToString(L, 2);
 				UnityEngine.GameObject o = Framework.LuaUtility.Peer(arg0, arg1);
 				ToLua.PushSealed(L, o);
 				return 1;
 			}
-			else if (count == 2 && TypeChecker.CheckTypes<UnityEngine.GameObject, string>(L, 1))
+			else if (count == 2 && TypeChecker.CheckTypes<UnityEngine.Transform, string>(L, 1))
 			{
-				UnityEngine.GameObject arg0 = (UnityEngine.GameObject)ToLua.ToObject(L, 1);
+				UnityEngine.Transform arg0 = (UnityEngine.Transform)ToLua.ToObject(L, 1);
 				string arg1 = ToLua.ToString(L, 2);
 				UnityEngine.GameObject o = Framework.LuaUtility.Peer(arg0, arg1);
 				ToLua.PushSealed(L, o);

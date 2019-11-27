@@ -62,17 +62,17 @@ public class LogHelperWrap
 				LogHelper.Print(arg0);
 				return 0;
 			}
-			else if (count == 2 && TypeChecker.CheckTypes<LogColor>(L, 2))
-			{
-				string arg0 = ToLua.CheckString(L, 1);
-				LogColor arg1 = (LogColor)ToLua.ToObject(L, 2);
-				LogHelper.Print(arg0, arg1);
-				return 0;
-			}
 			else if (count == 2 && TypeChecker.CheckTypes<string>(L, 2))
 			{
 				string arg0 = ToLua.CheckString(L, 1);
 				string arg1 = ToLua.ToString(L, 2);
+				LogHelper.Print(arg0, arg1);
+				return 0;
+			}
+			else if (count == 2 && TypeChecker.CheckTypes<LogColor>(L, 2))
+			{
+				string arg0 = ToLua.CheckString(L, 1);
+				LogColor arg1 = (LogColor)ToLua.ToObject(L, 2);
 				LogHelper.Print(arg0, arg1);
 				return 0;
 			}

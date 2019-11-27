@@ -147,18 +147,18 @@ public class UnityEngine_CameraWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 3 && TypeChecker.CheckTypes<UnityEngine.RenderBuffer[], UnityEngine.RenderBuffer>(L, 2))
+			if (count == 3 && TypeChecker.CheckTypes<UnityEngine.RenderBuffer, UnityEngine.RenderBuffer>(L, 2))
 			{
 				UnityEngine.Camera obj = (UnityEngine.Camera)ToLua.CheckObject(L, 1, typeof(UnityEngine.Camera));
-				UnityEngine.RenderBuffer[] arg0 = ToLua.ToStructArray<UnityEngine.RenderBuffer>(L, 2);
+				UnityEngine.RenderBuffer arg0 = StackTraits<UnityEngine.RenderBuffer>.To(L, 2);
 				UnityEngine.RenderBuffer arg1 = StackTraits<UnityEngine.RenderBuffer>.To(L, 3);
 				obj.SetTargetBuffers(arg0, arg1);
 				return 0;
 			}
-			else if (count == 3 && TypeChecker.CheckTypes<UnityEngine.RenderBuffer, UnityEngine.RenderBuffer>(L, 2))
+			else if (count == 3 && TypeChecker.CheckTypes<UnityEngine.RenderBuffer[], UnityEngine.RenderBuffer>(L, 2))
 			{
 				UnityEngine.Camera obj = (UnityEngine.Camera)ToLua.CheckObject(L, 1, typeof(UnityEngine.Camera));
-				UnityEngine.RenderBuffer arg0 = StackTraits<UnityEngine.RenderBuffer>.To(L, 2);
+				UnityEngine.RenderBuffer[] arg0 = ToLua.ToStructArray<UnityEngine.RenderBuffer>(L, 2);
 				UnityEngine.RenderBuffer arg1 = StackTraits<UnityEngine.RenderBuffer>.To(L, 3);
 				obj.SetTargetBuffers(arg0, arg1);
 				return 0;
@@ -730,15 +730,7 @@ public class UnityEngine_CameraWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 2 && TypeChecker.CheckTypes<UnityEngine.RenderTexture>(L, 2))
-			{
-				UnityEngine.Camera obj = (UnityEngine.Camera)ToLua.CheckObject(L, 1, typeof(UnityEngine.Camera));
-				UnityEngine.RenderTexture arg0 = (UnityEngine.RenderTexture)ToLua.ToObject(L, 2);
-				bool o = obj.RenderToCubemap(arg0);
-				LuaDLL.lua_pushboolean(L, o);
-				return 1;
-			}
-			else if (count == 2 && TypeChecker.CheckTypes<UnityEngine.Cubemap>(L, 2))
+			if (count == 2 && TypeChecker.CheckTypes<UnityEngine.Cubemap>(L, 2))
 			{
 				UnityEngine.Camera obj = (UnityEngine.Camera)ToLua.CheckObject(L, 1, typeof(UnityEngine.Camera));
 				UnityEngine.Cubemap arg0 = (UnityEngine.Cubemap)ToLua.ToObject(L, 2);
@@ -746,12 +738,11 @@ public class UnityEngine_CameraWrap
 				LuaDLL.lua_pushboolean(L, o);
 				return 1;
 			}
-			else if (count == 3 && TypeChecker.CheckTypes<UnityEngine.RenderTexture, int>(L, 2))
+			else if (count == 2 && TypeChecker.CheckTypes<UnityEngine.RenderTexture>(L, 2))
 			{
 				UnityEngine.Camera obj = (UnityEngine.Camera)ToLua.CheckObject(L, 1, typeof(UnityEngine.Camera));
 				UnityEngine.RenderTexture arg0 = (UnityEngine.RenderTexture)ToLua.ToObject(L, 2);
-				int arg1 = (int)LuaDLL.lua_tonumber(L, 3);
-				bool o = obj.RenderToCubemap(arg0, arg1);
+				bool o = obj.RenderToCubemap(arg0);
 				LuaDLL.lua_pushboolean(L, o);
 				return 1;
 			}
@@ -759,6 +750,15 @@ public class UnityEngine_CameraWrap
 			{
 				UnityEngine.Camera obj = (UnityEngine.Camera)ToLua.CheckObject(L, 1, typeof(UnityEngine.Camera));
 				UnityEngine.Cubemap arg0 = (UnityEngine.Cubemap)ToLua.ToObject(L, 2);
+				int arg1 = (int)LuaDLL.lua_tonumber(L, 3);
+				bool o = obj.RenderToCubemap(arg0, arg1);
+				LuaDLL.lua_pushboolean(L, o);
+				return 1;
+			}
+			else if (count == 3 && TypeChecker.CheckTypes<UnityEngine.RenderTexture, int>(L, 2))
+			{
+				UnityEngine.Camera obj = (UnityEngine.Camera)ToLua.CheckObject(L, 1, typeof(UnityEngine.Camera));
+				UnityEngine.RenderTexture arg0 = (UnityEngine.RenderTexture)ToLua.ToObject(L, 2);
 				int arg1 = (int)LuaDLL.lua_tonumber(L, 3);
 				bool o = obj.RenderToCubemap(arg0, arg1);
 				LuaDLL.lua_pushboolean(L, o);

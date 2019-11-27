@@ -250,18 +250,18 @@ public class UnityEngine_AnimationWrap
 				LuaDLL.lua_pushboolean(L, o);
 				return 1;
 			}
-			else if (count == 2 && TypeChecker.CheckTypes<string>(L, 2))
-			{
-				UnityEngine.Animation obj = (UnityEngine.Animation)ToLua.CheckObject(L, 1, typeof(UnityEngine.Animation));
-				string arg0 = ToLua.ToString(L, 2);
-				bool o = obj.Play(arg0);
-				LuaDLL.lua_pushboolean(L, o);
-				return 1;
-			}
 			else if (count == 2 && TypeChecker.CheckTypes<UnityEngine.PlayMode>(L, 2))
 			{
 				UnityEngine.Animation obj = (UnityEngine.Animation)ToLua.CheckObject(L, 1, typeof(UnityEngine.Animation));
 				UnityEngine.PlayMode arg0 = (UnityEngine.PlayMode)ToLua.ToObject(L, 2);
+				bool o = obj.Play(arg0);
+				LuaDLL.lua_pushboolean(L, o);
+				return 1;
+			}
+			else if (count == 2 && TypeChecker.CheckTypes<string>(L, 2))
+			{
+				UnityEngine.Animation obj = (UnityEngine.Animation)ToLua.CheckObject(L, 1, typeof(UnityEngine.Animation));
+				string arg0 = ToLua.ToString(L, 2);
 				bool o = obj.Play(arg0);
 				LuaDLL.lua_pushboolean(L, o);
 				return 1;
@@ -543,17 +543,17 @@ public class UnityEngine_AnimationWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 2 && TypeChecker.CheckTypes<string>(L, 2))
-			{
-				UnityEngine.Animation obj = (UnityEngine.Animation)ToLua.CheckObject(L, 1, typeof(UnityEngine.Animation));
-				string arg0 = ToLua.ToString(L, 2);
-				obj.RemoveClip(arg0);
-				return 0;
-			}
-			else if (count == 2 && TypeChecker.CheckTypes<UnityEngine.AnimationClip>(L, 2))
+			if (count == 2 && TypeChecker.CheckTypes<UnityEngine.AnimationClip>(L, 2))
 			{
 				UnityEngine.Animation obj = (UnityEngine.Animation)ToLua.CheckObject(L, 1, typeof(UnityEngine.Animation));
 				UnityEngine.AnimationClip arg0 = (UnityEngine.AnimationClip)ToLua.ToObject(L, 2);
+				obj.RemoveClip(arg0);
+				return 0;
+			}
+			else if (count == 2 && TypeChecker.CheckTypes<string>(L, 2))
+			{
+				UnityEngine.Animation obj = (UnityEngine.Animation)ToLua.CheckObject(L, 1, typeof(UnityEngine.Animation));
+				string arg0 = ToLua.ToString(L, 2);
 				obj.RemoveClip(arg0);
 				return 0;
 			}

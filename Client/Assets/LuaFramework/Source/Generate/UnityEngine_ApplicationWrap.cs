@@ -124,16 +124,16 @@ public class UnityEngine_ApplicationWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 1 && TypeChecker.CheckTypes<string>(L, 1))
+			if (count == 1 && TypeChecker.CheckTypes<int>(L, 1))
 			{
-				string arg0 = ToLua.ToString(L, 1);
+				int arg0 = (int)LuaDLL.lua_tonumber(L, 1);
 				float o = UnityEngine.Application.GetStreamProgressForLevel(arg0);
 				LuaDLL.lua_pushnumber(L, o);
 				return 1;
 			}
-			else if (count == 1 && TypeChecker.CheckTypes<int>(L, 1))
+			else if (count == 1 && TypeChecker.CheckTypes<string>(L, 1))
 			{
-				int arg0 = (int)LuaDLL.lua_tonumber(L, 1);
+				string arg0 = ToLua.ToString(L, 1);
 				float o = UnityEngine.Application.GetStreamProgressForLevel(arg0);
 				LuaDLL.lua_pushnumber(L, o);
 				return 1;
@@ -159,16 +159,16 @@ public class UnityEngine_ApplicationWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 1 && TypeChecker.CheckTypes<string>(L, 1))
+			if (count == 1 && TypeChecker.CheckTypes<int>(L, 1))
 			{
-				string arg0 = ToLua.ToString(L, 1);
+				int arg0 = (int)LuaDLL.lua_tonumber(L, 1);
 				bool o = UnityEngine.Application.CanStreamedLevelBeLoaded(arg0);
 				LuaDLL.lua_pushboolean(L, o);
 				return 1;
 			}
-			else if (count == 1 && TypeChecker.CheckTypes<int>(L, 1))
+			else if (count == 1 && TypeChecker.CheckTypes<string>(L, 1))
 			{
-				int arg0 = (int)LuaDLL.lua_tonumber(L, 1);
+				string arg0 = ToLua.ToString(L, 1);
 				bool o = UnityEngine.Application.CanStreamedLevelBeLoaded(arg0);
 				LuaDLL.lua_pushboolean(L, o);
 				return 1;
