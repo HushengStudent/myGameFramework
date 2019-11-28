@@ -20,8 +20,14 @@ public class Main : MonoBehaviour
     /// 初始化游戏;
     private void StartGame()
     {
+
+#if UNITY_EDITOR
+
         GameMgr.AssetBundleModel = AssetBundleModel;
 
+#endif
+
         GameMgr.Instance.Launch();
+
     }
 }
