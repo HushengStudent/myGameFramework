@@ -52,7 +52,7 @@ namespace Framework
             }
             if (_treeDict.ContainsKey(entity))
             {
-                LogHelper.PrintWarning(string.Format("[BehaviorTreeMgr]repeat add BehaviorTree at EntityName: {0}.", entity.EntityName));
+                LogHelper.PrintWarning($"[BehaviorTreeMgr]repeat add BehaviorTree at EntityName: {entity.EntityName}.");
             }
             tree.Enable = enable;
             _treeDict[entity] = tree;
@@ -67,7 +67,7 @@ namespace Framework
             }
             if (!_treeDict.ContainsKey(entity))
             {
-                LogHelper.PrintWarning(string.Format("[BehaviorTreeMgr]can not find a BehaviorTree at EntityName: {0}.", entity.EntityName));
+                LogHelper.PrintWarning($"[BehaviorTreeMgr]can not find a BehaviorTree at EntityName: {entity.EntityName}.");
             }
             else
             {

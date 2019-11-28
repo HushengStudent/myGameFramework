@@ -31,7 +31,7 @@ namespace Framework
 
         protected override void UpdateEx(float interval)
         {
-            LogHelper.PrintWarning(string.Format("BTLevel's level:{0}", _level));
+            LogHelper.PrintWarning($"BTLevel's level:{_level}");
             Reslut = BehaviorState.Finish;
         }
     }

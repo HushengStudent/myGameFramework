@@ -45,7 +45,7 @@ namespace Framework
                 }
                 if (mainAssetBundle == null)
                 {
-                    LogHelper.PrintError(string.Format("[AssetBundleMgr]Load assetBundle:{0} failure.", FilePathHelper.AssetBundlePath));
+                    LogHelper.PrintError($"[AssetBundleMgr]Load assetBundle:{FilePathHelper.AssetBundlePath} failure.");
                 }
                 return mainAssetBundle;
             }
@@ -62,7 +62,7 @@ namespace Framework
                 }
                 if (manifest == null)
                 {
-                    LogHelper.PrintError(string.Format("[AssetBundleMgr]Load assetBundleManifest:{0} failure.", FilePathHelper.AssetBundlePath));
+                    LogHelper.PrintError($"[AssetBundleMgr]Load assetBundleManifest:{FilePathHelper.AssetBundlePath} failure.");
                 }
                 return manifest;
             }
@@ -152,7 +152,7 @@ namespace Framework
                     }
                     list.Clear();
                     PoolMgr.Instance.ReleaseCsharpList(list);
-                    LogHelper.Print("[AssetBundleMgr]AutoUnloadAsset:" + path);
+                    LogHelper.Print($"[AssetBundleMgr]AutoUnloadAsset:{path}");
                     deprecatedList.Add(path);
                 }
             }
@@ -185,13 +185,13 @@ namespace Framework
                     assetBundle = AssetBundle.LoadFromFile(path);
                     if (null == assetBundle)
                     {
-                        LogHelper.PrintError(string.Format("[AssetBundleMgr]Load assetBundle:{0} failure.", path));
+                        LogHelper.PrintError($"[AssetBundleMgr]Load assetBundle:{path} failure.");
                     }
                     else
                     {
                         assetBundleCache[path] = assetBundle;
                         assetBundleReference[path] = 1;
-                        LogHelper.Print(string.Format("[AssetBundleMgr]Load assetBundle:{0} Success.", path));
+                        LogHelper.Print($"[AssetBundleMgr]Load assetBundle:{path} Success.");
                     }
                 }
                 catch (Exception e)
@@ -446,7 +446,7 @@ namespace Framework
                         bundle.Unload(flag);
                     }
                     assetBundleCache.Remove(path);
-                    LogHelper.Print(string.Format("[AssetBundleMgr]Unload:{0} assetBundle {1} success.", flag, path));
+                    LogHelper.Print($"[AssetBundleMgr]Unload:{flag} assetBundle {path} success.");
                 }
                 else
                 {

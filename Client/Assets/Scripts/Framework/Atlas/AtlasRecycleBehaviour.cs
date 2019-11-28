@@ -38,7 +38,7 @@ namespace Framework
             }
             if (AtlasMgr.ApplicationIsPlaying)
             {
-                LogHelper.PrintWarning("[AtlasRecycleBehaviour]auto recycle atlas at:" + name);
+                LogHelper.PrintWarning($"[AtlasRecycleBehaviour]auto recycle atlas at:{name}");
                 OnRelease();
             }
         }

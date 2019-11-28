@@ -109,7 +109,7 @@ namespace Framework
             Sprite sprite;
             if (!_spriteDict.TryGetValue(spriteName, out sprite))
             {
-                LogHelper.PrintError("[Atlas]not find sprite:" + AtlasPath + " " + spriteName);
+                LogHelper.PrintError($"[Atlas]not find sprite:{AtlasPath} {spriteName}");
                 return;
             }
 

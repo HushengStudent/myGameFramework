@@ -19,7 +19,7 @@ public class ProtoHelper
         }
         else
         {
-            LogHelper.PrintError(string.Format("[ProtoHelper]RegisterProto:{0} error.", type.ToString()));
+            LogHelper.PrintError($"[ProtoHelper]RegisterProto:{type.ToString()} error.");
         }
     }
 
@@ -33,7 +33,7 @@ public class ProtoHelper
             }
             else
             {
-                LogHelper.PrintError(string.Format("[ProtoHelper]GetPacket:{0} error.", type.ToString()));
+                LogHelper.PrintError($"[ProtoHelper]GetPacket:{type.ToString()} error.");
                 return null;
             }
         }
@@ -50,7 +50,7 @@ public class ProtoHelper
             }
             else
             {
-                LogHelper.PrintError(string.Format("[ProtoHelper]ReturnPacket:{0}!", type.ToString()));
+                LogHelper.PrintError($"[ProtoHelper]ReturnPacket:{type.ToString()}!");
             }
         }
     }
