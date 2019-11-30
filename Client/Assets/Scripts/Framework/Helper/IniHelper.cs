@@ -35,7 +35,7 @@ namespace Framework
         {
             if (!File.Exists(strFilePath))
             {
-                Debug.LogWarning("the ini file's path is error：" + strFilePath);
+                Debug.LogWarning($"the ini file's path is error：{strFilePath}");
                 return;
             }
             using (StreamReader reader = new StreamReader(strFilePath))
@@ -72,7 +72,7 @@ namespace Framework
                                 if (config.ContainsKey(key))
                                 {
                                     config[key] = val;
-                                    Debug.LogWarning("the Key[" + key + "] is appear repeat");
+                                    Debug.LogWarning($"the Key[{key}] is appear repeat");
                                 }
                                 else
                                 {
@@ -82,7 +82,7 @@ namespace Framework
                         }
                         else
                         {
-                            Debug.LogWarning("the ini file's format is error，lost [Section]'s information");
+                            Debug.LogWarning("the ini file's format is error,lost [Section]'s information");
                         }
                     }
                 }
@@ -101,7 +101,7 @@ namespace Framework
             string dirName = Path.GetDirectoryName(strFilePath);
             if (string.IsNullOrEmpty(dirName))
             {
-                Debug.LogWarning(string.Format("Empty directory for SaveIni:{0}.", strFilePath));
+                Debug.LogWarning($"Empty directory for SaveIni:{strFilePath}.");
                 return;
             }
             if (!Directory.Exists(dirName))
@@ -112,7 +112,7 @@ namespace Framework
             {
                 foreach (KeyValuePair<string, Dictionary<string, string>> pair in IniConfigDic)
                 {
-                    sw.WriteLine("[" + pair.Key + "]");
+                    sw.WriteLine($"[{pair.Key}]");
                     foreach (KeyValuePair<string, string> cfg in pair.Value)
                     {
                         sw.WriteLine(cfg.Key + DELEMITER + cfg.Value);

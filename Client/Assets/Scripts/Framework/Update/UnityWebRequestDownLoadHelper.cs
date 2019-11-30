@@ -15,13 +15,11 @@ namespace Framework
 {
     public class UnityWebRequestDownLoadHelper
     {
-        private float _progress = 0f;
-        private bool _isDone = false;
-        private bool _isStop = false;
+        public float Progress { get; private set; } = 0f;
 
-        public float Progress { get { return _progress; } }
-        public bool IsDone { get { return _isDone; } }
-        public bool IsStop { get { return _isStop; } }
+        public bool IsDone { get; private set; } = false;
+
+        public bool IsStop { get; private set; } = false;
 
         public DownLoadStartEventHandler StartHandler = null;
         public DownLoadErrorEventHandler ErrorHandler = null;
@@ -30,10 +28,7 @@ namespace Framework
 
         public IEnumerator StartDownLoad(string url, string filePath)
         {
-            if (StartHandler != null)
-            {
-                StartHandler();
-            }
+            StartHandler?.Invoke();
 
             var req = UnityWebRequest.Head(url);
             yield return req.SendWebRequest();
@@ -58,7 +53,7 @@ namespace Framework
                     var index = 0;
                     while (!request.isDone)
                     {
-                        if (_isStop)
+                        if (IsStop)
                         {
                             break;
                         }
@@ -71,11 +66,11 @@ namespace Framework
                             fileLength += length;
                             if (fileLength == length)
                             {
-                                _progress = 1f;
+                                Progress = 1f;
                             }
                             else
                             {
-                                _progress = fileLength / (float)length;
+                                Progress = fileLength / (float)length;
                             }
                         }
                         yield return null;
@@ -84,40 +79,31 @@ namespace Framework
                     isError = request.isNetworkError;
                     if (isError)
                     {
-                        if (ErrorHandler != null)
-                        {
-                            ErrorHandler(request.error);
-                        }
+                        ErrorHandler?.Invoke(request.error);
                     }
                     else
                     {
-                        if (ProgressHandler != null)
-                        {
-                            ProgressHandler(_progress);
-                        }
+                        ProgressHandler?.Invoke(Progress);
                     }
                     request.Dispose();
                 }
                 else
                 {
-                    _progress = 1f;
+                    Progress = 1f;
                 }
                 fileStream.Close();
                 fileStream.Dispose();
             }
-            if (_progress >= 1f)
+            if (Progress >= 1f)
             {
-                _isDone = true;
-                if (SuccessHandler != null)
-                {
-                    SuccessHandler();
-                }
+                IsDone = true;
+                SuccessHandler?.Invoke();
             }
         }
 
         public void Stop()
         {
-            _isStop = true;
+            IsStop = true;
         }
     }
 }

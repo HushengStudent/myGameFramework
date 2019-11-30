@@ -238,7 +238,7 @@ namespace Framework
                     Type = SessionType.IPv6;
                     break;
                 default:
-                    throw new Exception(string.Format("Not supported address family '{0}'.", addressFamily.ToString()));
+                    throw new Exception($"Not supported address family '{addressFamily.ToString()}'.");
             }
             _socket = new Socket(addressFamily, SocketType.Stream, ProtocolType.Tcp);
             _receiver = new SessionReceiver(_defaultMaxPacketLength);
@@ -267,10 +267,7 @@ namespace Framework
                 throw;
             }
             Active = true;
-            if (ConnectedHandler != null)
-            {
-                ConnectedHandler(this, param);
-            }
+            ConnectedHandler?.Invoke(this, param);
             Receive();
         }
 
@@ -433,10 +430,7 @@ namespace Framework
 
                 throw;
             }
-            if (SendHandler != null)
-            {
-                SendHandler(this, bytesSent, param);
-            }
+            SendHandler?.Invoke(this, bytesSent, param);
         }
 
         #endregion
@@ -569,10 +563,7 @@ namespace Framework
                 _receiver.Reset(_defaultPacketLength);
                 if (packet == null)
                 {
-                    if (CustomErrorHandler != null)
-                    {
-                        CustomErrorHandler(this, customErrorData);
-                    }
+                    CustomErrorHandler?.Invoke(this, customErrorData);
                 }
                 else
                 {
@@ -595,10 +586,7 @@ namespace Framework
                     }
                     else
                     {
-                        if (ReceiveHandler != null)
-                        {
-                            ReceiveHandler(this, packet);
-                        }
+                        ReceiveHandler?.Invoke(this, packet);
                     }
                 }
             }
@@ -638,10 +626,7 @@ namespace Framework
                 _socket.Close();
                 _socket = null;
                 _receiver = null;
-                if (ClosedHandler != null)
-                {
-                    ClosedHandler(this);
-                }
+                ClosedHandler?.Invoke(this);
             }
         }
 

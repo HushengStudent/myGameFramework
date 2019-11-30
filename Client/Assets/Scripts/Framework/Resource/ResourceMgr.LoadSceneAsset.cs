@@ -62,7 +62,7 @@ namespace Framework
             {
                 if (assetBundle != null)
                 {
-                    LogHelper.Print(string.Format("[ResourceMgr]LoadSceneFromAssetBundleAsync repeat:{0}.", path));
+                    LogHelper.Print($"[ResourceMgr]LoadSceneFromAssetBundleAsync repeat:{path}.");
                     yield break;
                 }
             }
@@ -99,7 +99,7 @@ namespace Framework
                 yield return Timing.WaitForOneFrame;
             }
 
-            LogHelper.Print(string.Format("[ResourceMgr]LoadSceneFromAssetBundleAsync success:{0}.", path));
+            LogHelper.Print($"[ResourceMgr]LoadSceneFromAssetBundleAsync success:{path}.");
         }
 
         #endregion
@@ -155,7 +155,7 @@ namespace Framework
                 yield return Timing.WaitForOneFrame;
             }
 
-            LogHelper.Print(string.Format("[ResourceMgr]UnloadSceneFromAssetBundleAsync success:{0}.", path));
+            LogHelper.Print($"[ResourceMgr]UnloadSceneFromAssetBundleAsync success:{path}.");
         }
 
         #endregion

@@ -42,7 +42,7 @@ namespace Framework
         {
             serverTime = time;
             clientStartTime = Time.realtimeSinceStartup;
-            LogHelper.PrintWarning(string.Format("[Sync Server Time] ServerTime = {0}", serverTime));
+            LogHelper.PrintWarning($"[Sync Server Time] ServerTime = {serverTime}");
         }
 
         #endregion
@@ -337,8 +337,7 @@ namespace Framework
                 {
                     try
                     {
-                        if (tmpEvent.OnFinish != null)
-                            tmpEvent.OnFinish();
+                        tmpEvent.OnFinish?.Invoke();
                     }
                     catch (Exception exp)
                     {

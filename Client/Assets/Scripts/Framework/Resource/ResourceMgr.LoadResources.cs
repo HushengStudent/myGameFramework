@@ -35,7 +35,7 @@ namespace Framework
             Object asset = Resources.Load(path);
             if (asset == null)
             {
-                LogHelper.PrintError(string.Format("[ResourceMgr]LoadResourceProxy load asset:{0} failure.", path));
+                LogHelper.PrintError($"[ResourceMgr]LoadResourceProxy load asset:{path} failure.");
             }
             proxy.OnFinish(asset);
             return proxy;
@@ -93,7 +93,7 @@ namespace Framework
             }
             if (null == request.asset)
             {
-                LogHelper.PrintError(string.Format("[ResourceMgr]LoadAsync load asset:{0} failure.", path));
+                LogHelper.PrintError($"[ResourceMgr]LoadAsync load asset:{path} failure.");
             }
 
             //先等一帧;
@@ -105,7 +105,7 @@ namespace Framework
             }
             else
             {
-                LogHelper.PrintError(string.Format("[ResourceMgr]LoadAsync proxy is null:{0}.", path));
+                LogHelper.PrintError($"[ResourceMgr]LoadAsync proxy is null:{path}.");
             }
         }
 

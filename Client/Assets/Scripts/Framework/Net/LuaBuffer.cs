@@ -56,17 +56,17 @@ namespace Framework
 
         public void WriteInt(int v)
         {
-            _writer.Write((int)v);
+            _writer.Write(v);
         }
 
         public void WriteShort(ushort v)
         {
-            _writer.Write((ushort)v);
+            _writer.Write(v);
         }
 
         public void WriteLong(long v)
         {
-            _writer.Write((long)v);
+            _writer.Write(v);
         }
 
         public void WriteFloat(float v)
@@ -92,7 +92,7 @@ namespace Framework
 
         public void WriteBytes(byte[] v)
         {
-            _writer.Write((int)v.Length);
+            _writer.Write(v.Length);
             _writer.Write(v);
         }
 

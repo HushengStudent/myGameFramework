@@ -10,23 +10,8 @@ namespace Framework
 {
     public static class FilePathHelper
     {
-        /// <summary>
-        /// AssetBundle打包存储路径;
-        /// </summary>
-        private static readonly string assetBundlePath = Application.dataPath + "/../AssetBundle";
-        public static string AssetBundlePath
-        {
-            get { return assetBundlePath; }
-        }
-
-        /// <summary>
-        /// StreamingAssets路径;
-        /// </summary>
-        private static readonly string streamingAssetsPath = Application.dataPath + "/StreamingAssets";
-        public static string StreamingAssetsPath
-        {
-            get { return streamingAssetsPath; }
-        }
+        public static string AssetBundlePath { get; } = $"{Application.dataPath}/../AssetBundle";
+        public static string StreamingAssetsPath { get; } = $"{Application.dataPath}/StreamingAssets";
 
         /// <summary>
         /// 需要打包的资源所在的目录;
@@ -79,7 +64,7 @@ namespace Framework
             {
                 return null;
             }
-            return assetBundlePath + "/" + assetBundleName;
+            return $"{AssetBundlePath}/{ assetBundleName}";
         }
 
         /// <summary>

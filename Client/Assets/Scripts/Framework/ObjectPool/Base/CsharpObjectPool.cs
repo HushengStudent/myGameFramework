@@ -46,7 +46,9 @@ namespace Framework.ObjectPool
         public void Release(T element)
         {
             if (m_Stack.Count > 0 && ReferenceEquals(m_Stack.Peek(), element))
+            {
                 Debug.LogError("Internal error. Trying to destroy object that is already released to pool.");
+            }
             m_ActionOnRelease?.Invoke(element);
             m_Stack.Push(element);
         }

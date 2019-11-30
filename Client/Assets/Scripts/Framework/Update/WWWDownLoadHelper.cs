@@ -14,11 +14,9 @@ namespace Framework
     {
         private WWW _www = null;
 
-        private float _progress = 0f;
-        private bool _isDone = false;
+        public float Progress { get; private set; } = 0f;
 
-        public float Progress { get { return _progress; } }
-        public bool IsDone { get { return _isDone; } }
+        public bool IsDone { get; private set; } = false;
 
         public DownLoadStartEventHandler StartHandler = null;
         public DownLoadErrorEventHandler ErrorHandler = null;
@@ -27,10 +25,7 @@ namespace Framework
 
         public IEnumerator StartDownLoad(string url, string filePath)
         {
-            if (StartHandler != null)
-            {
-                StartHandler();
-            }
+            StartHandler?.Invoke();
 
             //Dictionary<string, string> header = new Dictionary<string, string>();
             //header.Add("Range", string.Format("bytes={0}-", from.ToString()));
@@ -44,28 +39,19 @@ namespace Framework
             {
                 if (!_www.isDone)
                 {
-                    _progress = _www.progress;
-                    if (ProgressHandler != null)
-                    {
-                        ProgressHandler(_progress);
-                    }
+                    Progress = _www.progress;
+                    ProgressHandler?.Invoke(Progress);
                     yield return null;
                 }
                 if (!string.IsNullOrEmpty(_www.error))
                 {
-                    if (ErrorHandler != null)
-                    {
-                        ErrorHandler(_www.error);
-                    }
+                    ErrorHandler?.Invoke(_www.error);
                 }
                 else
                 {
                     FileHelper.Write2Bytes(filePath, _www.bytes);
-                    _isDone = true;
-                    if (SuccessHandler != null)
-                    {
-                        SuccessHandler();
-                    }
+                    IsDone = true;
+                    SuccessHandler?.Invoke();
                 }
                 _www.Dispose();
             }

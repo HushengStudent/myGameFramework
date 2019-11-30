@@ -17,7 +17,7 @@ namespace Framework
                 string protocPath = Environment.GetEnvironmentVariable("myGameFramework_protoc");
                 if (string.IsNullOrEmpty(protocPath))
                 {
-                    LogHelper.PrintError(string.Format("not find Environment variable:{0}", "myGameFramework_protoc"));
+                    LogHelper.PrintError("not find Environment variable:myGameFramework_protoc");
                 }
                 return protocPath;
             }
@@ -30,7 +30,7 @@ namespace Framework
                 string gameFrameworkPath = Environment.GetEnvironmentVariable("myGameFramework");
                 if (string.IsNullOrEmpty(gameFrameworkPath))
                 {
-                    LogHelper.PrintError(string.Format("not find Environment variable:{0}", "myGameFramework"));
+                    LogHelper.PrintError("not find Environment variable:myGameFramework");
                 }
                 return gameFrameworkPath;
             }

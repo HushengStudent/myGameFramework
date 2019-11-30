@@ -84,7 +84,7 @@ namespace Framework.ObjectPool
                     */
 
                     /// not create form pool or parents destroyed;
-                    LogHelper.PrintWarning(string.Format("[UnityObjectPool]Release unity object error:{0}.", element.name));
+                    LogHelper.PrintWarning($"[UnityObjectPool]Release unity object error:{element.name}.");
 
                     Object.Destroy(element);
 

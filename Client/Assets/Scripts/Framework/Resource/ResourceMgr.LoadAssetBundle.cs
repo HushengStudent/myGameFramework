@@ -56,7 +56,7 @@ namespace Framework
             if (asset == null)
             {
                 AssetBundleMgr.Instance.UnloadAsset(path, null);
-                LogHelper.PrintError(string.Format("[ResourceMgr]LoadSyncAssetProxy load asset:{0} failure.", path));
+                LogHelper.PrintError($"[ResourceMgr]LoadSyncAssetProxy load asset:{path} failure.");
             }
             else
             {
@@ -131,7 +131,7 @@ namespace Framework
             if (null == request.asset)
             {
                 AssetBundleMgr.Instance.UnloadAsset(path, null);
-                LogHelper.PrintError(string.Format("[ResourceMgr]LoadFromFileAsync load asset:{0} failure.", path));
+                LogHelper.PrintError($"[ResourceMgr]LoadFromFileAsync load asset:{path} failure.");
             }
             else
             {
@@ -147,7 +147,7 @@ namespace Framework
             }
             else
             {
-                LogHelper.PrintError(string.Format("[ResourceMgr]LoadFromFileAsync proxy is null:{0}.", path));
+                LogHelper.PrintError($"[ResourceMgr]LoadFromFileAsync proxy is null:{path}.");
             }
         }
 
@@ -173,7 +173,7 @@ namespace Framework
                 }
                 else
                 {
-                    LogHelper.PrintError(string.Format("[ResourceMgr]LoadFromFileAsync proxy is null:{0}.", path));
+                    LogHelper.PrintError($"[ResourceMgr]LoadFromFileAsync proxy is null:{path}.");
                 }
             }
             else

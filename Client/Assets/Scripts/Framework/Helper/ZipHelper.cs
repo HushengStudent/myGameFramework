@@ -20,7 +20,7 @@ namespace Framework
         {
             var compressProgress = 0f;
             var progress = 0f;
-            string zipFile = outPath + "/" + fileName + ".zip";
+            string zipFile = $"{outPath}/{fileName}.zip";
             if (!Directory.Exists(outPath))
             {
                 Directory.CreateDirectory(outPath);
@@ -42,10 +42,7 @@ namespace Framework
                         {
                             finishCount++;
                             compressProgress = finishCount / (float)fileCount;
-                            if (action != null)
-                            {
-                                action(compressProgress);
-                            }
+                            action?.Invoke(compressProgress);
                         }
                     }),
                     ProgressInterval = TimeSpan.FromSeconds(_progressInterval),
@@ -65,7 +62,7 @@ namespace Framework
         {
             var compressProgress = 0f;
             var progress = 0f;
-            string zipFile = outPath + "/" + fileName + ".zip";
+            string zipFile = $"{outPath}/{fileName}.zip";
             if (!Directory.Exists(outPath))
             {
                 Directory.CreateDirectory(outPath);
@@ -87,10 +84,7 @@ namespace Framework
                         {
                             finishCount++;
                             compressProgress = finishCount / (float)fileCount;
-                            if (action != null)
-                            {
-                                action(compressProgress);
-                            }
+                            action?.Invoke(compressProgress);
                         }
                     }),
                     ProgressInterval = TimeSpan.FromSeconds(_progressInterval),
@@ -132,10 +126,7 @@ namespace Framework
                         {
                             finishCount++;
                             deCompressProgress = finishCount / (float)fileCount;
-                            if (action != null)
-                            {
-                                action(deCompressProgress);
-                            }
+                            action?.Invoke(deCompressProgress);
                         }
                     }),
                     ProgressInterval = TimeSpan.FromSeconds(_progressInterval),
@@ -172,10 +163,7 @@ namespace Framework
                         {
                             finishCount++;
                             deCompressProgress = finishCount / (float)fileCount;
-                            if (action != null)
-                            {
-                                action(deCompressProgress);
-                            }
+                            action?.Invoke(deCompressProgress);
                         }
                     }),
                     ProgressInterval = TimeSpan.FromSeconds(_progressInterval),

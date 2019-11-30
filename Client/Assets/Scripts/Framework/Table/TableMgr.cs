@@ -11,7 +11,7 @@ namespace Framework
 {
     public class TableMgr : Singleton<TableMgr>
     {
-        private string _path = Application.dataPath.ToLower() + "/Bundles/Single/Table/";
+        private string _path = $"{Application.dataPath.ToLower()}/Bundles/Single/Table/";
 
         private Dictionary<string, Table> _dbDict = new Dictionary<string, Table>();
 
@@ -25,7 +25,7 @@ namespace Framework
         {
             if (_dbDict.ContainsKey(tableName))
                 return;
-            byte[] bytes = FileHelper.ReadFromBytes(_path + tableName + ".byte");
+            byte[] bytes = FileHelper.ReadFromBytes($"{_path}{tableName}.byte");
             table.LoadData(bytes);
             _dbDict[tableName] = table;
         }

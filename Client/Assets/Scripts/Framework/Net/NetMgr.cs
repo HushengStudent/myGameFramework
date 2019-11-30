@@ -27,7 +27,9 @@ namespace Framework
         {
             base.UpdateEx(interval);
             if (_session != null && _session.Active)
+            {
                 _session.Update();
+            }
             CheckUpdate();
         }
 
