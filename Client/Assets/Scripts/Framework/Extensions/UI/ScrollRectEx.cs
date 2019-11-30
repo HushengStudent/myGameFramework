@@ -307,7 +307,7 @@ namespace Framework
             {
                 onLoopItemUpdate = (go, index) =>
                 {
-                    LogHelper.Print("===>>>[curIndex]:" + index);
+                    LogHelper.Print($"===>>>[curIndex]:{index}");
                 };
                 if (InitScrollRect())
                 {

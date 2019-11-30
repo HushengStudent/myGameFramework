@@ -66,8 +66,7 @@ namespace Framework
             list = dict[type];
             if (list.Contains(callBack))
             {
-                LogHelper.PrintWarning(string.Format("[EventMgr]AddEvent repeat,receiver:{0},eventType:{1}.",
-                    receiver.ID, type.ToString()));
+                LogHelper.PrintWarning($"[EventMgr]AddEvent repeat,receiver:{receiver.ID},eventType:{type.ToString()}.");
             }
             else
             {
@@ -143,10 +142,7 @@ namespace Framework
                         {
                             foreach (var callback in list)
                             {
-                                if (callback != null)
-                                {
-                                    callback(eventArgs);
-                                }
+                                callback?.Invoke(eventArgs);
                             }
                         }
                     }
@@ -169,8 +165,7 @@ namespace Framework
             list = GlobalEventDict[type];
             if (list.Contains(callBack))
             {
-                LogHelper.PrintWarning(string.Format("[EventMgr]AddGlobalEvent repeat,EventType:{0}.",
-                    type.ToString()));
+                LogHelper.PrintWarning($"[EventMgr]AddGlobalEvent repeat,EventType:{type.ToString()}.");
             }
             else
             {
@@ -204,10 +199,7 @@ namespace Framework
                 {
                     foreach (var callback in list)
                     {
-                        if (callback != null)
-                        {
-                            callback(eventArgs);
-                        }
+                        callback?.Invoke(eventArgs);
                     }
                 }
             }

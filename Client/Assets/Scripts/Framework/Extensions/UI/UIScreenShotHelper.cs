@@ -23,8 +23,8 @@ namespace Framework
                 tex.Apply();
 
                 byte[] texByte = tex.EncodeToPNG();
-                LogHelper.Print("[UIScreenShotHelper]Save Image to:" + Application.dataPath.ToLower() + "/../ScreenShot/");
-                FileHelper.Write2Bytes(Application.dataPath.ToLower() + "/../ScreenShot/ScreenShot.png", texByte);
+                LogHelper.Print($"[UIScreenShotHelper]Save Image to:{Application.dataPath.ToLower()}/../ScreenShot/");
+                FileHelper.Write2Bytes($"{Application.dataPath.ToLower()}/../ScreenShot/ScreenShot.png", texByte);
 
                 action?.Invoke(tex);
             }));
@@ -53,8 +53,8 @@ namespace Framework
                 RenderTexture.ReleaseTemporary(rt);
 
                 byte[] texByte = tex.EncodeToPNG();
-                LogHelper.Print("[UIScreenShotHelper]Save Image to:" + Application.dataPath.ToLower() + "/../ScreenShot/");
-                FileHelper.Write2Bytes(Application.dataPath.ToLower() + "/../ScreenShot/CameraShot.png", texByte);
+                LogHelper.Print($"[UIScreenShotHelper]Save Image to:{Application.dataPath.ToLower()}/../ScreenShot/");
+                FileHelper.Write2Bytes($"{Application.dataPath.ToLower()}/../ScreenShot/CameraShot.png", texByte);
 
                 action?.Invoke(tex);
             }));

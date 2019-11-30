@@ -78,7 +78,7 @@ namespace Framework
             }
             else
             {
-                LogHelper.PrintError("[ComponentMgr]CreateComponent " + typeof(T).ToString() + " error!");
+                LogHelper.PrintError($"[ComponentMgr]CreateComponent {typeof(T).ToString()} error!");
                 return null;
             }
         }

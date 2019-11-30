@@ -62,7 +62,7 @@ namespace Framework
             }
             else
             {
-                Debug.LogError("[EventMgr]Register " + key.ToString() + " failure!");
+                Debug.LogError($"[EventMgr]Register {key.ToString()} failure!");
             }
         }
 
@@ -79,7 +79,7 @@ namespace Framework
             }
             else
             {
-                Debug.LogError("[EventMgr]Remove " + key.ToString() + " failure!");
+                Debug.LogError($"[EventMgr]Remove {key.ToString()} failure!");
             }
         }
 
@@ -98,10 +98,7 @@ namespace Framework
                     try
                     {
                         callback = (eventList[i]) as Action;
-                        if (callback != null)
-                        {
-                            callback();
-                        }
+                        callback?.Invoke();
                     }
                     catch (Exception exp)
                     {
@@ -129,7 +126,7 @@ namespace Framework
             }
             else
             {
-                Debug.LogError("[EventMgr]Register " + key.ToString() + " failure!");
+                Debug.LogError($"[EventMgr]Register {key.ToString()} failure!");
             }
         }
 
@@ -147,7 +144,7 @@ namespace Framework
             }
             else
             {
-                Debug.LogError("[EventMgr]Remove " + key.ToString() + " failure!");
+                Debug.LogError($"[EventMgr]Remove {key.ToString()} failure!");
             }
         }
 
@@ -168,10 +165,7 @@ namespace Framework
                     try
                     {
                         callback = (eventList[i]) as Action<T>;
-                        if (callback != null)
-                        {
-                            callback(arg1);
-                        }
+                        callback?.Invoke(arg1);
                     }
                     catch (Exception exp)
                     {
@@ -200,7 +194,7 @@ namespace Framework
             }
             else
             {
-                Debug.LogError("[EventMgr]Register " + key.ToString() + " failure!");
+                Debug.LogError($"[EventMgr]Register {key.ToString()} failure!");
             }
         }
 
@@ -219,7 +213,7 @@ namespace Framework
             }
             else
             {
-                Debug.LogError("[EventMgr]Remove " + key.ToString() + " failure!");
+                Debug.LogError($"[EventMgr]Remove {key.ToString()} failure!");
             }
         }
 
@@ -242,10 +236,7 @@ namespace Framework
                     try
                     {
                         callback = (eventList[i]) as Action<T1, T2>;
-                        if (callback != null)
-                        {
-                            callback(arg1, arg2);
-                        }
+                        callback?.Invoke(arg1, arg2);
                     }
                     catch (Exception exp)
                     {

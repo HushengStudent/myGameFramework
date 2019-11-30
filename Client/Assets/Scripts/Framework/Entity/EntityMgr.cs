@@ -87,8 +87,7 @@ namespace Framework
             }
             else
             {
-                LogHelper.PrintError(string.Format("[EntityMgr]CreateEntity " + typeof(T).ToString() +
-                    " error,entityId:{0},uid:{1},name:{2}!", entityId, uid, name));
+                LogHelper.PrintError($"[EntityMgr]CreateEntity {typeof(T).ToString()} error,entityId:{entityId},uid:{uid},name:{name}!");
                 return null;
             }
         }

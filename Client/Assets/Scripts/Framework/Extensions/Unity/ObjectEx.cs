@@ -95,7 +95,7 @@ namespace Framework
                     return target as T;
                 }
             }
-            LogHelper.PrintError("[ObjectEx]GetComponent error,not find component:" + typeof(T).ToString() + "!");
+            LogHelper.PrintError($"[ObjectEx]GetComponent error,not find component:{typeof(T).ToString()}!");
             return null;
         }
 
@@ -111,7 +111,7 @@ namespace Framework
                 var targetComp = _componentList[i] as T;
                 if (targetComp != null)
                 {
-                    LogHelper.PrintError("[ObjectEx]AddComponent," + typeof(T).ToString() + " repeat!");
+                    LogHelper.PrintError($"[ObjectEx]AddComponent,{typeof(T).ToString()} repeat!");
                     return false;
                 }
             }
@@ -139,7 +139,7 @@ namespace Framework
                     return true;
                 }
             }
-            LogHelper.PrintError("[ComponentMgr]ReleaseComponent " + typeof(T).ToString() + " error,can not find the component!");
+            LogHelper.PrintError($"[ComponentMgr]ReleaseComponent {typeof(T).ToString()} error,can not find the component!");
             return false;
         }
 
@@ -153,7 +153,7 @@ namespace Framework
         {
             if (comp as T == null)
             {
-                LogHelper.PrintError("[ComponentMgr]ReleaseComponent error:comp as" + typeof(T).ToString() + " is null!");
+                LogHelper.PrintError($"[ComponentMgr]ReleaseComponent error:comp as {typeof(T).ToString()} is null!");
                 return false;
             }
             for (int i = 0; i < _componentList.Count; i++)
@@ -167,7 +167,7 @@ namespace Framework
                     return true;
                 }
             }
-            LogHelper.PrintError("[ComponentMgr]ReleaseComponent " + typeof(T).ToString() + " error,can not find the component!");
+            LogHelper.PrintError($"[ComponentMgr]ReleaseComponent {typeof(T).ToString()} error,can not find the component!");
             return false;
         }
 
@@ -188,7 +188,7 @@ namespace Framework
                     return true;
                 }
             }
-            LogHelper.PrintError("[ComponentMgr]DestroyComponent " + comp.GetType().ToString() + " error,can not find the component!");
+            LogHelper.PrintError($"[ComponentMgr]DestroyComponent {comp.GetType().ToString()} error,can not find the component!");
             return false;
         }
 

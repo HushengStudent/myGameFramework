@@ -55,13 +55,11 @@ namespace Framework
             };
             tweener.onKill = () =>
             {
-                if (onKill != null)
-                    onKill(go);
+                onKill?.Invoke(go);
             };
             tweener.onComplete = () =>
             {
-                if (onComplete != null)
-                    onComplete(go);
+                onComplete?.Invoke(go);
             };
             tweener.PlayForward();
             int tweenId = TweenId;
@@ -80,13 +78,11 @@ namespace Framework
             };
             tweener.onKill = () =>
             {
-                if (onKill != null)
-                    onKill(go);
+                onKill?.Invoke(go);
             };
             tweener.onComplete = () =>
             {
-                if (onComplete != null)
-                    onComplete(go);
+                onComplete?.Invoke(go);
             };
             tweener.PlayForward();
             int tweenId = TweenId;
@@ -105,13 +101,11 @@ namespace Framework
             };
             tweener.onKill = () =>
             {
-                if (onKill != null)
-                    onKill(go);
+                onKill?.Invoke(go);
             };
             tweener.onComplete = () =>
             {
-                if (onComplete != null)
-                    onComplete(go);
+                onComplete?.Invoke(go);
             };
             tweener.PlayForward();
             int tweenId = TweenId;

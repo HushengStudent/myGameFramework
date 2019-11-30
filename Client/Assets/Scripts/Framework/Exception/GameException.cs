@@ -34,10 +34,11 @@ namespace Framework
 
         public void PrintException()
         {
-            LogHelper.PrintError("[GameException]" + message);
+            LogHelper.PrintError($"[GameException]{message}");
             if (innerException != null)
-                LogHelper.PrintError("[GameException]" + innerException.Message.ToString());
+            {
+                LogHelper.PrintError($"[GameException]{innerException.Message.ToString()}");
+            }
         }
-
     }
 }

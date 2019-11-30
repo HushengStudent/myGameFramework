@@ -29,18 +29,12 @@ namespace Framework
 
         public void CallOnInitHandler(Buff buff)
         {
-            if (_onInitHandler != null)
-            {
-                _onInitHandler(buff);
-            }
+            _onInitHandler?.Invoke(buff);
         }
 
         public void CallOnFinishHandler(Buff buff)
         {
-            if (_onFinishHandler != null)
-            {
-                _onFinishHandler(buff);
-            }
+            _onFinishHandler?.Invoke(buff);
         }
     }
 }
