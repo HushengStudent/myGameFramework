@@ -134,8 +134,10 @@ namespace Framework
                 builderList.Add(build);
             }
 
-            AssetBundleBuild shaderBuild = new AssetBundleBuild();
-            shaderBuild.assetBundleName = FilePathHelper.GetAssetBundleFileName(FilePathHelper.shaderAssetBundleName);
+            AssetBundleBuild shaderBuild = new AssetBundleBuild
+            {
+                assetBundleName = FilePathHelper.GetAssetBundleFileName(FilePathHelper.shaderAssetBundleName)
+            };
             List<string> shaderList = new List<string>();
             foreach (var shader in allShaderAsset)
             {
@@ -144,8 +146,10 @@ namespace Framework
             shaderBuild.assetNames = shaderList.ToArray();
             builderList.Add(shaderBuild);
 
-            AssetBundleBuild luaBuild = new AssetBundleBuild();
-            luaBuild.assetBundleName = FilePathHelper.GetAssetBundleFileName(FilePathHelper.luaAssetBundleName);
+            AssetBundleBuild luaBuild = new AssetBundleBuild
+            {
+                assetBundleName = FilePathHelper.GetAssetBundleFileName(FilePathHelper.luaAssetBundleName)
+            };
             List<string> luaList = new List<string>();
             foreach (var lua in allLuaAsset)
             {
@@ -156,7 +160,7 @@ namespace Framework
 
             watch.Stop();
 
-            LogHelper.PrintWarning(string.Format("[AssetDependenciesAnalysis]Asset Dependencies Analysis Spend Time:{0}s", watch.Elapsed.TotalSeconds));
+            LogHelper.PrintWarning($"[AssetDependenciesAnalysis]Asset Dependencies Analysis Spend Time:{watch.Elapsed.TotalSeconds}s");
 
             SaveBuildInfo(builderList);
 
@@ -263,7 +267,7 @@ namespace Framework
                     builder.AppendLine(info[i].assetNames[j]);
                 }
             }
-            FileHelper.Write2Txt(Application.dataPath + "/Editor/AssetBundleBuild.txt", builder.ToString());
+            FileHelper.Write2Txt($"{Application.dataPath}/Editor/AssetBundleBuild.txt", builder.ToString());
         }
     }
 
