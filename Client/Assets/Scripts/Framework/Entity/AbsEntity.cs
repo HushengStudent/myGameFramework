@@ -85,10 +85,7 @@ namespace Framework
         protected virtual void OnAttachGoEx(GameObjectEx go)
         {
             gameObjectEx = go;
-            if (_entityLoadFinishHandler != null)
-            {
-                _entityLoadFinishHandler(this, gameObjectEx.gameObject);
-            }
+            _entityLoadFinishHandler?.Invoke(this, gameObjectEx.gameObject);
         }
 
         /// <summary>
@@ -97,7 +94,7 @@ namespace Framework
         protected virtual void DetachGoEx()
         {
             gameObjectEx.Uninit();
-            PoolMgr.Instance.ReleaseCsharpObject<GameObjectEx>(gameObjectEx);
+            PoolMgr.Instance.ReleaseCsharpObject(gameObjectEx);
             gameObjectEx = null;
         }
     }

@@ -19,6 +19,26 @@ namespace Framework
         private Dictionary<string, AssetBundle> _sceneAssetBundleDict =
             new Dictionary<string, AssetBundle>();
 
+        private ISceneLoader _sceneLoader;
+        private ISceneLoader SceneLoader
+        {
+            get
+            {
+                if (_sceneLoader == null)
+                {
+                    if (GameMgr.AssetBundleModel)
+                    {
+                        _sceneLoader = new AssetBundleSceneLoader();
+                    }
+                    else
+                    {
+                        _sceneLoader = new EditorSceneLoader();
+                    }
+                }
+                return _sceneLoader;
+            }
+        }
+
         #region Scene Load
 
         /// <summary>
@@ -56,49 +76,11 @@ namespace Framework
         private IEnumerator<float> LoadSceneFromAssetBundleAsync(string path, Action<UnityEngine.SceneManagement.Scene> onSceneLoaded
         , Action<float> progress)
         {
-            AssetBundle assetBundle = null;
-
-            if (_sceneAssetBundleDict.TryGetValue(path, out assetBundle))
-            {
-                if (assetBundle != null)
-                {
-                    LogHelper.Print($"[ResourceMgr]LoadSceneFromAssetBundleAsync repeat:{path}.");
-                    yield break;
-                }
-            }
-
-            //此处加载占90%;
-            IEnumerator itor = AssetBundleMgr.Instance.LoadFromFileAsync(path,
-                bundle => { assetBundle = bundle; }, progress);
+            IEnumerator itor = SceneLoader.LoadSceneAsync(path, onSceneLoaded, progress);
             while (itor.MoveNext())
             {
                 yield return Timing.WaitForOneFrame;
             }
-
-            _sceneAssetBundleDict[path] = assetBundle;
-
-            var name = Path.GetFileNameWithoutExtension(path);
-
-            //先等一帧;
-            yield return Timing.WaitForOneFrame;
-
-            SceneManager.sceneLoaded += (scene, mode) =>
-            {
-                onSceneLoaded?.Invoke(scene);
-            };
-            AsyncOperation operation = SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
-
-            //此处加载占10%;
-            while (operation.progress < 0.99f)
-            {
-                progress?.Invoke(0.9f + 0.1f * operation.progress);
-                yield return Timing.WaitForOneFrame;
-            }
-            while (!operation.isDone)
-            {
-                yield return Timing.WaitForOneFrame;
-            }
-
             LogHelper.Print($"[ResourceMgr]LoadSceneFromAssetBundleAsync success:{path}.");
         }
 
@@ -132,30 +114,139 @@ namespace Framework
         private IEnumerator<float> UnloadSceneFromAssetBundleAsync(string path, Action<UnityEngine.SceneManagement.Scene> onSceneUnloaded
         , Action<float> progress)
         {
-            var name = Path.GetFileNameWithoutExtension(path);
-
-            SceneManager.sceneUnloaded += (scene) =>
-            {
-                AssetBundle assetBundle;
-                if (_sceneAssetBundleDict.TryGetValue(path, out assetBundle))
-                {
-                    AssetBundleMgr.Instance.UnloadAsset(path, null);
-                }
-                onSceneUnloaded?.Invoke(scene);
-            };
-            AsyncOperation operation = SceneManager.UnloadSceneAsync(name);
-
-            while (operation.progress < 0.99f)
-            {
-                progress?.Invoke(operation.progress);
-                yield return Timing.WaitForOneFrame;
-            }
-            while (!operation.isDone)
+            IEnumerator itor = SceneLoader.UnloadSceneAsync(path, onSceneUnloaded, progress);
+            while (itor.MoveNext())
             {
                 yield return Timing.WaitForOneFrame;
             }
 
             LogHelper.Print($"[ResourceMgr]UnloadSceneFromAssetBundleAsync success:{path}.");
+        }
+
+        #endregion
+
+        #region Loader
+
+        private interface ISceneLoader
+        {
+            IEnumerator<float> LoadSceneAsync(string path, Action<UnityEngine.SceneManagement.Scene> onSceneLoaded
+        , Action<float> progress);
+
+            IEnumerator<float> UnloadSceneAsync(string path, Action<UnityEngine.SceneManagement.Scene> onSceneUnloaded
+        , Action<float> progress);
+
+        }
+
+        internal class AssetBundleSceneLoader : ISceneLoader
+        {
+            public IEnumerator<float> LoadSceneAsync(string path, Action<UnityEngine.SceneManagement.Scene> onSceneLoaded, Action<float> progress)
+            {
+                AssetBundle assetBundle = null;
+
+                if (Instance._sceneAssetBundleDict.TryGetValue(path, out assetBundle))
+                {
+                    if (assetBundle != null)
+                    {
+                        LogHelper.Print($"[ResourceMgr]LoadSceneFromAssetBundleAsync repeat:{path}.");
+                        yield break;
+                    }
+                }
+
+                //此处加载占90%;
+                IEnumerator itor = AssetBundleMgr.Instance.LoadFromFileAsync(path,
+                    bundle => { assetBundle = bundle; }, progress);
+                while (itor.MoveNext())
+                {
+                    yield return Timing.WaitForOneFrame;
+                }
+
+                Instance._sceneAssetBundleDict[path] = assetBundle;
+
+                var name = Path.GetFileNameWithoutExtension(path);
+
+                //先等一帧;
+                yield return Timing.WaitForOneFrame;
+
+                SceneManager.sceneLoaded += (scene, mode) =>
+                {
+                    onSceneLoaded?.Invoke(scene);
+                };
+                AsyncOperation operation = SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
+
+                //此处加载占10%;
+                while (operation.progress < 0.99f)
+                {
+                    progress?.Invoke(0.9f + 0.1f * operation.progress);
+                    yield return Timing.WaitForOneFrame;
+                }
+                while (!operation.isDone)
+                {
+                    yield return Timing.WaitForOneFrame;
+                }
+            }
+
+            public IEnumerator<float> UnloadSceneAsync(string path, Action<UnityEngine.SceneManagement.Scene> onSceneUnloaded, Action<float> progress)
+            {
+                var name = Path.GetFileNameWithoutExtension(path);
+
+                SceneManager.sceneUnloaded += (scene) =>
+                {
+                    AssetBundle assetBundle;
+                    if (Instance._sceneAssetBundleDict.TryGetValue(path, out assetBundle))
+                    {
+                        AssetBundleMgr.Instance.UnloadAsset(path, null);
+                    }
+                    onSceneUnloaded?.Invoke(scene);
+                };
+                AsyncOperation operation = SceneManager.UnloadSceneAsync(name);
+
+                while (operation.progress < 0.99f)
+                {
+                    progress?.Invoke(operation.progress);
+                    yield return Timing.WaitForOneFrame;
+                }
+                while (!operation.isDone)
+                {
+                    yield return Timing.WaitForOneFrame;
+                }
+            }
+        }
+
+        internal class EditorSceneLoader : ISceneLoader
+        {
+            public IEnumerator<float> LoadSceneAsync(string path, Action<UnityEngine.SceneManagement.Scene> onSceneLoaded, Action<float> progress)
+            {
+                path = $"Assets/Bundles/{path}";
+                //先等一帧;
+                yield return Timing.WaitForOneFrame;
+
+                SceneManager.sceneLoaded += (scene, mode) =>
+                {
+                    onSceneLoaded?.Invoke(scene);
+                };
+                SceneManager.GetSceneByPath(path);
+            }
+
+            public IEnumerator<float> UnloadSceneAsync(string path, Action<UnityEngine.SceneManagement.Scene> onSceneUnloaded, Action<float> progress)
+            {
+                var name = Path.GetFileNameWithoutExtension(path);
+
+                SceneManager.sceneUnloaded += (scene) =>
+                {
+                    onSceneUnloaded?.Invoke(scene);
+                };
+                AsyncOperation operation = SceneManager.UnloadSceneAsync(name);
+
+                while (operation.progress < 0.99f)
+                {
+                    progress?.Invoke(operation.progress);
+                    yield return Timing.WaitForOneFrame;
+                }
+                while (!operation.isDone)
+                {
+                    yield return Timing.WaitForOneFrame;
+                }
+            }
         }
 
         #endregion

@@ -25,6 +25,26 @@ namespace Framework
 
         public readonly float LOAD_ASSET_PRECENT = 0.2f;
 
+        private IAssetLoader _assetLoader;
+        private IAssetLoader AssetLoader
+        {
+            get
+            {
+                if (_assetLoader == null)
+                {
+                    if (GameMgr.AssetBundleModel)
+                    {
+                        _assetLoader = new AssetBundleAssetLoader();
+                    }
+                    else
+                    {
+                        _assetLoader = new EditorAssetLoader();
+                    }
+                }
+                return _assetLoader;
+            }
+        }
+
         /// <summary>
         /// 同步从AssetBundle加载资源;
         /// </summary>
@@ -98,72 +118,75 @@ namespace Framework
         {
             AssetBundleAssetProxy proxy = PoolMgr.Instance.GetCsharpObject<AssetBundleAssetProxy>();
             proxy.Initialize(path, isUsePool);
-            CoroutineMgr.Instance.RunCoroutine(LoadFromFileAsyncEntrance(path, proxy, progress));
+            CoroutineMgr.Instance.RunCoroutine(AssetLoader.LoadAssetAsync(path, proxy, progress));
             return proxy;
         }
 
-        /// Asset async load from AssetBundle;
-        private IEnumerator<float> LoadFromFileAsync(string path, AssetBundleAssetProxy proxy
-            , Action<float> progress)
+        #endregion
+
+        #region Loader
+
+        private interface IAssetLoader
         {
-            AssetBundle assetBundle = null;
+            IEnumerator<float> LoadAssetAsync(string path, AssetBundleAssetProxy proxy, Action<float> progress);
 
-            //此处加载占0.8;
-            IEnumerator itor = AssetBundleMgr.Instance.LoadFromFileAsync(path,
-                bundle => { assetBundle = bundle; }, progress);
-            while (itor.MoveNext())
+        }
+
+        internal class AssetBundleAssetLoader : IAssetLoader
+        {
+            public IEnumerator<float> LoadAssetAsync(string path, AssetBundleAssetProxy proxy, Action<float> progress)
             {
+                AssetBundle assetBundle = null;
+
+                //此处加载占0.8;
+                IEnumerator itor = AssetBundleMgr.Instance.LoadFromFileAsync(path,
+                    bundle => { assetBundle = bundle; }, progress);
+                while (itor.MoveNext())
+                {
+                    yield return Timing.WaitForOneFrame;
+                }
+                var name = Path.GetFileNameWithoutExtension(path);
+                AssetBundleRequest request = assetBundle.LoadAssetAsync(name);
+
+                //此处加载占0.2;
+                while (request.progress < 0.99f)
+                {
+                    progress?.Invoke(Instance.LOAD_BUNDLE_PRECENT + Instance.LOAD_ASSET_PRECENT * request.progress);
+                    yield return Timing.WaitForOneFrame;
+                }
+                while (!request.isDone)
+                {
+                    yield return Timing.WaitForOneFrame;
+                }
+                if (null == request.asset)
+                {
+                    AssetBundleMgr.Instance.UnloadAsset(path, null);
+                    LogHelper.PrintError($"[ResourceMgr]LoadFromFileAsync load asset:{path} failure.");
+                }
+                else
+                {
+                    AssetBundleMgr.Instance.AddAssetRef(path, request.asset);
+                }
+
+                //先等一帧;
                 yield return Timing.WaitForOneFrame;
-            }
-            var name = Path.GetFileNameWithoutExtension(path);
-            AssetBundleRequest request = assetBundle.LoadAssetAsync(name);
 
-            //此处加载占0.2;
-            while (request.progress < 0.99f)
-            {
-                progress?.Invoke(LOAD_BUNDLE_PRECENT + LOAD_ASSET_PRECENT * request.progress);
-                yield return Timing.WaitForOneFrame;
-            }
-            while (!request.isDone)
-            {
-                yield return Timing.WaitForOneFrame;
-            }
-            if (null == request.asset)
-            {
-                AssetBundleMgr.Instance.UnloadAsset(path, null);
-                LogHelper.PrintError($"[ResourceMgr]LoadFromFileAsync load asset:{path} failure.");
-            }
-            else
-            {
-                AssetBundleMgr.Instance.AddAssetRef(path, request.asset);
-            }
-
-            //先等一帧;
-            yield return Timing.WaitForOneFrame;
-
-            if (proxy != null)
-            {
-                proxy.OnFinish(request.asset);
-            }
-            else
-            {
-                LogHelper.PrintError($"[ResourceMgr]LoadFromFileAsync proxy is null:{path}.");
+                if (proxy != null)
+                {
+                    proxy.OnFinish(request.asset);
+                }
+                else
+                {
+                    LogHelper.PrintError($"[ResourceMgr]LoadFromFileAsync proxy is null:{path}.");
+                }
             }
         }
 
-        private IEnumerator<float> LoadFromFileAsyncEntrance(string path, AssetBundleAssetProxy proxy
-            , Action<float> progress)
+        internal class EditorAssetLoader : IAssetLoader
         {
-#if !UNITY_EDITOR
-            IEnumerator itor = LoadFromFileAsync(path, proxy, progress);
-            while (itor.MoveNext())
+            public IEnumerator<float> LoadAssetAsync(string path, AssetBundleAssetProxy proxy, Action<float> progress)
             {
-                yield return Timing.WaitForOneFrame;
-            }
-#else
-            if (!GameMgr.AssetBundleModel)
-            {
-                var asset = UnityEditor.AssetDatabase.LoadAssetAtPath<Object>("Assets/Bundles/" + path);
+                var asset = UnityEditor.AssetDatabase.LoadAssetAtPath<Object>($"Assets/Bundles/{path}");
                 //先等一帧;
                 yield return Timing.WaitForOneFrame;
 
@@ -176,15 +199,6 @@ namespace Framework
                     LogHelper.PrintError($"[ResourceMgr]LoadFromFileAsync proxy is null:{path}.");
                 }
             }
-            else
-            {
-                IEnumerator itor = LoadFromFileAsync(path, proxy, progress);
-                while (itor.MoveNext())
-                {
-                    yield return Timing.WaitForOneFrame;
-                }
-            }
-#endif
         }
 
         #endregion
@@ -218,4 +232,4 @@ This new instance will not be connected to the previously unloaded object;
 
 每一个load出来的asset难道不是同一个C#对象？为啥WeakReference的target变成null了???
 
- */
+*/
