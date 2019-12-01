@@ -118,11 +118,14 @@ namespace Framework
             foreach (var asset in independenceAsset)
             {
                 var node = asset.Value;
-                AssetBundleBuild build = new AssetBundleBuild();
-                build.assetBundleName = FilePathHelper.GetAssetBundleFileName(node.assetPath);
-                List<string> assetLis = new List<string>();
-                assetLis.Add(node.assetPath);
-
+                AssetBundleBuild build = new AssetBundleBuild
+                {
+                    assetBundleName = FilePathHelper.GetAssetBundleFileName(node.assetPath)
+                };
+                List<string> assetLis = new List<string>
+                {
+                    node.assetPath
+                };
                 foreach (var tempAsset in node.sonDependentAssets)
                 {
                     if (!independenceAsset.ContainsKey(tempAsset))

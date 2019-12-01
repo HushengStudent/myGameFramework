@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace Framework
 {
+    /// <summary>
+    /// ×´Ì¬»ú;
+    /// </summary>
     public class AnimatorEx
     {
         private Animator _animator = null;
@@ -17,7 +20,7 @@ namespace Framework
         private AssetBundleAssetProxy _runtimeAnimatorProxy;
         private AssetBundleAssetProxy _animationClipProxy;
 
-        public void Init(Animator animator, string path)
+        public void Initialize(Animator animator, string path)
         {
             _animator = animator;
             _runtimeAnimatorProxy = ResourceMgr.Instance.LoadAssetAsync(path);

@@ -338,7 +338,7 @@ namespace Framework
                 {
                     continue;
                 }
-                string tempPtah = FilePathHelper.AssetBundlePath + tempAssetBundle;
+                string tempPtah = $"{FilePathHelper.AssetBundlePath}/{tempAssetBundle}";
                 IEnumerator<float> itor = LoadAsync(tempPtah, null, (value) => { dp = value; });
                 while (itor.MoveNext())
                 {

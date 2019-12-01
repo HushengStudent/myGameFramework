@@ -25,3 +25,5 @@ function SceneMgr:OnLeaveScene()
     g_UIMgr:OnLeaveCanvas(m_curCanvas)
     m_curCanvas = CanvasEnum.Non
 end
+
+return SceneMgr

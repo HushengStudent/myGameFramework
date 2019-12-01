@@ -4,6 +4,8 @@
 ** desc:  ECS实体抽象基类;
 *********************************************************************************/
 
+using UnityEngine;
+
 namespace Framework
 {
     public enum EntityType : byte
@@ -19,6 +21,7 @@ namespace Framework
         protected AbsEntity() : base() { }
 
         private EntityLoadFinishEventHandler _entityLoadFinishHandler = null;
+        private AnimatorEx _animatorEx;
 
         public ulong UID { get; private set; }
         public int EntityId { get; private set; }
@@ -60,7 +63,8 @@ namespace Framework
             EntityName = name;
             EntityId = entityId;
             Enable = true;
-            ResPath = "Prefab/Models/Avatar/ch_pc_hou_004.prefab";
+            _animatorEx = new AnimatorEx();
+            ResPath = "Prefab/Models/Common/Skeleton.prefab";
             gameObjectEx = PoolMgr.Instance.GetCsharpObject<GameObjectEx>();
             gameObjectEx.AddLoadFinishHandler(OnAttachGoEx);
             gameObjectEx.Init(this, ResPath);
@@ -85,6 +89,7 @@ namespace Framework
         protected virtual void OnAttachGoEx(GameObjectEx go)
         {
             gameObjectEx = go;
+            _animatorEx.Initialize(gameObjectEx.gameObject.GetComponent<Animator>(), "Animator/Common/Player.controller");
             _entityLoadFinishHandler?.Invoke(this, gameObjectEx.gameObject);
         }
 

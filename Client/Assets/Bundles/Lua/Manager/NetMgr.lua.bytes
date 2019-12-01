@@ -23,3 +23,5 @@ end
 function NetMgr:SendNtf(msg)
 
 end
+
+return NetMgr

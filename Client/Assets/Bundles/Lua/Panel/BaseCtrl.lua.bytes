@@ -36,3 +36,5 @@ end
 function BaseCtrl:UnInitialize()
 
 end
+
+return BaseCtrl

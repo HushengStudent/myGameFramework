@@ -64,7 +64,7 @@ namespace Framework
             {
                 return null;
             }
-            return $"{AssetBundlePath}/{ assetBundleName}";
+            return $"{AssetBundlePath}/{assetBundleName}";
         }
 
         /// <summary>

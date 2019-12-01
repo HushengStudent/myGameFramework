@@ -104,10 +104,9 @@ namespace Framework
             SceneMgr.Instance.Launch();         //场景初始化;
             LuaMgr.Instance.Launch();           //lua初始化;
             MemoryMgr.Instance.Launch();
-            NetMgr.Instance.Launch();           //网络初始化;
+            //NetMgr.Instance.Launch();           //网络初始化;
 
-
-            //EnterGame();
+            EnterGame();
 
         }
 
@@ -118,7 +117,8 @@ namespace Framework
 
         public void EnterGame()
         {
-            ResourceMgr.Instance.LoadSceneAsync("Assets/Bundles/Scene/Level01.unity");
+            ResourceMgr.Instance.LoadSceneAsync("Scene/Level01.unity");
+            EntityMgr.Instance.CreateEntity<RoleEntity>(1, 1, "_entity_test");
         }
 
         /// 设置游戏配置;

@@ -18,3 +18,5 @@ end
 function LoginCanvas:DestroyCanvas()
     g_UIMgr:OnDeActiveCtrl(CtrlEnum.LoginCtrl)
 end
+
+return LoginCanvas

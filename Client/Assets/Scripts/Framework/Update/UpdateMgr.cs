@@ -31,8 +31,6 @@ namespace Framework
             LoaclVersion = SerializeHelper.DeserializeXml<VersionInfo>(GameConfig.VersionFilePath);
 
             //CheckVersion();
-            //TODO;
-            SuccessHandler?.Invoke();
         }
 
         public void CheckVersion()

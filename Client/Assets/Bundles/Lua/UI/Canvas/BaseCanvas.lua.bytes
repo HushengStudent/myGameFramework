@@ -32,3 +32,5 @@ function BaseCanvas:LeaveCanvas(canvasEnum)
     m_allCanvas[m_curCanvas]:DestroyCanvas()
     m_curCanvas = CanvasEnum.Non
 end
+
+return BaseCanvas

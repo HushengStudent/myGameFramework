@@ -63,6 +63,8 @@ namespace Framework
         /// <returns></returns>
         private AssetBundleAssetProxy LoadAssetSync(string path, bool isUsePool)
         {
+            path = $"Assets/Bundles/{path}";
+
             AssetBundleAssetProxy proxy = PoolMgr.Instance.GetCsharpObject<AssetBundleAssetProxy>();
             proxy.Initialize(path, isUsePool);
 
@@ -116,6 +118,8 @@ namespace Framework
         /// <returns></returns>
         public AssetBundleAssetProxy LoadAssetAsync(string path, Action<float> progress, bool isUsePool)
         {
+            path = $"Assets/Bundles/{path}";
+
             AssetBundleAssetProxy proxy = PoolMgr.Instance.GetCsharpObject<AssetBundleAssetProxy>();
             proxy.Initialize(path, isUsePool);
             CoroutineMgr.Instance.RunCoroutine(AssetLoader.LoadAssetAsync(path, proxy, progress));
@@ -186,7 +190,10 @@ namespace Framework
         {
             public IEnumerator<float> LoadAssetAsync(string path, AssetBundleAssetProxy proxy, Action<float> progress)
             {
-                var asset = UnityEditor.AssetDatabase.LoadAssetAtPath<Object>($"Assets/Bundles/{path}");
+                Object asset = null;
+#if UNITY_EDITOR
+                asset = UnityEditor.AssetDatabase.LoadAssetAtPath<Object>(path);
+#endif
                 //先等一帧;
                 yield return Timing.WaitForOneFrame;
 
