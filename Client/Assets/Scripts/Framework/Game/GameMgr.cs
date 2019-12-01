@@ -70,22 +70,30 @@ namespace Framework
         {
             CheckUpdateState = false;
 
-            ResourceMgr.onResourceInitAction = () =>
-            {
-                ResourceMgr.onResourceInitAction = null;
-                InitPoolMgr();
-            };
+            EventMgr.Instance.Launch();         //事件系统初始化;
+            EventMgr.Instance.AddGlobalEvent(EventType.RESOURCE_MGR_INIT, OnResourceInit);
+            EventMgr.Instance.AddGlobalEvent(EventType.POOL_MGR_INIT, OnPoolInit);
+            EventMgr.Instance.AddGlobalEvent(EventType.CAMERA_MGR_INIT, OnCameraInit);
+
             ResourceMgr.Instance.Launch();      //资源初始化;
         }
 
-        private void InitPoolMgr()
+        private void OnResourceInit(IEventArgs args)
         {
-            PoolMgr.onPoolInitAction = () =>
-            {
-                PoolMgr.onPoolInitAction = null;
-                InitApp();
-            };
+            EventMgr.Instance.RemoveGlobalEvent(EventType.RESOURCE_MGR_INIT);
             PoolMgr.Instance.Launch();          //对象池初始化;
+        }
+
+        private void OnPoolInit(IEventArgs args)
+        {
+            EventMgr.Instance.RemoveGlobalEvent(EventType.POOL_MGR_INIT);
+            CameraMgr.Instance.Launch();
+        }
+
+        private void OnCameraInit(IEventArgs args)
+        {
+            EventMgr.Instance.RemoveGlobalEvent(EventType.CAMERA_MGR_INIT);
+            InitApp();
         }
 
         private void InitApp()
@@ -94,8 +102,7 @@ namespace Framework
 #if UNITY_EDITOR
             //DebugMgr.Instance.Init();         //Debug工具初始化;
 #endif
-            EventMgr.Instance.Launch();         //事件系统初始化;
-            UIEventMgr<int>.Init();             //UI事件系统初始化;
+            //UIEventMgr<int>.Init();             //UI事件系统初始化;
             SdkMgr.Instance.Launch();           //平台初始化;
             TimerMgr.Instance.Launch();         //定时器初始化;
             ComponentMgr.Instance.Launch();     //组件初始化;
@@ -118,7 +125,7 @@ namespace Framework
         public void EnterGame()
         {
             ResourceMgr.Instance.LoadSceneAsync("Scene/Level01.unity");
-            EntityMgr.Instance.CreateEntity<RoleEntity>(1, 1, "_entity_test");
+            EntityMgr.Instance.CreateEntity<PlayerEntity>(1, 1, "_entity_test");
         }
 
         /// 设置游戏配置;

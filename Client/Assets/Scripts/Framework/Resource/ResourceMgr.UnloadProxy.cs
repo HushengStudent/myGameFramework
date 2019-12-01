@@ -14,8 +14,6 @@ namespace Framework
     {
         #region Proxy
 
-        public static Action onResourceInitAction = null;
-
         private List<AbsAssetProxy> _removeList = new List<AbsAssetProxy>();
 
         /// <summary>
@@ -54,7 +52,7 @@ namespace Framework
                 }
                 else
                 {
-                    onResourceInitAction?.Invoke();
+                    EventMgr.Instance.FireGlobalEvent(EventType.RESOURCE_MGR_INIT, null);
                     break;
                 }
             }

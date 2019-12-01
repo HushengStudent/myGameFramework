@@ -23,7 +23,6 @@ public class Framework_ResourceMgrWrap
 		L.RegVar("MAX_LOAD_TIME", get_MAX_LOAD_TIME, null);
 		L.RegVar("LOAD_BUNDLE_PRECENT", get_LOAD_BUNDLE_PRECENT, null);
 		L.RegVar("LOAD_ASSET_PRECENT", get_LOAD_ASSET_PRECENT, null);
-		L.RegVar("onResourceInitAction", get_onResourceInitAction, set_onResourceInitAction);
 		L.RegVar("LuaAssetBundle", get_LuaAssetBundle, null);
 		L.EndClass();
 	}
@@ -425,23 +424,6 @@ public class Framework_ResourceMgrWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_onResourceInitAction(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.onResourceInitAction");
-#endif
-		try
-		{
-			ToLua.Push(L, Framework.ResourceMgr.onResourceInitAction);
-			return 1;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_LuaAssetBundle(IntPtr L)
 	{
 #if UNITY_EDITOR
@@ -460,24 +442,6 @@ public class Framework_ResourceMgrWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o, "attempt to index LuaAssetBundle on a nil value");
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_onResourceInitAction(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceMgr.onResourceInitAction");
-#endif
-		try
-		{
-			System.Action arg0 = (System.Action)ToLua.CheckDelegate<System.Action>(L, 2);
-			Framework.ResourceMgr.onResourceInitAction = arg0;
-			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
 		}
 	}
 }

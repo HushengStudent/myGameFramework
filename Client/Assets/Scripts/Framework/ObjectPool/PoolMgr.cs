@@ -15,8 +15,6 @@ namespace Framework
     {
         private readonly string _poolRoot = "@AssetPoolRoot";
 
-        public static Action onPoolInitAction = null;
-
         public GameObject Root { get; private set; }
 
         private void Awake()
@@ -49,7 +47,10 @@ namespace Framework
             {
                 yield return Timing.WaitForOneFrame;
             }
-            ResourceMgr.Instance.UnloadUnusedAssets(onPoolInitAction);
+            ResourceMgr.Instance.UnloadUnusedAssets(() =>
+            {
+                EventMgr.Instance.FireGlobalEvent(EventType.POOL_MGR_INIT, null);
+            });
         }
     }
 }

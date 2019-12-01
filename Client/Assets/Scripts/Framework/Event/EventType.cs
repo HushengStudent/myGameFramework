@@ -12,9 +12,16 @@ namespace Framework
 {
     public enum EventType : int
     {
-        INIT_GAME_EVENT      = 1,   //初始化游戏;
+        RESOURCE_MGR_INIT = 1,   //资源管理器初始化;
+        POOL_MGR_INIT = 2,     //对象池初始化;
+        CAMERA_MGR_INIT = 3,   //相机初始化;
 
-        ON_SCENE_UNLOAD      = 2,   //卸载场景;
-        ON_SCENE_LOADED      = 3,   //加载场景;
+        INIT_GAME_FINISH_EVENT = 4,   //初始化游戏完成;
+
+
+        ON_SCENE_UNLOAD = 11,   //卸载场景;
+        ON_SCENE_LOADED = 12,   //加载场景;
+
+
     }
 }
