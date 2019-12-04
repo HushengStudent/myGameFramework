@@ -10,18 +10,19 @@ namespace Framework
 {
     public class StateMachineMgr : MonoSingleton<StateMachineMgr>
     {
-        private Dictionary<AbsEntity, StateMachine> _fsmDict = new Dictionary<AbsEntity, StateMachine>();
+        private Dictionary<AbsEntity, AbsStateMachine> _stateMachineDict
+            = new Dictionary<AbsEntity, AbsStateMachine>();
 
         protected override void OnInitialize()
         {
             base.OnInitialize();
-            _fsmDict.Clear();
+            _stateMachineDict.Clear();
         }
 
         protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
-            foreach (var target in _fsmDict)
+            foreach (var target in _stateMachineDict)
             {
                 target.Value.Update(interval);
             }
@@ -30,17 +31,10 @@ namespace Framework
         protected override void LateUpdateEx(float interval)
         {
             base.LateUpdateEx(interval);
-            foreach (var target in _fsmDict)
+            foreach (var target in _stateMachineDict)
             {
                 target.Value.LateUpdate(interval);
             }
-        }
-
-        public void CreateFsmMachine(AbsEntity entity, string name,
-            List<AbsState> stateList, AbsState defaultState, List<AbsTransition> transitionList)
-        {
-            StateMachine fsm = new StateMachine(entity, name, stateList, defaultState, transitionList);
-            _fsmDict.Add(entity, fsm);
         }
     }
 }

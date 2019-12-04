@@ -4,6 +4,7 @@
 ** desc:  Animator¿©’π;
 *********************************************************************************/
 
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Framework
@@ -15,7 +16,7 @@ namespace Framework
     {
         private Animator _animator = null;
         private AnimatorOverrideController _animatorOverrideController = null;
-        private DictEx<string, AnimationClip> _AnimationInfo = new DictEx<string, AnimationClip>();
+        private Dictionary<string, AnimationClip> _animationInfo = new Dictionary<string, AnimationClip>();
 
         private AssetBundleAssetProxy _runtimeAnimatorProxy;
         private AssetBundleAssetProxy _animationClipProxy;
@@ -46,7 +47,7 @@ namespace Framework
                 {
                     _animatorOverrideController[name] = clip;
                     _animator.runtimeAnimatorController = _animatorOverrideController;
-                    _AnimationInfo.Data[name] = clip;
+                    _animationInfo[name] = clip;
                     //_animator.Rebind();
 
                     if (autoPlay)
@@ -57,27 +58,12 @@ namespace Framework
             });
         }
 
-        public void SetBool(int id, bool value)
-        {
-
-        }
-
         public void SetBool(string name, bool value)
         {
 
         }
 
-        public void SetFloat(int id, float value)
-        {
-
-        }
-
         public void SetFloat(string name, float value)
-        {
-
-        }
-
-        public void SetTrigger(int id)
         {
 
         }

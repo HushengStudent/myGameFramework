@@ -21,13 +21,13 @@ namespace Framework
         protected AbsEntity() : base() { }
 
         private EntityLoadFinishEventHandler _entityLoadFinishHandler = null;
-        private AnimatorEx _animatorEx;
 
         public ulong UID { get; private set; }
         public int EntityId { get; private set; }
         public string EntityName { get; private set; }
-        public string ResPath { get; private set; }
-        public GameObjectEx gameObjectEx { get; private set; }
+        public string AssetPath { get; private set; } = "Prefab/Models/Common/Skeleton.prefab";
+        public GameObjectEx GameObjectEx { get; private set; }
+        public Animator Animator { get; private set; }
 
         public EntityLoadFinishEventHandler EntityLoadFinishHandler
         {
@@ -39,9 +39,9 @@ namespace Framework
             {
                 _entityLoadFinishHandler = value;
 
-                if (gameObjectEx != null && gameObjectEx.gameObject != null)
+                if (GameObjectEx != null && GameObjectEx.gameObject != null)
                 {
-                    _entityLoadFinishHandler(this, gameObjectEx.gameObject);
+                    _entityLoadFinishHandler(this, GameObjectEx.gameObject);
                 }
             }
         }
@@ -63,12 +63,15 @@ namespace Framework
             EntityName = name;
             EntityId = entityId;
             Enable = true;
-            _animatorEx = new AnimatorEx();
-            ResPath = "Prefab/Models/Common/Skeleton.prefab";
-            gameObjectEx = PoolMgr.Instance.GetCsharpObject<GameObjectEx>();
-            gameObjectEx.AddLoadFinishHandler(OnAttachGoEx);
-            gameObjectEx.Init(this, ResPath);
             InitializeEx();
+            GameObjectEx = PoolMgr.Instance.GetCsharpObject<GameObjectEx>();
+            GameObjectEx.AddLoadFinishHandler((goex) =>
+            {
+                OnAttachGoEx(goex);
+                _entityLoadFinishHandler?.Invoke(this, GameObjectEx.gameObject);
+
+            });
+            GameObjectEx.Init(this, AssetPath);
         }
 
         /// <summary>
@@ -76,7 +79,7 @@ namespace Framework
         /// </summary>
         public void UnInitialize()
         {
-            DetachGoEx();
+            OnDetachGoEx();
             UnInitializeEx();
             Enable = false;
             EntityLoadFinishHandler = null;
@@ -88,19 +91,18 @@ namespace Framework
         /// <param name="go"></param>
         protected virtual void OnAttachGoEx(GameObjectEx go)
         {
-            gameObjectEx = go;
-            _animatorEx.Initialize(gameObjectEx.gameObject.GetComponent<Animator>(), "Animator/Common/Player.controller");
-            _entityLoadFinishHandler?.Invoke(this, gameObjectEx.gameObject);
+            GameObjectEx = go;
+            Animator = GameObjectEx.gameObject.GetComponent<Animator>();
         }
 
         /// <summary>
         /// 重置GameObject的附加;
         /// </summary>
-        protected virtual void DetachGoEx()
+        protected virtual void OnDetachGoEx()
         {
-            gameObjectEx.Uninit();
-            PoolMgr.Instance.ReleaseCsharpObject(gameObjectEx);
-            gameObjectEx = null;
+            GameObjectEx.Uninit();
+            PoolMgr.Instance.ReleaseCsharpObject(GameObjectEx);
+            GameObjectEx = null;
         }
     }
 }

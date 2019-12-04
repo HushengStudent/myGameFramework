@@ -30,13 +30,13 @@ namespace Framework
         {
             Enable = true;
             OnAttachObjectEx(owner);
-            if (Entity.gameObjectEx.IsLoadFinish)
+            if (Entity.GameObjectEx.IsLoadFinish)
             {
-                OnAttachGoEx(Entity.gameObjectEx);
+                OnAttachGoEx(Entity.GameObjectEx);
             }
             else
             {
-                Entity.gameObjectEx.AddLoadFinishHandler(OnAttachGoEx);
+                Entity.GameObjectEx.AddLoadFinishHandler(OnAttachGoEx);
             }
             EventSubscribe();
             InitializeEx();
@@ -94,9 +94,9 @@ namespace Framework
         /// </summary>
         protected virtual void DetachGoEx()
         {
-            if (!Entity.gameObjectEx.IsLoadFinish)
+            if (!Entity.GameObjectEx.IsLoadFinish)
             {
-                Entity.gameObjectEx.RemoveLoadFinishHandler(OnAttachGoEx);
+                Entity.GameObjectEx.RemoveLoadFinishHandler(OnAttachGoEx);
             }
         }
 
