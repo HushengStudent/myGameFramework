@@ -36,5 +36,25 @@ namespace Framework
                 target.Value.LateUpdate(interval);
             }
         }
+
+        public AbsStateMachine CreateStateMachine(AbsEntity entity)
+        {
+            AbsStateMachine machine = null;
+            if (!_stateMachineDict.TryGetValue(entity, out machine))
+            {
+                machine = new HumanStateMachine(entity);
+                machine.Initialize();
+            }
+            return machine;
+        }
+
+        public void RemoveStateMachine(AbsEntity entity)
+        {
+            AbsStateMachine machine = null;
+            if (_stateMachineDict.TryGetValue(entity, out machine))
+            {
+                machine.UnInitialize();
+            }
+        }
     }
 }

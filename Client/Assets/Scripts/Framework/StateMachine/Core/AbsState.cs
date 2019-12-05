@@ -8,11 +8,12 @@ using UnityEngine;
 
 namespace Framework
 {
-    public abstract class AbsState :IPool
+    public abstract class AbsState
     {
-        private AnimationClip _animationClip;
         private float _stateStartTicks;
         private float _animationLength;
+        private string _animationPath;
+        private AnimationClip _animationClip;
         private AssetBundleAssetProxy _animationClipProxy;
 
         public AbsEntity Entity { get; private set; }
@@ -57,11 +58,8 @@ namespace Framework
                 var pass = Time.realtimeSinceStartup - _stateStartTicks;
                 if (pass - 0.2 >= _animationLength)
                 {
-                    if (Loop)
-                    {
-                        _stateStartTicks = 0;
-                    }
-                    else
+                    _stateStartTicks = 0;
+                    if (!Loop)
                     {
                         Machine.TransToDefault();
                     }
@@ -83,6 +81,11 @@ namespace Framework
 
         public void OverrideAnimationClip(string path)
         {
+            if (_animationPath == path)
+            {
+                return;
+            }
+            _animationPath = path;
             if (_animationClipProxy != null)
             {
                 _animationClipProxy.UnloadProxy();
@@ -108,12 +111,10 @@ namespace Framework
             });
         }
 
-        public void OnGet(params object[] args)
+        public void UnInitialize()
         {
-        }
-
-        public void OnRelease()
-        {
+            _animationClip = null;
+            _stateStartTicks = 0;
             if (_animationClipProxy != null)
             {
                 _animationClipProxy.UnloadProxy();

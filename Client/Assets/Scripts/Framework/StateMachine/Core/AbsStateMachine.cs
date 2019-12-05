@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public enum StateName
+    public enum StateNameEnum
     {
         Idle,
         Move,
@@ -18,7 +18,7 @@ namespace Framework
         Special,
     }
 
-    public enum StateCommand
+    public enum StateCommandEnum
     {
         ToIdle,
         ToMove,
@@ -39,6 +39,8 @@ namespace Framework
 
         private AssetBundleAssetProxy _runtimeAnimatorProxy;
 
+        public abstract string AssetPath { get; }
+
         public AbsStateMachine(AbsEntity entity)
         {
             Enable = false;
@@ -47,14 +49,14 @@ namespace Framework
             CurrentState = null;
         }
 
-        public void Initialize(string path)
+        public void Initialize()
         {
             if (null == Entity)
             {
                 return;
             }
             Animator = Entity.Animator;
-            _runtimeAnimatorProxy = ResourceMgr.Instance.LoadAssetAsync(path);
+            _runtimeAnimatorProxy = ResourceMgr.Instance.LoadAssetAsync(AssetPath);
             _runtimeAnimatorProxy.AddLoadFinishCallBack(() =>
             {
                 RuntimeAnimatorController ctrl = _runtimeAnimatorProxy.GetUnityAsset<RuntimeAnimatorController>();
@@ -72,6 +74,11 @@ namespace Framework
         public void UnInitialize()
         {
             Enable = false;
+            for (int i = 0; i < StateList.Count; i++)
+            {
+                var state = StateList[i];
+                state.UnInitialize();
+            }
             CurrentState = null;
             Entity = null;
             if (_runtimeAnimatorProxy != null)
@@ -110,13 +117,15 @@ namespace Framework
                 if (state.Default)
                 {
                     state.OnEnterState();
+                    return;
                 }
             }
+            LogHelper.PrintError($"[AbsStateMachine]Not find default state.");
         }
 
         public void ExcuteCommand(string command, bool loop = false)
         {
-            if (command == StateName.Idle.ToString())
+            if (command == StateNameEnum.Idle.ToString())
             {
                 loop = true;
             }
@@ -127,8 +136,10 @@ namespace Framework
                 {
                     state.Loop = loop;
                     state.OnEnterState();
+                    return;
                 }
             }
+            LogHelper.PrintError($"[AbsStateMachine]Not find state to excute command:{command}.");
         }
     }
 }

@@ -28,6 +28,7 @@ namespace Framework
         public string AssetPath { get; private set; } = "Prefab/Models/Common/Skeleton.prefab";
         public GameObjectEx GameObjectEx { get; private set; }
         public Animator Animator { get; private set; }
+        public AbsStateMachine StateMachine { get; private set; }
 
         public EntityLoadFinishEventHandler EntityLoadFinishHandler
         {
@@ -63,8 +64,9 @@ namespace Framework
             EntityName = name;
             EntityId = entityId;
             Enable = true;
-            InitializeEx();
             GameObjectEx = PoolMgr.Instance.GetCsharpObject<GameObjectEx>();
+
+            InitializeEx();
             GameObjectEx.AddLoadFinishHandler((goex) =>
             {
                 OnAttachGoEx(goex);
@@ -93,6 +95,7 @@ namespace Framework
         {
             GameObjectEx = go;
             Animator = GameObjectEx.gameObject.GetComponent<Animator>();
+            StateMachine = StateMachineMgr.Instance.CreateStateMachine(this);
         }
 
         /// <summary>
@@ -100,6 +103,8 @@ namespace Framework
         /// </summary>
         protected virtual void OnDetachGoEx()
         {
+            StateMachine = null;
+            StateMachineMgr.Instance.RemoveStateMachine(this);
             GameObjectEx.Uninit();
             PoolMgr.Instance.ReleaseCsharpObject(GameObjectEx);
             GameObjectEx = null;
