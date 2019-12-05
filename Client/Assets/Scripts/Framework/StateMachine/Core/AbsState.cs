@@ -49,11 +49,17 @@ namespace Framework
 
         public void Update(float interval)
         {
+            if(_animationClip == null && Machine.AnimatorOverrideController != null)
+            {
+                _animationClip = Machine.AnimatorOverrideController[StateName];
+            }
             if (_animationClip)
             {
                 if (_stateStartTicks <= 0)
                 {
+                    _animationLength = _animationClip.length;
                     _stateStartTicks = Time.realtimeSinceStartup;
+                    Machine.Animator.Play(StateName, 0, 0f);
                 }
                 var pass = Time.realtimeSinceStartup - _stateStartTicks;
                 if (pass - 0.2 >= _animationLength)
@@ -101,12 +107,6 @@ namespace Framework
                     //_animator.Rebind();
 
                     _animationClip = clip;
-                    _animationLength = _animationClip.length;
-
-                    if (Machine.CurrentState == this)
-                    {
-                        Machine.Animator.Play(StateName, 0, 0f);
-                    }
                 }
             });
         }

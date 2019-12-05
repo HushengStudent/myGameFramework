@@ -44,6 +44,7 @@ namespace Framework
             {
                 machine = new HumanStateMachine(entity);
                 machine.Initialize();
+                _stateMachineDict[entity] = machine;
             }
             return machine;
         }
@@ -54,6 +55,7 @@ namespace Framework
             if (_stateMachineDict.TryGetValue(entity, out machine))
             {
                 machine.UnInitialize();
+                _stateMachineDict.Remove(entity);
             }
         }
     }
