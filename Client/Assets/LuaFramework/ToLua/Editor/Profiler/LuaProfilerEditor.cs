@@ -61,14 +61,14 @@ public static class LuaProfilerEditor
     [MenuItem("myGameFramework/Profiler/Lua Profiler Extension/Attach Lua Profiler")]
     private static void _ExecuteAttach()
     {
-        if (Application.isPlaying && LuaMgr.Instance)
+        if (Application.isPlaying && LuaMgr.singleton)
         {
             if (_isAttached)
             {
                 return;
             }
             _isAttached = true;
-            LuaMgr.Instance.Dostring(_luaText);
+            LuaMgr.singleton.Dostring(_luaText);
         }
     }
 
@@ -81,9 +81,9 @@ public static class LuaProfilerEditor
         }
         _isAttached = false;
         var script = "debug.sethook (nil)";
-        if (LuaMgr.Instance)
+        if (LuaMgr.singleton)
         {
-            LuaMgr.Instance.Dostring(script);
+            LuaMgr.singleton.Dostring(script);
         }
     }
 }

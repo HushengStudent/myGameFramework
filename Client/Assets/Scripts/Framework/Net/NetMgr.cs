@@ -37,7 +37,7 @@ namespace Framework
         {
             if (_checkUpdateState)
             {
-                GameMgr.Instance.CheckUpdate();
+                GameMgr.singleton.CheckUpdate();
                 _checkUpdateState = false;
             }
         }
@@ -82,9 +82,9 @@ namespace Framework
         {
             LogHelper.Print(string.Format("[NetMgr]Session Connected!"));
             ProtoHelper.Register();
-            if (!GameMgr.Instance.CheckUpdateState)
+            if (!GameMgr.singleton.CheckUpdateState)
             {
-                GameMgr.Instance.CheckUpdateState = true;
+                GameMgr.singleton.CheckUpdateState = true;
                 _checkUpdateState = true;
             }
         }

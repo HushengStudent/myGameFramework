@@ -27,7 +27,7 @@ public class Main : MonoBehaviour
 
 #endif
 
-        GameMgr.Instance.Launch();
+        GameMgr.singleton.Launch();
 
     }
 }

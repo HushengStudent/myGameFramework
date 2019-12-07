@@ -14,7 +14,7 @@ namespace Framework
     {
         public void AddBuff(ulong uid, int buffId)
         {
-            RoleEntity entity = EntityMgr.Instance.GetEntity<RoleEntity>(uid);
+            RoleEntity entity = EntityMgr.singleton.GetEntity<RoleEntity>(uid);
             if (entity == null)
             {
                 LogHelper.PrintError($"[BuffMgr]entity is null,uid is {uid}.");

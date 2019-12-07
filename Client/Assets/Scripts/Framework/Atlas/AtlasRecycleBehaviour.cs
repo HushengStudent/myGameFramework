@@ -26,7 +26,7 @@ namespace Framework
             if (!_isRelease)
             {
                 _isRelease = true;
-                AtlasMgr.Instance.ReleaseSprite(this, _atlasPath);
+                AtlasMgr.singleton.ReleaseSprite(this, _atlasPath);
             }
         }
 

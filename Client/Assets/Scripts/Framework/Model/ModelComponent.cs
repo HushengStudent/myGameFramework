@@ -38,11 +38,11 @@ namespace Framework
         protected override void InitializeEx()
         {
             base.InitializeEx();
-            _modelDataDict[ModelPart.ModelHead] = ModelMgr.Instance.HeadArray[0];
-            _modelDataDict[ModelPart.ModelBody] = ModelMgr.Instance.BodyArray[0];
-            _modelDataDict[ModelPart.ModelHand] = ModelMgr.Instance.HandArray[0];
-            _modelDataDict[ModelPart.ModelFeet] = ModelMgr.Instance.FeetArray[0];
-            _modelDataDict[ModelPart.ModelWeapon] = ModelMgr.Instance.WeaponArray[0];
+            _modelDataDict[ModelPart.ModelHead] = ModelMgr.singleton.HeadArray[0];
+            _modelDataDict[ModelPart.ModelBody] = ModelMgr.singleton.BodyArray[0];
+            _modelDataDict[ModelPart.ModelHand] = ModelMgr.singleton.HandArray[0];
+            _modelDataDict[ModelPart.ModelFeet] = ModelMgr.singleton.FeetArray[0];
+            _modelDataDict[ModelPart.ModelWeapon] = ModelMgr.singleton.WeaponArray[0];
 
         }
 

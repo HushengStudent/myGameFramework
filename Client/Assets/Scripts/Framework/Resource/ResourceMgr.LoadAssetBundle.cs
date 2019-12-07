@@ -65,11 +65,11 @@ namespace Framework
         {
             path = $"Assets/Bundles/{path}";
 
-            AssetBundleAssetProxy proxy = PoolMgr.Instance.GetCsharpObject<AssetBundleAssetProxy>();
+            AssetBundleAssetProxy proxy = PoolMgr.singleton.GetCsharpObject<AssetBundleAssetProxy>();
             proxy.Initialize(path, isUsePool);
 
             Object asset = null;
-            AssetBundle assetBundle = AssetBundleMgr.Instance.LoadFromFile(path);
+            AssetBundle assetBundle = AssetBundleMgr.singleton.LoadFromFile(path);
             if (assetBundle != null)
             {
                 var name = Path.GetFileNameWithoutExtension(path);
@@ -77,12 +77,12 @@ namespace Framework
             }
             if (asset == null)
             {
-                AssetBundleMgr.Instance.UnloadAsset(path, null);
+                AssetBundleMgr.singleton.UnloadAsset(path, null);
                 LogHelper.PrintError($"[ResourceMgr]LoadSyncAssetProxy load asset:{path} failure.");
             }
             else
             {
-                AssetBundleMgr.Instance.AddAssetRef(path, asset);
+                AssetBundleMgr.singleton.AddAssetRef(path, asset);
             }
             proxy.OnFinish(asset);
             return proxy;
@@ -120,9 +120,9 @@ namespace Framework
         {
             path = $"Assets/Bundles/{path}";
 
-            AssetBundleAssetProxy proxy = PoolMgr.Instance.GetCsharpObject<AssetBundleAssetProxy>();
+            AssetBundleAssetProxy proxy = PoolMgr.singleton.GetCsharpObject<AssetBundleAssetProxy>();
             proxy.Initialize(path, isUsePool);
-            CoroutineMgr.Instance.RunCoroutine(AssetLoader.LoadAssetAsync(path, proxy, progress));
+            CoroutineMgr.singleton.RunCoroutine(AssetLoader.LoadAssetAsync(path, proxy, progress));
             return proxy;
         }
 
@@ -143,7 +143,7 @@ namespace Framework
                 AssetBundle assetBundle = null;
 
                 //此处加载占0.8;
-                IEnumerator itor = AssetBundleMgr.Instance.LoadFromFileAsync(path,
+                IEnumerator itor = AssetBundleMgr.singleton.LoadFromFileAsync(path,
                     bundle => { assetBundle = bundle; }, progress);
                 while (itor.MoveNext())
                 {
@@ -155,7 +155,7 @@ namespace Framework
                 //此处加载占0.2;
                 while (request.progress < 0.99f)
                 {
-                    progress?.Invoke(Instance.LOAD_BUNDLE_PRECENT + Instance.LOAD_ASSET_PRECENT * request.progress);
+                    progress?.Invoke(singleton.LOAD_BUNDLE_PRECENT + singleton.LOAD_ASSET_PRECENT * request.progress);
                     yield return Timing.WaitForOneFrame;
                 }
                 while (!request.isDone)
@@ -164,12 +164,12 @@ namespace Framework
                 }
                 if (null == request.asset)
                 {
-                    AssetBundleMgr.Instance.UnloadAsset(path, null);
+                    AssetBundleMgr.singleton.UnloadAsset(path, null);
                     LogHelper.PrintError($"[ResourceMgr]LoadFromFileAsync load asset:{path} failure.");
                 }
                 else
                 {
-                    AssetBundleMgr.Instance.AddAssetRef(path, request.asset);
+                    AssetBundleMgr.singleton.AddAssetRef(path, request.asset);
                 }
 
                 //先等一帧;

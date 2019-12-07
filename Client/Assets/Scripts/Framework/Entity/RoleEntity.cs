@@ -21,17 +21,21 @@ namespace Framework
         }
 
         public BuffComponent BuffComp { get; private set; }
+        public HumanStateMachineComponent HumanStateMachineComp { get; private set; }
 
         protected override void RegisterComponent()
         {
             base.RegisterComponent();
-            BuffComp = ComponentMgr.Instance.CreateComponent<BuffComponent>(this);
+            BuffComp = ComponentMgr.singleton.CreateComponent<BuffComponent>(this);
+            HumanStateMachineComp = ComponentMgr.singleton.CreateComponent<HumanStateMachineComponent>(this);
+
         }
 
         protected override void UnRegisterComponent()
         {
             base.UnRegisterComponent();
-            ComponentMgr.Instance.ReleaseComponent<BuffComponent>(BuffComp);
+            ComponentMgr.singleton.ReleaseComponent<BuffComponent>(BuffComp);
+            ComponentMgr.singleton.ReleaseComponent<HumanStateMachineComponent>(HumanStateMachineComp);
         }
     }
 }

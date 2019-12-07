@@ -126,17 +126,17 @@ namespace Framework
 
         protected void AddEvent(EventType type, EventHandler handler)
         {
-            EventMgr.Instance.AddEvent(Owner, type, handler);
+            EventMgr.singleton.AddEvent(Owner, type, handler);
         }
 
         protected void RemoveEvent(EventType type)
         {
-            EventMgr.Instance.RemoveEvent(Owner, type);
+            EventMgr.singleton.RemoveEvent(Owner, type);
         }
 
         protected void FireEvent(EventType type, IEventArgs eventArgs)
         {
-            EventMgr.Instance.FireEvent(Owner, type, eventArgs);
+            EventMgr.singleton.FireEvent(Owner, type, eventArgs);
         }
     }
 }

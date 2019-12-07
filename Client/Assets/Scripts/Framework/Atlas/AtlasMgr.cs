@@ -33,7 +33,7 @@ namespace Framework
         {
             base.OnInitialize();
             _atlasDict = new Dictionary<string, Atlas>();
-            EventMgr.Instance.AddGlobalEvent(EventType.ON_SCENE_UNLOAD, OnSceneUnload);
+            EventMgr.singleton.AddGlobalEvent(EventType.ON_SCENE_UNLOAD, OnSceneUnload);
         }
 
         public void SetSprite(Object Object, string atlasPath, string spriteName)
@@ -46,7 +46,7 @@ namespace Framework
             Atlas atlas;
             if (!_atlasDict.TryGetValue(atlasPath, out atlas) || atlas.Deprecated)
             {
-                atlas = PoolMgr.Instance.GetCsharpObject<Atlas>();
+                atlas = PoolMgr.singleton.GetCsharpObject<Atlas>();
                 atlas.OnInitialize(atlasPath);
             }
             if (atlas == null)
@@ -72,7 +72,7 @@ namespace Framework
         protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
-            var list = PoolMgr.Instance.GetCsharpList<string>();
+            var list = PoolMgr.singleton.GetCsharpList<string>();
             foreach (var temp in _atlasDict)
             {
                 if (temp.Value.Deprecated)
@@ -88,12 +88,12 @@ namespace Framework
                 atlas.OnUninitialize();
             }
             list.Clear();
-            PoolMgr.Instance.ReleaseCsharpList(list);
+            PoolMgr.singleton.ReleaseCsharpList(list);
         }
 
         private void OnSceneUnload(IEventArgs eventArgs)
         {
-            var list = PoolMgr.Instance.GetCsharpList<string>();
+            var list = PoolMgr.singleton.GetCsharpList<string>();
             foreach (var temp in _atlasDict)
             {
                 if (temp.Value.Deprecated || temp.Value.TryReleaseAtlas())
@@ -109,7 +109,7 @@ namespace Framework
                 atlas.OnUninitialize();
             }
             list.Clear();
-            PoolMgr.Instance.ReleaseCsharpList(list);
+            PoolMgr.singleton.ReleaseCsharpList(list);
         }
 
         protected override void OnUninitialize()

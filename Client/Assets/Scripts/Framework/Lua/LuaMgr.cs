@@ -92,7 +92,7 @@ namespace Framework
             if (loader.beZip)
             {
                 var name = FilePathHelper.luaAssetBundleName;
-                var ab = ResourceMgr.Instance.LuaAssetBundle;
+                var ab = ResourceMgr.singleton.LuaAssetBundle;
                 loader.AddSearchBundle(name, ab);
             }
         }

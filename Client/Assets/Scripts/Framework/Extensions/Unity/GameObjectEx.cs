@@ -31,7 +31,7 @@ namespace Framework
             Entity = entity;
             ResPath = path;
             IsLoadFinish = false;
-            proxy = ResourceMgr.Instance.LoadAssetAsync(ResPath);
+            proxy = ResourceMgr.singleton.LoadAssetAsync(ResPath);
             proxy.AddLoadFinishCallBack(() =>
             {
                 gameObject = proxy.GetInstantiateObject<GameObject>();

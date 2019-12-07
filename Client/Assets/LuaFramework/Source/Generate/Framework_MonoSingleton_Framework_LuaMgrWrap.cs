@@ -10,7 +10,7 @@ public class Framework_MonoSingleton_Framework_LuaMgrWrap
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("ApplicationIsPlaying", get_ApplicationIsPlaying, null);
-		L.RegVar("Instance", get_Instance, null);
+		L.RegVar("singleton", get_singleton, null);
 		L.EndClass();
 	}
 
@@ -53,14 +53,14 @@ public class Framework_MonoSingleton_Framework_LuaMgrWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Instance(IntPtr L)
+	static int get_singleton(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.LuaMgr>.Instance");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.LuaMgr>.singleton");
 #endif
 		try
 		{
-			ToLua.Push(L, Framework.MonoSingleton<Framework.LuaMgr>.Instance);
+			ToLua.Push(L, Framework.MonoSingleton<Framework.LuaMgr>.singleton);
 			return 1;
 		}
 		catch (Exception e)

@@ -12,14 +12,14 @@ namespace Framework
     {
         private static readonly string _monoSingletonRoot = "@MonoSingletonRoot";
 
-        protected static T _instance = null;
+        protected static T _singleton = null;
         public static bool ApplicationIsPlaying { get; private set; } = true;
 
-        public static T Instance
+        public static T singleton
         {
             get
             {
-                if (null == _instance)
+                if (null == _singleton)
                 {
                     GameObject go = GameObject.Find(_monoSingletonRoot);
                     if (null == go)
@@ -27,22 +27,22 @@ namespace Framework
                         go = new GameObject(_monoSingletonRoot);
                         DontDestroyOnLoad(go);
                     }
-                    _instance = go.AddComponent<T>();
-                    MonoSingletoninterface singleton = _instance as MonoSingletoninterface;
+                    _singleton = go.AddComponent<T>();
+                    MonoSingletoninterface singleton = _singleton as MonoSingletoninterface;
                     if (singleton != null)
                     {
                         //OnInitialize晚于AwakeEx执行;
                         singleton.MonoSingletoninterfaceOnInitialize();
                     }
                 }
-                return _instance;
+                return _singleton;
             }
         }
 
         /// 构造函数;
         protected MonoSingleton()
         {
-            if (null == _instance)
+            if (null == _singleton)
             {
                 LogHelper.Print($"[MonoSingleton]{(typeof(T)).ToString()} singleton instance created.");
             }
@@ -85,14 +85,14 @@ namespace Framework
 
         void OnDestroy()
         {
-            MonoSingletoninterface singleton = _instance as MonoSingletoninterface;
+            MonoSingletoninterface singleton = _singleton as MonoSingletoninterface;
             if (singleton != null)
             {
                 singleton.MonoSingletoninterfaceOnUninitialize();
             }
             OnDestroyEx();
             ApplicationIsPlaying = false;
-            _instance = null;
+            _singleton = null;
         }
 
         protected virtual void AwakeEx() { }

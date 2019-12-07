@@ -21,7 +21,7 @@ namespace Framework
         {
             InitLua();
             InitShader();
-            CoroutineMgr.Instance.RunCoroutine(CancleAllProxy());
+            CoroutineMgr.singleton.RunCoroutine(CancleAllProxy());
         }
 
         protected override void UpdateEx(float interval)
@@ -34,7 +34,7 @@ namespace Framework
         private void InitShader()
         {
             //Shader初始化;
-            AssetBundle shaderAssetBundle = AssetBundleMgr.Instance.LoadShaderAssetBundle();
+            AssetBundle shaderAssetBundle = AssetBundleMgr.singleton.LoadShaderAssetBundle();
             if (shaderAssetBundle != null)
             {
                 shaderAssetBundle.LoadAllAssets();
@@ -52,7 +52,7 @@ namespace Framework
         private void InitLua()
         {
             //Lua初始化;
-            LuaAssetBundle = AssetBundleMgr.Instance.LoadLuaAssetBundle();
+            LuaAssetBundle = AssetBundleMgr.singleton.LoadLuaAssetBundle();
             if (LuaAssetBundle != null)
             {
                 var a = LuaAssetBundle.LoadAllAssets();

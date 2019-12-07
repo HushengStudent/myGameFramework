@@ -70,29 +70,29 @@ namespace Framework
         {
             CheckUpdateState = false;
 
-            EventMgr.Instance.Launch();         //事件系统初始化;
-            EventMgr.Instance.AddGlobalEvent(EventType.RESOURCE_MGR_INIT, OnResourceInit);
-            EventMgr.Instance.AddGlobalEvent(EventType.POOL_MGR_INIT, OnPoolInit);
-            EventMgr.Instance.AddGlobalEvent(EventType.CAMERA_MGR_INIT, OnCameraInit);
+            EventMgr.singleton.Launch();         //事件系统初始化;
+            EventMgr.singleton.AddGlobalEvent(EventType.RESOURCE_MGR_INIT, OnResourceInit);
+            EventMgr.singleton.AddGlobalEvent(EventType.POOL_MGR_INIT, OnPoolInit);
+            EventMgr.singleton.AddGlobalEvent(EventType.CAMERA_MGR_INIT, OnCameraInit);
 
-            ResourceMgr.Instance.Launch();      //资源初始化;
+            ResourceMgr.singleton.Launch();      //资源初始化;
         }
 
         private void OnResourceInit(IEventArgs args)
         {
-            EventMgr.Instance.RemoveGlobalEvent(EventType.RESOURCE_MGR_INIT);
-            PoolMgr.Instance.Launch();          //对象池初始化;
+            EventMgr.singleton.RemoveGlobalEvent(EventType.RESOURCE_MGR_INIT);
+            PoolMgr.singleton.Launch();          //对象池初始化;
         }
 
         private void OnPoolInit(IEventArgs args)
         {
-            EventMgr.Instance.RemoveGlobalEvent(EventType.POOL_MGR_INIT);
-            CameraMgr.Instance.Launch();
+            EventMgr.singleton.RemoveGlobalEvent(EventType.POOL_MGR_INIT);
+            CameraMgr.singleton.Launch();
         }
 
         private void OnCameraInit(IEventArgs args)
         {
-            EventMgr.Instance.RemoveGlobalEvent(EventType.CAMERA_MGR_INIT);
+            EventMgr.singleton.RemoveGlobalEvent(EventType.CAMERA_MGR_INIT);
             InitApp();
         }
 
@@ -103,14 +103,14 @@ namespace Framework
             //DebugMgr.Instance.Init();         //Debug工具初始化;
 #endif
             //UIEventMgr<int>.Init();             //UI事件系统初始化;
-            SdkMgr.Instance.Launch();           //平台初始化;
-            TimerMgr.Instance.Launch();         //定时器初始化;
-            ComponentMgr.Instance.Launch();     //组件初始化;
-            EntityMgr.Instance.Launch();        //实体初始化;
-            UIMgr.Instance.Launch();            //UI初始化;
-            SceneMgr.Instance.Launch();         //场景初始化;
-            LuaMgr.Instance.Launch();           //lua初始化;
-            MemoryMgr.Instance.Launch();
+            SdkMgr.singleton.Launch();           //平台初始化;
+            TimerMgr.singleton.Launch();         //定时器初始化;
+            ComponentMgr.singleton.Launch();     //组件初始化;
+            EntityMgr.singleton.Launch();        //实体初始化;
+            UIMgr.singleton.Launch();            //UI初始化;
+            SceneMgr.singleton.Launch();         //场景初始化;
+            LuaMgr.singleton.Launch();           //lua初始化;
+            MemoryMgr.singleton.Launch();
             //NetMgr.Instance.Launch();           //网络初始化;
 
             EnterGame();
@@ -119,13 +119,13 @@ namespace Framework
 
         public void CheckUpdate()
         {
-            UpdateMgr.Instance.Launch();
+            UpdateMgr.singleton.Launch();
         }
 
         public void EnterGame()
         {
-            ResourceMgr.Instance.LoadSceneAsync("Scene/Level01.unity");
-            EntityMgr.Instance.CreateEntity<PlayerEntity>(1, 1, "_entity_test");
+            ResourceMgr.singleton.LoadSceneAsync("Scene/Level01.unity");
+            EntityMgr.singleton.CreateEntity<PlayerEntity>(1, 1, "_entity_test");
         }
 
         /// 设置游戏配置;

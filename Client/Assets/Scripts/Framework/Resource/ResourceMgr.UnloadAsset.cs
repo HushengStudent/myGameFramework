@@ -48,7 +48,7 @@ namespace Framework
         {
             UnloadUnusedAssets((option) =>
             {
-                AssetBundleMgr.Instance.AutoUnloadAsset();
+                AssetBundleMgr.singleton.AutoUnloadAsset();
                 onFinish?.Invoke();
             });
         }

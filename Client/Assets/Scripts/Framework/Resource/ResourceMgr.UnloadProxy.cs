@@ -52,7 +52,7 @@ namespace Framework
                 }
                 else
                 {
-                    EventMgr.Instance.FireGlobalEvent(EventType.RESOURCE_MGR_INIT, null);
+                    EventMgr.singleton.FireGlobalEvent(EventType.RESOURCE_MGR_INIT, null);
                     break;
                 }
             }

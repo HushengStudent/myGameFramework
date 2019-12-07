@@ -118,7 +118,7 @@ namespace Framework
             List<WeakReference> list;
             if (!_assetBundleRefDict.TryGetValue(path, out list))
             {
-                list = PoolMgr.Instance.GetCsharpList<WeakReference>();
+                list = PoolMgr.singleton.GetCsharpList<WeakReference>();
                 _assetBundleRefDict[path] = list;
             }
             WeakReference reference = new WeakReference(asset);
@@ -130,7 +130,7 @@ namespace Framework
         /// </summary>
         public void AutoUnloadAsset()
         {
-            List<string> deprecatedList = PoolMgr.Instance.GetCsharpList<string>();
+            List<string> deprecatedList = PoolMgr.singleton.GetCsharpList<string>();
             foreach (var reference in _assetBundleRefDict)
             {
                 List<WeakReference> list = reference.Value;
@@ -151,7 +151,7 @@ namespace Framework
                         UnloadAsset(path, null);
                     }
                     list.Clear();
-                    PoolMgr.Instance.ReleaseCsharpList(list);
+                    PoolMgr.singleton.ReleaseCsharpList(list);
                     LogHelper.Print($"[AssetBundleMgr]AutoUnloadAsset:{path}");
                     deprecatedList.Add(path);
                 }
@@ -161,7 +161,7 @@ namespace Framework
                 var path = deprecatedList[i];
                 _assetBundleRefDict.Remove(path);
             }
-            PoolMgr.Instance.ReleaseCsharpList(deprecatedList);
+            PoolMgr.singleton.ReleaseCsharpList(deprecatedList);
         }
 
         #endregion
@@ -327,7 +327,7 @@ namespace Framework
             //先加载依赖的AssetBundle;
             string[] DependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
             float count = DependentAssetBundle.Length;
-            var precent = ResourceMgr.Instance.LOAD_BUNDLE_PRECENT;
+            var precent = ResourceMgr.singleton.LOAD_BUNDLE_PRECENT;
             float unit = precent / (count + 1);
             int index = 0;
             foreach (string tempAssetBundle in DependentAssetBundle)

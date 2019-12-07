@@ -8,34 +8,34 @@ namespace Framework
 {
     public class Singleton<T> : SingletonBase where T : class, new()
     {
-        private static T _instance = null;
-        private static object _lock = new object();
+        private static T _singleton = null;
+        private static readonly object _lock = new object();
 
-        public static T Instance
+        public static T singleton
         {
             get
             {
-                if (null == _instance)
+                if (null == _singleton)
                 {
                     lock (_lock)
                     {
-                        _instance = new T(); //调用构造函数;
+                        _singleton = new T(); //调用构造函数;
 
-                        Singletoninterface singleton = _instance as Singletoninterface;
+                        Singletoninterface singleton = _singleton as Singletoninterface;
                         if (singleton != null)
                         {
                             singleton.SingletoninterfaceOnInitialize();
                         }
                     }
                 }
-                return _instance;
+                return _singleton;
             }
         }
 
         /// 构造函数;
         protected Singleton()
         {
-            if (null == _instance)
+            if (null == _singleton)
             {
                 LogHelper.Print($"[Singleton]{(typeof(T)).ToString()} singleton instance created.");
             }

@@ -22,7 +22,7 @@ namespace Framework
 
         protected override void OnInitialize()
         {
-            SuccessHandler = () => { GameMgr.Instance.EnterGame(); };
+            SuccessHandler = () => { GameMgr.singleton.EnterGame(); };
             if (!Directory.Exists(GameConfig.VersionFilePath))
             {
                 VersionInfo info = new VersionInfo();
@@ -43,7 +43,7 @@ namespace Framework
                     CheckUpdate();
                 }
             };
-            CoroutineMgr.Instance.StartCoroutine(www.StartDownLoad(LoaclVersion._updateUrl, GameConfig.NetVersionFilePath));
+            CoroutineMgr.singleton.StartCoroutine(www.StartDownLoad(LoaclVersion._updateUrl, GameConfig.NetVersionFilePath));
         }
 
         public void CheckUpdate()

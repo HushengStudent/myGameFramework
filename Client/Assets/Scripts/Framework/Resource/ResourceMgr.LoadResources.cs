@@ -30,7 +30,7 @@ namespace Framework
             {
                 return null;
             }
-            ResourceAssetProxy proxy = PoolMgr.Instance.GetCsharpObject<ResourceAssetProxy>();
+            ResourceAssetProxy proxy = PoolMgr.singleton.GetCsharpObject<ResourceAssetProxy>();
             proxy.Initialize(path);
             Object asset = Resources.Load(path);
             if (asset == null)
@@ -68,9 +68,9 @@ namespace Framework
             {
                 return null;
             }
-            ResourceAssetProxy proxy = PoolMgr.Instance.GetCsharpObject<ResourceAssetProxy>();
+            ResourceAssetProxy proxy = PoolMgr.singleton.GetCsharpObject<ResourceAssetProxy>();
             proxy.Initialize(path);
-            CoroutineMgr.Instance.RunCoroutine(LoadAsync(path, proxy, progress));
+            CoroutineMgr.singleton.RunCoroutine(LoadAsync(path, proxy, progress));
             return proxy;
         }
 

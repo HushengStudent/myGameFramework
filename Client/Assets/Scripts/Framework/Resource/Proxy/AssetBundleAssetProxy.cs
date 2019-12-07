@@ -21,16 +21,16 @@ namespace Framework
             /// 如果使用对象池了,说明需要贮存,依赖AssetBundleMgr自动卸载;
             if (!storage)
             {
-                AssetBundleMgr.Instance.UnloadAsset(AssetPath, AssetObject);
+                AssetBundleMgr.singleton.UnloadAsset(AssetPath, AssetObject);
             }
-            PoolMgr.Instance.ReleaseCsharpObject(this);
+            PoolMgr.singleton.ReleaseCsharpObject(this);
         }
 
         protected override T GetInstantiateObjectEx<T>()
         {
             if (AssetObject != null && CanInstantiate())
             {
-                return PoolMgr.Instance.GetUnityObject(AssetObject) as T;
+                return PoolMgr.singleton.GetUnityObject(AssetObject) as T;
             }
             return null;
         }
@@ -41,12 +41,12 @@ namespace Framework
             {
                 if (IsUsePool)
                 {
-                    PoolMgr.Instance.ReleaseUnityObject(t);
+                    PoolMgr.singleton.ReleaseUnityObject(t);
                     storage = true;
                 }
                 else
                 {
-                    ResourceMgr.Instance.DestroyInstantiateObject(t);
+                    ResourceMgr.singleton.DestroyInstantiateObject(t);
                 }
             }
         }

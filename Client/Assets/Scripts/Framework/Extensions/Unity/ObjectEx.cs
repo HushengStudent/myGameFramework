@@ -33,7 +33,7 @@ namespace Framework
         protected void InternalUnInitialize()
         {
             EventUnsubscribe();
-            EventMgr.Instance.RemoveEvent(this);
+            EventMgr.singleton.RemoveEvent(this);
             UnRegisterComponent();
             for (int i = 0; i < _componentList.Count; i++)
             {
@@ -113,7 +113,7 @@ namespace Framework
                     return false;
                 }
             }
-            T component = PoolMgr.Instance.GetCsharpObject<T>();
+            T component = PoolMgr.singleton.GetCsharpObject<T>();
             component.Initialize(this);
             _componentList.Add(component);
             return true;
@@ -132,7 +132,7 @@ namespace Framework
                 if (targetComp != null)
                 {
                     targetComp.UnInitialize();
-                    PoolMgr.Instance.ReleaseCsharpObject<T>(targetComp);
+                    PoolMgr.singleton.ReleaseCsharpObject<T>(targetComp);
                     _componentList.Remove(targetComp);
                     return true;
                 }
@@ -160,7 +160,7 @@ namespace Framework
                 if (targetComp == comp)
                 {
                     comp.UnInitialize();
-                    PoolMgr.Instance.ReleaseCsharpObject<T>(comp as T);
+                    PoolMgr.singleton.ReleaseCsharpObject<T>(comp as T);
                     _componentList.Remove(targetComp);
                     return true;
                 }
@@ -208,7 +208,7 @@ namespace Framework
         /// <param name="handler"></param>
         protected void AddEvent(EventType type, EventHandler handler)
         {
-            EventMgr.Instance.AddEvent(this, type, handler);
+            EventMgr.singleton.AddEvent(this, type, handler);
         }
 
         /// <summary>
@@ -217,7 +217,7 @@ namespace Framework
         /// <param name="type"></param>
         protected void RemoveEvent(EventType type)
         {
-            EventMgr.Instance.RemoveEvent(this, type);
+            EventMgr.singleton.RemoveEvent(this, type);
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace Framework
         /// <param name="eventArgs"></param>
         protected void FireEvent(EventType type, IEventArgs eventArgs)
         {
-            EventMgr.Instance.FireEvent(this, type, eventArgs);
+            EventMgr.singleton.FireEvent(this, type, eventArgs);
         }
     }
 }

@@ -26,14 +26,14 @@ public class FrameworkTest : MonoBehaviour
         Packet_LoginRequest req = new Packet_LoginRequest();
         req.Data.id = 1001;
         req.Data.name = "HushengStudent";
-        NetMgr.Instance.Send<Packet_LoginRequest>(req);
+        NetMgr.singleton.Send<Packet_LoginRequest>(req);
     }
 
     public void GetObjectFromPool()
     {
         if (_go)
         {
-            GameObject temp = PoolMgr.Instance.GetUnityObject(_go) as GameObject;
+            GameObject temp = PoolMgr.singleton.GetUnityObject(_go) as GameObject;
             _goQueue.Enqueue(temp);
         }
     }
@@ -42,23 +42,23 @@ public class FrameworkTest : MonoBehaviour
     {
         if (_goQueue.Count > 0)
         {
-            PoolMgr.Instance.ReleaseUnityObject(_goQueue.Dequeue());
+            PoolMgr.singleton.ReleaseUnityObject(_goQueue.Dequeue());
         }
     }
 
     public void ClearPool()
     {
-        CoroutineMgr.Instance.RunCoroutine(PoolMgr.Instance.ClearPool());
+        CoroutineMgr.singleton.RunCoroutine(PoolMgr.singleton.ClearPool());
     }
 
     public void BehaviorTreeTest()
     {
-        var entity = EntityMgr.Instance.GetEntity<RoleEntity>(ulong.MaxValue);
+        var entity = EntityMgr.singleton.GetEntity<RoleEntity>(ulong.MaxValue);
         if (entity == null)
         {
-            entity = EntityMgr.Instance.CreateEntity<RoleEntity>(1, ulong.MaxValue, "BehaviorTree");
+            entity = EntityMgr.singleton.CreateEntity<RoleEntity>(1, ulong.MaxValue, "BehaviorTree");
         }
-        BehaviorTreeMgr.Instance.CreateBehaviorTree(entity, "Bin/Bt/BehaviourTree.BT", true);
+        BehaviorTreeMgr.singleton.CreateBehaviorTree(entity, "Bin/Bt/BehaviourTree.BT", true);
     }
 
     private void ModelInit()
@@ -79,7 +79,7 @@ public class FrameworkTest : MonoBehaviour
             proxy.UnloadProxy();
         });
         */
-        EntityMgr.Instance.CreateEntity<RoleEntity>(1, 1, "_entity_test");
+        EntityMgr.singleton.CreateEntity<RoleEntity>(1, 1, "_entity_test");
     }
 
     public void ChangeHead()

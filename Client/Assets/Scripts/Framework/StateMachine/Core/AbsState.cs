@@ -111,7 +111,7 @@ namespace Framework
             {
                 _animationClipProxy.UnloadProxy();
             }
-            _animationClipProxy = ResourceMgr.Instance.LoadAssetAsync(path);
+            _animationClipProxy = ResourceMgr.singleton.LoadAssetAsync(path);
             _animationClipProxy.AddLoadFinishCallBack(() =>
             {
                 AnimationClip clip = _animationClipProxy.GetUnityAsset<AnimationClip>();

@@ -8,19 +8,19 @@ public class Framework_Singleton_Framework_SceneMgrWrap
 	{
 		L.BeginClass(typeof(Framework.Singleton<Framework.SceneMgr>), typeof(Framework.SingletonBase), "Singleton_Framework_SceneMgr");
 		L.RegFunction("__tostring", ToLua.op_ToString);
-		L.RegVar("Instance", get_Instance, null);
+		L.RegVar("singleton", get_singleton, null);
 		L.EndClass();
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_Instance(IntPtr L)
+	static int get_singleton(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.Singleton<Framework.SceneMgr>.Instance");
+        ToluaProfiler.AddCallRecord("Framework.Singleton<Framework.SceneMgr>.singleton");
 #endif
 		try
 		{
-			ToLua.PushObject(L, Framework.Singleton<Framework.SceneMgr>.Instance);
+			ToLua.PushObject(L, Framework.Singleton<Framework.SceneMgr>.singleton);
 			return 1;
 		}
 		catch (Exception e)
