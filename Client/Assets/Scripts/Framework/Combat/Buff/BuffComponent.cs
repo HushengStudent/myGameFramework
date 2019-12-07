@@ -14,25 +14,18 @@ namespace Framework
     {
         private Dictionary<int, Buff> _buffDict = new Dictionary<int, Buff>();
 
+        public override string UID
+        {
+            get
+            {
+                return HashHelper.GetMD5(typeof(BuffComponent).ToString());
+            }
+        }
+
         protected override void UnInitializeEx()
         {
             base.UnInitializeEx();
             _buffDict.Clear();
-        }
-
-        public override void UpdateEx(float interval)
-        {
-            base.UpdateEx(interval);
-        }
-
-        protected override void EventSubscribe()
-        {
-            base.EventSubscribe();
-        }
-
-        protected override void EventUnsubscribe()
-        {
-            base.EventUnsubscribe();
         }
 
         public void AddBuff(Buff buff)

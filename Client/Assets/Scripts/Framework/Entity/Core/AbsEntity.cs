@@ -28,7 +28,6 @@ namespace Framework
         public string AssetPath { get; private set; } = "Prefab/Models/Common/Skeleton.prefab";
         public GameObjectEx GameObjectEx { get; private set; }
         public Animator Animator { get; private set; }
-        public AbsStateMachine StateMachine { get; private set; }
 
         public EntityLoadFinishEventHandler EntityLoadFinishHandler
         {
@@ -46,7 +45,7 @@ namespace Framework
                 }
             }
         }
-        public virtual EntityType EntityType { get { return EntityType.Non; } }
+        public abstract EntityType EntityType { get; }
 
         public virtual void FixedUpdateEx(float interval) { }
         public virtual void UpdateEx(float interval) { }
@@ -66,10 +65,10 @@ namespace Framework
             Enable = true;
             GameObjectEx = PoolMgr.Instance.GetCsharpObject<GameObjectEx>();
 
-            InitializeEx();
+            InternalInitialize();
             GameObjectEx.AddLoadFinishHandler((goex) =>
             {
-                OnAttachGoEx(goex);
+                InternalAttachGameObject(goex);
                 _entityLoadFinishHandler?.Invoke(this, GameObjectEx.gameObject);
 
             });
@@ -81,33 +80,35 @@ namespace Framework
         /// </summary>
         public void UnInitialize()
         {
-            OnDetachGoEx();
-            UnInitializeEx();
+            InternalDetachGameObject();
+            InternalUnInitialize();
             Enable = false;
             EntityLoadFinishHandler = null;
+        }
+
+        private void InternalAttachGameObject(GameObjectEx go)
+        {
+            GameObjectEx = go;
+            Animator = GameObjectEx.gameObject.GetComponent<Animator>();
+            OnAttachGameObject(go);
+        }
+
+        private void InternalDetachGameObject()
+        {
+            OnDetachGameObject();
+            GameObjectEx.Uninit();
+            PoolMgr.Instance.ReleaseCsharpObject(GameObjectEx);
+            GameObjectEx = null;
         }
 
         /// <summary>
         /// Entity附加GameObject;
         /// </summary>
         /// <param name="go"></param>
-        protected virtual void OnAttachGoEx(GameObjectEx go)
-        {
-            GameObjectEx = go;
-            Animator = GameObjectEx.gameObject.GetComponent<Animator>();
-            StateMachine = StateMachineMgr.Instance.CreateStateMachine(this);
-        }
-
+        protected virtual void OnAttachGameObject(GameObjectEx go) { }
         /// <summary>
-        /// 重置GameObject的附加;
+        /// Entity移除GameObject;
         /// </summary>
-        protected virtual void OnDetachGoEx()
-        {
-            StateMachine = null;
-            StateMachineMgr.Instance.RemoveStateMachine(this);
-            GameObjectEx.Uninit();
-            PoolMgr.Instance.ReleaseCsharpObject(GameObjectEx);
-            GameObjectEx = null;
-        }
+        protected virtual void OnDetachGameObject() { }
     }
 }

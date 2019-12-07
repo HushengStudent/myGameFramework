@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/08/24 23:24:46
-** desc:  RoleEntity;
+** date:  2019/12/07 17:04:54
+** desc:  ×´Ì¬»ú×é¼þ;
 *********************************************************************************/
 
 using System.Collections;
@@ -10,28 +10,24 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class RoleEntity : AbsEntity
+    public class BehaviorTreeComponent : AbsComponent
     {
-        public override EntityType EntityType
+        public override string UID
         {
             get
             {
-                return EntityType.Role;
+                return HashHelper.GetMD5(typeof(BehaviorTreeComponent).ToString());
             }
         }
-
-        public BuffComponent BuffComp { get; private set; }
 
         protected override void InitializeEx()
         {
             base.InitializeEx();
-            BuffComp = ComponentMgr.Instance.CreateComponent<BuffComponent>(this);
         }
 
         protected override void UnInitializeEx()
         {
             base.UnInitializeEx();
-            ComponentMgr.Instance.ReleaseComponent<BuffComponent>(BuffComp);
         }
     }
 }

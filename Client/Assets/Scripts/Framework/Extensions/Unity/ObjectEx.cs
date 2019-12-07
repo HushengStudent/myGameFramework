@@ -22,58 +22,56 @@ namespace Framework
 
         public long ID { get; private set; }
 
-        /// <summary>
-        /// 初始化;
-        /// </summary>
-        protected virtual void InitializeEx()
+        protected void InternalInitialize()
         {
             _componentList.Clear();
             RegisterComponent();
             EventSubscribe();
+            InitializeEx();
         }
 
-        /// <summary>
-        /// 重置;
-        /// </summary>
-        protected virtual void UnInitializeEx()
+        protected void InternalUnInitialize()
         {
+            EventUnsubscribe();
+            EventMgr.Instance.RemoveEvent(this);
             UnRegisterComponent();
             for (int i = 0; i < _componentList.Count; i++)
             {
                 DestroyComponent(_componentList[i]);
             }
             _componentList.Clear();
-            EventMgr.Instance.RemoveEvent(this);
-            EventUnsubscribe();
+            UnInitializeEx();
         }
 
+        /// <summary>
+        /// 初始化;
+        /// </summary>
+        protected virtual void InitializeEx() { }
+        /// <summary>
+        /// 重置;
+        /// </summary>
+        protected virtual void UnInitializeEx() { }
         /// <summary>
         /// 注册组件;
         /// </summary>
         protected virtual void RegisterComponent() { }
-
         /// <summary>
         /// 删除组件;
         /// </summary>
         protected virtual void UnRegisterComponent() { }
-
-
         /// <summary>
         /// 注册事件;
         /// </summary>
         protected virtual void EventSubscribe() { }
-
         /// <summary>
         /// 注销事件;
         /// </summary>
         protected virtual void EventUnsubscribe() { }
-
         /// <summary>
         /// 进入场景;
         /// </summary>
         /// <param name="sceneId"></param>
         protected virtual void OnEnterScene(int sceneId) { }
-
         /// <summary>
         /// 离开场景;
         /// </summary>

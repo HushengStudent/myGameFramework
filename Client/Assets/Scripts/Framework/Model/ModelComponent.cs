@@ -27,6 +27,14 @@ namespace Framework
         private GameObject _model;
         private bool _initModel;
 
+        public override string UID
+        {
+            get
+            {
+                return HashHelper.GetMD5(typeof(ModelComponent).ToString());
+            }
+        }
+
         protected override void InitializeEx()
         {
             base.InitializeEx();
@@ -38,17 +46,17 @@ namespace Framework
 
         }
 
-        protected override void OnAttachObjectEx(ObjectEx owner)
+        protected override void OnAttachObject(ObjectEx owner)
         {
-            base.OnAttachObjectEx(owner);
+            base.OnAttachObject(owner);
             //≥ı ºªØ;
             _initModel = true;
             CombineModel();
         }
 
-        protected override void DetachObjectEx()
+        protected override void OnDetachObjectEx()
         {
-            base.DetachObjectEx();
+            base.OnDetachObjectEx();
             _modelDataDict.Clear();
             _model = null;
             _initModel = false;

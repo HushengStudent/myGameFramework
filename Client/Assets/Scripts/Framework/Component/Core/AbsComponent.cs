@@ -21,6 +21,8 @@ namespace Framework
         public virtual void UpdateEx(float interval) { }
         public virtual void LateUpdateEx(float interval) { }
 
+        public abstract string UID { get; }
+
         /// <summary>
         /// 初始化Component;
         /// </summary>
@@ -29,14 +31,14 @@ namespace Framework
         public void Initialize(ObjectEx owner)
         {
             Enable = true;
-            OnAttachObjectEx(owner);
+            InternalAttachObject(owner);
             if (Entity.GameObjectEx.IsLoadFinish)
             {
-                OnAttachGoEx(Entity.GameObjectEx);
+                OnAttachGameObject(Entity.GameObjectEx);
             }
             else
             {
-                Entity.GameObjectEx.AddLoadFinishHandler(OnAttachGoEx);
+                Entity.GameObjectEx.AddLoadFinishHandler(OnAttachGameObject);
             }
             EventSubscribe();
             InitializeEx();
@@ -47,75 +49,75 @@ namespace Framework
         /// </summary>
         public void UnInitialize()
         {
-            DetachObjectEx();
-            DetachGoEx();
+            InternalDetachObject();
+            OnDetachGameObject();
             EventUnsubscribe();
             UnInitializeEx();
             Enable = false;
+        }
+
+        private void InternalAttachObject(ObjectEx owner)
+        {
+            Owner = owner;
+            Entity = owner as AbsEntity;
+            OnAttachObject(owner);
+        }
+
+        private void InternalDetachObject()
+        {
+            OnDetachObjectEx();
+            Owner = null;
+            Entity = null;
+        }
+
+        private void InternalDetachGameObject()
+        {
+            if (!Entity.GameObjectEx.IsLoadFinish)
+            {
+                Entity.GameObjectEx.RemoveLoadFinishHandler(OnAttachGameObject);
+            }
+            OnDetachGameObject();
         }
 
         /// <summary>
         /// 初始化;
         /// </summary>
         protected virtual void InitializeEx() { }
-
         /// <summary>
         /// 重置;
         /// </summary>
         protected virtual void UnInitializeEx() { }
-
         /// <summary>
         /// Component附加Entity;
         /// </summary>
         /// <param name="entity"></param>
-        protected virtual void OnAttachObjectEx(ObjectEx owner)
-        {
-            Owner = owner;
-            Entity = owner as AbsEntity;
-        }
-
+        protected virtual void OnAttachObject(ObjectEx owner) { }
+        /// <summary>
+        /// 重置Entity的附加;
+        /// </summary>
+        protected virtual void OnDetachObjectEx() { }
         /// <summary>
         /// Component附加GameObject;
         /// </summary>
         /// <param name="go"></param>
-        protected virtual void OnAttachGoEx(GameObjectEx goEx) { }
-
-        /// <summary>
-        /// 重置Entity的附加;
-        /// </summary>
-        protected virtual void DetachObjectEx()
-        {
-            Owner = null;
-            Entity = null;
-        }
-
+        protected virtual void OnAttachGameObject(GameObjectEx goEx) { }
         /// <summary>
         /// 重置GameObject的附加;
         /// </summary>
-        protected virtual void DetachGoEx()
-        {
-            if (!Entity.GameObjectEx.IsLoadFinish)
-            {
-                Entity.GameObjectEx.RemoveLoadFinishHandler(OnAttachGoEx);
-            }
-        }
-
+        protected virtual void OnDetachGameObject() { }
         /// <summary>
         /// 注册事件;
         /// </summary>
         protected virtual void EventSubscribe() { }
-
         /// <summary>
         /// 注销事件;
         /// </summary>
         protected virtual void EventUnsubscribe() { }
-
         /// <summary>
         /// 进入场景;
         /// </summary>
         /// <param name="sceneId"></param>
         protected virtual void OnEnterScene(int sceneId) { }
-
         /// <summary>
         /// 离开场景;
         /// </summary>

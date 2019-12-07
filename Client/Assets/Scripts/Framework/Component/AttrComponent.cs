@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/08/25 01:28:00
-** desc:  InfoComponent;
+** date:  2019/12/07 17:01:23
+** desc:  ÊôÐÔ×é¼þ;
 *********************************************************************************/
 
 using System.Collections;
@@ -10,8 +10,14 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class InfoComponent : AbsComponent
+    public class AttrComponent : AbsComponent
     {
-
+        public override string UID
+        {
+            get
+            {
+                return HashHelper.GetMD5(typeof(AttrComponent).ToString());
+            }
+        }
     }
 }

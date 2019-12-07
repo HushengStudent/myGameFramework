@@ -12,28 +12,25 @@ using UnityEngine.Video;
 
 namespace Framework
 {
+    [RequireComponent(typeof(RawImage))]
+    [RequireComponent(typeof(VideoPlayer))]
+    [RequireComponent(typeof(AudioSource))]
+    [RequireComponent(typeof(AudioListener))]
     public class StreamVideo : MonoBehaviour
     {
-        [SerializeField]
-        public RawImage RawImage;
-        [SerializeField]
-        public GameObject PlayButton;
-        [SerializeField]
-        public VideoClip VideoClip;
-
         private VideoPlayer _videoPlayer;
         private AudioSource _audioSource;
 
-        private bool _isPaused = false;
-        private bool _firstRun = true;
+        private bool _paused = false;
+        private bool _running = false;
 
-        IEnumerator<float> Play()
+        private IEnumerator<float> Run(string url)
         {
-            PlayButton.SetActive(false);
-            _firstRun = false;
+            _running = true;
 
-            _videoPlayer = gameObject.AddComponent<VideoPlayer>();
-            _audioSource = gameObject.AddComponent<AudioSource>();
+            var rawImage = gameObject.GetComponent<RawImage>();
+            _audioSource = gameObject.GetComponent<AudioSource>();
+            _videoPlayer = gameObject.GetComponent<VideoPlayer>();
 
             _videoPlayer.playOnAwake = false;
             _audioSource.playOnAwake = false;
@@ -45,14 +42,14 @@ namespace Framework
             _videoPlayer.EnableAudioTrack(0, true);
             _videoPlayer.SetTargetAudioSource(0, _audioSource);
 
-            _videoPlayer.clip = VideoClip;
+            _videoPlayer.url = url;
             _videoPlayer.Prepare();
 
             while (!_videoPlayer.isPrepared)
             {
                 yield return Timing.WaitForOneFrame;
             }
-            RawImage.texture = _videoPlayer.texture;
+            rawImage.texture = _videoPlayer.texture;
 
             _videoPlayer.Play();
             _audioSource.Play();
@@ -63,25 +60,23 @@ namespace Framework
             }
         }
 
-        public IEnumerator<float> PlayVideo()
+        public IEnumerator<float> Play(string url)
         {
-            if (!_firstRun && !_isPaused)
+            if (_running && !_paused)
             {
                 _videoPlayer.Pause();
                 _audioSource.Pause();
-                _isPaused = true;
-                PlayButton.SetActive(true);
+                _paused = true;
             }
-            else if (!_firstRun && _isPaused)
+            else if (_running && _paused)
             {
                 _videoPlayer.Play();
                 _audioSource.Play();
-                _isPaused = false;
-                PlayButton.SetActive(false);
+                _paused = false;
             }
             else
             {
-                var itor = Play();
+                var itor = Play(url);
                 while (itor.MoveNext())
                 {
                     yield return Timing.WaitForOneFrame;

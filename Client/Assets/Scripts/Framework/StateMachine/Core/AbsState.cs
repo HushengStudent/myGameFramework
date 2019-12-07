@@ -30,6 +30,21 @@ namespace Framework
             Machine = machine;
         }
 
+        public void Initialize(string path)
+        {
+            OverrideAnimationClip(path);
+        }
+
+        public void UnInitialize()
+        {
+            _animationClip = null;
+            _stateStartTicks = 0;
+            if (_animationClipProxy != null)
+            {
+                _animationClipProxy.UnloadProxy();
+            }
+        }
+
         public void OnEnterState()
         {
             if (Machine.CurrentState == this)
@@ -49,7 +64,7 @@ namespace Framework
 
         public void Update(float interval)
         {
-            if(_animationClip == null && Machine.AnimatorOverrideController != null)
+            if (_animationClip == null && Machine.AnimatorOverrideController != null)
             {
                 _animationClip = Machine.AnimatorOverrideController[StateName];
             }
@@ -109,16 +124,6 @@ namespace Framework
                     _animationClip = clip;
                 }
             });
-        }
-
-        public void UnInitialize()
-        {
-            _animationClip = null;
-            _stateStartTicks = 0;
-            if (_animationClipProxy != null)
-            {
-                _animationClipProxy.UnloadProxy();
-            }
         }
     }
 }
