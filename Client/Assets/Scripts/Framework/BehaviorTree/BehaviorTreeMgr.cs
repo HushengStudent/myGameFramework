@@ -19,26 +19,24 @@ namespace Framework
 
     public class BehaviorTreeMgr : MonoSingleton<BehaviorTreeMgr>
     {
-        private Dictionary<AbsEntity, BehaviorTree> _treeDict = new Dictionary<AbsEntity, BehaviorTree>();
-        private List<BehaviorTree> _treeList = new List<BehaviorTree>();
+        private Dictionary<AbsEntity, BehaviorTree> _behaviorTreeDict
+            = new Dictionary<AbsEntity, BehaviorTree>();
 
         protected override void OnInitialize()
         {
             base.OnInitialize();
-            _treeDict.Clear();
+            _behaviorTreeDict.Clear();
         }
 
         protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
-            _treeList.Clear();
-            foreach (var temp in _treeDict.Values)
+            foreach (var tree in _behaviorTreeDict)
             {
-                if (temp.Enable) _treeList.Add(temp);
-            }
-            for (int i = 0; i < _treeList.Count; i++)
-            {
-                _treeList[i].Update(interval);
+                if (tree.Value.Enable)
+                {
+                    tree.Value.Update(interval);
+                }
             }
         }
 
@@ -50,12 +48,12 @@ namespace Framework
                 LogHelper.PrintError("[BehaviorTreeMgr]Create BehaviorTree error,entity is null!");
                 return;
             }
-            if (_treeDict.ContainsKey(entity))
+            if (_behaviorTreeDict.ContainsKey(entity))
             {
                 LogHelper.PrintWarning($"[BehaviorTreeMgr]repeat add BehaviorTree at EntityName: {entity.EntityName}.");
             }
             tree.Enable = enable;
-            _treeDict[entity] = tree;
+            _behaviorTreeDict[entity] = tree;
         }
 
         public void RemoveBehaviorTree(AbsEntity entity)
@@ -65,13 +63,13 @@ namespace Framework
                 LogHelper.PrintError("[BehaviorTreeMgr]Remove BehaviorTree error,entity is null!");
                 return;
             }
-            if (!_treeDict.ContainsKey(entity))
+            if (!_behaviorTreeDict.ContainsKey(entity))
             {
                 LogHelper.PrintWarning($"[BehaviorTreeMgr]can not find a BehaviorTree at EntityName: {entity.EntityName}.");
             }
             else
             {
-                _treeDict.Remove(entity);
+                _behaviorTreeDict.Remove(entity);
             }
         }
     }

@@ -55,7 +55,7 @@ namespace Framework
             LuaAssetBundle = AssetBundleMgr.singleton.LoadLuaAssetBundle();
             if (LuaAssetBundle != null)
             {
-                var a = LuaAssetBundle.LoadAllAssets();
+                LuaAssetBundle.LoadAllAssets();
                 LogHelper.Print("[ResourceMgr]Load Lua Success!");
             }
             else
@@ -68,3 +68,4 @@ namespace Framework
         #endregion
     }
 }
+

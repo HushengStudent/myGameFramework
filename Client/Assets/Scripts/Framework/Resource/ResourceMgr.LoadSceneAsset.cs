@@ -211,8 +211,6 @@ namespace Framework
         {
             public IEnumerator<float> LoadSceneAsync(string path, Action<UnityEngine.SceneManagement.Scene> onSceneLoaded, Action<float> progress)
             {
-                var name = Path.GetFileNameWithoutExtension(path);
-
                 //先等一帧;
                 yield return Timing.WaitForOneFrame;
 

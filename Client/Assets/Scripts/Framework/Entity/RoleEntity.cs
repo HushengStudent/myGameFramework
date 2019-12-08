@@ -22,20 +22,22 @@ namespace Framework
 
         public BuffComponent BuffComp { get; private set; }
         public HumanStateMachineComponent HumanStateMachineComp { get; private set; }
+        public BehaviorTreeComponent BehaviorTreeComp { get; private set; }
 
         protected override void RegisterComponent()
         {
             base.RegisterComponent();
-            BuffComp = ComponentMgr.singleton.CreateComponent<BuffComponent>(this);
-            HumanStateMachineComp = ComponentMgr.singleton.CreateComponent<HumanStateMachineComponent>(this);
-
+            BuffComp = AddComponent<BuffComponent>();
+            HumanStateMachineComp = AddComponent<HumanStateMachineComponent>();
+            BehaviorTreeComp = AddComponent<BehaviorTreeComponent>();
         }
 
         protected override void UnRegisterComponent()
         {
             base.UnRegisterComponent();
-            ComponentMgr.singleton.ReleaseComponent<BuffComponent>(BuffComp);
-            ComponentMgr.singleton.ReleaseComponent<HumanStateMachineComponent>(HumanStateMachineComp);
+            ReleaseComponent<BuffComponent>();
+            ReleaseComponent<HumanStateMachineComponent>();
+            ReleaseComponent<BehaviorTreeComponent>();
         }
     }
 }

@@ -102,7 +102,7 @@ namespace Framework
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public bool AddComponent<T>() where T : AbsComponent, new()
+        public T AddComponent<T>() where T : AbsComponent, new()
         {
             for (int i = 0; i < _componentList.Count; i++)
             {
@@ -110,13 +110,13 @@ namespace Framework
                 if (targetComp != null)
                 {
                     LogHelper.PrintError($"[ObjectEx]AddComponent,{typeof(T).ToString()} repeat!");
-                    return false;
+                    return null;
                 }
             }
             T component = PoolMgr.singleton.GetCsharpObject<T>();
             component.Initialize(this);
             _componentList.Add(component);
-            return true;
+            return component;
         }
 
         /// <summary>

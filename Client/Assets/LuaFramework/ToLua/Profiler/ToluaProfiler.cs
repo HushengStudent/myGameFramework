@@ -32,9 +32,11 @@ public static class ToluaProfiler
             CallInfo info;
             if (!_luaCallCountDict.TryGetValue(name, out info))
             {
-                info = new CallInfo();
-                info.AllCount = 0;
-                info.FrameCount = 0;
+                info = new CallInfo
+                {
+                    AllCount = 0,
+                    FrameCount = 0
+                };
             }
             info.AllCount = info.AllCount + 1;
             _luaCallCountDict[name] = info;

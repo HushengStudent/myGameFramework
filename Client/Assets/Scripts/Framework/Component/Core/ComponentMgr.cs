@@ -72,9 +72,9 @@ namespace Framework
         /// <returns></returns>
         public T CreateComponent<T>(ObjectEx owner) where T : AbsComponent, new()
         {
-            if (null != owner && owner.AddComponent<T>())
+            if (null != owner)
             {
-                return owner.GetComponent<T>();
+                return owner.AddComponent<T>();
             }
             else
             {
