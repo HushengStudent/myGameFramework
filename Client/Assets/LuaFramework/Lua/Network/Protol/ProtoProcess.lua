@@ -1,15 +1,12 @@
 ---
---- Created by husheng.
---- DateTime: 2018/9/28 1:55
 ---
 module("Protol", package.seeall)
 
 require "Protol.ProtoDefine"
 
-ProtoProcessTable= {
+ProtoProcessTable = {
 
-    [Protol.ProtoID.LoginResponse] =
-    function(buffer)
+    [Protol.ProtoID.LoginResponse] = function(buffer)
         TestProcessPblua(buffer)
     end,
 

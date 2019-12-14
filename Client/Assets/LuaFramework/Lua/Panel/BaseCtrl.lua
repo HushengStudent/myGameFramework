@@ -1,6 +1,4 @@
 ---
---- Created by husheng.
---- DateTime: 2018/1/21 1:10
 ---
 
 module("UI", package.seeall)

@@ -1,10 +1,8 @@
 ---
---- Created by husheng.
---- DateTime: 2018/1/17 3:11
 --- 管理场景scene ui
 ---
 
-module("Manager",package.seeall)
+module("Manager", package.seeall)
 
 require "Panel.BaseCtrl"
 require "UI.Canvas.BaseCanvas"

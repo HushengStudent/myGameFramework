@@ -1,16 +1,15 @@
 ---
---- Created by husheng.
---- DateTime: 2018/1/31 23:54
 --- lua网络模块
 ---
 
-module("Manager",package.seeall)
+module("Manager", package.seeall)
 
 require "Protol.ProtoProcess"
 
 NetMgr = class("NetMgr")
 
-function NetMgr:ctor() end
+function NetMgr:ctor()
+end
 
 function NetMgr:GetMgrName()
     log("NetMgr")

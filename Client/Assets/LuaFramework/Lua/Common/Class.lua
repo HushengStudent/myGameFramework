@@ -1,8 +1,3 @@
----
---- Created by husheng.
---- DateTime: 2018/1/8 23:47
---- lua class:参考cocos2d-x lua-bulding 实现
----
 
 function class(classname, ...)
     local cls = {__cname = classname}

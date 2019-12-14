@@ -1,6 +1,4 @@
 ---
---- Created by husheng.
---- DateTime: 2018/1/7 18:49
 --- 定义引用:c# to lua
 ---
 

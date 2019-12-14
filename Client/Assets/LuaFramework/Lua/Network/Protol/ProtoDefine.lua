@@ -1,14 +1,11 @@
 ---
---- Created by husheng.
---- DateTime: 2018/1/8 23:37
 --- 协议序列号
 ---
 
 module("Protol", package.seeall)
 
 
-ProtoID =
-{
+ProtoID = {
     LoginRequest = 10011,
     LoginResponse = 10012,
 }

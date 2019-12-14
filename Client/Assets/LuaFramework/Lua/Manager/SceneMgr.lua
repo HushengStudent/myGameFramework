@@ -1,16 +1,15 @@
 ---
---- Created by husheng.
---- DateTime: 2018/1/17 3:14
 --- 管理模块ui
 ---
 
-module("Manager",package.seeall)
+module("Manager", package.seeall)
 
 SceneMgr = class("SceneMgr")
 
 local m_curCanvas
 
-function SceneMgr:ctor() end
+function SceneMgr:ctor()
+end
 
 function SceneMgr:GetMgrName()
     log("SceneMgr")
