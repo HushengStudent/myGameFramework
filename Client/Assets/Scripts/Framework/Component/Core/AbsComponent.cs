@@ -32,13 +32,19 @@ namespace Framework
         {
             Enable = true;
             InternalAttachObject(owner);
-            if (Entity.GameObjectEx.IsLoadFinish)
+            if (Entity != null)
             {
-                OnAttachGameObject(Entity.GameObjectEx);
-            }
-            else
-            {
-                Entity.GameObjectEx.AddLoadFinishHandler(OnAttachGameObject);
+                if (Entity.GameObjectEx != null && Entity.GameObjectEx.gameObject != null)
+                {
+                    OnAttachGameObject(Entity.GameObjectEx);
+                }
+                else
+                {
+                    Entity.EntityLoadFinishEventHandler += (entity, goex) =>
+                    {
+                        OnAttachGameObject(goex);
+                    };
+                }
             }
             EventSubscribe();
             InitializeEx();

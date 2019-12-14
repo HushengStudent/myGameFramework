@@ -20,8 +20,6 @@ namespace Framework
     {
         protected AbsEntity() : base() { }
 
-        private EntityLoadFinishEventHandler _entityLoadFinishHandler = null;
-
         public ulong UID { get; private set; }
         public int EntityId { get; private set; }
         public string EntityName { get; private set; }
@@ -29,27 +27,13 @@ namespace Framework
         public GameObjectEx GameObjectEx { get; private set; }
         public Animator Animator { get; private set; }
 
-        public EntityLoadFinishEventHandler EntityLoadFinishHandler
-        {
-            get
-            {
-                return _entityLoadFinishHandler;
-            }
-            set
-            {
-                _entityLoadFinishHandler = value;
-
-                if (GameObjectEx != null && GameObjectEx.gameObject != null)
-                {
-                    _entityLoadFinishHandler(this, GameObjectEx.gameObject);
-                }
-            }
-        }
         public abstract EntityType EntityType { get; }
 
         public virtual void FixedUpdateEx(float interval) { }
         public virtual void UpdateEx(float interval) { }
         public virtual void LateUpdateEx(float interval) { }
+
+        public event EntityLoadFinishEventHandler EntityLoadFinishEventHandler;
 
         /// <summary>
         /// 初始化Entity;
@@ -69,7 +53,8 @@ namespace Framework
             GameObjectEx.AddLoadFinishHandler((goex) =>
             {
                 InternalAttachGameObject(goex);
-                _entityLoadFinishHandler?.Invoke(this, GameObjectEx.gameObject);
+                EntityLoadFinishEventHandler?.Invoke(this, GameObjectEx);
+                EntityLoadFinishEventHandler = null;
 
             });
             GameObjectEx.Init(this, AssetPath);
@@ -83,7 +68,6 @@ namespace Framework
             InternalDetachGameObject();
             InternalUnInitialize();
             Enable = false;
-            EntityLoadFinishHandler = null;
         }
 
         private void InternalAttachGameObject(GameObjectEx go)

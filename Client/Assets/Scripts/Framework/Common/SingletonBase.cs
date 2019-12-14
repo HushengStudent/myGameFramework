@@ -19,8 +19,8 @@ namespace Framework
 
     public class SingletonBase : Singletoninterface
     {
-        public OnInitializeFinishedHandler OnInitializeHandler;
-        public OnUninitializeStartHandler OnUninitializeHandler;
+        public event OnInitializeFinishedHandler OnInitializeHandler;
+        public event OnUninitializeStartHandler OnUninitializeHandler;
 
         private bool isInit = false;
         private bool isUninit = false;

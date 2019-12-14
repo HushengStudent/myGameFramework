@@ -8,5 +8,5 @@ using UnityEngine;
 
 namespace Framework
 {
-    public delegate void EntityLoadFinishEventHandler(AbsEntity entity, GameObject go);
+    public delegate void EntityLoadFinishEventHandler(AbsEntity entity, GameObjectEx goex);
 }

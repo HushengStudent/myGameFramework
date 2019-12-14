@@ -107,20 +107,8 @@ public class Framework_SingletonBaseWrap
 #if UNITY_EDITOR
         ToluaProfiler.AddCallRecord("Framework.SingletonBase.OnInitializeHandler");
 #endif
-		object o = null;
-
-		try
-		{
-			o = ToLua.ToObject(L, 1);
-			Framework.SingletonBase obj = (Framework.SingletonBase)o;
-			Framework.OnInitializeFinishedHandler ret = obj.OnInitializeHandler;
-			ToLua.Push(L, ret);
-			return 1;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index OnInitializeHandler on a nil value");
-		}
+		ToLua.Push(L, new EventObject(typeof(Framework.OnInitializeFinishedHandler)));
+		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -129,41 +117,46 @@ public class Framework_SingletonBaseWrap
 #if UNITY_EDITOR
         ToluaProfiler.AddCallRecord("Framework.SingletonBase.OnUninitializeHandler");
 #endif
-		object o = null;
-
-		try
-		{
-			o = ToLua.ToObject(L, 1);
-			Framework.SingletonBase obj = (Framework.SingletonBase)o;
-			Framework.OnUninitializeStartHandler ret = obj.OnUninitializeHandler;
-			ToLua.Push(L, ret);
-			return 1;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index OnUninitializeHandler on a nil value");
-		}
+		ToLua.Push(L, new EventObject(typeof(Framework.OnUninitializeStartHandler)));
+		return 1;
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_OnInitializeHandler(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.SingletonBase.OnInitializeHandler");
+        ToluaProfiler.AddCallRecord("Framework.SingletonBase.set_OnInitializeHandler");
 #endif
-		object o = null;
-
 		try
 		{
-			o = ToLua.ToObject(L, 1);
-			Framework.SingletonBase obj = (Framework.SingletonBase)o;
-			Framework.OnInitializeFinishedHandler arg0 = (Framework.OnInitializeFinishedHandler)ToLua.CheckDelegate<Framework.OnInitializeFinishedHandler>(L, 2);
-			obj.OnInitializeHandler = arg0;
+			Framework.SingletonBase obj = (Framework.SingletonBase)ToLua.CheckObject(L, 1, typeof(Framework.SingletonBase));
+			EventObject arg0 = null;
+
+			if (LuaDLL.lua_isuserdata(L, 2) != 0)
+			{
+				arg0 = (EventObject)ToLua.ToObject(L, 2);
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "The event 'Framework.SingletonBase.OnInitializeHandler' can only appear on the left hand side of += or -= when used outside of the type 'Framework.SingletonBase'");
+			}
+
+			if (arg0.op == EventOp.Add)
+			{
+				Framework.OnInitializeFinishedHandler ev = (Framework.OnInitializeFinishedHandler)arg0.func;
+				obj.OnInitializeHandler += ev;
+			}
+			else if (arg0.op == EventOp.Sub)
+			{
+				Framework.OnInitializeFinishedHandler ev = (Framework.OnInitializeFinishedHandler)arg0.func;
+				obj.OnInitializeHandler -= ev;
+			}
+
 			return 0;
 		}
-		catch(Exception e)
+		catch (Exception e)
 		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index OnInitializeHandler on a nil value");
+			return LuaDLL.toluaL_exception(L, e);
 		}
 	}
 
@@ -171,21 +164,38 @@ public class Framework_SingletonBaseWrap
 	static int set_OnUninitializeHandler(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.SingletonBase.OnUninitializeHandler");
+        ToluaProfiler.AddCallRecord("Framework.SingletonBase.set_OnUninitializeHandler");
 #endif
-		object o = null;
-
 		try
 		{
-			o = ToLua.ToObject(L, 1);
-			Framework.SingletonBase obj = (Framework.SingletonBase)o;
-			Framework.OnUninitializeStartHandler arg0 = (Framework.OnUninitializeStartHandler)ToLua.CheckDelegate<Framework.OnUninitializeStartHandler>(L, 2);
-			obj.OnUninitializeHandler = arg0;
+			Framework.SingletonBase obj = (Framework.SingletonBase)ToLua.CheckObject(L, 1, typeof(Framework.SingletonBase));
+			EventObject arg0 = null;
+
+			if (LuaDLL.lua_isuserdata(L, 2) != 0)
+			{
+				arg0 = (EventObject)ToLua.ToObject(L, 2);
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "The event 'Framework.SingletonBase.OnUninitializeHandler' can only appear on the left hand side of += or -= when used outside of the type 'Framework.SingletonBase'");
+			}
+
+			if (arg0.op == EventOp.Add)
+			{
+				Framework.OnUninitializeStartHandler ev = (Framework.OnUninitializeStartHandler)arg0.func;
+				obj.OnUninitializeHandler += ev;
+			}
+			else if (arg0.op == EventOp.Sub)
+			{
+				Framework.OnUninitializeStartHandler ev = (Framework.OnUninitializeStartHandler)arg0.func;
+				obj.OnUninitializeHandler -= ev;
+			}
+
 			return 0;
 		}
-		catch(Exception e)
+		catch (Exception e)
 		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index OnUninitializeHandler on a nil value");
+			return LuaDLL.toluaL_exception(L, e);
 		}
 	}
 }
