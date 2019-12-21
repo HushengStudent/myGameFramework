@@ -107,7 +107,7 @@ public class Framework_SingletonBaseWrap
 #if UNITY_EDITOR
         ToluaProfiler.AddCallRecord("Framework.SingletonBase.OnInitializeHandler");
 #endif
-		ToLua.Push(L, new EventObject(typeof(Framework.OnInitializeFinishedHandler)));
+		ToLua.Push(L, new EventObject(typeof(Framework.OnInitializeEventHandler)));
 		return 1;
 	}
 
@@ -117,7 +117,7 @@ public class Framework_SingletonBaseWrap
 #if UNITY_EDITOR
         ToluaProfiler.AddCallRecord("Framework.SingletonBase.OnUninitializeHandler");
 #endif
-		ToLua.Push(L, new EventObject(typeof(Framework.OnUninitializeStartHandler)));
+		ToLua.Push(L, new EventObject(typeof(Framework.OnUninitializeEventHandler)));
 		return 1;
 	}
 
@@ -143,12 +143,12 @@ public class Framework_SingletonBaseWrap
 
 			if (arg0.op == EventOp.Add)
 			{
-				Framework.OnInitializeFinishedHandler ev = (Framework.OnInitializeFinishedHandler)arg0.func;
+				Framework.OnInitializeEventHandler ev = (Framework.OnInitializeEventHandler)arg0.func;
 				obj.OnInitializeHandler += ev;
 			}
 			else if (arg0.op == EventOp.Sub)
 			{
-				Framework.OnInitializeFinishedHandler ev = (Framework.OnInitializeFinishedHandler)arg0.func;
+				Framework.OnInitializeEventHandler ev = (Framework.OnInitializeEventHandler)arg0.func;
 				obj.OnInitializeHandler -= ev;
 			}
 
@@ -182,12 +182,12 @@ public class Framework_SingletonBaseWrap
 
 			if (arg0.op == EventOp.Add)
 			{
-				Framework.OnUninitializeStartHandler ev = (Framework.OnUninitializeStartHandler)arg0.func;
+				Framework.OnUninitializeEventHandler ev = (Framework.OnUninitializeEventHandler)arg0.func;
 				obj.OnUninitializeHandler += ev;
 			}
 			else if (arg0.op == EventOp.Sub)
 			{
-				Framework.OnUninitializeStartHandler ev = (Framework.OnUninitializeStartHandler)arg0.func;
+				Framework.OnUninitializeEventHandler ev = (Framework.OnUninitializeEventHandler)arg0.func;
 				obj.OnUninitializeHandler -= ev;
 			}
 

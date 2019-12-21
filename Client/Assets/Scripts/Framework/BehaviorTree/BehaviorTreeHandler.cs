@@ -6,13 +6,13 @@
 
 namespace Framework
 {
-    public delegate void OnBehaviorTreeStartHandler();
-    public delegate void OnBehaviorTreeSuccesstHandler();
-    public delegate void OnBehaviorTreeFailureHandler();
-    public delegate void OnBehaviorTreeResetHandler();
+    public delegate void OnBTStartEventHandler();
+    public delegate void OnBTSuccesstEventHandler();
+    public delegate void OnBTFailureEventHandler();
+    public delegate void OnBTResetEventHandler();
 
-    public delegate void OnBTNodeStartHandler();
-    public delegate void OnBTNodeSuccesstHandler();
-    public delegate void OnBTNodeFailureHandler();
-    public delegate void OnBTNodeResetHandler();
+    public delegate void OnBTNodeStartEventHandler();
+    public delegate void OnBTNodeSuccesstEventHandler();
+    public delegate void OnBTNodeFailureEventHandler();
+    public delegate void OnBTNodeResetEventHandler();
 }

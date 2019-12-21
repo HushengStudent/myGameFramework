@@ -17,8 +17,8 @@ namespace Framework
 
     public class MonoSingletonBase : MonoSingletoninterface
     {
-        public event OnInitializeFinishedHandler OnInitializeHandler;
-        public event OnUninitializeStartHandler OnUninitializeHandler;
+        public event OnInitializeEventHandler OnInitializeHandler;
+        public event OnUninitializeEventHandler OnUninitializeHandler;
 
         private bool isInit = false;
         private bool isUninit = false;

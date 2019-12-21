@@ -7,8 +7,8 @@
 
 namespace Framework
 {
-    public delegate void OnInitializeFinishedHandler();
-    public delegate void OnUninitializeStartHandler();
+    public delegate void OnInitializeEventHandler();
+    public delegate void OnUninitializeEventHandler();
 
     public class Singletoninterface
     {
@@ -19,8 +19,8 @@ namespace Framework
 
     public class SingletonBase : Singletoninterface
     {
-        public event OnInitializeFinishedHandler OnInitializeHandler;
-        public event OnUninitializeStartHandler OnUninitializeHandler;
+        public event OnInitializeEventHandler OnInitializeHandler;
+        public event OnUninitializeEventHandler OnUninitializeHandler;
 
         private bool isInit = false;
         private bool isUninit = false;
