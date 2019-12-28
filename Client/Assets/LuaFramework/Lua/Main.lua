@@ -6,6 +6,7 @@
 
 --Common
 require "Define"
+require "Enum"
 require "Common.Class"
 require "Common.Functions"
 --Manager

@@ -25,6 +25,15 @@ public class Main : MonoBehaviour
 
         GameMgr.AssetBundleModel = AssetBundleModel;
 
+        UnityEditor.EditorApplication.update += () =>
+        {
+            if (UnityEditor.EditorApplication.isPlaying && UnityEditor.EditorApplication.isCompiling)
+            {
+                LogHelper.PrintError("script update.");
+                UnityEditor.EditorApplication.isPlaying = false;
+            }
+        };
+
 #endif
 
         GameMgr.singleton.Launch();
