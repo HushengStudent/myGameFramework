@@ -35,16 +35,16 @@ software：Unity2017.4.25/visual studio2017.
     (28)编辑器：AI(行为树)、战斗(技能)、场景、打包.(TODO)
 	
     Reference：
-    (1)tolua：(https://github.com/topameng/tolua).
-    (2)protoc-gen-lua：(https://github.com/topameng/protoc-gen-lua).
-    (3)AssetBundle：(https://github.com/HushengStudent/myAssetBundleTools).
-    (4)protobuf-net-r668：(https://github.com/mdavid/protobuf-net).
-    (5)ObjectPool：(https://github.com/HushengStudent/ugui).
-    (6)Mixed Text and Graphics：(https://github.com/zouchunyi/EmojiText).
-    (7)Table：(https://github.com/Ribosome2/ExcelUtilityWith-ExcelReader).
-    (8)NetWork：(https://github.com/EllanJiang/GameFramework).
-    (9)Lua Profiler：(https://github.com/yaukeywang/LuaMemorySnapshotDump).
-    (10)Navigation：(https://github.com/LingJiJian/NavmeshExport).
+    (1)tolua：[https://github.com/topameng/tolua](https://github.com/topameng/tolua).
+    (2)protoc-gen-lua：[https://github.com/topameng/protoc-gen-lua](https://github.com/topameng/protoc-gen-lua).
+    (3)AssetBundle：[https://github.com/HushengStudent/myAssetBundleTools](https://github.com/HushengStudent/myAssetBundleTools).
+    (4)protobuf-net-r668：[https://github.com/mdavid/protobuf-net](https://github.com/mdavid/protobuf-net).
+    (5)ObjectPool：[https://github.com/HushengStudent/ugui](https://github.com/HushengStudent/ugui).
+    (6)Mixed Text and Graphics：[https://github.com/zouchunyi/EmojiText](https://github.com/zouchunyi/EmojiText).
+    (7)Table：[https://github.com/Ribosome2/ExcelUtilityWith-ExcelReader](https://github.com/Ribosome2/ExcelUtilityWith-ExcelReader).
+    (8)NetWork：[https://github.com/EllanJiang/GameFramework](https://github.com/EllanJiang/GameFramework).
+    (9)Lua Profiler：[https://github.com/yaukeywang/LuaMemorySnapshotDump](https://github.com/yaukeywang/LuaMemorySnapshotDump).
+    (10)Navigation：[https://github.com/LingJiJian/NavmeshExport](https://github.com/LingJiJian/NavmeshExport).
 	
     Third Party:
     (1)Anima2D.
@@ -82,3 +82,11 @@ software：Unity2017.4.25/visual studio2017.
     (1)branch_v1.0.
     (2)branch_v2.0(更新tolua版本).
     (3)branch_v3.0(资源管理重构(异步加载优化;对象池)).
+	
+#### Blog
+    (1)[Lua相关](https://hushengstudent.github.io/2018/03/08/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%B8%B8%E6%88%8F%E6%A1%86%E6%9E%B6-Lua%E7%9B%B8%E5%85%B3/).
+    (2)[tolua相关](https://hushengstudent.github.io/2018/03/09/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%B8%B8%E6%88%8F%E6%A1%86%E6%9E%B6-tolua%E7%9B%B8%E5%85%B3/).
+    (3)[配置表方案](https://hushengstudent.github.io/2018/05/20/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%B8%B8%E6%88%8F%E6%A1%86%E6%9E%B6-%E9%85%8D%E7%BD%AE%E8%A1%A8%E6%96%B9%E6%A1%88/).
+    (4)[网络方案](https://hushengstudent.github.io/2018/05/27/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%B8%B8%E6%88%8F%E6%A1%86%E6%9E%B6-%E7%BD%91%E7%BB%9C%E6%96%B9%E6%A1%88/).
+    (5)[行为树设计](https://hushengstudent.github.io/2018/07/15/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%B8%B8%E6%88%8F%E6%A1%86%E6%9E%B6-%E8%A1%8C%E4%B8%BA%E6%A0%91%E8%AE%BE%E8%AE%A1/).
+    (6)[资源管理方案](https://hushengstudent.github.io/2019/01/07/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%B8%B8%E6%88%8F%E6%A1%86%E6%9E%B6-%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88/).
