@@ -1,16 +1,12 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/01/10 23:37:37
-** desc:  音效管理;
+** date:  2020/01/18 16:15:04
+** desc:  Wwise Mgr;
 *********************************************************************************/
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Framework;
 
-namespace Framework
+public class WwiseMgr : MonoSingleton<WwiseMgr>
 {
-    public class SoundMgr : Singleton<SoundMgr>
-    {
-    }
+
 }
