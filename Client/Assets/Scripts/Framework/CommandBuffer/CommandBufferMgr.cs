@@ -39,6 +39,15 @@ namespace Framework
             renderer.sharedMaterial.mainTexture = DrawRenderer(go, camera, mat);
         }
 
+        public void ReleaseRenderer(GameObject go)
+        {
+            CommandBufferRenderer commandBufferRenderer;
+            if (_cbDict.TryGetValue(go, out commandBufferRenderer))
+            {
+                commandBufferRenderer.CBRenderer.Deprecated = true;
+            }
+        }
+
         private RenderTexture DrawRenderer(GameObject go, Camera camera, Material mat = null)
         {
             CommandBufferRenderer commandBufferRenderer;
@@ -73,7 +82,12 @@ namespace Framework
             {
                 foreach (var temp in _cbDict)
                 {
+                    var go = temp.Key;
                     var cb = temp.Value.CBRenderer;
+                    if (!go)
+                    {
+                        cb.Deprecated = true;
+                    }
                     if (cb.Deprecated)
                     {
                         _deprecatedList.Add(temp.Key);

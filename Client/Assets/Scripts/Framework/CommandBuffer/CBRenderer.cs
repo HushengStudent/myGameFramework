@@ -15,7 +15,7 @@ namespace Framework
         private List<Renderer> _rendererList;
         private CommandBuffer CommandBuffer { get; set; }
 
-        public bool Deprecated { get; private set; }
+        public bool Deprecated { get; set; }
         public Camera Camera { get; private set; }
         public RenderTexture RenderTexture { get; private set; }
 
