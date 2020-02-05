@@ -55,7 +55,7 @@ namespace Framework
 
         private float GetAllMemory()
         {
-            float allMenory = Profiler.usedHeapSize / (float)MBSize;
+            float allMenory = Profiler.usedHeapSizeLong / (float)MBSize;
             return allMenory;
         }
 

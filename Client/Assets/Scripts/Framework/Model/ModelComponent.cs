@@ -1,12 +1,16 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/08/06 00:26:38
-** desc:  缁勪欢濮旀墭;
+** date:  2020/02/05 17:45:37
+** desc:  模型组件;
 *********************************************************************************/
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Framework
 {
-    public partial class AbsComponent
+    public abstract class ModelComponent : AbsComponent
     {
 
     }

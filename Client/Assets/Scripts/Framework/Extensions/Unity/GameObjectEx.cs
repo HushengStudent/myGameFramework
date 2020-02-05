@@ -4,21 +4,18 @@
 ** desc:  GameObject扩展;
 *********************************************************************************/
 
+using System;
 using UnityEngine;
 
 namespace Framework
 {
-    public delegate void GameObjectExLoadFinishHandler(GameObjectEx go);
-    public delegate void GameObjectExDestroyHandler(GameObjectEx go);
-
     public class GameObjectEx
     {
-        private Vector3 _position = Vector3.zero;
-        private Vector3 _scale = Vector3.zero;
-        private Vector3 _rotation = Vector3.zero;
-        private AssetBundleAssetProxy proxy;
-        private GameObjectExLoadFinishHandler _loadFinishHandler;
-        private GameObjectExDestroyHandler _destroyHandler;
+        private Action<GameObjectEx> _loadFinishHandler;
+        private Action<GameObjectEx> _destroyHandler;
+
+        private bool _isCombineModel;
+        private ModelComponent _modelComponent;
 
         public bool IsLoadFinish { get; private set; }
         public GameObject gameObject { get; private set; }
@@ -26,38 +23,33 @@ namespace Framework
         public AbsEntity Entity { get; private set; }
         public string ResPath { get; private set; }
 
-        public void Initialize(AbsEntity entity, string path, bool isAsync = true)
-        {
-            Entity = entity;
-            ResPath = path;
-            IsLoadFinish = false;
-            proxy = ResourceMgr.singleton.LoadAssetAsync(ResPath);
-            proxy.AddLoadFinishCallBack(() =>
-            {
-                gameObject = proxy.GetInstantiateObject<GameObject>();
-                gameObject.name = entity.UID.ToString();
-                IsLoadFinish = true;
-                Trans = gameObject.transform;
-                _loadFinishHandler?.Invoke(this);
-            });
-        }
-
         public void Initialize(AbsEntity entity, bool isAsync = true)
         {
             Entity = entity;
             IsLoadFinish = false;
-            //ModelComponent modelComp = entity.GetComponent<ModelComponent>();
+            _isCombineModel = true;
 
+            if (_isCombineModel)
+            {
+                _modelComponent = Entity.AddComponent<CombineModelComponent>();
+            }
+            else
+            {
+                _modelComponent = Entity.AddComponent<CommonModelComponent>();
+            }
+        }
+
+        private void LoadFinish()
+        {
+            gameObject.name = Entity.UID.ToString();
+            IsLoadFinish = true;
+            Trans = gameObject.transform;
+            _loadFinishHandler?.Invoke(this);
         }
 
         public void UnInitialize()
         {
             _destroyHandler?.Invoke(this);
-            if (IsLoadFinish)
-            {
-                proxy.ReleaseInstantiateObject(gameObject);
-            }
-            proxy.UnloadProxy();
             Trans = null;
             Entity = null;
             ResPath = string.Empty;
@@ -65,46 +57,34 @@ namespace Framework
             _destroyHandler = null;
         }
 
-        public void AddLoadFinishHandler(GameObjectExLoadFinishHandler handler)
+        public void AddLoadFinishHandler(Action<GameObjectEx> handler)
         {
             _loadFinishHandler += handler;
         }
 
-        public void RemoveLoadFinishHandler(GameObjectExLoadFinishHandler handler)
+        public void RemoveLoadFinishHandler(Action<GameObjectEx> handler)
         {
             _loadFinishHandler -= handler;
         }
 
-        public void AddDestroyHandler(GameObjectExDestroyHandler handler)
+        public void AddDestroyHandler(Action<GameObjectEx> handler)
         {
             _destroyHandler += handler;
         }
 
         public void SetLocalPosition(float x, float y, float z)
         {
-            _position = new Vector3(x, y, z);
-            if (gameObject)
-            {
-                gameObject.transform.localPosition = _position;
-            }
+
         }
 
         public void SetLocalScale(float x, float y, float z)
         {
-            _scale = new Vector3(x, y, z);
-            if (gameObject)
-            {
-                gameObject.transform.localScale = _scale;
-            }
+
         }
 
         public void SetLocalRotation(float x, float y, float z)
         {
-            _rotation = new Vector3(x, y, z);
-            if (gameObject)
-            {
-                gameObject.transform.localRotation = Quaternion.Euler(_rotation);
-            }
+            //gameObject.transform.localRotation = Quaternion.Euler(_rotation);
         }
     }
 }

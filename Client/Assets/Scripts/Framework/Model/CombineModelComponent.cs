@@ -19,7 +19,7 @@ namespace Framework
         ModelWeapon
     }
 
-    public class CombineModelComponent : AbsComponent
+    public class CombineModelComponent : ModelComponent
     {
         private Dictionary<ModelPart, string> _modelDataDict;
         private Dictionary<ModelPart, GameObject> _modelObjectDict;

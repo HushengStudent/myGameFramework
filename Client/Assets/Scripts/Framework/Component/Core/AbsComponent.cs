@@ -9,7 +9,7 @@ namespace Framework
     /// <summary>
     /// 组件抽象基类;
     /// </summary>
-    public abstract partial class AbsComponent
+    public abstract class AbsComponent
     {
         protected AbsComponent() { }
 

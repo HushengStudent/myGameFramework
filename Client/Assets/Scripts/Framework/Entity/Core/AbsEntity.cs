@@ -4,6 +4,7 @@
 ** desc:  ECS实体抽象基类;
 *********************************************************************************/
 
+using System;
 using UnityEngine;
 
 namespace Framework
@@ -16,7 +17,7 @@ namespace Framework
         Monster = 3,
     }
 
-    public abstract partial class AbsEntity : ObjectEx
+    public abstract class AbsEntity : ObjectEx
     {
         protected AbsEntity() : base() { }
 
@@ -33,7 +34,7 @@ namespace Framework
         public virtual void UpdateEx(float interval) { }
         public virtual void LateUpdateEx(float interval) { }
 
-        public event EntityLoadFinishEventHandler LoadFinishEventHandler;
+        public event Action<AbsEntity, GameObjectEx> LoadFinishEventHandler;
 
         /// <summary>
         /// 初始化Entity;
