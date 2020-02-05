@@ -9,7 +9,7 @@ namespace Framework
     /// <summary>
     /// 组件抽象基类;
     /// </summary>
-    public abstract class AbsComponent
+    public abstract partial class AbsComponent
     {
         protected AbsComponent() { }
 
@@ -21,7 +21,13 @@ namespace Framework
         public virtual void UpdateEx(float interval) { }
         public virtual void LateUpdateEx(float interval) { }
 
-        public abstract string UID { get; }
+        public string UID
+        {
+            get
+            {
+                return HashHelper.GetMD5(GetType().ToString());
+            }
+        }
 
         /// <summary>
         /// 初始化Component;
@@ -40,7 +46,7 @@ namespace Framework
                 }
                 else
                 {
-                    Entity.EntityLoadFinishEventHandler += (entity, goex) =>
+                    Entity.LoadFinishEventHandler += (entity, goex) =>
                     {
                         OnAttachGameObject(goex);
                     };

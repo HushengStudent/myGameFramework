@@ -26,7 +26,7 @@ namespace Framework
         public AbsEntity Entity { get; private set; }
         public string ResPath { get; private set; }
 
-        public void Init(AbsEntity entity, string path, bool isAsync = true)
+        public void Initialize(AbsEntity entity, string path, bool isAsync = true)
         {
             Entity = entity;
             ResPath = path;
@@ -42,20 +42,20 @@ namespace Framework
             });
         }
 
-        public void Init(AbsEntity entity, bool isAsync = true)
+        public void Initialize(AbsEntity entity, bool isAsync = true)
         {
             Entity = entity;
             IsLoadFinish = false;
-            ModelComponent modelComp = entity.GetComponent<ModelComponent>();
+            //ModelComponent modelComp = entity.GetComponent<ModelComponent>();
 
         }
 
-        public void Uninit()
+        public void UnInitialize()
         {
             _destroyHandler?.Invoke(this);
             if (IsLoadFinish)
             {
-                proxy.ReleaseInstantiateObject<GameObject>(gameObject);
+                proxy.ReleaseInstantiateObject(gameObject);
             }
             proxy.UnloadProxy();
             Trans = null;

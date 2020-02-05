@@ -62,23 +62,7 @@ public class FrameworkTest : MonoBehaviour
     }
 
     private void ModelInit()
-    {   /*
-        AsyncAssetProxy proxy = ResourceMgr.Instance.LoadAssetProxy(AssetType.Prefab, "Prefab/Models/Avatar/ch_pc_hou_004.prefab", null, false);
-        proxy.AddLoadFinishCallBack(() =>
-        {
-            List<GameObject> list = new List<GameObject>();
-            for (int i = 0; i < 60; i++)
-            {
-                GameObject go = proxy.LoadUnityObject<GameObject>();
-                list.Add(go);
-            }
-            for (int i = 0; i < list.Count; i++)
-            {
-                proxy.DestroyUnityObject(list[i]);
-            }
-            proxy.UnloadProxy();
-        });
-        */
+    {
         EntityMgr.singleton.CreateEntity<RoleEntity>(1, 1, "_entity_test");
     }
 

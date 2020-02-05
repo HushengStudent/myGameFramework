@@ -4,22 +4,18 @@
 ** desc:  Buff组件;
 *********************************************************************************/
 
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Framework
 {
     public class BuffComponent : AbsComponent
     {
-        private Dictionary<int, Buff> _buffDict = new Dictionary<int, Buff>();
+        private Dictionary<int, Buff> _buffDict;
 
-        public override string UID
+        protected override void InitializeEx()
         {
-            get
-            {
-                return HashHelper.GetMD5(typeof(BuffComponent).ToString());
-            }
+            base.InitializeEx();
+            _buffDict = new Dictionary<int, Buff>();
         }
 
         protected override void UnInitializeEx()

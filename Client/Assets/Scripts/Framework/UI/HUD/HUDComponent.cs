@@ -12,12 +12,6 @@ namespace Framework
 {
     public class HUDComponent : AbsComponent
     {
-        public override string UID
-        {
-            get
-            {
-                return HashHelper.GetMD5(typeof(HUDComponent).ToString());
-            }
-        }
+
     }
 }

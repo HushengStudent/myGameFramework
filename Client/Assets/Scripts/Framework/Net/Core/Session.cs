@@ -20,7 +20,7 @@ namespace Framework
         Lua = 1,
     }
 
-    public class Session
+    public partial class Session
     {
         private int _defaultPacketLength = 4;//协议格式:4位长度+4位id+内容;此处指长度,4位;
         private int _defaultMaxPacketLength = 1024 * 64;

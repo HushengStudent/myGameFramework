@@ -16,14 +16,14 @@ namespace Framework
         Monster = 3,
     }
 
-    public abstract class AbsEntity : ObjectEx
+    public abstract partial class AbsEntity : ObjectEx
     {
         protected AbsEntity() : base() { }
 
         public ulong UID { get; private set; }
         public int EntityId { get; private set; }
         public string EntityName { get; private set; }
-        public string AssetPath { get; private set; } = "Prefab/Models/Common/Skeleton.prefab";
+        public string AssetPath { get; private set; }
         public GameObjectEx GameObjectEx { get; private set; }
         public Animator Animator { get; private set; }
 
@@ -33,7 +33,7 @@ namespace Framework
         public virtual void UpdateEx(float interval) { }
         public virtual void LateUpdateEx(float interval) { }
 
-        public event EntityLoadFinishEventHandler EntityLoadFinishEventHandler;
+        public event EntityLoadFinishEventHandler LoadFinishEventHandler;
 
         /// <summary>
         /// 初始化Entity;
@@ -53,11 +53,11 @@ namespace Framework
             GameObjectEx.AddLoadFinishHandler((goex) =>
             {
                 InternalAttachGameObject(goex);
-                EntityLoadFinishEventHandler?.Invoke(this, GameObjectEx);
-                EntityLoadFinishEventHandler = null;
+                LoadFinishEventHandler?.Invoke(this, GameObjectEx);
+                LoadFinishEventHandler = null;
 
             });
-            GameObjectEx.Init(this, AssetPath);
+            GameObjectEx.Initialize(this);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Framework
         private void InternalDetachGameObject()
         {
             OnDetachGameObject();
-            GameObjectEx.Uninit();
+            GameObjectEx.UnInitialize();
             PoolMgr.singleton.ReleaseCsharpObject(GameObjectEx);
             GameObjectEx = null;
         }

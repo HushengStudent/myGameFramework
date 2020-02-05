@@ -1,11 +1,10 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/11/11 22:22:29
-** desc:  模型数据;
+** desc:  合并模型组件;
 *********************************************************************************/
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,43 +19,37 @@ namespace Framework
         ModelWeapon
     }
 
-    public class ModelComponent : AbsComponent
+    public class CombineModelComponent : AbsComponent
     {
-        private Dictionary<ModelPart, string> _modelDataDict = new Dictionary<ModelPart, string>();
-        private Dictionary<ModelPart, GameObject> _modelGoDict = new Dictionary<ModelPart, GameObject>();
+        private Dictionary<ModelPart, string> _modelDataDict;
+        private Dictionary<ModelPart, GameObject> _modelObjectDict;
         private GameObject _model;
         private bool _initModel;
-
-        public override string UID
-        {
-            get
-            {
-                return HashHelper.GetMD5(typeof(ModelComponent).ToString());
-            }
-        }
 
         protected override void InitializeEx()
         {
             base.InitializeEx();
-            _modelDataDict[ModelPart.ModelHead] = ModelMgr.singleton.HeadArray[0];
-            _modelDataDict[ModelPart.ModelBody] = ModelMgr.singleton.BodyArray[0];
-            _modelDataDict[ModelPart.ModelHand] = ModelMgr.singleton.HandArray[0];
-            _modelDataDict[ModelPart.ModelFeet] = ModelMgr.singleton.FeetArray[0];
-            _modelDataDict[ModelPart.ModelWeapon] = ModelMgr.singleton.WeaponArray[0];
-
+            _modelDataDict = new Dictionary<ModelPart, string>
+            {
+                [ModelPart.ModelHead] = ModelMgr.singleton.HeadArray[0],
+                [ModelPart.ModelBody] = ModelMgr.singleton.BodyArray[0],
+                [ModelPart.ModelHand] = ModelMgr.singleton.HandArray[0],
+                [ModelPart.ModelFeet] = ModelMgr.singleton.FeetArray[0],
+                [ModelPart.ModelWeapon] = ModelMgr.singleton.WeaponArray[0]
+            };
+            _modelObjectDict = new Dictionary<ModelPart, GameObject>();
         }
 
-        protected override void OnAttachObject(ObjectEx owner)
+        private void OnLoadFinish()
         {
-            base.OnAttachObject(owner);
             //初始化;
             _initModel = true;
             CombineModel();
         }
 
-        protected override void OnDetachObjectEx()
+        protected override void UnInitializeEx()
         {
-            base.OnDetachObjectEx();
+            base.UnInitializeEx();
             _modelDataDict.Clear();
             _model = null;
             _initModel = false;
@@ -119,7 +112,6 @@ namespace Framework
 
         private void AddModelPart(ModelPart part, GameObject go)
         {
-
             CombineModel(part);
         }
 

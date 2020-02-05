@@ -1,14 +1,13 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
-** date:  2018/08/06 00:26:38
-** desc:  组件委托;
+** date:  2018/04/07 17:02:09
+** desc:  buff委托;
 *********************************************************************************/
-
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace Framework
 {
-
+    public partial class Buff
+    {
+        public delegate void BuffEventHandler(Buff buff);
+    }
 }

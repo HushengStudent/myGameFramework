@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class Buff
+    public partial class Buff
     {
         private BuffEventHandler _onInitHandler = null;
         private BuffEventHandler _onFinishHandler = null;

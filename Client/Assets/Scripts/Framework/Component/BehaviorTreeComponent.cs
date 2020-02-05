@@ -12,14 +12,6 @@ namespace Framework
 {
     public class BehaviorTreeComponent : AbsComponent
     {
-        public override string UID
-        {
-            get
-            {
-                return HashHelper.GetMD5(typeof(BehaviorTreeComponent).ToString());
-            }
-        }
-
         protected override void InitializeEx()
         {
             base.InitializeEx();

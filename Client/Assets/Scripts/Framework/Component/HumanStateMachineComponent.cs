@@ -12,14 +12,6 @@ namespace Framework
 {
     public class HumanStateMachineComponent : AbsComponent
     {
-        public override string UID
-        {
-            get
-            {
-                return HashHelper.GetMD5(typeof(HumanStateMachineComponent).ToString());
-            }
-        }
-
         private AbsStateMachine _stateMachine;
 
         protected override void OnAttachGameObject(GameObjectEx goEx)

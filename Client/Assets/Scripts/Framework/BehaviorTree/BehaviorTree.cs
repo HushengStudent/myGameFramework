@@ -6,7 +6,7 @@
 
 namespace Framework
 {
-    public sealed class BehaviorTree
+    public sealed partial class BehaviorTree
     {
         public bool Enable;
         public event OnBTStartEventHandler OnStart;
