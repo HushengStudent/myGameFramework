@@ -21,10 +21,17 @@ namespace Framework
 
     public class CombineModelComponent : ModelComponent
     {
+        private class PartLoader
+        {
+            public GameObject Object;
+            public AssetBundleAssetProxy Proxy;
+        }
+
         private Dictionary<ModelPart, string> _modelDataDict;
-        private Dictionary<ModelPart, GameObject> _modelObjectDict;
-        private GameObject _model;
-        private bool _initModel;
+        private Dictionary<ModelPart, PartLoader> _modelLoaderDict;
+        private readonly string _modelRootPath = "Prefab/Models/Avatar/ch_pc_hou.prefab";
+        private GameObject _modelRootObject;
+        private AssetBundleAssetProxy _modelRootProxy;
 
         protected override void InitializeEx()
         {
@@ -37,22 +44,80 @@ namespace Framework
                 [ModelPart.ModelFeet] = ModelMgr.singleton.FeetArray[0],
                 [ModelPart.ModelWeapon] = ModelMgr.singleton.WeaponArray[0]
             };
-            _modelObjectDict = new Dictionary<ModelPart, GameObject>();
+
+            _modelRootProxy = ResourceMgr.singleton.LoadAssetAsync(_modelRootPath);
+            _modelRootProxy.AddLoadFinishCallBack(() =>
+            {
+                _modelRootObject = _modelRootProxy.GetInstantiateObject<GameObject>();
+                OnLoaded();
+            });
+            _modelLoaderDict = new Dictionary<ModelPart, PartLoader>();
+
+            foreach (var temp in _modelDataDict)
+            {
+                var part = temp.Key;
+                var name = temp.Value;
+                var proxy = ResourceMgr.singleton.LoadAssetAsync(name);
+                var loader = PoolMgr.singleton.GetCsharpObject<PartLoader>();
+                loader.Object = null;
+                loader.Proxy = proxy;
+                _modelLoaderDict[part] = loader;
+                proxy.AddLoadFinishCallBack(() =>
+                {
+                    var gameObject = proxy.GetInstantiateObject<GameObject>();
+                    _modelLoaderDict[part].Object = gameObject;
+                    OnLoaded();
+                });
+            }
         }
 
-        private void OnLoadFinish()
+        private void OnLoaded()
         {
-            //≥ı ºªØ;
-            _initModel = true;
+            if (IsInit)
+            {
+                return;
+            }
+            if (!_modelRootProxy.IsFinish)
+            {
+                return;
+            }
+            foreach (var temp in _modelLoaderDict)
+            {
+                if (!temp.Value.Proxy.IsFinish)
+                {
+                    return;
+                }
+            }
+
             CombineModel();
+            OnLoadFinish();
         }
 
         protected override void UnInitializeEx()
         {
             base.UnInitializeEx();
             _modelDataDict.Clear();
-            _model = null;
-            _initModel = false;
+            if (_modelRootObject)
+            {
+                _modelRootProxy.ReleaseInstantiateObject(_modelRootObject);
+            }
+            _modelRootObject = null;
+            _modelRootProxy.UnloadProxy();
+
+            foreach (var temp in _modelLoaderDict)
+            {
+                var loader = temp.Value;
+                var go = loader.Object;
+                var proxy = loader.Proxy;
+                if (go)
+                {
+                    proxy.ReleaseInstantiateObject(go);
+                }
+                loader.Object = null;
+                proxy.UnloadProxy();
+                PoolMgr.singleton.ReleaseCsharpObject(loader);
+            }
+            _modelLoaderDict.Clear();
         }
 
         public void SetHead(string head)
@@ -117,14 +182,12 @@ namespace Framework
 
         private void CombineModel()
         {
-            if (!_initModel)
-                return;
 
         }
 
         private void CombineModel(ModelPart part)
         {
-            if (!_initModel)
+            if (!IsInit)
                 return;
             if (part == ModelPart.ModelWeapon)
             {

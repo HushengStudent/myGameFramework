@@ -37,14 +37,14 @@ namespace Framework
             {
                 _modelComponent = Entity.AddComponent<CommonModelComponent>();
             }
-        }
-
-        private void LoadFinish()
-        {
-            gameObject.name = Entity.UID.ToString();
-            IsLoadFinish = true;
-            Trans = gameObject.transform;
-            _loadFinishHandler?.Invoke(this);
+            _modelComponent.OnLoadFinishHandler = () =>
+            {
+                gameObject = _modelComponent.GameObject;
+                gameObject.name = Entity.UID.ToString();
+                IsLoadFinish = true;
+                Trans = gameObject.transform;
+                _loadFinishHandler?.Invoke(this);
+            };
         }
 
         public void UnInitialize()
