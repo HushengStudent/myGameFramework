@@ -38,11 +38,11 @@ namespace Framework
             base.InitializeEx();
             _modelDataDict = new Dictionary<ModelPart, string>
             {
-                [ModelPart.ModelHead] = ModelMgr.singleton.HeadArray[0],
-                [ModelPart.ModelBody] = ModelMgr.singleton.BodyArray[0],
-                [ModelPart.ModelHand] = ModelMgr.singleton.HandArray[0],
-                [ModelPart.ModelFeet] = ModelMgr.singleton.FeetArray[0],
-                [ModelPart.ModelWeapon] = ModelMgr.singleton.WeaponArray[0]
+                [ModelPart.ModelHead] = ModelConfig.HeadArray[0],
+                [ModelPart.ModelBody] = ModelConfig.BodyArray[0],
+                [ModelPart.ModelHand] = ModelConfig.HandArray[0],
+                [ModelPart.ModelFeet] = ModelConfig.FeetArray[0],
+                [ModelPart.ModelWeapon] = ModelConfig.WeaponArray[0]
             };
 
             _modelRootProxy = ResourceMgr.singleton.LoadAssetAsync(_modelRootPath);
