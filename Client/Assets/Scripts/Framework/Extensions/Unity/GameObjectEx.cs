@@ -15,7 +15,11 @@ namespace Framework
         private Action<GameObjectEx> _destroyHandler;
 
         private bool _isCombineModel;
-        private ModelComponent _modelComponent;
+        public ModelComponent ModelComponent { get; private set; }
+
+        private Vector3 _position = Vector3.zero;
+        private Vector3 _scale = Vector3.one;
+        private Vector3 _rotation = Vector3.zero;
 
         public bool IsLoadFinish { get; private set; }
         public GameObject gameObject { get; private set; }
@@ -31,16 +35,19 @@ namespace Framework
 
             if (_isCombineModel)
             {
-                _modelComponent = Entity.AddComponent<CombineModelComponent>();
+                ModelComponent = Entity.AddComponent<CombineModelComponent>();
             }
             else
             {
-                _modelComponent = Entity.AddComponent<CommonModelComponent>();
+                ModelComponent = Entity.AddComponent<CommonModelComponent>();
             }
-            _modelComponent.OnLoadFinishHandler = () =>
+            ModelComponent.OnLoadFinishHandler = () =>
             {
-                gameObject = _modelComponent.GameObject;
+                gameObject = ModelComponent.GameObject;
                 gameObject.name = Entity.UID.ToString();
+                gameObject.transform.localPosition = _position;
+                gameObject.transform.localScale = _scale;
+                gameObject.transform.localRotation = Quaternion.Euler(_rotation);
                 IsLoadFinish = true;
                 Trans = gameObject.transform;
                 _loadFinishHandler?.Invoke(this);
@@ -74,25 +81,28 @@ namespace Framework
 
         public void SetLocalPosition(float x, float y, float z)
         {
+            _position = new Vector3(x, y, z);
             if (gameObject)
             {
-                gameObject.transform.localPosition = new Vector3(x, y, z);
+                gameObject.transform.localPosition = _position;
             }
         }
 
         public void SetLocalScale(float x, float y, float z)
         {
+            _scale = new Vector3(x, y, z);
             if (gameObject)
             {
-                gameObject.transform.localScale = new Vector3(x, y, z);
+                gameObject.transform.localScale = _scale;
             }
         }
 
         public void SetLocalRotation(float x, float y, float z)
         {
+            _rotation = new Vector3(x, y, z);
             if (gameObject)
             {
-                gameObject.transform.localRotation = Quaternion.Euler(new Vector3(x, y, z));
+                gameObject.transform.localRotation = Quaternion.Euler(_rotation);
             }
         }
     }

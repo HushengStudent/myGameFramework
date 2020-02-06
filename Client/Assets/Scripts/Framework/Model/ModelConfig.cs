@@ -11,28 +11,28 @@ namespace Framework
         public static readonly string Model = "ch_pc_hou";
 
         public static readonly string[] HeadArray = new string[] {
-            "ch_pc_hou_004_tou",
-            "ch_pc_hou_006_tou",
-            "ch_pc_hou_008_tou" };
+            "Prefab/Models/Avatar/ch_pc_hou_004_tou.prefab",
+            "Prefab/Models/Avatar/ch_pc_hou_006_tou.prefab",
+            "Prefab/Models/Avatar/ch_pc_hou_008_tou.prefab" };
 
         public static readonly string[] BodyArray = new string[] {
-            "ch_pc_hou_004_shen",
-            "ch_pc_hou_006_shen",
-            "ch_pc_hou_008_shen" };
+            "Prefab/Models/Avatar/ch_pc_hou_004_shen.prefab",
+            "Prefab/Models/Avatar/ch_pc_hou_006_shen.prefab",
+            "Prefab/Models/Avatar/ch_pc_hou_008_shen.prefab" };
 
         public static readonly string[] HandArray = new string[] {
-            "ch_pc_hou_004_shou",
-            "ch_pc_hou_006_shou",
-            "ch_pc_hou_008_shou" };
+            "Prefab/Models/Avatar/ch_pc_hou_004_shou.prefab",
+            "Prefab/Models/Avatar/ch_pc_hou_006_shou.prefab",
+            "Prefab/Models/Avatar/ch_pc_hou_008_shou.prefab" };
 
         public static readonly string[] FeetArray = new string[] {
-            "ch_pc_hou_004_jiao",
-            "ch_pc_hou_006_jiao",
-            "ch_pc_hou_008_jiao" };
+            "Prefab/Models/Avatar/ch_pc_hou_004_jiao.prefab",
+            "Prefab/Models/Avatar/ch_pc_hou_006_jiao.prefab",
+            "Prefab/Models/Avatar/ch_pc_hou_008_jiao.prefab" };
 
         public static readonly string[] WeaponArray = new string[] {
-            "ch_we_one_hou_004",
-            "ch_we_one_hou_006",
-            "ch_we_one_hou_008" };
+            "Prefab/Models/Avatar/ch_we_one_hou_004.prefab",
+            "Prefab/Models/Avatar/ch_we_one_hou_006.prefab",
+            "Prefab/Models/Avatar/ch_we_one_hou_008.prefab" };
     }
 }

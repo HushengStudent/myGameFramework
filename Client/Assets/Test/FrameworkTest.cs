@@ -63,12 +63,20 @@ public class FrameworkTest : MonoBehaviour
 
     private void ModelInit()
     {
-        EntityMgr.singleton.CreateEntity<RoleEntity>(1, 1, "_entity_test");
+        var role = EntityMgr.singleton.CreateEntity<RoleEntity>(1, 1, "_entity_test");
+        role.GameObjectEx.SetLocalPosition(0.5f, 17f, -20f);
+        role.GameObjectEx.SetLocalRotation(0f, 180f, 0f);
+        role.GameObjectEx.SetLocalScale(1f, 1f, 1f);
     }
 
     public void ChangeHead()
     {
-
+        var role = EntityMgr.singleton.GetEntity<RoleEntity>(1);
+        var modelComponent = role.GameObjectEx.ModelComponent as CombineModelComponent;
+        if (modelComponent != null)
+        {
+            modelComponent.SetHead("Prefab/Models/Avatar/ch_pc_hou_008_tou.prefab");
+        }
     }
 
     public void ChangeBody()
