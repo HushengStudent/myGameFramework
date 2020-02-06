@@ -4,6 +4,7 @@
 ** desc:  #####
 *********************************************************************************/
 
+using Framework;
 using System.Collections.Generic;
 
 namespace UnityEngine.UI
@@ -38,7 +39,7 @@ namespace UnityEngine.UI
         {
             GameObject go = trans.gameObject;
             go.SetActive(false);
-            go.transform.SetParent(null);
+            go.transform.SetParent(PoolMgr.singleton.Root.transform);
             _prefabQueue.Enqueue(go);
         }
 

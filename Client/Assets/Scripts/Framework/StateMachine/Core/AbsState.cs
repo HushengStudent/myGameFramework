@@ -120,7 +120,7 @@ namespace Framework
                     Machine.AnimatorOverrideController[StateName] = clip;
                     Machine.Animator.runtimeAnimatorController = Machine.AnimatorOverrideController;
                     //_animator.Rebind();
-
+                    
                     _animationClip = clip;
                 }
             });

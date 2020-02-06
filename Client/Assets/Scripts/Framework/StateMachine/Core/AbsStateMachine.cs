@@ -62,11 +62,28 @@ namespace Framework
                 RuntimeAnimatorController ctrl = _runtimeAnimatorProxy.GetUnityAsset<RuntimeAnimatorController>();
                 if (ctrl)
                 {
-                    Animator.runtimeAnimatorController = ctrl;
                     AnimatorOverrideController = new AnimatorOverrideController(ctrl);
+                    Animator.runtimeAnimatorController = AnimatorOverrideController;
                     Animator.Rebind();
                     Enable = true;
                     TransToDefault();
+
+                    //TODO
+                    foreach (var state in StateList)
+                    {
+                        var str = string.Empty;
+                        if (state.StateName == StateNameEnum.Idle.ToString())
+                            str = "Animation/Skeleton/Idle.anim";
+                        if (state.StateName == StateNameEnum.Move.ToString())
+                            str = "Animation/Skeleton/Run.anim";
+                        if (state.StateName == StateNameEnum.Skill.ToString())
+                            str = "Animation/Skeleton/Attack.anim";
+                        if (state.StateName == StateNameEnum.Special.ToString())
+                            str = "Animation/Skeleton/Damage.anim";
+                        if (state.StateName == StateNameEnum.Dead.ToString())
+                            str = "Animation/Skeleton/Death.anim";
+                        state.Initialize(str);
+                    }
                 }
             });
         }
