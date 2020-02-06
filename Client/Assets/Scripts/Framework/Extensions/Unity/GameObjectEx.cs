@@ -74,17 +74,26 @@ namespace Framework
 
         public void SetLocalPosition(float x, float y, float z)
         {
-
+            if (gameObject)
+            {
+                gameObject.transform.localPosition = new Vector3(x, y, z);
+            }
         }
 
         public void SetLocalScale(float x, float y, float z)
         {
-
+            if (gameObject)
+            {
+                gameObject.transform.localScale = new Vector3(x, y, z);
+            }
         }
 
         public void SetLocalRotation(float x, float y, float z)
         {
-            //gameObject.transform.localRotation = Quaternion.Euler(_rotation);
+            if (gameObject)
+            {
+                gameObject.transform.localRotation = Quaternion.Euler(new Vector3(x, y, z));
+            }
         }
     }
 }

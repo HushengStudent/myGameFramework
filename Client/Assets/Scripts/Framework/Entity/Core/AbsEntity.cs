@@ -34,7 +34,7 @@ namespace Framework
         public virtual void UpdateEx(float interval) { }
         public virtual void LateUpdateEx(float interval) { }
 
-        public event Action<AbsEntity, GameObjectEx> LoadFinishEventHandler;
+        public event Action<AbsEntity> LoadFinishEventHandler;
 
         /// <summary>
         /// 初始化Entity;
@@ -54,7 +54,7 @@ namespace Framework
             GameObjectEx.AddLoadFinishHandler((goex) =>
             {
                 InternalAttachGameObject(goex);
-                LoadFinishEventHandler?.Invoke(this, GameObjectEx);
+                LoadFinishEventHandler?.Invoke(this);
                 LoadFinishEventHandler = null;
 
             });

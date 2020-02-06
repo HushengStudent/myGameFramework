@@ -46,9 +46,9 @@ namespace Framework
                 }
                 else
                 {
-                    Entity.LoadFinishEventHandler += (entity, goex) =>
+                    Entity.LoadFinishEventHandler += (entity) =>
                     {
-                        OnAttachGameObject(goex);
+                        OnAttachGameObject(entity.GameObjectEx);
                     };
                 }
             }

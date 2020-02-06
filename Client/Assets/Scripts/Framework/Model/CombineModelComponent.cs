@@ -21,14 +21,8 @@ namespace Framework
 
     public class CombineModelComponent : ModelComponent
     {
-        private class PartLoader
-        {
-            public GameObject Object;
-            public AssetBundleAssetProxy Proxy;
-        }
-
         private Dictionary<ModelPart, string> _modelDataDict;
-        private Dictionary<ModelPart, PartLoader> _modelLoaderDict;
+        private Dictionary<ModelPart, AssetBundleAssetProxy> _modelProxyDict;
         private readonly string _modelRootPath = "Prefab/Models/Avatar/ch_pc_hou.prefab";
         private GameObject _modelRootObject;
         private AssetBundleAssetProxy _modelRootProxy;
@@ -51,23 +45,15 @@ namespace Framework
                 _modelRootObject = _modelRootProxy.GetInstantiateObject<GameObject>();
                 OnLoaded();
             });
-            _modelLoaderDict = new Dictionary<ModelPart, PartLoader>();
+            _modelProxyDict = new Dictionary<ModelPart, AssetBundleAssetProxy>();
 
             foreach (var temp in _modelDataDict)
             {
                 var part = temp.Key;
                 var name = temp.Value;
                 var proxy = ResourceMgr.singleton.LoadAssetAsync(name);
-                var loader = PoolMgr.singleton.GetCsharpObject<PartLoader>();
-                loader.Object = null;
-                loader.Proxy = proxy;
-                _modelLoaderDict[part] = loader;
-                proxy.AddLoadFinishCallBack(() =>
-                {
-                    var gameObject = proxy.GetInstantiateObject<GameObject>();
-                    _modelLoaderDict[part].Object = gameObject;
-                    OnLoaded();
-                });
+                _modelProxyDict[part] = proxy;
+                proxy.AddLoadFinishCallBack(OnLoaded);
             }
         }
 
@@ -81,9 +67,9 @@ namespace Framework
             {
                 return;
             }
-            foreach (var temp in _modelLoaderDict)
+            foreach (var temp in _modelProxyDict)
             {
-                if (!temp.Value.Proxy.IsFinish)
+                if (!temp.Value.IsFinish)
                 {
                     return;
                 }
@@ -104,20 +90,12 @@ namespace Framework
             _modelRootObject = null;
             _modelRootProxy.UnloadProxy();
 
-            foreach (var temp in _modelLoaderDict)
+            foreach (var temp in _modelProxyDict)
             {
-                var loader = temp.Value;
-                var go = loader.Object;
-                var proxy = loader.Proxy;
-                if (go)
-                {
-                    proxy.ReleaseInstantiateObject(go);
-                }
-                loader.Object = null;
+                var proxy = temp.Value;
                 proxy.UnloadProxy();
-                PoolMgr.singleton.ReleaseCsharpObject(loader);
             }
-            _modelLoaderDict.Clear();
+            _modelProxyDict.Clear();
         }
 
         public void SetHead(string head)
@@ -180,11 +158,6 @@ namespace Framework
             CombineModel(part);
         }
 
-        private void CombineModel()
-        {
-
-        }
-
         private void CombineModel(ModelPart part)
         {
             if (!IsInit)
@@ -197,6 +170,11 @@ namespace Framework
             {
 
             }
+        }
+
+        private void CombineModel()
+        {
+
         }
     }
 }
