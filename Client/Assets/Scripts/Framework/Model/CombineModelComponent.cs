@@ -240,6 +240,32 @@ namespace Framework
                 proxy.ReleaseInstantiateObject(go);
             }
 
+            List<Vector2[]> UVList = new List<Vector2[]>();
+            Material newMat = new Material(Shader.Find("Mobile/Diffuse"));
+
+            List<Texture2D> Textures = new List<Texture2D>();
+            for (int i = 0; i < materials.Count; i++)
+            {
+                Textures.Add(materials[i].GetTexture("_MainTex") as Texture2D);
+            }
+
+            Texture2D newTex = new Texture2D(512, 512, TextureFormat.ETC2_RGBA8, true);
+            Rect[] texUV = newTex.PackTextures(Textures.ToArray(), 0);
+            newMat.mainTexture = newTex;
+
+            Vector2[] oldUV, newUV;
+            for (int i = 0; i < combineInstances.Count; i++)
+            {
+                oldUV = combineInstances[i].mesh.uv;
+                newUV = new Vector2[oldUV.Length];
+                for (int j = 0; j < oldUV.Length; j++)
+                {
+                    newUV[j] = new Vector2((oldUV[j].x * texUV[i].width) + texUV[i].x, (oldUV[j].y * texUV[i].height) + texUV[i].y);
+                }
+                UVList.Add(combineInstances[i].mesh.uv);
+                combineInstances[i].mesh.uv = newUV;
+            }
+
             SkinnedMeshRenderer skinnedMeshRenderer = _skeleton.GetComponent<SkinnedMeshRenderer>();
             if (skinnedMeshRenderer != null)
             {
@@ -248,9 +274,14 @@ namespace Framework
 
             skinnedMeshRenderer = _skeleton.AddComponent<SkinnedMeshRenderer>();
             skinnedMeshRenderer.sharedMesh = new Mesh();
-            skinnedMeshRenderer.sharedMesh.CombineMeshes(combineInstances.ToArray(), false, false);
+            skinnedMeshRenderer.sharedMesh.CombineMeshes(combineInstances.ToArray(), true, false);
             skinnedMeshRenderer.bones = bones.ToArray();
-            skinnedMeshRenderer.materials = materials.ToArray();
+            //skinnedMeshRenderer.materials = materials.ToArray();
+            skinnedMeshRenderer.material = newMat;
+            for (int i = 0; i < combineInstances.Count; i++)
+            {
+                combineInstances[i].mesh.uv = UVList[i];
+            }
         }
     }
 }
