@@ -1,5 +1,5 @@
 ### myGameFramework
-#### This is a game framework include client server and some tools.
+#### My game framework include client server and tools.
 
 software：Unity2017.4.25/visual studio2017.
 
