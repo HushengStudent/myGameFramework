@@ -3,13 +3,9 @@
 ---To coding to do what u want to do.
 ---
 
-module("UI", package.seeall)
+local super = import("UI.BaseCtrl")
 
-require "Panel.View.LoginPanel"
-
-local super = UI.BaseCtrl
-
-LoginCtrl = class("LoginCtrl",BaseCtrl)
+local LoginCtrl = class("LoginCtrl",super)
 
 function LoginCtrl:ctor()
     super.ctor(self)

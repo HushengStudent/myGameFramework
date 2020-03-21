@@ -1,32 +1,30 @@
 ---
---- 管理场景scene ui
+--- ui mgr
 ---
 
-module("Manager", package.seeall)
-
-require "Panel.BaseCtrl"
-require "UI.Canvas.BaseCanvas"
-
-UIMgr = class("UIMgr")
-
-local l_baseCanvas
-local l_baseCtrl
+local UIMgr = class("UIMgr")
 
 function UIMgr:ctor()
-    l_baseCanvas = UI.BaseCanvas.new()
-    l_baseCtrl = UI.BaseCtrl.new()
+    self:_initUIState()
 end
 
-function UIMgr:GetMgrName()
-    log("UIMgr")
+function UIMgr:_onInitialize()
+    self.stateEnum = import("UI.StateEnum")
+    self.ctrlEnum = import("UI.CtrlEnum")
+    self._allUIState = {}
+    self._allUIState[self.stateEnum.LoginState] = import("UI.State.LoginState")
 end
 
-function UIMgr:OnEnterCanvas(canvasEnum)
-    l_baseCanvas:EnterCanvas(canvasEnum)
+function UIMgr:StartUI()
+    self:OnEnterState(self.stateEnum.LoginState)
 end
 
-function UIMgr:OnLeaveCanvas(canvasEnum)
-    l_baseCanvas:LeaveCanvas(canvasEnum)
+function UIMgr:OnEnterState(stateEnum)
+    self._allUIState[stateEnum]:EnterCanvas()
+end
+
+function UIMgr:OnLeaveState(stateEnum)
+    self._allUIState[stateEnum]:LeaveCanvas()
 end
 
 function UIMgr:OnCreateCtrl(ctrlEnum)

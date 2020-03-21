@@ -2,42 +2,34 @@
 --- 游戏初始化入口
 ---
 
---全局变量:g_Xxx;成员变量:m_Xxx;局部变量:l_Xxx;
+function _onInitialize()
 
---Common
-require "Define"
-require "Enum"
-require "Common.Class"
-require "Common.Functions"
---Manager
-require "Manager.GameMgr"
-require "Manager.UIMgr"
-require "Manager.SceneMgr"
-require "Manager.NetMgr"
+    import(".Define")
+    import(".Enum")
+    import(".Common.Functions")
+    import(".Common.Class")
+    import("Protol.ProtoDefine")
+    import("Protol.ProtoProcess")
+    import("Protol.login_pb")
 
-require "UI.Canvas.BaseCanvas"
-require "Panel.BaseCtrl"
+    import(".GlobalRegister")
 
-require "Protol.login_pb"
-require "Protol.ProtoDefine"
+    RegisterGlobal("g_helper", import(".Common.Helper"))
 
----[luaMgr]
-g_GameMgr = Manager.GameMgr.new()
-g_UIMgr = Manager.UIMgr.new()
-g_SceneMgr = Manager.SceneMgr.new()
-g_NetMgr = Manager.NetMgr.new()
+    RegisterGlobal("g_gameMgr", import(".Manager.GameMgr").new())
+    RegisterGlobal("g_uiMgr", import(".Manager.UIMgr").new())
+    RegisterGlobal("g_sceneMgr", import(".Manager.SceneMgr").new())
+    RegisterGlobal("g_netMgr", import(".Manager.NetMgr").new())
+
+end
 
 --主入口函数。从这里开始lua逻辑
 function Main()
+    _onInitialize()
     log("main logic start")
-    require("GlobalRegister")
-    require("Panel.Controller.LoginCtrl")
-    local l_loginCtrl = UI.LoginCtrl.new()
-    --g_GameMgr:StartGame()
     --test_pblua_func()
-    luaMgr.gameObject:SetLocalPosition(Vector3.New(0, 0, 0))
-    TestSendPblua()
-
+    --TestSendPblua()
+    g_gameMgr:StartGame()
 end
 
 --场景切换通知
@@ -46,8 +38,8 @@ function OnLevelWasLoaded(level)
     Time.timeSinceLevelLoad = 0
 end
 
-
 ---=====================================================================================================================
+
 --测试pblua--
 function test_pblua_func()
     local login = Protol.login_pb.LoginRequest()
@@ -68,6 +60,7 @@ function OnPbluaCall(data)
 end
 
 ---=====================================================================================================================
+
 --测试发送PBLUA--
 function TestSendPblua()
     local login = Protol.login_pb.LoginRequest()
@@ -92,4 +85,34 @@ end
 
 function Receive(id, buffer)
     Protol.ProtoProcess.Process(id, buffer)
+end
+
+function import(moduleName, currentModuleName)
+    local currentModuleNameParts
+    local moduleFullName = moduleName
+    local offset = 1
+
+    while true do
+        if string.byte(moduleName, offset) ~= 46 then
+            -- .
+            moduleFullName = string.sub(moduleName, offset)
+            if currentModuleNameParts and #currentModuleNameParts > 0 then
+                moduleFullName = table.concat(currentModuleNameParts, ".") .. "." .. moduleFullName
+            end
+            break
+        end
+        offset = offset + 1
+
+        if not currentModuleNameParts then
+            if not currentModuleName then
+                local n, v = debug.getlocal(3, 1)
+                currentModuleName = v
+            end
+
+            currentModuleNameParts = string.split(currentModuleName, ".")
+        end
+        table.remove(currentModuleNameParts, #currentModuleNameParts)
+    end
+
+    return require(moduleFullName)
 end

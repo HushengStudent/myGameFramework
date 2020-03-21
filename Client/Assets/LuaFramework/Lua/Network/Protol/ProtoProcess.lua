@@ -1,12 +1,10 @@
 ---
+--- 协议处理
 ---
-module("Protol", package.seeall)
 
-require "Protol.ProtoDefine"
+local ProtoProcessTable = {
 
-ProtoProcessTable = {
-
-    [Protol.ProtoID.LoginResponse] = function(buffer)
+    [ProtoID.LoginResponse] = function(buffer)
         TestProcessPblua(buffer)
     end,
 

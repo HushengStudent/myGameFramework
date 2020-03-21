@@ -3,9 +3,7 @@
 ---Forbid To coding.
 ---
 
-module("UI", package.seeall)
-
-LoginPanel = class("LoginPanel")
+local LoginPanel = class("LoginPanel")
 
 function LoginPanel:ctor()
 

@@ -1,11 +1,8 @@
 ---
 ---
+---
 
-module("UI", package.seeall)
-
-require "Panel.CtrlEnum"
-
-BaseCtrl = class("BaseCtrl")
+local BaseCtrl = class("BaseCtrl")
 
 function BaseCtrl:ctor()
 

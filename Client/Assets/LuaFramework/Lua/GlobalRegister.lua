@@ -1,4 +1,5 @@
 ---
+--- 禁止写入_G
 ---
 
 function RegisterGlobal( name, target )
@@ -13,9 +14,9 @@ setmetatable( _G, {
     __newindex = function( table, key, value )
         local targetFunc = debug.getinfo(2)
         if _G.module == targetFunc.func then
-            declareGlobal(key, value)
+            RegisterGlobal(key, value)
         else
-            logError(string.format("error:%s write to _G.", tostring(key)))
+            logError(string.format("[GlobalRegister]error:%s write to _G.", tostring(key)))
         end
     end,
 } )

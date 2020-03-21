@@ -294,6 +294,49 @@ function checktable(value)
     return value
 end
 
+local iskindof_
+iskindof_ = function(cls, name)
+    local __index = rawget(cls, "__index")
+    if type(__index) == "table" and rawget(__index, "__cname") == name then
+        return true
+    end
+
+    if rawget(cls, "__cname") == name then
+        return true
+    end
+    local __supers = rawget(__index, "__supers")
+    if not __supers then
+        return false
+    end
+    for _, super in ipairs(__supers) do
+        if iskindof_(super, name) then
+            return true
+        end
+    end
+    return false
+end
+
+function iskindof(obj, classname)
+    local t = type(obj)
+    if t ~= "table" and t ~= "userdata" then
+        return false
+    end
+
+    local mt
+    if t == "userdata" then
+        if tolua.iskindof(obj, classname) then
+            return true
+        end
+        mt = getmetatable(tolua.getpeer(obj))
+    else
+        mt = getmetatable(obj)
+    end
+    if mt then
+        return iskindof_(mt, classname)
+    end
+    return false
+end
+
 function clone(object)
     local lookup_table = {}
     local function _copy(object)

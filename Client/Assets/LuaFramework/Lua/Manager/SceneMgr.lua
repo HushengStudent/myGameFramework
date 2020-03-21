@@ -2,17 +2,11 @@
 --- 管理模块ui
 ---
 
-module("Manager", package.seeall)
-
-SceneMgr = class("SceneMgr")
+local SceneMgr = class("SceneMgr")
 
 local m_curCanvas
 
 function SceneMgr:ctor()
-end
-
-function SceneMgr:GetMgrName()
-    log("SceneMgr")
 end
 
 function SceneMgr:OnEnterScene(id)
