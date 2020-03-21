@@ -5,51 +5,53 @@
 
 local super = import("UI.BaseCtrl")
 
-local LoginCtrl = class("LoginCtrl",super)
+local LoginCtrl = class("LoginCtrl", super)
 
 function LoginCtrl:ctor()
     super.ctor(self)
+    self:ctorEx()
+end
+
+function LoginCtrl:onInit(...)
+    super.onInit(self, ...)
+    local panel = import(".LoginLayout").new()
+    self.panel = panel:BindLuaCom(self.go)
+    self:onInitEx(...)
+end
+
+function LoginCtrl:onRefresh(...)
+    super.onRefresh(self, ...)
+    self:onRefreshEx(...)
+end
+
+function LoginCtrl:onUpdate(interval)
+    super.onUpdate(self, interval)
+    self:onUpdateEx(interval)
 
 end
 
-function LoginCtrl:OnInitialize(args)
-    super.OnInitialize(self,args)
-    local l_panel = LoginPanel.new()
-    self.panel = l_panel:BindLuaCom(self.go)
-    self:OnInitializeEx(args)
-
+function LoginCtrl:onHide(...)
+    super.onHide(self, ...)
+    self:onHideEx(...)
 end
 
-function LoginCtrl:OnUpdate(interval)
-    super.OnUpdate(self,interval)
-    self:OnUpdateEx(interval)
-
+function LoginCtrl:OnResume(...)
+    super.OnResume(self, ...)
+    self:OnResumeEx(...)
 end
 
-function LoginCtrl:OnHide()
-    super.OnHide(self)
-    self:OnHideEx()
-
-end
-
-function LoginCtrl:OnResume()
-    super.OnResume(self)
-    self:OnResumeEx()
-
-end
-
-function LoginCtrl:UnInitialize()
-    super.UnInitialize(self)
-    self:UnInitializeEx()
-
+function LoginCtrl:UnInitialize(...)
+    super.UnInitialize(self, ...)
+    self:UnInitializeEx(...)
 end
 
 -----------------------------///beautiful line///-----------------------------
 
+function LoginCtrl:ctorEx()
 
+end
 
-function LoginCtrl:OnInitializeEx(args)
-
+function LoginCtrl:onInitEx(...)
     --Test Net
     local login = login_pb.LoginRequest()
     login.id = 2000
@@ -60,22 +62,25 @@ function LoginCtrl:OnInitializeEx(args)
     --buffer:WriteShort(10011)
     --buffer:WriteBuffer(msg)
     --networkMgr:SendMessage(buffer)
+end
+
+function LoginCtrl:onRefreshEx(...)
 
 end
 
-function LoginCtrl:OnUpdateEx(interval)
+function LoginCtrl:onUpdateEx(interval)
 
 end
 
-function LoginCtrl:OnHideEx()
+function LoginCtrl:onHideEx(...)
 
 end
 
-function LoginCtrl:OnResumeEx()
+function LoginCtrl:OnResumeEx(...)
 
 end
 
-function LoginCtrl:UnInitializeEx()
+function LoginCtrl:UnInitializeEx(...)
 
 end
 

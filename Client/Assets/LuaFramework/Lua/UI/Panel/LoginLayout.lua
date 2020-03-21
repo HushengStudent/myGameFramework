@@ -3,14 +3,10 @@
 ---Forbid To coding.
 ---
 
-local LoginPanel = class("LoginPanel")
+local LoginLayout = class("LoginLayout")
 
-function LoginPanel:ctor()
-
-end
-
-function LoginPanel:BindLuaCom(gameObject)
-    local l_ctrl = gameObject:GetComponent("LuaUIPanel")
+function LoginLayout:BindLuaCom(go)
+    local l_ctrl = go:GetComponent("LuaUIPanel")
     self.panel = {}
     self.panel.GameObject = l_ctrl.luaUIComArray[0]
     self.panel.GameObject1 = l_ctrl.luaUIComArray[1]
@@ -22,8 +18,7 @@ function LoginPanel:BindLuaCom(gameObject)
     self.panel.GameObject7 = l_ctrl.luaUIComArray[7]
     self.panel.GameObject8 = l_ctrl.luaUIComArray[8]
     self.panel.GameObject9 = l_ctrl.luaUIComArray[9]
-
     return self.panel
 end
 
-return LoginPanel
+return LoginLayout

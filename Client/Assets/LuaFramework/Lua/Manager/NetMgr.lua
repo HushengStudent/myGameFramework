@@ -8,11 +8,11 @@ function NetMgr:ctor()
 
 end
 
-function NetMgr:SendReq(msg)
+function NetMgr:sendReq(msg)
 
 end
 
-function NetMgr:SendNtf(msg)
+function NetMgr:sendNtf(msg)
 
 end
 

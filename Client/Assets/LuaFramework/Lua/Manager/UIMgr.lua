@@ -5,41 +5,43 @@
 local UIMgr = class("UIMgr")
 
 function UIMgr:ctor()
-    self:_initUIState()
-end
-
-function UIMgr:_onInitialize()
     self.stateEnum = import("UI.StateEnum")
     self.ctrlEnum = import("UI.CtrlEnum")
     self._allUIState = {}
     self._allUIState[self.stateEnum.LoginState] = import("UI.State.LoginState")
+
+    self._curState = self.stateEnum.Non
 end
 
-function UIMgr:StartUI()
+function UIMgr:startUI()
     self:OnEnterState(self.stateEnum.LoginState)
 end
 
 function UIMgr:OnEnterState(stateEnum)
-    self._allUIState[stateEnum]:EnterCanvas()
+    self._allUIState[stateEnum]:onEnterState()
 end
 
-function UIMgr:OnLeaveState(stateEnum)
-    self._allUIState[stateEnum]:LeaveCanvas()
+function UIMgr:onLeaveState(stateEnum)
+    self._allUIState[stateEnum]:onExitState()
 end
 
-function UIMgr:OnCreateCtrl(ctrlEnum)
-
-end
-
-function UIMgr:OnDestroyCtrl(ctrlEnum)
+function UIMgr:showPanel(name, ...)
 
 end
 
-function UIMgr:OnActiveCtrl(ctrlEnum)
+function UIMgr:refreshPanel(name, ...)
 
 end
 
-function UIMgr:OnDeActiveCtrl(ctrlEnum)
+function UIMgr:hidePanel(name, ...)
+
+end
+
+function UIMgr:resumePanel(name, ...)
+
+end
+
+function UIMgr:closePanel(name, ...)
 
 end
 

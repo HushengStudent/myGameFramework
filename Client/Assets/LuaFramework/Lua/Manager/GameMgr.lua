@@ -7,9 +7,9 @@ local GameMgr = class("GameMgr")
 function GameMgr:ctor()
 end
 
-function GameMgr:StartGame()
+function GameMgr:startGame()
 
-    g_uiMgr:StartUI()
+    g_uiMgr:startUI()
 
 end
 

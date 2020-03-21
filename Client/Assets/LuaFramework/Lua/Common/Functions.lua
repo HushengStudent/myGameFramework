@@ -113,6 +113,8 @@ function table.unique(t, bArray)
     return n
 end
 
+--==============================================================================
+
 string._htmlspecialchars_set = {}
 string._htmlspecialchars_set["&"] = "&amp;"
 string._htmlspecialchars_set["\""] = "&quot;"
@@ -275,6 +277,8 @@ function dump(value, description, nesting)
     log(info)
 end
 
+--==============================================================================
+
 function checknumber(value, base)
     return tonumber(value, base) or 0
 end
@@ -293,6 +297,8 @@ function checktable(value)
     end
     return value
 end
+
+--==============================================================================
 
 local iskindof_
 iskindof_ = function(cls, name)
@@ -337,29 +343,7 @@ function iskindof(obj, classname)
     return false
 end
 
-function clone(object)
-    local lookup_table = {}
-    local function _copy(object)
-        if type(object) ~= "table" then
-            return object
-        elseif lookup_table[object] then
-            return lookup_table[object]
-        end
-        local newObject = {}
-        lookup_table[object] = newObject
-        for key, value in pairs(object) do
-            newObject[_copy(key)] = _copy(value)
-        end
-        return setmetatable(newObject, getmetatable(object))
-    end
-    return _copy(object)
-end
-
-function handler(obj, method)
-    return function(...)
-        return method(obj, ...)
-    end
-end
+--==============================================================================
 
 function math.round(value)
     value = checknumber(value)
@@ -446,6 +430,32 @@ function io.filesize(path)
         io.close(file)
     end
     return size
+end
+
+--==============================================================================
+
+function clone(object)
+    local lookup_table = {}
+    local function _copy(object)
+        if type(object) ~= "table" then
+            return object
+        elseif lookup_table[object] then
+            return lookup_table[object]
+        end
+        local newObject = {}
+        lookup_table[object] = newObject
+        for key, value in pairs(object) do
+            newObject[_copy(key)] = _copy(value)
+        end
+        return setmetatable(newObject, getmetatable(object))
+    end
+    return _copy(object)
+end
+
+function handler(obj, method)
+    return function(...)
+        return method(obj, ...)
+    end
 end
 
 function IsNil(uObj)

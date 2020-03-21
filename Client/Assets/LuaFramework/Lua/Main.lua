@@ -29,7 +29,7 @@ function Main()
     log("main logic start")
     --test_pblua_func()
     --TestSendPblua()
-    g_gameMgr:StartGame()
+    g_gameMgr:startGame()
 end
 
 --场景切换通知

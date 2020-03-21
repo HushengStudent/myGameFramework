@@ -8,27 +8,27 @@ function BaseCtrl:ctor()
 
 end
 
-function BaseCtrl:GetCtrl(ctrlName)
+function BaseCtrl:onInit(...)
 
 end
 
-function BaseCtrl:OnInitialize(args)
+function BaseCtrl:onRefresh(...)
 
 end
 
-function BaseCtrl:OnUpdate(interval)
+function BaseCtrl:onUpdate(interval)
 
 end
 
-function BaseCtrl:OnHide()
+function BaseCtrl:onHide(...)
 
 end
 
-function BaseCtrl:OnResume()
+function BaseCtrl:onResume(...)
 
 end
 
-function BaseCtrl:UnInitialize()
+function BaseCtrl:UnInitialize(...)
 
 end
 
