@@ -27,7 +27,7 @@ namespace Framework
             {
                 if (null == _button)
                 {
-                    _button = this.gameObject.GetComponent<Button>();
+                    _button = gameObject.GetComponent<Button>();
                 }
                 return _button;
             }
@@ -39,7 +39,7 @@ namespace Framework
             {
                 if (null == _image)
                 {
-                    _image = this.gameObject.GetComponent<Image>();
+                    _image = gameObject.GetComponent<Image>();
                 }
                 return _image;
             }
@@ -51,7 +51,7 @@ namespace Framework
             {
                 if (null == _slider)
                 {
-                    _slider = this.gameObject.GetComponent<Slider>();
+                    _slider = gameObject.GetComponent<Slider>();
                 }
                 return _slider;
             }

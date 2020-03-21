@@ -28,7 +28,7 @@ function BaseCtrl:onResume(...)
 
 end
 
-function BaseCtrl:UnInitialize(...)
+function BaseCtrl:onUnInit(...)
 
 end
 
