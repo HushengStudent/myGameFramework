@@ -25,23 +25,23 @@ logColor = LogColor
 
 ---log print
 function log(msg)
-    logHelper.Print(msg, debug.traceback())
+    logHelper.Print(msg .. "\r\n", debug.traceback())
 end
 
 function logWarn(msg)
-    logHelper.PrintWarning(msg, debug.traceback())
+    logHelper.PrintWarning(msg .. "\r\n", debug.traceback())
 end
 
 function logError(msg)
-    logHelper.PrintError(msg, debug.traceback())
+    logHelper.PrintError(msg .. "\r\n", debug.traceback())
 end
 
 function logGreen(msg)
-    logHelper.Print(msg, logColor.Green, debug.traceback())
+    logHelper.Print(msg .. "\r\n", logColor.Green, debug.traceback())
 end
 
 function logYellow(msg)
-    logHelper.Print(msg, logColor.Yellow, debug.traceback())
+    logHelper.Print(msg .. "\r\n", logColor.Yellow, debug.traceback())
 end
 
 --[[

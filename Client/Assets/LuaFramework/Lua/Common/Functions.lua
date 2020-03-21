@@ -164,6 +164,52 @@ function string.split(input, delimiter)
     return arr
 end
 
+function string.ltrim(input)
+    return string.gsub(input, "^[ \t\n\r]+", "")
+end
+
+function string.rtrim(input)
+    return string.gsub(input, "[ \t\n\r]+$", "")
+end
+
+function string.trim(input)
+    input = string.gsub(input, "^[ \t\n\r]+", "")
+    return string.gsub(input, "[ \t\n\r]+$", "")
+end
+
+function string.ucfirst(input)
+    return string.upper(string.sub(input, 1, 1)) .. string.sub(input, 2)
+end
+
+local function urlencodechar(char)
+    return "%" .. string.format("%02X", string.byte(char))
+end
+
+function string.urlencode(input)
+    -- convert line endings
+    input = string.gsub(tostring(input), "\n", "\r\n")
+    -- escape all characters but alphanumeric, '.' and '-'
+    input = string.gsub(input, "([^%w%.%- ])", urlencodechar)
+    -- convert spaces to "+" symbols
+    return string.gsub(input, " ", "+")
+end
+
+function string.urldecode(input)
+    input = string.gsub(input, "+", " ")
+    input = string.gsub(input, "%%(%x%x)", function(h)
+        return string.char(checknumber(h, 16))
+    end)
+    input = string.gsub(input, "\r\n", "\n")
+    return input
+end
+
+local function dump_value_(v)
+    if type(v) == "string" then
+        v = "\"" .. v .. "\""
+    end
+    return tostring(v)
+end
+
 function dump(value, description, nesting)
     if type(nesting) ~= "number" then
         nesting = 3
@@ -218,11 +264,15 @@ function dump(value, description, nesting)
             end
         end
     end
-    dump_(value, description, "- ", 1)
+    dump_(value, description, " ", 1)
 
+    local info = ""
     for i, line in ipairs(result) do
-        print(line)
+        info = info .. line .. "\r\n"
+        --print(line)
     end
+
+    log(info)
 end
 
 function checknumber(value, base)
