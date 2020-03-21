@@ -7,6 +7,11 @@ local super = import("UI.BaseCtrl")
 
 local LoginCtrl = class("LoginCtrl", super)
 
+--这里这样写主要是实现函数重载,比如BaseCtrl与LoginCtrl都有函数Display(),
+--BaseCtrl.ctor()函数中调用函数Display(),则使用super.ctor(self)调用的话,
+--BaseCtrl.ctor()调用的就是LoginCtrl中的Display()而不是BaseCtrl中的Display(),
+--使用super:ctor()调用的话,BaseCtrl.ctor()调用的就是BaseCtrl中的Display(),重载错误!
+
 function LoginCtrl:ctor()
     super.ctor(self)
     self:ctorEx()

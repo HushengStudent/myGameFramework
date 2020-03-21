@@ -26,7 +26,7 @@ function UIMgr:onLeaveState(stateEnum)
 end
 
 function UIMgr:showPanel(name, ...)
-
+    local panel = import("..UI.Panel." .. name).new()
 end
 
 function UIMgr:refreshPanel(name, ...)
