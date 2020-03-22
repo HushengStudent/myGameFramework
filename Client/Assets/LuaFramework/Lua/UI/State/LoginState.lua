@@ -10,11 +10,11 @@ function LoginState:ctor()
 end
 
 function LoginState:onEnterState()
-    g_uiMgr:showPanel(g_uiMgr.ctrlEnum.LoginCtrl)
+    g_uiMgr:showPanel(g_uiMgr.panelEnum.Login)
 end
 
 function LoginState:onExitState()
-    g_uiMgr:closePanel(g_uiMgr.ctrlEnum.CtrlEnum.LoginCtrl)
+    g_uiMgr:closePanel(g_uiMgr.panelEnum.Login)
 end
 
 return LoginState

@@ -1,49 +1,49 @@
 ---
----Auto generated@2020/3/22 17:06:05.
+---Auto generated@2020/3/22 19:56:33.
 ---Coding to do what u want to do.
 ---
 
-local super = import("UI.BaseCtrl")
+local super = import("UI.BasePanel")
 
-local LoginCtrl = class("LoginCtrl", super)
+local LoginPanel = class("LoginPanel", super)
 
 --这里这样写主要是实现函数重载,比如BaseCtrl与LoginCtrl都有函数Display(),
 --BaseCtrl.ctor()函数中调用函数Display(),则使用super.ctor(self)调用的话,
 --BaseCtrl.ctor()调用的就是LoginCtrl中的Display()而不是BaseCtrl中的Display(),
 --使用super:ctor()调用的话,BaseCtrl.ctor()调用的就是BaseCtrl中的Display(),重载错误!
-function LoginCtrl:ctor()
+function LoginPanel:ctor()
     super.ctor(self)
     self:ctorEx()
 end
 
-function LoginCtrl:onInit(...)
+function LoginPanel:onInit(...)
     super.onInit(self, ...)
     local layout = import(".LoginLayout").new()
     self.layout = layout:BindLuaCom(self.go)
     self:onInitEx(...)
 end
 
-function LoginCtrl:onRefresh(...)
+function LoginPanel:onRefresh(...)
     super.onRefresh(self, ...)
     self:onRefreshEx(...)
 end
 
-function LoginCtrl:onUpdate(interval)
+function LoginPanel:onUpdate(interval)
     super.onUpdate(self, interval)
     self:onUpdateEx(interval)
 end
 
-function LoginCtrl:onHide(...)
+function LoginPanel:onHide(...)
     super.onHide(self, ...)
     self:onHideEx(...)
 end
 
-function LoginCtrl:onResume(...)
+function LoginPanel:onResume(...)
     super.onResume(self, ...)
     self:onResumeEx(...)
 end
 
-function LoginCtrl:onUnInit(...)
+function LoginPanel:onUnInit(...)
     super.onUnInit(self, ...)
     self:onUnInitEx(...)
 end
@@ -52,11 +52,11 @@ end
 
 
 
-function LoginCtrl:ctorEx()
+function LoginPanel:ctorEx()
 
 end
 
-function LoginCtrl:onInitEx(...)
+function LoginPanel:onInitEx(...)
     --Test Net
     local login = login_pb.LoginRequest()
     login.id = 2000
@@ -69,24 +69,24 @@ function LoginCtrl:onInitEx(...)
     --networkMgr:SendMessage(buffer)
 end
 
-function LoginCtrl:onRefreshEx(...)
+function LoginPanel:onRefreshEx(...)
 
 end
 
-function LoginCtrl:onUpdateEx(interval)
+function LoginPanel:onUpdateEx(interval)
 
 end
 
-function LoginCtrl:onHideEx()
+function LoginPanel:onHideEx()
 
 end
 
-function LoginCtrl:onResumeEx()
+function LoginPanel:onResumeEx()
 
 end
 
-function LoginCtrl:onUnInitEx()
+function LoginPanel:onUnInitEx()
 
 end
 
-return LoginCtrl
+return LoginPanel

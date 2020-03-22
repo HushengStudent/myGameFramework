@@ -9,6 +9,15 @@ using UnityEngine.UI;
 
 public class LuaUIEditorHelper
 {
+    public readonly static string FilePath =
+            "Assets/LuaFramework/Lua/UI/Panel/";
+
+    public readonly static string LuaCom =
+        "    self.layout.Name = component.LuaUIComArray[index]";
+
+    public readonly static string LuaTemplate =
+        "    self.layout.Name = component.LuaUITemplateArray[index]";
+
     public static string GetLuaUIComName(GameObject go)
     {
         if (!go)

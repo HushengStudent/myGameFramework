@@ -6,7 +6,7 @@ local UIMgr = class("UIMgr")
 
 function UIMgr:ctor()
     self.stateEnum = import("UI.StateEnum")
-    self.ctrlEnum = import("UI.CtrlEnum")
+    self.panelEnum = import("UI.PanelEnum")
     self._allUIState = {}
     self._allUIState[self.stateEnum.LoginState] = import("UI.State.LoginState")
 
@@ -26,7 +26,8 @@ function UIMgr:onLeaveState(stateEnum)
 end
 
 function UIMgr:showPanel(name, ...)
-    local panel = import("..UI.Panel." .. name).new()
+    local fileName = string.format("..UI.Panel.%s.%sPanel", name, name )
+    local panel = import(fileName).new()
 end
 
 function UIMgr:refreshPanel(name, ...)

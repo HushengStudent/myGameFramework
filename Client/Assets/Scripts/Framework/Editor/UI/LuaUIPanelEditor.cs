@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/01/17 23:41:41
-** desc:  编辑器扩展;
+** desc:  Lua UI编辑器;
 *********************************************************************************/
 
 using System;
@@ -16,33 +16,26 @@ namespace Framework
     [CustomEditor(typeof(LuaUIPanel))]
     public class LuaUIPanelEditor : Editor
     {
-        private readonly static string _filePath =
-            "Assets/LuaFramework/Lua/UI/Panel/";
-        private readonly static string _luaCom =
-            "    self.layout.Name = luaUIPanel.LuaUIComArray[index]";
-        private readonly static string _luaTemplate =
-            "    self.layout.Name = luaUIPanel.LuaUITemplateArray[index]";
-
         #region Code Template
 
-        private StringBuilder _ctrlBuilder = new StringBuilder()
+        private StringBuilder _panelBuilder = new StringBuilder()
             .AppendLine("---")
             .AppendLine("---Auto generated@Time.")
             .AppendLine("---Coding to do what u want to do.")
             .AppendLine("---")
             .AppendLine("")
 
-            .AppendLine("local super = import(\"UI.BaseCtrl\")")
+            .AppendLine("local super = import(\"UI.BasePanel\")")
             .AppendLine("")
-            .AppendLine("local NameCtrl = class(\"NameCtrl\", super)")
+            .AppendLine("local NamePanel = class(\"NamePanel\", super)")
             .AppendLine("")
-            .AppendLine("function NameCtrl:ctor()")
+            .AppendLine("function NamePanel:ctor()")
             .AppendLine("    super.ctor(self)")
             .AppendLine("    self:ctorEx()")
             .AppendLine("end")
             .AppendLine("")
 
-            .AppendLine("function NameCtrl:onInit(...)")
+            .AppendLine("function NamePanel:onInit(...)")
             .AppendLine("    super.onInit(self, ...)")
             .AppendLine("    local layout = import(\".NameLayout\").new()")
             .AppendLine("    self.layout = layout:BindLuaCom(self.go)")
@@ -50,31 +43,31 @@ namespace Framework
             .AppendLine("end")
             .AppendLine("")
 
-            .AppendLine("function NameCtrl:onRefresh(...)")
+            .AppendLine("function NamePanel:onRefresh(...)")
             .AppendLine("    super.onRefresh(self, ...)")
             .AppendLine("    self:onRefreshEx(...)")
             .AppendLine("end")
             .AppendLine("")
 
-            .AppendLine("function NameCtrl:onUpdate(interval)")
+            .AppendLine("function NamePanel:onUpdate(interval)")
             .AppendLine("    super.onUpdate(self, interval)")
             .AppendLine("    self:onUpdateEx(interval)")
             .AppendLine("end")
             .AppendLine("")
 
-            .AppendLine("function NameCtrl:onHide(...)")
+            .AppendLine("function NamePanel:onHide(...)")
             .AppendLine("    super.onHide(self, ...)")
             .AppendLine("    self:onHideEx(...)")
             .AppendLine("end")
             .AppendLine("")
 
-            .AppendLine("function NameCtrl:onResume(...)")
+            .AppendLine("function NamePanel:onResume(...)")
             .AppendLine("    super.onResume(self, ...)")
             .AppendLine("    self:onResumeEx(...)")
             .AppendLine("end")
             .AppendLine("")
 
-            .AppendLine("function NameCtrl:onUnInit(...)")
+            .AppendLine("function NamePanel:onUnInit(...)")
             .AppendLine("    super.onUnInit(self, ...)")
             .AppendLine("    self:onUnInitEx(...)")
             .AppendLine("end")
@@ -85,41 +78,41 @@ namespace Framework
             .AppendLine("")
             .AppendLine("")
             .AppendLine("")
-            .AppendLine("function NameCtrl:ctorEx()")
+            .AppendLine("function NamePanel:ctorEx()")
             .AppendLine("")
             .AppendLine("end")
             .AppendLine("")
 
-            .AppendLine("function NameCtrl:onInitEx(...)")
+            .AppendLine("function NamePanel:onInitEx(...)")
             .AppendLine("")
             .AppendLine("end")
             .AppendLine("")
 
-            .AppendLine("function NameCtrl:onRefreshEx(...)")
+            .AppendLine("function NamePanel:onRefreshEx(...)")
             .AppendLine("")
             .AppendLine("end")
             .AppendLine("")
 
-            .AppendLine("function NameCtrl:onUpdateEx(interval)")
+            .AppendLine("function NamePanel:onUpdateEx(interval)")
             .AppendLine("")
             .AppendLine("end")
             .AppendLine("")
 
-            .AppendLine("function NameCtrl:onHideEx()")
+            .AppendLine("function NamePanel:onHideEx()")
             .AppendLine("")
             .AppendLine("end")
             .AppendLine("")
 
-            .AppendLine("function NameCtrl:onResumeEx()")
+            .AppendLine("function NamePanel:onResumeEx()")
             .AppendLine("")
             .AppendLine("end")
             .AppendLine("")
 
-            .AppendLine("function NameCtrl:onUnInitEx()")
+            .AppendLine("function NamePanel:onUnInitEx()")
             .AppendLine("")
             .AppendLine("end")
             .AppendLine("")
-            .AppendLine("return NameCtrl");
+            .AppendLine("return NamePanel");
 
         private StringBuilder _layoutBuilder = new StringBuilder()
             .AppendLine("---")
@@ -127,58 +120,59 @@ namespace Framework
             .AppendLine("---Don't coding.")
             .AppendLine("---")
             .AppendLine("")
-            .AppendLine("local NameLayout = {}")
+            .AppendLine("local NamePanelLayout = {}")
             .AppendLine("")
-            .AppendLine("function NameLayout:BindLuaCom(go)")
+            .AppendLine("function NamePanelLayout:BindLuaCom(go)")
             .AppendLine("")
-            .AppendLine("    local luaUIPanel = go:GetComponent(\"LuaUIPanel\")")
+            .AppendLine("    local component = go:GetComponent(\"LuaUIPanel\")")
             .AppendLine("    self.layout = {}")
             .AppendLine("")
             .AppendLine("#List#")
             .AppendLine("    return self.layout")
             .AppendLine("end")
             .AppendLine("")
-            .AppendLine("return NameLayout")
+            .AppendLine("return NamePanelLayout")
             .AppendLine("");
 
         #endregion
 
         public override void OnInspectorGUI()
         {
-            DrawDefaultInspector();
-
+            base.OnInspectorGUI();
             var originalColor = GUI.backgroundColor;
             GUILayout.Space(5);
             GUI.backgroundColor = Color.yellow;
+
+            var luaUIPanel = target as LuaUIPanel;
+            if (null == luaUIPanel)
+            {
+                LogHelper.PrintError("[LuaUIPanelEditor]LuaUIPanel is null.");
+                return;
+            }
+            var panelName = luaUIPanel.gameObject.name;
+            var panelPath = $"{LuaUIEditorHelper.FilePath}{panelName}/";
+
             if (GUILayout.Button("Create Panel", GUILayout.Height(26)))
             {
-                var ctrl = target as LuaUIPanel;
-                if (null == ctrl)
-                {
-                    LogHelper.PrintError("[LuaUIPanelEditor]LuaUIPanel is null.");
-                    return;
-                }
-                var ctrlName = ctrl.gameObject.name;
-                var ctrlPath = $"{_filePath}{ctrlName}/";
-                var fileName = $"{ctrlPath}{ctrlName}Ctrl.lua";
-                var codeText = _ctrlBuilder.ToString().Replace("Name", ctrlName)
+                var fileName = $"{panelPath}{panelName}Panel.lua";
+                var codeText = _panelBuilder.ToString().Replace("Name", panelName)
                     .Replace("Time", DateTime.Now.ToString());
 
                 if (File.Exists(fileName))
                 {
                     GUIUtility.systemCopyBuffer = codeText;
-                    EditorUtility.DisplayDialog("Dialog", $"file:{ctrlName}Ctrl.lua save to clipboard!", "Ok");
+                    EditorUtility.DisplayDialog("Dialog", $"file:{panelName}Panel.lua save to clipboard!", "Ok");
                     return;
                 }
-                if (!Directory.Exists(ctrlPath))
+                if (!Directory.Exists(panelPath))
                 {
-                    Directory.CreateDirectory(ctrlPath);
+                    Directory.CreateDirectory(panelPath);
                 }
                 TextWriter tw = new StreamWriter(fileName);
                 tw.Close();
                 File.WriteAllText(fileName, codeText);
 
-                EditorUtility.DisplayDialog("Dialog", $"file:{ctrlName}Ctrl.lua create success!", "Ok");
+                EditorUtility.DisplayDialog("Dialog", $"file:{panelName}Panel.lua create success!", "Ok");
 
                 AssetDatabase.Refresh();
             }
@@ -187,13 +181,7 @@ namespace Framework
             GUI.backgroundColor = Color.green;
             if (GUILayout.Button("Update Layout", GUILayout.Height(26)))
             {
-                var ctrl = target as LuaUIPanel;
-                if (null == ctrl)
-                {
-                    LogHelper.PrintError("[LuaUIPanelEditor]LuaUIPanel is null.");
-                    return;
-                }
-                var allNode = RecursiveGetPanelComNode(ctrl.gameObject.transform);
+                var allNode = RecursiveGetPanelComNode(luaUIPanel.gameObject.transform);
                 for (int i = 0; i < allNode.Length; i++)
                 {
                     var com = allNode[i].GetComponent<LuaUICom>();
@@ -213,7 +201,7 @@ namespace Framework
                     if (go.name.StartsWith("Com_"))
                     {
                         var com = go.AddComponent<LuaUICom>();
-                        com.LuaUIPanel = ctrl;
+                        com.LuaUIPanel = luaUIPanel;
                         com.LuaUIComName = $"_errorNameCom{i}";
                         var tempName = LuaUIEditorHelper.GetLuaUIComName(go);
                         if (!string.IsNullOrWhiteSpace(tempName))
@@ -224,7 +212,7 @@ namespace Framework
                         comDict[com] = conList.Count - 1;
                     }
                 }
-                var infoBuilder = new StringBuilder();
+                var logBuilder = new StringBuilder();
                 foreach (var parent in comDict)
                 {
                     var indexBuilder = new StringBuilder();
@@ -249,13 +237,13 @@ namespace Framework
                         nameList.Add(parent.Key.LuaUIComName);
 
                         var log = $"repeat name:{parent.Key.LuaUIComName}:{parent.Value} {indexInfo}";
-                        infoBuilder.AppendLine(log);
+                        logBuilder.AppendLine(log);
                     }
                 }
-                ctrl.LuaUIComArray = conList.ToArray();
+                luaUIPanel.LuaUIComArray = conList.ToArray();
 
                 //LuaUITemplate
-                var allTemplate = ctrl.gameObject.GetComponentsInChildren<LuaUITemplate>(true);
+                var allTemplate = luaUIPanel.gameObject.GetComponentsInChildren<LuaUITemplate>(true);
                 var templateDict = new Dictionary<LuaUITemplate, int>();
                 var templateList = new List<LuaUITemplate>();
                 var templateNameList = new List<string>();
@@ -263,8 +251,8 @@ namespace Framework
                 {
                     var template = allTemplate[i];
                     var templateName = template.gameObject.name;
-                    template.LuaUIPanel = ctrl;
-                    var tempName = $"{ctrl.gameObject.name}{templateName}Template";
+                    template.LuaUIPanel = luaUIPanel;
+                    var tempName = $"{luaUIPanel.gameObject.name}{templateName}Template";
                     template.LuaUITemplateName = $"_{LuaUIEditorHelper.CheckName(tempName)}";
                     templateList.Add(template);
                     templateDict[template] = templateList.Count - 1;
@@ -293,56 +281,56 @@ namespace Framework
                         templateNameList.Add(parent.Key.LuaUITemplateName);
 
                         var log = $"repeat name:{parent.Key.LuaUITemplateName}:{parent.Value} {indexInfo}";
-                        infoBuilder.AppendLine(log);
+                        logBuilder.AppendLine(log);
                     }
                 }
-                ctrl.LuaUITemplateArray = templateList.ToArray();
+                luaUIPanel.LuaUITemplateArray = templateList.ToArray();
 
                 //
-                var ctrlName = ctrl.gameObject.name;
-                var ctrlPath = $"{_filePath}{ctrlName}/";
-                var fileName = $"{ctrlPath}{ctrlName}Layout.lua";
+                var fileName = $"{panelPath}{panelName}PanelLayout.lua";
                 if (File.Exists(fileName))
                 {
                     File.Delete(fileName);
                 }
-                if (!Directory.Exists(ctrlPath))
+                if (!Directory.Exists(panelPath))
                 {
-                    Directory.CreateDirectory(ctrlPath);
+                    Directory.CreateDirectory(panelPath);
                 }
                 TextWriter tw = new StreamWriter(fileName);
                 tw.Close();
 
-                var codeText = _layoutBuilder.ToString().Replace("Name", ctrlName).Replace("Prefab", ctrlName)
-                    .Replace("Time", DateTime.Now.ToString());
+                var codeText = _layoutBuilder.ToString().Replace("Name", panelName)
+                    .Replace("Prefab", panelName).Replace("Time", DateTime.Now.ToString());
 
                 var codeBuilder = new StringBuilder();
-                for (int i = 0; i < ctrl.LuaUIComArray.Length; i++)
+                for (int i = 0; i < luaUIPanel.LuaUIComArray.Length; i++)
                 {
-                    var name = ctrl.LuaUIComArray[i].LuaUIComName;
+                    var name = luaUIPanel.LuaUIComArray[i].LuaUIComName;
                     var index = i.ToString();
-                    codeBuilder.AppendLine(_luaCom.Replace("Name", name).Replace("index", index));
+                    codeBuilder.AppendLine(LuaUIEditorHelper.LuaCom.Replace("Name", name)
+                        .Replace("index", index));
                 }
                 codeBuilder.AppendLine("");
-                for (int i = 0; i < ctrl.LuaUITemplateArray.Length; i++)
+                for (int i = 0; i < luaUIPanel.LuaUITemplateArray.Length; i++)
                 {
-                    var name = ctrl.LuaUITemplateArray[i].LuaUITemplateName;
+                    var name = luaUIPanel.LuaUITemplateArray[i].LuaUITemplateName;
                     var index = i.ToString();
-                    codeBuilder.AppendLine(_luaTemplate.Replace("Name", name).Replace("index", index));
+                    codeBuilder.AppendLine(LuaUIEditorHelper.LuaTemplate.Replace("Name", name)
+                        .Replace("index", index));
                 }
 
                 codeText = codeText.Replace("#List#", codeBuilder.ToString());
                 File.WriteAllText(fileName, codeText);
 
-                var info = infoBuilder.ToString();
-                if (!string.IsNullOrWhiteSpace(info))
+                var logInfo = logBuilder.ToString();
+                if (!string.IsNullOrWhiteSpace(logInfo))
                 {
                     var title = "!!!Error>>>>>>>>>>>>>>>\r\n\r\n";
-                    EditorUtility.DisplayDialog("Dialog", $"{title}{info}", "Ok");
+                    EditorUtility.DisplayDialog("Dialog", $"{title}{logInfo}", "Ok");
                 }
                 else
                 {
-                    EditorUtility.DisplayDialog("Dialog", $"file:{ctrlName}Layout.lua create success!", "Ok");
+                    EditorUtility.DisplayDialog("Dialog", $"file:{panelName}PanelLayout.lua create success!", "Ok");
                 }
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
