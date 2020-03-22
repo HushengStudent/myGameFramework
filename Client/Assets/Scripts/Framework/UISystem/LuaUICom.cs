@@ -104,5 +104,13 @@ namespace Framework
             }
             Image.color = gray ? Color.black : Color.white;
         }
+
+        private void OnDestroy()
+        {
+            if (_button)
+            {
+                _button.onClick.RemoveAllListeners();
+            }
+        }
     }
 }

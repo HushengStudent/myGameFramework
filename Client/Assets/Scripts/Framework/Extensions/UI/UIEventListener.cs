@@ -4,8 +4,6 @@
 ** desc:  UGUI扩展;
 *********************************************************************************/
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -42,25 +40,42 @@ namespace Framework
         public UIEventDelegate onScroll;
         public UIEventDelegate onMove;
 
-        public void OnPointerClick(PointerEventData eventData) { if (onClick != null) onClick(eventData, gameObject); }
-        public void OnPointerDown(PointerEventData eventData) { if (onDown != null) onDown(eventData, gameObject); }
-        public void OnPointerEnter(PointerEventData eventData) { if (onEnter != null) onEnter(eventData, gameObject); }
-        public void OnPointerExit(PointerEventData eventData) { if (onExit != null) onExit(eventData, gameObject); }
-        public void OnPointerUp(PointerEventData eventData) { if (onUp != null) onUp(eventData, gameObject); }
-        public void OnSelect(BaseEventData eventData) { if (onSelect != null) onSelect(eventData, gameObject); }
-        public void OnUpdateSelected(BaseEventData eventData) { if (onUpdateSelect != null) onUpdateSelect(eventData, gameObject); }
-        public void OnDeselect(BaseEventData eventData) { if (onDeSelect != null) onDeSelect(eventData, gameObject); }
-        public void OnDrag(PointerEventData eventData) { if (onDrag != null) onDrag(eventData, gameObject); }
-        public void OnEndDrag(PointerEventData eventData) { if (onDragEnd != null) onDragEnd(eventData, gameObject); }
-        public void OnDrop(PointerEventData eventData) { if (onDrop != null) onDrop(eventData, gameObject); }
-        public void OnScroll(PointerEventData eventData) { if (onScroll != null) onScroll(eventData, gameObject); }
-        public void OnMove(AxisEventData eventData) { if (onMove != null) onMove(eventData, gameObject); }
+        public void OnPointerClick(PointerEventData eventData) { onClick?.Invoke(eventData, gameObject); }
+        public void OnPointerDown(PointerEventData eventData) { onDown?.Invoke(eventData, gameObject); }
+        public void OnPointerEnter(PointerEventData eventData) { onEnter?.Invoke(eventData, gameObject); }
+        public void OnPointerExit(PointerEventData eventData) { onExit?.Invoke(eventData, gameObject); }
+        public void OnPointerUp(PointerEventData eventData) { onUp?.Invoke(eventData, gameObject); }
+        public void OnSelect(BaseEventData eventData) { onSelect?.Invoke(eventData, gameObject); }
+        public void OnUpdateSelected(BaseEventData eventData) { onUpdateSelect?.Invoke(eventData, gameObject); }
+        public void OnDeselect(BaseEventData eventData) { onDeSelect?.Invoke(eventData, gameObject); }
+        public void OnDrag(PointerEventData eventData) { onDrag?.Invoke(eventData, gameObject); }
+        public void OnEndDrag(PointerEventData eventData) { onDragEnd?.Invoke(eventData, gameObject); }
+        public void OnDrop(PointerEventData eventData) { onDrop?.Invoke(eventData, gameObject); }
+        public void OnScroll(PointerEventData eventData) { onScroll?.Invoke(eventData, gameObject); }
+        public void OnMove(AxisEventData eventData) { onMove?.Invoke(eventData, gameObject); }
 
         static public UIEventListener Get(GameObject go)
         {
             UIEventListener listener = go.GetComponent<UIEventListener>();
             if (listener == null) listener = go.AddComponent<UIEventListener>();
             return listener;
+        }
+
+        private void OnDestroy()
+        {
+            onClick = null;
+            onDown = null;
+            onEnter = null;
+            onExit = null;
+            onUp = null;
+            onSelect = null;
+            onUpdateSelect = null;
+            onDeSelect = null;
+            onDrag = null;
+            onDragEnd = null;
+            onDrop = null;
+            onScroll = null;
+            onMove = null;
         }
     }
 }

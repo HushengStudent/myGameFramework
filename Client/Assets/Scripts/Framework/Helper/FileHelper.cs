@@ -83,8 +83,10 @@ namespace Framework
 
         public static byte[] ReadFromFile(string path)
         {
-            MemoryStream ms = new MemoryStream();
-            ms.Position = 0;
+            MemoryStream ms = new MemoryStream
+            {
+                Position = 0
+            };
             ms.SetLength(0);
             try
             {
@@ -123,6 +125,53 @@ namespace Framework
                 LogHelper.PrintWarning(e.ToString());
             }
             return ms.GetBuffer();
+        }
+
+        /// <summary>
+        /// 文件拷贝;
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <param name="Length"></param>
+        /// <returns></returns>
+        public static bool CopyFile(string from, string to, int Length = 1024 * 1024)
+        {
+            FileStream source = new FileStream(from, FileMode.Open, FileAccess.Read);
+            FileStream dest = new FileStream(to, FileMode.Append, FileAccess.Write);
+            int allLength = 0;
+            if (Length < source.Length)
+            {
+                byte[] buffer = new byte[Length];
+                long finishLength = 0;
+                while (finishLength <= source.Length - Length)
+                {
+                    allLength = source.Read(buffer, 0, Length);
+                    source.Flush();
+                    dest.Write(buffer, 0, Length);
+                    dest.Flush();
+                    dest.Position = source.Position;
+                    finishLength += allLength;
+
+                }
+                int left = (int)(source.Length - finishLength);
+                allLength = source.Read(buffer, 0, left);
+                source.Flush();
+                dest.Write(buffer, 0, left);
+                dest.Flush();
+
+            }
+            else
+            {
+                byte[] buffer = new byte[source.Length];
+                source.Read(buffer, 0, buffer.Length);
+                source.Flush();
+                dest.Write(buffer, 0, buffer.Length);
+                dest.Flush();
+
+            }
+            source.Close();
+            dest.Close();
+            return true;
         }
 
         #endregion

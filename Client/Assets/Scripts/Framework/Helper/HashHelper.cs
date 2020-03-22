@@ -5,6 +5,7 @@
 *********************************************************************************/
 
 using System;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -38,13 +39,42 @@ namespace Framework
         }
 
         /// <summary>
+        /// 文件MD5;
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static string GetFileMD5(string path)
+        {
+            if (!File.Exists(path))
+            {
+                return string.Empty;
+            }
+            var bufferSize = 1024 * 16;//缓冲区大小16K,默认4K
+            var buffer = new byte[bufferSize];
+            using (var stream = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                MD5 md5 = MD5.Create();
+                int length = 0;
+                var output = new byte[bufferSize];
+                while ((length = stream.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    md5.TransformBlock(buffer, 0, length, output, 0);
+                }
+                md5.TransformFinalBlock(buffer, 0, 0);
+                var hash = BitConverter.ToString(md5.Hash).Replace("-", "");
+                md5.Clear();
+                stream.Close();
+                return hash;
+            }
+        }
+
+        /// <summary>
         /// 计算字符串的Hash;
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
         public static string GetHash(string str)
         {
-
             return GetHash(Encoding.UTF8.GetBytes(str));
         }
 
