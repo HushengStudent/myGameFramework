@@ -152,6 +152,9 @@ namespace Framework
             var panelName = luaUIPanel.gameObject.name;
             var panelPath = $"{LuaUIEditorHelper.FilePath}{panelName}/";
 
+            EditorGUILayout.BeginVertical(GUI.skin.box);
+            GUILayout.Space(5);
+            GUI.backgroundColor = Color.red;
             if (GUILayout.Button("Create Panel", GUILayout.Height(26)))
             {
                 var fileName = $"{panelPath}{panelName}Panel.lua";
@@ -335,6 +338,8 @@ namespace Framework
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
             }
+            GUILayout.Space(5);
+            EditorGUILayout.EndVertical();
             GUI.backgroundColor = originalColor;
         }
 
