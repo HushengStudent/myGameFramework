@@ -12,8 +12,14 @@ namespace Framework
 {
     public class LuaUICom : MonoBehaviour
     {
+        [HideInInspector]
         [SerializeField]
         public LuaUIPanel LuaUIPanel;
+
+        [HideInInspector]
+        [SerializeField]
+        public LuaUITemplate LuaUITemplate;
+
         [SerializeField]
         public string LuaUIComName;
 

@@ -19,7 +19,9 @@ namespace Framework
         private readonly static string _filePath =
             "Assets/LuaFramework/Lua/UI/Panel/";
         private readonly static string _luaCom =
-            "    self.layout.Name = luaUIPanel.luaUIComArray[index]";
+            "    self.layout.Name = luaUIPanel.LuaUIComArray[index]";
+        private readonly static string _luaTemplate =
+            "    self.layout.Name = luaUIPanel.LuaUITemplateArray[index]";
 
         #region Code Template
 
@@ -131,6 +133,7 @@ namespace Framework
             .AppendLine("")
             .AppendLine("    local luaUIPanel = go:GetComponent(\"LuaUIPanel\")")
             .AppendLine("    self.layout = {}")
+            .AppendLine("")
             .AppendLine("#List#")
             .AppendLine("    return self.layout")
             .AppendLine("end")
@@ -144,10 +147,10 @@ namespace Framework
         {
             DrawDefaultInspector();
 
-            GUILayout.Space(5);
             var originalColor = GUI.backgroundColor;
-            GUI.backgroundColor = Color.green;
-            if (GUILayout.Button("Create Ctrl", GUILayout.Height(30)))
+            GUILayout.Space(5);
+            GUI.backgroundColor = Color.yellow;
+            if (GUILayout.Button("Create Panel", GUILayout.Height(26)))
             {
                 var ctrl = target as LuaUIPanel;
                 if (null == ctrl)
@@ -155,33 +158,34 @@ namespace Framework
                     LogHelper.PrintError("[LuaUIPanelEditor]LuaUIPanel is null.");
                     return;
                 }
-                var name = ctrl.gameObject.name;
-                var path = $"{_filePath}{name}/";
-                var fileName = $"{path}{name}Ctrl.lua";
-                var codeText = _ctrlBuilder.ToString().Replace("Name", name)
+                var ctrlName = ctrl.gameObject.name;
+                var ctrlPath = $"{_filePath}{ctrlName}/";
+                var fileName = $"{ctrlPath}{ctrlName}Ctrl.lua";
+                var codeText = _ctrlBuilder.ToString().Replace("Name", ctrlName)
                     .Replace("Time", DateTime.Now.ToString());
 
                 if (File.Exists(fileName))
                 {
                     GUIUtility.systemCopyBuffer = codeText;
-                    EditorUtility.DisplayDialog("Dialog", $"file:{name}Ctrl.lua save to clipboard!", "Ok");
+                    EditorUtility.DisplayDialog("Dialog", $"file:{ctrlName}Ctrl.lua save to clipboard!", "Ok");
                     return;
                 }
-                if (!Directory.Exists(path))
+                if (!Directory.Exists(ctrlPath))
                 {
-                    Directory.CreateDirectory(path);
+                    Directory.CreateDirectory(ctrlPath);
                 }
                 TextWriter tw = new StreamWriter(fileName);
                 tw.Close();
                 File.WriteAllText(fileName, codeText);
 
-                EditorUtility.DisplayDialog("Dialog", $"file:{name}Ctrl.lua create success!", "Ok");
+                EditorUtility.DisplayDialog("Dialog", $"file:{ctrlName}Ctrl.lua create success!", "Ok");
+
                 AssetDatabase.Refresh();
             }
 
             GUILayout.Space(5);
-            GUI.backgroundColor = Color.yellow;
-            if (GUILayout.Button("Update Layout", GUILayout.Height(30)))
+            GUI.backgroundColor = Color.green;
+            if (GUILayout.Button("Update Layout", GUILayout.Height(26)))
             {
                 var ctrl = target as LuaUIPanel;
                 if (null == ctrl)
@@ -189,12 +193,17 @@ namespace Framework
                     LogHelper.PrintError("[LuaUIPanelEditor]LuaUIPanel is null.");
                     return;
                 }
-                var allCom = ctrl.gameObject.GetComponentsInChildren<LuaUICom>(true);
-                for (int i = 0; i < allCom.Length; i++)
+                var allNode = RecursiveGetPanelComNode(ctrl.gameObject.transform);
+                for (int i = 0; i < allNode.Length; i++)
                 {
-                    DestroyImmediate(allCom[i]);
+                    var com = allNode[i].GetComponent<LuaUICom>();
+                    if (com)
+                    {
+                        DestroyImmediate(com);
+                    }
                 }
-                var allNode = ctrl.gameObject.GetComponentsInChildren<Transform>(true);
+
+                //LuaUICom
                 var comDict = new Dictionary<LuaUICom, int>();
                 var conList = new List<LuaUICom>();
                 var nameList = new List<string>();
@@ -206,7 +215,7 @@ namespace Framework
                         var com = go.AddComponent<LuaUICom>();
                         com.LuaUIPanel = ctrl;
                         com.LuaUIComName = $"_errorNameCom{i}";
-                        var tempName = LuaUIEditorHelper.GetPrefabNodeName(go);
+                        var tempName = LuaUIEditorHelper.GetLuaUIComName(go);
                         if (!string.IsNullOrWhiteSpace(tempName))
                         {
                             com.LuaUIComName = tempName;
@@ -243,51 +252,117 @@ namespace Framework
                         infoBuilder.AppendLine(log);
                     }
                 }
-                ctrl.luaUIComArray = conList.ToArray();
+                ctrl.LuaUIComArray = conList.ToArray();
 
-                var name = ctrl.gameObject.name;
-                var path = $"{_filePath}{name}/";
-                var fileName = $"{path}{name}Layout.lua";
+                //LuaUITemplate
+                var allTemplate = ctrl.gameObject.GetComponentsInChildren<LuaUITemplate>(true);
+                var templateDict = new Dictionary<LuaUITemplate, int>();
+                var templateList = new List<LuaUITemplate>();
+                var templateNameList = new List<string>();
+                for (int i = 0; i < allTemplate.Length; i++)
+                {
+                    var template = allTemplate[i];
+                    var templateName = template.gameObject.name;
+                    template.LuaUIPanel = ctrl;
+                    var tempName = $"{ctrl.gameObject.name}{templateName}Template";
+                    template.LuaUITemplateName = $"_{LuaUIEditorHelper.CheckName(tempName)}";
+                    templateList.Add(template);
+                    templateDict[template] = templateList.Count - 1;
+                }
+                foreach (var parent in templateDict)
+                {
+                    var indexBuilder = new StringBuilder();
+                    foreach (var son in templateDict)
+                    {
+                        if (templateNameList.Contains(parent.Key.LuaUITemplateName))
+                        {
+                            continue;
+                        }
+                        if (parent.Key == son.Key)
+                        {
+                            continue;
+                        }
+                        if (parent.Key.LuaUITemplateName == son.Key.LuaUITemplateName)
+                        {
+                            indexBuilder.Append($"{son.Value} ");
+                        }
+                    }
+                    var indexInfo = indexBuilder.ToString();
+                    if (!string.IsNullOrWhiteSpace(indexInfo))
+                    {
+                        templateNameList.Add(parent.Key.LuaUITemplateName);
+
+                        var log = $"repeat name:{parent.Key.LuaUITemplateName}:{parent.Value} {indexInfo}";
+                        infoBuilder.AppendLine(log);
+                    }
+                }
+                ctrl.LuaUITemplateArray = templateList.ToArray();
+
+                //
+                var ctrlName = ctrl.gameObject.name;
+                var ctrlPath = $"{_filePath}{ctrlName}/";
+                var fileName = $"{ctrlPath}{ctrlName}Layout.lua";
                 if (File.Exists(fileName))
                 {
                     File.Delete(fileName);
                 }
-                if (!Directory.Exists(path))
+                if (!Directory.Exists(ctrlPath))
                 {
-                    Directory.CreateDirectory(path);
+                    Directory.CreateDirectory(ctrlPath);
                 }
                 TextWriter tw = new StreamWriter(fileName);
                 tw.Close();
 
-                var codeText = _layoutBuilder.ToString().Replace("Name", name).Replace("Prefab", name)
+                var codeText = _layoutBuilder.ToString().Replace("Name", ctrlName).Replace("Prefab", ctrlName)
                     .Replace("Time", DateTime.Now.ToString());
 
-                var comBuilder = new StringBuilder();
-                for (int i = 0; i < ctrl.luaUIComArray.Length; i++)
+                var codeBuilder = new StringBuilder();
+                for (int i = 0; i < ctrl.LuaUIComArray.Length; i++)
                 {
-                    var comName = ctrl.luaUIComArray[i].LuaUIComName;
-                    var comIndex = i.ToString();
-                    var str = _luaCom.Replace("Name", comName).Replace("index", comIndex);
-                    comBuilder.AppendLine(str);
+                    var name = ctrl.LuaUIComArray[i].LuaUIComName;
+                    var index = i.ToString();
+                    codeBuilder.AppendLine(_luaCom.Replace("Name", name).Replace("index", index));
+                }
+                codeBuilder.AppendLine("");
+                for (int i = 0; i < ctrl.LuaUITemplateArray.Length; i++)
+                {
+                    var name = ctrl.LuaUITemplateArray[i].LuaUITemplateName;
+                    var index = i.ToString();
+                    codeBuilder.AppendLine(_luaTemplate.Replace("Name", name).Replace("index", index));
                 }
 
-                codeText = codeText.Replace("#List#", comBuilder.ToString());
+                codeText = codeText.Replace("#List#", codeBuilder.ToString());
                 File.WriteAllText(fileName, codeText);
 
                 var info = infoBuilder.ToString();
                 if (!string.IsNullOrWhiteSpace(info))
                 {
-                    EditorUtility.DisplayDialog("Dialog", info, "Ok");
+                    var title = "!!!Error>>>>>>>>>>>>>>>\r\n\r\n";
+                    EditorUtility.DisplayDialog("Dialog", $"{title}{info}", "Ok");
                 }
                 else
                 {
-                    EditorUtility.DisplayDialog("Dialog", $"file:{name}Layout.lua create success!", "Ok");
+                    EditorUtility.DisplayDialog("Dialog", $"file:{ctrlName}Layout.lua create success!", "Ok");
                 }
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
             }
-            GUI.backgroundColor = Color.blue;
             GUI.backgroundColor = originalColor;
+        }
+
+        public Transform[] RecursiveGetPanelComNode(Transform root)
+        {
+            var transList = new List<Transform>();
+            for (int i = 0; i < root.childCount; i++)
+            {
+                var child = root.GetChild(i);
+                if (!child.GetComponent<LuaUITemplate>())
+                {
+                    transList.Add(child);
+                    transList.AddRange(RecursiveGetPanelComNode(child));
+                }
+            }
+            return transList.ToArray();
         }
     }
 }

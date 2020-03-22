@@ -9,7 +9,8 @@ public class Framework_LuaUIPanelWrap
 		L.BeginClass(typeof(Framework.LuaUIPanel), typeof(UnityEngine.MonoBehaviour));
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
-		L.RegVar("luaUIComArray", get_luaUIComArray, set_luaUIComArray);
+		L.RegVar("LuaUIComArray", get_LuaUIComArray, set_LuaUIComArray);
+		L.RegVar("LuaUITemplateArray", get_LuaUITemplateArray, set_LuaUITemplateArray);
 		L.EndClass();
 	}
 
@@ -35,10 +36,10 @@ public class Framework_LuaUIPanelWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_luaUIComArray(IntPtr L)
+	static int get_LuaUIComArray(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaUIPanel.luaUIComArray");
+        ToluaProfiler.AddCallRecord("Framework.LuaUIPanel.LuaUIComArray");
 #endif
 		object o = null;
 
@@ -46,21 +47,43 @@ public class Framework_LuaUIPanelWrap
 		{
 			o = ToLua.ToObject(L, 1);
 			Framework.LuaUIPanel obj = (Framework.LuaUIPanel)o;
-			Framework.LuaUICom[] ret = obj.luaUIComArray;
+			Framework.LuaUICom[] ret = obj.LuaUIComArray;
 			ToLua.Push(L, ret);
 			return 1;
 		}
 		catch(Exception e)
 		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index luaUIComArray on a nil value");
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index LuaUIComArray on a nil value");
 		}
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_luaUIComArray(IntPtr L)
+	static int get_LuaUITemplateArray(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaUIPanel.luaUIComArray");
+        ToluaProfiler.AddCallRecord("Framework.LuaUIPanel.LuaUITemplateArray");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			Framework.LuaUIPanel obj = (Framework.LuaUIPanel)o;
+			Framework.LuaUITemplate[] ret = obj.LuaUITemplateArray;
+			ToLua.Push(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index LuaUITemplateArray on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_LuaUIComArray(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUIPanel.LuaUIComArray");
 #endif
 		object o = null;
 
@@ -69,12 +92,34 @@ public class Framework_LuaUIPanelWrap
 			o = ToLua.ToObject(L, 1);
 			Framework.LuaUIPanel obj = (Framework.LuaUIPanel)o;
 			Framework.LuaUICom[] arg0 = ToLua.CheckObjectArray<Framework.LuaUICom>(L, 2);
-			obj.luaUIComArray = arg0;
+			obj.LuaUIComArray = arg0;
 			return 0;
 		}
 		catch(Exception e)
 		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index luaUIComArray on a nil value");
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index LuaUIComArray on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_LuaUITemplateArray(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("Framework.LuaUIPanel.LuaUITemplateArray");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			Framework.LuaUIPanel obj = (Framework.LuaUIPanel)o;
+			Framework.LuaUITemplate[] arg0 = ToLua.CheckObjectArray<Framework.LuaUITemplate>(L, 2);
+			obj.LuaUITemplateArray = arg0;
+			return 0;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index LuaUITemplateArray on a nil value");
 		}
 	}
 }

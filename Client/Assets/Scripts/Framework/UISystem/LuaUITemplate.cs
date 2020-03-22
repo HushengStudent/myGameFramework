@@ -4,16 +4,20 @@
 ** desc:   Lua UIÄ£°å;
 *********************************************************************************/
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Framework
 {
     public class LuaUITemplate : MonoBehaviour
     {
+        [HideInInspector]
         [SerializeField]
-        public LuaUICom[] luaUIComArray;
+        public LuaUIPanel LuaUIPanel;
 
+        [SerializeField]
+        public string LuaUITemplateName;
+
+        [SerializeField]
+        public LuaUICom[] LuaUIComArray;
     }
 }

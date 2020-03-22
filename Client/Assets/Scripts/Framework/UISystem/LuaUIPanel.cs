@@ -11,7 +11,9 @@ namespace Framework
     public class LuaUIPanel : MonoBehaviour
     {
         [SerializeField]
-        public LuaUICom[] luaUIComArray;
+        public LuaUICom[] LuaUIComArray;
 
+        [SerializeField]
+        public LuaUITemplate[] LuaUITemplateArray;
     }
 }

@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class LuaUIEditorHelper
 {
-    public static string GetPrefabNodeName(GameObject go)
+    public static string GetLuaUIComName(GameObject go)
     {
         if (!go)
         {
@@ -21,13 +21,8 @@ public class LuaUIEditorHelper
         {
             return string.Empty;
         }
-
-        name = name.Replace(" ", "").Replace(".", "").Replace("¡£", "")
-            .Replace("(", "").Replace("£¨", "").Replace(")", "").Replace("£©", "")
-            .Replace("{", "").Replace("}", "").Replace("[", "").Replace("]", "")
-            .Replace("¡¾", "").Replace("¡¿", "");
-
         name = name.Replace("Com_", "");
+        name = CheckName(name);
 
         if (name.EndsWith("Com"))
         {
@@ -66,5 +61,14 @@ public class LuaUIEditorHelper
             return $"_{name}Text";
         }
         return $"_{name}Com";
+    }
+
+    public static string CheckName(string name)
+    {
+        name = name.Replace(" ", "").Replace(".", "").Replace("¡£", "")
+            .Replace("(", "").Replace("£¨", "").Replace(")", "").Replace("£©", "")
+            .Replace("{", "").Replace("}", "").Replace("[", "").Replace("]", "")
+            .Replace("¡¾", "").Replace("¡¿", "").Replace("_", "");
+        return $"{name.Substring(0, 1).ToLower()}{name.Substring(1)}";
     }
 }

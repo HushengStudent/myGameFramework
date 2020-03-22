@@ -1,5 +1,5 @@
 ---
----Auto generated from prefab:Login.prefab@2020/3/22 17:06:03.
+---Auto generated from prefab:Login.prefab@2020/3/22 18:31:07.
 ---Don't coding.
 ---
 
@@ -9,8 +9,12 @@ function LoginLayout:BindLuaCom(go)
 
     local luaUIPanel = go:GetComponent("LuaUIPanel")
     self.layout = {}
-    self.layout._GameObjectBtn = luaUIPanel.luaUIComArray[0]
-    self.layout._GameObject2Com = luaUIPanel.luaUIComArray[1]
+
+    self.layout._gameObjectBtn = luaUIPanel.LuaUIComArray[0]
+    self.layout._gameObjectBtn = luaUIPanel.LuaUIComArray[1]
+
+    self.layout._loginTextTemplate = luaUIPanel.LuaUITemplateArray[0]
+    self.layout._loginTextTemplate = luaUIPanel.LuaUITemplateArray[1]
 
     return self.layout
 end
