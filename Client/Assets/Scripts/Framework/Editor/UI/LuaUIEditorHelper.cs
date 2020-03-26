@@ -4,6 +4,7 @@
 ** desc:  Lua UI±à¼­Æ÷;
 *********************************************************************************/
 
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,8 @@ public class LuaUIEditorHelper
     public readonly static string LuaTemplate =
         "    self.layout.Name = component.LuaUITemplateArray[index]";
 
+    public readonly static string Header = "Com_";
+
     public static string GetLuaUIComName(GameObject go)
     {
         if (!go)
@@ -26,11 +29,11 @@ public class LuaUIEditorHelper
         }
 
         var name = go.name;
-        if (!name.StartsWith("Com_"))
+        if (!name.StartsWith(Header))
         {
             return string.Empty;
         }
-        name = name.Replace("Com_", "");
+        name = name.Replace(Header, "");
         name = CheckName(name);
 
         if (name.EndsWith("Com"))
@@ -79,5 +82,24 @@ public class LuaUIEditorHelper
             .Replace("{", "").Replace("}", "").Replace("[", "").Replace("]", "")
             .Replace("¡¾", "").Replace("¡¿", "").Replace("_", "");
         return $"{name.Substring(0, 1).ToLower()}{name.Substring(1)}";
+    }
+
+    [MenuItem("GameObject/UI/Rename UI Node %#c")]
+    public static void MaterialPropertyClean()
+    {
+        var objects = Selection.gameObjects;
+        for (int i = 0; i < objects.Length; i++)
+        {
+            var go = objects[i];
+            if (go.name.StartsWith(Header))
+            {
+                continue;
+            }
+            else
+            {
+                go.name = $"{Header}{go.name}";
+            }
+            EditorUtility.SetDirty(go);
+        }
     }
 }

@@ -201,7 +201,7 @@ namespace Framework
                 for (int i = 0; i < allNode.Length; i++)
                 {
                     var go = allNode[i].gameObject;
-                    if (go.name.StartsWith("Com_"))
+                    if (go.name.StartsWith(LuaUIEditorHelper.Header))
                     {
                         var com = go.AddComponent<LuaUICom>();
                         com.LuaUIPanel = luaUIPanel;
