@@ -42,7 +42,7 @@ namespace Framework
         {
             _csharpObjectPool.Clear();
             _csharpListPool.Clear();
-            IEnumerator<float> itor = _unityObjectPool.ClearUnityObjectPool();
+            var itor = _unityObjectPool.ClearUnityObjectPool();
             while (itor.MoveNext())
             {
                 yield return Timing.WaitForOneFrame;

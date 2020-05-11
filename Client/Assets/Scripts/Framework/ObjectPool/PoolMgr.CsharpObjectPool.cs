@@ -35,10 +35,12 @@ namespace Framework
             {
                 pool = CreateCsharpPool<T>();
             }
-            T t = pool.Get();
-            IPool target = t as IPool;
+            var t = pool.Get();
+            var target = t as IPool;
             if (target != null)
+            {
                 target.OnGet(args);
+            }
             return t;
         }
 
@@ -49,9 +51,11 @@ namespace Framework
         /// <param name="type"></param>
         public void ReleaseCsharpObject<T>(T type) where T : new()
         {
-            IPool target = type as IPool;
+            var target = type as IPool;
             if (target != null)
+            {
                 target.OnRelease();
+            }
             CsharpObjectPool<T> pool;
             Object temp;
             if (_csharpObjectPool.TryGetValue(typeof(T), out temp))
@@ -75,7 +79,7 @@ namespace Framework
             }
             else
             {
-                CsharpObjectPool<T> pool = new CsharpObjectPool<T>(null, null);
+                var pool = new CsharpObjectPool<T>(null, null);
                 _csharpObjectPool[typeof(T)] = pool;
                 return pool;
             }

@@ -51,7 +51,7 @@ namespace Framework.ObjectPool
                 element = stack.Pop();
             }
             _unityObjectRefDict[element.GetInstanceID()] = instanceID;
-            GameObject go = element as GameObject;
+            var go = element as GameObject;
             if (go)
             {
                 go.transform.SetParent(null);
@@ -102,7 +102,7 @@ namespace Framework.ObjectPool
                 return;
             }
             stack.Push(element);
-            GameObject go = element as GameObject;
+            var go = element as GameObject;
             if (go)
             {
                 go.transform.SetParent(PoolMgr.singleton.Root.transform);
@@ -114,21 +114,21 @@ namespace Framework.ObjectPool
 
         public IEnumerator<float> ClearUnityObjectPool()
         {
-            Dictionary<int, Stack<Object>> objectPool = new Dictionary<int, Stack<Object>>(_unityObjectDict);
+            var objectPool = new Dictionary<int, Stack<Object>>(_unityObjectDict);
             _unityObjectRefDict = new Dictionary<int, int>();
             _unityObjectDict = new Dictionary<int, Stack<Object>>();
             _stopwatch.Reset();
             _stopwatch.Start();
             foreach (var temp in objectPool)
             {
-                Stack<Object> target = temp.Value;
+                var target = temp.Value;
                 if (target == null || target.Count < 1)
                 {
                     continue;
                 }
                 while (target.Count > 0)
                 {
-                    Object go = target.Pop();
+                    var go = target.Pop();
                     if (go == null)
                     {
                         continue;

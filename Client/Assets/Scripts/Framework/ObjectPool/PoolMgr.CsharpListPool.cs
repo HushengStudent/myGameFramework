@@ -35,8 +35,7 @@ namespace Framework
             {
                 pool = CreateCsharpListPool<T>();
             }
-            List<T> t = pool.Get();
-            return t;
+            return pool.Get();
         }
 
         /// <summary>
@@ -69,7 +68,7 @@ namespace Framework
             }
             else
             {
-                CsharpListPool<T> pool = new CsharpListPool<T>();
+                var pool = new CsharpListPool<T>();
                 _csharpListPool[typeof(T)] = pool;
                 return pool;
             }
