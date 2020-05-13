@@ -217,7 +217,7 @@ namespace Framework
                 var go = proxy.GetInstantiateObject<GameObject>();
                 var smr = go.GetComponentInChildren<SkinnedMeshRenderer>();
                 materials.AddRange(smr.materials);
-                for (int sub = 0; sub < smr.sharedMesh.subMeshCount; sub++)
+                for (var sub = 0; sub < smr.sharedMesh.subMeshCount; sub++)
                 {
                     var combineInstance = new CombineInstance
                     {
@@ -226,7 +226,7 @@ namespace Framework
                     };
                     combineInstances.Add(combineInstance);
                 }
-                foreach (Transform bone in smr.bones)
+                foreach (var bone in smr.bones)
                 {
                     var bonename = bone.name;
                     foreach (var transform in skeleton)
@@ -246,7 +246,7 @@ namespace Framework
             var newMat = new Material(Shader.Find("Mobile/Diffuse"));
 
             var Textures = new List<Texture2D>();
-            for (int i = 0; i < materials.Count; i++)
+            for (var i = 0; i < materials.Count; i++)
             {
                 Textures.Add(materials[i].GetTexture("_MainTex") as Texture2D);
             }
@@ -256,7 +256,7 @@ namespace Framework
             newMat.mainTexture = newTex;
 
             Vector2[] oldUV, newUV;
-            for (int i = 0; i < combineInstances.Count; i++)
+            for (var i = 0; i < combineInstances.Count; i++)
             {
                 oldUV = combineInstances[i].mesh.uv;
                 newUV = new Vector2[oldUV.Length];
@@ -283,6 +283,10 @@ namespace Framework
             for (int i = 0; i < combineInstances.Count; i++)
             {
                 combineInstances[i].mesh.uv = UVList[i];
+            }
+            if (_skeleton.transform.childCount > 0)
+            {
+                _skeleton.transform.GetChild(0).hideFlags = HideFlags.HideInHierarchy;
             }
         }
     }
