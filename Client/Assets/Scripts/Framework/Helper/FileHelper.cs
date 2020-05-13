@@ -83,21 +83,21 @@ namespace Framework
 
         public static byte[] ReadFromFile(string path)
         {
-            MemoryStream ms = new MemoryStream
+            var ms = new MemoryStream
             {
                 Position = 0
             };
             ms.SetLength(0);
             try
             {
-                using (FileStream fsRead = new FileStream(path, FileMode.Open, FileAccess.Read))
+                using (var fsRead = new FileStream(path, FileMode.Open, FileAccess.Read))
                 {
                     if (fsRead.CanRead)
                     {
-                        long leftLength = fsRead.Length;     //还没有读取的文件内容长度;
-                        int maxLength = _bufferBytes.Length; //每次读取的最大字节数;
-                        int num = 0;                         //每次实际返回的字节数长度;
-                        int fileStart = 0;                   //文件开始读取的位置;
+                        var leftLength = fsRead.Length;     //还没有读取的文件内容长度;
+                        var maxLength = _bufferBytes.Length; //每次读取的最大字节数;
+                        var num = 0;                         //每次实际返回的字节数长度;
+                        var fileStart = 0;                   //文件开始读取的位置;
                         while (leftLength > 0)
                         {
                             fsRead.Position = fileStart;     //设置文件流的读取位置;
@@ -136,12 +136,12 @@ namespace Framework
         /// <returns></returns>
         public static bool CopyFile(string from, string to, int Length = 1024 * 1024)
         {
-            FileStream source = new FileStream(from, FileMode.Open, FileAccess.Read);
-            FileStream dest = new FileStream(to, FileMode.Append, FileAccess.Write);
+            var source = new FileStream(from, FileMode.Open, FileAccess.Read);
+            var dest = new FileStream(to, FileMode.Append, FileAccess.Write);
             int allLength = 0;
             if (Length < source.Length)
             {
-                byte[] buffer = new byte[Length];
+                var buffer = new byte[Length];
                 long finishLength = 0;
                 while (finishLength <= source.Length - Length)
                 {
@@ -153,7 +153,7 @@ namespace Framework
                     finishLength += allLength;
 
                 }
-                int left = (int)(source.Length - finishLength);
+                var left = (int)(source.Length - finishLength);
                 allLength = source.Read(buffer, 0, left);
                 source.Flush();
                 dest.Write(buffer, 0, left);
@@ -162,7 +162,7 @@ namespace Framework
             }
             else
             {
-                byte[] buffer = new byte[source.Length];
+                var buffer = new byte[source.Length];
                 source.Read(buffer, 0, buffer.Length);
                 source.Flush();
                 dest.Write(buffer, 0, buffer.Length);

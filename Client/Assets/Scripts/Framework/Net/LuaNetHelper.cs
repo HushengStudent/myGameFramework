@@ -20,7 +20,7 @@ namespace Framework
         {
             try
             {
-                LuaByteBuffer byteBuffer = new LuaByteBuffer(bytes);
+                var byteBuffer = new LuaByteBuffer(bytes);
                 LuaUtility.CallLuaModuleMethod("Protol.ProtoProcess", "Process", id, byteBuffer);
             }
             catch (Exception e)

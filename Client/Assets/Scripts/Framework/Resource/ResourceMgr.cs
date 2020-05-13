@@ -34,7 +34,7 @@ namespace Framework
         private void InitShader()
         {
             //Shader初始化;
-            AssetBundle shaderAssetBundle = AssetBundleMgr.singleton.LoadShaderAssetBundle();
+            var shaderAssetBundle = AssetBundleMgr.singleton.LoadShaderAssetBundle();
             if (shaderAssetBundle != null)
             {
                 shaderAssetBundle.LoadAllAssets();

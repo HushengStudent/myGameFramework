@@ -12,7 +12,7 @@ namespace Framework
     {
         public static void Serialize<T>(Session session, MemoryStream destination, T packet) where T : Packet
         {
-            byte[] idBytes = ConvertHelper.GetBytes(packet.GetPacketId());
+            var idBytes = ConvertHelper.GetBytes(packet.GetPacketId());
             destination.Write(idBytes, 0, idBytes.Length);
             packet.Serialize(destination);
             ProtoHelper.ReturnPacket(packet);
@@ -21,11 +21,11 @@ namespace Framework
         public static Packet Deserialize(Session session, MemoryStream source, out object customErrorData)
         {
             customErrorData = null;
-            long begin = source.Position;
-            byte[] buffer = new byte[4];
+            var begin = source.Position;
+            var buffer = new byte[4];
             source.Read(buffer, 0, sizeof(int));
-            int id = ConvertHelper.GetInt32(buffer);
-            Packet packet = ProtoHelper.GetPacket(id);
+            var id = ConvertHelper.GetInt32(buffer);
+            var packet = ProtoHelper.GetPacket(id);
             packet.DeSerialize(source);
             return packet;
         }

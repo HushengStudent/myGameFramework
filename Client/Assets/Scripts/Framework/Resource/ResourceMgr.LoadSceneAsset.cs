@@ -77,7 +77,7 @@ namespace Framework
         , Action<float> progress)
         {
             path = $"Assets/Bundles/{path}";
-            IEnumerator itor = SceneLoader.LoadSceneAsync(path, onSceneLoaded, progress);
+            var itor = SceneLoader.LoadSceneAsync(path, onSceneLoaded, progress);
             while (itor.MoveNext())
             {
                 yield return Timing.WaitForOneFrame;
@@ -118,7 +118,7 @@ namespace Framework
             var name = Path.GetFileNameWithoutExtension(path);
 
             SceneLoader.UnloadSceneAsync(path, onSceneUnloaded, progress);
-            AsyncOperation operation = SceneManager.UnloadSceneAsync(name);
+            var operation = SceneManager.UnloadSceneAsync(name);
             while (operation.progress < 0.99f)
             {
                 progress?.Invoke(operation.progress);
@@ -161,8 +161,7 @@ namespace Framework
                 }
 
                 //此处加载占90%;
-                IEnumerator itor = AssetBundleMgr.singleton.LoadFromFileAsync(path,
-                    bundle => { assetBundle = bundle; }, progress);
+                var itor = AssetBundleMgr.singleton.LoadFromFileAsync(path, bundle => { assetBundle = bundle; }, progress);
                 while (itor.MoveNext())
                 {
                     yield return Timing.WaitForOneFrame;
@@ -179,7 +178,7 @@ namespace Framework
                 {
                     onSceneLoaded?.Invoke(scene);
                 };
-                AsyncOperation operation = SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
+                var operation = SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
 
                 //此处加载占10%;
                 while (operation.progress < 0.99f)
@@ -220,7 +219,7 @@ namespace Framework
                 };
 
 #if UNITY_EDITOR
-                AsyncOperation operation = UnityEditor.EditorApplication.LoadLevelAdditiveAsyncInPlayMode(path);
+                var operation = UnityEditor.EditorApplication.LoadLevelAdditiveAsyncInPlayMode(path);
                 while (operation.progress < 0.99f)
                 {
                     progress?.Invoke(operation.progress);

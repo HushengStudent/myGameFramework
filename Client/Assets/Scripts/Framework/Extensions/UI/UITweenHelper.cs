@@ -47,8 +47,8 @@ namespace Framework
         public static int TweenLocalPosition(GameObject go, Vector3 from, Vector3 to, float duration
             , Action<GameObject> onComplete, Action<GameObject> onKill)
         {
-            Vector3 localPosition = Vector3.zero;
-            Tweener tweener = DOTween.To(() => localPosition, x => localPosition = x, to, duration);
+            var localPosition = Vector3.zero;
+            var tweener = DOTween.To(() => localPosition, x => localPosition = x, to, duration);
             tweener.onUpdate = () =>
             {
                 go.transform.localPosition = localPosition;
@@ -62,7 +62,7 @@ namespace Framework
                 onComplete?.Invoke(go);
             };
             tweener.PlayForward();
-            int tweenId = TweenId;
+            var tweenId = TweenId;
             _tweenerDict[tweenId] = tweener;
             return tweenId;
         }
@@ -70,8 +70,8 @@ namespace Framework
         public static int TweenLocalScale(GameObject go, Vector3 from, Vector3 to, float duration
             , Action<GameObject> onComplete, Action<GameObject> onKill)
         {
-            Vector3 localScale = Vector3.zero;
-            Tweener tweener = DOTween.To(() => localScale, x => localScale = x, to, duration);
+            var localScale = Vector3.zero;
+            var tweener = DOTween.To(() => localScale, x => localScale = x, to, duration);
             tweener.onUpdate = () =>
             {
                 go.transform.localScale = localScale;
@@ -85,7 +85,7 @@ namespace Framework
                 onComplete?.Invoke(go);
             };
             tweener.PlayForward();
-            int tweenId = TweenId;
+            var tweenId = TweenId;
             _tweenerDict[tweenId] = tweener;
             return tweenId;
         }
@@ -93,8 +93,8 @@ namespace Framework
         public static int TweenLocalRotation(GameObject go, Vector3 from, Vector3 to, float duration
             , Action<GameObject> onComplete, Action<GameObject> onKill)
         {
-            Vector3 localRotation = Vector3.zero;
-            Tweener tweener = DOTween.To(() => localRotation, x => localRotation = x, to, duration);
+            var localRotation = Vector3.zero;
+            var tweener = DOTween.To(() => localRotation, x => localRotation = x, to, duration);
             tweener.onUpdate = () =>
             {
                 go.transform.localRotation = Quaternion.Euler(localRotation);
@@ -108,7 +108,7 @@ namespace Framework
                 onComplete?.Invoke(go);
             };
             tweener.PlayForward();
-            int tweenId = TweenId;
+            var tweenId = TweenId;
             _tweenerDict[tweenId] = tweener;
             return tweenId;
         }

@@ -27,7 +27,7 @@ namespace Framework
         {
             if (null != _type)
             {
-                System.Object target = Activator.CreateInstance(_type);
+                var target = Activator.CreateInstance(_type);
                 if (target is Packet)
                 {
                     return target as Packet;

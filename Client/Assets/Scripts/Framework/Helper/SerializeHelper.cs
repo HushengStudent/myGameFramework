@@ -15,11 +15,11 @@ namespace Framework
     {
         public static void SerializeXml<T>(string path, T data)
         {
-            using (FileStream writer = new FileStream(path, FileMode.Create))
+            using (var writer = new FileStream(path, FileMode.Create))
             {
                 try
                 {
-                    XmlSerializer xml = new XmlSerializer(typeof(T));
+                    var xml = new XmlSerializer(typeof(T));
                     xml.Serialize(writer, data);
                 }
                 catch (Exception e)
@@ -33,9 +33,9 @@ namespace Framework
         {
             try
             {
-                using (FileStream reader = new FileStream(path, FileMode.Open))
+                using (var reader = new FileStream(path, FileMode.Open))
                 {
-                    XmlSerializer xml = new XmlSerializer(typeof(T));
+                    var xml = new XmlSerializer(typeof(T));
                     return (T)xml.Deserialize(reader);
                 }
             }
@@ -48,11 +48,11 @@ namespace Framework
 
         public static void SerializeBinary<T>(string path, T data)
         {
-            using (FileStream writer = new FileStream(path, FileMode.Create))
+            using (var writer = new FileStream(path, FileMode.Create))
             {
                 try
                 {
-                    BinaryFormatter binary = new BinaryFormatter();
+                    var binary = new BinaryFormatter();
                     binary.Serialize(writer, data);
                 }
                 catch (Exception e)
@@ -66,9 +66,9 @@ namespace Framework
         {
             try
             {
-                using (FileStream reader = new FileStream(path, FileMode.Open))
+                using (var reader = new FileStream(path, FileMode.Open))
                 {
-                    BinaryFormatter binary = new BinaryFormatter();
+                    var binary = new BinaryFormatter();
                     return (T)binary.Deserialize(reader);
                 }
             }

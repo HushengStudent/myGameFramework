@@ -87,7 +87,7 @@ namespace Framework
                 {
                     throw new Exception("not initialize network.");
                 }
-                IPEndPoint ipEndPoint = (IPEndPoint)_socket.LocalEndPoint;
+                var ipEndPoint = (IPEndPoint)_socket.LocalEndPoint;
                 if (ipEndPoint == null)
                 {
                     throw new Exception("localIPAddress is invalid.");
@@ -104,7 +104,7 @@ namespace Framework
                 {
                     throw new Exception("not initialize network.");
                 }
-                IPEndPoint ipEndPoint = (IPEndPoint)_socket.LocalEndPoint;
+                var ipEndPoint = (IPEndPoint)_socket.LocalEndPoint;
                 if (ipEndPoint == null)
                 {
                     throw new Exception("LocalPort is invalid.");
@@ -121,7 +121,7 @@ namespace Framework
                 {
                     throw new Exception("not initialize network.");
                 }
-                IPEndPoint ipEndPoint = (IPEndPoint)_socket.RemoteEndPoint;
+                var ipEndPoint = (IPEndPoint)_socket.RemoteEndPoint;
                 if (ipEndPoint == null)
                 {
                     throw new Exception("RemoteIPAddress is invalid.");
@@ -138,7 +138,7 @@ namespace Framework
                 {
                     throw new Exception("not initialize network.");
                 }
-                IPEndPoint ipEndPoint = (IPEndPoint)_socket.RemoteEndPoint;
+                var ipEndPoint = (IPEndPoint)_socket.RemoteEndPoint;
                 if (ipEndPoint == null)
                 {
                     throw new Exception("RemotePort is invalid.");
@@ -198,7 +198,7 @@ namespace Framework
             _port = port;
             if (_socket == null)
             {
-                string errorMessage = "initialize failure.";
+                var errorMessage = "initialize failure.";
                 if (ErrorHandler != null)
                 {
                     ErrorHandler(this, SessionErrorCode.StateError, errorMessage);
@@ -208,7 +208,7 @@ namespace Framework
             }
             try
             {
-                SessionParam param = new SessionParam(_socket, _ipAddress, _port);
+                var param = new SessionParam(_socket, _ipAddress, _port);
                 _socket.BeginConnect(_ipAddress, _port, ConnectCallback, param);
             }
             catch (Exception exception)
@@ -247,7 +247,7 @@ namespace Framework
 
         private void ConnectCallback(IAsyncResult ar)
         {
-            SessionParam param = (SessionParam)ar.AsyncState;
+            var param = (SessionParam)ar.AsyncState;
             try
             {
                 param.socket.EndConnect(ar);
@@ -279,7 +279,7 @@ namespace Framework
         {
             if (_socket == null)
             {
-                string errorMessage = "session not initialize.";
+                var errorMessage = "session not initialize.";
                 if (ErrorHandler != null)
                 {
                     ErrorHandler(this, SessionErrorCode.StateError, errorMessage);
@@ -289,7 +289,7 @@ namespace Framework
             }
             try
             {
-                SessionParam param = new SessionParam(_socket, _ipAddress, _port);
+                var param = new SessionParam(_socket, _ipAddress, _port);
                 _socket.BeginSend(buffer, offset, size, SocketFlags.None, SendCallback, param);
             }
             catch (Exception exception)
@@ -317,10 +317,10 @@ namespace Framework
                 }
                 throw new Exception(errorMessage);
             }
-            byte[] bufferBytes = buffer.ToBytes();
+            var bufferBytes = buffer.ToBytes();
             if (bufferBytes == null)
             {
-                string errorMessage = "luaBuff is null.";
+                var errorMessage = "luaBuff is null.";
                 if (ErrorHandler != null)
                 {
                     ErrorHandler(this, SessionErrorCode.StateError, errorMessage);
@@ -332,11 +332,11 @@ namespace Framework
             {
                 int length = 0;
                 int packetLength = 0;
-                byte[] packetBuffer = new byte[_defaultMaxPacketLength];//TODO:内存池;
-                using (MemoryStream memoryStream = new MemoryStream(packetBuffer, true))
+                var packetBuffer = new byte[_defaultMaxPacketLength];//TODO:内存池;
+                using (var memoryStream = new MemoryStream(packetBuffer, true))
                 {
                     memoryStream.Seek(_defaultPacketLength, SeekOrigin.Begin);
-                    byte[] idBytes = ConvertHelper.GetBytes(id);
+                    var idBytes = ConvertHelper.GetBytes(id);
                     memoryStream.Write(idBytes, 0, idBytes.Length);
                     memoryStream.Write(bufferBytes, 0, bufferBytes.Length);
                     length = (int)memoryStream.Position;
@@ -361,7 +361,7 @@ namespace Framework
         {
             if (_socket == null)
             {
-                string errorMessage = "session not initialize.";
+                var errorMessage = "session not initialize.";
                 if (ErrorHandler != null)
                 {
                     ErrorHandler(this, SessionErrorCode.StateError, errorMessage);
@@ -371,7 +371,7 @@ namespace Framework
             }
             if (packet == null)
             {
-                string errorMessage = "Packet is invalid.";
+                var errorMessage = "Packet is invalid.";
                 if (ErrorHandler != null)
                 {
                     ErrorHandler(this, SessionErrorCode.StateError, errorMessage);
@@ -383,8 +383,8 @@ namespace Framework
             {
                 int length = 0;
                 int packetLength = 0;
-                byte[] packetBuffer = new byte[_defaultMaxPacketLength];//TODO:内存池;
-                using (MemoryStream memoryStream = new MemoryStream(packetBuffer, true))
+                var packetBuffer = new byte[_defaultMaxPacketLength];//TODO:内存池;
+                using (var memoryStream = new MemoryStream(packetBuffer, true))
                 {
                     memoryStream.Seek(_defaultPacketLength, SeekOrigin.Begin);
                     SessionUtil.Serialize(this, memoryStream, packet);
@@ -408,7 +408,7 @@ namespace Framework
 
         private void SendCallback(IAsyncResult ar)
         {
-            SessionParam param = (SessionParam)ar.AsyncState;
+            var param = (SessionParam)ar.AsyncState;
 
             int bytesSent = 0;
             try
@@ -457,7 +457,7 @@ namespace Framework
 
         private void ReceiveCallback(IAsyncResult ar)
         {
-            Socket socket = (Socket)ar.AsyncState;
+            var socket = (Socket)ar.AsyncState;
             int bytesReceived = 0;
             try
             {
@@ -489,7 +489,7 @@ namespace Framework
                 Receive();
                 return;
             }
-            bool processSuccess = false;
+            var processSuccess = false;
             try
             {
                 processSuccess = Process();//返回false,继续接收;
@@ -524,10 +524,10 @@ namespace Framework
             }
             if (_receiver.Length == _defaultPacketLength)
             {
-                int packetLength = ConvertHelper.GetInt32(_receiver.GetBuffer());
+                var packetLength = ConvertHelper.GetInt32(_receiver.GetBuffer());
                 if (packetLength <= 0)
                 {
-                    string errorMessage = string.Format("Packet length '{0}' is invalid.", packetLength.ToString());
+                    var errorMessage = string.Format("Packet length '{0}' is invalid.", packetLength.ToString());
                     if (ErrorHandler != null)
                     {
                         ErrorHandler(this, SessionErrorCode.HeaderError, errorMessage);
@@ -538,7 +538,7 @@ namespace Framework
                 _receiver.Length += packetLength;
                 if (_receiver.Length > _receiver.BufferSize)
                 {
-                    string errorMessage = string.Format("Length '{0}' is larger than buffer size '{1}'.", _receiver.Length.ToString(), _receiver.BufferSize.ToString());
+                    var errorMessage = string.Format("Length '{0}' is larger than buffer size '{1}'.", _receiver.Length.ToString(), _receiver.BufferSize.ToString());
                     if (ErrorHandler != null)
                     {
                         ErrorHandler(this, SessionErrorCode.OutOfRangeError, errorMessage);//未接收完成,继续;
@@ -551,9 +551,9 @@ namespace Framework
             Packet packet = null;
             try
             {
-                int packetLength = _receiver.Length - _defaultPacketLength;
+                var packetLength = _receiver.Length - _defaultPacketLength;
                 object customErrorData = null;
-                using (MemoryStream memoryStream = new MemoryStream(_receiver.GetBuffer(), _defaultPacketLength, packetLength, false))
+                using (var memoryStream = new MemoryStream(_receiver.GetBuffer(), _defaultPacketLength, packetLength, false))
                 {
                     lock (thisLock)
                     {
@@ -568,17 +568,14 @@ namespace Framework
                 else
                 {
                     var id = packet.GetPacketId();
-                    bool overridecs = false;
+                    var overridecs = false;
                     if (LuaProtoRegister.LuaProtoDict.TryGetValue(id, out overridecs))
                     {
                         if (!overridecs)
                         {
-                            if (ReceiveHandler != null)
-                            {
-                                ReceiveHandler(this, packet);
-                            }
+                            ReceiveHandler?.Invoke(this, packet);
                         }
-                        using (MemoryStream memoryStream = new MemoryStream())
+                        using (var memoryStream = new MemoryStream())
                         {
                             packet.Serialize(memoryStream);
                             LuaNetHelper.Send2Lua(id, memoryStream.ToArray());

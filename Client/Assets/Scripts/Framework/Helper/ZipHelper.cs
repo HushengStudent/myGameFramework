@@ -20,7 +20,7 @@ namespace Framework
         {
             var compressProgress = 0f;
             var progress = 0f;
-            string zipFile = $"{outPath}/{fileName}.zip";
+            var zipFile = $"{outPath}/{fileName}.zip";
             if (!Directory.Exists(outPath))
             {
                 Directory.CreateDirectory(outPath);
@@ -29,11 +29,11 @@ namespace Framework
             {
                 File.Delete(zipFile);
             }
-            Thread thread = new Thread(delegate ()
+            var thread = new Thread(delegate ()
             {
-                int fileCount = RecursiveFile(filePath);
-                int finishCount = 0;
-                FastZipEvents events = new FastZipEvents
+                var fileCount = RecursiveFile(filePath);
+                var finishCount = 0;
+                var events = new FastZipEvents
                 {
                     Progress = new ProgressHandler((object sender, ProgressEventArgs e) =>
                     {
@@ -48,7 +48,7 @@ namespace Framework
                     ProgressInterval = TimeSpan.FromSeconds(_progressInterval),
                     ProcessFile = new ProcessFileHandler((object sender, ScanEventArgs e) => { })
                 };
-                FastZip zip = new FastZip(events);
+                var zip = new FastZip(events);
                 zip.CreateZip(zipFile, filePath, true, "");
             })
             {
@@ -62,7 +62,7 @@ namespace Framework
         {
             var compressProgress = 0f;
             var progress = 0f;
-            string zipFile = $"{outPath}/{fileName}.zip";
+            var zipFile = $"{outPath}/{fileName}.zip";
             if (!Directory.Exists(outPath))
             {
                 Directory.CreateDirectory(outPath);
@@ -71,11 +71,11 @@ namespace Framework
             {
                 File.Delete(zipFile);
             }
-            Thread thread = new Thread(delegate ()
+            var thread = new Thread(delegate ()
             {
-                int fileCount = RecursiveFile(filePath);
-                int finishCount = 0;
-                FastZipEvents events = new FastZipEvents
+                var fileCount = RecursiveFile(filePath);
+                var finishCount = 0;
+                var events = new FastZipEvents
                 {
                     Progress = new ProgressHandler((object sender, ProgressEventArgs e) =>
                     {
@@ -90,9 +90,9 @@ namespace Framework
                     ProgressInterval = TimeSpan.FromSeconds(_progressInterval),
                     ProcessFile = new ProcessFileHandler((object sender, ScanEventArgs e) => { })
                 };
-                using (Stream stream = File.Create(zipFile))
+                using (var stream = File.Create(zipFile))
                 {
-                    FastZip zip = new FastZip(events);
+                    var zip = new FastZip(events);
                     zip.CreateZip(stream, outPath, true, "", "");
                     stream.Close();
                 }
@@ -113,11 +113,11 @@ namespace Framework
             Directory.CreateDirectory(outPath);
             var deCompressProgress = 0f;
             var progress = 0f;
-            Thread thread = new Thread(delegate ()
+            var thread = new Thread(delegate ()
             {
-                int fileCount = (int)new ZipFile(filePath).Count;
-                int finishCount = 0;
-                FastZipEvents events = new FastZipEvents
+                var fileCount = (int)new ZipFile(filePath).Count;
+                var finishCount = 0;
+                var events = new FastZipEvents
                 {
                     Progress = new ProgressHandler((object sender, ProgressEventArgs e) =>
                     {
@@ -132,7 +132,7 @@ namespace Framework
                     ProgressInterval = TimeSpan.FromSeconds(_progressInterval),
                     ProcessFile = new ProcessFileHandler((object sender, ScanEventArgs e) => { })
                 };
-                FastZip fastZip = new FastZip(events);
+                var fastZip = new FastZip(events);
                 fastZip.ExtractZip(filePath, outPath, "");
             })
             {
@@ -150,11 +150,11 @@ namespace Framework
             Directory.CreateDirectory(outPath);
             var deCompressProgress = 0f;
             var progress = 0f;
-            Thread thread = new Thread(delegate ()
+            var thread = new Thread(delegate ()
             {
-                int fileCount = (int)new ZipFile(stream).Count;
-                int finishCount = 0;
-                FastZipEvents events = new FastZipEvents
+                var fileCount = (int)new ZipFile(stream).Count;
+                var finishCount = 0;
+                var events = new FastZipEvents
                 {
                     Progress = new ProgressHandler((object sender, ProgressEventArgs e) =>
                     {
@@ -169,7 +169,7 @@ namespace Framework
                     ProgressInterval = TimeSpan.FromSeconds(_progressInterval),
                     ProcessFile = new ProcessFileHandler((object sender, ScanEventArgs e) => { })
                 };
-                FastZip fastZip = new FastZip(events);
+                var fastZip = new FastZip(events);
                 fastZip.ExtractZip(stream, outPath, FastZip.Overwrite.Always, null, "", "", false, true);
             })
             {
@@ -180,8 +180,8 @@ namespace Framework
 
         private static int RecursiveFile(string path)
         {
-            int files = Directory.GetFiles(path).Length;
-            string[] folders = Directory.GetDirectories(path);
+            var files = Directory.GetFiles(path).Length;
+            var folders = Directory.GetDirectories(path);
             foreach (string target in folders)
             {
                 files += RecursiveFile(target);

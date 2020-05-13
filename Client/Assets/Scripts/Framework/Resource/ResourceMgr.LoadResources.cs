@@ -30,9 +30,9 @@ namespace Framework
             {
                 return null;
             }
-            ResourceAssetProxy proxy = PoolMgr.singleton.GetCsharpObject<ResourceAssetProxy>();
+            var proxy = PoolMgr.singleton.GetCsharpObject<ResourceAssetProxy>();
             proxy.Initialize(path);
-            Object asset = Resources.Load(path);
+            var asset = Resources.Load(path);
             if (asset == null)
             {
                 LogHelper.PrintError($"[ResourceMgr]LoadResourceProxy load asset:{path} failure.");
@@ -68,7 +68,7 @@ namespace Framework
             {
                 return null;
             }
-            ResourceAssetProxy proxy = PoolMgr.singleton.GetCsharpObject<ResourceAssetProxy>();
+            var proxy = PoolMgr.singleton.GetCsharpObject<ResourceAssetProxy>();
             proxy.Initialize(path);
             CoroutineMgr.singleton.RunCoroutine(LoadAsync(path, proxy, progress));
             return proxy;
@@ -81,7 +81,7 @@ namespace Framework
             {
                 yield break;
             }
-            ResourceRequest request = Resources.LoadAsync(path);
+            var request = Resources.LoadAsync(path);
             while (request.progress < 0.99f)
             {
                 progress?.Invoke(request.progress);

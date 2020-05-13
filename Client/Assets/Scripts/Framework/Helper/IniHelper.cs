@@ -38,7 +38,7 @@ namespace Framework
                 Debug.LogWarning($"the ini file's path is error：{strFilePath}");
                 return;
             }
-            using (StreamReader reader = new StreamReader(strFilePath))
+            using (var reader = new StreamReader(strFilePath))
             {
                 string section = null;
                 string key = null;
@@ -98,7 +98,7 @@ namespace Framework
                 return;
             }
 
-            string dirName = Path.GetDirectoryName(strFilePath);
+            var dirName = Path.GetDirectoryName(strFilePath);
             if (string.IsNullOrEmpty(dirName))
             {
                 Debug.LogWarning($"Empty directory for SaveIni:{strFilePath}.");
@@ -108,7 +108,7 @@ namespace Framework
             {
                 Directory.CreateDirectory(dirName);
             }
-            using (StreamWriter sw = new StreamWriter(strFilePath))
+            using (var sw = new StreamWriter(strFilePath))
             {
                 foreach (KeyValuePair<string, Dictionary<string, string>> pair in IniConfigDic)
                 {
@@ -142,7 +142,7 @@ namespace Framework
 
         public static int GetInt(string section, string key, int defaultVal)
         {
-            string val = GetString(section, key, null);
+            var val = GetString(section, key, null);
             if (val != null)
             {
                 return int.Parse(val);
@@ -246,7 +246,7 @@ namespace Framework
             section = null;
             if (!string.IsNullOrEmpty(strLine))
             {
-                int len = strLine.Length;
+                var len = strLine.Length;
                 if (strLine[0] == '[' && strLine[len - 1] == ']')
                 {
                     section = strLine.Substring(1, len - 2);
@@ -264,7 +264,7 @@ namespace Framework
         {
             if (strLine != null && strLine.Length >= 3)
             {
-                string[] contents = strLine.Split(DELEMITER.ToCharArray());
+                var contents = strLine.Split(DELEMITER.ToCharArray());
                 if (contents.Length == 2)
                 {
                     key = contents[0].TrimStart(TrimStart);

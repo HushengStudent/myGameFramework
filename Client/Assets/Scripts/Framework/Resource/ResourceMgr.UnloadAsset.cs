@@ -55,7 +55,7 @@ namespace Framework
 
         private void UnloadUnusedAssets(Action<AsyncOperation> action)
         {
-            AsyncOperation operation = Resources.UnloadUnusedAssets();
+            var operation = Resources.UnloadUnusedAssets();
             if (operation.isDone)
             {
                 action?.Invoke(operation);

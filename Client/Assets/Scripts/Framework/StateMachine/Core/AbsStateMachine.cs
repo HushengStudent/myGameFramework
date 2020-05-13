@@ -59,7 +59,7 @@ namespace Framework
             _runtimeAnimatorProxy = ResourceMgr.singleton.LoadAssetAsync(AssetPath);
             _runtimeAnimatorProxy.AddLoadFinishCallBack(() =>
             {
-                RuntimeAnimatorController ctrl = _runtimeAnimatorProxy.GetUnityAsset<RuntimeAnimatorController>();
+                var ctrl = _runtimeAnimatorProxy.GetUnityAsset<RuntimeAnimatorController>();
                 if (ctrl)
                 {
                     AnimatorOverrideController = new AnimatorOverrideController(ctrl);
@@ -128,7 +128,7 @@ namespace Framework
 
         public void TransToDefault()
         {
-            for (int i = 0; i < StateList.Count; i++)
+            for (var i = 0; i < StateList.Count; i++)
             {
                 var state = StateList[i];
                 if (state.Default)
@@ -146,7 +146,7 @@ namespace Framework
             {
                 loop = true;
             }
-            for (int i = 0; i < StateList.Count; i++)
+            for (var i = 0; i < StateList.Count; i++)
             {
                 var state = StateList[i];
                 if (state.StateCommand == command)

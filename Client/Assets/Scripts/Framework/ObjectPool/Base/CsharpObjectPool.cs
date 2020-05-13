@@ -38,8 +38,7 @@ namespace Framework.ObjectPool
             {
                 element = m_Stack.Pop();
             }
-            if (m_ActionOnGet != null)
-                m_ActionOnGet(element);
+            m_ActionOnGet?.Invoke(element);
             return element;
         }
 

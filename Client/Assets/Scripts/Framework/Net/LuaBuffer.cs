@@ -71,21 +71,21 @@ namespace Framework
 
         public void WriteFloat(float v)
         {
-            byte[] temp = BitConverter.GetBytes(v);
+            var temp = BitConverter.GetBytes(v);
             Array.Reverse(temp);
             _writer.Write(BitConverter.ToSingle(temp, 0));
         }
 
         public void WriteDouble(double v)
         {
-            byte[] temp = BitConverter.GetBytes(v);
+            var temp = BitConverter.GetBytes(v);
             Array.Reverse(temp);
             _writer.Write(BitConverter.ToDouble(temp, 0));
         }
 
         public void WriteString(string v)
         {
-            byte[] bytes = Encoding.UTF8.GetBytes(v);
+            var bytes = Encoding.UTF8.GetBytes(v);
             _writer.Write((ushort)bytes.Length);
             _writer.Write(bytes);
         }
@@ -108,7 +108,7 @@ namespace Framework
 
         public int ReadInt()
         {
-            return (int)_reader.ReadInt32();
+            return _reader.ReadInt32();
         }
 
         public ushort ReadShort()
@@ -118,40 +118,40 @@ namespace Framework
 
         public long ReadLong()
         {
-            return (long)_reader.ReadInt64();
+            return _reader.ReadInt64();
         }
 
         public float ReadFloat()
         {
-            byte[] temp = BitConverter.GetBytes(_reader.ReadSingle());
+            var temp = BitConverter.GetBytes(_reader.ReadSingle());
             Array.Reverse(temp);
             return BitConverter.ToSingle(temp, 0);
         }
 
         public double ReadDouble()
         {
-            byte[] temp = BitConverter.GetBytes(_reader.ReadDouble());
+            var temp = BitConverter.GetBytes(_reader.ReadDouble());
             Array.Reverse(temp);
             return BitConverter.ToDouble(temp, 0);
         }
 
         public string ReadString()
         {
-            ushort len = ReadShort();
-            byte[] buffer = new byte[len];
+            var len = ReadShort();
+            var buffer = new byte[len];
             buffer = _reader.ReadBytes(len);
             return Encoding.UTF8.GetString(buffer);
         }
 
         public byte[] ReadBytes()
         {
-            int len = ReadInt();
+            var len = ReadInt();
             return _reader.ReadBytes(len);
         }
 
         public LuaByteBuffer ReadBuffer()
         {
-            byte[] bytes = ReadBytes();
+            var bytes = ReadBytes();
             return new LuaByteBuffer(bytes);
         }
 

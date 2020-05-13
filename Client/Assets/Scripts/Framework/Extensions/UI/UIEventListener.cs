@@ -56,8 +56,11 @@ namespace Framework
 
         static public UIEventListener Get(GameObject go)
         {
-            UIEventListener listener = go.GetComponent<UIEventListener>();
-            if (listener == null) listener = go.AddComponent<UIEventListener>();
+            var listener = go.GetComponent<UIEventListener>();
+            if (listener == null)
+            {
+                listener = go.AddComponent<UIEventListener>();
+            }
             return listener;
         }
 

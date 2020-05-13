@@ -114,7 +114,7 @@ namespace Framework
             _animationClipProxy = ResourceMgr.singleton.LoadAssetAsync(path);
             _animationClipProxy.AddLoadFinishCallBack(() =>
             {
-                AnimationClip clip = _animationClipProxy.GetUnityAsset<AnimationClip>();
+                var clip = _animationClipProxy.GetUnityAsset<AnimationClip>();
                 if (Machine.AnimatorOverrideController && clip)
                 {
                     Machine.AnimatorOverrideController[StateName] = clip;

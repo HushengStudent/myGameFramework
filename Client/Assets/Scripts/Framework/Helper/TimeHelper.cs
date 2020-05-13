@@ -43,10 +43,10 @@ namespace Framework
         /// <returns></returns>
         public static double CompareTime(long utcSecconds, long targetUtcSecconds)
         {
-            long _baseTimeTicks = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)).Ticks;
-            DateTime dateTime = new DateTime(_baseTimeTicks + utcSecconds * 1000 * 10000L);
-            DateTime targetDateTime = new DateTime(_baseTimeTicks + targetUtcSecconds * 1000 * 10000L);
-            TimeSpan span = dateTime - targetDateTime;
+            var _baseTimeTicks = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)).Ticks;
+            var dateTime = new DateTime(_baseTimeTicks + utcSecconds * 1000 * 10000L);
+            var targetDateTime = new DateTime(_baseTimeTicks + targetUtcSecconds * 1000 * 10000L);
+            var span = dateTime - targetDateTime;
             return span.TotalSeconds;
         }
     }

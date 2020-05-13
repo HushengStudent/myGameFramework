@@ -26,7 +26,7 @@ namespace Framework
         {
             if (CurScene != null)
             {
-                IEnumerator<float> unloadItor = CurScene.UnloadScene();
+                var unloadItor = CurScene.UnloadScene();
                 while (unloadItor.MoveNext())
                 {
                     yield return Timing.WaitForOneFrame;
@@ -36,7 +36,7 @@ namespace Framework
             {
                 CurScene = new Scene();
             }
-            IEnumerator<float> loadItor = CurScene.LoadScene(sceneId, handler);
+            var loadItor = CurScene.LoadScene(sceneId, handler);
             while (loadItor.MoveNext())
             {
                 yield return Timing.WaitForOneFrame;

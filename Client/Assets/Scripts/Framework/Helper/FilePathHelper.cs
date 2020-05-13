@@ -59,7 +59,7 @@ namespace Framework
         /// <returns></returns>
         public static string GetAssetBundlePath(string path)
         {
-            string assetBundleName = GetAssetBundleFileName(path);
+            var assetBundleName = GetAssetBundleFileName(path);
             if (string.IsNullOrEmpty(assetBundleName))
             {
                 return null;
@@ -78,7 +78,7 @@ namespace Framework
             {
                 return null;
             }
-            string assetPath = path;
+            var assetPath = path;
             return assetPath;
         }
     }

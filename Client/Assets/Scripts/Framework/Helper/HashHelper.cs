@@ -28,8 +28,8 @@ namespace Framework
         {
             using (MD5 alg = MD5.Create())
             {
-                byte[] data = alg.ComputeHash(bytes);
-                StringBuilder stringBuilder = new StringBuilder();
+                var data = alg.ComputeHash(bytes);
+                var stringBuilder = new StringBuilder();
                 for (int i = 0; i < data.Length; i++)
                 {
                     stringBuilder.Append(data[i].ToString("x2"));
@@ -53,7 +53,7 @@ namespace Framework
             var buffer = new byte[bufferSize];
             using (var stream = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                MD5 md5 = MD5.Create();
+                var md5 = MD5.Create();
                 int length = 0;
                 var output = new byte[bufferSize];
                 while ((length = stream.Read(buffer, 0, buffer.Length)) > 0)
@@ -97,8 +97,8 @@ namespace Framework
         {
             using (HashAlgorithm algorithm = SHA256.Create())
             {
-                StringBuilder stringBuilder = new StringBuilder();
-                byte[] hash = algorithm.ComputeHash(textBytes);
+                var stringBuilder = new StringBuilder();
+                var hash = algorithm.ComputeHash(textBytes);
                 for (int i = 0; i < hash.Length; i++)
                 {
                     stringBuilder.Append(hash[i].ToString("X2"));

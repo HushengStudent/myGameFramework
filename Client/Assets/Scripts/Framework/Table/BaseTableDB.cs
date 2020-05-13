@@ -25,7 +25,7 @@ namespace Framework
         /// <returns></returns>
         public T FindByKey(int key)
         {
-            for (int i = 0; i < _dataList.Count; i++)
+            for (var i = 0; i < _dataList.Count; i++)
             {
                 if (_dataList[i].Key == key)
                 {
@@ -54,11 +54,11 @@ namespace Framework
         {
             _dataList.Clear();
             int pos = 0;
-            int dataCount = ConvertHelper.GetInt32(bytes, pos);
+            var dataCount = ConvertHelper.GetInt32(bytes, pos);
             pos += Marshal.SizeOf(pos);//int大小;
-            for (int i = 0; i < dataCount; i++)
+            for (var i = 0; i < dataCount; i++)
             {
-                T data = Activator.CreateInstance<T>();
+                var data = Activator.CreateInstance<T>();
                 data.Decode(bytes, ref pos);
                 _dataList.Add(data);
             }

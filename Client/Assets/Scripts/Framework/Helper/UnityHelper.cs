@@ -32,8 +32,7 @@ namespace Framework
                 go.AddComponent<T>();
                 temp = go.GetComponent<T>();
             }
-            if (action != null)
-                action(temp);
+            action?.Invoke(temp);
             return temp;
         }
 
@@ -44,10 +43,10 @@ namespace Framework
         /// <returns></returns>
         public static Vector2 GetCameraSize(this Camera camera)
         {
-            float orthographicSize = camera.orthographicSize;
-            float aspectRatio = Screen.width * 1.0f / Screen.height;
-            float height = orthographicSize * 2;
-            float width = height * aspectRatio;
+            var orthographicSize = camera.orthographicSize;
+            var aspectRatio = Screen.width * 1.0f / Screen.height;
+            var height = orthographicSize * 2;
+            var width = height * aspectRatio;
             return new Vector2(height, width);
         }
     }

@@ -154,14 +154,8 @@ namespace Framework
             /// </summary>
             public void DoCallBack()
             {
-                if (CallBackFunc != null)
-                {
-                    CallBackFunc();
-                }
-                if (CallBackFuncWithParam != null)
-                {
-                    CallBackFuncWithParam(Param);
-                }
+                CallBackFunc?.Invoke();
+                CallBackFuncWithParam?.Invoke(Param);
             }
 
             /// <summary>
@@ -231,7 +225,7 @@ namespace Framework
         public TimerHandler RegisterTimerEvent(float delayTime, int repeatTimes, float intervalTime, Action callBackFunc,
             Action<object> callBackFuncWithParam, object param, Action onFinish)
         {
-            TimerEvent timerEvent = new TimerEvent
+            var timerEvent = new TimerEvent
             {
                 DelayTime = delayTime,
                 RepeatTimes = repeatTimes,
@@ -245,7 +239,7 @@ namespace Framework
             };
             timerEvent.InitTimerEvent();
             EventLists.Add(timerEvent);
-            TimerHandler handler = new TimerHandler(timerEvent);
+            var handler = new TimerHandler(timerEvent);
             return handler;
         }
 
@@ -313,7 +307,7 @@ namespace Framework
         // Update is called once per frame
         void Update()
         {
-            for (int i = EventLists.Count - 1; i >= 0; --i)
+            for (var i = EventLists.Count - 1; i >= 0; --i)
             {
                 tmpEvent = EventLists[i];
                 try
@@ -330,7 +324,7 @@ namespace Framework
                 }
             }
 
-            for (int i = EventLists.Count - 1; i >= 0; --i)
+            for (var i = EventLists.Count - 1; i >= 0; --i)
             {
                 tmpEvent = EventLists[i];
                 if (tmpEvent.IsFinish)

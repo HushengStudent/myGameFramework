@@ -4,9 +4,9 @@
 ** desc:  合并模型组件;
 *********************************************************************************/
 
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityObject = UnityEngine.Object;
 
 namespace Framework
 {
@@ -202,10 +202,10 @@ namespace Framework
 
         private void CombineModel()
         {
-            Transform[] skeleton = _skeleton.GetComponentsInChildren<Transform>();
-            List<CombineInstance> combineInstances = new List<CombineInstance>();
-            List<Material> materials = new List<Material>();
-            List<Transform> bones = new List<Transform>();
+            var skeleton = _skeleton.GetComponentsInChildren<Transform>();
+            var combineInstances = new List<CombineInstance>();
+            var materials = new List<Material>();
+            var bones = new List<Transform>();
 
             foreach (var temp in _partProxyDict)
             {
@@ -215,11 +215,11 @@ namespace Framework
                 }
                 var proxy = temp.Value;
                 var go = proxy.GetInstantiateObject<GameObject>();
-                SkinnedMeshRenderer smr = go.GetComponentInChildren<SkinnedMeshRenderer>();
+                var smr = go.GetComponentInChildren<SkinnedMeshRenderer>();
                 materials.AddRange(smr.materials);
                 for (int sub = 0; sub < smr.sharedMesh.subMeshCount; sub++)
                 {
-                    CombineInstance combineInstance = new CombineInstance
+                    var combineInstance = new CombineInstance
                     {
                         mesh = smr.sharedMesh,
                         subMeshIndex = sub
@@ -228,11 +228,13 @@ namespace Framework
                 }
                 foreach (Transform bone in smr.bones)
                 {
-                    string bonename = bone.name;
-                    foreach (Transform transform in skeleton)
+                    var bonename = bone.name;
+                    foreach (var transform in skeleton)
                     {
                         if (transform.name != bonename)
+                        {
                             continue;
+                        }
                         bones.Add(transform);
                         break;
                     }
@@ -240,17 +242,17 @@ namespace Framework
                 proxy.ReleaseInstantiateObject(go);
             }
 
-            List<Vector2[]> UVList = new List<Vector2[]>();
-            Material newMat = new Material(Shader.Find("Mobile/Diffuse"));
+            var UVList = new List<Vector2[]>();
+            var newMat = new Material(Shader.Find("Mobile/Diffuse"));
 
-            List<Texture2D> Textures = new List<Texture2D>();
+            var Textures = new List<Texture2D>();
             for (int i = 0; i < materials.Count; i++)
             {
                 Textures.Add(materials[i].GetTexture("_MainTex") as Texture2D);
             }
 
-            Texture2D newTex = new Texture2D(512, 512, TextureFormat.ETC2_RGBA8, true);
-            Rect[] texUV = newTex.PackTextures(Textures.ToArray(), 0);
+            var newTex = new Texture2D(512, 512, TextureFormat.ETC2_RGBA8, true);
+            var texUV = newTex.PackTextures(Textures.ToArray(), 0);
             newMat.mainTexture = newTex;
 
             Vector2[] oldUV, newUV;
@@ -266,10 +268,10 @@ namespace Framework
                 combineInstances[i].mesh.uv = newUV;
             }
 
-            SkinnedMeshRenderer skinnedMeshRenderer = _skeleton.GetComponent<SkinnedMeshRenderer>();
+            var skinnedMeshRenderer = _skeleton.GetComponent<SkinnedMeshRenderer>();
             if (skinnedMeshRenderer != null)
             {
-                UnityEngine.Object.DestroyImmediate(skinnedMeshRenderer);
+                UnityObject.DestroyImmediate(skinnedMeshRenderer);
             }
 
             skinnedMeshRenderer = _skeleton.AddComponent<SkinnedMeshRenderer>();

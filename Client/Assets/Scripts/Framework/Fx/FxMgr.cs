@@ -28,7 +28,7 @@ namespace Framework
         {
             foreach (var temp in _fxDict)
             {
-                GameObject target = temp.Value;
+                var target = temp.Value;
                 if (target)
                 {
                     Object.DestroyImmediate(target);

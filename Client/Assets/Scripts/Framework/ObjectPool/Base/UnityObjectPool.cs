@@ -34,7 +34,7 @@ namespace Framework.ObjectPool
             {
                 return null;
             }
-            int instanceID = asset.GetInstanceID();
+            var instanceID = asset.GetInstanceID();
             Stack<Object> stack;
             if (!_unityObjectDict.TryGetValue(instanceID, out stack))
             {
@@ -61,12 +61,12 @@ namespace Framework.ObjectPool
 
         public void ReleaseUnityObject(Object asset)
         {
-            Object element = asset;
+            var element = asset;
             if (null == element)
             {
                 return;
             }
-            int instanceID = element.GetInstanceID();
+            var instanceID = element.GetInstanceID();
             Stack<Object> stack;
             int parentInstanceID;
             if (_unityObjectDict.ContainsKey(instanceID))

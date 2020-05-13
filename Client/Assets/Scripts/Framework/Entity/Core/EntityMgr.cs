@@ -79,7 +79,7 @@ namespace Framework
         /// <returns></returns>
         public T CreateEntity<T>(int entityId, ulong uid, string name) where T : AbsEntity, new()
         {
-            T entity = PoolMgr.singleton.GetCsharpObject<T>();
+            var entity = PoolMgr.singleton.GetCsharpObject<T>();
             if (AddEntity(uid, entity))
             {
                 entity.Initialize(entityId, uid, name);

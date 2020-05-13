@@ -65,11 +65,11 @@ namespace Framework
         {
             path = $"Assets/Bundles/{path}";
 
-            AssetBundleAssetProxy proxy = PoolMgr.singleton.GetCsharpObject<AssetBundleAssetProxy>();
+            var proxy = PoolMgr.singleton.GetCsharpObject<AssetBundleAssetProxy>();
             proxy.Initialize(path, isUsePool);
 
             Object asset = null;
-            AssetBundle assetBundle = AssetBundleMgr.singleton.LoadFromFile(path);
+            var assetBundle = AssetBundleMgr.singleton.LoadFromFile(path);
             if (assetBundle != null)
             {
                 var name = Path.GetFileNameWithoutExtension(path);
@@ -120,7 +120,7 @@ namespace Framework
         {
             path = $"Assets/Bundles/{path}";
 
-            AssetBundleAssetProxy proxy = PoolMgr.singleton.GetCsharpObject<AssetBundleAssetProxy>();
+            var proxy = PoolMgr.singleton.GetCsharpObject<AssetBundleAssetProxy>();
             proxy.Initialize(path, isUsePool);
             CoroutineMgr.singleton.RunCoroutine(AssetLoader.LoadAssetAsync(path, proxy, progress));
             return proxy;
@@ -143,14 +143,13 @@ namespace Framework
                 AssetBundle assetBundle = null;
 
                 //此处加载占0.8;
-                IEnumerator itor = AssetBundleMgr.singleton.LoadFromFileAsync(path,
-                    bundle => { assetBundle = bundle; }, progress);
+                var itor = AssetBundleMgr.singleton.LoadFromFileAsync(path, bundle => { assetBundle = bundle; }, progress);
                 while (itor.MoveNext())
                 {
                     yield return Timing.WaitForOneFrame;
                 }
                 var name = Path.GetFileNameWithoutExtension(path);
-                AssetBundleRequest request = assetBundle.LoadAssetAsync(name);
+                var request = assetBundle.LoadAssetAsync(name);
 
                 //此处加载占0.2;
                 while (request.progress < 0.99f)

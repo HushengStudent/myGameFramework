@@ -25,7 +25,7 @@ namespace Framework
             SuccessHandler = () => { GameMgr.singleton.EnterGame(); };
             if (!Directory.Exists(GameConfig.VersionFilePath))
             {
-                VersionInfo info = new VersionInfo();
+                var info = new VersionInfo();
                 SerializeHelper.SerializeXml(GameConfig.VersionFilePath, info);
             }
             LoaclVersion = SerializeHelper.DeserializeXml<VersionInfo>(GameConfig.VersionFilePath);
@@ -35,7 +35,7 @@ namespace Framework
 
         public void CheckVersion()
         {
-            WWWDownLoadHelper www = new WWWDownLoadHelper
+            var www = new WWWDownLoadHelper
             {
                 SuccessHandler = () =>
                 {
