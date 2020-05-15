@@ -6,113 +6,112 @@
 
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Rendering;
 
 namespace Framework
 {
     public class CommandBufferMgr : MonoSingleton<CommandBufferMgr>
     {
-        private struct CommandBufferRenderer
-        {
-            public CBRenderer CBRenderer;
-            public Camera Camera;
-        }
-
-        private Dictionary<GameObject, CommandBufferRenderer> _cbDict;
-        private List<GameObject> _deprecatedList;
+        private CommandBuffer _commandBuffer;
+        private Camera _camera;
+        private HashSet<Renderer> _rendererHashSet;
 
         protected override void OnInitialize()
         {
             base.OnInitialize();
-            _cbDict = new Dictionary<GameObject, CommandBufferRenderer>();
-            _deprecatedList = PoolMgr.singleton.GetCsharpList<GameObject>();
-        }
-
-        public void DrawRenderer(GameObject go, Camera camera, RawImage rawImage, Material mat = null)
-        {
-
-            rawImage.texture = DrawRenderer(go, camera, mat);
-        }
-
-        public void DrawRenderer(GameObject go, Camera camera, Renderer renderer, Material mat = null)
-        {
-            renderer.sharedMaterial.mainTexture = DrawRenderer(go, camera, mat);
-        }
-
-        public void ReleaseRenderer(GameObject go)
-        {
-            CommandBufferRenderer commandBufferRenderer;
-            if (_cbDict.TryGetValue(go, out commandBufferRenderer))
+            _commandBuffer = new CommandBuffer
             {
-                commandBufferRenderer.CBRenderer.Deprecated = true;
-            }
-        }
-
-        private RenderTexture DrawRenderer(GameObject go, Camera camera, Material mat = null)
-        {
-            CommandBufferRenderer commandBufferRenderer;
-            if (_cbDict.TryGetValue(go, out commandBufferRenderer))
-            {
-                PoolMgr.singleton.ReleaseCsharpObject(commandBufferRenderer.CBRenderer);
-                _cbDict.Remove(go);
-            }
-            commandBufferRenderer = new CommandBufferRenderer()
-            {
-                CBRenderer = PoolMgr.singleton.GetCsharpObject<CBRenderer>(),
-                Camera = camera
+                name = "CommandBufferMgr"
             };
-            commandBufferRenderer.CBRenderer.Initialize(go, camera, mat);
-            if (commandBufferRenderer.CBRenderer.Deprecated)
+            var cameraObject = new GameObject("CommandBufferMgr_Camera");
+            cameraObject.SetActive(true);
+            _camera = cameraObject.AddComponent<Camera>();
+            //_camera.cullingMask 必须有;
+            _camera.clearFlags = CameraClearFlags.Depth;
+            _camera.orthographic = true;
+            _camera.allowDynamicResolution = false;
+            _camera.useOcclusionCulling = false;
+            _camera.allowHDR = false;
+            _camera.allowMSAA = false;
+            _camera.enabled = false;
+            _rendererHashSet = new HashSet<Renderer>();
+        }
+
+        protected override void OnUninitialize()
+        {
+            base.OnUninitialize();
+            if (_commandBuffer != null)
             {
-                PoolMgr.singleton.ReleaseCsharpObject(commandBufferRenderer.CBRenderer);
+                _commandBuffer.Release();
+                _commandBuffer = null;
+            }
+            if (_camera)
+            {
+                Destroy(_camera.gameObject);
+                _camera = null;
+            }
+            _rendererHashSet.Clear();
+            _rendererHashSet = null;
+        }
+
+        /// <summary>
+        /// 2D相机渲染;
+        /// </summary>
+        /// <param name="target">目标</param>
+        /// <param name="width">RT宽</param>
+        /// <param name="high">RT高</param>
+        /// <param name="camWidth">相机宽</param>
+        /// <param name="camHigh">相机高</param>
+        /// <param name="originalCamSize">原始相机的Size</param>
+        /// <param name="camScale">相机的Scale</param>
+        /// <param name="mat">材质</param>
+        /// <returns></returns>
+        public CommandBufferRender DrawRenderer(GameObject target, int width, int high, int camWidth, int camHigh
+            , float originalCamSize, Vector3 camScale, Material mat = null)
+        {
+            if (!target || !_camera)
+            {
                 return null;
             }
-            _cbDict[go] = commandBufferRenderer;
-            camera.gameObject.AddOrGetComponent<CameraCBExecutor>();
-            return commandBufferRenderer.CBRenderer.RenderTexture;
-        }
+            _rendererHashSet.Clear();
+            _rendererHashSet.Add(target.GetComponent<Renderer>());
+            foreach (var r in target.GetComponentsInChildren<Renderer>(true))
+            {
+                _rendererHashSet.Add(r);
+            }
+            if (_rendererHashSet.Count < 1)
+            {
+                return null;
+            }
 
-        public void Execute(Camera camera)
-        {
-            if (!camera)
+            var x = width / camWidth / camScale.x;
+            var y = high / camHigh / camScale.y;
+
+            _camera.orthographicSize = originalCamSize * y;
+            _camera.rect = new Rect(0, 0, x, y);
+
+            var render = PoolMgr.singleton.GetCsharpObject<CommandBufferRender>(width, high);
+            _commandBuffer.Clear();
+            _commandBuffer.SetRenderTarget(render.RenderTexture);
+            _commandBuffer.ClearRenderTarget(true, true, Color.clear);
+            _commandBuffer.SetViewProjectionMatrices(_camera.worldToCameraMatrix, _camera.projectionMatrix);
+
+            foreach (var r in _rendererHashSet)
             {
-                return;
+                Material targetMat = mat ?? r.sharedMaterial;
+                _commandBuffer.DrawRenderer(r, targetMat);
             }
-            if (_cbDict != null && _cbDict.Count > 0)
-            {
-                foreach (var temp in _cbDict)
-                {
-                    var go = temp.Key;
-                    var cb = temp.Value.CBRenderer;
-                    if (!go)
-                    {
-                        cb.Deprecated = true;
-                    }
-                    if (cb.Deprecated)
-                    {
-                        _deprecatedList.Add(temp.Key);
-                        continue;
-                    }
-                    else
-                    {
-                        if (cb.Camera == camera)
-                        {
-                            cb.Execute();
-                        }
-                    }
-                }
-            }
-            if (_deprecatedList.Count > 0)
-            {
-                for (int i = 0; i < _deprecatedList.Count; i++)
-                {
-                    var go = _deprecatedList[i];
-                    var commandBufferRenderer = _cbDict[go];
-                    PoolMgr.singleton.ReleaseCsharpObject(commandBufferRenderer.CBRenderer);
-                    _cbDict.Remove(go);
-                }
-                _deprecatedList.Clear();
-            }
+            _rendererHashSet.Clear();
+
+            Graphics.ExecuteCommandBuffer(_commandBuffer);
+
+            //然后接受物体的材质使用这张RT作为主纹理
+            //this.GetComponent<Renderer>().sharedMaterial.mainTexture = renderTexture;
+
+            //Camera.main.AddCommandBuffer(CameraEvent.AfterForwardOpaque, CommandBuffer);
+            //Camera.main.RemoveCommandBuffer(CameraEvent.AfterForwardOpaque, commandBuffer);
+
+            return render;
         }
     }
 }
