@@ -35,7 +35,7 @@ namespace Framework
             EventUnsubscribe();
             EventMgr.singleton.RemoveEvent(this);
             UnRegisterComponent();
-            for (int i = 0; i < _componentList.Count; i++)
+            for (var i = 0; i < _componentList.Count; i++)
             {
                 DestroyComponent(_componentList[i]);
             }
@@ -85,7 +85,7 @@ namespace Framework
         /// <returns></returns>
         public T GetComponent<T>() where T : AbsComponent, new()
         {
-            for (int i = 0; i < _componentList.Count; i++)
+            for (var i = 0; i < _componentList.Count; i++)
             {
                 var target = _componentList[i];
                 if (target as T != null)
@@ -104,7 +104,7 @@ namespace Framework
         /// <returns></returns>
         public T AddComponent<T>() where T : AbsComponent, new()
         {
-            for (int i = 0; i < _componentList.Count; i++)
+            for (var i = 0; i < _componentList.Count; i++)
             {
                 var targetComp = _componentList[i] as T;
                 if (targetComp != null)
@@ -126,7 +126,7 @@ namespace Framework
         /// <returns></returns>
         public bool ReleaseComponent<T>() where T : AbsComponent, new()
         {
-            for (int i = 0; i < _componentList.Count; i++)
+            for (var i = 0; i < _componentList.Count; i++)
             {
                 var targetComp = _componentList[i] as T;
                 if (targetComp != null)
@@ -154,7 +154,7 @@ namespace Framework
                 LogHelper.PrintError($"[ComponentMgr]ReleaseComponent error:comp as {typeof(T).ToString()} is null!");
                 return false;
             }
-            for (int i = 0; i < _componentList.Count; i++)
+            for (var i = 0; i < _componentList.Count; i++)
             {
                 var targetComp = _componentList[i];
                 if (targetComp == comp)
@@ -176,7 +176,7 @@ namespace Framework
         /// <returns></returns>
         public bool DestroyComponent(AbsComponent comp)
         {
-            for (int i = 0; i < _componentList.Count; i++)
+            for (var i = 0; i < _componentList.Count; i++)
             {
                 var targetComp = _componentList[i];
                 if (targetComp == comp)

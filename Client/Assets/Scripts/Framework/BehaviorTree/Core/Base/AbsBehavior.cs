@@ -34,7 +34,9 @@ namespace Framework
         public bool ResetBehavior()
         {
             if (Reslut == BehaviorState.Running)
+            {
                 return false;
+            }
             Reset();
             _awake = false;
             Entity = null;

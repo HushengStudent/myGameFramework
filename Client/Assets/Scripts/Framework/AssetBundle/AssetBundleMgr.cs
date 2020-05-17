@@ -135,7 +135,7 @@ namespace Framework
             {
                 var list = reference.Value;
                 var deprecated = true;
-                for (int i = 0; i < list.Count; i++)
+                for (var i = 0; i < list.Count; i++)
                 {
                     if (list[i].Target != null)
                     {
@@ -146,7 +146,7 @@ namespace Framework
                 if (deprecated)
                 {
                     var path = reference.Key;
-                    for (int i = 0; i < list.Count; i++)
+                    for (var i = 0; i < list.Count; i++)
                     {
                         UnloadAsset(path, null);
                     }
@@ -156,7 +156,7 @@ namespace Framework
                     deprecatedList.Add(path);
                 }
             }
-            for (int i = 0; i < deprecatedList.Count; i++)
+            for (var i = 0; i < deprecatedList.Count; i++)
             {
                 var path = deprecatedList[i];
                 _assetBundleRefDict.Remove(path);
@@ -232,7 +232,7 @@ namespace Framework
             }
             //返回AssetBundleName;
             var dependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
-            foreach (string tempAssetBundle in dependentAssetBundle)
+            foreach (var tempAssetBundle in dependentAssetBundle)
             {
                 if (tempAssetBundle == FilePathHelper.GetAssetBundleFileName(FilePathHelper.shaderAssetBundleName) ||
                     tempAssetBundle == FilePathHelper.GetAssetBundleFileName(FilePathHelper.luaAssetBundleName))
@@ -324,7 +324,7 @@ namespace Framework
             var precent = ResourceMgr.singleton.LOAD_BUNDLE_PRECENT;
             var unit = precent / (count + 1);
             int index = 0;
-            foreach (string tempAssetBundle in dependentAssetBundle)
+            foreach (var tempAssetBundle in dependentAssetBundle)
             {
                 var dp = 0f;
                 if (tempAssetBundle == FilePathHelper.GetAssetBundleFileName(FilePathHelper.shaderAssetBundleName) ||
@@ -374,7 +374,7 @@ namespace Framework
                 List<WeakReference> list;
                 if (_assetBundleRefDict.TryGetValue(path, out list))
                 {
-                    for (int i = 0; i < list.Count; i++)
+                    for (var i = 0; i < list.Count; i++)
                     {
                         if ((Object)(list[i].Target) == asset)
                         {
@@ -390,7 +390,7 @@ namespace Framework
             var assetBundleName = FilePathHelper.GetAssetBundleFileName(path);
 
             var dependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
-            foreach (string tempAssetBundle in dependentAssetBundle)
+            foreach (var tempAssetBundle in dependentAssetBundle)
             {
                 if (tempAssetBundle == FilePathHelper.GetAssetBundleFileName(FilePathHelper.shaderAssetBundleName))
                 {
@@ -427,11 +427,11 @@ namespace Framework
         /// 卸载AssetBundle资源;
         private void UnloadAsset(string path, bool flag)
         {
-            int Count = 0;
-            if (assetBundleReference.TryGetValue(path, out Count))
+            int count = 0;
+            if (assetBundleReference.TryGetValue(path, out count))
             {
-                Count--;
-                if (Count == 0)
+                count--;
+                if (count == 0)
                 {
                     assetBundleReference.Remove(path);
                     var bundle = assetBundleCache[path];
@@ -444,7 +444,7 @@ namespace Framework
                 }
                 else
                 {
-                    assetBundleReference[path] = Count;
+                    assetBundleReference[path] = count;
                 }
             }
         }

@@ -91,7 +91,7 @@ namespace Framework
         public void UnInitialize()
         {
             Enable = false;
-            for (int i = 0; i < StateList.Count; i++)
+            for (var i = 0; i < StateList.Count; i++)
             {
                 var state = StateList[i];
                 state.UnInitialize();

@@ -61,7 +61,7 @@ namespace Framework
                 {
                     Deprecated = true;
                 }
-                for (int i = 0; i < behaviour._spriteList.Count; i++)
+                for (var i = 0; i < behaviour._spriteList.Count; i++)
                 {
                     var sprite = behaviour._spriteList[i];
                     if (sprite)
@@ -140,7 +140,7 @@ namespace Framework
                     list.Add(temp.Key);
                 }
             }
-            for (int i = 0; i < list.Count; i++)
+            for (var i = 0; i < list.Count; i++)
             {
                 _objectRefDict.Remove(list[i]);
             }

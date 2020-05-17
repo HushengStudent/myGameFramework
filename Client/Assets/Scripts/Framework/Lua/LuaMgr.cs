@@ -55,7 +55,7 @@ namespace Framework
             lua.OpenLibs(LuaDLL.luaopen_lpeg);
             lua.OpenLibs(LuaDLL.luaopen_bit);
             lua.OpenLibs(LuaDLL.luaopen_socket_core);
-            this.OpenCJson();
+            OpenCJson();
         }
 
         //cjson比较特殊,只new了一个table,没有注册库,这里注册一下;

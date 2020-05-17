@@ -182,7 +182,7 @@ namespace Framework
         {
             var files = Directory.GetFiles(path).Length;
             var folders = Directory.GetDirectories(path);
-            foreach (string target in folders)
+            foreach (var target in folders)
             {
                 files += RecursiveFile(target);
             }

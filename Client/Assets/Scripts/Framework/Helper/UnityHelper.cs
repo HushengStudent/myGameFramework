@@ -20,13 +20,12 @@ namespace Framework
         /// <returns></returns>
         public static T AddOrGetComponent<T>(this GameObject go, Action<T> action = null) where T : MonoBehaviour
         {
-            T temp = null;
             if (go == null)
             {
                 LogHelper.PrintError("[UnityUtility]AddOrGetComponent error:gameObject is null!");
                 return null;
             }
-            temp = go.GetComponent<T>();
+            var temp = go.GetComponent<T>();
             if (temp == null)
             {
                 go.AddComponent<T>();

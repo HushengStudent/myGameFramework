@@ -43,7 +43,7 @@ namespace Framework
             Hashtable table = MiniJsonExtensions.hashtableFromJson(content);
             ArrayList nodeList = table["nodes"] as ArrayList;
             ArrayList connectionList = table["connections"] as ArrayList;
-            for (int i = 0; i < nodeList.Count; i++)
+            for (var i = 0; i < nodeList.Count; i++)
             {
                 Hashtable nodeTable = nodeList[i] as Hashtable;
                 var id = 0;
@@ -68,7 +68,7 @@ namespace Framework
                     LogHelper.PrintError("[BehaviorTreeFactory]try get node id error!");
                 }
             }
-            for (int i = 0; i < connectionList.Count; i++)
+            for (var i = 0; i < connectionList.Count; i++)
             {
                 Hashtable connectionTable = connectionList[i] as Hashtable;
                 int source = 0;
@@ -97,7 +97,7 @@ namespace Framework
         {
             List<AbsBehavior> nextList = new List<AbsBehavior>();
             AbsBehavior target;
-            for (int i = 0; i < list.Count; i++)
+            for (var i = 0; i < list.Count; i++)
             {
                 target = list[i];
                 int id = target.Id;
@@ -107,7 +107,7 @@ namespace Framework
                     continue;
                 }
                 List<AbsBehavior> sonList = new List<AbsBehavior>();
-                for (int j = 0; j < connectList.Count; j++)
+                for (var j = 0; j < connectList.Count; j++)
                 {
                     int sonId = connectList[j];
                     AbsBehavior son;

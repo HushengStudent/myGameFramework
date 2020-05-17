@@ -260,7 +260,7 @@ namespace Framework
             {
                 oldUV = combineInstances[i].mesh.uv;
                 newUV = new Vector2[oldUV.Length];
-                for (int j = 0; j < oldUV.Length; j++)
+                for (var j = 0; j < oldUV.Length; j++)
                 {
                     newUV[j] = new Vector2((oldUV[j].x * texUV[i].width) + texUV[i].x, (oldUV[j].y * texUV[i].height) + texUV[i].y);
                 }
@@ -280,7 +280,7 @@ namespace Framework
             skinnedMeshRenderer.bones = bones.ToArray();
             //skinnedMeshRenderer.materials = materials.ToArray();
             skinnedMeshRenderer.material = newMat;
-            for (int i = 0; i < combineInstances.Count; i++)
+            for (var i = 0; i < combineInstances.Count; i++)
             {
                 combineInstances[i].mesh.uv = UVList[i];
             }
