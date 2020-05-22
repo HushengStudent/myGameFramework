@@ -98,7 +98,7 @@ namespace Framework
 
             foreach (var r in _rendererHashSet)
             {
-                Material targetMat = mat ?? r.sharedMaterial;
+                var targetMat = mat ?? r.sharedMaterial;
                 _commandBuffer.DrawRenderer(r, targetMat);
             }
             _rendererHashSet.Clear();

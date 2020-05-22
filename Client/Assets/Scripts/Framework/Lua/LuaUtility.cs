@@ -10,6 +10,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
+using UnityObject = UnityEngine.Object;
 
 namespace Framework
 {
@@ -57,8 +58,11 @@ namespace Framework
         {
             if (go != null)
             {
-                Transform sub = go.transform.Find(subnode);
-                if (sub != null) return sub.GetComponent<T>();
+                var sub = go.transform.Find(subnode);
+                if (sub != null)
+                {
+                    return sub.GetComponent<T>();
+                }
             }
             return null;
         }
@@ -74,8 +78,11 @@ namespace Framework
         {
             if (go != null)
             {
-                Transform sub = go.Find(subnode);
-                if (sub != null) return sub.GetComponent<T>();
+                var sub = go.Find(subnode);
+                if (sub != null)
+                {
+                    return sub.GetComponent<T>();
+                }
             }
             return null;
         }
@@ -99,10 +106,13 @@ namespace Framework
         {
             if (go != null)
             {
-                T[] ts = go.GetComponents<T>();
-                for (int i = 0; i < ts.Length; i++)
+                var ts = go.GetComponents<T>();
+                for (var i = 0; i < ts.Length; i++)
                 {
-                    if (ts[i] != null) GameObject.Destroy(ts[i]);
+                    if (ts[i] != null)
+                    {
+                        UnityObject.Destroy(ts[i]);
+                    }
                 }
                 return go.gameObject.AddComponent<T>();
             }
@@ -130,8 +140,11 @@ namespace Framework
         /// </summary>
         public static GameObject Child(Transform go, string subnode)
         {
-            Transform tran = go.Find(subnode);
-            if (tran == null) return null;
+            var tran = go.Find(subnode);
+            if (tran == null)
+            {
+                return null;
+            }
             return tran.gameObject;
         }
 
@@ -148,8 +161,11 @@ namespace Framework
         /// </summary>
         public static GameObject Peer(Transform go, string subnode)
         {
-            Transform tran = go.parent.Find(subnode);
-            if (tran == null) return null;
+            var tran = go.parent.Find(subnode);
+            if (tran == null)
+            {
+                return null;
+            }
             return tran.gameObject;
         }
 
@@ -158,10 +174,13 @@ namespace Framework
         /// </summary>
         public static void ClearChild(Transform go)
         {
-            if (go == null) return;
-            for (int i = go.childCount - 1; i >= 0; i--)
+            if (go == null)
             {
-                GameObject.Destroy(go.GetChild(i).gameObject);
+                return;
+            }
+            for (var i = go.childCount - 1; i >= 0; i--)
+            {
+                UnityObject.Destroy(go.GetChild(i).gameObject);
             }
         }
 
@@ -171,14 +190,14 @@ namespace Framework
 
         public static string Uid(string uid)
         {
-            int position = uid.LastIndexOf('_');
+            var position = uid.LastIndexOf('_');
             return uid.Remove(0, position + 1);
         }
 
         public static long GetTime()
         {
             //TODO:使用服务器时间;
-            TimeSpan ts = new TimeSpan(DateTime.UtcNow.Ticks - new DateTime(1970, 1, 1, 0, 0, 0).Ticks);
+            var ts = new TimeSpan(DateTime.UtcNow.Ticks - new DateTime(1970, 1, 1, 0, 0, 0).Ticks);
             return (long)ts.TotalMilliseconds;
         }
 
@@ -187,15 +206,15 @@ namespace Framework
         /// </summary>
         public static string md5(string source)
         {
-            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-            byte[] data = System.Text.Encoding.UTF8.GetBytes(source);
-            byte[] md5Data = md5.ComputeHash(data, 0, data.Length);
+            var md5 = new MD5CryptoServiceProvider();
+            var data = Encoding.UTF8.GetBytes(source);
+            var md5Data = md5.ComputeHash(data, 0, data.Length);
             md5.Clear();
 
-            string destString = "";
-            for (int i = 0; i < md5Data.Length; i++)
+            var destString = "";
+            for (var i = 0; i < md5Data.Length; i++)
             {
-                destString += System.Convert.ToString(md5Data[i], 16).PadLeft(2, '0');
+                destString += Convert.ToString(md5Data[i], 16).PadLeft(2, '0');
             }
             destString = destString.PadLeft(32, '0');
             return destString;
@@ -208,13 +227,13 @@ namespace Framework
         {
             try
             {
-                FileStream fs = new FileStream(file, FileMode.Open);
-                System.Security.Cryptography.MD5 md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
-                byte[] retVal = md5.ComputeHash(fs);
+                var fs = new FileStream(file, FileMode.Open);
+                var md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+                var retVal = md5.ComputeHash(fs);
                 fs.Close();
 
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < retVal.Length; i++)
+                var sb = new StringBuilder();
+                for (var i = 0; i < retVal.Length; i++)
                 {
                     sb.Append(retVal[i].ToString("x2"));
                 }
@@ -234,7 +253,9 @@ namespace Framework
             GC.Collect();
             Resources.UnloadUnusedAssets();
             if (LuaMgr.singleton != null)
+            {
                 LuaMgr.singleton.LuaGC();
+            }
         }
 
         /// <summary>
@@ -272,7 +293,7 @@ namespace Framework
         /// </summary>
         public static string AppContentPath()
         {
-            string path = string.Empty;
+            var path = string.Empty;
             switch (Application.platform)
             {
                 case RuntimePlatform.Android:
@@ -329,7 +350,10 @@ namespace Framework
         /// <param name="func"></param>
         public static void OnCallLuaFunc(LuaByteBuffer data, LuaFunction func)
         {
-            if (func != null) func.Call(data);
+            if (func != null)
+            {
+                func.Call(data);
+            }
             LogHelper.Print("OnCallLuaFunc length:>>" + data.buffer.Length);
         }
 
@@ -345,7 +369,10 @@ namespace Framework
         public static void OnJsonCallFunc(string data, LuaFunction func)
         {
             Debug.LogWarning("OnJsonCallback data:>>" + data + " lenght:>>" + data.Length);
-            if (func != null) func.Call(data);
+            if (func != null)
+            {
+                func.Call(data);
+            }
         }
 
         #endregion

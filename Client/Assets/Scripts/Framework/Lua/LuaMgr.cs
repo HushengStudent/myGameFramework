@@ -78,7 +78,7 @@ namespace Framework
             RequirePathList.Add(Application.dataPath + "/LuaFramework/Lua/NetWork");
             if (!loader.beZip)
             {
-                foreach(var path in RequirePathList)
+                foreach (var path in RequirePathList)
                 {
                     lua.AddSearchPath(path);
                 }
@@ -120,7 +120,7 @@ namespace Framework
         // Update is called once per frame;
         public object[] CallFunction(string funcName, params object[] args)
         {
-            LuaFunction func = lua.GetFunction(funcName);
+            var func = lua.GetFunction(funcName);
             if (func != null)
             {
                 return func.Invoke<object[], object[]>(args);
@@ -130,7 +130,7 @@ namespace Framework
 
         public void CallLuaModuleMethod(string funcName, params object[] args)
         {
-            LuaFunction func = lua.GetFunction(funcName);
+            var func = lua.GetFunction(funcName);
             if (func != null)
             {
                 func.Call(args);
@@ -139,8 +139,8 @@ namespace Framework
 
         public void CallLuaTableMethod(string module, string funcName, params object[] args)
         {
-            LuaFunction func = lua.GetFunction(module + "." + funcName);
-            LuaTable table = lua.GetTable(module);
+            var func = lua.GetFunction(module + "." + funcName);
+            var table = lua.GetTable(module);
             if (func != null && table != null)
             {
                 func.Call(table, args);

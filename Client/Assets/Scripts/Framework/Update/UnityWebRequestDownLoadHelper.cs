@@ -75,7 +75,7 @@ namespace Framework
                         }
                         yield return null;
                     }
-                    bool isError = false;
+                    var isError = false;
                     isError = request.isNetworkError;
                     if (isError)
                     {

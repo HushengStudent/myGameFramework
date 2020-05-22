@@ -93,7 +93,7 @@ namespace Framework
         {
             try
             {
-                _session.Send<T>(packet);
+                _session.Send(packet);
             }
             catch (Exception e)
             {

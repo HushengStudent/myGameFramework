@@ -21,14 +21,14 @@ namespace Framework
             {
                 if (null == _singleton)
                 {
-                    GameObject go = GameObject.Find(_monoSingletonRoot);
+                    var go = GameObject.Find(_monoSingletonRoot);
                     if (null == go)
                     {
                         go = new GameObject(_monoSingletonRoot);
                         DontDestroyOnLoad(go);
                     }
                     _singleton = go.AddComponent<T>();
-                    MonoSingletoninterface singleton = _singleton as MonoSingletoninterface;
+                    var singleton = _singleton as MonoSingletoninterface;
                     if (singleton != null)
                     {
                         //OnInitialize晚于AwakeEx执行;
@@ -85,7 +85,7 @@ namespace Framework
 
         void OnDestroy()
         {
-            MonoSingletoninterface singleton = _singleton as MonoSingletoninterface;
+            var singleton = _singleton as MonoSingletoninterface;
             if (singleton != null)
             {
                 singleton.MonoSingletoninterfaceOnUninitialize();

@@ -26,11 +26,11 @@ namespace Framework
         /// <returns>计算后的MD5;</returns>
         public static string GetMD5(byte[] bytes)
         {
-            using (MD5 alg = MD5.Create())
+            using (var alg = MD5.Create())
             {
                 var data = alg.ComputeHash(bytes);
                 var stringBuilder = new StringBuilder();
-                for (int i = 0; i < data.Length; i++)
+                for (var i = 0; i < data.Length; i++)
                 {
                     stringBuilder.Append(data[i].ToString("x2"));
                 }
@@ -54,7 +54,7 @@ namespace Framework
             using (var stream = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
                 var md5 = MD5.Create();
-                int length = 0;
+                var length = 0;
                 var output = new byte[bufferSize];
                 while ((length = stream.Read(buffer, 0, buffer.Length)) > 0)
                 {
@@ -95,11 +95,11 @@ namespace Framework
         /// <returns>计算后的Hash;</returns>
         public static string GetHash(byte[] textBytes)
         {
-            using (HashAlgorithm algorithm = SHA256.Create())
+            using (var algorithm = SHA256.Create())
             {
                 var stringBuilder = new StringBuilder();
                 var hash = algorithm.ComputeHash(textBytes);
-                for (int i = 0; i < hash.Length; i++)
+                for (var i = 0; i < hash.Length; i++)
                 {
                     stringBuilder.Append(hash[i].ToString("X2"));
                 }

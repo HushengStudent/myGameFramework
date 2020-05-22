@@ -309,7 +309,7 @@ namespace Framework
         {
             if (_socket == null)
             {
-                string errorMessage = "session not initialize.";
+                var errorMessage = "session not initialize.";
                 if (ErrorHandler != null)
                 {
                     ErrorHandler(this, SessionErrorCode.StateError, errorMessage);
@@ -330,8 +330,8 @@ namespace Framework
             }
             try
             {
-                int length = 0;
-                int packetLength = 0;
+                var length = 0;
+                var packetLength = 0;
                 var packetBuffer = new byte[_defaultMaxPacketLength];//TODO:内存池;
                 using (var memoryStream = new MemoryStream(packetBuffer, true))
                 {
@@ -381,8 +381,8 @@ namespace Framework
             }
             try
             {
-                int length = 0;
-                int packetLength = 0;
+                var length = 0;
+                var packetLength = 0;
                 var packetBuffer = new byte[_defaultMaxPacketLength];//TODO:内存池;
                 using (var memoryStream = new MemoryStream(packetBuffer, true))
                 {
@@ -410,7 +410,7 @@ namespace Framework
         {
             var param = (SessionParam)ar.AsyncState;
 
-            int bytesSent = 0;
+            var bytesSent = 0;
             try
             {
                 bytesSent = param.socket.EndSend(ar);
@@ -458,7 +458,7 @@ namespace Framework
         private void ReceiveCallback(IAsyncResult ar)
         {
             var socket = (Socket)ar.AsyncState;
-            int bytesReceived = 0;
+            var bytesReceived = 0;
             try
             {
                 bytesReceived = socket.EndReceive(ar);

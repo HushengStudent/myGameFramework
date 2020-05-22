@@ -8,7 +8,7 @@ using MEC;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Object = UnityEngine.Object;
+using UnityObject = UnityEngine.Object;
 
 namespace Framework
 {
@@ -109,7 +109,7 @@ namespace Framework
         /// </summary>
         /// <param name="path"></param>
         /// <param name="asset"></param>
-        public void AddAssetRef(string path, Object asset)
+        public void AddAssetRef(string path, UnityObject asset)
         {
             if (string.IsNullOrEmpty(path) || null == asset)
             {
@@ -362,7 +362,7 @@ namespace Framework
         /// </summary>
         /// <param name="path"></param>
         /// <param name="asset"></param>
-        public void UnloadAsset(string path, Object asset)
+        public void UnloadAsset(string path, UnityObject asset)
         {
             if (string.IsNullOrEmpty(path))
             {
@@ -376,7 +376,7 @@ namespace Framework
                 {
                     for (var i = 0; i < list.Count; i++)
                     {
-                        if ((Object)(list[i].Target) == asset)
+                        if ((UnityObject)(list[i].Target) == asset)
                         {
                             list.RemoveAt(i);
                             //需要UnloadAsset?

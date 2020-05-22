@@ -14,7 +14,10 @@ namespace Framework
         private Action _onLoadFinishHandler;
         public Action OnLoadFinishHandler
         {
-            get { return _onLoadFinishHandler; }
+            get
+            {
+                return _onLoadFinishHandler;
+            }
             set
             {
                 _onLoadFinishHandler = value;

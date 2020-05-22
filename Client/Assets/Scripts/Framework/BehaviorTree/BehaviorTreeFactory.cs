@@ -26,7 +26,7 @@ namespace Framework
                 return null;
             }
             GenerateConnect(new List<AbsBehavior>() { _rootBehavior });
-            BehaviorTree tree = new BehaviorTree(_rootBehavior, entity);
+            var tree = new BehaviorTree(_rootBehavior, entity);
             _rootBehavior = null;
             _behaviorDict.Clear();
             _connectionDict.Clear();
@@ -38,18 +38,18 @@ namespace Framework
             _rootBehavior = null;
             _behaviorDict.Clear();
             _connectionDict.Clear();
-            TextAsset json = Resources.Load<TextAsset>(path);
-            string content = json.text.Replace("\r", "").Replace("\n", "");
-            Hashtable table = MiniJsonExtensions.hashtableFromJson(content);
-            ArrayList nodeList = table["nodes"] as ArrayList;
-            ArrayList connectionList = table["connections"] as ArrayList;
+            var json = Resources.Load<TextAsset>(path);
+            var content = json.text.Replace("\r", "").Replace("\n", "");
+            var table = MiniJsonExtensions.hashtableFromJson(content);
+            var nodeList = table["nodes"] as ArrayList;
+            var connectionList = table["connections"] as ArrayList;
             for (var i = 0; i < nodeList.Count; i++)
             {
-                Hashtable nodeTable = nodeList[i] as Hashtable;
+                var nodeTable = nodeList[i] as Hashtable;
                 var id = 0;
                 if (int.TryParse(nodeTable["$id"].ToString(), out id))
                 {
-                    AbsBehavior absBehavior = CreateBehavior(nodeTable, id);
+                    var absBehavior = CreateBehavior(nodeTable, id);
                     _behaviorDict[id] = absBehavior;
                     if (_rootBehavior == null)
                     {
@@ -70,11 +70,11 @@ namespace Framework
             }
             for (var i = 0; i < connectionList.Count; i++)
             {
-                Hashtable connectionTable = connectionList[i] as Hashtable;
-                int source = 0;
-                int target = 0;
-                Hashtable scurceNode = connectionTable["_sourceNode"] as Hashtable;
-                Hashtable targetNode = connectionTable["_targetNode"] as Hashtable;
+                var connectionTable = connectionList[i] as Hashtable;
+                var source = 0;
+                var target = 0;
+                var scurceNode = connectionTable["_sourceNode"] as Hashtable;
+                var targetNode = connectionTable["_targetNode"] as Hashtable;
                 if (int.TryParse(scurceNode["$ref"].ToString(), out source)
                     && int.TryParse(targetNode["$ref"].ToString(), out target))
                 {
@@ -95,21 +95,21 @@ namespace Framework
 
         private static void GenerateConnect(List<AbsBehavior> list)
         {
-            List<AbsBehavior> nextList = new List<AbsBehavior>();
+            var nextList = new List<AbsBehavior>();
             AbsBehavior target;
             for (var i = 0; i < list.Count; i++)
             {
                 target = list[i];
-                int id = target.Id;
+                var id = target.Id;
                 List<int> connectList;
                 if (!_connectionDict.TryGetValue(id, out connectList))
                 {
                     continue;
                 }
-                List<AbsBehavior> sonList = new List<AbsBehavior>();
+                var sonList = new List<AbsBehavior>();
                 for (var j = 0; j < connectList.Count; j++)
                 {
-                    int sonId = connectList[j];
+                    var sonId = connectList[j];
                     AbsBehavior son;
                     if (!_behaviorDict.TryGetValue(sonId, out son))
                     {
@@ -122,7 +122,7 @@ namespace Framework
                 }
                 if (target.IsComposite)
                 {
-                    AbsComposite composite = target as AbsComposite;
+                    var composite = target as AbsComposite;
                     if (sonList.Count < 1)
                     {
                         composite.Serialize(null);
@@ -135,7 +135,7 @@ namespace Framework
                 }
                 else
                 {
-                    AbsDecorator decorator = target as AbsDecorator;
+                    var decorator = target as AbsDecorator;
                     if (sonList.Count < 1)
                     {
                         decorator.Serialize(null);
@@ -156,12 +156,12 @@ namespace Framework
         private static AbsBehavior CreateBehavior(Hashtable table, int id)
         {
             AbsBehavior behavior = null;
-            string type = table["$type"].ToString();
-            string[] str = type.Split(".".ToCharArray());
+            var type = table["$type"].ToString();
+            var str = type.Split(".".ToCharArray());
             if (3 == str.Length)
             {
-                string name = "Framework." + str[2];
-                Type target = Type.GetType(name);
+                var name = "Framework." + str[2];
+                var target = Type.GetType(name);
                 behavior = Activator.CreateInstance(target, table) as AbsBehavior;
             }
             if (behavior != null)

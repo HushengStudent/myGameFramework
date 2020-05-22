@@ -28,7 +28,7 @@ namespace Framework
         {
             if (Enable && Entity != null && (Root.Reslut == BehaviorState.Reset || Root.Reslut == BehaviorState.Running))
             {
-                BehaviorState reslut = Root.Behave(Entity, interval);
+                var reslut = Root.Behave(Entity, interval);
                 switch (reslut)
                 {
                     case BehaviorState.Reset:

@@ -27,7 +27,7 @@ namespace Framework
         protected override void FixedUpdateEx(float interval)
         {
             base.FixedUpdateEx(interval);
-            for (int i = 0; i < _componentList.Count; i++)
+            for (var i = 0; i < _componentList.Count; i++)
             {
                 if (_componentList[i].Enable)
                 {
@@ -39,7 +39,7 @@ namespace Framework
         protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
-            for (int i = 0; i < _componentList.Count; i++)
+            for (var i = 0; i < _componentList.Count; i++)
             {
                 if (_componentList[i].Enable)
                 {
@@ -51,7 +51,7 @@ namespace Framework
         protected override void LateUpdateEx(float interval)
         {
             base.LateUpdateEx(interval);
-            for (int i = 0; i < _componentList.Count; i++)
+            for (var i = 0; i < _componentList.Count; i++)
             {
                 if (_componentList[i].Enable)
                 {

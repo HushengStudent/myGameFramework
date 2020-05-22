@@ -36,8 +36,8 @@ namespace Framework
             {
                 CurScene = new Scene();
             }
-            var loadItor = CurScene.LoadScene(sceneId, handler);
-            while (loadItor.MoveNext())
+            var itor = CurScene.LoadScene(sceneId, handler);
+            while (itor.MoveNext())
             {
                 yield return Timing.WaitForOneFrame;
             }

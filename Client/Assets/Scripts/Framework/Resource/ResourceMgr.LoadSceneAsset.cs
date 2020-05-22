@@ -8,7 +8,6 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using MEC;
-using System.Collections;
 using UnityEngine.SceneManagement;
 using System.IO;
 

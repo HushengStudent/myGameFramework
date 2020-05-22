@@ -19,7 +19,7 @@ namespace Framework
 
         protected override void OnInitialize()
         {
-            float allMenory = GetAllMemory();
+            var allMenory = GetAllMemory();
             LogHelper.Print($"Used Heap Size: {allMenory.ToString("F3")} MB");
         }
 
@@ -41,7 +41,7 @@ namespace Framework
 
         private void MonitorMemorySize()
         {
-            float allMenory = GetAllMemory();
+            var allMenory = GetAllMemory();
             if (allMenory > MaxMemoryUse)
             {
                 LogHelper.PrintError($"Used Heap Size: {allMenory.ToString("F3")} MB");
@@ -55,8 +55,7 @@ namespace Framework
 
         private float GetAllMemory()
         {
-            float allMenory = Profiler.usedHeapSizeLong / (float)MBSize;
-            return allMenory;
+            return Profiler.usedHeapSizeLong / (float)MBSize;
         }
 
         private void FreeMemory()

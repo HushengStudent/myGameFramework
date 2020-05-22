@@ -21,7 +21,7 @@ namespace Framework
                     {
                         _singleton = new T(); //调用构造函数;
 
-                        Singletoninterface singleton = _singleton as Singletoninterface;
+                        var singleton = _singleton as Singletoninterface;
                         if (singleton != null)
                         {
                             singleton.SingletoninterfaceOnInitialize();

@@ -14,13 +14,13 @@ namespace Framework
     {
         public void AddBuff(ulong uid, int buffId)
         {
-            RoleEntity entity = EntityMgr.singleton.GetEntity<RoleEntity>(uid);
+            var entity = EntityMgr.singleton.GetEntity<RoleEntity>(uid);
             if (entity == null)
             {
                 LogHelper.PrintError($"[BuffMgr]entity is null,uid is {uid}.");
                 return;
             }
-            BuffComponent comp = entity.BuffComp;
+            var comp = entity.BuffComp;
             if (comp == null)
             {
                 LogHelper.PrintError($"[BuffMgr]buffComponent is null,uid is {uid}.");

@@ -12,26 +12,26 @@ namespace Framework
 {
     public class SdkMgr : Singleton<SdkMgr>
     {
-        private Dictionary<string, Action<string>> SdkCallBack = new Dictionary<string, Action<string>>();
+        private Dictionary<string, Action<string>> _sdkCallbackDict = new Dictionary<string, Action<string>>();
 
         protected override void OnInitialize()
         {
             base.OnInitialize();
-            SdkCallBack.Clear();
+            _sdkCallbackDict.Clear();
         }
 
         public void RegisterCallBack(Action<string> cb)
         {
             if (cb != null)
             {
-                string cbName = cb.Method.Name;
-                if (SdkCallBack.ContainsKey(cbName))
+                var cbName = cb.Method.Name;
+                if (_sdkCallbackDict.ContainsKey(cbName))
                 {
-                    SdkCallBack[cbName] = cb;
+                    _sdkCallbackDict[cbName] = cb;
                 }
                 else
                 {
-                    SdkCallBack.Add(cbName, cb);
+                    _sdkCallbackDict.Add(cbName, cb);
                 }
                 LogHelper.Print($"[SdkMgr]Register Callback Success:{cbName}");
             }
@@ -39,23 +39,19 @@ namespace Framework
 
         public void ClearAllCallBack()
         {
-            SdkCallBack.Clear();
+            _sdkCallbackDict.Clear();
         }
 
         public void ExecuteCallBack(string str)
         {
-            Hashtable table = MiniJSON.jsonDecode(str) as Hashtable;
+            var table = MiniJSON.jsonDecode(str) as Hashtable;
             if (table != null)
             {
-                string cbName = table["Method"] as string;
-                string content = table["Content"] as string;
-                if (SdkCallBack.ContainsKey(cbName))
+                var cbName = table["Method"] as string;
+                var content = table["Content"] as string;
+                if (_sdkCallbackDict.ContainsKey(cbName))
                 {
-                    Action<string> cb = SdkCallBack[cbName];
-                    if (cb != null)
-                    {
-                        cb(content);
-                    }
+                    _sdkCallbackDict[cbName]?.Invoke(content);
                 }
             }
         }

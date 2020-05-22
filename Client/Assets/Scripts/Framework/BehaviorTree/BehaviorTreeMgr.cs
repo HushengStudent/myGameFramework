@@ -42,7 +42,7 @@ namespace Framework
 
         public void CreateBehaviorTree(AbsEntity entity, string path, bool enable = false)
         {
-            BehaviorTree tree = BehaviorTreeFactory.CreateBehaviorTree(entity, path);
+            var tree = BehaviorTreeFactory.CreateBehaviorTree(entity, path);
             if (entity == null)
             {
                 LogHelper.PrintError("[BehaviorTreeMgr]Create BehaviorTree error,entity is null!");
