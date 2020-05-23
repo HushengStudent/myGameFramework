@@ -30,9 +30,9 @@ namespace Framework
             GUI.backgroundColor = Color.green;
             if (GUILayout.Button("Excute", GUILayout.Height(30)))
             {
-                if (Application.isPlaying && LuaMgr.singleton)
+                if (Application.isPlaying && LuaMgr.Singleton)
                 {
-                    LuaMgr.singleton.Dostring(_luaText);
+                    LuaMgr.Singleton.Dostring(_luaText);
                 }
             }
             GUI.backgroundColor = color;

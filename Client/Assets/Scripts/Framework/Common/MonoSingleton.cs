@@ -15,7 +15,7 @@ namespace Framework
         protected static T _singleton = null;
         public static bool ApplicationIsPlaying { get; private set; } = true;
 
-        public static T singleton
+        public static T Singleton
         {
             get
             {

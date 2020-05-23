@@ -90,7 +90,7 @@ namespace Framework
             _camera.orthographicSize = originalCamSize * y;
             _camera.rect = new Rect(0, 0, x, y);
 
-            var render = PoolMgr.singleton.GetCsharpObject<CommandBufferRender>(width, high);
+            var render = PoolMgr.Singleton.GetCsharpObject<CommandBufferRender>(width, high);
             _commandBuffer.Clear();
             _commandBuffer.SetRenderTarget(render.RenderTexture);
             _commandBuffer.ClearRenderTarget(true, true, Color.clear);

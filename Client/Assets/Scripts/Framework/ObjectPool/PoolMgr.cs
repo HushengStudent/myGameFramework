@@ -32,7 +32,7 @@ namespace Framework
         /// </summary>
         protected override void OnInitialize()
         {
-            CoroutineMgr.singleton.RunCoroutine(ClearPool());
+            CoroutineMgr.Singleton.RunCoroutine(ClearPool());
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Framework
             {
                 yield return Timing.WaitForOneFrame;
             }
-            ResourceMgr.singleton.UnloadUnusedAssets(() =>
+            ResourceMgr.Singleton.UnloadUnusedAssets(() =>
             {
                 EventMgr.singleton.FireGlobalEvent(EventType.POOL_MGR_INIT, null);
             });

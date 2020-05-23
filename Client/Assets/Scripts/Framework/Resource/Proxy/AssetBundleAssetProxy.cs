@@ -23,14 +23,14 @@ namespace Framework
             {
                 AssetBundleMgr.singleton.UnloadAsset(AssetPath, AssetObject);
             }
-            PoolMgr.singleton.ReleaseCsharpObject(this);
+            PoolMgr.Singleton.ReleaseCsharpObject(this);
         }
 
         protected override T GetInstantiateObjectEx<T>()
         {
             if (AssetObject != null && CanInstantiate())
             {
-                return PoolMgr.singleton.GetUnityObject(AssetObject) as T;
+                return PoolMgr.Singleton.GetUnityObject(AssetObject) as T;
             }
             return null;
         }
@@ -41,12 +41,12 @@ namespace Framework
             {
                 if (IsUsePool)
                 {
-                    PoolMgr.singleton.ReleaseUnityObject(t);
+                    PoolMgr.Singleton.ReleaseUnityObject(t);
                     storage = true;
                 }
                 else
                 {
-                    ResourceMgr.singleton.DestroyInstantiateObject(t);
+                    ResourceMgr.Singleton.DestroyInstantiateObject(t);
                 }
             }
         }

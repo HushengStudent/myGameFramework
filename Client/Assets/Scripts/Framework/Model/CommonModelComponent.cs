@@ -17,7 +17,7 @@ namespace Framework
         protected override void InitializeEx()
         {
             base.InitializeEx();
-            _skeletonProxy = ResourceMgr.singleton.LoadAssetAsync(_skeletonPath);
+            _skeletonProxy = ResourceMgr.Singleton.LoadAssetAsync(_skeletonPath);
             _skeletonProxy.AddLoadFinishCallBack(() =>
             {
                 _skeleton = _skeletonProxy.GetInstantiateObject<GameObject>();

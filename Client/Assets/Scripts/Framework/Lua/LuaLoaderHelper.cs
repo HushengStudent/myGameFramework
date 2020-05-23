@@ -52,7 +52,7 @@ namespace Framework
                     fileName += ".lua";
                 }
 
-#if UNITY_5 || UNITY_2017_1_OR_NEWER
+#if UNITY_5 || UNITY_2017
                 fileName += ".bytes";
 #endif
                 if (_zipFile == null)
@@ -70,7 +70,7 @@ namespace Framework
                         var head = _heads[i];
                         var tempName = head + fileName;
 
-#if UNITY_5 || UNITY_2017_1_OR_NEWER 
+#if UNITY_5 || UNITY_2017
                         luaCode = _zipFile.LoadAsset<TextAsset>(tempName);
 #else
                         luaCode = _zipFile.Load(fileName, typeof(TextAsset)) as TextAsset;

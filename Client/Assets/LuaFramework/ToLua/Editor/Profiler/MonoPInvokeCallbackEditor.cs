@@ -15,7 +15,7 @@ public class MonoPInvokeCallbackEditor
     [MenuItem("myGameFramework/Profiler/MonoPInvokeCallback Analysis/Start MonoPInvokeCallback Analysis")]
     private static void _ExecuteAttach()
     {
-        if (Application.isPlaying && LuaMgr.singleton)
+        if (Application.isPlaying && LuaMgr.Singleton)
         {
             if (_isEnable)
             {

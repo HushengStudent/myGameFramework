@@ -51,14 +51,14 @@ namespace Framework
 
         public static Vector2 WorldToScreenPoint(Vector3 position)
         {
-            var mainCamera = CameraMgr.singleton.MainCamera;
+            var mainCamera = CameraMgr.Singleton.MainCamera;
             if (mainCamera)
             {
                 position = mainCamera.WorldToScreenPoint(position);
-                var mainUICamera = CameraMgr.singleton.MainUICamera;
+                var mainUICamera = CameraMgr.Singleton.MainUICamera;
                 if (mainUICamera)
                 {
-                    var uiRoot = UIMgr.singleton.UIRoot;
+                    var uiRoot = UIMgr.Singleton.UIRoot;
                     if (uiRoot.transform as RectTransform)
                     {
                         var localPoint = Vector2.zero;

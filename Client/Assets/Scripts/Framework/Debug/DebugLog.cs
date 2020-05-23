@@ -24,12 +24,12 @@ namespace Framework
 
             public void DrawLog(int windowId)
             {
-                GUI.DragWindow(singleton._dragRect);
+                GUI.DragWindow(Singleton._dragRect);
 
                 if (GUILayout.Button("返回上级", GUILayout.Width(100f), GUILayout.Height(35f)))
                 {
                     //click button
-                    singleton.SetShowType(ShowType.ShowSelect);
+                    Singleton.SetShowType(ShowType.ShowSelect);
                 }
                 GUILayout.Space(10);
                 _automaticPopUp = GUILayout.Toggle(_automaticPopUp, "[error]弹出", GUILayout.Width(150f), GUILayout.Height(35f));
@@ -96,7 +96,7 @@ namespace Framework
                 }
                 if (logType == LogType.Error && _automaticPopUp)
                 {
-                    singleton._showType = ShowType.ShowLog;
+                    Singleton._showType = ShowType.ShowLog;
                 }
             }
 

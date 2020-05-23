@@ -17,8 +17,8 @@ namespace Framework
 
         protected override void Unload()
         {
-            ResourceMgr.singleton.DestroyUnityAsset(AssetObject);
-            PoolMgr.singleton.ReleaseCsharpObject(this);
+            ResourceMgr.Singleton.DestroyUnityAsset(AssetObject);
+            PoolMgr.Singleton.ReleaseCsharpObject(this);
         }
 
         protected override T GetInstantiateObjectEx<T>()
@@ -35,7 +35,7 @@ namespace Framework
         {
             if (t != null)
             {
-                ResourceMgr.singleton.DestroyInstantiateObject(t);
+                ResourceMgr.Singleton.DestroyInstantiateObject(t);
             }
         }
 

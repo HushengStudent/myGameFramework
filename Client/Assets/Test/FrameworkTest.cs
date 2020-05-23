@@ -26,14 +26,14 @@ public class FrameworkTest : MonoBehaviour
         Packet_LoginRequest req = new Packet_LoginRequest();
         req.Data.id = 1001;
         req.Data.name = "HushengStudent";
-        NetMgr.singleton.Send<Packet_LoginRequest>(req);
+        NetMgr.Singleton.Send<Packet_LoginRequest>(req);
     }
 
     public void GetObjectFromPool()
     {
         if (_go)
         {
-            GameObject temp = PoolMgr.singleton.GetUnityObject(_go) as GameObject;
+            GameObject temp = PoolMgr.Singleton.GetUnityObject(_go) as GameObject;
             _goQueue.Enqueue(temp);
         }
     }
@@ -42,28 +42,28 @@ public class FrameworkTest : MonoBehaviour
     {
         if (_goQueue.Count > 0)
         {
-            PoolMgr.singleton.ReleaseUnityObject(_goQueue.Dequeue());
+            PoolMgr.Singleton.ReleaseUnityObject(_goQueue.Dequeue());
         }
     }
 
     public void ClearPool()
     {
-        CoroutineMgr.singleton.RunCoroutine(PoolMgr.singleton.ClearPool());
+        CoroutineMgr.Singleton.RunCoroutine(PoolMgr.Singleton.ClearPool());
     }
 
     public void BehaviorTreeTest()
     {
-        var entity = EntityMgr.singleton.GetEntity<RoleEntity>(ulong.MaxValue);
+        var entity = EntityMgr.Singleton.GetEntity<RoleEntity>(ulong.MaxValue);
         if (entity == null)
         {
-            entity = EntityMgr.singleton.CreateEntity<RoleEntity>(1, ulong.MaxValue, "BehaviorTree");
+            entity = EntityMgr.Singleton.CreateEntity<RoleEntity>(1, ulong.MaxValue, "BehaviorTree");
         }
-        BehaviorTreeMgr.singleton.CreateBehaviorTree(entity, "Bin/Bt/BehaviourTree.BT", true);
+        BehaviorTreeMgr.Singleton.CreateBehaviorTree(entity, "Bin/Bt/BehaviourTree.BT", true);
     }
 
     private void ModelInit()
     {
-        var role = EntityMgr.singleton.CreateEntity<RoleEntity>(1, 1, "_entity_test");
+        var role = EntityMgr.Singleton.CreateEntity<RoleEntity>(1, 1, "_entity_test");
         role.GameObjectEx.SetLocalPosition(0.5f, 17f, -20f);
         role.GameObjectEx.SetLocalRotation(0f, 180f, 0f);
         role.GameObjectEx.SetLocalScale(1f, 1f, 1f);
@@ -71,7 +71,7 @@ public class FrameworkTest : MonoBehaviour
 
     public void ChangeHead()
     {
-        var role = EntityMgr.singleton.GetEntity<RoleEntity>(1);
+        var role = EntityMgr.Singleton.GetEntity<RoleEntity>(1);
         var modelComponent = role.GameObjectEx.ModelComponent as CombineModelComponent;
         if (modelComponent != null)
         {

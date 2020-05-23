@@ -36,7 +36,7 @@ namespace Framework
 
         private void LoadAtlas()
         {
-            _proxy = ResourceMgr.singleton.LoadAssetAsync(AtlasPath);
+            _proxy = ResourceMgr.Singleton.LoadAssetAsync(AtlasPath);
             _proxy.AddLoadFinishCallBack(OnLoadFinish);
         }
 
@@ -51,7 +51,7 @@ namespace Framework
                 }
                 else
                 {
-                    _atlasPrefab.transform.SetParent(AtlasMgr.singleton.AtlasRoot.transform);
+                    _atlasPrefab.transform.SetParent(AtlasMgr.Singleton.AtlasRoot.transform);
                 }
             }
             if (!Deprecated)
@@ -80,7 +80,7 @@ namespace Framework
         {
             if (_atlasPrefab != null)
             {
-                ResourceMgr.singleton.DestroyInstantiateObject(_atlasPrefab);
+                ResourceMgr.Singleton.DestroyInstantiateObject(_atlasPrefab);
             }
 
             _objectRefDict.Clear();
@@ -132,7 +132,7 @@ namespace Framework
         /// 切场景时卸载一次;
         public bool TryReleaseAtlas()
         {
-            var list = PoolMgr.singleton.GetCsharpList<Object>();
+            var list = PoolMgr.Singleton.GetCsharpList<Object>();
             foreach (var temp in _objectRefDict)
             {
                 if (temp.Key == null)

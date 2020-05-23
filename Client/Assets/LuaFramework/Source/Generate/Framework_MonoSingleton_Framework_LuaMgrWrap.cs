@@ -60,7 +60,7 @@ public class Framework_MonoSingleton_Framework_LuaMgrWrap
 #endif
 		try
 		{
-			ToLua.Push(L, Framework.MonoSingleton<Framework.LuaMgr>.singleton);
+			ToLua.Push(L, Framework.MonoSingleton<Framework.LuaMgr>.Singleton);
 			return 1;
 		}
 		catch (Exception e)

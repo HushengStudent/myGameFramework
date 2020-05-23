@@ -46,7 +46,7 @@ namespace Framework
             Atlas atlas;
             if (!_atlasDict.TryGetValue(atlasPath, out atlas) || atlas.Deprecated)
             {
-                atlas = PoolMgr.singleton.GetCsharpObject<Atlas>();
+                atlas = PoolMgr.Singleton.GetCsharpObject<Atlas>();
                 atlas.OnInitialize(atlasPath);
             }
             if (atlas == null)
@@ -72,7 +72,7 @@ namespace Framework
         protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
-            var list = PoolMgr.singleton.GetCsharpList<string>();
+            var list = PoolMgr.Singleton.GetCsharpList<string>();
             foreach (var temp in _atlasDict)
             {
                 if (temp.Value.Deprecated)
@@ -88,12 +88,12 @@ namespace Framework
                 atlas.OnUninitialize();
             }
             list.Clear();
-            PoolMgr.singleton.ReleaseCsharpList(list);
+            PoolMgr.Singleton.ReleaseCsharpList(list);
         }
 
         private void OnSceneUnload(IEventArgs eventArgs)
         {
-            var list = PoolMgr.singleton.GetCsharpList<string>();
+            var list = PoolMgr.Singleton.GetCsharpList<string>();
             foreach (var temp in _atlasDict)
             {
                 if (temp.Value.Deprecated || temp.Value.TryReleaseAtlas())
@@ -109,7 +109,7 @@ namespace Framework
                 atlas.OnUninitialize();
             }
             list.Clear();
-            PoolMgr.singleton.ReleaseCsharpList(list);
+            PoolMgr.Singleton.ReleaseCsharpList(list);
         }
 
         protected override void OnUninitialize()

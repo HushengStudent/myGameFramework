@@ -48,7 +48,7 @@ namespace Framework
             EntityName = name;
             EntityId = entityId;
             Enable = true;
-            GameObjectEx = PoolMgr.singleton.GetCsharpObject<GameObjectEx>();
+            GameObjectEx = PoolMgr.Singleton.GetCsharpObject<GameObjectEx>();
 
             InternalInitialize();
             GameObjectEx.AddLoadFinishHandler((goex) =>
@@ -82,7 +82,7 @@ namespace Framework
         {
             OnDetachGameObject();
             GameObjectEx.UnInitialize();
-            PoolMgr.singleton.ReleaseCsharpObject(GameObjectEx);
+            PoolMgr.Singleton.ReleaseCsharpObject(GameObjectEx);
             GameObjectEx = null;
         }
 

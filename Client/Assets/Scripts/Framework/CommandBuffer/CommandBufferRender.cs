@@ -21,7 +21,7 @@ namespace Framework
 
         public void Release()
         {
-            PoolMgr.singleton.ReleaseCsharpObject(this);
+            PoolMgr.Singleton.ReleaseCsharpObject(this);
         }
 
         void IPool.OnGet(params object[] args)

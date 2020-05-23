@@ -105,7 +105,7 @@ namespace Framework.ObjectPool
             var go = element as GameObject;
             if (go)
             {
-                go.transform.SetParent(PoolMgr.singleton.Root.transform);
+                go.transform.SetParent(PoolMgr.Singleton.Root.transform);
                 go.transform.position = Vector3.zero;
                 go.transform.rotation = Quaternion.Euler(Vector3.zero);
                 go.transform.localScale = Vector3.one;
@@ -134,7 +134,7 @@ namespace Framework.ObjectPool
                         continue;
                     }
                     Object.Destroy(go);
-                    if (_stopwatch.Elapsed.Milliseconds >= ResourceMgr.singleton.MAX_LOAD_TIME)
+                    if (_stopwatch.Elapsed.Milliseconds >= ResourceMgr.Singleton.MAX_LOAD_TIME)
                     {
                         _stopwatch.Stop();
                         yield return Timing.WaitForOneFrame;

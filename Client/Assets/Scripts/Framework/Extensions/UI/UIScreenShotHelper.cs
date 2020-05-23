@@ -14,7 +14,7 @@ namespace Framework
     {
         public static void ExecuteScreenShot(Action<Texture2D> action)
         {
-            CoroutineMgr.singleton.StartCoroutine(WaitForEndOfFrameItor(() =>
+            CoroutineMgr.Singleton.StartCoroutine(WaitForEndOfFrameItor(() =>
             {
                 var width = Screen.width;
                 var height = Screen.height;
@@ -32,7 +32,7 @@ namespace Framework
 
         public static void ExecuteCameraShot(Camera camera, Action<Texture2D> action)
         {
-            CoroutineMgr.singleton.StartCoroutine(WaitForEndOfFrameItor(() =>
+            CoroutineMgr.Singleton.StartCoroutine(WaitForEndOfFrameItor(() =>
             {
                 var width = camera.pixelWidth;
                 var height = camera.pixelHeight;

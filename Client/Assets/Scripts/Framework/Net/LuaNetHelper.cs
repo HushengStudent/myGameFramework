@@ -13,7 +13,7 @@ namespace Framework
     {
         public static void SendLuaReq(int id, LuaBuffer buffer)
         {
-            NetMgr.singleton.Send(id, buffer);
+            NetMgr.Singleton.Send(id, buffer);
         }
 
         public static void Send2Lua(int id, byte[] bytes)

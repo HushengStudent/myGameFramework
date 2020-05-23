@@ -60,7 +60,7 @@ public class Framework_MonoSingleton_Framework_ResourceMgrWrap
 #endif
 		try
 		{
-			ToLua.Push(L, Framework.MonoSingleton<Framework.ResourceMgr>.singleton);
+			ToLua.Push(L, Framework.MonoSingleton<Framework.ResourceMgr>.Singleton);
 			return 1;
 		}
 		catch (Exception e)

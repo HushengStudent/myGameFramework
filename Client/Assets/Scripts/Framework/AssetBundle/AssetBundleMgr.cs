@@ -118,7 +118,7 @@ namespace Framework
             List<WeakReference> list;
             if (!_assetBundleRefDict.TryGetValue(path, out list))
             {
-                list = PoolMgr.singleton.GetCsharpList<WeakReference>();
+                list = PoolMgr.Singleton.GetCsharpList<WeakReference>();
                 _assetBundleRefDict[path] = list;
             }
             var reference = new WeakReference(asset);
@@ -130,7 +130,7 @@ namespace Framework
         /// </summary>
         public void AutoUnloadAsset()
         {
-            var deprecatedList = PoolMgr.singleton.GetCsharpList<string>();
+            var deprecatedList = PoolMgr.Singleton.GetCsharpList<string>();
             foreach (var reference in _assetBundleRefDict)
             {
                 var list = reference.Value;
@@ -151,7 +151,7 @@ namespace Framework
                         UnloadAsset(path, null);
                     }
                     list.Clear();
-                    PoolMgr.singleton.ReleaseCsharpList(list);
+                    PoolMgr.Singleton.ReleaseCsharpList(list);
                     LogHelper.Print($"[AssetBundleMgr]AutoUnloadAsset:{path}");
                     deprecatedList.Add(path);
                 }
@@ -161,7 +161,7 @@ namespace Framework
                 var path = deprecatedList[i];
                 _assetBundleRefDict.Remove(path);
             }
-            PoolMgr.singleton.ReleaseCsharpList(deprecatedList);
+            PoolMgr.Singleton.ReleaseCsharpList(deprecatedList);
         }
 
         #endregion
@@ -321,7 +321,7 @@ namespace Framework
             //先加载依赖的AssetBundle;
             var dependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
             var count = dependentAssetBundle.Length;
-            var precent = ResourceMgr.singleton.LOAD_BUNDLE_PRECENT;
+            var precent = ResourceMgr.Singleton.LOAD_BUNDLE_PRECENT;
             var unit = precent / (count + 1);
             int index = 0;
             foreach (var tempAssetBundle in dependentAssetBundle)

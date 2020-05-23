@@ -14,36 +14,36 @@ namespace Framework
         {
             public void DrawSelect(int windowId)
             {
-                GUI.DragWindow(singleton._dragRect);
+                GUI.DragWindow(Singleton._dragRect);
                 GUILayout.Label("<b>D开启调试,F4关闭调试!</b>");
                 if (GUILayout.Button("返回上级", GUILayout.Width(100f), GUILayout.Height(35f)))
                 {
-                    singleton.SetShowType(ShowType.ShowFps);
+                    Singleton.SetShowType(ShowType.ShowFps);
                 }
                 GUILayout.Space(10);
                 if (GUILayout.Button("日志信息", GUILayout.Width(100f), GUILayout.Height(35f)))
                 {
-                    singleton.SetShowType(ShowType.ShowLog);
+                    Singleton.SetShowType(ShowType.ShowLog);
                 }
                 GUILayout.Space(5);
                 if (GUILayout.Button("系统信息", GUILayout.Width(100f), GUILayout.Height(35f)))
                 {
-                    singleton.SetShowType(ShowType.ShowSystem);
+                    Singleton.SetShowType(ShowType.ShowSystem);
                 }
                 GUILayout.Space(5);
                 if (GUILayout.Button("内存信息", GUILayout.Width(100f), GUILayout.Height(35f)))
                 {
-                    singleton.SetShowType(ShowType.ShowProfiler);
+                    Singleton.SetShowType(ShowType.ShowProfiler);
                 }
                 GUILayout.Space(5);
                 if (GUILayout.Button("显示Fps", GUILayout.Width(100f), GUILayout.Height(35f)))
                 {
-                    singleton.SetShowType(ShowType.ShowFps);
+                    Singleton.SetShowType(ShowType.ShowFps);
                 }
                 GUILayout.Space(5);
                 if (GUILayout.Button("关闭调试", GUILayout.Width(100f), GUILayout.Height(35f)))
                 {
-                    singleton.SetShowType(ShowType.ShowNon);
+                    Singleton.SetShowType(ShowType.ShowNon);
                 }
             }
         }

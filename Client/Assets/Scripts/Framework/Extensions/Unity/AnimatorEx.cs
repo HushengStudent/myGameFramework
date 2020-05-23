@@ -24,7 +24,7 @@ namespace Framework
         public void Initialize(Animator animator, string path)
         {
             _animator = animator;
-            _runtimeAnimatorProxy = ResourceMgr.singleton.LoadAssetAsync(path);
+            _runtimeAnimatorProxy = ResourceMgr.Singleton.LoadAssetAsync(path);
             _runtimeAnimatorProxy.AddLoadFinishCallBack(() =>
             {
                 var ctrl = _runtimeAnimatorProxy.GetUnityAsset<RuntimeAnimatorController>();
@@ -39,7 +39,7 @@ namespace Framework
 
         public void OverrideAnimationClip(string name, string path, bool autoPlay = true)
         {
-            _animationClipProxy = ResourceMgr.singleton.LoadAssetAsync(path);
+            _animationClipProxy = ResourceMgr.Singleton.LoadAssetAsync(path);
             _animationClipProxy.AddLoadFinishCallBack(() =>
             {
                 var clip = _animationClipProxy.GetUnityAsset<AnimationClip>();
