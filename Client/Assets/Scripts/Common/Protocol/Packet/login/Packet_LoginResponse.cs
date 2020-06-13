@@ -1,14 +1,10 @@
 using Framework;
 using Protocol;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 
 public class Packet_LoginResponse : Packet
 {
-    private LoginResponse data = new LoginResponse();
-
-    public LoginResponse Data { get { return data; } }
+    public LoginResponse Data { get; private set; } = new LoginResponse();
 
     public override int GetPacketId()
     {
@@ -17,12 +13,12 @@ public class Packet_LoginResponse : Packet
 
     public override void DeSerialize(MemoryStream stream)
     {
-        data = ProtoBuf.Serializer.Deserialize<LoginResponse>(stream);
+        Data = ProtoBuf.Serializer.Deserialize<LoginResponse>(stream);
     }
 
     public override void Serialize(MemoryStream stream)
     {
-        ProtoBuf.Serializer.Serialize<LoginResponse>(stream, data);
+        ProtoBuf.Serializer.Serialize(stream, Data);
     }
 
     public override void Process()
