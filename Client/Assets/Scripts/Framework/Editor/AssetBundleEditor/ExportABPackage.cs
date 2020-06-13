@@ -4,13 +4,13 @@
 ** desc:  导出AssetBundle更新包;
 *********************************************************************************/
 
-using System.Collections;
+using Framework;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public class ExportABPackage
     {

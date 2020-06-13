@@ -6,7 +6,7 @@
 
 using UnityEngine;
 using System;
-using Object = UnityEngine.Object;
+using UnityObject = UnityEngine.Object;
 
 namespace Framework
 {
@@ -14,7 +14,7 @@ namespace Framework
     {
         #region Unload Assets
 
-        public void DestroyUnityAsset(Object asset)
+        public void DestroyUnityAsset(UnityObject asset)
         {
             if (asset != null)
             {
@@ -30,7 +30,7 @@ namespace Framework
             }
         }
 
-        public void DestroyInstantiateObject(Object asset)
+        public void DestroyInstantiateObject(UnityObject asset)
         {
             if (asset != null)
             {

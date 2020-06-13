@@ -9,7 +9,7 @@ using UnityEngine;
 using System.IO;
 using System;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public class DeleteEmptyFolderHelper : MonoBehaviour
     {
@@ -17,7 +17,7 @@ namespace Framework
         public static void DeleteEmptyFolder()
         {
             var paths = Directory.GetDirectories(Application.dataPath, ".", SearchOption.AllDirectories);
-            for (int i = paths.Length - 1; i > 0; i--)
+            for (var i = paths.Length - 1; i > 0; i--)
             {
                 var str = paths[i];
                 var files = Directory.GetFiles(str);

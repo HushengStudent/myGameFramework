@@ -4,14 +4,14 @@
 ** desc:  导表生成byte;
 *********************************************************************************/
 
-using System.Collections;
+using Framework;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public class TableExportByte
     {
@@ -23,22 +23,24 @@ namespace Framework
         public static void ExportByte(string path)
         {
             if (string.IsNullOrEmpty(path))
+            {
                 return;
+            }
             _infoDict.Clear();
             _tableTypeDict.Clear();
             _infoDict = TableReader.ReadCsvFile(path);
 
-            List<byte> allBytes = new List<byte>();
+            var allBytes = new List<byte>();
             if (_infoDict.ContainsKey(2))
             {
                 _fileName = Path.GetFileNameWithoutExtension(path);
-                string filePath = _targetPath + _fileName + ".byte";
-                List<string> line = _infoDict[2];
-                for (int i = 0; i < line.Count; i++)
+                var filePath = _targetPath + _fileName + ".byte";
+                var line = _infoDict[2];
+                for (var i = 0; i < line.Count; i++)
                 {
-                    string target = line[i];
-                    string[] temp = target.Split(":".ToArray());
-                    string type = TableFiledType.STRING.ToString();
+                    var target = line[i];
+                    var temp = target.Split(":".ToArray());
+                    var type = TableFiledType.STRING.ToString();
                     if (temp.Length < 2)
                     {
                         LogHelper.PrintWarning(string.Format("#配表未指定类型{0}行,{1}列#path:" + path, 2.ToString(), i.ToString()));
@@ -50,21 +52,21 @@ namespace Framework
                     }
                     _tableTypeDict[i] = TableReader.GetTableFiledType(type);
                 }
-                int col = line.Count;
-                byte[] dataCount = ConvertHelper.GetBytes(_infoDict.Count - 2);
+                var col = line.Count;
+                var dataCount = ConvertHelper.GetBytes(_infoDict.Count - 2);
                 allBytes.AddRange(dataCount);
-                int index = 3;
+                var index = 3;
                 while (_infoDict.ContainsKey(index))
                 {
-                    List<string> info = _infoDict[index];
+                    var info = _infoDict[index];
                     if (info.Count != col)
                     {
                         LogHelper.PrintWarning(string.Format("#配表未指定类型{0}行错误#path:" + path, index));
                         return;
                     }
-                    for (int i = 0; i < info.Count; i++)
+                    for (var i = 0; i < info.Count; i++)
                     {
-                        byte[] tempByte = Export2Bytes(info[i], _tableTypeDict[i]);
+                        var tempByte = Export2Bytes(info[i], _tableTypeDict[i]);
                         allBytes.AddRange(tempByte);
                     }
                     index++;
@@ -76,7 +78,7 @@ namespace Framework
 
         public static byte[] Export2Bytes(string value, TableFiledType type)
         {
-            List<byte> bytesList = new List<byte>();
+            var bytesList = new List<byte>();
             byte[] targetBytes;
             switch (type)
             {
@@ -92,7 +94,7 @@ namespace Framework
                 case TableFiledType.STRING:
                 default:
                     targetBytes = ConvertHelper.GetBytes(value);
-                    byte[] countBytes = ConvertHelper.GetBytes(targetBytes.Length);
+                    var countBytes = ConvertHelper.GetBytes(targetBytes.Length);
                     bytesList.AddRange(countBytes);
                     break;
             }

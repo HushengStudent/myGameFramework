@@ -8,14 +8,14 @@ using MEC;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
-using Object = UnityEngine.Object;
+using UnityObject = UnityEngine.Object;
 
 namespace Framework.ObjectPool
 {
     internal class UnityObjectPool
     {
         private Stopwatch _stopwatch;
-        private Dictionary<int, Stack<Object>> _unityObjectDict;
+        private Dictionary<int, Stack<UnityObject>> _unityObjectDict;
         private Dictionary<int, int> _unityObjectRefDict;
 
         public int UnityObjectPoolMaxCount { get; set; }
@@ -24,27 +24,27 @@ namespace Framework.ObjectPool
         {
             UnityObjectPoolMaxCount = 50;
             _stopwatch = new Stopwatch();
-            _unityObjectDict = new Dictionary<int, Stack<Object>>();
+            _unityObjectDict = new Dictionary<int, Stack<UnityObject>>();
             _unityObjectRefDict = new Dictionary<int, int>();
         }
 
-        public Object GetUnityObject(Object asset)
+        public UnityObject GetUnityObject(UnityObject asset)
         {
             if (null == asset)
             {
                 return null;
             }
             var instanceID = asset.GetInstanceID();
-            Stack<Object> stack;
+            Stack<UnityObject> stack;
             if (!_unityObjectDict.TryGetValue(instanceID, out stack))
             {
-                stack = new Stack<Object>();
+                stack = new Stack<UnityObject>();
                 _unityObjectDict[instanceID] = stack;
             }
-            Object element;
+            UnityObject element;
             if (stack.Count == 0)
             {
-                element = Object.Instantiate(asset);
+                element = UnityObject.Instantiate(asset);
             }
             else
             {
@@ -59,7 +59,7 @@ namespace Framework.ObjectPool
             return element;
         }
 
-        public void ReleaseUnityObject(Object asset)
+        public void ReleaseUnityObject(UnityObject asset)
         {
             var element = asset;
             if (null == element)
@@ -67,7 +67,7 @@ namespace Framework.ObjectPool
                 return;
             }
             var instanceID = element.GetInstanceID();
-            Stack<Object> stack;
+            Stack<UnityObject> stack;
             int parentInstanceID;
             if (_unityObjectDict.ContainsKey(instanceID))
             {
@@ -86,19 +86,19 @@ namespace Framework.ObjectPool
                     /// not create form pool or parents destroyed;
                     LogHelper.PrintWarning($"[UnityObjectPool]Release unity object error:{element.name}.");
 
-                    Object.Destroy(element);
+                    UnityObject.Destroy(element);
 
                     return;
                 }
             }
             if (!_unityObjectDict.TryGetValue(parentInstanceID, out stack))
             {
-                stack = new Stack<Object>();
+                stack = new Stack<UnityObject>();
                 _unityObjectDict[parentInstanceID] = stack;
             }
             if (stack.Count > UnityObjectPoolMaxCount)
             {
-                Object.Destroy(element);
+                UnityObject.Destroy(element);
                 return;
             }
             stack.Push(element);
@@ -114,9 +114,9 @@ namespace Framework.ObjectPool
 
         public IEnumerator<float> ClearUnityObjectPool()
         {
-            var objectPool = new Dictionary<int, Stack<Object>>(_unityObjectDict);
+            var objectPool = new Dictionary<int, Stack<UnityObject>>(_unityObjectDict);
             _unityObjectRefDict = new Dictionary<int, int>();
-            _unityObjectDict = new Dictionary<int, Stack<Object>>();
+            _unityObjectDict = new Dictionary<int, Stack<UnityObject>>();
             _stopwatch.Reset();
             _stopwatch.Start();
             foreach (var temp in objectPool)
@@ -133,7 +133,7 @@ namespace Framework.ObjectPool
                     {
                         continue;
                     }
-                    Object.Destroy(go);
+                    UnityObject.Destroy(go);
                     if (_stopwatch.Elapsed.Milliseconds >= ResourceMgr.Singleton.MAX_LOAD_TIME)
                     {
                         _stopwatch.Stop();

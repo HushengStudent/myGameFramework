@@ -4,12 +4,13 @@
 ** desc:  AssetBundle打包;
 *********************************************************************************/
 
+using Framework;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using UnityEditor;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public static class AssetBundleGenerate
     {

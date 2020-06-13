@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using UnityEngine;
 
-namespace Framework
+namespace FrameworkEditor
 {
-	public class ChangeScriptTemplates : UnityEditor.AssetModificationProcessor
+    public class ChangeScriptTemplates : UnityEditor.AssetModificationProcessor
 	{
 	    private static string str =
 	    "/********************************************************************************\r\n"

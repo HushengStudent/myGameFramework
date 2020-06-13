@@ -6,13 +6,13 @@
 
 using UnityEngine;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public class TextEditorHelper
     {
         public static void Copy(string str)
         {
-            TextEditor textEditor = new TextEditor
+            var textEditor = new TextEditor
             {
                 text = str
             };

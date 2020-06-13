@@ -16,7 +16,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public class PackEditor : EditorWindow
     {
@@ -51,7 +51,7 @@ namespace Framework
 
         void OnGUI()
         {
-            GUIStyle style = new GUIStyle
+            var style = new GUIStyle
             {
                 fontSize = 18
             };
@@ -59,7 +59,7 @@ namespace Framework
 
             //搜索框;
             GUILayout.BeginHorizontal(GUI.skin.FindStyle("Toolbar"));
-            string searchString = "";
+            var searchString = "";
             searchString = GUILayout.TextField(searchString, GUI.skin.FindStyle("ToolbarSeachTextField"));
             if (GUILayout.Button("", GUI.skin.FindStyle("ToolbarSeachCancelButton")))
             {

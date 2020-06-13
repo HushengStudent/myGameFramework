@@ -4,14 +4,13 @@
 ** desc:  导表生成c#;
 *********************************************************************************/
 
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public static class TableExportCs
     {
@@ -37,7 +36,9 @@ namespace Framework
         public static void ExportCs(string path)
         {
             if (string.IsNullOrEmpty(path))
+            {
                 return;
+            }
             _infoDict.Clear();
             _fileName = string.Empty;
             _code = string.Empty;
@@ -47,19 +48,19 @@ namespace Framework
             if (_infoDict.ContainsKey(2))
             {
                 _fileName = Path.GetFileNameWithoutExtension(path);
-                string filePath = _targetPath + _fileName + ".cs";
+                var filePath = _targetPath + _fileName + ".cs";
                 _code = _code.Replace("#fileName#", _fileName);
 
-                string fields = string.Empty;
-                string mainKey = string.Empty;
-                string funcs = string.Empty;
+                var fields = string.Empty;
+                var mainKey = string.Empty;
+                var funcs = string.Empty;
 
-                List<string> line = _infoDict[2];
-                for (int i = 0; i < line.Count; i++)
+                var line = _infoDict[2];
+                for (var i = 0; i < line.Count; i++)
                 {
-                    string target = line[i];
-                    string[] temp = target.Split(":".ToArray());
-                    TableFiledType type = TableFiledType.STRING;
+                    var target = line[i];
+                    var temp = target.Split(":".ToArray());
+                    var type = TableFiledType.STRING;
                     if (temp.Length < 2)
                     {
                         LogHelper.PrintWarning(string.Format("#配表未指定类型{0}行,{1}列,请先初始化#path:" + path, 2.ToString(), i.ToString()));
@@ -71,7 +72,9 @@ namespace Framework
                     }
                     fields = fields + "\r\n " + "    public " + _tableTypeDict[type].ToString() + " " + temp[0] + ";";
                     if (i == 0)
+                    {
                         mainKey = temp[0];
+                    }
                     funcs = funcs + "\r\n " + string.Format(_tableReadDict[type], temp[0]);
                 }
                 _code = _code.Replace("#fields#", fields);

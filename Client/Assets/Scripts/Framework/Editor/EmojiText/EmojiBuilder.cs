@@ -4,13 +4,12 @@
 ** desc:  图文混排工具;
 *********************************************************************************/
 
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public class EmojiBuilder
     {

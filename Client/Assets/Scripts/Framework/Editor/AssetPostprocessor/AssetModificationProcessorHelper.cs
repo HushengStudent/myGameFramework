@@ -6,7 +6,7 @@
 
 using UnityEditor;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public class AssetModificationProcessorHelper : UnityEditor.AssetModificationProcessor
     {

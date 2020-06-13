@@ -4,7 +4,7 @@
 ** desc:  Resource资源加载代理;
 *********************************************************************************/
 
-using Object = UnityEngine.Object;
+using UnityObject = UnityEngine.Object;
 
 namespace Framework
 {
@@ -26,7 +26,7 @@ namespace Framework
             T t = null;
             if (AssetObject != null && CanInstantiate())
             {
-                t = Object.Instantiate(AssetObject) as T;
+                t = UnityObject.Instantiate(AssetObject) as T;
             }
             return t;
         }

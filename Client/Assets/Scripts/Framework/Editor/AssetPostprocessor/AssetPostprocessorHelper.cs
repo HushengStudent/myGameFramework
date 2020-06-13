@@ -7,7 +7,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public class AssetPostprocessorHelper : AssetPostprocessor
     {

@@ -7,7 +7,7 @@
 using UnityEngine;
 using UnityEngine.U2D;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public class SpriteAtlasHelper
     {

@@ -4,10 +4,11 @@
 ** desc:  Lua测试工具;
 *********************************************************************************/
 
+using Framework;
 using UnityEditor;
 using UnityEngine;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public class LuaExcuteEditor : EditorWindow
     {

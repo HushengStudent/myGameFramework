@@ -4,11 +4,9 @@
 ** desc:  数据表配置;
 *********************************************************************************/
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public enum TableFiledType : int
     {
@@ -20,8 +18,6 @@ namespace Framework
 
     public static class TableConfig
     {
-        private static string _tablePath = Application.dataPath.ToLower() + "/../../Table/";
-
-        public static string TablePath { get { return _tablePath; } }
+        public static string TablePath { get; } = Application.dataPath.ToLower() + "/../../Table/";
     }
 }

@@ -4,15 +4,10 @@
 ** desc:  ±í¸ñ±à¼­Æ÷;
 *********************************************************************************/
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
 using UnityEditor;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public class TableEditor : EditorWindow
     {

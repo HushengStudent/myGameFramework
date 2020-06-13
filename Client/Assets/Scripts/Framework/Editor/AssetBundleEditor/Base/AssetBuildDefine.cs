@@ -4,12 +4,9 @@
 ** desc:  AssetBundle打包定义;
 *********************************************************************************/
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
-using UnityEngine;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public static class AssetBuildDefine
     {

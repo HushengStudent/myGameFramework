@@ -4,12 +4,9 @@
 ** desc:  º”‘ÿ¬∑æ∂øΩ±¥;
 *********************************************************************************/
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
-using UnityEngine;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public class LoadPathHelper
     {

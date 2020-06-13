@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public class LuaCsRefHelper : EditorWindow
     {
@@ -29,13 +29,13 @@ namespace Framework
 
         private List<ObjectRef> GetTypeCountList()
         {
-            ObjectTranslator objectTranslator = LuaState.GetTranslator(IntPtr.Zero);
-            List<ObjectRef> result = new List<ObjectRef>();
+            var objectTranslator = LuaState.GetTranslator(IntPtr.Zero);
+            var result = new List<ObjectRef>();
             foreach (var each in objectTranslator.objectsBackMap)
             {
-                Type t = each.Key.GetType();
-                bool find = false;
-                for (int i = 0; i < result.Count; i++)
+                var t = each.Key.GetType();
+                var find = false;
+                for (var i = 0; i < result.Count; i++)
                 {
                     if (result[i]._objectType == t)
                     {
@@ -46,9 +46,11 @@ namespace Framework
                 }
                 if (!find)
                 {
-                    ObjectRef objectRef = new ObjectRef();
-                    objectRef._objectType = t;
-                    objectRef._objectCount = 1;
+                    var objectRef = new ObjectRef
+                    {
+                        _objectType = t,
+                        _objectCount = 1
+                    };
                     result.Add(objectRef);
                 }
             }
@@ -58,8 +60,11 @@ namespace Framework
 
         void OnGUI()
         {
-            if (LuaState.MainState == null) return;
-            List<ObjectRef> typeCountList = GetTypeCountList();
+            if (LuaState.MainState == null)
+            {
+                return;
+            }
+            var typeCountList = GetTypeCountList();
 
             EditorGUILayout.BeginVertical();
 

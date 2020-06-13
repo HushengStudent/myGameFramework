@@ -5,7 +5,6 @@
 *********************************************************************************/
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,7 +12,7 @@ using System.Text;
 using UnityEditor;
 using UnityEngine;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public class TableInitCsv : EditorWindow
     {
@@ -29,10 +28,10 @@ namespace Framework
             _infoDict.Clear();
             _targetPath = string.Empty;
 
-            bool autoSave = false;
+            var autoSave = false;
             var window = GetWindow(typeof(TableInitCsv), false, "初始化配置表");
             window.Show();
-            string path = string.Empty;
+            var path = string.Empty;
             try
             {
                 path = EditorUtility.OpenFilePanel("选择配置表", TableConfig.TablePath, "csv");
@@ -42,17 +41,19 @@ namespace Framework
                 LogHelper.PrintWarning(e.ToString());
             }
             if (string.IsNullOrEmpty(path))
+            {
                 return;
+            }
             _infoDict = TableReader.ReadCsvFile(path);
             if (_infoDict.ContainsKey(2))
             {
                 _targetPath = path;
-                List<string> line = _infoDict[2];
-                for (int i = 0; i < line.Count; i++)
+                var line = _infoDict[2];
+                for (var i = 0; i < line.Count; i++)
                 {
-                    string target = line[i];
-                    string[] temp = target.Split(":".ToArray());
-                    string type = TableFiledType.STRING.ToString();
+                    var target = line[i];
+                    var temp = target.Split(":".ToArray());
+                    var type = TableFiledType.STRING.ToString();
                     if (temp.Length < 2)
                     {
                         LogHelper.PrintWarning(string.Format("#配表未指定类型{0}行,{1}列#path:" + path, 2.ToString(), i.ToString()));
@@ -66,7 +67,9 @@ namespace Framework
                     _colDict[i] = new KeyValuePair<string, TableFiledType>(temp[0], TableReader.GetTableFiledType(type));
                 }
                 if (autoSave)
+                {
                     Save();
+                }
             }
         }
 
@@ -80,16 +83,18 @@ namespace Framework
                 LogHelper.PrintWarning("#未指定配表路径#path:" + _targetPath);
                 return;
             }
-            int count = _infoDict.Count;
-            string[] info = new string[count];
-            for (int i = 0; i < count; i++)
+            var count = _infoDict.Count;
+            var info = new string[count];
+            for (var i = 0; i < count; i++)
             {
-                string target = string.Empty;
-                List<string> list = _infoDict[i + 1];
-                for (int j = 0; j < list.Count; j++)
+                var target = string.Empty;
+                var list = _infoDict[i + 1];
+                for (var j = 0; j < list.Count; j++)
                 {
                     if (j != 0)
+                    {
                         target = target + ",";
+                    }
                     target = target + list[j];
                 }
                 info[i] = target;
@@ -105,20 +110,28 @@ namespace Framework
             EditorGUILayout.BeginHorizontal();
 
             if (GUILayout.Button("open table", GUILayout.Width(120), GUILayout.Height(30)))
+            {
                 InitTable();
+            }
             GUILayout.Space(10);
             if (GUILayout.Button("save table", GUILayout.Width(120), GUILayout.Height(30)))
+            {
                 Save();
+            }
             GUILayout.Space(10);
             if (GUILayout.Button("export cs", GUILayout.Width(120), GUILayout.Height(30)))
+            {
                 TableExportCs.ExportCs(_targetPath);
+            }
             GUILayout.Space(10);
             if (GUILayout.Button("generate byte", GUILayout.Width(120), GUILayout.Height(30)))
+            {
                 TableExportByte.ExportByte(_targetPath);
+            }
 
             EditorGUILayout.EndHorizontal();
-            int count = _colDict.Count;
-            for (int i = 0; i < count; i++)
+            var count = _colDict.Count;
+            for (var i = 0; i < count; i++)
             {
                 GUILayout.Space(6);
                 GUILayout.Label("===================================");

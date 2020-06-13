@@ -5,14 +5,9 @@
 *********************************************************************************/
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml;
 using UnityEditor;
-using UnityEngine;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public static class TableHelper
     {

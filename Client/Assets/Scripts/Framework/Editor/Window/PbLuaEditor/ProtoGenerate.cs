@@ -4,15 +4,14 @@
 ** desc:  proto生成;
 *********************************************************************************/
 
-using System;
-using System.Collections;
+using Framework;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public static class ProtoGenerate
     {
@@ -109,24 +108,29 @@ namespace Framework
         public static void GenerateProtoToLua()
         {
             InitContext();
-            int index = 0;
-            foreach (string tempFile in _files)
+            var index = 0;
+            foreach (var tempFile in _files)
             {
                 index++;
-                string fileName = Path.GetFileName(tempFile);
-                string fileExtension = Path.GetExtension(tempFile);
-                string workPath = Path.GetDirectoryName(tempFile);
-                if (!fileExtension.Equals(".proto")) continue;
+                var fileName = Path.GetFileName(tempFile);
+                var fileExtension = Path.GetExtension(tempFile);
+                var workPath = Path.GetDirectoryName(tempFile);
+                if (!fileExtension.Equals(".proto"))
+                {
+                    continue;
+                }
                 EditorUtility.DisplayProgressBar("Generate", "generate proto to lua:" + fileName, (float)index / (float)_files.Count);
-                ProcessStartInfo processStartInfo = new ProcessStartInfo();
-                processStartInfo.FileName = Protoc;
-                processStartInfo.Arguments = " --lua_out=./ --plugin=protoc-gen-lua=" + ProtocGenPath + " " + fileName;
-                processStartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                processStartInfo.UseShellExecute = true;
-                processStartInfo.WorkingDirectory = workPath;
-                processStartInfo.ErrorDialog = true;
+                var processStartInfo = new ProcessStartInfo
+                {
+                    FileName = Protoc,
+                    Arguments = " --lua_out=./ --plugin=protoc-gen-lua=" + ProtocGenPath + " " + fileName,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    UseShellExecute = true,
+                    WorkingDirectory = workPath,
+                    ErrorDialog = true
+                };
                 LogHelper.Print("generate proto to lua:" + fileName);
-                Process process = Process.Start(processStartInfo);
+                var process = Process.Start(processStartInfo);
                 process.WaitForExit();
             }
             EditorUtility.ClearProgressBar();
@@ -137,32 +141,40 @@ namespace Framework
         public static void GenerateProtoToCsharp()
         {
             InitContext();
-            int index = 0;
-            foreach (string f in _files)
+            var index = 0;
+            foreach (var f in _files)
             {
                 index++;
-                string fileName = Path.GetFileName(f);
-                string fileExtension = Path.GetExtension(f);
-                string workPath = Path.GetDirectoryName(f);
-                string targetFileName = Path.GetFileNameWithoutExtension(f);
-                if (!fileExtension.Equals(".proto")) continue;
+                var fileName = Path.GetFileName(f);
+                var fileExtension = Path.GetExtension(f);
+                var workPath = Path.GetDirectoryName(f);
+                var targetFileName = Path.GetFileNameWithoutExtension(f);
+                if (!fileExtension.Equals(".proto"))
+                {
+                    continue;
+                }
                 //输出目录;
-                string outPath = GetCsharpPath(f) + targetFileName;
-                if (null == outPath) continue;
+                var outPath = GetCsharpPath(f) + targetFileName;
+                if (null == outPath)
+                {
+                    continue;
+                }
                 if (!Directory.Exists(outPath))
                 {
                     Directory.CreateDirectory(outPath);
                 }
                 EditorUtility.DisplayProgressBar("Generate", "generate proto to c#:" + fileName, (float)index / (float)_files.Count);
-                ProcessStartInfo processStartInfo = new ProcessStartInfo();
-                processStartInfo.FileName = ProtogenPath;
-                processStartInfo.Arguments = "-i:" + fileName + " -o:" + outPath + "/" + targetFileName + ".cs -p:detectMissing";
-                processStartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                processStartInfo.UseShellExecute = true;
-                processStartInfo.WorkingDirectory = workPath;
-                processStartInfo.ErrorDialog = true;
+                var processStartInfo = new ProcessStartInfo
+                {
+                    FileName = ProtogenPath,
+                    Arguments = "-i:" + fileName + " -o:" + outPath + "/" + targetFileName + ".cs -p:detectMissing",
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    UseShellExecute = true,
+                    WorkingDirectory = workPath,
+                    ErrorDialog = true
+                };
                 LogHelper.Print("generate proto to c#:" + fileName);
-                Process process = Process.Start(processStartInfo);
+                var process = Process.Start(processStartInfo);
                 process.WaitForExit();
             }
             EditorUtility.ClearProgressBar();
@@ -182,15 +194,18 @@ namespace Framework
         /// <param name="path"></param>
         private static void Recursive(string path)
         {
-            string[] names = Directory.GetFiles(path);
-            string[] dirs = Directory.GetDirectories(path);
-            foreach (string filename in names)
+            var names = Directory.GetFiles(path);
+            var dirs = Directory.GetDirectories(path);
+            foreach (var filename in names)
             {
-                string ext = Path.GetExtension(filename);
-                if (ext.Equals(".meta")) continue;
+                var ext = Path.GetExtension(filename);
+                if (ext.Equals(".meta"))
+                {
+                    continue;
+                }
                 _files.Add(filename.Replace('\\', '/'));
             }
-            foreach (string dir in dirs)
+            foreach (var dir in dirs)
             {
                 _paths.Add(dir.Replace('\\', '/'));
                 Recursive(dir);

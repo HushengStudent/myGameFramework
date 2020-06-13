@@ -5,11 +5,10 @@
 *********************************************************************************/
 
 using UnityEngine;
-using System.Collections;
 using System;
 using System.Collections.Generic;
 using MEC;
-using Object = UnityEngine.Object;
+using UnityObject = UnityEngine.Object;
 using System.IO;
 
 namespace Framework
@@ -68,7 +67,7 @@ namespace Framework
             var proxy = PoolMgr.Singleton.GetCsharpObject<AssetBundleAssetProxy>();
             proxy.Initialize(path, isUsePool);
 
-            Object asset = null;
+            UnityObject asset = null;
             var assetBundle = AssetBundleMgr.singleton.LoadFromFile(path);
             if (assetBundle != null)
             {
@@ -189,9 +188,9 @@ namespace Framework
         {
             public IEnumerator<float> LoadAssetAsync(string path, AssetBundleAssetProxy proxy, Action<float> progress)
             {
-                Object asset = null;
+                UnityObject asset = null;
 #if UNITY_EDITOR
-                asset = UnityEditor.AssetDatabase.LoadAssetAtPath<Object>(path);
+                asset = UnityEditor.AssetDatabase.LoadAssetAtPath<UnityObject>(path);
 #endif
                 //先等一帧;
                 yield return Timing.WaitForOneFrame;

@@ -4,6 +4,7 @@
 ** desc:  Lua UI编辑器;
 *********************************************************************************/
 
+using Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,7 +12,7 @@ using System.Text;
 using UnityEditor;
 using UnityEngine;
 
-namespace Framework
+namespace FrameworkEditor
 {
     [CustomEditor(typeof(LuaUIPanel))]
     public class LuaUIPanelEditor : Editor
@@ -171,7 +172,7 @@ namespace Framework
                 {
                     Directory.CreateDirectory(panelPath);
                 }
-                TextWriter tw = new StreamWriter(fileName);
+                var tw = new StreamWriter(fileName);
                 tw.Close();
                 File.WriteAllText(fileName, codeText);
 
@@ -185,7 +186,7 @@ namespace Framework
             if (GUILayout.Button("Update Layout", GUILayout.Height(26)))
             {
                 var allNode = RecursiveGetPanelComNode(luaUIPanel.gameObject.transform);
-                for (int i = 0; i < allNode.Length; i++)
+                for (var i = 0; i < allNode.Length; i++)
                 {
                     var com = allNode[i].GetComponent<LuaUICom>();
                     if (com)
@@ -198,7 +199,7 @@ namespace Framework
                 var comDict = new Dictionary<LuaUICom, int>();
                 var conList = new List<LuaUICom>();
                 var nameList = new List<string>();
-                for (int i = 0; i < allNode.Length; i++)
+                for (var i = 0; i < allNode.Length; i++)
                 {
                     var go = allNode[i].gameObject;
                     if (go.name.StartsWith(LuaUIEditorHelper.Header))
@@ -250,7 +251,7 @@ namespace Framework
                 var templateDict = new Dictionary<LuaUITemplate, int>();
                 var templateList = new List<LuaUITemplate>();
                 var templateNameList = new List<string>();
-                for (int i = 0; i < allTemplate.Length; i++)
+                for (var i = 0; i < allTemplate.Length; i++)
                 {
                     var template = allTemplate[i];
                     var templateName = template.gameObject.name;
@@ -299,14 +300,14 @@ namespace Framework
                 {
                     Directory.CreateDirectory(panelPath);
                 }
-                TextWriter tw = new StreamWriter(fileName);
+                var tw = new StreamWriter(fileName);
                 tw.Close();
 
                 var codeText = _layoutBuilder.ToString().Replace("Name", panelName)
                     .Replace("Prefab", panelName).Replace("Time", DateTime.Now.ToString());
 
                 var codeBuilder = new StringBuilder();
-                for (int i = 0; i < luaUIPanel.LuaUIComArray.Length; i++)
+                for (var i = 0; i < luaUIPanel.LuaUIComArray.Length; i++)
                 {
                     var name = luaUIPanel.LuaUIComArray[i].LuaUIComName;
                     var index = i.ToString();
@@ -314,7 +315,7 @@ namespace Framework
                         .Replace("index", index));
                 }
                 codeBuilder.AppendLine("");
-                for (int i = 0; i < luaUIPanel.LuaUITemplateArray.Length; i++)
+                for (var i = 0; i < luaUIPanel.LuaUITemplateArray.Length; i++)
                 {
                     var name = luaUIPanel.LuaUITemplateArray[i].LuaUITemplateName;
                     var index = i.ToString();
@@ -346,7 +347,7 @@ namespace Framework
         public Transform[] RecursiveGetPanelComNode(Transform root)
         {
             var transList = new List<Transform>();
-            for (int i = 0; i < root.childCount; i++)
+            for (var i = 0; i < root.childCount; i++)
             {
                 var child = root.GetChild(i);
                 if (!child.GetComponent<LuaUITemplate>())

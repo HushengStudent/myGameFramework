@@ -4,6 +4,7 @@
 ** desc:  Lua UI±à¼­Æ÷;
 *********************************************************************************/
 
+using Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,7 +12,7 @@ using System.Text;
 using UnityEditor;
 using UnityEngine;
 
-namespace Framework
+namespace FrameworkEditor
 {
     [CustomEditor(typeof(LuaUITemplate))]
     public class LuaUITemplateEditor : Editor
@@ -135,7 +136,7 @@ namespace Framework
                 {
                     Directory.CreateDirectory(panelPath);
                 }
-                TextWriter tw = new StreamWriter(fileName);
+                var tw = new StreamWriter(fileName);
                 tw.Close();
                 File.WriteAllText(fileName, codeText);
 
@@ -149,7 +150,7 @@ namespace Framework
             if (GUILayout.Button("Update Layout", GUILayout.Height(26)))
             {
                 var allCom = luaUITemplate.gameObject.GetComponentsInChildren<LuaUICom>(true);
-                for (int i = 0; i < allCom.Length; i++)
+                for (var i = 0; i < allCom.Length; i++)
                 {
                     DestroyImmediate(allCom[i]);
                 }
@@ -159,7 +160,7 @@ namespace Framework
                 var comDict = new Dictionary<LuaUICom, int>();
                 var conList = new List<LuaUICom>();
                 var nameList = new List<string>();
-                for (int i = 0; i < allNode.Length; i++)
+                for (var i = 0; i < allNode.Length; i++)
                 {
                     var go = allNode[i].gameObject;
                     if (go.name.StartsWith(LuaUIEditorHelper.Header))
@@ -217,14 +218,14 @@ namespace Framework
                 {
                     Directory.CreateDirectory(panelPath);
                 }
-                TextWriter tw = new StreamWriter(fileName);
+                var tw = new StreamWriter(fileName);
                 tw.Close();
 
                 var codeText = _layoutBuilder.ToString().Replace("Name", templateName)
                     .Replace("Time", DateTime.Now.ToString());
 
                 var codeBuilder = new StringBuilder();
-                for (int i = 0; i < luaUITemplate.LuaUIComArray.Length; i++)
+                for (var i = 0; i < luaUITemplate.LuaUIComArray.Length; i++)
                 {
                     var name = luaUITemplate.LuaUIComArray[i].LuaUIComName;
                     var index = i.ToString();

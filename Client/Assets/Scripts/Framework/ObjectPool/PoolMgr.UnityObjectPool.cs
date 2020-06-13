@@ -5,7 +5,7 @@
 *********************************************************************************/
 
 using Framework.ObjectPool;
-using Object = UnityEngine.Object;
+using UnityObject = UnityEngine.Object;
 
 namespace Framework
 {
@@ -21,7 +21,7 @@ namespace Framework
         /// </summary>
         /// <param name="asset"></param>
         /// <returns></returns>
-        public Object GetUnityObject(Object asset)
+        public UnityObject GetUnityObject(UnityObject asset)
         {
             if (null == asset)
             {
@@ -34,7 +34,7 @@ namespace Framework
         /// Öü´æUnity GameObject;
         /// </summary>
         /// <param name="asset"></param>
-        public void ReleaseUnityObject(Object asset)
+        public void ReleaseUnityObject(UnityObject asset)
         {
             if (null == asset)
             {

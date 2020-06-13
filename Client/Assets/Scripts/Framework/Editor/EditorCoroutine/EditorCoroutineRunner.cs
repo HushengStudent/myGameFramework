@@ -7,9 +7,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEngine;
 
-namespace Framework
+namespace FrameworkEditor
 {
     public static class EditorCoroutineRunner
     {
@@ -19,27 +18,27 @@ namespace Framework
 
             public EditorCoroutine(IEnumerator iterator)
             {
-                this._executionStack = new Stack<IEnumerator>();
-                this._executionStack.Push(iterator);
+                _executionStack = new Stack<IEnumerator>();
+                _executionStack.Push(iterator);
             }
 
             public bool MoveNext()
             {
-                IEnumerator i = this._executionStack.Peek();
+                var i = _executionStack.Peek();
                 if (i.MoveNext())
                 {
                     object result = i.Current;
                     if (result != null && result is IEnumerator)
                     {
-                        this._executionStack.Push((IEnumerator)result);
+                        _executionStack.Push((IEnumerator)result);
                     }
                     return true;
                 }
                 else
                 {
-                    if (this._executionStack.Count > 1)
+                    if (_executionStack.Count > 1)
                     {
-                        this._executionStack.Pop();
+                        _executionStack.Pop();
                         return true;
                     }
                 }
@@ -58,7 +57,7 @@ namespace Framework
 
             public bool Find(IEnumerator iterator)
             {
-                return this._executionStack.Contains(iterator);
+                return _executionStack.Contains(iterator);
             }
         }
 
@@ -85,7 +84,7 @@ namespace Framework
 
         private static bool Find(IEnumerator iterator)
         {
-            foreach (EditorCoroutine editorCoroutine in _editorCoroutineList)
+            foreach (var editorCoroutine in _editorCoroutineList)
             {
                 if (editorCoroutine.Find(iterator))
                 {
@@ -100,7 +99,7 @@ namespace Framework
             _editorCoroutineList.RemoveAll(coroutine => { return coroutine.MoveNext() == false; });
             if (_buffer.Count > 0)
             {
-                foreach (IEnumerator iterator in _buffer)
+                foreach (var iterator in _buffer)
                 {
                     if (!Find(iterator))
                     {

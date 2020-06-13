@@ -6,7 +6,7 @@
 
 using System;
 using UnityEngine;
-using Object = UnityEngine.Object;
+using UnityObject = UnityEngine.Object;
 
 namespace Framework
 {
@@ -25,7 +25,7 @@ namespace Framework
         /// 是否使用对象池;
         public bool IsUsePool { get; protected set; }
         /// 加载完成对象;
-        protected Object AssetObject { get; set; }
+        protected UnityObject AssetObject { get; set; }
 
         /// 初始化;
         public void Initialize(string path, bool isUsePool)
@@ -55,7 +55,7 @@ namespace Framework
         }
 
         /// 设置完成;
-        public void OnFinish(Object target)
+        public void OnFinish(UnityObject target)
         {
             AssetObject = target;
             IsFinish = true;
@@ -128,7 +128,7 @@ namespace Framework
 
         protected abstract void Unload();
 
-        public virtual T GetInstantiateObject<T>() where T : Object
+        public virtual T GetInstantiateObject<T>() where T : UnityObject
         {
             if (CanGet())
             {
@@ -139,9 +139,9 @@ namespace Framework
                 return null;
             }
         }
-        protected abstract T GetInstantiateObjectEx<T>() where T : Object;
+        protected abstract T GetInstantiateObjectEx<T>() where T : UnityObject;
 
-        public virtual T GetUnityAsset<T>() where T : Object
+        public virtual T GetUnityAsset<T>() where T : UnityObject
         {
             if (CanGet())
             {
@@ -152,9 +152,9 @@ namespace Framework
                 return null;
             }
         }
-        protected abstract T GetUnityAssetEx<T>() where T : Object;
+        protected abstract T GetUnityAssetEx<T>() where T : UnityObject;
 
-        public abstract void ReleaseInstantiateObject<T>(T t) where T : Object;
+        public abstract void ReleaseInstantiateObject<T>(T t) where T : UnityObject;
 
         protected bool CanInstantiate()
         {

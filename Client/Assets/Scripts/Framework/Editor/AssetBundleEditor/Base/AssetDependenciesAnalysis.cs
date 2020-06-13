@@ -4,6 +4,7 @@
 ** desc:  资源依赖关系分析;
 *********************************************************************************/
 
+using Framework;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -11,7 +12,7 @@ using System.Text;
 using UnityEditor;
 using UnityEngine;
 
-namespace Framework
+namespace FrameworkEditor
 {
     /// <summary>
     /// 依赖关系分析机制;
