@@ -35,16 +35,16 @@ software：Unity2017.4.25/visual studio2017.
     (28)编辑器：AI(行为树)、战斗(技能)、场景、打包.(TODO)
 	
     Reference：
-    (1)tolua：(https://github.com/topameng/tolua).
-    (2)protoc-gen-lua：(https://github.com/topameng/protoc-gen-lua).
-    (3)AssetBundle：(https://github.com/HushengStudent/myAssetBundleTools).
-    (4)protobuf-net-r668：(https://github.com/mdavid/protobuf-net).
-    (5)ObjectPool：(https://github.com/HushengStudent/ugui).
-    (6)Mixed Text and Graphics：(https://github.com/zouchunyi/EmojiText).
-    (7)Table：(https://github.com/Ribosome2/ExcelUtilityWith-ExcelReader).
-    (8)NetWork：(https://github.com/EllanJiang/GameFramework).
-    (9)Lua Profiler：(https://github.com/yaukeywang/LuaMemorySnapshotDump).
-    (10)Navigation：(https://github.com/LingJiJian/NavmeshExport).
+    (1)[tolua](https://github.com/topameng/tolua).
+    (2)[protoc-gen-lua](https://github.com/topameng/protoc-gen-lua).
+    (3)[AssetBundle](https://github.com/HushengStudent/myAssetBundleTools).
+    (4)[protobuf-net-r668](https://github.com/mdavid/protobuf-net).
+    (5)[ObjectPool](https://github.com/HushengStudent/ugui).
+    (6)[Mixed Text and Graphics](https://github.com/zouchunyi/EmojiText).
+    (7)[Table](https://github.com/Ribosome2/ExcelUtilityWith-ExcelReader).
+    (8)[NetWork](https://github.com/EllanJiang/GameFramework).
+    (9)[Lua Profiler](https://github.com/yaukeywang/LuaMemorySnapshotDump).
+    (10)[Navigation](https://github.com/LingJiJian/NavmeshExport).
 	
     Third Party:
     (1)Anima2D.
@@ -72,7 +72,7 @@ software：Unity2017.4.25/visual studio2017.
 	
 #### Server：服务器工程使用visual studio2017创建
     Reference：
-    (1)protobuf-net-r668：(protobuf-net-r668:https://github.com/mdavid/protobuf-net).
+    (1)[protobuf-net-r668](protobuf-net-r668:https://github.com/mdavid/protobuf-net).
 	
 #### Tools：相关工具目录
     (1)protoc-gen-lua.
