@@ -75,19 +75,19 @@ namespace Framework
             EventMgr.singleton.AddGlobalEvent(EventType.POOL_MGR_INIT, OnPoolInit);
             EventMgr.singleton.AddGlobalEvent(EventType.CAMERA_MGR_INIT, OnCameraInit);
 
-            ResourceMgr.Singleton.Launch();      //资源初始化;
+            ResourceMgr.singleton.Launch();      //资源初始化;
         }
 
         private void OnResourceInit(IEventArgs args)
         {
             EventMgr.singleton.RemoveGlobalEvent(EventType.RESOURCE_MGR_INIT);
-            PoolMgr.Singleton.Launch();          //对象池初始化;
+            PoolMgr.singleton.Launch();          //对象池初始化;
         }
 
         private void OnPoolInit(IEventArgs args)
         {
             EventMgr.singleton.RemoveGlobalEvent(EventType.POOL_MGR_INIT);
-            CameraMgr.Singleton.Launch();
+            CameraMgr.singleton.Launch();
         }
 
         private void OnCameraInit(IEventArgs args)
@@ -104,13 +104,13 @@ namespace Framework
 #endif
             //UIEventMgr<int>.Init();             //UI事件系统初始化;
             SdkMgr.singleton.Launch();           //平台初始化;
-            TimerMgr.Singleton.Launch();         //定时器初始化;
-            ComponentMgr.Singleton.Launch();     //组件初始化;
-            EntityMgr.Singleton.Launch();        //实体初始化;
-            UIMgr.Singleton.Launch();            //UI初始化;
+            TimerMgr.singleton.Launch();         //定时器初始化;
+            ComponentMgr.singleton.Launch();     //组件初始化;
+            EntityMgr.singleton.Launch();        //实体初始化;
+            UIMgr.singleton.Launch();            //UI初始化;
             SceneMgr.singleton.Launch();         //场景初始化;
-            LuaMgr.Singleton.Launch();           //lua初始化;
-            MemoryMgr.Singleton.Launch();
+            LuaMgr.singleton.Launch();           //lua初始化;
+            MemoryMgr.singleton.Launch();
             //NetMgr.Instance.Launch();           //网络初始化;
 
             EnterGame();
@@ -124,8 +124,8 @@ namespace Framework
 
         public void EnterGame()
         {
-            ResourceMgr.Singleton.LoadSceneAsync("Scene/Level01.unity");
-            EntityMgr.Singleton.CreateEntity<PlayerEntity>(1, 1, "_entity_test");
+            ResourceMgr.singleton.LoadSceneAsync("Scene/Level01.unity");
+            EntityMgr.singleton.CreateEntity<PlayerEntity>(1, 1, "_entity_test");
         }
 
         /// 设置游戏配置;

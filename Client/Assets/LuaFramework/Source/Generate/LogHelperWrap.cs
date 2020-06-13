@@ -8,8 +8,10 @@ public class LogHelperWrap
 	{
 		L.BeginClass(typeof(LogHelper), typeof(System.Object));
 		L.RegFunction("Print", Print);
-		L.RegFunction("PrintWarning", PrintWarning);
 		L.RegFunction("PrintGreen", PrintGreen);
+		L.RegFunction("PrintRed", PrintRed);
+		L.RegFunction("PrintYellow", PrintYellow);
+		L.RegFunction("PrintWarning", PrintWarning);
 		L.RegFunction("PrintError", PrintError);
 		L.RegFunction("New", _CreateLogHelper);
 		L.RegFunction("__tostring", ToLua.op_ToString);
@@ -62,65 +64,16 @@ public class LogHelperWrap
 				LogHelper.Print(arg0);
 				return 0;
 			}
-			else if (count == 2 && TypeChecker.CheckTypes<string>(L, 2))
+			else if (count == 2)
 			{
 				string arg0 = ToLua.CheckString(L, 1);
-				string arg1 = ToLua.ToString(L, 2);
+				string arg1 = ToLua.CheckString(L, 2);
 				LogHelper.Print(arg0, arg1);
-				return 0;
-			}
-			else if (count == 2 && TypeChecker.CheckTypes<LogColor>(L, 2))
-			{
-				string arg0 = ToLua.CheckString(L, 1);
-				LogColor arg1 = (LogColor)ToLua.ToObject(L, 2);
-				LogHelper.Print(arg0, arg1);
-				return 0;
-			}
-			else if (count == 3)
-			{
-				string arg0 = ToLua.CheckString(L, 1);
-				LogColor arg1 = (LogColor)ToLua.CheckObject(L, 2, typeof(LogColor));
-				string arg2 = ToLua.CheckString(L, 3);
-				LogHelper.Print(arg0, arg1, arg2);
 				return 0;
 			}
 			else
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to method: LogHelper.Print");
-			}
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int PrintWarning(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("LogHelper.Register");
-#endif
-		try
-		{
-			int count = LuaDLL.lua_gettop(L);
-
-			if (count == 1)
-			{
-				string arg0 = ToLua.CheckString(L, 1);
-				LogHelper.PrintWarning(arg0);
-				return 0;
-			}
-			else if (count == 2)
-			{
-				string arg0 = ToLua.CheckString(L, 1);
-				string arg1 = ToLua.CheckString(L, 2);
-				LogHelper.PrintWarning(arg0, arg1);
-				return 0;
-			}
-			else
-			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to method: LogHelper.PrintWarning");
 			}
 		}
 		catch (Exception e)
@@ -155,6 +108,108 @@ public class LogHelperWrap
 			else
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to method: LogHelper.PrintGreen");
+			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int PrintRed(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LogHelper.Register");
+#endif
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 1)
+			{
+				string arg0 = ToLua.CheckString(L, 1);
+				LogHelper.PrintRed(arg0);
+				return 0;
+			}
+			else if (count == 2)
+			{
+				string arg0 = ToLua.CheckString(L, 1);
+				string arg1 = ToLua.CheckString(L, 2);
+				LogHelper.PrintRed(arg0, arg1);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: LogHelper.PrintRed");
+			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int PrintYellow(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LogHelper.Register");
+#endif
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 1)
+			{
+				string arg0 = ToLua.CheckString(L, 1);
+				LogHelper.PrintYellow(arg0);
+				return 0;
+			}
+			else if (count == 2)
+			{
+				string arg0 = ToLua.CheckString(L, 1);
+				string arg1 = ToLua.CheckString(L, 2);
+				LogHelper.PrintYellow(arg0, arg1);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: LogHelper.PrintYellow");
+			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int PrintWarning(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("LogHelper.Register");
+#endif
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 1)
+			{
+				string arg0 = ToLua.CheckString(L, 1);
+				LogHelper.PrintWarning(arg0);
+				return 0;
+			}
+			else if (count == 2)
+			{
+				string arg0 = ToLua.CheckString(L, 1);
+				string arg1 = ToLua.CheckString(L, 2);
+				LogHelper.PrintWarning(arg0, arg1);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: LogHelper.PrintWarning");
 			}
 		}
 		catch (Exception e)

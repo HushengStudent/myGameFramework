@@ -20,6 +20,7 @@ public class Main : MonoBehaviour
     /// 初始化游戏;
     private void StartGame()
     {
+        LogHelper.PrintYellow("StartGame");
 
 #if UNITY_EDITOR
 

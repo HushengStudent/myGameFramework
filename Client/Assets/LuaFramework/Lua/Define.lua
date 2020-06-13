@@ -19,29 +19,29 @@ LuaNetHelper = Framework.LuaNetHelper
 luaHelper = Framework.LuaHelper
 
 ---[Enum]
-logColor = LogColor
+--logColor = LogColor
 
 ---[Function]
 
 ---log print
 function log(msg, ...)
-    logHelper.Print(string.format(tostring(msg), ...) .. "\r\n", debug.traceback())
+    logHelper.Print(string.format(tostring(msg), ...), debug.traceback())
 end
 
 function logWarn(msg, ...)
-    logHelper.PrintWarning(string.format(tostring(msg), ...) .. "\r\n", debug.traceback())
+    logHelper.PrintWarning(string.format(tostring(msg), ...), debug.traceback())
 end
 
 function logError(msg, ...)
-    logHelper.PrintError(string.format(tostring(msg), ...) .. "\r\n", debug.traceback())
+    logHelper.PrintError(string.format(tostring(msg), ...), debug.traceback())
 end
 
 function logGreen(msg, ...)
-    logHelper.Print(string.format(tostring(msg), ...) .. "\r\n", logColor.Green, debug.traceback())
+    logHelper.PrintGreen(string.format(tostring(msg), ...), debug.traceback())
 end
 
 function logYellow(msg, ...)
-    logHelper.Print(string.format(tostring(msg), ...) .. "\r\n", logColor.Yellow, debug.traceback())
+    logHelper.PrintYellow(string.format(tostring(msg), ...), debug.traceback())
 end
 
 --[[

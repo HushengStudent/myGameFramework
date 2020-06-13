@@ -40,7 +40,7 @@ namespace Framework
                 [ModelPart.ModelWeapon] = ModelConfig.WeaponArray[0]
             };
 
-            _skeletonProxy = ResourceMgr.Singleton.LoadAssetAsync(_skeletonPath);
+            _skeletonProxy = ResourceMgr.singleton.LoadAssetAsync(_skeletonPath);
             _skeletonProxy.AddLoadFinishCallBack(() =>
             {
                 _skeleton = _skeletonProxy.GetInstantiateObject<GameObject>();
@@ -53,7 +53,7 @@ namespace Framework
             {
                 var part = temp.Key;
                 var name = temp.Value;
-                var proxy = ResourceMgr.Singleton.LoadAssetAsync(name);
+                var proxy = ResourceMgr.singleton.LoadAssetAsync(name);
                 _partProxyDict[part] = proxy;
                 proxy.AddLoadFinishCallBack(OnLoaded);
             }
@@ -172,7 +172,7 @@ namespace Framework
                 runningProxy.UnloadProxy();
                 _tempPartProxyDict[part] = null;
             }
-            var proxy = ResourceMgr.Singleton.LoadAssetAsync(resName);
+            var proxy = ResourceMgr.singleton.LoadAssetAsync(resName);
             _tempPartProxyDict[part] = proxy;
             proxy.AddLoadFinishCallBack(() =>
             {

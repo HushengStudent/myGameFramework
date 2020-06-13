@@ -56,7 +56,7 @@ namespace Framework
                 return;
             }
             Animator = Entity.Animator;
-            _runtimeAnimatorProxy = ResourceMgr.Singleton.LoadAssetAsync(AssetPath);
+            _runtimeAnimatorProxy = ResourceMgr.singleton.LoadAssetAsync(AssetPath);
             _runtimeAnimatorProxy.AddLoadFinishCallBack(() =>
             {
                 var ctrl = _runtimeAnimatorProxy.GetUnityAsset<RuntimeAnimatorController>();

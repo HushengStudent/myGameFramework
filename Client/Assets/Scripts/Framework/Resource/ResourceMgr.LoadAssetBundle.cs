@@ -64,7 +64,7 @@ namespace Framework
         {
             path = $"Assets/Bundles/{path}";
 
-            var proxy = PoolMgr.Singleton.GetCsharpObject<AssetBundleAssetProxy>();
+            var proxy = PoolMgr.singleton.GetCsharpObject<AssetBundleAssetProxy>();
             proxy.Initialize(path, isUsePool);
 
             UnityObject asset = null;
@@ -119,9 +119,9 @@ namespace Framework
         {
             path = $"Assets/Bundles/{path}";
 
-            var proxy = PoolMgr.Singleton.GetCsharpObject<AssetBundleAssetProxy>();
+            var proxy = PoolMgr.singleton.GetCsharpObject<AssetBundleAssetProxy>();
             proxy.Initialize(path, isUsePool);
-            CoroutineMgr.Singleton.RunCoroutine(AssetLoader.LoadAssetAsync(path, proxy, progress));
+            CoroutineMgr.singleton.RunCoroutine(AssetLoader.LoadAssetAsync(path, proxy, progress));
             return proxy;
         }
 
@@ -153,7 +153,7 @@ namespace Framework
                 //此处加载占0.2;
                 while (request.progress < 0.99f)
                 {
-                    progress?.Invoke(Singleton.LOAD_BUNDLE_PRECENT + Singleton.LOAD_ASSET_PRECENT * request.progress);
+                    progress?.Invoke(singleton.LOAD_BUNDLE_PRECENT + singleton.LOAD_ASSET_PRECENT * request.progress);
                     yield return Timing.WaitForOneFrame;
                 }
                 while (!request.isDone)

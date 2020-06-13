@@ -102,7 +102,7 @@ namespace Framework
             IsCancel = true;
             if (!UnloadProxy())
             {
-                ResourceMgr.Singleton.AddRemoveProxy(this);
+                ResourceMgr.singleton.AddRemoveProxy(this);
             }
         }
 

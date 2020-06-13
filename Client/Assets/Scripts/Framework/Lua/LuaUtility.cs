@@ -252,9 +252,9 @@ namespace Framework
         {
             GC.Collect();
             Resources.UnloadUnusedAssets();
-            if (LuaMgr.Singleton != null)
+            if (LuaMgr.singleton != null)
             {
-                LuaMgr.Singleton.LuaGC();
+                LuaMgr.singleton.LuaGC();
             }
         }
 
@@ -318,29 +318,29 @@ namespace Framework
         /// </summary>
         public static object[] CallMethod(string module, string func, params object[] args)
         {
-            if (LuaMgr.Singleton == null)
+            if (LuaMgr.singleton == null)
             {
                 return null;
             }
-            return LuaMgr.Singleton.CallFunction(module + "." + func, args);
+            return LuaMgr.singleton.CallFunction(module + "." + func, args);
         }
 
         public static void CallLuaModuleMethod(string module, string func, params object[] args)
         {
-            if (LuaMgr.Singleton == null)
+            if (LuaMgr.singleton == null)
             {
                 return;
             }
-            LuaMgr.Singleton.CallLuaModuleMethod(module + "." + func, args);
+            LuaMgr.singleton.CallLuaModuleMethod(module + "." + func, args);
         }
 
         public static void CallLuaTableMethod(string module, string func, params object[] args)
         {
-            if (LuaMgr.Singleton == null)
+            if (LuaMgr.singleton == null)
             {
                 return;
             }
-            LuaMgr.Singleton.CallLuaTableMethod(module, func, args);
+            LuaMgr.singleton.CallLuaTableMethod(module, func, args);
         }
 
         /// <summary>

@@ -1,101 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LogHelper
 {
-    private static bool _logEnable = true;
-    private static bool _warningEnable = true;
-    private static bool _errorEnable = true;
+    public static bool LogEnable { get; set; } = true;
+    public static bool WarningEnable { get; set; } = true;
+    public static bool ErrorEnable { get; set; } = true;
 
-    public static bool LogEnable { get { return _logEnable; } set { _logEnable = value; } }
-    public static bool WarningEnable { get { return _warningEnable; } set { _warningEnable = value; } }
-    public static bool ErrorEnable { get { return _errorEnable; } set { _errorEnable = value; } }
-
-    public static void Print(string str, string args = "")
+    public static void Print(string str, string stack = "")
     {
-        if (_logEnable)
+        if (LogEnable)
         {
-            StringBuilder builder = new StringBuilder();
-            builder.Append(str);
-            builder.Append(args);
-            Debug.Log(builder.ToString());
+            Debug.Log($"{str}\n{stack}");
         }
     }
 
-    public static void Print(string str, LogColor color, string args = "")
+    public static void PrintGreen(string str, string stack = "")
     {
-        switch (color)
+        if (LogEnable)
         {
-            case LogColor.Non:
-                Print(str, args);
-                break;
-            case LogColor.Red:
-                PrintError(str, args);
-                break;
-            case LogColor.Green:
-                if (_logEnable)
-                {
-                    PrintGreen(str, args);
-                }
-                break;
-            case LogColor.Yellow:
-                PrintWarning(str, args);
-                break;
-            default:
-                Print(str, args);
-                break;
+            Print($"<color=#008000>{str}\n{stack}</color>");
         }
     }
 
-    public static void PrintWarning(string str, string args = "")
+    public static void PrintRed(string str, string stack = "")
     {
-        if (_warningEnable)
+        if (LogEnable)
         {
-            StringBuilder builder = new StringBuilder();
-            builder.Append("<color=#EEEE00> ");
-            builder.Append(str);
-            builder.Append(" </color>\n");
-            builder.Append(args);
-            Debug.LogWarning(builder.ToString());
+            Print($"<color=#FF0000>{str}\n{stack}</color>");
         }
     }
 
-    public static void PrintGreen(string str, string args = "")
+    public static void PrintYellow(string str, string stack = "")
     {
-        if (_warningEnable)
+        if (LogEnable)
         {
-            StringBuilder builder = new StringBuilder();
-            builder.Append("<color=#7FFF00> ");
-            builder.Append(str);
-            builder.Append(" </color>\n");
-            builder.Append(args);
-            Debug.Log(builder.ToString());
+            Print($"<color=#FFFF00>{str}\n{stack}</color>");
         }
     }
 
-    public static void PrintError(string str, string args = "")
+    public static void PrintWarning(string str, string stack = "")
     {
-        if (_errorEnable)
+        if (WarningEnable)
         {
-            StringBuilder builder = new StringBuilder();
-            builder.Append("<color=#FF0000> ");
-            builder.Append(str);
-            builder.Append(" </color>\n");
-            builder.Append(args);
-            Debug.LogError(builder.ToString());
+            Debug.LogWarning($"<color=#FFFF00>{str}\n{stack}</color>");
         }
     }
-}
 
-public enum LogColor : byte
-{
-    Non = 0,
-    Red = 1,
-    Green = 2,
-    Yellow = 3,
+    public static void PrintError(string str, string stack = "")
+    {
+        if (ErrorEnable)
+        {
+            Debug.LogError($"<color=#FF0000>{str}\n{stack}</color>");
+        }
+    }
 }
 
 /*

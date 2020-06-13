@@ -15,7 +15,7 @@ namespace Framework
         protected static T _singleton = null;
         public static bool ApplicationIsPlaying { get; private set; } = true;
 
-        public static T Singleton
+        public static T singleton
         {
             get
             {
@@ -44,7 +44,7 @@ namespace Framework
         {
             if (null == _singleton)
             {
-                LogHelper.Print($"[MonoSingleton]{typeof(T).ToString()} singleton instance created.");
+                LogHelper.PrintGreen($"[MonoSingleton]{typeof(T).ToString()} singleton instance created.");
             }
         }
 

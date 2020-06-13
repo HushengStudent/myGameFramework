@@ -17,14 +17,14 @@ namespace Framework
         protected override void OnAttachGameObject(GameObjectEx goEx)
         {
             base.OnAttachGameObject(goEx);
-            _stateMachine = StateMachineMgr.Singleton.CreateStateMachine(Entity);
+            _stateMachine = StateMachineMgr.singleton.CreateStateMachine(Entity);
         }
 
         protected override void OnDetachGameObject()
         {
             base.OnDetachGameObject();
             _stateMachine = null;
-            StateMachineMgr.Singleton.RemoveStateMachine(Entity);
+            StateMachineMgr.singleton.RemoveStateMachine(Entity);
         }
     }
 }

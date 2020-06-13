@@ -43,7 +43,7 @@ namespace Framework
                     CheckUpdate();
                 }
             };
-            CoroutineMgr.Singleton.StartCoroutine(www.StartDownLoad(LoaclVersion._updateUrl, GameConfig.NetVersionFilePath));
+            CoroutineMgr.singleton.StartCoroutine(www.StartDownLoad(LoaclVersion._updateUrl, GameConfig.NetVersionFilePath));
         }
 
         public void CheckUpdate()

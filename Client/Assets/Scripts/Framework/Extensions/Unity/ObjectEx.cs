@@ -113,7 +113,7 @@ namespace Framework
                     return null;
                 }
             }
-            T component = PoolMgr.Singleton.GetCsharpObject<T>();
+            T component = PoolMgr.singleton.GetCsharpObject<T>();
             component.Initialize(this);
             _componentList.Add(component);
             return component;
@@ -132,7 +132,7 @@ namespace Framework
                 if (targetComp != null)
                 {
                     targetComp.UnInitialize();
-                    PoolMgr.Singleton.ReleaseCsharpObject<T>(targetComp);
+                    PoolMgr.singleton.ReleaseCsharpObject<T>(targetComp);
                     _componentList.Remove(targetComp);
                     return true;
                 }
@@ -160,7 +160,7 @@ namespace Framework
                 if (targetComp == comp)
                 {
                     comp.UnInitialize();
-                    PoolMgr.Singleton.ReleaseCsharpObject<T>(comp as T);
+                    PoolMgr.singleton.ReleaseCsharpObject<T>(comp as T);
                     _componentList.Remove(targetComp);
                     return true;
                 }

@@ -21,7 +21,7 @@ namespace Framework
         protected override void OnInitialize()
         {
             base.OnInitialize();
-            uiRootProxy = ResourceMgr.Singleton.LoadAssetAsync(_uiRoot);
+            uiRootProxy = ResourceMgr.singleton.LoadAssetAsync(_uiRoot);
             uiRootProxy.AddLoadFinishCallBack(() =>
             {
                 var go = uiRootProxy.GetInstantiateObject<GameObject>();
@@ -30,7 +30,7 @@ namespace Framework
                 DontDestroyOnLoad(go);
                 OnInitFinish();
             });
-            mainCameraProxy = ResourceMgr.Singleton.LoadAssetAsync(_mainCamera);
+            mainCameraProxy = ResourceMgr.singleton.LoadAssetAsync(_mainCamera);
             mainCameraProxy.AddLoadFinishCallBack(() =>
             {
                 var go = mainCameraProxy.GetInstantiateObject<GameObject>();

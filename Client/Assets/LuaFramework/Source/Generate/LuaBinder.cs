@@ -11,7 +11,6 @@ public static class LuaBinder
 		L.BeginModule(null);
 		LuaInterface_DebuggerWrap.Register(L);
 		LogHelperWrap.Register(L);
-		LogColorWrap.Register(L);
 		LuaProfilerExtensionWrap.Register(L);
 		L.BeginModule("UnityEngine");
 		UnityEngine_ComponentWrap.Register(L);

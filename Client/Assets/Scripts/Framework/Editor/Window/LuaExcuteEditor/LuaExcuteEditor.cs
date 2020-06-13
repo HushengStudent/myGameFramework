@@ -31,9 +31,9 @@ namespace FrameworkEditor
             GUI.backgroundColor = Color.green;
             if (GUILayout.Button("Excute", GUILayout.Height(30)))
             {
-                if (Application.isPlaying && LuaMgr.Singleton)
+                if (Application.isPlaying && LuaMgr.singleton)
                 {
-                    LuaMgr.Singleton.Dostring(_luaText);
+                    LuaMgr.singleton.Dostring(_luaText);
                 }
             }
             GUI.backgroundColor = color;

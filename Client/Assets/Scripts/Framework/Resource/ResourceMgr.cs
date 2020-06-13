@@ -21,7 +21,7 @@ namespace Framework
         {
             InitLua();
             InitShader();
-            CoroutineMgr.Singleton.RunCoroutine(CancleAllProxy());
+            CoroutineMgr.singleton.RunCoroutine(CancleAllProxy());
         }
 
         protected override void UpdateEx(float interval)

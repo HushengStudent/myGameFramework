@@ -68,7 +68,7 @@ namespace Framework
         public void LoadSceneAsync(string path, Action<UnityEngine.SceneManagement.Scene> onSceneLoaded
         , Action<float> progress)
         {
-            CoroutineMgr.Singleton.RunCoroutine(LoadScene(path, onSceneLoaded, progress));
+            CoroutineMgr.singleton.RunCoroutine(LoadScene(path, onSceneLoaded, progress));
         }
 
         /// 加载场景;
@@ -107,7 +107,7 @@ namespace Framework
         public void UnloadSceneAsync(string path, Action<UnityEngine.SceneManagement.Scene> onSceneLoaded
         , Action<float> progress)
         {
-            CoroutineMgr.Singleton.RunCoroutine(UnloadScene(path, onSceneLoaded, progress));
+            CoroutineMgr.singleton.RunCoroutine(UnloadScene(path, onSceneLoaded, progress));
         }
 
         /// 卸载场景;
@@ -150,7 +150,7 @@ namespace Framework
             {
                 AssetBundle assetBundle = null;
 
-                if (Singleton._sceneAssetBundleDict.TryGetValue(path, out assetBundle))
+                if (singleton._sceneAssetBundleDict.TryGetValue(path, out assetBundle))
                 {
                     if (assetBundle != null)
                     {
@@ -166,7 +166,7 @@ namespace Framework
                     yield return Timing.WaitForOneFrame;
                 }
 
-                Singleton._sceneAssetBundleDict[path] = assetBundle;
+                singleton._sceneAssetBundleDict[path] = assetBundle;
 
                 var name = Path.GetFileNameWithoutExtension(path);
 
@@ -196,7 +196,7 @@ namespace Framework
                 SceneManager.sceneUnloaded += (scene) =>
                 {
                     AssetBundle assetBundle;
-                    if (Singleton._sceneAssetBundleDict.TryGetValue(path, out assetBundle))
+                    if (singleton._sceneAssetBundleDict.TryGetValue(path, out assetBundle))
                     {
                         AssetBundleMgr.singleton.UnloadAsset(path, null);
                     }
