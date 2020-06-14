@@ -4,17 +4,22 @@ using System.Collections.Generic;
 
 public class ProtoHelper
 {
-    private static Dictionary<int, PacketFactory> _factory = new Dictionary<int, PacketFactory>();
+    private static Dictionary<int, PacketFactory> _factoryDict
+        = new Dictionary<int, PacketFactory>();
 
-    private static readonly object _thisLock = new object();
+    private static readonly object _lock = new object();
 
     private static void RegisterProto(Type type)
     {
-        System.Object target = Activator.CreateInstance(type);
+        var target = Activator.CreateInstance(type);
         if (target is Packet)
         {
-            Packet packet = target as Packet;
-            _factory[packet.GetPacketId()] = new PacketFactory(type);
+            var packet = target as Packet;
+            var packetId = packet.GetPacketId();
+            if (!_factoryDict.ContainsKey(packetId))
+            {
+                _factoryDict[packetId] = new PacketFactory(type);
+            }
             ReturnPacket(packet);
         }
         else
@@ -25,11 +30,11 @@ public class ProtoHelper
 
     public static Packet GetPacket(int type)
     {
-        lock (_thisLock)
+        lock (_lock)
         {
-            if (_factory.ContainsKey(type))
+            if (_factoryDict.ContainsKey(type))
             {
-                return _factory[type].GetPacket();
+                return _factoryDict[type].GetPacket();
             }
             else
             {
@@ -41,23 +46,23 @@ public class ProtoHelper
 
     public static void ReturnPacket(Packet packet)
     {
-        lock (_thisLock)
+        lock (_lock)
         {
-            int type = packet.GetPacketId();
-            if (_factory.ContainsKey(type))
+            int packetId = packet.GetPacketId();
+            if (_factoryDict.ContainsKey(packetId))
             {
-                _factory[type].ReturnPacket(packet);
+                _factoryDict[packetId].ReturnPacket(packet);
             }
             else
             {
-                LogHelper.PrintError($"[ProtoHelper]ReturnPacket:{type.ToString()}!");
+                LogHelper.PrintError($"[ProtoHelper]ReturnPacket:{packetId.ToString()} error.");
             }
         }
     }
 
     public static void Register()
     {
-        _factory.Clear();
+        _factoryDict.Clear();
         RegisterProto(typeof(Packet_LoginRequest));
         RegisterProto(typeof(Packet_LoginResponse));
     }

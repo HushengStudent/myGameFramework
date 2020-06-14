@@ -5,15 +5,13 @@
 *********************************************************************************/
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Framework
 {
     public class PacketFactory
     {
-        private Type _type;
+        private readonly Type _type;
         //TODO:packet回收时数据重置;
         private Queue<Packet> _queue;
 
@@ -42,7 +40,10 @@ namespace Framework
             {
                 return _queue.Dequeue();
             }
-            return CreatePacket();
+            else
+            {
+                return CreatePacket();
+            }
         }
 
         public void ReturnPacket(Packet packet)
