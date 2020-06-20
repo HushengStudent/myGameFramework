@@ -4,11 +4,9 @@ using UnityEngine;
 [CustomEditor(typeof(DrawGizmos))]
 public class DrawGizmosEditor : Editor
 {
-    readonly float _size = 1f;
-
-    Vector3 _positionFrom = Vector3.zero;
-
-    Vector3 _positionTo = Vector3.zero;
+    private readonly float _size = 1f;
+    private Vector3 _positionFrom = Vector3.zero;
+    private Vector3 _positionTo = Vector3.zero;
 
     protected virtual void OnSceneGUI()
     {
@@ -27,7 +25,6 @@ public class DrawGizmosEditor : Editor
                 , _size, EventType.Repaint);
             Handles.color = Color.green;
             Handles.DrawLine(_positionFrom, _positionTo);
-
         }
     }
 }

@@ -11,10 +11,10 @@ public class ProtoHelper
 
     private static void RegisterProto(Type type)
     {
-        var target = Activator.CreateInstance(type);
-        if (target is Packet)
+        var instance = Activator.CreateInstance(type);
+        if (instance is Packet)
         {
-            var packet = target as Packet;
+            var packet = instance as Packet;
             var packetId = packet.GetPacketId();
             if (!_factoryDict.ContainsKey(packetId))
             {
