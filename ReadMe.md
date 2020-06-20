@@ -3,7 +3,7 @@
 
 software：Unity2017.4.25/visual studio2017.
 
-#### Client：客户端工程使用Unity2017.4.25创建
+#### Client：Unity2017.4.25
     Module：
     (1)资源管理：AB打包、资源加载、资源卸载.(Finish)
     (2)tolua接入.(Finish)
@@ -70,7 +70,7 @@ software：Unity2017.4.25/visual studio2017.
     (1)myGameFramework:(工程路径)如C:/myGameFramework/
     (2)myGameFramework_protoc:(protoc.exe路径)如c:/protobuf-3.0.0/src/
 	
-#### Server：服务器工程使用visual studio2017创建
+#### Server：Visual Studio 2017
     Reference：
     (1)protobuf-net-r668：(protobuf-net-r668:https://github.com/mdavid/protobuf-net).
 	
