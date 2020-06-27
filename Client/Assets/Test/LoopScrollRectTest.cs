@@ -16,21 +16,21 @@ public class LoopScrollRectTest : MonoBehaviour
     void Start()
     {
         var ls = GetComponent<LoopScrollRect>();
-        ls.onItemUpdate += onItemUpdate;
-        ls.onItemRecycle += onItemRecycle;
+        ls.onItemUpdate += OnItemUpdate;
+        ls.onItemRecycle += OnItemRecycle;
         ls.totalCount = totalCount;
         ls.RefillCells();
     }
 
-    private void onItemUpdate(int index, GameObject go)
+    private void OnItemUpdate(int index, GameObject go)
     {
         go.name = index.ToString();
-        LogHelper.PrintError("--->>>onItemUpdate:" + index.ToString());
+        LogHelper.Print("--->>>onItemUpdate:" + index.ToString());
     }
 
-    private void onItemRecycle(int index, GameObject go)
+    private void OnItemRecycle(int index, GameObject go)
     {
-        LogHelper.PrintError("--->>>onItemRecycle:" + index.ToString());
+        LogHelper.Print("--->>>onItemRecycle:" + index.ToString());
     }
 }
 
