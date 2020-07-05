@@ -10,15 +10,23 @@ namespace Framework
 {
     public class RenderTextureHelper : MonoBehaviour
     {
-        public static RenderTexture GetRT(int width, int high)
+        public static RenderTexture GetRT(int width, int height, string rtName = "Name_Null_RT",
+            RenderTextureFormat rtFormat = RenderTextureFormat.Default)
         {
+            if (!SystemInfo.SupportsRenderTextureFormat(rtFormat))
+            {
+                rtFormat = RenderTextureFormat.Default;
+            }
+
             //antiAliasing 会导致rt内存变大;
             //return RenderTexture.GetTemporary(512, 512, 16, RenderTextureFormat.ARGB32, RenderTextureReadWrite.Default, 4);
-            var rt = RenderTexture.GetTemporary(width, high);
+
+            var descriptor = new RenderTextureDescriptor(width, height, rtFormat);
+            var rt = RenderTexture.GetTemporary(descriptor);
             rt.anisoLevel = 1;
-            rt.autoGenerateMips = false;
+            rt.wrapMode = TextureWrapMode.Clamp;
             rt.filterMode = FilterMode.Bilinear;
-            rt.useMipMap = false;
+            rt.name = $"{rtName}_{width}x{height}";
             return rt;
         }
 

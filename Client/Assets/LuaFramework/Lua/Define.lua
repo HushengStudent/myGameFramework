@@ -111,5 +111,12 @@ print(boy.money)
 
 总结:冒号只是起了省略第一个参数self的作用，该self指向调用者本身，并没有其他特殊的地方。
 
+3.lua没有switch操作，就写成tab["case1"] = function() end; tab["case2"] = function() end;
+
+4.lua没有continue操作，就写一个local function，循环里调用该function，不满足条件直接return;
+
+5.Lua __index 实现重载,使用__index也可以实现对userdata的重新封装;
+
+6.lua 实现private,一般使用local 变量 + local func,最后self.func = func;
 
 ]]--
