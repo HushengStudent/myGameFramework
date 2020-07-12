@@ -128,11 +128,9 @@ namespace Framework
                 section = section.ToUpper();
                 key = key.ToUpper();
             }
-            Dictionary<string, string> config = null;
-            if (IniConfigDic.TryGetValue(section, out config))
+            if (IniConfigDic.TryGetValue(section, out var config))
             {
-                string ret = null;
-                if (config.TryGetValue(key, out ret))
+                if (config.TryGetValue(key, out var ret))
                 {
                     return ret;
                 }
@@ -159,8 +157,7 @@ namespace Framework
                     section = section.ToUpper();
                     key = key.ToUpper();
                 }
-                Dictionary<string, string> config = null;
-                if (!IniConfigDic.TryGetValue(section, out config))
+                if (!IniConfigDic.TryGetValue(section, out var config))
                 {
                     config = new Dictionary<string, string>();
                     IniConfigDic[section] = config;
@@ -183,8 +180,7 @@ namespace Framework
                     section = section.ToUpper();
                     key = key.ToUpper();
                 }
-                Dictionary<string, string> config = null;
-                if (!IniConfigDic.TryGetValue(section, out config))
+                if (!IniConfigDic.TryGetValue(section, out var config))
                 {
                     config = new Dictionary<string, string>();
                     IniConfigDic[section] = config;
@@ -218,8 +214,7 @@ namespace Framework
                 section = section.ToUpper();
                 key = key.ToUpper();
             }
-            Dictionary<string, string> config = null;
-            if (IniConfigDic.TryGetValue(section, out config))
+            if (IniConfigDic.TryGetValue(section, out var config))
             {
                 if (config.ContainsKey(key))
                 {
@@ -232,12 +227,11 @@ namespace Framework
 
         public static Dictionary<string, string> GetSectionInfo(string section)
         {
-            Dictionary<string, string> res = null;
             if (!IsCaseSensitive)
             {
                 section = section.ToUpper();
             }
-            IniConfigDic.TryGetValue(section, out res);
+            IniConfigDic.TryGetValue(section, out var res);
             return res;
         }
 

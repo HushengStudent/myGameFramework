@@ -204,7 +204,7 @@ namespace Framework
         /// <summary>
         /// 计算字符串的MD5值;
         /// </summary>
-        public static string md5(string source)
+        public static string Md5(string source)
         {
             var md5 = new MD5CryptoServiceProvider();
             var data = Encoding.UTF8.GetBytes(source);
@@ -223,12 +223,12 @@ namespace Framework
         /// <summary>
         /// 计算文件的MD5值;
         /// </summary>
-        public static string md5file(string file)
+        public static string Md5file(string file)
         {
             try
             {
                 var fs = new FileStream(file, FileMode.Open);
-                var md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+                var md5 = new MD5CryptoServiceProvider();
                 var retVal = md5.ComputeHash(fs);
                 fs.Close();
 

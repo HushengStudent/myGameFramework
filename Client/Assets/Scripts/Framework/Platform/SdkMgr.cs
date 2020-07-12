@@ -44,8 +44,7 @@ namespace Framework
 
         public void ExecuteCallBack(string str)
         {
-            var table = MiniJSON.jsonDecode(str) as Hashtable;
-            if (table != null)
+            if (MiniJSON.jsonDecode(str) is Hashtable table)
             {
                 var cbName = table["Method"] as string;
                 var content = table["Content"] as string;

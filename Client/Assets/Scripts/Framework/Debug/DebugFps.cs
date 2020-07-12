@@ -13,7 +13,6 @@ namespace Framework
         private class DebugFps
         {
             private float _updateInterval;
-            private float _curFps;
             private int _frames;
             private float _accumulator;
             private float _timeLeft;
@@ -26,7 +25,7 @@ namespace Framework
                     Debug.LogError("Update interval is invalid.");
                     return;
                 }
-                this._updateInterval = updateInterval;
+                _updateInterval = updateInterval;
                 Reset();
             }
 
@@ -48,13 +47,7 @@ namespace Framework
                 }
             }
 
-            public float CurrentFps
-            {
-                get
-                {
-                    return _curFps;
-                }
-            }
+            public float CurrentFps { get; private set; }
 
             public void UpdateFps(float elapseSeconds, float realElapseSeconds)
             {
@@ -64,7 +57,7 @@ namespace Framework
 
                 if (_timeLeft <= 0f)
                 {
-                    _curFps = _accumulator > 0f ? _frames / _accumulator : 0f;
+                    CurrentFps = _accumulator > 0f ? _frames / _accumulator : 0f;
                     _frames = 0;
                     _accumulator = 0f;
                     _timeLeft += UpdateInterval;
@@ -73,13 +66,11 @@ namespace Framework
 
             private void Reset()
             {
-                _curFps = 0f;
+                CurrentFps = 0f;
                 _frames = 0;
                 _accumulator = 0f;
                 _timeLeft = 0f;
             }
         }
-
-
     }
 }

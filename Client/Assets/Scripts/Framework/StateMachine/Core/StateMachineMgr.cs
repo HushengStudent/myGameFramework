@@ -39,8 +39,7 @@ namespace Framework
 
         public AbsStateMachine CreateStateMachine(AbsEntity entity)
         {
-            AbsStateMachine machine = null;
-            if (!_stateMachineDict.TryGetValue(entity, out machine))
+            if (!_stateMachineDict.TryGetValue(entity, out var machine))
             {
                 machine = new HumanStateMachine(entity);
                 machine.Initialize();
@@ -51,8 +50,7 @@ namespace Framework
 
         public void RemoveStateMachine(AbsEntity entity)
         {
-            AbsStateMachine machine = null;
-            if (_stateMachineDict.TryGetValue(entity, out machine))
+            if (_stateMachineDict.TryGetValue(entity, out var machine))
             {
                 machine.UnInitialize();
                 _stateMachineDict.Remove(entity);

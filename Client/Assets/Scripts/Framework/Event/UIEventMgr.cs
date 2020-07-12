@@ -26,8 +26,7 @@ namespace Framework
 
         private static bool JudeEvent(TKey key, Delegate delegateFunc)
         {
-            List<Delegate> eventList = null;
-            if (eventDict.TryGetValue(key, out eventList))
+            if (eventDict.TryGetValue(key, out var eventList))
             {
                 if (null == eventList || eventList.Count == 0)
                 {
@@ -88,8 +87,7 @@ namespace Framework
         /// <param name="key"></param>
         public static void FireEvent(TKey key)
         {
-            List<Delegate> eventList;
-            if (eventDict.TryGetValue(key, out eventList))
+            if (eventDict.TryGetValue(key, out var eventList))
             {
                 Action callback;
                 for (int i = 0; i < eventList.Count; ++i)
@@ -155,8 +153,7 @@ namespace Framework
         /// <param name="arg1"></param>
         public static void FireEvent<T>(TKey key, T arg1)
         {
-            List<Delegate> eventList;
-            if (eventDict.TryGetValue(key, out eventList))
+            if (eventDict.TryGetValue(key, out var eventList))
             {
                 Action<T> callback;
                 for (int i = 0; i < eventList.Count; ++i)
@@ -226,8 +223,7 @@ namespace Framework
         /// <param name="arg2"></param>
         public static void FireEvent<T1, T2>(TKey key, T1 arg1, T2 arg2)
         {
-            List<Delegate> eventList;
-            if (eventDict.TryGetValue(key, out eventList))
+            if (eventDict.TryGetValue(key, out var eventList))
             {
                 Action<T1, T2> callback;
                 for (int i = 0; i < eventList.Count; ++i)

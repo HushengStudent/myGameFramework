@@ -26,8 +26,7 @@ namespace Framework
         public List<T> GetCsharpList<T>()
         {
             CsharpListPool<T> pool;
-            Object temp;
-            if (_csharpListPool.TryGetValue(typeof(T), out temp))
+            if (_csharpListPool.TryGetValue(typeof(T), out var temp))
             {
                 pool = temp as CsharpListPool<T>;
             }
@@ -46,8 +45,7 @@ namespace Framework
         public void ReleaseCsharpList<T>(List<T> list)
         {
             CsharpListPool<T> pool;
-            Object temp;
-            if (_csharpListPool.TryGetValue(typeof(T), out temp))
+            if (_csharpListPool.TryGetValue(typeof(T), out var temp))
             {
                 pool = temp as CsharpListPool<T>;
             }
@@ -61,8 +59,7 @@ namespace Framework
         /// 创建对象池;
         private CsharpListPool<T> CreateCsharpListPool<T>()
         {
-            Object temp;
-            if (_csharpListPool.TryGetValue(typeof(T), out temp))
+            if (_csharpListPool.TryGetValue(typeof(T), out var temp))
             {
                 return temp as CsharpListPool<T>;
             }

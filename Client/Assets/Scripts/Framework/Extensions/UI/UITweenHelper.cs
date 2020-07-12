@@ -27,8 +27,7 @@ namespace Framework
 
         public static void TweenPlayBackwards(int tweenId)
         {
-            Tweener tweener;
-            if(_tweenerDict.TryGetValue(tweenId,out tweener))
+            if (_tweenerDict.TryGetValue(tweenId, out var tweener))
             {
                 tweener.PlayBackwards();
             }
@@ -36,8 +35,7 @@ namespace Framework
 
         public static void KillTween(int tweenId)
         {
-            Tweener tweener;
-            if (_tweenerDict.TryGetValue(tweenId, out tweener))
+            if (_tweenerDict.TryGetValue(tweenId, out var tweener))
             {
                 tweener.Kill();
                 _tweenerDict.Remove(tweenId);

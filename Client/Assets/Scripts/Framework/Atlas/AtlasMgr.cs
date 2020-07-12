@@ -43,8 +43,7 @@ namespace Framework
             {
                 return;
             }
-            Atlas atlas;
-            if (!_atlasDict.TryGetValue(atlasPath, out atlas) || atlas.Deprecated)
+            if (!_atlasDict.TryGetValue(atlasPath, out var atlas) || atlas.Deprecated)
             {
                 atlas = PoolMgr.singleton.GetCsharpObject<Atlas>();
                 atlas.OnInitialize(atlasPath);
@@ -62,8 +61,7 @@ namespace Framework
             {
                 return;
             }
-            Atlas atlas;
-            if (_atlasDict.TryGetValue(atlasPath, out atlas) && !atlas.Deprecated)
+            if (_atlasDict.TryGetValue(atlasPath, out var atlas) && !atlas.Deprecated)
             {
                 atlas.ReleaseSprite(Object);
             }

@@ -148,9 +148,7 @@ namespace Framework
         {
             public IEnumerator<float> LoadSceneAsync(string path, Action<UnityEngine.SceneManagement.Scene> onSceneLoaded, Action<float> progress)
             {
-                AssetBundle assetBundle = null;
-
-                if (singleton._sceneAssetBundleDict.TryGetValue(path, out assetBundle))
+                if (singleton._sceneAssetBundleDict.TryGetValue(path, out var assetBundle))
                 {
                     if (assetBundle != null)
                     {
@@ -195,8 +193,7 @@ namespace Framework
             {
                 SceneManager.sceneUnloaded += (scene) =>
                 {
-                    AssetBundle assetBundle;
-                    if (singleton._sceneAssetBundleDict.TryGetValue(path, out assetBundle))
+                    if (singleton._sceneAssetBundleDict.TryGetValue(path, out var assetBundle))
                     {
                         AssetBundleMgr.singleton.UnloadAsset(path, null);
                     }
@@ -218,13 +215,19 @@ namespace Framework
                 };
 
 #if UNITY_EDITOR
-                var operation = UnityEditor.EditorApplication.LoadLevelAdditiveAsyncInPlayMode(path);
-                while (operation.progress < 0.99f)
+
+                //var operation = UnityEditor.EditorApplication.LoadLevelAdditiveAsyncInPlayMode(path);
+                var op = UnityEditor.SceneManagement.EditorSceneManager.LoadSceneAsyncInPlayMode(path, new LoadSceneParameters()
                 {
-                    progress?.Invoke(operation.progress);
+                    loadSceneMode = LoadSceneMode.Single,
+                    localPhysicsMode = LocalPhysicsMode.Physics3D
+                });
+                while (op.progress < 0.99f)
+                {
+                    progress?.Invoke(op.progress);
                     yield return Timing.WaitForOneFrame;
                 }
-                while (!operation.isDone)
+                while (!op.isDone)
                 {
                     yield return Timing.WaitForOneFrame;
                 }

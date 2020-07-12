@@ -21,7 +21,7 @@ namespace Framework
         protected override void Reset()
         {
             //处理子节点;
-            for (int i = 0; i < _list.Count; i++)
+            for (var i = 0; i < _list.Count; i++)
             {
                 _list[i].ResetBehavior();
             }
@@ -32,7 +32,7 @@ namespace Framework
         {
             if (Reslut == BehaviorState.Running)
             {
-                for (int i = 0; i < _list.Count; i++)
+                for (var i = 0; i < _list.Count; i++)
                 {
                     switch (_list[i].Behave(Entity, interval))
                     {

@@ -16,8 +16,8 @@ public class Framework_LuaUtilityWrap
 		L.RegFunction("ClearChild", ClearChild);
 		L.RegFunction("Uid", Uid);
 		L.RegFunction("GetTime", GetTime);
-		L.RegFunction("md5", md5);
-		L.RegFunction("md5file", md5file);
+		L.RegFunction("Md5", Md5);
+		L.RegFunction("Md5file", Md5file);
 		L.RegFunction("ClearMemory", ClearMemory);
 		L.RegFunction("GetFileText", GetFileText);
 		L.RegFunction("AppContentPath", AppContentPath);
@@ -274,16 +274,16 @@ public class Framework_LuaUtilityWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int md5(IntPtr L)
+	static int Md5(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaUtility.md5");
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.Md5");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
 			string arg0 = ToLua.CheckString(L, 1);
-			string o = Framework.LuaUtility.md5(arg0);
+			string o = Framework.LuaUtility.Md5(arg0);
 			LuaDLL.lua_pushstring(L, o);
 			return 1;
 		}
@@ -294,16 +294,16 @@ public class Framework_LuaUtilityWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int md5file(IntPtr L)
+	static int Md5file(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaUtility.md5file");
+        ToluaProfiler.AddCallRecord("Framework.LuaUtility.Md5file");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
 			string arg0 = ToLua.CheckString(L, 1);
-			string o = Framework.LuaUtility.md5file(arg0);
+			string o = Framework.LuaUtility.Md5file(arg0);
 			LuaDLL.lua_pushstring(L, o);
 			return 1;
 		}

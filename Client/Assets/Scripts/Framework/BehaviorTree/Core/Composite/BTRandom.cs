@@ -24,7 +24,7 @@ namespace Framework
         protected override void Reset()
         {
             //处理子节点;
-            for (int i = 0; i < _list.Count; i++)
+            for (var i = 0; i < _list.Count; i++)
             {
                 _list[i].ResetBehavior();
             }
@@ -36,10 +36,10 @@ namespace Framework
         {
             if (Reslut == BehaviorState.Running)
             {
-                int count = _list.Count;
+                var count = _list.Count;
                 if (_target == null)
                 {
-                    int index = Random.Range(0, count);
+                    var index = Random.Range(0, count);
                     _target = _list[index];
                 }
                 switch (_target.Behave(Entity, interval))

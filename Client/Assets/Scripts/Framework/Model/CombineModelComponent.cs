@@ -165,8 +165,7 @@ namespace Framework
 
         private void LoadModelPart(ModelPart part, string resName)
         {
-            AssetBundleAssetProxy runningProxy;
-            _tempPartProxyDict.TryGetValue(part, out runningProxy);
+            _tempPartProxyDict.TryGetValue(part, out var runningProxy);
             if (runningProxy != null)
             {
                 runningProxy.UnloadProxy();

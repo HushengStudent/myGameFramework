@@ -53,8 +53,7 @@ namespace UnityEngine.UI
                 MatchCollection matches = Regex.Matches(text, "\\[[a-z0-9A-Z]+\\]");
                 for (int i = 0; i < matches.Count; i++)
                 {
-                    EmojiInfo info;
-                    if (EmojiIndex.TryGetValue(matches[i].Value, out info))
+                    if (EmojiIndex.TryGetValue(matches[i].Value, out var info))
                     {
                         info.len = matches[i].Length;
                         emojiDic.Add(matches[i].Index, info);
@@ -106,9 +105,8 @@ namespace UnityEngine.UI
                 }
                 for (int i = 0; i < vertCount; ++i)
                 {
-                    EmojiInfo info;
                     int index = i / 4;
-                    if (emojiDic.TryGetValue(index, out info))
+                    if (emojiDic.TryGetValue(index, out var info))
                     {
                         //compute the distance of '[' and get the distance of emoji;
                         float charDis = (verts[i + 1].position.x - verts[i].position.x) * 3;

@@ -132,7 +132,6 @@ namespace Framework
         private interface IAssetLoader
         {
             IEnumerator<float> LoadAssetAsync(string path, AssetBundleAssetProxy proxy, Action<float> progress);
-
         }
 
         internal class AssetBundleAssetLoader : IAssetLoader

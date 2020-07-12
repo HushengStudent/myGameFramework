@@ -35,8 +35,7 @@ namespace Framework.ObjectPool
                 return null;
             }
             var instanceID = asset.GetInstanceID();
-            Stack<UnityObject> stack;
-            if (!_unityObjectDict.TryGetValue(instanceID, out stack))
+            if (!_unityObjectDict.TryGetValue(instanceID, out var stack))
             {
                 stack = new Stack<UnityObject>();
                 _unityObjectDict[instanceID] = stack;
@@ -67,7 +66,6 @@ namespace Framework.ObjectPool
                 return;
             }
             var instanceID = element.GetInstanceID();
-            Stack<UnityObject> stack;
             int parentInstanceID;
             if (_unityObjectDict.ContainsKey(instanceID))
             {
@@ -91,7 +89,7 @@ namespace Framework.ObjectPool
                     return;
                 }
             }
-            if (!_unityObjectDict.TryGetValue(parentInstanceID, out stack))
+            if (!_unityObjectDict.TryGetValue(parentInstanceID, out var stack))
             {
                 stack = new Stack<UnityObject>();
                 _unityObjectDict[parentInstanceID] = stack;

@@ -138,11 +138,11 @@ namespace Framework
         {
             var source = new FileStream(from, FileMode.Open, FileAccess.Read);
             var dest = new FileStream(to, FileMode.Append, FileAccess.Write);
-            int allLength = 0;
+            var allLength = 0;
             if (Length < source.Length)
             {
                 var buffer = new byte[Length];
-                long finishLength = 0;
+                var finishLength = 0;
                 while (finishLength <= source.Length - Length)
                 {
                     allLength = source.Read(buffer, 0, Length);

@@ -46,8 +46,7 @@ namespace Framework
             for (var i = 0; i < nodeList.Count; i++)
             {
                 var nodeTable = nodeList[i] as Hashtable;
-                var id = 0;
-                if (int.TryParse(nodeTable["$id"].ToString(), out id))
+                if (int.TryParse(nodeTable["$id"].ToString(), out var id))
                 {
                     var absBehavior = CreateBehavior(nodeTable, id);
                     _behaviorDict[id] = absBehavior;
@@ -71,15 +70,12 @@ namespace Framework
             for (var i = 0; i < connectionList.Count; i++)
             {
                 var connectionTable = connectionList[i] as Hashtable;
-                var source = 0;
-                var target = 0;
                 var scurceNode = connectionTable["_sourceNode"] as Hashtable;
                 var targetNode = connectionTable["_targetNode"] as Hashtable;
-                if (int.TryParse(scurceNode["$ref"].ToString(), out source)
-                    && int.TryParse(targetNode["$ref"].ToString(), out target))
+                if (int.TryParse(scurceNode["$ref"].ToString(), out var source)
+                    && int.TryParse(targetNode["$ref"].ToString(), out var target))
                 {
-                    List<int> list;
-                    if (!_connectionDict.TryGetValue(source, out list))
+                    if (!_connectionDict.TryGetValue(source, out var list))
                     {
                         _connectionDict[source] = new List<int>();
                         list = _connectionDict[source];
@@ -101,8 +97,7 @@ namespace Framework
             {
                 target = list[i];
                 var id = target.Id;
-                List<int> connectList;
-                if (!_connectionDict.TryGetValue(id, out connectList))
+                if (!_connectionDict.TryGetValue(id, out var connectList))
                 {
                     continue;
                 }
@@ -110,8 +105,7 @@ namespace Framework
                 for (var j = 0; j < connectList.Count; j++)
                 {
                     var sonId = connectList[j];
-                    AbsBehavior son;
-                    if (!_behaviorDict.TryGetValue(sonId, out son))
+                    if (!_behaviorDict.TryGetValue(sonId, out var son))
                     {
                         continue;
                     }

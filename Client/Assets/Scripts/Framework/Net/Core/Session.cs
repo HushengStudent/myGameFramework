@@ -568,8 +568,7 @@ namespace Framework
                 else
                 {
                     var id = packet.GetPacketId();
-                    var overridecs = false;
-                    if (LuaProtoRegister.LuaProtoDict.TryGetValue(id, out overridecs))
+                    if (LuaProtoRegister.LuaProtoDict.TryGetValue(id, out var overridecs))
                     {
                         if (!overridecs)
                         {

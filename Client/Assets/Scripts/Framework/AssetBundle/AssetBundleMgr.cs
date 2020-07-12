@@ -115,8 +115,7 @@ namespace Framework
             {
                 return;
             }
-            List<WeakReference> list;
-            if (!_assetBundleRefDict.TryGetValue(path, out list))
+            if (!_assetBundleRefDict.TryGetValue(path, out var list))
             {
                 list = PoolMgr.singleton.GetCsharpList<WeakReference>();
                 _assetBundleRefDict[path] = list;
@@ -371,8 +370,7 @@ namespace Framework
 
             if (asset != null)
             {
-                List<WeakReference> list;
-                if (_assetBundleRefDict.TryGetValue(path, out list))
+                if (_assetBundleRefDict.TryGetValue(path, out var list))
                 {
                     for (var i = 0; i < list.Count; i++)
                     {
@@ -427,8 +425,7 @@ namespace Framework
         /// 卸载AssetBundle资源;
         private void UnloadAsset(string path, bool flag)
         {
-            int count = 0;
-            if (assetBundleReference.TryGetValue(path, out count))
+            if (assetBundleReference.TryGetValue(path, out var count))
             {
                 count--;
                 if (count == 0)

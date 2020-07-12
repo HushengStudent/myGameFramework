@@ -49,14 +49,12 @@ namespace Framework
                 LogHelper.PrintError("[EventMgr]AddEvent error,the receiver is null.");
                 return;
             }
-            Dictionary<EventType, List<EventHandler>> dict;
-            List<EventHandler> list;
-            if (!EventDict.TryGetValue(receiver, out dict))
+            if (!EventDict.TryGetValue(receiver, out var dict))
             {
                 EventDict[receiver] = new Dictionary<EventType, List<EventHandler>>();
             }
             dict = EventDict[receiver];
-            if (!dict.TryGetValue(type, out list))
+            if (!dict.TryGetValue(type, out var list))
             {
                 list = new List<EventHandler>();
                 dict[type] = list;
@@ -84,8 +82,7 @@ namespace Framework
                 LogHelper.PrintError("[EventMgr]RemoveEvent error,the receiver is null.");
                 return;
             }
-            Dictionary<EventType, List<EventHandler>> dict;
-            if (EventDict.TryGetValue(receiver, out dict))
+            if (EventDict.TryGetValue(receiver, out var dict))
             {
                 if (null != dict && dict.Count > 0)
                 {
@@ -108,8 +105,7 @@ namespace Framework
                 LogHelper.PrintError("[EventMgr]RemoveEvent error,the receiver is null.");
                 return;
             }
-            Dictionary<EventType, List<EventHandler>> dict;
-            if (EventDict.TryGetValue(receiver, out dict))
+            if (EventDict.TryGetValue(receiver, out var dict))
             {
                 EventDict.Remove(receiver);
             }
@@ -128,13 +124,11 @@ namespace Framework
                 LogHelper.PrintError("[EventMgr]FireEvent error,the receiver is null.");
                 return;
             }
-            Dictionary<EventType, List<EventHandler>> dict;
-            List<EventHandler> list;
-            if (EventDict.TryGetValue(receiver, out dict))
+            if (EventDict.TryGetValue(receiver, out var dict))
             {
                 if (null != dict && dict.Count > 0)
                 {
-                    if (dict.TryGetValue(type, out list))
+                    if (dict.TryGetValue(type, out var list))
                     {
                         if (null != list && list.Count > 0)
                         {
@@ -155,8 +149,7 @@ namespace Framework
         /// <param name="callBack">事件回调</param>
         public void AddGlobalEvent(EventType type, EventHandler callBack)
         {
-            List<EventHandler> list;
-            if (!GlobalEventDict.TryGetValue(type, out list))
+            if (!GlobalEventDict.TryGetValue(type, out var list))
             {
                 GlobalEventDict[type] = new List<EventHandler>();
             }
@@ -190,8 +183,7 @@ namespace Framework
         /// <param name="eventArgs">事件参数</param>
         public void FireGlobalEvent(EventType type, IEventArgs eventArgs)
         {
-            List<EventHandler> list;
-            if (GlobalEventDict.TryGetValue(type, out list))
+            if (GlobalEventDict.TryGetValue(type, out var list))
             {
                 if (null != list && list.Count > 0)
                 {

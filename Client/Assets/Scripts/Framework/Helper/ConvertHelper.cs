@@ -11,12 +11,7 @@ namespace Framework
 {
     public static class ConvertHelper
     {
-
-        #region bool
-
-        private static int _boolLength = 1;
-
-        public static int BOOL_LENGTH { get { return _boolLength; } }
+        public static int BOOL_LENGTH { get; } = 1;
 
         /// <summary>
         /// 以字节数组的形式返回指定的布尔值;
@@ -49,13 +44,7 @@ namespace Framework
             return BitConverter.ToBoolean(value, startIndex);
         }
 
-        #endregion
-
-        #region int
-
-        private static int _intLength = 4;
-
-        public static int INT_LENGTH { get { return _intLength; } }
+        public static int INT_LENGTH { get; } = 4;
 
         /// <summary>
         /// 以字节数组的形式返回指定的32位有符号整数值;
@@ -88,13 +77,7 @@ namespace Framework
             return BitConverter.ToInt32(value, startIndex);
         }
 
-        #endregion
-
-        #region uint
-
-        private static int _uintLength = 4;
-
-        public static int UINT_LENGTH { get { return _uintLength; } }
+        public static int UINT_LENGTH { get; } = 4;
 
         /// <summary>
         /// 以字节数组的形式返回指定的32位无符号整数值;
@@ -127,13 +110,7 @@ namespace Framework
             return BitConverter.ToUInt32(value, startIndex);
         }
 
-        #endregion
-
-        #region char
-
-        private static int _charLength = 2;
-
-        public static int CHAR_LENGTH { get { return _charLength; } }
+        public static int CHAR_LENGTH { get; } = 2;
 
         /// <summary>
         /// 以字节数组的形式返回指定的Unicode字符值;
@@ -166,13 +143,7 @@ namespace Framework
             return BitConverter.ToChar(value, startIndex);
         }
 
-        #endregion
-
-        #region short
-
-        private static int _shortLength = 2;
-
-        public static int SHORT_LENGTH { get { return _shortLength; } }
+        public static int SHORT_LENGTH { get; } = 2;
 
         /// <summary>
         /// 以字节数组的形式返回指定的16位有符号整数值;
@@ -205,13 +176,7 @@ namespace Framework
             return BitConverter.ToInt16(value, startIndex);
         }
 
-        #endregion
-
-        #region ushort
-
-        private static int _ushortLength = 2;
-
-        public static int USHORT_LENGTH { get { return _ushortLength; } }
+        public static int USHORT_LENGTH { get; } = 2;
 
         /// <summary>
         /// 以字节数组的形式返回指定的16位无符号整数值;
@@ -244,13 +209,7 @@ namespace Framework
             return BitConverter.ToUInt16(value, startIndex);
         }
 
-        #endregion
-
-        #region long
-
-        private static int _longLength = 8;
-
-        public static int LONG_LENGTH { get { return _longLength; } }
+        public static int LONG_LENGTH { get; } = 8;
 
         /// <summary>
         /// 以字节数组的形式返回指定的64位有符号整数值;
@@ -283,13 +242,7 @@ namespace Framework
             return BitConverter.ToInt64(value, startIndex);
         }
 
-        #endregion
-
-        #region ulong
-
-        private static int _ulongLength = 8;
-
-        public static int ULONG_LENGTH { get { return _ulongLength; } }
+        public static int ULONG_LENGTH { get; } = 8;
 
         /// <summary>
         /// 以字节数组的形式返回指定的64位无符号整数值;
@@ -322,13 +275,7 @@ namespace Framework
             return BitConverter.ToUInt64(value, startIndex);
         }
 
-        #endregion
-
-        #region float
-
-        private static int _floatLength = 4;
-
-        public static int FLOAT_LENGTH { get { return _floatLength; } }
+        public static int FLOAT_LENGTH { get; } = 4;
 
         /// <summary>
         /// 以字节数组的形式返回指定的单精度浮点值;
@@ -361,13 +308,7 @@ namespace Framework
             return BitConverter.ToSingle(value, startIndex);
         }
 
-        #endregion
-
-        #region double
-
-        private static int _doubleLength = 8;
-
-        public static int DOUBLE_LENGTH { get { return _doubleLength; } }
+        public static int DOUBLE_LENGTH { get; } = 8;
 
         /// <summary>
         /// 以字节数组的形式返回指定的双精度浮点值;
@@ -400,10 +341,6 @@ namespace Framework
             return BitConverter.ToDouble(value, startIndex);
         }
 
-        #endregion
-
-        #region string
-
         /// <summary>
         /// 以UTF-8字节数组的形式返回指定的字符串;
         /// </summary>
@@ -427,8 +364,5 @@ namespace Framework
             }
             return Encoding.UTF8.GetString(value, 0, value.Length);
         }
-
-        #endregion
-
     }
 }

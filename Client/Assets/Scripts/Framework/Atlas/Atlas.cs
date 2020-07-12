@@ -106,8 +106,7 @@ namespace Framework
 
         private void TrySetSprite(Object target, string spriteName)
         {
-            Sprite sprite;
-            if (!_spriteDict.TryGetValue(spriteName, out sprite))
+            if (!_spriteDict.TryGetValue(spriteName, out var sprite))
             {
                 LogHelper.PrintError($"[Atlas]not find sprite:{AtlasPath} {spriteName}");
                 return;
@@ -121,8 +120,7 @@ namespace Framework
 
         public void ReleaseSprite(Object target)
         {
-            string name;
-            if (_objectRefDict.TryGetValue(target, out name))
+            if (_objectRefDict.TryGetValue(target, out var name))
             {
                 _objectRefDict.Remove(target);
                 TryReleaseAtlas();

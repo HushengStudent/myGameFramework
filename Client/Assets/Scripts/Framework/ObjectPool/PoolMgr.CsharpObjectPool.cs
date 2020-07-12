@@ -26,8 +26,7 @@ namespace Framework
         public T GetCsharpObject<T>(params Object[] args) where T : new()
         {
             CsharpObjectPool<T> pool;
-            Object temp;
-            if (_csharpObjectPool.TryGetValue(typeof(T), out temp))
+            if (_csharpObjectPool.TryGetValue(typeof(T), out var temp))
             {
                 pool = temp as CsharpObjectPool<T>;
             }
@@ -36,8 +35,7 @@ namespace Framework
                 pool = CreateCsharpPool<T>();
             }
             var t = pool.Get();
-            var target = t as IPool;
-            if (target != null)
+            if (t is IPool target)
             {
                 target.OnGet(args);
             }
@@ -51,14 +49,12 @@ namespace Framework
         /// <param name="type"></param>
         public void ReleaseCsharpObject<T>(T type) where T : new()
         {
-            var target = type as IPool;
-            if (target != null)
+            if (type is IPool target)
             {
                 target.OnRelease();
             }
             CsharpObjectPool<T> pool;
-            Object temp;
-            if (_csharpObjectPool.TryGetValue(typeof(T), out temp))
+            if (_csharpObjectPool.TryGetValue(typeof(T), out var temp))
             {
                 pool = temp as CsharpObjectPool<T>;
             }
@@ -72,8 +68,7 @@ namespace Framework
         /// 创建Csharp对象池;
         private CsharpObjectPool<T> CreateCsharpPool<T>() where T : new()
         {
-            Object temp;
-            if (_csharpObjectPool.TryGetValue(typeof(T), out temp))
+            if (_csharpObjectPool.TryGetValue(typeof(T), out var temp))
             {
                 return temp as CsharpObjectPool<T>;
             }

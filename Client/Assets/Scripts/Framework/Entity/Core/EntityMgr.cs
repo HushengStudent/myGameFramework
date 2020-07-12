@@ -113,8 +113,7 @@ namespace Framework
         public T GetEntity<T>(ulong uid) where T : AbsEntity, new()
         {
             T target = null;
-            AbsEntity temp = null;
-            if (_entityDict.TryGetValue(uid, out temp))
+            if (_entityDict.TryGetValue(uid, out var temp))
             {
                 target = temp as T;
             }

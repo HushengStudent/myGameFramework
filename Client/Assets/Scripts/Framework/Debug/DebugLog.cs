@@ -16,8 +16,8 @@ namespace Framework
         {
             private LinkedList<LogNode> _logList = new LinkedList<LogNode>();
             private LinkedListNode<LogNode> _selectedNode = null;
-            private string _dateTimeFormat = "[HH:mm:ss.fff] ";
-            private int _maxCount = 100;
+            private readonly string _dateTimeFormat = "[HH:mm:ss.fff] ";
+            private readonly int _maxCount = 100;
             public bool _automaticPopUp = true;
             private Vector2 _logScrollPosition = Vector2.zero;
             private Vector2 _stackScrollPosition = Vector2.zero;
