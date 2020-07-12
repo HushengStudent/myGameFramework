@@ -1,16 +1,23 @@
 ManifestFileVersion: 0
-CRC: 4247379361
+CRC: 3341455814
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 60b0f20b283b839eb373e49f147d54e2
+    Hash: 92f9dcbad2e97798d39c2861f34bc193
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 246de495eba2b6a7dad156162e94d512
+    Hash: fdf6c57a251b9f6ec27bdd2fe01b033c
 HashAppended: 0
 ClassTypes:
+- Class: 74
+  Script: {instanceID: 0}
 - Class: 91
   Script: {instanceID: 0}
 Assets:
 - Assets/Bundles/Animator/Common/Player.controller
-Dependencies: []
+Dependencies:
+- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/8e22e79e547298295dd6033b3c55b06a.ab
+- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/66bef3e4e49378526f4993782601a07c.ab
+- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/986d908567413bdd0974775ab46362ce.ab
+- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/6c90dad36b3a11d6344141e0fd40c5f6.ab
+- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/7ec3b67064b6c2f12845d42fa29c7731.ab

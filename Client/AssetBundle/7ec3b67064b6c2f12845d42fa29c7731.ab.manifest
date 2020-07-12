@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 4024371640
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ccca20d11897e7706db60ef6d8ea5ba7
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: af57576da81d5d3ce45807ac11234de6
+HashAppended: 0
+ClassTypes:
+- Class: 74
+  Script: {instanceID: 0}
+Assets:
+- Assets/Bundles/Animation/Default/Special.anim
+Dependencies: []

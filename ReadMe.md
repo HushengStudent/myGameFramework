@@ -1,9 +1,9 @@
 ### myGameFramework
 #### My game framework include client server and tools.
 
-software：Unity2017.4.25/visual studio2017.
+software：Unity2019.3.14/visual studio2017.
 
-#### Client：Unity2017.4.25
+#### Client：Unity2019.3.14
     Module：
     (1)资源管理：AssetBundle、资源加载/卸载.(Finish)
     (2)tolua.(Finish)
@@ -83,3 +83,4 @@ software：Unity2017.4.25/visual studio2017.
     (1)branch_v1.0.
     (2)branch_v2.0(更新tolua版本).
     (3)branch_v3.0(资源管理重构(异步加载优化;对象池)).
+    (4)branch_v4.0(更新到Unity2019).

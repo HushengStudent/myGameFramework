@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 15826422
+CRC: 3612234426
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 598206581984820e6b8f51b8e881a75b
+    Hash: c151b11cca894dc88350d0f00c8f6d1c
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -17,6 +17,8 @@ Assets:
 - Assets/Bundles/Lua/jit/dis_mips.lua.bytes
 - Assets/Bundles/Lua/System/coroutine.lua.bytes
 - Assets/Bundles/Lua/jit/vmdef.lua.bytes
+- Assets/Bundles/Lua/UI/PanelEnum.lua.bytes
+- Assets/Bundles/Lua/UI/Panel/Login/LoginPanelLayout.lua.bytes
 - Assets/Bundles/Lua/Network/Protol/login_pb.lua.bytes
 - Assets/Bundles/Lua/Common/luabitop/installpath.lua.bytes
 - Assets/Bundles/Lua/UnityEngine/Plane.lua.bytes
@@ -25,6 +27,7 @@ Assets:
 - Assets/Bundles/Lua/jit/dis_arm64be.lua.bytes
 - Assets/Bundles/Lua/UnityEngine/Vector4.lua.bytes
 - Assets/Bundles/Lua/Manager/SceneMgr.lua.bytes
+- Assets/Bundles/Lua/UI/BasePanel.lua.bytes
 - Assets/Bundles/Lua/slot.lua.bytes
 - Assets/Bundles/Lua/list.lua.bytes
 - Assets/Bundles/Lua/jit/dis_ppc.lua.bytes
@@ -33,9 +36,11 @@ Assets:
 - Assets/Bundles/Lua/Event/events.lua.bytes
 - Assets/Bundles/Lua/Panel/CtrlEnum.lua.bytes
 - Assets/Bundles/Lua/Common/luabitop/nsievebits.lua.bytes
+- Assets/Bundles/Lua/UI/BaseState.lua.bytes
 - Assets/Bundles/Lua/UnityEngine/Touch.lua.bytes
 - Assets/Bundles/Lua/misc/utf8.lua.bytes
 - Assets/Bundles/Lua/System/ValueType.lua.bytes
+- Assets/Bundles/Lua/System/Injection/InjectionBridgeInfo.lua.bytes
 - Assets/Bundles/Lua/GlobalRegister.lua.bytes
 - Assets/Bundles/Lua/Panel/Controller/LoginCtrl.lua.bytes
 - Assets/Bundles/Lua/Common/luabitop/bitbench.lua.bytes
@@ -50,6 +55,7 @@ Assets:
 - Assets/Bundles/Lua/protobuf/listener.lua.bytes
 - Assets/Bundles/Lua/Common/cjson/json2lua.lua.bytes
 - Assets/Bundles/Lua/jit/bc.lua.bytes
+- Assets/Bundles/Lua/Enum.lua.bytes
 - Assets/Bundles/Lua/jit/p.lua.bytes
 - Assets/Bundles/Lua/protobuf/wire_format.lua.bytes
 - Assets/Bundles/Lua/misc/strict.lua.bytes
@@ -67,10 +73,12 @@ Assets:
 - Assets/Bundles/Lua/jit/v.lua.bytes
 - Assets/Bundles/Lua/Event/eventlib.lua.bytes
 - Assets/Bundles/Lua/System/Reflection/BindingFlags.lua.bytes
+- Assets/Bundles/Lua/UI/Panel/Login/LoginPanel.lua.bytes
 - Assets/Bundles/Lua/Common/Class.lua.bytes
 - Assets/Bundles/Lua/UI/Canvas/BaseCanvas.lua.bytes
 - Assets/Bundles/Lua/jit/dis_mips64.lua.bytes
 - Assets/Bundles/Lua/socket/http.lua.bytes
+- Assets/Bundles/Lua/Common/Helper.lua.bytes
 - Assets/Bundles/Lua/misc/functions.lua.bytes
 - Assets/Bundles/Lua/Common/luabitop/bittest.lua.bytes
 - Assets/Bundles/Lua/UnityEngine/Vector3.lua.bytes
@@ -81,6 +89,8 @@ Assets:
 - Assets/Bundles/Lua/protobuf/encoder.lua.bytes
 - Assets/Bundles/Lua/mime.lua.bytes
 - Assets/Bundles/Lua/protobuf/decoder.lua.bytes
+- Assets/Bundles/Lua/UI/StateEnum.lua.bytes
+- Assets/Bundles/Lua/UI/Panel/Login/LoginTextTemplate.lua.bytes
 - Assets/Bundles/Lua/jit/zone.lua.bytes
 - Assets/Bundles/Lua/Common/cjson/test.lua.bytes
 - Assets/Bundles/Lua/jit/dis_mipsel.lua.bytes
@@ -92,18 +102,23 @@ Assets:
 - Assets/Bundles/Lua/jit/bcsave.lua.bytes
 - Assets/Bundles/Lua/UnityEngine/Mathf.lua.bytes
 - Assets/Bundles/Lua/socket/smtp.lua.bytes
+- Assets/Bundles/Lua/UI/State/LoginState.lua.bytes
 - Assets/Bundles/Lua/protobuf/protobuf.lua.bytes
 - Assets/Bundles/Lua/socket/ftp.lua.bytes
 - Assets/Bundles/Lua/UnityEngine/Ray.lua.bytes
 - Assets/Bundles/Lua/socket/headers.lua.bytes
 - Assets/Bundles/Lua/event.lua.bytes
+- Assets/Bundles/Lua/UI/Panel/Login/LoginTextTemplateLayout.lua.bytes
+- Assets/Bundles/Lua/System/Injection/LuaInjectionBus.lua.bytes
 - Assets/Bundles/Lua/jit/dis_arm64.lua.bytes
 - Assets/Bundles/Lua/Common/cjson/util.lua.bytes
 - Assets/Bundles/Lua/socket/tp.lua.bytes
 - Assets/Bundles/Lua/Profiler/MemoryReferenceInfo.lua.bytes
+- Assets/Bundles/Lua/System/Injection/LuaInjectionStation.lua.bytes
 - Assets/Bundles/Lua/UI/CanvasEnum.lua.bytes
 - Assets/Bundles/Lua/Common/cjson/lua2json.lua.bytes
 - Assets/Bundles/Lua/Manager/NetMgr.lua.bytes
+- Assets/Bundles/Lua/UI/BaseTemplate.lua.bytes
 - Assets/Bundles/Lua/UnityEngine/Color.lua.bytes
 - Assets/Bundles/Lua/protobuf/type_checkers.lua.bytes
 - Assets/Bundles/Lua/jit/dis_mips64el.lua.bytes
