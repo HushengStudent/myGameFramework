@@ -8,6 +8,8 @@ using BindType = ToLuaMenu.BindType;
 using System.Reflection;
 using Framework;
 using UnityEngine.UI;
+using UnityEngine.Networking;
+using UnityEngine.EventSystems;
 
 public static class CustomSettings
 {
@@ -89,6 +91,7 @@ public static class CustomSettings
         _GT(typeof(Light)),
         _GT(typeof(Rigidbody)),
         _GT(typeof(Camera)),
+        _GT(typeof(AudioBehaviour)),
         _GT(typeof(AudioSource)),
         //_GT(typeof(LineRenderer))
         //_GT(typeof(TrailRenderer))
@@ -106,7 +109,7 @@ public static class CustomSettings
         _GT(typeof(Texture2D)),
         _GT(typeof(Shader)),        
         _GT(typeof(Renderer)),
-        _GT(typeof(WWW)),
+        _GT(typeof(UnityWebRequest)),
         _GT(typeof(Screen)),        
         _GT(typeof(CameraClearFlags)),
         _GT(typeof(AudioClip)),        
@@ -156,6 +159,10 @@ public static class CustomSettings
         //项目导出;
         
         //UGUI;
+        _GT(typeof(UIBehaviour)),
+        _GT(typeof(MaskableGraphic)),
+        _GT(typeof(Graphic)),
+        _GT(typeof(EventSystem)),
         _GT(typeof(RectTransform)),
         _GT(typeof(Text)),
 

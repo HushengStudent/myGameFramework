@@ -23,6 +23,7 @@ public static class LuaBinder
 		UnityEngine_MaterialWrap.Register(L);
 		UnityEngine_LightWrap.Register(L);
 		UnityEngine_CameraWrap.Register(L);
+		UnityEngine_AudioBehaviourWrap.Register(L);
 		UnityEngine_AudioSourceWrap.Register(L);
 		UnityEngine_BehaviourWrap.Register(L);
 		UnityEngine_MonoBehaviourWrap.Register(L);
@@ -36,7 +37,6 @@ public static class LuaBinder
 		UnityEngine_Texture2DWrap.Register(L);
 		UnityEngine_ShaderWrap.Register(L);
 		UnityEngine_RendererWrap.Register(L);
-		UnityEngine_WWWWrap.Register(L);
 		UnityEngine_ScreenWrap.Register(L);
 		UnityEngine_CameraClearFlagsWrap.Register(L);
 		UnityEngine_AudioClipWrap.Register(L);
@@ -57,14 +57,17 @@ public static class LuaBinder
 		UnityEngine_RenderSettingsWrap.Register(L);
 		UnityEngine_ResourcesWrap.Register(L);
 		UnityEngine_RectTransformWrap.Register(L);
-		UnityEngine_AudioBehaviourWrap.Register(L);
-		L.BeginModule("UI");
-		UnityEngine_UI_TextWrap.Register(L);
-		UnityEngine_UI_MaskableGraphicWrap.Register(L);
-		UnityEngine_UI_GraphicWrap.Register(L);
+		L.BeginModule("Networking");
+		UnityEngine_Networking_UnityWebRequestWrap.Register(L);
 		L.EndModule();
 		L.BeginModule("EventSystems");
 		UnityEngine_EventSystems_UIBehaviourWrap.Register(L);
+		UnityEngine_EventSystems_EventSystemWrap.Register(L);
+		L.EndModule();
+		L.BeginModule("UI");
+		UnityEngine_UI_MaskableGraphicWrap.Register(L);
+		UnityEngine_UI_GraphicWrap.Register(L);
+		UnityEngine_UI_TextWrap.Register(L);
 		L.EndModule();
 		L.BeginModule("Events");
 		L.RegFunction("UnityAction", UnityEngine_Events_UnityAction);
