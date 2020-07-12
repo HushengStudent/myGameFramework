@@ -8,19 +8,22 @@ public class UnityEngine_ScreenWrap
 	{
 		L.BeginStaticLibs("Screen");
 		L.RegFunction("SetResolution", SetResolution);
-		L.RegVar("resolutions", get_resolutions, null);
-		L.RegVar("currentResolution", get_currentResolution, null);
-		L.RegVar("fullScreen", get_fullScreen, set_fullScreen);
 		L.RegVar("width", get_width, null);
 		L.RegVar("height", get_height, null);
 		L.RegVar("dpi", get_dpi, null);
-		L.RegVar("orientation", get_orientation, set_orientation);
-		L.RegVar("sleepTimeout", get_sleepTimeout, set_sleepTimeout);
+		L.RegVar("currentResolution", get_currentResolution, null);
+		L.RegVar("resolutions", get_resolutions, null);
+		L.RegVar("fullScreen", get_fullScreen, set_fullScreen);
+		L.RegVar("fullScreenMode", get_fullScreenMode, set_fullScreenMode);
+		L.RegVar("safeArea", get_safeArea, null);
+		L.RegVar("cutouts", get_cutouts, null);
 		L.RegVar("autorotateToPortrait", get_autorotateToPortrait, set_autorotateToPortrait);
 		L.RegVar("autorotateToPortraitUpsideDown", get_autorotateToPortraitUpsideDown, set_autorotateToPortraitUpsideDown);
 		L.RegVar("autorotateToLandscapeLeft", get_autorotateToLandscapeLeft, set_autorotateToLandscapeLeft);
 		L.RegVar("autorotateToLandscapeRight", get_autorotateToLandscapeRight, set_autorotateToLandscapeRight);
-		L.RegVar("safeArea", get_safeArea, null);
+		L.RegVar("orientation", get_orientation, set_orientation);
+		L.RegVar("sleepTimeout", get_sleepTimeout, set_sleepTimeout);
+		L.RegVar("brightness", get_brightness, set_brightness);
 		L.EndStaticLibs();
 	}
 
@@ -34,20 +37,37 @@ public class UnityEngine_ScreenWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 3)
+			if (count == 3 && TypeChecker.CheckTypes<UnityEngine.FullScreenMode>(L, 3))
 			{
 				int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
 				int arg1 = (int)LuaDLL.luaL_checknumber(L, 2);
-				bool arg2 = LuaDLL.luaL_checkboolean(L, 3);
+				UnityEngine.FullScreenMode arg2 = (UnityEngine.FullScreenMode)ToLua.ToObject(L, 3);
 				UnityEngine.Screen.SetResolution(arg0, arg1, arg2);
 				return 0;
 			}
-			else if (count == 4)
+			else if (count == 3 && TypeChecker.CheckTypes<bool>(L, 3))
 			{
 				int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
 				int arg1 = (int)LuaDLL.luaL_checknumber(L, 2);
-				bool arg2 = LuaDLL.luaL_checkboolean(L, 3);
-				int arg3 = (int)LuaDLL.luaL_checknumber(L, 4);
+				bool arg2 = LuaDLL.lua_toboolean(L, 3);
+				UnityEngine.Screen.SetResolution(arg0, arg1, arg2);
+				return 0;
+			}
+			else if (count == 4 && TypeChecker.CheckTypes<UnityEngine.FullScreenMode, int>(L, 3))
+			{
+				int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
+				int arg1 = (int)LuaDLL.luaL_checknumber(L, 2);
+				UnityEngine.FullScreenMode arg2 = (UnityEngine.FullScreenMode)ToLua.ToObject(L, 3);
+				int arg3 = (int)LuaDLL.lua_tonumber(L, 4);
+				UnityEngine.Screen.SetResolution(arg0, arg1, arg2, arg3);
+				return 0;
+			}
+			else if (count == 4 && TypeChecker.CheckTypes<bool, int>(L, 3))
+			{
+				int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
+				int arg1 = (int)LuaDLL.luaL_checknumber(L, 2);
+				bool arg2 = LuaDLL.lua_toboolean(L, 3);
+				int arg3 = (int)LuaDLL.lua_tonumber(L, 4);
 				UnityEngine.Screen.SetResolution(arg0, arg1, arg2, arg3);
 				return 0;
 			}
@@ -55,57 +75,6 @@ public class UnityEngine_ScreenWrap
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.Screen.SetResolution");
 			}
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_resolutions(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.Screen.resolutions");
-#endif
-		try
-		{
-			ToLua.Push(L, UnityEngine.Screen.resolutions);
-			return 1;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_currentResolution(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.Screen.currentResolution");
-#endif
-		try
-		{
-			ToLua.PushValue(L, UnityEngine.Screen.currentResolution);
-			return 1;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_fullScreen(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.Screen.fullScreen");
-#endif
-		try
-		{
-			LuaDLL.lua_pushboolean(L, UnityEngine.Screen.fullScreen);
-			return 1;
 		}
 		catch (Exception e)
 		{
@@ -165,14 +134,14 @@ public class UnityEngine_ScreenWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_orientation(IntPtr L)
+	static int get_currentResolution(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.Screen.orientation");
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.currentResolution");
 #endif
 		try
 		{
-			ToLua.Push(L, UnityEngine.Screen.orientation);
+			ToLua.PushValue(L, UnityEngine.Screen.currentResolution);
 			return 1;
 		}
 		catch (Exception e)
@@ -182,14 +151,82 @@ public class UnityEngine_ScreenWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_sleepTimeout(IntPtr L)
+	static int get_resolutions(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.Screen.sleepTimeout");
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.resolutions");
 #endif
 		try
 		{
-			LuaDLL.lua_pushinteger(L, UnityEngine.Screen.sleepTimeout);
+			ToLua.Push(L, UnityEngine.Screen.resolutions);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_fullScreen(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.fullScreen");
+#endif
+		try
+		{
+			LuaDLL.lua_pushboolean(L, UnityEngine.Screen.fullScreen);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_fullScreenMode(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.fullScreenMode");
+#endif
+		try
+		{
+			ToLua.Push(L, UnityEngine.Screen.fullScreenMode);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_safeArea(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.safeArea");
+#endif
+		try
+		{
+			ToLua.PushValue(L, UnityEngine.Screen.safeArea);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_cutouts(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.cutouts");
+#endif
+		try
+		{
+			ToLua.Push(L, UnityEngine.Screen.cutouts);
 			return 1;
 		}
 		catch (Exception e)
@@ -267,14 +304,48 @@ public class UnityEngine_ScreenWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_safeArea(IntPtr L)
+	static int get_orientation(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.Screen.safeArea");
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.orientation");
 #endif
 		try
 		{
-			ToLua.PushValue(L, UnityEngine.Screen.safeArea);
+			ToLua.Push(L, UnityEngine.Screen.orientation);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_sleepTimeout(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.sleepTimeout");
+#endif
+		try
+		{
+			LuaDLL.lua_pushinteger(L, UnityEngine.Screen.sleepTimeout);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_brightness(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.brightness");
+#endif
+		try
+		{
+			LuaDLL.lua_pushnumber(L, UnityEngine.Screen.brightness);
 			return 1;
 		}
 		catch (Exception e)
@@ -302,33 +373,15 @@ public class UnityEngine_ScreenWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_orientation(IntPtr L)
+	static int set_fullScreenMode(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.Screen.orientation");
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.fullScreenMode");
 #endif
 		try
 		{
-			UnityEngine.ScreenOrientation arg0 = (UnityEngine.ScreenOrientation)ToLua.CheckObject(L, 2, typeof(UnityEngine.ScreenOrientation));
-			UnityEngine.Screen.orientation = arg0;
-			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_sleepTimeout(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.Screen.sleepTimeout");
-#endif
-		try
-		{
-			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
-			UnityEngine.Screen.sleepTimeout = arg0;
+			UnityEngine.FullScreenMode arg0 = (UnityEngine.FullScreenMode)ToLua.CheckObject(L, 2, typeof(UnityEngine.FullScreenMode));
+			UnityEngine.Screen.fullScreenMode = arg0;
 			return 0;
 		}
 		catch (Exception e)
@@ -401,6 +454,60 @@ public class UnityEngine_ScreenWrap
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
 			UnityEngine.Screen.autorotateToLandscapeRight = arg0;
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_orientation(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.orientation");
+#endif
+		try
+		{
+			UnityEngine.ScreenOrientation arg0 = (UnityEngine.ScreenOrientation)ToLua.CheckObject(L, 2, typeof(UnityEngine.ScreenOrientation));
+			UnityEngine.Screen.orientation = arg0;
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_sleepTimeout(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.sleepTimeout");
+#endif
+		try
+		{
+			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
+			UnityEngine.Screen.sleepTimeout = arg0;
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_brightness(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Screen.brightness");
+#endif
+		try
+		{
+			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
+			UnityEngine.Screen.brightness = arg0;
 			return 0;
 		}
 		catch (Exception e)

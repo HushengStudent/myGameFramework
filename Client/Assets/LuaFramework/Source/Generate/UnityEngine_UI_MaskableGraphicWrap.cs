@@ -16,6 +16,7 @@ public class UnityEngine_UI_MaskableGraphicWrap
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("onCullStateChanged", get_onCullStateChanged, set_onCullStateChanged);
 		L.RegVar("maskable", get_maskable, set_maskable);
+		L.RegVar("isMaskingGraphic", get_isMaskingGraphic, set_isMaskingGraphic);
 		L.EndClass();
 	}
 
@@ -186,6 +187,28 @@ public class UnityEngine_UI_MaskableGraphicWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_isMaskingGraphic(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.MaskableGraphic.isMaskingGraphic");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.UI.MaskableGraphic obj = (UnityEngine.UI.MaskableGraphic)o;
+			bool ret = obj.isMaskingGraphic;
+			LuaDLL.lua_pushboolean(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index isMaskingGraphic on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_onCullStateChanged(IntPtr L)
 	{
 #if UNITY_EDITOR
@@ -226,6 +249,28 @@ public class UnityEngine_UI_MaskableGraphicWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o, "attempt to index maskable on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_isMaskingGraphic(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.MaskableGraphic.isMaskingGraphic");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.UI.MaskableGraphic obj = (UnityEngine.UI.MaskableGraphic)o;
+			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
+			obj.isMaskingGraphic = arg0;
+			return 0;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index isMaskingGraphic on a nil value");
 		}
 	}
 }

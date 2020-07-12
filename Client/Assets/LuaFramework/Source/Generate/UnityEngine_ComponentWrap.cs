@@ -8,6 +8,7 @@ public class UnityEngine_ComponentWrap
 	{
 		L.BeginClass(typeof(UnityEngine.Component), typeof(UnityEngine.Object));
 		L.RegFunction("GetComponent", GetComponent);
+		L.RegFunction("TryGetComponent", TryGetComponent);
 		L.RegFunction("GetComponentInChildren", GetComponentInChildren);
 		L.RegFunction("GetComponentsInChildren", GetComponentsInChildren);
 		L.RegFunction("GetComponentInParent", GetComponentInParent);
@@ -83,6 +84,29 @@ public class UnityEngine_ComponentWrap
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.Component.GetComponent");
 			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int TryGetComponent(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Component.TryGetComponent");
+#endif
+		try
+		{
+			ToLua.CheckArgsCount(L, 3);
+			UnityEngine.Component obj = (UnityEngine.Component)ToLua.CheckObject<UnityEngine.Component>(L, 1);
+			System.Type arg0 = ToLua.CheckMonoType(L, 2);
+			UnityEngine.Component arg1 = null;
+			bool o = obj.TryGetComponent(arg0, out arg1);
+			LuaDLL.lua_pushboolean(L, o);
+			ToLua.Push(L, arg1);
+			return 2;
 		}
 		catch (Exception e)
 		{

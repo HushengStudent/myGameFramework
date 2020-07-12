@@ -6,16 +6,16 @@ public class UnityEngine_AudioSourceWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginClass(typeof(UnityEngine.AudioSource), typeof(UnityEngine.Behaviour));
+		L.BeginClass(typeof(UnityEngine.AudioSource), typeof(UnityEngine.AudioBehaviour));
 		L.RegFunction("Play", Play);
 		L.RegFunction("PlayDelayed", PlayDelayed);
 		L.RegFunction("PlayScheduled", PlayScheduled);
+		L.RegFunction("PlayOneShot", PlayOneShot);
 		L.RegFunction("SetScheduledStartTime", SetScheduledStartTime);
 		L.RegFunction("SetScheduledEndTime", SetScheduledEndTime);
 		L.RegFunction("Stop", Stop);
 		L.RegFunction("Pause", Pause);
 		L.RegFunction("UnPause", UnPause);
-		L.RegFunction("PlayOneShot", PlayOneShot);
 		L.RegFunction("PlayClipAtPoint", PlayClipAtPoint);
 		L.RegFunction("SetCustomCurve", SetCustomCurve);
 		L.RegFunction("GetCustomCurve", GetCustomCurve);
@@ -23,8 +23,8 @@ public class UnityEngine_AudioSourceWrap
 		L.RegFunction("GetSpectrumData", GetSpectrumData);
 		L.RegFunction("SetSpatializerFloat", SetSpatializerFloat);
 		L.RegFunction("GetSpatializerFloat", GetSpatializerFloat);
-		L.RegFunction("SetAmbisonicDecoderFloat", SetAmbisonicDecoderFloat);
 		L.RegFunction("GetAmbisonicDecoderFloat", GetAmbisonicDecoderFloat);
+		L.RegFunction("SetAmbisonicDecoderFloat", SetAmbisonicDecoderFloat);
 		L.RegFunction("New", _CreateUnityEngine_AudioSource);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
@@ -161,6 +161,42 @@ public class UnityEngine_AudioSourceWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int PlayOneShot(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.Register");
+#endif
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 2)
+			{
+				UnityEngine.AudioSource obj = (UnityEngine.AudioSource)ToLua.CheckObject(L, 1, typeof(UnityEngine.AudioSource));
+				UnityEngine.AudioClip arg0 = (UnityEngine.AudioClip)ToLua.CheckObject(L, 2, typeof(UnityEngine.AudioClip));
+				obj.PlayOneShot(arg0);
+				return 0;
+			}
+			else if (count == 3)
+			{
+				UnityEngine.AudioSource obj = (UnityEngine.AudioSource)ToLua.CheckObject(L, 1, typeof(UnityEngine.AudioSource));
+				UnityEngine.AudioClip arg0 = (UnityEngine.AudioClip)ToLua.CheckObject(L, 2, typeof(UnityEngine.AudioClip));
+				float arg1 = (float)LuaDLL.luaL_checknumber(L, 3);
+				obj.PlayOneShot(arg0, arg1);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.AudioSource.PlayOneShot");
+			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int SetScheduledStartTime(IntPtr L)
 	{
 #if UNITY_EDITOR
@@ -258,42 +294,6 @@ public class UnityEngine_AudioSourceWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int PlayOneShot(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.Register");
-#endif
-		try
-		{
-			int count = LuaDLL.lua_gettop(L);
-
-			if (count == 2)
-			{
-				UnityEngine.AudioSource obj = (UnityEngine.AudioSource)ToLua.CheckObject(L, 1, typeof(UnityEngine.AudioSource));
-				UnityEngine.AudioClip arg0 = (UnityEngine.AudioClip)ToLua.CheckObject(L, 2, typeof(UnityEngine.AudioClip));
-				obj.PlayOneShot(arg0);
-				return 0;
-			}
-			else if (count == 3)
-			{
-				UnityEngine.AudioSource obj = (UnityEngine.AudioSource)ToLua.CheckObject(L, 1, typeof(UnityEngine.AudioSource));
-				UnityEngine.AudioClip arg0 = (UnityEngine.AudioClip)ToLua.CheckObject(L, 2, typeof(UnityEngine.AudioClip));
-				float arg1 = (float)LuaDLL.luaL_checknumber(L, 3);
-				obj.PlayOneShot(arg0, arg1);
-				return 0;
-			}
-			else
-			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.AudioSource.PlayOneShot");
-			}
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int PlayClipAtPoint(IntPtr L)
 	{
 #if UNITY_EDITOR
@@ -340,7 +340,7 @@ public class UnityEngine_AudioSourceWrap
 			ToLua.CheckArgsCount(L, 3);
 			UnityEngine.AudioSource obj = (UnityEngine.AudioSource)ToLua.CheckObject(L, 1, typeof(UnityEngine.AudioSource));
 			UnityEngine.AudioSourceCurveType arg0 = (UnityEngine.AudioSourceCurveType)ToLua.CheckObject(L, 2, typeof(UnityEngine.AudioSourceCurveType));
-			UnityEngine.AnimationCurve arg1 = (UnityEngine.AnimationCurve)ToLua.CheckObject(L, 3, typeof(UnityEngine.AnimationCurve));
+			UnityEngine.AnimationCurve arg1 = (UnityEngine.AnimationCurve)ToLua.CheckObject<UnityEngine.AnimationCurve>(L, 3);
 			obj.SetCustomCurve(arg0, arg1);
 			return 0;
 		}
@@ -362,7 +362,7 @@ public class UnityEngine_AudioSourceWrap
 			UnityEngine.AudioSource obj = (UnityEngine.AudioSource)ToLua.CheckObject(L, 1, typeof(UnityEngine.AudioSource));
 			UnityEngine.AudioSourceCurveType arg0 = (UnityEngine.AudioSourceCurveType)ToLua.CheckObject(L, 2, typeof(UnityEngine.AudioSourceCurveType));
 			UnityEngine.AnimationCurve o = obj.GetCustomCurve(arg0);
-			ToLua.PushSealed(L, o);
+			ToLua.PushObject(L, o);
 			return 1;
 		}
 		catch (Exception e)
@@ -460,28 +460,6 @@ public class UnityEngine_AudioSourceWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int SetAmbisonicDecoderFloat(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.SetAmbisonicDecoderFloat");
-#endif
-		try
-		{
-			ToLua.CheckArgsCount(L, 3);
-			UnityEngine.AudioSource obj = (UnityEngine.AudioSource)ToLua.CheckObject(L, 1, typeof(UnityEngine.AudioSource));
-			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
-			float arg1 = (float)LuaDLL.luaL_checknumber(L, 3);
-			bool o = obj.SetAmbisonicDecoderFloat(arg0, arg1);
-			LuaDLL.lua_pushboolean(L, o);
-			return 1;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int GetAmbisonicDecoderFloat(IntPtr L)
 	{
 #if UNITY_EDITOR
@@ -497,6 +475,28 @@ public class UnityEngine_AudioSourceWrap
 			LuaDLL.lua_pushboolean(L, o);
 			LuaDLL.lua_pushnumber(L, arg1);
 			return 2;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int SetAmbisonicDecoderFloat(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AudioSource.SetAmbisonicDecoderFloat");
+#endif
+		try
+		{
+			ToLua.CheckArgsCount(L, 3);
+			UnityEngine.AudioSource obj = (UnityEngine.AudioSource)ToLua.CheckObject(L, 1, typeof(UnityEngine.AudioSource));
+			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
+			float arg1 = (float)LuaDLL.luaL_checknumber(L, 3);
+			bool o = obj.SetAmbisonicDecoderFloat(arg0, arg1);
+			LuaDLL.lua_pushboolean(L, o);
+			return 1;
 		}
 		catch (Exception e)
 		{

@@ -48,7 +48,7 @@ namespace Framework
                 GUILayout.BeginVertical("box");
                 {
                     singleton.DrawItem("Master Texture Limit:", QualitySettings.masterTextureLimit.ToString());
-                    singleton.DrawItem("Blend Weights:", QualitySettings.blendWeights.ToString());
+                    singleton.DrawItem("Blend Weights:", QualitySettings.skinWeights.ToString());
                     singleton.DrawItem("VSync Count:", QualitySettings.vSyncCount.ToString());
                     singleton.DrawItem("LOD Bias:", QualitySettings.lodBias.ToString());
                     singleton.DrawItem("Maximum LOD Level:", QualitySettings.maximumLODLevel.ToString());

@@ -13,10 +13,11 @@ public class UnityEngine_SkinnedMeshRendererWrap
 		L.RegFunction("New", _CreateUnityEngine_SkinnedMeshRenderer);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
-		L.RegVar("bones", get_bones, set_bones);
 		L.RegVar("quality", get_quality, set_quality);
 		L.RegVar("updateWhenOffscreen", get_updateWhenOffscreen, set_updateWhenOffscreen);
+		L.RegVar("forceMatrixRecalculationPerRender", get_forceMatrixRecalculationPerRender, set_forceMatrixRecalculationPerRender);
 		L.RegVar("rootBone", get_rootBone, set_rootBone);
+		L.RegVar("bones", get_bones, set_bones);
 		L.RegVar("sharedMesh", get_sharedMesh, set_sharedMesh);
 		L.RegVar("skinnedMotionVectors", get_skinnedMotionVectors, set_skinnedMotionVectors);
 		L.RegVar("localBounds", get_localBounds, set_localBounds);
@@ -134,28 +135,6 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_bones(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.bones");
-#endif
-		object o = null;
-
-		try
-		{
-			o = ToLua.ToObject(L, 1);
-			UnityEngine.SkinnedMeshRenderer obj = (UnityEngine.SkinnedMeshRenderer)o;
-			UnityEngine.Transform[] ret = obj.bones;
-			ToLua.Push(L, ret);
-			return 1;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index bones on a nil value");
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_quality(IntPtr L)
 	{
 #if UNITY_EDITOR
@@ -200,6 +179,28 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_forceMatrixRecalculationPerRender(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.forceMatrixRecalculationPerRender");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.SkinnedMeshRenderer obj = (UnityEngine.SkinnedMeshRenderer)o;
+			bool ret = obj.forceMatrixRecalculationPerRender;
+			LuaDLL.lua_pushboolean(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index forceMatrixRecalculationPerRender on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_rootBone(IntPtr L)
 	{
 #if UNITY_EDITOR
@@ -218,6 +219,28 @@ public class UnityEngine_SkinnedMeshRendererWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o, "attempt to index rootBone on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_bones(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.bones");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.SkinnedMeshRenderer obj = (UnityEngine.SkinnedMeshRenderer)o;
+			UnityEngine.Transform[] ret = obj.bones;
+			ToLua.Push(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index bones on a nil value");
 		}
 	}
 
@@ -288,28 +311,6 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_bones(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.bones");
-#endif
-		object o = null;
-
-		try
-		{
-			o = ToLua.ToObject(L, 1);
-			UnityEngine.SkinnedMeshRenderer obj = (UnityEngine.SkinnedMeshRenderer)o;
-			UnityEngine.Transform[] arg0 = ToLua.CheckObjectArray<UnityEngine.Transform>(L, 2);
-			obj.bones = arg0;
-			return 0;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index bones on a nil value");
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_quality(IntPtr L)
 	{
 #if UNITY_EDITOR
@@ -354,6 +355,28 @@ public class UnityEngine_SkinnedMeshRendererWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_forceMatrixRecalculationPerRender(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.forceMatrixRecalculationPerRender");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.SkinnedMeshRenderer obj = (UnityEngine.SkinnedMeshRenderer)o;
+			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
+			obj.forceMatrixRecalculationPerRender = arg0;
+			return 0;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index forceMatrixRecalculationPerRender on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_rootBone(IntPtr L)
 	{
 #if UNITY_EDITOR
@@ -372,6 +395,28 @@ public class UnityEngine_SkinnedMeshRendererWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o, "attempt to index rootBone on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_bones(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.SkinnedMeshRenderer.bones");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.SkinnedMeshRenderer obj = (UnityEngine.SkinnedMeshRenderer)o;
+			UnityEngine.Transform[] arg0 = ToLua.CheckObjectArray<UnityEngine.Transform>(L, 2);
+			obj.bones = arg0;
+			return 0;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index bones on a nil value");
 		}
 	}
 

@@ -436,7 +436,7 @@ public class Framework_ResourceMgrWrap
 			o = ToLua.ToObject(L, 1);
 			Framework.ResourceMgr obj = (Framework.ResourceMgr)o;
 			UnityEngine.AssetBundle ret = obj.LuaAssetBundle;
-			ToLua.PushSealed(L, ret);
+			ToLua.Push(L, ret);
 			return 1;
 		}
 		catch(Exception e)

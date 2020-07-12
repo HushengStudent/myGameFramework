@@ -7,9 +7,9 @@ public class UnityEngine_ColliderWrap
 	public static void Register(LuaState L)
 	{
 		L.BeginClass(typeof(UnityEngine.Collider), typeof(UnityEngine.Component));
-		L.RegFunction("ClosestPointOnBounds", ClosestPointOnBounds);
 		L.RegFunction("ClosestPoint", ClosestPoint);
 		L.RegFunction("Raycast", Raycast);
+		L.RegFunction("ClosestPointOnBounds", ClosestPointOnBounds);
 		L.RegFunction("New", _CreateUnityEngine_Collider);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
@@ -17,9 +17,9 @@ public class UnityEngine_ColliderWrap
 		L.RegVar("attachedRigidbody", get_attachedRigidbody, null);
 		L.RegVar("isTrigger", get_isTrigger, set_isTrigger);
 		L.RegVar("contactOffset", get_contactOffset, set_contactOffset);
-		L.RegVar("material", get_material, set_material);
-		L.RegVar("sharedMaterial", get_sharedMaterial, set_sharedMaterial);
 		L.RegVar("bounds", get_bounds, null);
+		L.RegVar("sharedMaterial", get_sharedMaterial, set_sharedMaterial);
+		L.RegVar("material", get_material, set_material);
 		L.EndClass();
 	}
 
@@ -43,27 +43,6 @@ public class UnityEngine_ColliderWrap
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: UnityEngine.Collider.New");
 			}
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int ClosestPointOnBounds(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.Collider.ClosestPointOnBounds");
-#endif
-		try
-		{
-			ToLua.CheckArgsCount(L, 2);
-			UnityEngine.Collider obj = (UnityEngine.Collider)ToLua.CheckObject<UnityEngine.Collider>(L, 1);
-			UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
-			UnityEngine.Vector3 o = obj.ClosestPointOnBounds(arg0);
-			ToLua.Push(L, o);
-			return 1;
 		}
 		catch (Exception e)
 		{
@@ -109,6 +88,27 @@ public class UnityEngine_ColliderWrap
 			LuaDLL.lua_pushboolean(L, o);
 			if (o) ToLua.Push(L, arg1); else LuaDLL.lua_pushnil(L);
 			return 2;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int ClosestPointOnBounds(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.ClosestPointOnBounds");
+#endif
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			UnityEngine.Collider obj = (UnityEngine.Collider)ToLua.CheckObject<UnityEngine.Collider>(L, 1);
+			UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
+			UnityEngine.Vector3 o = obj.ClosestPointOnBounds(arg0);
+			ToLua.Push(L, o);
+			return 1;
 		}
 		catch (Exception e)
 		{
@@ -172,7 +172,7 @@ public class UnityEngine_ColliderWrap
 			o = ToLua.ToObject(L, 1);
 			UnityEngine.Collider obj = (UnityEngine.Collider)o;
 			UnityEngine.Rigidbody ret = obj.attachedRigidbody;
-			ToLua.PushSealed(L, ret);
+			ToLua.Push(L, ret);
 			return 1;
 		}
 		catch(Exception e)
@@ -226,50 +226,6 @@ public class UnityEngine_ColliderWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_material(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.Collider.material");
-#endif
-		object o = null;
-
-		try
-		{
-			o = ToLua.ToObject(L, 1);
-			UnityEngine.Collider obj = (UnityEngine.Collider)o;
-			UnityEngine.PhysicMaterial ret = obj.material;
-			ToLua.PushSealed(L, ret);
-			return 1;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index material on a nil value");
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_sharedMaterial(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.Collider.sharedMaterial");
-#endif
-		object o = null;
-
-		try
-		{
-			o = ToLua.ToObject(L, 1);
-			UnityEngine.Collider obj = (UnityEngine.Collider)o;
-			UnityEngine.PhysicMaterial ret = obj.sharedMaterial;
-			ToLua.PushSealed(L, ret);
-			return 1;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index sharedMaterial on a nil value");
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_bounds(IntPtr L)
 	{
 #if UNITY_EDITOR
@@ -288,6 +244,50 @@ public class UnityEngine_ColliderWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o, "attempt to index bounds on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_sharedMaterial(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.sharedMaterial");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.Collider obj = (UnityEngine.Collider)o;
+			UnityEngine.PhysicMaterial ret = obj.sharedMaterial;
+			ToLua.Push(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index sharedMaterial on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_material(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.material");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.Collider obj = (UnityEngine.Collider)o;
+			UnityEngine.PhysicMaterial ret = obj.material;
+			ToLua.Push(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index material on a nil value");
 		}
 	}
 
@@ -358,28 +358,6 @@ public class UnityEngine_ColliderWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_material(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.Collider.material");
-#endif
-		object o = null;
-
-		try
-		{
-			o = ToLua.ToObject(L, 1);
-			UnityEngine.Collider obj = (UnityEngine.Collider)o;
-			UnityEngine.PhysicMaterial arg0 = (UnityEngine.PhysicMaterial)ToLua.CheckObject(L, 2, typeof(UnityEngine.PhysicMaterial));
-			obj.material = arg0;
-			return 0;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index material on a nil value");
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_sharedMaterial(IntPtr L)
 	{
 #if UNITY_EDITOR
@@ -391,13 +369,35 @@ public class UnityEngine_ColliderWrap
 		{
 			o = ToLua.ToObject(L, 1);
 			UnityEngine.Collider obj = (UnityEngine.Collider)o;
-			UnityEngine.PhysicMaterial arg0 = (UnityEngine.PhysicMaterial)ToLua.CheckObject(L, 2, typeof(UnityEngine.PhysicMaterial));
+			UnityEngine.PhysicMaterial arg0 = (UnityEngine.PhysicMaterial)ToLua.CheckObject<UnityEngine.PhysicMaterial>(L, 2);
 			obj.sharedMaterial = arg0;
 			return 0;
 		}
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o, "attempt to index sharedMaterial on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_material(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Collider.material");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.Collider obj = (UnityEngine.Collider)o;
+			UnityEngine.PhysicMaterial arg0 = (UnityEngine.PhysicMaterial)ToLua.CheckObject<UnityEngine.PhysicMaterial>(L, 2);
+			obj.material = arg0;
+			return 0;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index material on a nil value");
 		}
 	}
 }

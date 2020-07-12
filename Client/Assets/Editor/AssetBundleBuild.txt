@@ -24,238 +24,266 @@ Assets/Bundles/Animation/Avatar/Breath.anim
 Assets/Bundles/Animation/Avatar/Run.anim
 
 6
+8e22e79e547298295dd6033b3c55b06a.ab
+Assets/Bundles/Animation/Default/Dead.anim
+
+7
+66bef3e4e49378526f4993782601a07c.ab
+Assets/Bundles/Animation/Default/Idle.anim
+
+8
+986d908567413bdd0974775ab46362ce.ab
+Assets/Bundles/Animation/Default/Move.anim
+
+9
+6c90dad36b3a11d6344141e0fd40c5f6.ab
+Assets/Bundles/Animation/Default/Skill.anim
+
+10
+7ec3b67064b6c2f12845d42fa29c7731.ab
+Assets/Bundles/Animation/Default/Special.anim
+
+11
 d9ec9451cec547db95c8363b63f3a357.ab
 Assets/Bundles/Animation/Skeleton/Attack.anim
 
-7
+12
 41d4c11b244fa9e53f86756dab0381b1.ab
 Assets/Bundles/Animation/Skeleton/Damage.anim
 
-8
+13
 3631c2b08138b5bac6a9b6fb994fb793.ab
 Assets/Bundles/Animation/Skeleton/Death.anim
 
-9
+14
 fe48523491116e8268fea6ceeb324344.ab
 Assets/Bundles/Animation/Skeleton/Idle.anim
 
-10
+15
 7a57259ebcf5ccfe5f8d68fde0fca940.ab
 Assets/Bundles/Animation/Skeleton/Knockback.anim
 
-11
+16
 421bf8b0818962e2f8a0dcaf597a6a37.ab
 Assets/Bundles/Animation/Skeleton/Run.anim
 
-12
+17
 5a498283d7302eeb4e208c84fe2ae59b.ab
 Assets/Bundles/Animation/Skeleton/Skill.anim
 
-13
+18
 ddcb346ee6e21830e79677d7ee74e903.ab
 Assets/Bundles/Animation/Skeleton/Stand.anim
 
-14
+19
 3d578cf18d49fb891d9629e777b910b7.ab
 Assets/Bundles/Animation/Skeleton/Walk.anim
 
-15
+20
 cb883982e5433c6fa16c9b0f0e3615a5.ab
 Assets/Bundles/Animator/Common/Player.controller
 
-16
+21
 201fdc11e743f8f8e1619abcbfe68e0c.ab
 Assets/Bundles/Audio/Common/test.wav
 
-17
+22
 51e1df37688820ffcd224dabe6be9b03.ab
 Assets/Bundles/Binary/Bt/BehaviourTree.BT.bytes
 
-18
+23
 4d25e4a82f83db0c9c742c5c774bc45f.ab
 Assets/Bundles/Binary/Byte/emoji.txt
 
-19
+24
 cdc389a8cb5af7a685e29263c9b6917d.ab
 Assets/Bundles/Binary/Table/ItemTable.byte.txt
 
-20
+25
 5ba065bd958bb3161873482d967b48ad.ab
 Assets/Bundles/Material/Emoji/UGUIEmoji.mat
 Assets/Art/Emoji/Output/emoji_data.png
 Assets/Art/Emoji/Output/emoji_tex.png
 
-21
+26
+4dd24e584d71fadb1133928d850c4436.ab
+Assets/Bundles/Prefab/Common/MainCamera.prefab
+
+27
 05633738d8e4d8bfd3666f20eb4d9ccb.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou.prefab
 
-22
+28
 c647e4a925b94ce1ce2f525b760b402c.ab
 Assets/Art/Model/Avatar/Character/ch_pc_hou_004.fbx
 
-23
+29
 89ef49b9e71e0c89779a2f53a3f4a1a9.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_004.prefab
 
-24
+30
 d62fc569cfc035838f2a1212091711e4.ab
 Assets/Art/Model/Avatar/Materials/ch_pc_hou_004_shou_d.mat
 
-25
+31
 6376c9d251b6e5c609042ca40f7edf8c.ab
 Assets/Art/Model/Avatar/Materials/ch_pc_hou_004_tou_d.mat
 
-26
+32
 801dc83d61e56d0722712df4d5bfe2b4.ab
 Assets/Art/Model/Avatar/Materials/ch_pc_hou_004_shen_d.mat
 
-27
+33
 0f09ccff2b746e350803c3e0eb5b2db8.ab
 Assets/Art/Model/Avatar/Materials/ch_pc_hou_004_jiao_d.mat
 
-28
+34
 89b0d1ee7e7de223315146f3403cc6ab.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_004_jiao.prefab
 Assets/Art/Model/Avatar/Character/ch_pc_hou_004_jiao.FBX
 
-29
+35
 b0e3d961e1e66c41eb92c7f4170c0491.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_004_shen.prefab
 Assets/Art/Model/Avatar/Character/ch_pc_hou_004_shen.FBX
 
-30
+36
 3aac7e4059203424c83acbf9194104a9.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_004_shou.prefab
 Assets/Art/Model/Avatar/Character/ch_pc_hou_004_shou.FBX
 
-31
+37
 03134551578b729216ae2f38bfdd99bb.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_004_tou.prefab
 Assets/Art/Model/Avatar/Character/ch_pc_hou_004_tou.FBX
 
-32
+38
 51a8d21aebfbfe13bf6e80eb9659d279.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_006.prefab
 Assets/Art/Model/Avatar/Character/ch_pc_hou_006.fbx
 
-33
+39
 7adeca29adab102e8080bb53d6ba2980.ab
 Assets/Art/Model/Avatar/Materials/ch_pc_hou_006_shou_d.mat
 
-34
+40
 037375b405e1cca35a9a1ce6f3106d7f.ab
 Assets/Art/Model/Avatar/Materials/ch_pc_hou_006_tou_d.mat
 
-35
+41
 1115704e5c5b9d6e206296471844e0a9.ab
 Assets/Art/Model/Avatar/Materials/ch_pc_hou_006_jiao_d.mat
 
-36
+42
 52d28e49e9eb02df1b89a5bd5de0039e.ab
 Assets/Art/Model/Avatar/Materials/ch_pc_hou_006_shen_d.mat
 
-37
+43
 e4c28150d9fa322f167bd421f2722fa0.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_006_jiao.prefab
 Assets/Art/Model/Avatar/Character/ch_pc_hou_006_jiao.FBX
 
-38
+44
 f195e4e0eadbf1003bffcd763f12dd0e.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_006_shen.prefab
 Assets/Art/Model/Avatar/Character/ch_pc_hou_006_shen.FBX
 
-39
+45
 9be3d0cace8e687da39102290ee3c9ca.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_006_shou.prefab
 Assets/Art/Model/Avatar/Character/ch_pc_hou_006_shou.FBX
 
-40
+46
 9720e58c8fc2991ebfe774260c0b180b.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_006_tou.prefab
 Assets/Art/Model/Avatar/Character/ch_pc_hou_006_tou.FBX
 
-41
+47
 cdae1da9d558dabf32cfeee6e41e470e.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_008.prefab
 Assets/Art/Model/Avatar/Character/ch_pc_hou_008.fbx
 
-42
+48
 d9e20c8f5e4be98f35b7f0a5e116b664.ab
 Assets/Art/Model/Avatar/Materials/ch_pc_hou_008_shen_d.mat
 
-43
+49
 02013759a2b9efbf70228e6976a346e0.ab
 Assets/Art/Model/Avatar/Materials/ch_pc_hou_008_shou_d.mat
 
-44
+50
 7733409117a193175a347f9229bafd9f.ab
 Assets/Art/Model/Avatar/Materials/ch_pc_hou_008_tou_d.mat
 
-45
+51
 f407aa738ecfdd6ddbb18737285ee1ae.ab
 Assets/Art/Model/Avatar/Materials/ch_pc_hou_008_jiao_d.mat
 
-46
+52
 9351808dc0e1abdd91312e9e191d2b3b.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_008_jiao.prefab
 Assets/Art/Model/Avatar/Character/ch_pc_hou_008_jiao.FBX
 
-47
+53
 7edb13ea4d1f78c33cddcd87b5e41974.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_008_shen.prefab
 Assets/Art/Model/Avatar/Character/ch_pc_hou_008_shen.FBX
 
-48
+54
 f9e78470a26ed5878b6dcd831f433af1.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_008_shou.prefab
 Assets/Art/Model/Avatar/Character/ch_pc_hou_008_shou.FBX
 
-49
+55
 cf74c401a54c33f18cdcf34193c2a5e0.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_008_tou.prefab
 Assets/Art/Model/Avatar/Character/ch_pc_hou_008_tou.FBX
 
-50
+56
 85051e5ef85238c1e665e11957944c29.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_we_one_hou_004.prefab
 Assets/Art/Model/Avatar/Character/ch_we_one_hou_004.fbx
 Assets/Art/Model/Avatar/Materials/ch_we_one_hou_004_d.mat
 
-51
+57
 8c1fb3815f1d3ca9b48995c742f2f6b1.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_we_one_hou_006.prefab
 Assets/Art/Model/Avatar/Character/ch_we_one_hou_006.fbx
 Assets/Art/Model/Avatar/Materials/ch_we_one_hou_006_d.mat
 
-52
+58
 36404500e0ffda5c3fa9a468ba0177a5.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_we_one_hou_008.prefab
 Assets/Art/Model/Avatar/Materials/ch_we_one_hou_008_d.mat
 Assets/Art/Model/Avatar/Character/ch_we_one_hou_008.fbx
 
-53
+59
 1ce9bc5a443af7e4cbc8dac989c03491.ab
 Assets/Bundles/Prefab/Models/Common/Skeleton.prefab
 Assets/Art/Model/Skeleton/Character/Skeleton@Skin.FBX
 Assets/Art/Model/Skeleton/Character/Materials/skeleton_D.mat
 
-54
+60
 a883371925524fd88b545f58388d4c53.ab
 Assets/Bundles/Prefab/UI/Common/Login.prefab
 
-55
+61
+2ac9ff326710f2b485254bc488e13d08.ab
+Assets/Bundles/Prefab/UI/Common/UIRoot.prefab
+
+62
 435b8e500c82d993fad3d9ffaa5200c3.ab
 Assets/Bundles/Scene/Level01.unity
 
-56
+63
 6880ffb67dd5a07468df92a02ed18d48.ab
 Assets/Bundles/Texture/Number.png
 
-57
+64
 394af2ac2d40eb33b8797b88a8d9ae36.ab
 Assets/Bundles/Texture/test.png
 
-58
+65
 ecee0a84af1bbe31d8aec4ce303fad9d.ab
 Assets/Bundles/Shaders/Emoji/EmojiFont.shader
 Assets/Bundles/Shaders/UI/UI_ETC 1.shader
@@ -271,9 +299,10 @@ Assets/Bundles/Shaders/UI/UI_Gray 2.shader
 Assets/Bundles/Shaders/UI/UI_Gray 3.shader
 Assets/Bundles/Shaders/UI/UI_Gray.shader
 
-59
+66
 0ae9478a1db9d1e2c48efa49eac1c7c6.ab
 Assets/Bundles/Lua/Define.lua.bytes
+Assets/Bundles/Lua/Enum.lua.bytes
 Assets/Bundles/Lua/event.lua.bytes
 Assets/Bundles/Lua/GlobalRegister.lua.bytes
 Assets/Bundles/Lua/list.lua.bytes
@@ -287,6 +316,7 @@ Assets/Bundles/Lua/typeof.lua.bytes
 Assets/Bundles/Lua/cjson/util.lua.bytes
 Assets/Bundles/Lua/Common/Class.lua.bytes
 Assets/Bundles/Lua/Common/Functions.lua.bytes
+Assets/Bundles/Lua/Common/Helper.lua.bytes
 Assets/Bundles/Lua/Common/cjson/json2lua.lua.bytes
 Assets/Bundles/Lua/Common/cjson/lua2json.lua.bytes
 Assets/Bundles/Lua/Common/cjson/test.lua.bytes
@@ -351,10 +381,23 @@ Assets/Bundles/Lua/socket/url.lua.bytes
 Assets/Bundles/Lua/System/coroutine.lua.bytes
 Assets/Bundles/Lua/System/Timer.lua.bytes
 Assets/Bundles/Lua/System/ValueType.lua.bytes
+Assets/Bundles/Lua/System/Injection/InjectionBridgeInfo.lua.bytes
+Assets/Bundles/Lua/System/Injection/LuaInjectionBus.lua.bytes
+Assets/Bundles/Lua/System/Injection/LuaInjectionStation.lua.bytes
 Assets/Bundles/Lua/System/Reflection/BindingFlags.lua.bytes
+Assets/Bundles/Lua/UI/BasePanel.lua.bytes
+Assets/Bundles/Lua/UI/BaseState.lua.bytes
+Assets/Bundles/Lua/UI/BaseTemplate.lua.bytes
 Assets/Bundles/Lua/UI/CanvasEnum.lua.bytes
+Assets/Bundles/Lua/UI/PanelEnum.lua.bytes
+Assets/Bundles/Lua/UI/StateEnum.lua.bytes
 Assets/Bundles/Lua/UI/Canvas/BaseCanvas.lua.bytes
 Assets/Bundles/Lua/UI/Canvas/LoginCanvas.lua.bytes
+Assets/Bundles/Lua/UI/Panel/Login/LoginPanel.lua.bytes
+Assets/Bundles/Lua/UI/Panel/Login/LoginPanelLayout.lua.bytes
+Assets/Bundles/Lua/UI/Panel/Login/LoginTextTemplate.lua.bytes
+Assets/Bundles/Lua/UI/Panel/Login/LoginTextTemplateLayout.lua.bytes
+Assets/Bundles/Lua/UI/State/LoginState.lua.bytes
 Assets/Bundles/Lua/UnityEngine/Bounds.lua.bytes
 Assets/Bundles/Lua/UnityEngine/Color.lua.bytes
 Assets/Bundles/Lua/UnityEngine/LayerMask.lua.bytes

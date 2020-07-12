@@ -8,8 +8,6 @@ public class UnityEngine_RenderSettingsWrap
 	{
 		L.BeginStaticLibs("RenderSettings");
 		L.RegFunction("__eq", op_Equality);
-		L.RegVar("ambientProbe", get_ambientProbe, set_ambientProbe);
-		L.RegVar("customReflection", get_customReflection, set_customReflection);
 		L.RegVar("fog", get_fog, set_fog);
 		L.RegVar("fogStartDistance", get_fogStartDistance, set_fogStartDistance);
 		L.RegVar("fogEndDistance", get_fogEndDistance, set_fogEndDistance);
@@ -25,6 +23,8 @@ public class UnityEngine_RenderSettingsWrap
 		L.RegVar("subtractiveShadowColor", get_subtractiveShadowColor, set_subtractiveShadowColor);
 		L.RegVar("skybox", get_skybox, set_skybox);
 		L.RegVar("sun", get_sun, set_sun);
+		L.RegVar("ambientProbe", get_ambientProbe, set_ambientProbe);
+		L.RegVar("customReflection", get_customReflection, set_customReflection);
 		L.RegVar("reflectionIntensity", get_reflectionIntensity, set_reflectionIntensity);
 		L.RegVar("reflectionBounces", get_reflectionBounces, set_reflectionBounces);
 		L.RegVar("defaultReflectionMode", get_defaultReflectionMode, set_defaultReflectionMode);
@@ -48,40 +48,6 @@ public class UnityEngine_RenderSettingsWrap
 			UnityEngine.Object arg1 = (UnityEngine.Object)ToLua.ToObject(L, 2);
 			bool o = arg0 == arg1;
 			LuaDLL.lua_pushboolean(L, o);
-			return 1;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_ambientProbe(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.ambientProbe");
-#endif
-		try
-		{
-			ToLua.PushValue(L, UnityEngine.RenderSettings.ambientProbe);
-			return 1;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_customReflection(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.customReflection");
-#endif
-		try
-		{
-			ToLua.PushSealed(L, UnityEngine.RenderSettings.customReflection);
 			return 1;
 		}
 		catch (Exception e)
@@ -346,6 +312,40 @@ public class UnityEngine_RenderSettingsWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_ambientProbe(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.ambientProbe");
+#endif
+		try
+		{
+			ToLua.PushValue(L, UnityEngine.RenderSettings.ambientProbe);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_customReflection(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.customReflection");
+#endif
+		try
+		{
+			ToLua.PushSealed(L, UnityEngine.RenderSettings.customReflection);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_reflectionIntensity(IntPtr L)
 	{
 #if UNITY_EDITOR
@@ -457,42 +457,6 @@ public class UnityEngine_RenderSettingsWrap
 		{
 			LuaDLL.lua_pushnumber(L, UnityEngine.RenderSettings.flareFadeSpeed);
 			return 1;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_ambientProbe(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.ambientProbe");
-#endif
-		try
-		{
-			UnityEngine.Rendering.SphericalHarmonicsL2 arg0 = StackTraits<UnityEngine.Rendering.SphericalHarmonicsL2>.Check(L, 2);
-			UnityEngine.RenderSettings.ambientProbe = arg0;
-			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_customReflection(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.customReflection");
-#endif
-		try
-		{
-			UnityEngine.Cubemap arg0 = (UnityEngine.Cubemap)ToLua.CheckObject(L, 2, typeof(UnityEngine.Cubemap));
-			UnityEngine.RenderSettings.customReflection = arg0;
-			return 0;
 		}
 		catch (Exception e)
 		{
@@ -762,6 +726,42 @@ public class UnityEngine_RenderSettingsWrap
 		{
 			UnityEngine.Light arg0 = (UnityEngine.Light)ToLua.CheckObject(L, 2, typeof(UnityEngine.Light));
 			UnityEngine.RenderSettings.sun = arg0;
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_ambientProbe(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.ambientProbe");
+#endif
+		try
+		{
+			UnityEngine.Rendering.SphericalHarmonicsL2 arg0 = StackTraits<UnityEngine.Rendering.SphericalHarmonicsL2>.Check(L, 2);
+			UnityEngine.RenderSettings.ambientProbe = arg0;
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_customReflection(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.RenderSettings.customReflection");
+#endif
+		try
+		{
+			UnityEngine.Cubemap arg0 = (UnityEngine.Cubemap)ToLua.CheckObject(L, 2, typeof(UnityEngine.Cubemap));
+			UnityEngine.RenderSettings.customReflection = arg0;
 			return 0;
 		}
 		catch (Exception e)

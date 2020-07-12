@@ -1,21 +1,16 @@
 ---
---- Created by husheng.
---- DateTime: 2018/1/8 23:49
 --- 游戏管理器
 ---
 
-module("Manager",package.seeall)
+local GameMgr = class("GameMgr")
 
-GameMgr = class("GameMgr")
-
-function GameMgr:ctor() end
-
-function GameMgr:GetMgrName()
-    log("GameMgr")
+function GameMgr:ctor()
 end
 
-function GameMgr:StartGame()
-    g_UIMgr:OnEnterCanvas(CanvasEnum.LoginCanvas)
+function GameMgr:startGame()
+
+    g_uiMgr:startUI()
+
 end
 
 return GameMgr

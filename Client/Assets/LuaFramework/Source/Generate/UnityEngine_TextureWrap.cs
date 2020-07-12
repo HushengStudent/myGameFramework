@@ -9,50 +9,43 @@ public class UnityEngine_TextureWrap
 		L.BeginClass(typeof(UnityEngine.Texture), typeof(UnityEngine.Object));
 		L.RegFunction("SetGlobalAnisotropicFilteringLimits", SetGlobalAnisotropicFilteringLimits);
 		L.RegFunction("GetNativeTexturePtr", GetNativeTexturePtr);
-		L.RegFunction("New", _CreateUnityEngine_Texture);
+		L.RegFunction("IncrementUpdateCount", IncrementUpdateCount);
+		L.RegFunction("SetStreamingTextureMaterialDebugProperties", SetStreamingTextureMaterialDebugProperties);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
+		L.RegVar("GenerateAllMips", get_GenerateAllMips, null);
 		L.RegVar("masterTextureLimit", get_masterTextureLimit, set_masterTextureLimit);
+		L.RegVar("mipmapCount", get_mipmapCount, null);
 		L.RegVar("anisotropicFiltering", get_anisotropicFiltering, set_anisotropicFiltering);
+		L.RegVar("graphicsFormat", get_graphicsFormat, null);
 		L.RegVar("width", get_width, set_width);
 		L.RegVar("height", get_height, set_height);
 		L.RegVar("dimension", get_dimension, set_dimension);
-		L.RegVar("filterMode", get_filterMode, set_filterMode);
-		L.RegVar("anisoLevel", get_anisoLevel, set_anisoLevel);
+		L.RegVar("isReadable", get_isReadable, null);
 		L.RegVar("wrapMode", get_wrapMode, set_wrapMode);
 		L.RegVar("wrapModeU", get_wrapModeU, set_wrapModeU);
 		L.RegVar("wrapModeV", get_wrapModeV, set_wrapModeV);
 		L.RegVar("wrapModeW", get_wrapModeW, set_wrapModeW);
+		L.RegVar("filterMode", get_filterMode, set_filterMode);
+		L.RegVar("anisoLevel", get_anisoLevel, set_anisoLevel);
 		L.RegVar("mipMapBias", get_mipMapBias, set_mipMapBias);
 		L.RegVar("texelSize", get_texelSize, null);
+		L.RegVar("updateCount", get_updateCount, null);
+		L.RegVar("totalTextureMemory", get_totalTextureMemory, null);
+		L.RegVar("desiredTextureMemory", get_desiredTextureMemory, null);
+		L.RegVar("targetTextureMemory", get_targetTextureMemory, null);
+		L.RegVar("currentTextureMemory", get_currentTextureMemory, null);
+		L.RegVar("nonStreamingTextureMemory", get_nonStreamingTextureMemory, null);
+		L.RegVar("streamingMipmapUploadCount", get_streamingMipmapUploadCount, null);
+		L.RegVar("streamingRendererCount", get_streamingRendererCount, null);
+		L.RegVar("streamingTextureCount", get_streamingTextureCount, null);
+		L.RegVar("nonStreamingTextureCount", get_nonStreamingTextureCount, null);
+		L.RegVar("streamingTexturePendingLoadCount", get_streamingTexturePendingLoadCount, null);
+		L.RegVar("streamingTextureLoadingCount", get_streamingTextureLoadingCount, null);
+		L.RegVar("streamingTextureForceLoadAll", get_streamingTextureForceLoadAll, set_streamingTextureForceLoadAll);
+		L.RegVar("streamingTextureDiscardUnusedMips", get_streamingTextureDiscardUnusedMips, set_streamingTextureDiscardUnusedMips);
+		L.RegVar("allowThreadedTextureCreation", get_allowThreadedTextureCreation, set_allowThreadedTextureCreation);
 		L.EndClass();
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int _CreateUnityEngine_Texture(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.Texture.ctor");
-#endif
-		try
-		{
-			int count = LuaDLL.lua_gettop(L);
-
-			if (count == 0)
-			{
-				UnityEngine.Texture obj = new UnityEngine.Texture();
-				ToLua.Push(L, obj);
-				return 1;
-			}
-			else
-			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: UnityEngine.Texture.New");
-			}
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -96,6 +89,43 @@ public class UnityEngine_TextureWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int IncrementUpdateCount(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.IncrementUpdateCount");
+#endif
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			UnityEngine.Texture obj = (UnityEngine.Texture)ToLua.CheckObject<UnityEngine.Texture>(L, 1);
+			obj.IncrementUpdateCount();
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int SetStreamingTextureMaterialDebugProperties(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.SetStreamingTextureMaterialDebugProperties");
+#endif
+		try
+		{
+			ToLua.CheckArgsCount(L, 0);
+			UnityEngine.Texture.SetStreamingTextureMaterialDebugProperties();
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int op_Equality(IntPtr L)
 	{
 #if UNITY_EDITOR
@@ -108,6 +138,23 @@ public class UnityEngine_TextureWrap
 			UnityEngine.Object arg1 = (UnityEngine.Object)ToLua.ToObject(L, 2);
 			bool o = arg0 == arg1;
 			LuaDLL.lua_pushboolean(L, o);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_GenerateAllMips(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.GenerateAllMips");
+#endif
+		try
+		{
+			LuaDLL.lua_pushinteger(L, UnityEngine.Texture.GenerateAllMips);
 			return 1;
 		}
 		catch (Exception e)
@@ -134,6 +181,28 @@ public class UnityEngine_TextureWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_mipmapCount(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.mipmapCount");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.Texture obj = (UnityEngine.Texture)o;
+			int ret = obj.mipmapCount;
+			LuaDLL.lua_pushinteger(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index mipmapCount on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_anisotropicFiltering(IntPtr L)
 	{
 #if UNITY_EDITOR
@@ -147,6 +216,28 @@ public class UnityEngine_TextureWrap
 		catch (Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_graphicsFormat(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.graphicsFormat");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.Texture obj = (UnityEngine.Texture)o;
+			UnityEngine.Experimental.Rendering.GraphicsFormat ret = obj.graphicsFormat;
+			ToLua.Push(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index graphicsFormat on a nil value");
 		}
 	}
 
@@ -217,10 +308,10 @@ public class UnityEngine_TextureWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_filterMode(IntPtr L)
+	static int get_isReadable(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.Texture.filterMode");
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.isReadable");
 #endif
 		object o = null;
 
@@ -228,35 +319,13 @@ public class UnityEngine_TextureWrap
 		{
 			o = ToLua.ToObject(L, 1);
 			UnityEngine.Texture obj = (UnityEngine.Texture)o;
-			UnityEngine.FilterMode ret = obj.filterMode;
-			ToLua.Push(L, ret);
+			bool ret = obj.isReadable;
+			LuaDLL.lua_pushboolean(L, ret);
 			return 1;
 		}
 		catch(Exception e)
 		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index filterMode on a nil value");
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_anisoLevel(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.Texture.anisoLevel");
-#endif
-		object o = null;
-
-		try
-		{
-			o = ToLua.ToObject(L, 1);
-			UnityEngine.Texture obj = (UnityEngine.Texture)o;
-			int ret = obj.anisoLevel;
-			LuaDLL.lua_pushinteger(L, ret);
-			return 1;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index anisoLevel on a nil value");
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index isReadable on a nil value");
 		}
 	}
 
@@ -349,6 +418,50 @@ public class UnityEngine_TextureWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_filterMode(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.filterMode");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.Texture obj = (UnityEngine.Texture)o;
+			UnityEngine.FilterMode ret = obj.filterMode;
+			ToLua.Push(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index filterMode on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_anisoLevel(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.anisoLevel");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.Texture obj = (UnityEngine.Texture)o;
+			int ret = obj.anisoLevel;
+			LuaDLL.lua_pushinteger(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index anisoLevel on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_mipMapBias(IntPtr L)
 	{
 #if UNITY_EDITOR
@@ -389,6 +502,266 @@ public class UnityEngine_TextureWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o, "attempt to index texelSize on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_updateCount(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.updateCount");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.Texture obj = (UnityEngine.Texture)o;
+			uint ret = obj.updateCount;
+			LuaDLL.lua_pushnumber(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index updateCount on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_totalTextureMemory(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.totalTextureMemory");
+#endif
+		try
+		{
+			LuaDLL.tolua_pushuint64(L, UnityEngine.Texture.totalTextureMemory);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_desiredTextureMemory(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.desiredTextureMemory");
+#endif
+		try
+		{
+			LuaDLL.tolua_pushuint64(L, UnityEngine.Texture.desiredTextureMemory);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_targetTextureMemory(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.targetTextureMemory");
+#endif
+		try
+		{
+			LuaDLL.tolua_pushuint64(L, UnityEngine.Texture.targetTextureMemory);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_currentTextureMemory(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.currentTextureMemory");
+#endif
+		try
+		{
+			LuaDLL.tolua_pushuint64(L, UnityEngine.Texture.currentTextureMemory);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_nonStreamingTextureMemory(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.nonStreamingTextureMemory");
+#endif
+		try
+		{
+			LuaDLL.tolua_pushuint64(L, UnityEngine.Texture.nonStreamingTextureMemory);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_streamingMipmapUploadCount(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.streamingMipmapUploadCount");
+#endif
+		try
+		{
+			LuaDLL.tolua_pushuint64(L, UnityEngine.Texture.streamingMipmapUploadCount);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_streamingRendererCount(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.streamingRendererCount");
+#endif
+		try
+		{
+			LuaDLL.tolua_pushuint64(L, UnityEngine.Texture.streamingRendererCount);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_streamingTextureCount(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.streamingTextureCount");
+#endif
+		try
+		{
+			LuaDLL.tolua_pushuint64(L, UnityEngine.Texture.streamingTextureCount);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_nonStreamingTextureCount(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.nonStreamingTextureCount");
+#endif
+		try
+		{
+			LuaDLL.tolua_pushuint64(L, UnityEngine.Texture.nonStreamingTextureCount);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_streamingTexturePendingLoadCount(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.streamingTexturePendingLoadCount");
+#endif
+		try
+		{
+			LuaDLL.tolua_pushuint64(L, UnityEngine.Texture.streamingTexturePendingLoadCount);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_streamingTextureLoadingCount(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.streamingTextureLoadingCount");
+#endif
+		try
+		{
+			LuaDLL.tolua_pushuint64(L, UnityEngine.Texture.streamingTextureLoadingCount);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_streamingTextureForceLoadAll(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.streamingTextureForceLoadAll");
+#endif
+		try
+		{
+			LuaDLL.lua_pushboolean(L, UnityEngine.Texture.streamingTextureForceLoadAll);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_streamingTextureDiscardUnusedMips(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.streamingTextureDiscardUnusedMips");
+#endif
+		try
+		{
+			LuaDLL.lua_pushboolean(L, UnityEngine.Texture.streamingTextureDiscardUnusedMips);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_allowThreadedTextureCreation(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.allowThreadedTextureCreation");
+#endif
+		try
+		{
+			LuaDLL.lua_pushboolean(L, UnityEngine.Texture.allowThreadedTextureCreation);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
 		}
 	}
 
@@ -495,50 +868,6 @@ public class UnityEngine_TextureWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_filterMode(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.Texture.filterMode");
-#endif
-		object o = null;
-
-		try
-		{
-			o = ToLua.ToObject(L, 1);
-			UnityEngine.Texture obj = (UnityEngine.Texture)o;
-			UnityEngine.FilterMode arg0 = (UnityEngine.FilterMode)ToLua.CheckObject(L, 2, typeof(UnityEngine.FilterMode));
-			obj.filterMode = arg0;
-			return 0;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index filterMode on a nil value");
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_anisoLevel(IntPtr L)
-	{
-#if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("UnityEngine.Texture.anisoLevel");
-#endif
-		object o = null;
-
-		try
-		{
-			o = ToLua.ToObject(L, 1);
-			UnityEngine.Texture obj = (UnityEngine.Texture)o;
-			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
-			obj.anisoLevel = arg0;
-			return 0;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e, o, "attempt to index anisoLevel on a nil value");
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_wrapMode(IntPtr L)
 	{
 #if UNITY_EDITOR
@@ -627,6 +956,50 @@ public class UnityEngine_TextureWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_filterMode(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.filterMode");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.Texture obj = (UnityEngine.Texture)o;
+			UnityEngine.FilterMode arg0 = (UnityEngine.FilterMode)ToLua.CheckObject(L, 2, typeof(UnityEngine.FilterMode));
+			obj.filterMode = arg0;
+			return 0;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index filterMode on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_anisoLevel(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.anisoLevel");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.Texture obj = (UnityEngine.Texture)o;
+			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
+			obj.anisoLevel = arg0;
+			return 0;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index anisoLevel on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_mipMapBias(IntPtr L)
 	{
 #if UNITY_EDITOR
@@ -645,6 +1018,60 @@ public class UnityEngine_TextureWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o, "attempt to index mipMapBias on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_streamingTextureForceLoadAll(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.streamingTextureForceLoadAll");
+#endif
+		try
+		{
+			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
+			UnityEngine.Texture.streamingTextureForceLoadAll = arg0;
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_streamingTextureDiscardUnusedMips(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.streamingTextureDiscardUnusedMips");
+#endif
+		try
+		{
+			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
+			UnityEngine.Texture.streamingTextureDiscardUnusedMips = arg0;
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_allowThreadedTextureCreation(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.Texture.allowThreadedTextureCreation");
+#endif
+		try
+		{
+			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
+			UnityEngine.Texture.allowThreadedTextureCreation = arg0;
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
 		}
 	}
 }

@@ -169,7 +169,7 @@ namespace FrameworkEditor
                                         File.Delete(ExportABPackage.ZipStreamingAssetsPath);
                                     }
                                 }
-                                string report = string.Empty;
+                                string log = string.Empty;
                                 try
                                 {
                                     string extensionName = string.Empty;
@@ -189,14 +189,15 @@ namespace FrameworkEditor
                                     buildPlayerOptions.locationPathName = _locationPathName + "/" + PlayerSettings.productName + extensionName;
                                     buildPlayerOptions.target = (BuildTarget)_platform;
                                     buildPlayerOptions.options = _buildOptions;
-                                    report = BuildPipeline.BuildPlayer(buildPlayerOptions);
+                                    var report = BuildPipeline.BuildPlayer(buildPlayerOptions);
+                                    log = report.ToString();
                                 }
                                 catch (Exception e)
                                 {
-                                    LogHelper.PrintError(string.Format("打包失败:{0},{1}.", report, e.ToString()));
+                                    LogHelper.PrintError(string.Format("打包失败:{0},{1}.", log, e.ToString()));
                                     return;
                                 }
-                                LogHelper.PrintError(string.Format("打包成功:{0}.", report));
+                                LogHelper.PrintError(string.Format("打包成功:{0}.", log));
                             };
                             Close();
                         }

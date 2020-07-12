@@ -11,8 +11,10 @@ using UnityEngine.UI;
 
 public static class CustomSettings
 {
-    public static string saveDir = Application.dataPath + "/LuaFramework/Source/Generate/";
-    public static string toluaBaseType = Application.dataPath + "/LuaFramework/ToLua/BaseType/";    
+    public static string saveDir = Application.dataPath + "/LuaFramework/Source/Generate/";    
+    public static string toluaBaseType = Application.dataPath + "/LuaFramework/ToLua/BaseType/";
+    public static string baseLuaDir = Application.dataPath + "/LuaFramework/Tolua/Lua/";
+    public static string injectionFilesPath = Application.dataPath + "/LuaFramework/ToLua/Injection/";
 
     //导出时强制做为静态类的类型(注意customTypeList 还要添加这个类型才能导出)
     //unity 有些类作为sealed class, 其实完全等价于静态类
@@ -57,6 +59,8 @@ public static class CustomSettings
         //_GT(typeof(TestExport.Space)),
         //-------------------------------------------------------------------        
                         
+        _GT(typeof(LuaInjectionStation)),
+        _GT(typeof(InjectType)),
         _GT(typeof(Debugger)).SetNameSpace(null),          
 
 #if USING_DOTWEENING
@@ -92,7 +96,7 @@ public static class CustomSettings
       
         _GT(typeof(Behaviour)),
         _GT(typeof(MonoBehaviour)),        
-        _GT(typeof(GameObject)).AddExtendType(typeof(LuaHelper)).AddExtendType(typeof(UnityHelper)),
+        _GT(typeof(GameObject)),
         _GT(typeof(TrackedReference)),
         _GT(typeof(Application)),
         _GT(typeof(Physics)),
@@ -107,7 +111,7 @@ public static class CustomSettings
         _GT(typeof(CameraClearFlags)),
         _GT(typeof(AudioClip)),        
         _GT(typeof(AssetBundle)),
-        _GT(typeof(ParticleSystem)),
+        //_GT(typeof(ParticleSystem)),
         _GT(typeof(AsyncOperation)).SetBaseType(typeof(System.Object)),        
         _GT(typeof(LightType)),
         _GT(typeof(SleepTimeout)),
@@ -121,7 +125,7 @@ public static class CustomSettings
         _GT(typeof(Space)),      
        
 
-        _GT(typeof(MeshRenderer)),
+        //_GT(typeof(MeshRenderer)),
 #if !UNITY_5_4_OR_NEWER
         _GT(typeof(ParticleEmitter)),
         _GT(typeof(ParticleRenderer)),
@@ -144,10 +148,11 @@ public static class CustomSettings
 
         _GT(typeof(QualitySettings)),
         _GT(typeof(RenderSettings)),                                                   
-        _GT(typeof(BlendWeights)),           
+        _GT(typeof(SkinWeights)),           
         _GT(typeof(RenderTexture)),
-        _GT(typeof(Resources)),   
-        
+        _GT(typeof(Resources)),     
+        _GT(typeof(LuaProfiler)),
+
         //项目导出;
         
         //UGUI;
@@ -181,7 +186,6 @@ public static class CustomSettings
 
         //Profiler;
         _GT(typeof(LuaProfilerExtension)),
-
     };
 
     public static List<Type> dynamicList = new List<Type>()
@@ -203,7 +207,7 @@ public static class CustomSettings
         typeof(AnimationClip),
         typeof(AnimationState),
 
-        typeof(BlendWeights),
+        typeof(SkinWeights),
         typeof(RenderTexture),
         typeof(Rigidbody),
     };
