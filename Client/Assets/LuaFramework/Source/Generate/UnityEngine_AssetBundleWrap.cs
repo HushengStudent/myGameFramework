@@ -15,6 +15,7 @@ public class UnityEngine_AssetBundleWrap
 		L.RegFunction("LoadFromMemory", LoadFromMemory);
 		L.RegFunction("LoadFromStreamAsync", LoadFromStreamAsync);
 		L.RegFunction("LoadFromStream", LoadFromStream);
+		L.RegFunction("SetAssetBundleDecryptKey", SetAssetBundleDecryptKey);
 		L.RegFunction("Contains", Contains);
 		L.RegFunction("LoadAsset", LoadAsset);
 		L.RegFunction("LoadAssetAsync", LoadAssetAsync);
@@ -315,6 +316,25 @@ public class UnityEngine_AssetBundleWrap
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.AssetBundle.LoadFromStream");
 			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int SetAssetBundleDecryptKey(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.AssetBundle.SetAssetBundleDecryptKey");
+#endif
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			string arg0 = ToLua.CheckString(L, 1);
+			UnityEngine.AssetBundle.SetAssetBundleDecryptKey(arg0);
+			return 0;
 		}
 		catch (Exception e)
 		{
