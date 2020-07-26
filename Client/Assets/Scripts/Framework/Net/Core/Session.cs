@@ -568,9 +568,9 @@ namespace Framework
                 else
                 {
                     var id = packet.GetPacketId();
-                    if (LuaProtoRegister.LuaProtoDict.TryGetValue(id, out var overridecs))
+                    if (LuaProtoRegister.LuaProtoDict.TryGetValue(id, out var luaOverride))
                     {
-                        if (!overridecs)
+                        if (!luaOverride)
                         {
                             ReceiveHandler?.Invoke(this, packet);
                         }

@@ -63,7 +63,7 @@ namespace Framework
                     TextAsset luaCode = null;
 
 
-                    for (int i = 0; i < _heads.Length; i++)
+                    for (var i = 0; i < _heads.Length; i++)
                     {
                         var head = _heads[i];
                         var tempName = head + fileName;

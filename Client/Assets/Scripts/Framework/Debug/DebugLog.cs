@@ -47,8 +47,8 @@ namespace Framework
                 {
                     _logScrollPosition = GUILayout.BeginScrollView(_logScrollPosition, GUILayout.Height(350f));
                     {
-                        bool selected = false;
-                        for (LinkedListNode<LogNode> i = _logList.First; i != null; i = i.Next)
+                        var selected = false;
+                        for (var i = _logList.First; i != null; i = i.Next)
                         {
                             if (GUILayout.Toggle(_selectedNode == i, GetLogString(i.Value)))
                             {
@@ -75,7 +75,7 @@ namespace Framework
                     {
                         if (_selectedNode != null)
                         {
-                            Color32 color = GetLogStringColor(_selectedNode.Value.LogType);
+                            var color = GetLogStringColor(_selectedNode.Value.LogType);
                             GUILayout.Label(string.Format("<color=#{0}{1}{2}{3}><b>{4}</b></color>", color.r.ToString("x2"),
                                 color.g.ToString("x2"), color.b.ToString("x2"), color.a.ToString("x2"), _selectedNode.Value.LogMessage));
                             GUILayout.Label(string.Format("<color=#{0}{1}{2}{3}><b>{4}</b></color>", color.r.ToString("x2"),
@@ -102,7 +102,7 @@ namespace Framework
 
             private string GetLogString(LogNode logNode)
             {
-                Color32 color = GetLogStringColor(logNode.LogType);
+                var color = GetLogStringColor(logNode.LogType);
                 return string.Format("<color=#{0}{1}{2}{3}>{4}{5}</color>",
                     color.r.ToString("x2"), color.g.ToString("x2"), color.b.ToString("x2"), color.a.ToString("x2"),
                     logNode.LogTime.ToString(_dateTimeFormat), logNode.LogMessage);
@@ -110,7 +110,7 @@ namespace Framework
 
             internal Color32 GetLogStringColor(LogType logType)
             {
-                Color32 color = Color.white;
+                var color = Color.white;
                 switch (logType)
                 {
                     case LogType.Log:

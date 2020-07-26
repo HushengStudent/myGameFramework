@@ -285,7 +285,7 @@ namespace Framework
                 {
                     assetBundleCache[path] = assetBundle;
                     assetBundleReference[path] = 1;
-                    LogHelper.Print($"[AssetBundleMgr]Load assetBundle:{path} Success.");
+                    LogHelper.Print($"[AssetBundleMgr]Load assetBundle:{path} success.");
                 }
                 //加载完毕;
                 assetBundleLoading.Remove(path);
@@ -368,19 +368,16 @@ namespace Framework
                 return;
             }
 
-            if (asset != null)
+            if (asset != null && _assetBundleRefDict.TryGetValue(path, out var list))
             {
-                if (_assetBundleRefDict.TryGetValue(path, out var list))
+                for (var i = 0; i < list.Count; i++)
                 {
-                    for (var i = 0; i < list.Count; i++)
+                    if ((UnityObject)(list[i].Target) == asset)
                     {
-                        if ((UnityObject)(list[i].Target) == asset)
-                        {
-                            list.RemoveAt(i);
-                            //需要UnloadAsset?
-                            //Resources.UnloadAsset(asset);
-                            break;
-                        }
+                        list.RemoveAt(i);
+                        //需要UnloadAsset?
+                        //Resources.UnloadAsset(asset);
+                        break;
                     }
                 }
             }

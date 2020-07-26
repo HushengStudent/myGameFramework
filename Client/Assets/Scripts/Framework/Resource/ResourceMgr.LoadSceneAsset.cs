@@ -117,13 +117,13 @@ namespace Framework
             var name = Path.GetFileNameWithoutExtension(path);
 
             SceneLoader.UnloadSceneAsync(path, onSceneUnloaded, progress);
-            var operation = SceneManager.UnloadSceneAsync(name);
-            while (operation.progress < 0.99f)
+            var op = SceneManager.UnloadSceneAsync(name);
+            while (op.progress < 0.99f)
             {
-                progress?.Invoke(operation.progress);
+                progress?.Invoke(op.progress);
                 yield return Timing.WaitForOneFrame;
             }
-            while (!operation.isDone)
+            while (!op.isDone)
             {
                 yield return Timing.WaitForOneFrame;
             }
@@ -175,15 +175,15 @@ namespace Framework
                 {
                     onSceneLoaded?.Invoke(scene);
                 };
-                var operation = SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
+                var op = SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
 
                 //此处加载占10%;
-                while (operation.progress < 0.99f)
+                while (op.progress < 0.99f)
                 {
-                    progress?.Invoke(0.9f + 0.1f * operation.progress);
+                    progress?.Invoke(0.9f + 0.1f * op.progress);
                     yield return Timing.WaitForOneFrame;
                 }
-                while (!operation.isDone)
+                while (!op.isDone)
                 {
                     yield return Timing.WaitForOneFrame;
                 }
@@ -216,7 +216,7 @@ namespace Framework
 
 #if UNITY_EDITOR
 
-                //var operation = UnityEditor.EditorApplication.LoadLevelAdditiveAsyncInPlayMode(path);
+                //var op = UnityEditor.EditorApplication.LoadLevelAdditiveAsyncInPlayMode(path);
                 var op = UnityEditor.SceneManagement.EditorSceneManager.LoadSceneAsyncInPlayMode(path, new LoadSceneParameters()
                 {
                     loadSceneMode = LoadSceneMode.Single,

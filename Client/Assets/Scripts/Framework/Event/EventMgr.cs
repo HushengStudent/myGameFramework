@@ -82,14 +82,11 @@ namespace Framework
                 LogHelper.PrintError("[EventMgr]RemoveEvent error,the receiver is null.");
                 return;
             }
-            if (EventDict.TryGetValue(receiver, out var dict))
+            if (EventDict.TryGetValue(receiver, out var dict) && null != dict && dict.Count > 0)
             {
-                if (null != dict && dict.Count > 0)
+                if (dict.ContainsKey(type))
                 {
-                    if (dict.ContainsKey(type))
-                    {
-                        dict.Remove(type);
-                    }
+                    dict.Remove(type);
                 }
             }
         }
@@ -124,19 +121,13 @@ namespace Framework
                 LogHelper.PrintError("[EventMgr]FireEvent error,the receiver is null.");
                 return;
             }
-            if (EventDict.TryGetValue(receiver, out var dict))
+            if (EventDict.TryGetValue(receiver, out var dict) && null != dict && dict.Count > 0)
             {
-                if (null != dict && dict.Count > 0)
+                if (dict.TryGetValue(type, out var list) && null != list && list.Count > 0)
                 {
-                    if (dict.TryGetValue(type, out var list))
+                    foreach (var callback in list)
                     {
-                        if (null != list && list.Count > 0)
-                        {
-                            foreach (var callback in list)
-                            {
-                                callback?.Invoke(eventArgs);
-                            }
-                        }
+                        callback?.Invoke(eventArgs);
                     }
                 }
             }
@@ -183,14 +174,11 @@ namespace Framework
         /// <param name="eventArgs">事件参数</param>
         public void FireGlobalEvent(EventType type, IEventArgs eventArgs)
         {
-            if (GlobalEventDict.TryGetValue(type, out var list))
+            if (GlobalEventDict.TryGetValue(type, out var list) && null != list && list.Count > 0)
             {
-                if (null != list && list.Count > 0)
+                foreach (var callback in list)
                 {
-                    foreach (var callback in list)
-                    {
-                        callback?.Invoke(eventArgs);
-                    }
+                    callback?.Invoke(eventArgs);
                 }
             }
         }

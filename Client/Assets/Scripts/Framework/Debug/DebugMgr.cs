@@ -58,7 +58,9 @@ namespace Framework
         {
             base.UpdateEx(interval);
             if (_fpsInfo == null)
+            {
                 return;
+            }
             _fpsInfo.UpdateFps(Time.deltaTime, Time.unscaledDeltaTime);
             if (Input.GetKeyDown(KeyCode.D) && _showType == ShowType.ShowNon)
             {
@@ -77,9 +79,12 @@ namespace Framework
 
         private void OnGUI()
         {
-            if (_showType == ShowType.ShowNon) return;
-            GUISkin cachedGuiSkin = GUI.skin;
-            Matrix4x4 cachedMatrix = GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(_myScale, _myScale, 1));
+            if (_showType == ShowType.ShowNon)
+            {
+                return;
+            }
+            var cachedGuiSkin = GUI.skin;
+            var cachedMatrix = GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(_myScale, _myScale, 1));
             switch (_showType)
             {
                 case ShowType.ShowFps:
@@ -117,12 +122,12 @@ namespace Framework
         private void DrawFps(int windowId)
         {
             GUI.DragWindow(_dragRect);
-            Color32 color = Color.white;
-            Color32 colorLog = Color.red;
-            string title = string.Format("<color=#{0}{1}{2}{3}><b>FPS:{4}</b></color>", color.r.ToString("x2"),
+            var color = Color.white;
+            var colorLog = Color.red;
+            var title = string.Format("<color=#{0}{1}{2}{3}><b>FPS:{4}</b></color>", color.r.ToString("x2"),
                 color.g.ToString("x2"), color.b.ToString("x2"), color.a.ToString("x2"), _fpsInfo.CurrentFps.ToString("F2"));
 
-            string error = string.Format("<color=#{0}{1}{2}{3}><b>Log:{4}</b></color>", colorLog.r.ToString("x2"),
+            var error = string.Format("<color=#{0}{1}{2}{3}><b>Log:{4}</b></color>", colorLog.r.ToString("x2"),
                 colorLog.g.ToString("x2"), colorLog.b.ToString("x2"), colorLog.a.ToString("x2"), _logInfo.GetCount() + "");
             if (GUILayout.Button(title + " " + error, GUILayout.Width(150f), GUILayout.Height(35f)))
             {

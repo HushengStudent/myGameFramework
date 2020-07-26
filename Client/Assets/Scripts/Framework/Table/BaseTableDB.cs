@@ -53,7 +53,7 @@ namespace Framework
         public override void LoadData(byte[] bytes)
         {
             _dataList.Clear();
-            int pos = 0;
+            var pos = 0;
             var dataCount = ConvertHelper.GetInt32(bytes, pos);
             pos += Marshal.SizeOf(pos);//int大小;
             for (var i = 0; i < dataCount; i++)

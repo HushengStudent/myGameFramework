@@ -42,7 +42,7 @@ namespace Framework
             catch (Exception e)
             {
                 LogHelper.PrintError(e.ToString());
-                return default(T);
+                return default;
             }
         }
 
@@ -75,7 +75,7 @@ namespace Framework
             catch (Exception e)
             {
                 LogHelper.PrintError(e.ToString());
-                return default(T);
+                return default;
             }
         }
     }

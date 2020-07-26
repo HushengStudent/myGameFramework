@@ -106,14 +106,13 @@ namespace Framework
         {
             for (var i = 0; i < _componentList.Count; i++)
             {
-                var targetComp = _componentList[i] as T;
-                if (targetComp != null)
+                if (_componentList[i] is T)
                 {
                     LogHelper.PrintError($"[ObjectEx]AddComponent,{typeof(T).ToString()} repeat!");
                     return null;
                 }
             }
-            T component = PoolMgr.singleton.GetCsharpObject<T>();
+            var component = PoolMgr.singleton.GetCsharpObject<T>();
             component.Initialize(this);
             _componentList.Add(component);
             return component;
@@ -128,11 +127,10 @@ namespace Framework
         {
             for (var i = 0; i < _componentList.Count; i++)
             {
-                var targetComp = _componentList[i] as T;
-                if (targetComp != null)
+                if (_componentList[i] is T targetComp)
                 {
                     targetComp.UnInitialize();
-                    PoolMgr.singleton.ReleaseCsharpObject<T>(targetComp);
+                    PoolMgr.singleton.ReleaseCsharpObject(targetComp);
                     _componentList.Remove(targetComp);
                     return true;
                 }
@@ -160,7 +158,7 @@ namespace Framework
                 if (targetComp == comp)
                 {
                     comp.UnInitialize();
-                    PoolMgr.singleton.ReleaseCsharpObject<T>(comp as T);
+                    PoolMgr.singleton.ReleaseCsharpObject(comp as T);
                     _componentList.Remove(targetComp);
                     return true;
                 }
