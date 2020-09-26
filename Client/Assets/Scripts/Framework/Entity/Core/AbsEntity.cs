@@ -6,6 +6,7 @@
 
 using System;
 using UnityEngine;
+using UnityObject = UnityEngine.Object;
 
 namespace Framework
 {
@@ -75,6 +76,7 @@ namespace Framework
         {
             GameObjectEx = go;
             Animator = GameObjectEx.gameObject.GetComponent<Animator>();
+            UnityObject.DontDestroyOnLoad(GameObjectEx.gameObject);
             OnAttachGameObject(go);
         }
 
