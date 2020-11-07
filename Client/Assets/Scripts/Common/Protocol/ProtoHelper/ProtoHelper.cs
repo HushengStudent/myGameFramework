@@ -48,7 +48,7 @@ public class ProtoHelper
     {
         lock (_lock)
         {
-            int packetId = packet.GetPacketId();
+            var packetId = packet.GetPacketId();
             if (_factoryDict.ContainsKey(packetId))
             {
                 _factoryDict[packetId].ReturnPacket(packet);

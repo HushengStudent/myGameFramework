@@ -22,19 +22,19 @@ namespace Framework
     {
         #region Fields
 
-        /// 加载出来的AssetBundle缓存;
+        /// <summary> 加载出来的AssetBundle缓存; </summary>
         private Dictionary<string, AssetBundle> assetBundleCache = new Dictionary<string, AssetBundle>();
 
-        /// 加载出来的AssetBundle引用计数;
+        /// <summary> 加载出来的AssetBundle引用计数; </summary>
         private Dictionary<string, int> assetBundleReference = new Dictionary<string, int>();
 
-        /// 依赖关系AssetBundle;
+        /// <summary> 依赖关系AssetBundle; </summary>
         private AssetBundle mainAssetBundle;
 
-        /// AssetBundleManifest
+        /// <summary> AssetBundleManifest </summary>
         private AssetBundleManifest manifest;
 
-        /// 依赖关系AssetBundle;
+        /// <summary> 依赖关系AssetBundle; </summary>
         private AssetBundle MainAssetBundle
         {
             get
@@ -51,7 +51,7 @@ namespace Framework
             }
         }
 
-        /// AssetBundleManifest
+        /// <summary> AssetBundleManifest </summary>
         private AssetBundleManifest Manifest
         {
             get
@@ -68,11 +68,11 @@ namespace Framework
             }
         }
 
-        /// 正在异步加载中的AssetBundle;
+        /// <summary> 正在异步加载中的AssetBundle; </summary>
         private HashSet<string> assetBundleLoading = new HashSet<string>();
 
 
-        /// 资源引用关系;
+        /// <summary> 资源引用关系; </summary>
         private Dictionary<string, List<WeakReference>> _assetBundleRefDict =
             new Dictionary<string, List<WeakReference>>();
 

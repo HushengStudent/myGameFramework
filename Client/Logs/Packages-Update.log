@@ -74,3 +74,17 @@ The following packages were updated:
   com.unity.multiplayer-hlapi from version 1.0.4 to 1.0.6
   com.unity.purchasing from version 2.0.6 to 2.1.0
   com.unity.test-framework from version 1.1.14 to 1.1.16
+
+=== Sat Nov  7 23:04:50 2020
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.2d.animation from version 3.2.4 to 3.2.5
+  com.unity.2d.psdimporter from version 2.1.5 to 2.1.6
+  com.unity.ads from version 3.4.9 to 3.5.0
+  com.unity.ide.vscode from version 1.2.1 to 1.2.2
+  com.unity.mobile.android-logcat from version 1.1.1 to 1.2.0
+  com.unity.purchasing from version 2.1.0 to 2.1.1
+  com.unity.test-framework from version 1.1.16 to 1.1.18

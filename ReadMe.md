@@ -1,9 +1,9 @@
 ### myGameFramework
 #### My game framework include client server and tools.
 
-software：Unity2019.4.11/visual studio2017.
+software：Unity2019.4.14/visual studio2017.
 
-#### Client：Unity2019.4.11
+#### Client：Unity2019.4.14
     Module：
     (1)资源管理：AssetBundle、资源加载/卸载.(Finish)
     (2)tolua.(Finish)

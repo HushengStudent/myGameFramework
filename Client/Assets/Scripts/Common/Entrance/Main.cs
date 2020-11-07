@@ -17,7 +17,7 @@ public class Main : MonoBehaviour
         StartGame();
     }
 
-    /// 初始化游戏;
+    /// <summary> 初始化游戏; </summary>
     private void StartGame()
     {
         LogHelper.PrintYellow("StartGame");

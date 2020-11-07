@@ -57,5 +57,18 @@ namespace Framework
 
             }
         }
+
+        protected override void OnDestroyEx()
+        {
+            base.OnDestroyEx();
+            if (uiRootProxy != null)
+            {
+                uiRootProxy.UnloadProxy();
+            }
+            if (mainCameraProxy != null)
+            {
+                mainCameraProxy.UnloadProxy();
+            }
+        }
     }
 }

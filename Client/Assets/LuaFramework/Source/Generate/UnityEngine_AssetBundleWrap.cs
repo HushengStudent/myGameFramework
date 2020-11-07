@@ -333,7 +333,7 @@ public class UnityEngine_AssetBundleWrap
 		{
 			ToLua.CheckArgsCount(L, 1);
 			string arg0 = ToLua.CheckString(L, 1);
-			UnityEngine.AssetBundle.SetAssetBundleDecryptKey(arg0);
+			//UnityEngine.AssetBundle.SetAssetBundleDecryptKey(arg0);
 			return 0;
 		}
 		catch (Exception e)
