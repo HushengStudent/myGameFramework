@@ -80,7 +80,11 @@ namespace Framework
 
         #region Functions
 
+        /// <summary>
         /// AssetBundle是否正在加载;
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         private bool IsAssetBundleLoading(string path)
         {
             return assetBundleLoading.Contains(path);
