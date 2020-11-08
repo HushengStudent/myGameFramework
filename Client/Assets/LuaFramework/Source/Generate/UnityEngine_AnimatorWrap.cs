@@ -1207,6 +1207,19 @@ public class UnityEngine_AnimatorWrap
 				obj.MatchTarget(arg0, arg1, arg2, arg3, arg4, arg5);
 				return 0;
 			}
+			else if (count == 8)
+			{
+				UnityEngine.Animator obj = (UnityEngine.Animator)ToLua.CheckObject<UnityEngine.Animator>(L, 1);
+				UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
+				UnityEngine.Quaternion arg1 = ToLua.ToQuaternion(L, 3);
+				UnityEngine.AvatarTarget arg2 = (UnityEngine.AvatarTarget)ToLua.CheckObject(L, 4, typeof(UnityEngine.AvatarTarget));
+				UnityEngine.MatchTargetWeightMask arg3 = StackTraits<UnityEngine.MatchTargetWeightMask>.Check(L, 5);
+				float arg4 = (float)LuaDLL.luaL_checknumber(L, 6);
+				float arg5 = (float)LuaDLL.luaL_checknumber(L, 7);
+				bool arg6 = LuaDLL.luaL_checkboolean(L, 8);
+				obj.MatchTarget(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
+				return 0;
+			}
 			else
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.Animator.MatchTarget");

@@ -35,6 +35,7 @@ public class UnityEngine_GameObjectWrap
 		L.RegVar("isStatic", get_isStatic, set_isStatic);
 		L.RegVar("tag", get_tag, set_tag);
 		L.RegVar("scene", get_scene, null);
+		L.RegVar("sceneCullingMask", get_sceneCullingMask, null);
 		L.RegVar("gameObject", get_gameObject, null);
 		L.EndClass();
 	}
@@ -966,6 +967,28 @@ public class UnityEngine_GameObjectWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o, "attempt to index scene on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_sceneCullingMask(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.GameObject.sceneCullingMask");
+#endif
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.GameObject obj = (UnityEngine.GameObject)o;
+			ulong ret = obj.sceneCullingMask;
+			LuaDLL.tolua_pushuint64(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index sceneCullingMask on a nil value");
 		}
 	}
 

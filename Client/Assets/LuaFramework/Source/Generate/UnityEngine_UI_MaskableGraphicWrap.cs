@@ -10,6 +10,7 @@ public class UnityEngine_UI_MaskableGraphicWrap
 		L.RegFunction("GetModifiedMaterial", GetModifiedMaterial);
 		L.RegFunction("Cull", Cull);
 		L.RegFunction("SetClipRect", SetClipRect);
+		L.RegFunction("SetClipSoftness", SetClipSoftness);
 		L.RegFunction("RecalculateClipping", RecalculateClipping);
 		L.RegFunction("RecalculateMasking", RecalculateMasking);
 		L.RegFunction("__eq", op_Equality);
@@ -75,6 +76,26 @@ public class UnityEngine_UI_MaskableGraphicWrap
 			UnityEngine.Rect arg0 = StackTraits<UnityEngine.Rect>.Check(L, 2);
 			bool arg1 = LuaDLL.luaL_checkboolean(L, 3);
 			obj.SetClipRect(arg0, arg1);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int SetClipSoftness(IntPtr L)
+	{
+#if UNITY_EDITOR
+        ToluaProfiler.AddCallRecord("UnityEngine.UI.MaskableGraphic.SetClipSoftness");
+#endif
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			UnityEngine.UI.MaskableGraphic obj = (UnityEngine.UI.MaskableGraphic)ToLua.CheckObject<UnityEngine.UI.MaskableGraphic>(L, 1);
+			UnityEngine.Vector2 arg0 = ToLua.ToVector2(L, 2);
+			obj.SetClipSoftness(arg0);
 			return 0;
 		}
 		catch (Exception e)
