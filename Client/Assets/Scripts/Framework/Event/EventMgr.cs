@@ -20,20 +20,20 @@ namespace Framework
         /// <summary>
         /// 委托集合;
         /// </summary>
-        private Dictionary<ObjectEx, Dictionary<EventType, List<EventHandler>>> EventDict
+        private Dictionary<ObjectEx, Dictionary<EventType, List<EventHandler>>> _eventDict
             = new Dictionary<ObjectEx, Dictionary<EventType, List<EventHandler>>>();
 
         /// <summary>
         /// 委托集合;
         /// </summary>
-        private Dictionary<EventType, List<EventHandler>> GlobalEventDict
+        private Dictionary<EventType, List<EventHandler>> _globalEventDict
             = new Dictionary<EventType, List<EventHandler>>();
 
         protected override void OnInitialize()
         {
             base.OnInitialize();
-            EventDict.Clear();
-            GlobalEventDict.Clear();
+            _eventDict.Clear();
+            _globalEventDict.Clear();
         }
 
         /// <summary>
@@ -49,11 +49,11 @@ namespace Framework
                 LogHelper.PrintError("[EventMgr]AddEvent error,the receiver is null.");
                 return;
             }
-            if (!EventDict.TryGetValue(receiver, out var dict))
+            if (!_eventDict.TryGetValue(receiver, out var dict))
             {
-                EventDict[receiver] = new Dictionary<EventType, List<EventHandler>>();
+                _eventDict[receiver] = new Dictionary<EventType, List<EventHandler>>();
             }
-            dict = EventDict[receiver];
+            dict = _eventDict[receiver];
             if (!dict.TryGetValue(type, out var list))
             {
                 list = new List<EventHandler>();
@@ -82,7 +82,7 @@ namespace Framework
                 LogHelper.PrintError("[EventMgr]RemoveEvent error,the receiver is null.");
                 return;
             }
-            if (EventDict.TryGetValue(receiver, out var dict) && null != dict && dict.Count > 0)
+            if (_eventDict.TryGetValue(receiver, out var dict) && null != dict && dict.Count > 0)
             {
                 if (dict.ContainsKey(type))
                 {
@@ -102,9 +102,9 @@ namespace Framework
                 LogHelper.PrintError("[EventMgr]RemoveEvent error,the receiver is null.");
                 return;
             }
-            if (EventDict.TryGetValue(receiver, out var dict))
+            if (_eventDict.TryGetValue(receiver, out var dict))
             {
-                EventDict.Remove(receiver);
+                _eventDict.Remove(receiver);
             }
         }
 
@@ -121,7 +121,7 @@ namespace Framework
                 LogHelper.PrintError("[EventMgr]FireEvent error,the receiver is null.");
                 return;
             }
-            if (EventDict.TryGetValue(receiver, out var dict) && null != dict && dict.Count > 0)
+            if (_eventDict.TryGetValue(receiver, out var dict) && null != dict && dict.Count > 0)
             {
                 if (dict.TryGetValue(type, out var list) && null != list && list.Count > 0)
                 {
@@ -140,11 +140,11 @@ namespace Framework
         /// <param name="callBack">事件回调</param>
         public void AddGlobalEvent(EventType type, EventHandler callBack)
         {
-            if (!GlobalEventDict.TryGetValue(type, out var list))
+            if (!_globalEventDict.TryGetValue(type, out var list))
             {
-                GlobalEventDict[type] = new List<EventHandler>();
+                _globalEventDict[type] = new List<EventHandler>();
             }
-            list = GlobalEventDict[type];
+            list = _globalEventDict[type];
             if (list.Contains(callBack))
             {
                 LogHelper.PrintWarning($"[EventMgr]AddGlobalEvent repeat,EventType:{type.ToString()}.");
@@ -161,9 +161,9 @@ namespace Framework
         /// <param name="type">事件类型</param>
         public void RemoveGlobalEvent(EventType type)
         {
-            if (GlobalEventDict.ContainsKey(type))
+            if (_globalEventDict.ContainsKey(type))
             {
-                GlobalEventDict.Remove(type);
+                _globalEventDict.Remove(type);
             }
         }
 
@@ -174,7 +174,7 @@ namespace Framework
         /// <param name="eventArgs">事件参数</param>
         public void FireGlobalEvent(EventType type, IEventArgs eventArgs)
         {
-            if (GlobalEventDict.TryGetValue(type, out var list) && null != list && list.Count > 0)
+            if (_globalEventDict.TryGetValue(type, out var list) && null != list && list.Count > 0)
             {
                 foreach (var callback in list)
                 {

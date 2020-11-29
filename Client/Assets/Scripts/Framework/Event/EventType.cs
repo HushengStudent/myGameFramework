@@ -4,10 +4,6 @@
 ** desc:  事件类型;
 *********************************************************************************/
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace Framework
 {
     public enum EventType : int

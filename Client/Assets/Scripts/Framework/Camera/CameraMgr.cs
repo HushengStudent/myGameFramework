@@ -12,8 +12,8 @@ namespace Framework
     {
         private readonly string _uiRoot = "Prefab/UI/Common/UIRoot.prefab";
         private readonly string _mainCamera = "Prefab/Common/MainCamera.prefab";
-        private AssetBundleAssetProxy uiRootProxy;
-        private AssetBundleAssetProxy mainCameraProxy;
+        private AssetBundleAssetProxy _uiRootProxy;
+        private AssetBundleAssetProxy _mainCameraProxy;
 
         public Camera MainCamera { get; private set; }
         public Camera MainUICamera { get; private set; }
@@ -21,19 +21,19 @@ namespace Framework
         protected override void OnInitialize()
         {
             base.OnInitialize();
-            uiRootProxy = ResourceMgr.singleton.LoadAssetAsync(_uiRoot);
-            uiRootProxy.AddLoadFinishCallBack(() =>
+            _uiRootProxy = ResourceMgr.singleton.LoadAssetAsync(_uiRoot);
+            _uiRootProxy.AddLoadFinishCallBack(() =>
             {
-                var go = uiRootProxy.GetInstantiateObject<GameObject>();
+                var go = _uiRootProxy.GetInstantiateObject<GameObject>();
                 go.transform.localPosition = Vector3.zero;
                 MainUICamera = go.transform.Find("MainUICamera").GetComponent<Camera>();
                 DontDestroyOnLoad(go);
                 OnInitFinish();
             });
-            mainCameraProxy = ResourceMgr.singleton.LoadAssetAsync(_mainCamera);
-            mainCameraProxy.AddLoadFinishCallBack(() =>
+            _mainCameraProxy = ResourceMgr.singleton.LoadAssetAsync(_mainCamera);
+            _mainCameraProxy.AddLoadFinishCallBack(() =>
             {
-                var go = mainCameraProxy.GetInstantiateObject<GameObject>();
+                var go = _mainCameraProxy.GetInstantiateObject<GameObject>();
                 go.transform.localPosition = Vector3.zero;
                 MainCamera = go.transform.GetComponent<Camera>();
                 DontDestroyOnLoad(go);
@@ -43,7 +43,7 @@ namespace Framework
 
         private void OnInitFinish()
         {
-            if (uiRootProxy.IsFinish && mainCameraProxy.IsFinish)
+            if (_uiRootProxy.IsFinish && _mainCameraProxy.IsFinish)
             {
                 EventMgr.singleton.FireGlobalEvent(EventType.CAMERA_MGR_INIT, null);
             }
@@ -61,13 +61,13 @@ namespace Framework
         protected override void OnDestroyEx()
         {
             base.OnDestroyEx();
-            if (uiRootProxy != null)
+            if (_uiRootProxy != null)
             {
-                uiRootProxy.UnloadProxy();
+                _uiRootProxy.UnloadProxy();
             }
-            if (mainCameraProxy != null)
+            if (_mainCameraProxy != null)
             {
-                mainCameraProxy.UnloadProxy();
+                _mainCameraProxy.UnloadProxy();
             }
         }
     }

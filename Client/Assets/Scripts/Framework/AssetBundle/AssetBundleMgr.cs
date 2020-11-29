@@ -23,31 +23,31 @@ namespace Framework
         #region Fields
 
         /// <summary> 加载出来的AssetBundle缓存; </summary>
-        private Dictionary<string, AssetBundle> assetBundleCache = new Dictionary<string, AssetBundle>();
+        private Dictionary<string, AssetBundle> _assetBundleCache = new Dictionary<string, AssetBundle>();
 
         /// <summary> 加载出来的AssetBundle引用计数; </summary>
-        private Dictionary<string, int> assetBundleReference = new Dictionary<string, int>();
+        private Dictionary<string, int> _assetBundleReference = new Dictionary<string, int>();
 
         /// <summary> 依赖关系AssetBundle; </summary>
-        private AssetBundle mainAssetBundle;
+        private AssetBundle _mainAssetBundle;
 
         /// <summary> AssetBundleManifest </summary>
-        private AssetBundleManifest manifest;
+        private AssetBundleManifest _manifest;
 
         /// <summary> 依赖关系AssetBundle; </summary>
         private AssetBundle MainAssetBundle
         {
             get
             {
-                if (null == mainAssetBundle)
+                if (null == _mainAssetBundle)
                 {
-                    mainAssetBundle = AssetBundle.LoadFromFile($"{FilePathHelper.AssetBundlePath}/AssetBundle");
+                    _mainAssetBundle = AssetBundle.LoadFromFile($"{FilePathHelper.AssetBundlePath}/AssetBundle");
                 }
-                if (mainAssetBundle == null)
+                if (_mainAssetBundle == null)
                 {
                     LogHelper.PrintError($"[AssetBundleMgr]Load assetBundle:{FilePathHelper.AssetBundlePath} failure.");
                 }
-                return mainAssetBundle;
+                return _mainAssetBundle;
             }
         }
 
@@ -56,20 +56,20 @@ namespace Framework
         {
             get
             {
-                if (null == manifest && MainAssetBundle != null)
+                if (null == _manifest && MainAssetBundle != null)
                 {
-                    manifest = MainAssetBundle.LoadAsset("AssetBundleManifest") as AssetBundleManifest;
+                    _manifest = MainAssetBundle.LoadAsset("AssetBundleManifest") as AssetBundleManifest;
                 }
-                if (manifest == null)
+                if (_manifest == null)
                 {
                     LogHelper.PrintError($"[AssetBundleMgr]Load assetBundleManifest:{FilePathHelper.AssetBundlePath} failure.");
                 }
-                return manifest;
+                return _manifest;
             }
         }
 
         /// <summary> 正在异步加载中的AssetBundle; </summary>
-        private HashSet<string> assetBundleLoading = new HashSet<string>();
+        private HashSet<string> _assetBundleLoading = new HashSet<string>();
 
 
         /// <summary> 资源引用关系; </summary>
@@ -87,7 +87,7 @@ namespace Framework
         /// <returns></returns>
         private bool IsAssetBundleLoading(string path)
         {
-            return assetBundleLoading.Contains(path);
+            return _assetBundleLoading.Contains(path);
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace Framework
                 return null;
             }
             AssetBundle assetBundle = null;
-            if (!assetBundleCache.ContainsKey(path))
+            if (!_assetBundleCache.ContainsKey(path))
             {
                 try
                 {
@@ -192,8 +192,8 @@ namespace Framework
                     }
                     else
                     {
-                        assetBundleCache[path] = assetBundle;
-                        assetBundleReference[path] = 1;
+                        _assetBundleCache[path] = assetBundle;
+                        _assetBundleReference[path] = 1;
                         LogHelper.Print($"[AssetBundleMgr]Load assetBundle:{path} success.");
                     }
                 }
@@ -204,8 +204,8 @@ namespace Framework
             }
             else
             {
-                assetBundle = assetBundleCache[path];
-                assetBundleReference[path]++;
+                assetBundle = _assetBundleCache[path];
+                _assetBundleReference[path]++;
             }
             return assetBundle;
         }
@@ -264,10 +264,10 @@ namespace Framework
             {
                 yield return Timing.WaitForOneFrame;
             }
-            if (!assetBundleCache.ContainsKey(path))
+            if (!_assetBundleCache.ContainsKey(path))
             {
                 //开始加载;
-                assetBundleLoading.Add(path);
+                _assetBundleLoading.Add(path);
                 var assetBundleReq = AssetBundle.LoadFromFileAsync(path);
                 //加载进度;
                 while (assetBundleReq.progress < 0.99)
@@ -287,17 +287,17 @@ namespace Framework
                 }
                 else
                 {
-                    assetBundleCache[path] = assetBundle;
-                    assetBundleReference[path] = 1;
+                    _assetBundleCache[path] = assetBundle;
+                    _assetBundleReference[path] = 1;
                     LogHelper.Print($"[AssetBundleMgr]Load assetBundle:{path} success.");
                 }
                 //加载完毕;
-                assetBundleLoading.Remove(path);
+                _assetBundleLoading.Remove(path);
             }
             else
             {
-                assetBundle = assetBundleCache[path];
-                assetBundleReference[path]++;
+                assetBundle = _assetBundleCache[path];
+                _assetBundleReference[path]++;
             }
             action?.Invoke(assetBundle);
         }
@@ -426,23 +426,23 @@ namespace Framework
         /// 卸载AssetBundle资源;
         private void UnloadAsset(string path, bool flag)
         {
-            if (assetBundleReference.TryGetValue(path, out var count))
+            if (_assetBundleReference.TryGetValue(path, out var count))
             {
                 count--;
                 if (count == 0)
                 {
-                    assetBundleReference.Remove(path);
-                    var bundle = assetBundleCache[path];
+                    _assetBundleReference.Remove(path);
+                    var bundle = _assetBundleCache[path];
                     if (bundle != null)
                     {
                         bundle.Unload(flag);
                     }
-                    assetBundleCache.Remove(path);
+                    _assetBundleCache.Remove(path);
                     LogHelper.Print($"[AssetBundleMgr]Unload:{flag} assetBundle {path} success.");
                 }
                 else
                 {
-                    assetBundleReference[path] = count;
+                    _assetBundleReference[path] = count;
                 }
             }
         }
