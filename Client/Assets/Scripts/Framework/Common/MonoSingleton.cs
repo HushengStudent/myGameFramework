@@ -10,11 +10,9 @@ namespace Framework
 {
     public class MonoSingleton<T> : MonoSingletonBase where T : MonoBehaviour
     {
-        private static readonly string _monoSingletonRoot = "@MonoSingletonRoot";
+        private static readonly string _monoSingletonRoot = "@GameRoot";
 
-        protected static T _singleton = null;
-        public static bool ApplicationIsPlaying { get; private set; } = true;
-
+        private static T _singleton = null;
         public static T singleton
         {
             get
@@ -22,20 +20,26 @@ namespace Framework
                 if (null == _singleton)
                 {
                     var go = GameObject.Find(_monoSingletonRoot);
-                    if (null == go)
+                    if (go)
                     {
-                        go = new GameObject(_monoSingletonRoot);
-                        DontDestroyOnLoad(go);
-                    }
-                    _singleton = go.AddComponent<T>();
-                    var singleton = _singleton as MonoSingletoninterface;
-                    if (singleton != null)
-                    {
-                        //OnInitialize晚于AwakeEx执行;
-                        singleton.MonoSingletoninterfaceOnInitialize();
+                        _singleton = go.AddComponent<T>();
+                        var singleton = _singleton as MonoSingletoninterface;
+                        if (singleton != null)
+                        {
+                            //OnInitialize晚于AwakeEx执行;
+                            singleton.MonoSingletoninterfaceOnInitialize();
+                        }
                     }
                 }
                 return _singleton;
+            }
+        }
+
+        public static bool ApplicationIsPlaying
+        {
+            get
+            {
+                return _singleton != null;
             }
         }
 
@@ -83,7 +87,8 @@ namespace Framework
             OnDisableEx();
         }
 
-        void OnDestroy()
+        //MonoSingleton只有在ApplicationQuit时才会Destroy;
+        void OnApplicationQuit()
         {
             var singleton = _singleton as MonoSingletoninterface;
             if (singleton != null)
@@ -91,7 +96,6 @@ namespace Framework
                 singleton.MonoSingletoninterfaceOnUninitialize();
             }
             OnDestroyEx();
-            ApplicationIsPlaying = false;
             _singleton = null;
         }
 

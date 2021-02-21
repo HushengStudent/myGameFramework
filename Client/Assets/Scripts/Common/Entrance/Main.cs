@@ -14,6 +14,8 @@ public class Main : MonoBehaviour
 
     void Awake()
     {
+        DontDestroyOnLoad(gameObject);
+
         StartGame();
     }
 

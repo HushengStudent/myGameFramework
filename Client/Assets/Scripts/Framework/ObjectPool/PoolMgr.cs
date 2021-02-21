@@ -52,5 +52,11 @@ namespace Framework
                 EventMgr.singleton.FireGlobalEvent(EventType.POOL_MGR_INIT, null);
             });
         }
+
+        protected override void OnDestroyEx()
+        {
+            base.OnDestroyEx();
+            DestroyImmediate(Root);
+        }
     }
 }
