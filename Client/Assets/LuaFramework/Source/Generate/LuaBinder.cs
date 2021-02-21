@@ -89,6 +89,10 @@ public static class LuaBinder
 		L.EndModule();
 		L.EndModule();
 		L.BeginModule("Framework");
+		Framework_MonoSingletoninterfaceWrap.Register(L);
+		Framework_MonoSingletonBaseWrap.Register(L);
+		Framework_SingletoninterfaceWrap.Register(L);
+		Framework_SingletonBaseWrap.Register(L);
 		Framework_LuaMgrWrap.Register(L);
 		Framework_LuaUtilityWrap.Register(L);
 		Framework_LuaUIPanelWrap.Register(L);
@@ -99,11 +103,7 @@ public static class LuaBinder
 		Framework_LuaNetHelperWrap.Register(L);
 		Framework_LuaHelperWrap.Register(L);
 		Framework_MonoSingleton_Framework_LuaMgrWrap.Register(L);
-		Framework_MonoSingletonBaseWrap.Register(L);
-		Framework_MonoSingletoninterfaceWrap.Register(L);
 		Framework_Singleton_Framework_LuaUtilityWrap.Register(L);
-		Framework_SingletonBaseWrap.Register(L);
-		Framework_SingletoninterfaceWrap.Register(L);
 		Framework_Singleton_Framework_SceneMgrWrap.Register(L);
 		Framework_MonoSingleton_Framework_ResourceMgrWrap.Register(L);
 		L.RegFunction("OnInitializeEventHandler", Framework_OnInitializeEventHandler);

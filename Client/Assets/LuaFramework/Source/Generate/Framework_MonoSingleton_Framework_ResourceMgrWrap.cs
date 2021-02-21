@@ -9,8 +9,8 @@ public class Framework_MonoSingleton_Framework_ResourceMgrWrap
 		L.BeginClass(typeof(Framework.MonoSingleton<Framework.ResourceMgr>), typeof(Framework.MonoSingletonBase), "MonoSingleton_Framework_ResourceMgr");
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
-		L.RegVar("ApplicationIsPlaying", get_ApplicationIsPlaying, null);
 		L.RegVar("singleton", get_singleton, null);
+		L.RegVar("ApplicationIsPlaying", get_ApplicationIsPlaying, null);
 		L.EndClass();
 	}
 
@@ -36,14 +36,14 @@ public class Framework_MonoSingleton_Framework_ResourceMgrWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_ApplicationIsPlaying(IntPtr L)
+	static int get_singleton(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.ApplicationIsPlaying");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.singleton");
 #endif
 		try
 		{
-			LuaDLL.lua_pushboolean(L, Framework.MonoSingleton<Framework.ResourceMgr>.ApplicationIsPlaying);
+			ToLua.Push(L, Framework.MonoSingleton<Framework.ResourceMgr>.singleton);
 			return 1;
 		}
 		catch (Exception e)
@@ -53,14 +53,14 @@ public class Framework_MonoSingleton_Framework_ResourceMgrWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_singleton(IntPtr L)
+	static int get_ApplicationIsPlaying(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.singleton");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.ApplicationIsPlaying");
 #endif
 		try
 		{
-			ToLua.Push(L, Framework.MonoSingleton<Framework.ResourceMgr>.singleton);
+			LuaDLL.lua_pushboolean(L, Framework.MonoSingleton<Framework.ResourceMgr>.ApplicationIsPlaying);
 			return 1;
 		}
 		catch (Exception e)
