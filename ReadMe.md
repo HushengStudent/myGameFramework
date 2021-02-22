@@ -5,21 +5,21 @@ software：Unity2019.4.14/visual studio2017.
 
 #### Client：Unity2019.4.14
     Module：
-    >> 单例.(Finish)
     >> LOG.(Finish)
     >> ECS.(Finish)
-    >> 定时器.(Finish)
-    >> 对象池.(Finish)
-    >> AssetBundle.(Finish)
-    >> 资源管理.(Finish)
+    >> 单例.(Finish)
     >> 协程.(Finish)
-    >> 事件系统.(Finish)
-    >> 网络：Lua、C#.(Finish)
-    >> SDK管理.(Finish)
-    >> 场景管理.(Finish)
+    >> 定时器.(Finish)
     >> 配置表.(Finish)
     >> 热更新.(TODO)
     >> 本地化.(TODO)
+    >> 对象池.(Finish)
+    >> AssetBundle.(Finish)
+    >> 资源管理.(Finish)
+    >> 场景管理.(Finish)
+    >> SDK管理.(Finish)
+    >> 事件系统.(Finish)
+    >> 网络系统.(Finish)
 	
     >> 阴影.(Finish)
     >> Timeline.(TODO)
@@ -34,11 +34,11 @@ software：Unity2019.4.14/visual studio2017.
     >> AI：FSM、行为树.(Finish)
     >> 网络同步机制：帧同步、状态同步.(TODO)
 	
-    >> 编辑器：AI(行为树)、战斗(技能)、场景、打包.(TODO)
+    >> Editor：AI<行为树>、战斗<技能>、场景、打包.(TODO)
     >> Lua：tolua、Class、Profiler、工具、方法、定时器、事件系统.(Finish)
     >> UI：滑动列表、图文混排、超链、HUD、飘字、物品掉落.(TODO)
 	
-    >> 优化.(TODO)
+    >> 项目优化.(TODO)
     >> 其他工具.(TODO)
 	
     Reference：
