@@ -2,7 +2,7 @@ using Framework;
 using System;
 using System.Collections.Generic;
 
-public class ProtoHelper
+public partial class ProtoHelper
 {
     private static Dictionary<int, PacketFactory> _factoryDict
         = new Dictionary<int, PacketFactory>();
@@ -63,7 +63,6 @@ public class ProtoHelper
     public static void Register()
     {
         _factoryDict.Clear();
-        RegisterProto(typeof(Packet_LoginRequest));
-        RegisterProto(typeof(Packet_LoginResponse));
+        RegisterGeneratedProto();
     }
 }
