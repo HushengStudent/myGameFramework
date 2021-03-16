@@ -52,6 +52,8 @@ software：Unity2019.4.14/visual studio2017.
     (8)NetWork：(https://github.com/EllanJiang/GameFramework).
     (9)Lua Profiler：(https://github.com/yaukeywang/LuaMemorySnapshotDump).
     (10)Navigation：(https://github.com/LingJiJian/NavmeshExport).
+    (11)FancyScrollView：(https://github.com/setchi/FancyScrollView).
+    (12)UIEffect：(https://github.com/mob-sakai/UIEffect).
 	
     Third Party:
     (1)Anima2D.
