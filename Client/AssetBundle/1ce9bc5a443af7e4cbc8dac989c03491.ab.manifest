@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1816579243
+CRC: 3065565593
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6d911ff9f1da23f6764ee88afc44a510
+    Hash: af6f61c5daef44bcb25269de6df43a22
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 21dd045020ad5fecb606864167ae16f5
+    Hash: 452001dec5fcbd7fba38a0bf245e8219
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -27,6 +27,7 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 137
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Art/Model/Skeleton/Character/Skeleton@Skin.FBX
 - Assets/Art/Model/Skeleton/Character/Materials/skeleton_D.mat

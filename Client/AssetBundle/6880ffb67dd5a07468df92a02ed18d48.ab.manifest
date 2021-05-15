@@ -1,18 +1,19 @@
 ManifestFileVersion: 0
-CRC: 2675912798
+CRC: 800585935
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e2d2e388edb7a12a6c4748a13a5c4da9
+    Hash: c8a3bd8d3a4477d3f8c305331fdde4a8
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 9e6ad29cbd2df8fbe1a15315db0e51ab
+    Hash: c90fc19e2679e5295d10bd00f33cb4c3
 HashAppended: 0
 ClassTypes:
 - Class: 28
   Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Bundles/Texture/Number.png
 Dependencies: []

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3875013731
+CRC: 1990241196
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b4658abeee39730e5295d83dc7487098
+    Hash: 87eeafe7626ab64fb7fc835faeaf51d5
   TypeTreeHash:
     serializedVersion: 2
     Hash: 3b08d903c9ca3c88719044741ec14331
@@ -23,6 +23,7 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 137
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Art/Model/Avatar/Character/ch_pc_hou_006_jiao.FBX
 - Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_006_jiao.prefab

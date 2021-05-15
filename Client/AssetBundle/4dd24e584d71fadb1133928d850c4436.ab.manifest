@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1164309126
+CRC: 1968818690
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 312c9ea35108fca664b995d8e25d2d91
+    Hash: 7040f63cb86d2b25e5e907486164ba11
   TypeTreeHash:
     serializedVersion: 2
     Hash: d9ac8f06ace82e4ba522a5c0616f8059
@@ -19,6 +19,7 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 124
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Bundles/Prefab/Common/MainCamera.prefab
 Dependencies: []

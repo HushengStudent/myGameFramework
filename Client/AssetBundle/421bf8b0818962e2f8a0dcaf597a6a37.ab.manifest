@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 135126963
+CRC: 498095714
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f644d07080be580a890cfc20b1d16ff5
+    Hash: 4f0c86aa6c8ad42ff01a0338b55e955b
   TypeTreeHash:
     serializedVersion: 2
     Hash: af57576da81d5d3ce45807ac11234de6
@@ -11,6 +11,7 @@ HashAppended: 0
 ClassTypes:
 - Class: 74
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Bundles/Animation/Skeleton/Run.anim
 Dependencies: []

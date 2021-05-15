@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 804113325
+CRC: 251486140
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: cb175551de612f6744c079cc6aa4b2b1
+    Hash: 4c93a342c5c1c84d47292a79fe3bc49d
   TypeTreeHash:
     serializedVersion: 2
     Hash: af57576da81d5d3ce45807ac11234de6
@@ -11,6 +11,7 @@ HashAppended: 0
 ClassTypes:
 - Class: 74
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Bundles/Animation/Default/Skill.anim
 Dependencies: []

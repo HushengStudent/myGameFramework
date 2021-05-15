@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3612234426
+CRC: 872025271
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c151b11cca894dc88350d0f00c8f6d1c
+    Hash: 7e538dfed885c42ccda988e62ce5f490
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -11,6 +11,7 @@ HashAppended: 0
 ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Bundles/Lua/jit/dis_x86.lua.bytes
 - Assets/Bundles/Lua/jit/dis_arm.lua.bytes

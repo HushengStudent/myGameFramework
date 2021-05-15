@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 887567324
+CRC: 3807988093
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c936f5a2760c04994b6e1e8fc7a385f1
+    Hash: be4e11d7c06195b3132127621797d410
   TypeTreeHash:
     serializedVersion: 2
     Hash: af57576da81d5d3ce45807ac11234de6
@@ -11,6 +11,7 @@ HashAppended: 0
 ClassTypes:
 - Class: 74
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Bundles/Animation/Skeleton/Walk.anim
 Dependencies: []

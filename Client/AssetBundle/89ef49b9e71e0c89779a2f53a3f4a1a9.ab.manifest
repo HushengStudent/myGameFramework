@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2935064538
+CRC: 3195119262
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c9fd8458f3ba5da81cd20666a7174f6d
+    Hash: a02907c51a021c64c6f1a80f555e8bc4
   TypeTreeHash:
     serializedVersion: 2
     Hash: 3b08d903c9ca3c88719044741ec14331
@@ -23,11 +23,12 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 137
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_004.prefab
 Dependencies:
-- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/c647e4a925b94ce1ce2f525b760b402c.ab
-- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/d62fc569cfc035838f2a1212091711e4.ab
+- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/0f09ccff2b746e350803c3e0eb5b2db8.ab
 - C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/6376c9d251b6e5c609042ca40f7edf8c.ab
 - C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/801dc83d61e56d0722712df4d5bfe2b4.ab
-- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/0f09ccff2b746e350803c3e0eb5b2db8.ab
+- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/c647e4a925b94ce1ce2f525b760b402c.ab
+- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/d62fc569cfc035838f2a1212091711e4.ab

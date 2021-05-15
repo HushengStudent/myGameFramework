@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2586214762
+CRC: 1094012474
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 81e9970fd41d2f42789d12d9a685a0ee
+    Hash: b3ce9d5c36d2464e9e367b09ad49695c
   TypeTreeHash:
     serializedVersion: 2
     Hash: af57576da81d5d3ce45807ac11234de6
@@ -11,6 +11,7 @@ HashAppended: 0
 ClassTypes:
 - Class: 74
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Bundles/Animation/Default/Move.anim
 Dependencies: []

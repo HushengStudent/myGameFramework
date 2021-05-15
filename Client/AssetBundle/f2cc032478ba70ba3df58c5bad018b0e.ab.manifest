@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3798020451
+CRC: 3903305311
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4920415066fa739868f7deeb85b8f8f3
+    Hash: eaef6e368ebeeb531a3d47d2ca5d7d21
   TypeTreeHash:
     serializedVersion: 2
     Hash: af57576da81d5d3ce45807ac11234de6
@@ -11,6 +11,7 @@ HashAppended: 0
 ClassTypes:
 - Class: 74
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Bundles/Animation/Avatar/Attack3.anim
 Dependencies: []

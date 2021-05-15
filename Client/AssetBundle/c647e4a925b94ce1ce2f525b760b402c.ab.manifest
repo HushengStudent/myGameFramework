@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 218955557
+CRC: 1609311592
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: bb0c23622da469edfdb754db8b453801
+    Hash: 21bf9392e8102f4ee523e6a1e16d20e6
   TypeTreeHash:
     serializedVersion: 2
     Hash: 3b08d903c9ca3c88719044741ec14331
@@ -23,10 +23,11 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 137
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Art/Model/Avatar/Character/ch_pc_hou_004.fbx
 Dependencies:
-- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/d62fc569cfc035838f2a1212091711e4.ab
+- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/0f09ccff2b746e350803c3e0eb5b2db8.ab
 - C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/6376c9d251b6e5c609042ca40f7edf8c.ab
 - C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/801dc83d61e56d0722712df4d5bfe2b4.ab
-- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/0f09ccff2b746e350803c3e0eb5b2db8.ab
+- C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/d62fc569cfc035838f2a1212091711e4.ab

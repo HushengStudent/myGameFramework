@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3386816924
+CRC: 2252215647
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6c9ec33eee1c99751a96da88388c3419
+    Hash: 2f463370fb07cfb2f76566295f19035e
   TypeTreeHash:
     serializedVersion: 2
     Hash: af57576da81d5d3ce45807ac11234de6
@@ -11,6 +11,7 @@ HashAppended: 0
 ClassTypes:
 - Class: 74
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Bundles/Animation/Avatar/Breath.anim
 Dependencies: []

@@ -88,3 +88,21 @@ The following packages were updated:
   com.unity.mobile.android-logcat from version 1.1.1 to 1.2.0
   com.unity.purchasing from version 2.1.0 to 2.1.1
   com.unity.test-framework from version 1.1.16 to 1.1.18
+
+=== Sat May 15 23:57:59 2021
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.addressables from version 1.8.5 to 1.16.16
+  com.unity.ads from version 3.5.0 to 3.7.1
+  com.unity.ide.rider from version 1.1.4 to 1.2.1
+  com.unity.ide.vscode from version 1.2.2 to 1.2.3
+  com.unity.mobile.android-logcat from version 1.2.0 to 1.2.1
+  com.unity.multiplayer-hlapi from version 1.0.6 to 1.0.8
+  com.unity.purchasing from version 2.1.1 to 3.0.2
+  com.unity.test-framework from version 1.1.18 to 1.1.24
+  com.unity.textmeshpro from version 2.0.1 to 2.1.4
+  com.unity.timeline from version 1.2.15 to 1.2.18
+  com.unity.xr.legacyinputhelpers from version 2.1.4 to 2.1.7

@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2669461317
+CRC: 3446136432
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 26280ca25496b81499a5c6a1d778e7d0
+    Hash: 2a9eea360a150a5968ee8bf99e69b933
   TypeTreeHash:
     serializedVersion: 2
-    Hash: dc2c16b58e89b1f40c1383ff31ea25cf
+    Hash: 8f88e1752f4027bcbf997d0c7bed4abe
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -29,6 +29,7 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 95
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Art/Model/Avatar/Character/ch_we_one_hou_004.fbx
 - Assets/Art/Model/Avatar/Materials/ch_we_one_hou_004_d.mat

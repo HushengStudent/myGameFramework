@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3718445211
+CRC: 339643179
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0c382e9af1ba60f027784da8f2dfbcf9
+    Hash: b2184ab53f87acfc12a966c272e06e85
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 21c99c86a43ad817b2cb7f65458ae090
+    Hash: 22357172b8cea85847937e8f62d0c077
 HashAppended: 0
 ClassTypes:
 - Class: 21
@@ -15,6 +15,7 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Art/Model/Avatar/Materials/ch_pc_hou_004_shou_d.mat
 Dependencies: []

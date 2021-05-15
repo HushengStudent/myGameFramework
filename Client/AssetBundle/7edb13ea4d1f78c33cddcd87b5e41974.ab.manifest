@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 250824707
+CRC: 2346651595
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 770f1bbb14a722056c9f344e8665d0b6
+    Hash: 408dde134dfe1ecfc7c8e4f9f712e9e9
   TypeTreeHash:
     serializedVersion: 2
     Hash: 3b08d903c9ca3c88719044741ec14331
@@ -23,6 +23,7 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 137
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_008_shen.prefab
 - Assets/Art/Model/Avatar/Character/ch_pc_hou_008_shen.FBX

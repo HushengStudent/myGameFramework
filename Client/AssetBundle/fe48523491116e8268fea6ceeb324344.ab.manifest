@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 653861405
+CRC: 2068648364
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 189ad73709c81efa79605a5eab1ef1a7
+    Hash: 5bdf2403b109e38b98a63a36fc0556fc
   TypeTreeHash:
     serializedVersion: 2
     Hash: af57576da81d5d3ce45807ac11234de6
@@ -11,6 +11,7 @@ HashAppended: 0
 ClassTypes:
 - Class: 74
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Bundles/Animation/Skeleton/Idle.anim
 Dependencies: []

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4252628161
+CRC: 1955701161
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: fdea6bb6ed33f22056aa1012eb2edee9
+    Hash: 1be601eb1f9e8925c563c0b05adb364e
   TypeTreeHash:
     serializedVersion: 2
     Hash: af57576da81d5d3ce45807ac11234de6
@@ -11,6 +11,7 @@ HashAppended: 0
 ClassTypes:
 - Class: 74
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Bundles/Animation/Avatar/Run.anim
 Dependencies: []
