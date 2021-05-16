@@ -14,7 +14,7 @@ namespace Framework
 
         public BTLevel(Hashtable table) : base(table)
         {
-            string str = table["Level"].ToString();
+            var str = table["Level"].ToString();
             if (!int.TryParse(str, out _level))
             {
                 LogHelper.PrintError("[BTLevel]get level is error!");

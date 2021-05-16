@@ -78,7 +78,7 @@ namespace Framework
                     list.Add(temp.Key);
                 }
             }
-            for (int i = 0; i < list.Count; i++)
+            for (var i = 0; i < list.Count; i++)
             {
                 var name = list[i];
                 var atlas = _atlasDict[name];
@@ -99,7 +99,7 @@ namespace Framework
                     list.Add(temp.Key);
                 }
             }
-            for (int i = 0; i < list.Count; i++)
+            for (var i = 0; i < list.Count; i++)
             {
                 var name = list[i];
                 var atlas = _atlasDict[name];
