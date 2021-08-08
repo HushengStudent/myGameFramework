@@ -26,7 +26,9 @@ namespace Framework
         private readonly List<HypertextInfo> _hypertextInfoList = new List<HypertextInfo>();
 
         protected readonly List<Image> _imageList = new List<Image>();
+
         protected static readonly StringBuilder _textBuilder = new StringBuilder();
+        protected static readonly StringBuilder _textNoRichBuilder = new StringBuilder();
 
         [Serializable]
         public class HypertextClickEvent : UnityEvent<string> { }
@@ -42,20 +44,32 @@ namespace Framework
 
         public static Func<string, Sprite> LoadSpriteFunc;
 
+        protected override void Awake()
+        {
+            OnHypertextClick.AddListener((name) =>
+            {
+                Debug.LogError(name);
+            });
+        }
+
         public override void SetVerticesDirty()
         {
             base.SetVerticesDirty();
-            UpdateImage();
+
+            GetOutputTextNoRich(text);
+            _outputText = GetOutputText(text);
+            _imageVertexIndexList.Clear();
+
+            //UpdateImage();
         }
 
         protected void UpdateImage()
         {
-            _outputText = GetOutputText(text);
-            _imageVertexIndexList.Clear();
-            foreach (Match match in _imageRegex.Matches(_outputText))
+            var tempText = GetOutputTextNoRich(text);
+            foreach (Match match in _imageRegex.Matches(tempText))
             {
                 var imageIndex = match.Index;
-                var endIndex = imageIndex * 4 + 3;
+                var endIndex = imageIndex * 4;
                 _imageVertexIndexList.Add(endIndex);
 
                 _imageList.RemoveAll(tempImage => tempImage == null);
@@ -117,6 +131,7 @@ namespace Framework
                 {
                     toFill.PopulateUIVertex(ref vert, endIndex);
                     rectTransform.anchoredPosition = new Vector2(vert.position.x + sizeDelta.x / 2, vert.position.y + sizeDelta.y / 2);
+
                     toFill.PopulateUIVertex(ref vert, endIndex - 3);
 
                     var position = vert.position;
@@ -171,28 +186,53 @@ namespace Framework
         protected virtual string GetOutputText(string outputText)
         {
             _textBuilder.Length = 0;
-            _hypertextInfoList.Clear();
+
             var indexText = 0;
             foreach (Match match in _hypertextRegex.Matches(outputText))
             {
-                _textBuilder.Append(outputText.Substring(indexText, match.Index - indexText));
+                var str = outputText.Substring(indexText, match.Index - indexText);
+                _textBuilder.Append(str);
+                var value = match.Groups[2].Value;
                 _textBuilder.Append("<color=green>");
-
-                var group = match.Groups[1];
-                var hypertextInfo = new HypertextInfo
-                {
-                    StartIndex = _textBuilder.Length * 4,
-                    EndIndex = (_textBuilder.Length + match.Groups[2].Length - 1) * 4 + 3,
-                    Name = group.Value
-                };
-                _hypertextInfoList.Add(hypertextInfo);
-
-                _textBuilder.Append(match.Groups[2].Value);
+                _textBuilder.Append(value);
                 _textBuilder.Append("</color>");
                 indexText = match.Index + match.Length;
             }
             _textBuilder.Append(outputText.Substring(indexText, outputText.Length - indexText));
             return _textBuilder.ToString();
+        }
+
+        protected virtual string GetOutputTextNoRich(string outputText)
+        {
+            _textNoRichBuilder.Length = 0;
+            _hypertextInfoList.Clear();
+            var indexText = 0;
+            foreach (Match match in _hypertextRegex.Matches(outputText))
+            {
+                var str = outputText.Substring(indexText, match.Index - indexText);
+                str = ProcessTextString(str);
+                _textNoRichBuilder.Append(str);
+
+                var name = match.Groups[1].Value;
+                var value = ProcessTextString(match.Groups[2].Value);
+                var hypertextInfo = new HypertextInfo
+                {
+                    StartIndex = _textNoRichBuilder.Length * 4,
+                    EndIndex = (_textNoRichBuilder.Length + value.Length) * 4,
+                    Name = name
+                };
+                _hypertextInfoList.Add(hypertextInfo);
+
+                _textNoRichBuilder.Append(value);
+                indexText = match.Index + match.Length;
+            }
+            _textNoRichBuilder.Append(outputText.Substring(indexText, outputText.Length - indexText));
+            return _textNoRichBuilder.ToString();
+        }
+
+        private string ProcessTextString(string str)
+        {
+            return str.Replace("\n", "").Replace("\t", "").Replace(" ", "");
         }
 
         public void OnPointerClick(PointerEventData eventData)
