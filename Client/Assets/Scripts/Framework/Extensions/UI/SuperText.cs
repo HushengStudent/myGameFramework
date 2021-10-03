@@ -19,27 +19,40 @@ namespace Framework
     {
         private string _outputText;
 
+        //图片正则;
         private static readonly Regex _imageRegex = new Regex(@"<quad name=(.+?) size=(\d*\.?\d+%?) width=(\d*\.?\d+%?) />", RegexOptions.Singleline);
+        //超链正则;
         private static readonly Regex _hypertextRegex = new Regex(@"<a href=([^>\n\s]+)>(.*?)(</a>)", RegexOptions.Singleline);
-
-        private readonly List<int> _imageVertexIndexList = new List<int>();
+        //图片信息;
+        private readonly List<ImageInfo> _imageInfoList = new List<ImageInfo>();
+        //超链信息;
         private readonly List<HypertextInfo> _hypertextInfoList = new List<HypertextInfo>();
 
         protected readonly List<Image> _imageList = new List<Image>();
 
         protected static readonly StringBuilder _textBuilder = new StringBuilder();
-        protected static readonly StringBuilder _textNoRichBuilder = new StringBuilder();
+        protected static readonly StringBuilder _tempTextBuilder = new StringBuilder();
 
         [Serializable]
         public class HypertextClickEvent : UnityEvent<string> { }
+        [Serializable]
+        public class ImageClickEvent : UnityEvent<string> { }
 
         [SerializeField]
         private HypertextClickEvent _onHypertextClick = new HypertextClickEvent();
+        [SerializeField]
+        private ImageClickEvent _onImageClick = new ImageClickEvent();
 
         public HypertextClickEvent OnHypertextClick
         {
             get { return _onHypertextClick; }
             set { _onHypertextClick = value; }
+        }
+
+        public ImageClickEvent OnImageClick
+        {
+            get { return _onImageClick; }
+            set { _onImageClick = value; }
         }
 
         public static Func<string, Sprite> LoadSpriteFunc;
@@ -50,68 +63,78 @@ namespace Framework
             {
                 Debug.LogError(name);
             });
+            OnImageClick.AddListener((spriteName) =>
+            {
+                Debug.LogError(spriteName);
+            });
         }
 
         public override void SetVerticesDirty()
         {
             base.SetVerticesDirty();
-
-            GetOutputTextNoRich(text);
             _outputText = GetOutputText(text);
-            _imageVertexIndexList.Clear();
-
-            //UpdateImage();
+            UpdateHyper();
+            UpdateImage();
         }
 
         protected void UpdateImage()
         {
-            var tempText = GetOutputTextNoRich(text);
-            foreach (Match match in _imageRegex.Matches(tempText))
+            var tempText = GetTextWithoutHyper(text);
+            ProcessTextImage(tempText);
+
+            _imageList.RemoveAll(image => image == null);
+            if (_imageList.Count == 0)
             {
-                var imageIndex = match.Index;
-                var endIndex = imageIndex * 4;
-                _imageVertexIndexList.Add(endIndex);
+                GetComponentsInChildren(_imageList);
+            }
 
-                _imageList.RemoveAll(tempImage => tempImage == null);
-                if (_imageList.Count == 0)
-                {
-                    GetComponentsInChildren(_imageList);
-                }
-                if (_imageVertexIndexList.Count > _imageList.Count)
-                {
-                    var resources = new DefaultControls.Resources();
-                    var go = DefaultControls.CreateImage(resources);
-                    go.layer = gameObject.layer;
-                    var rectTransform = go.transform as RectTransform;
-                    if (rectTransform)
-                    {
-                        rectTransform.SetParent(base.rectTransform);
-                        rectTransform.localPosition = Vector3.zero;
-                        rectTransform.localRotation = Quaternion.identity;
-                        rectTransform.localScale = Vector3.one;
-                    }
-                    _imageList.Add(go.GetComponent<Image>());
-                }
+            foreach(var image in _imageList)
+            {
+                image.enabled = false;
+                image.raycastTarget = true;
+            }
 
-                var spriteName = match.Groups[1].Value;
-                var size = float.Parse(match.Groups[2].Value);
-                var image = _imageList[_imageVertexIndexList.Count - 1];
-                if (image.sprite == null || image.sprite.name != spriteName)
+            while (_imageInfoList.Count > _imageList.Count)
+            {
+                var resources = new DefaultControls.Resources();
+                var go = DefaultControls.CreateImage(resources);
+                go.layer = gameObject.layer;
+                var rt = go.transform as RectTransform;
+                if (rt)
                 {
-                    image.sprite = LoadSpriteFunc != null ? LoadSpriteFunc(spriteName) :
-                        Resources.Load<Sprite>(spriteName);
+                    rt.SetParent(rectTransform);
+                    rt.localPosition = Vector3.zero;
+                    rt.localRotation = Quaternion.identity;
+                    rt.localScale = Vector3.one;
                 }
-                image.rectTransform.sizeDelta = new Vector2(size, size);
+                var image = go.GetComponent<Image>();
+                image.enabled = false;
+                image.raycastTarget = true;
+                _imageList.Add(image);
+            }
+
+            for (int i = 0; i < Math.Min(_imageList.Count, _imageInfoList.Count); i++)
+            {
+                var info = _imageInfoList[i];
+                var image = _imageList[i];
+                image.gameObject.AddOrGetComponent<UIEventListener>().onClick = (eventData, gameObject) =>
+                {
+                    _onImageClick?.Invoke(info.SpriteName);
+                };
+                if (image.sprite == null || image.sprite.name != info.SpriteName)
+                {
+                    image.sprite = LoadSpriteFunc != null ? LoadSpriteFunc(info.SpriteName) :
+                        Resources.Load<Sprite>(info.SpriteName);
+                }
+                image.rectTransform.sizeDelta = new Vector2(info.Size * info.Width, info.Size);
                 image.enabled = true;
             }
+        }
 
-            for (var i = _imageVertexIndexList.Count; i < _imageList.Count; i++)
-            {
-                if (_imageList[i])
-                {
-                    _imageList[i].enabled = false;
-                }
-            }
+        protected void UpdateHyper()
+        {
+            var tempText = GetTextWithoutImage(text);
+            ProcessTextHyper(tempText);
         }
 
         protected override void OnPopulateMesh(VertexHelper toFill)
@@ -122,14 +145,23 @@ namespace Framework
             m_Text = orignText;
 
             var vert = new UIVertex();
-            for (var i = 0; i < _imageVertexIndexList.Count; i++)
+
+            for (var i = 0; i < _imageInfoList.Count; i++)
             {
-                var endIndex = _imageVertexIndexList[i];
-                var rectTransform = _imageList[i].rectTransform;
+                var imageInfo = _imageInfoList[i];
+                var endIndex = imageInfo.EndIndex;
+                var size = imageInfo.Size;
+                var width = imageInfo.Width;
+
+                var image = _imageList[i];
+                var rectTransform = image.rectTransform;
+
                 var sizeDelta = rectTransform.sizeDelta;
+
                 if (endIndex < toFill.currentVertCount)
                 {
                     toFill.PopulateUIVertex(ref vert, endIndex);
+
                     rectTransform.anchoredPosition = new Vector2(vert.position.x + sizeDelta.x / 2, vert.position.y + sizeDelta.y / 2);
 
                     toFill.PopulateUIVertex(ref vert, endIndex - 3);
@@ -144,11 +176,12 @@ namespace Framework
                 }
             }
 
-            if (_imageVertexIndexList.Count != 0)
+            if (_imageInfoList.Count != 0)
             {
-                _imageVertexIndexList.Clear();
+                _imageInfoList.Clear();
             }
 
+            //超链包围盒;
             foreach (var hypertextInfo in _hypertextInfoList)
             {
                 hypertextInfo.BoxList.Clear();
@@ -183,7 +216,7 @@ namespace Framework
             }
         }
 
-        protected virtual string GetOutputText(string outputText)
+        protected virtual string GetOutputText(string outputText, string colorName = "green")
         {
             _textBuilder.Length = 0;
 
@@ -193,7 +226,7 @@ namespace Framework
                 var str = outputText.Substring(indexText, match.Index - indexText);
                 _textBuilder.Append(str);
                 var value = match.Groups[2].Value;
-                _textBuilder.Append("<color=green>");
+                _textBuilder.Append($"<color={colorName}>");
                 _textBuilder.Append(value);
                 _textBuilder.Append("</color>");
                 indexText = match.Index + match.Length;
@@ -202,37 +235,111 @@ namespace Framework
             return _textBuilder.ToString();
         }
 
-        protected virtual string GetOutputTextNoRich(string outputText)
+        protected virtual string GetTextWithoutHyper(string outputText)
         {
-            _textNoRichBuilder.Length = 0;
+            _tempTextBuilder.Length = 0;
+            var indexText = 0;
+            foreach (Match match in _hypertextRegex.Matches(outputText))
+            {
+                var str = outputText.Substring(indexText, match.Index - indexText);
+                str = ProcessTextString(str);
+                _tempTextBuilder.Append(str);
+
+                var value = ProcessTextString(match.Groups[2].Value);
+
+                _tempTextBuilder.Append(value);
+                indexText = match.Index + match.Length;
+            }
+            _tempTextBuilder.Append(outputText.Substring(indexText, outputText.Length - indexText));
+            var result = _tempTextBuilder.ToString();
+            return result;
+        }
+
+        protected virtual string ProcessTextHyper(string outputText)
+        {
+            _tempTextBuilder.Length = 0;
             _hypertextInfoList.Clear();
             var indexText = 0;
             foreach (Match match in _hypertextRegex.Matches(outputText))
             {
                 var str = outputText.Substring(indexText, match.Index - indexText);
                 str = ProcessTextString(str);
-                _textNoRichBuilder.Append(str);
+                _tempTextBuilder.Append(str);
 
                 var name = match.Groups[1].Value;
                 var value = ProcessTextString(match.Groups[2].Value);
                 var hypertextInfo = new HypertextInfo
                 {
-                    StartIndex = _textNoRichBuilder.Length * 4,
-                    EndIndex = (_textNoRichBuilder.Length + value.Length) * 4,
+                    StartIndex = _tempTextBuilder.Length * 4,
+                    EndIndex = (_tempTextBuilder.Length + value.Length) * 4,
                     Name = name
                 };
                 _hypertextInfoList.Add(hypertextInfo);
 
-                _textNoRichBuilder.Append(value);
+                _tempTextBuilder.Append(value);
                 indexText = match.Index + match.Length;
             }
-            _textNoRichBuilder.Append(outputText.Substring(indexText, outputText.Length - indexText));
-            return _textNoRichBuilder.ToString();
+            _tempTextBuilder.Append(outputText.Substring(indexText, outputText.Length - indexText));
+            var result = _tempTextBuilder.ToString();
+            return result;
+        }
+
+        protected virtual string GetTextWithoutImage(string outputText)
+        {
+            _tempTextBuilder.Length = 0;
+            var indexText = 0;
+            foreach (Match match in _imageRegex.Matches(outputText))
+            {
+                var str = outputText.Substring(indexText, match.Index - indexText);
+                str = ProcessTextString(str);
+                _tempTextBuilder.Append(str);
+
+                _tempTextBuilder.Append("烫");//占位;
+
+                indexText = match.Index + match.Length;
+            }
+            var result = _tempTextBuilder.ToString();
+            return result;
+        }
+
+        protected virtual string ProcessTextImage(string outputText)
+        {
+            _tempTextBuilder.Length = 0;
+            _imageInfoList.Clear();
+            var indexText = 0;
+            foreach (Match match in _imageRegex.Matches(outputText))
+            {
+                var str = outputText.Substring(indexText, match.Index - indexText);
+                str = ProcessTextString(str);
+                _tempTextBuilder.Append(str);
+
+                var imageIndex = _tempTextBuilder.Length * 4;
+                var endIndex = imageIndex + 3;
+
+                _tempTextBuilder.Append("烫");
+
+                var spriteName = match.Groups[1].Value;
+                var size = float.Parse(match.Groups[2].Value);
+                var width = float.Parse(match.Groups[3].Value);
+
+                var imageInfo = new ImageInfo
+                {
+                    ImageIndex = imageIndex,
+                    EndIndex = endIndex,
+                    SpriteName = spriteName,
+                    Size = size,
+                    Width = width
+                };
+                _imageInfoList.Add(imageInfo);
+                indexText = match.Index + match.Length;
+            }
+            var result = _tempTextBuilder.ToString();
+            return result;
         }
 
         private string ProcessTextString(string str)
         {
-            return str.Replace("\n", "").Replace("\t", "").Replace(" ", "");
+            return str.Replace("\n", "").Replace("\t", "");
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -260,6 +367,15 @@ namespace Framework
             public int EndIndex;
             public string Name;
             public readonly List<Rect> BoxList = new List<Rect>();
+        }
+
+        private class ImageInfo
+        {
+            public string SpriteName;
+            public float Size;
+            public float Width;
+            public int ImageIndex;
+            public int EndIndex;
         }
     }
 }
