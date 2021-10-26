@@ -23,11 +23,11 @@ namespace Framework
                     if (go)
                     {
                         _singleton = go.AddComponent<T>();
-                        var singleton = _singleton as MonoSingletoninterface;
+                        var singleton = _singleton as MonoSingletonInterface;
                         if (singleton != null)
                         {
                             //OnInitialize晚于AwakeEx执行;
-                            singleton.MonoSingletoninterfaceOnInitialize();
+                            singleton.MonoSingletonInterfaceOnInitialize();
                         }
                     }
                 }
@@ -90,10 +90,10 @@ namespace Framework
         //MonoSingleton只有在ApplicationQuit时才会Destroy;
         void OnApplicationQuit()
         {
-            var singleton = _singleton as MonoSingletoninterface;
+            var singleton = _singleton as MonoSingletonInterface;
             if (singleton != null)
             {
-                singleton.MonoSingletoninterfaceOnUninitialize();
+                singleton.MonoSingletonInterfaceOnUninitialize();
             }
             OnDestroyEx();
             _singleton = null;

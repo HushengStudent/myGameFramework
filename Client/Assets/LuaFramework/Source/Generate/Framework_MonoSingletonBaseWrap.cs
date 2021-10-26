@@ -6,10 +6,10 @@ public class Framework_MonoSingletonBaseWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginClass(typeof(Framework.MonoSingletonBase), typeof(Framework.MonoSingletoninterface));
+		L.BeginClass(typeof(Framework.MonoSingletonBase), typeof(Framework.MonoSingletonInterface));
 		L.RegFunction("Launch", Launch);
-		L.RegFunction("MonoSingletoninterfaceOnInitialize", MonoSingletoninterfaceOnInitialize);
-		L.RegFunction("MonoSingletoninterfaceOnUninitialize", MonoSingletoninterfaceOnUninitialize);
+		L.RegFunction("MonoSingletonInterfaceOnInitialize", MonoSingletonInterfaceOnInitialize);
+		L.RegFunction("MonoSingletonInterfaceOnUninitialize", MonoSingletonInterfaceOnUninitialize);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("OnInitializeHandler", get_OnInitializeHandler, set_OnInitializeHandler);
@@ -37,16 +37,16 @@ public class Framework_MonoSingletonBaseWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int MonoSingletoninterfaceOnInitialize(IntPtr L)
+	static int MonoSingletonInterfaceOnInitialize(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingletonBase.MonoSingletoninterfaceOnInitialize");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingletonBase.MonoSingletonInterfaceOnInitialize");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
 			Framework.MonoSingletonBase obj = (Framework.MonoSingletonBase)ToLua.CheckObject<Framework.MonoSingletonBase>(L, 1);
-			obj.MonoSingletoninterfaceOnInitialize();
+			obj.MonoSingletonInterfaceOnInitialize();
 			return 0;
 		}
 		catch (Exception e)
@@ -56,16 +56,16 @@ public class Framework_MonoSingletonBaseWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int MonoSingletoninterfaceOnUninitialize(IntPtr L)
+	static int MonoSingletonInterfaceOnUninitialize(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingletonBase.MonoSingletoninterfaceOnUninitialize");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingletonBase.MonoSingletonInterfaceOnUninitialize");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
 			Framework.MonoSingletonBase obj = (Framework.MonoSingletonBase)ToLua.CheckObject<Framework.MonoSingletonBase>(L, 1);
-			obj.MonoSingletoninterfaceOnUninitialize();
+			obj.MonoSingletonInterfaceOnUninitialize();
 			return 0;
 		}
 		catch (Exception e)
@@ -101,7 +101,7 @@ public class Framework_MonoSingletonBaseWrap
 #if UNITY_EDITOR
         ToluaProfiler.AddCallRecord("Framework.MonoSingletonBase.OnInitializeHandler");
 #endif
-		ToLua.Push(L, new EventObject(typeof(Framework.OnInitializeEventHandler)));
+		ToLua.Push(L, new EventObject(typeof(Framework.OnSingletonInitializeEventHandler)));
 		return 1;
 	}
 
@@ -111,7 +111,7 @@ public class Framework_MonoSingletonBaseWrap
 #if UNITY_EDITOR
         ToluaProfiler.AddCallRecord("Framework.MonoSingletonBase.OnUninitializeHandler");
 #endif
-		ToLua.Push(L, new EventObject(typeof(Framework.OnUninitializeEventHandler)));
+		ToLua.Push(L, new EventObject(typeof(Framework.OnSingletonUninitializeEventHandler)));
 		return 1;
 	}
 
@@ -137,12 +137,12 @@ public class Framework_MonoSingletonBaseWrap
 
 			if (arg0.op == EventOp.Add)
 			{
-				Framework.OnInitializeEventHandler ev = (Framework.OnInitializeEventHandler)arg0.func;
+				Framework.OnSingletonInitializeEventHandler ev = (Framework.OnSingletonInitializeEventHandler)arg0.func;
 				obj.OnInitializeHandler += ev;
 			}
 			else if (arg0.op == EventOp.Sub)
 			{
-				Framework.OnInitializeEventHandler ev = (Framework.OnInitializeEventHandler)arg0.func;
+				Framework.OnSingletonInitializeEventHandler ev = (Framework.OnSingletonInitializeEventHandler)arg0.func;
 				obj.OnInitializeHandler -= ev;
 			}
 
@@ -176,12 +176,12 @@ public class Framework_MonoSingletonBaseWrap
 
 			if (arg0.op == EventOp.Add)
 			{
-				Framework.OnUninitializeEventHandler ev = (Framework.OnUninitializeEventHandler)arg0.func;
+				Framework.OnSingletonUninitializeEventHandler ev = (Framework.OnSingletonUninitializeEventHandler)arg0.func;
 				obj.OnUninitializeHandler += ev;
 			}
 			else if (arg0.op == EventOp.Sub)
 			{
-				Framework.OnUninitializeEventHandler ev = (Framework.OnUninitializeEventHandler)arg0.func;
+				Framework.OnSingletonUninitializeEventHandler ev = (Framework.OnSingletonUninitializeEventHandler)arg0.func;
 				obj.OnUninitializeHandler -= ev;
 			}
 

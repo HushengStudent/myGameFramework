@@ -167,9 +167,9 @@ public static class CustomSettings
         _GT(typeof(Text)),
 
         //Framework;
-        _GT(typeof(MonoSingletoninterface)),
+        _GT(typeof(MonoSingletonInterface)),
         _GT(typeof(MonoSingletonBase)),
-        _GT(typeof(Singletoninterface)),
+        _GT(typeof(SingletonInterface)),
         _GT(typeof(SingletonBase)),
 
         _GT(typeof(LuaMgr)),

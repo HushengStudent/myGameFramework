@@ -2,14 +2,14 @@
 using System;
 using LuaInterface;
 
-public class Framework_MonoSingletoninterfaceWrap
+public class Framework_MonoSingletonInterfaceWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginClass(typeof(Framework.MonoSingletoninterface), typeof(UnityEngine.MonoBehaviour));
+		L.BeginClass(typeof(Framework.MonoSingletonInterface), typeof(UnityEngine.MonoBehaviour));
 		L.RegFunction("Launch", Launch);
-		L.RegFunction("MonoSingletoninterfaceOnInitialize", MonoSingletoninterfaceOnInitialize);
-		L.RegFunction("MonoSingletoninterfaceOnUninitialize", MonoSingletoninterfaceOnUninitialize);
+		L.RegFunction("MonoSingletonInterfaceOnInitialize", MonoSingletonInterfaceOnInitialize);
+		L.RegFunction("MonoSingletonInterfaceOnUninitialize", MonoSingletonInterfaceOnUninitialize);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.EndClass();
@@ -19,12 +19,12 @@ public class Framework_MonoSingletoninterfaceWrap
 	static int Launch(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingletoninterface.Launch");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingletonInterface.Launch");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			Framework.MonoSingletoninterface obj = (Framework.MonoSingletoninterface)ToLua.CheckObject<Framework.MonoSingletoninterface>(L, 1);
+			Framework.MonoSingletonInterface obj = (Framework.MonoSingletonInterface)ToLua.CheckObject<Framework.MonoSingletonInterface>(L, 1);
 			obj.Launch();
 			return 0;
 		}
@@ -35,16 +35,16 @@ public class Framework_MonoSingletoninterfaceWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int MonoSingletoninterfaceOnInitialize(IntPtr L)
+	static int MonoSingletonInterfaceOnInitialize(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingletoninterface.MonoSingletoninterfaceOnInitialize");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingletonInterface.MonoSingletonInterfaceOnInitialize");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			Framework.MonoSingletoninterface obj = (Framework.MonoSingletoninterface)ToLua.CheckObject<Framework.MonoSingletoninterface>(L, 1);
-			obj.MonoSingletoninterfaceOnInitialize();
+			Framework.MonoSingletonInterface obj = (Framework.MonoSingletonInterface)ToLua.CheckObject<Framework.MonoSingletonInterface>(L, 1);
+			obj.MonoSingletonInterfaceOnInitialize();
 			return 0;
 		}
 		catch (Exception e)
@@ -54,16 +54,16 @@ public class Framework_MonoSingletoninterfaceWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int MonoSingletoninterfaceOnUninitialize(IntPtr L)
+	static int MonoSingletonInterfaceOnUninitialize(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingletoninterface.MonoSingletoninterfaceOnUninitialize");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingletonInterface.MonoSingletonInterfaceOnUninitialize");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			Framework.MonoSingletoninterface obj = (Framework.MonoSingletoninterface)ToLua.CheckObject<Framework.MonoSingletoninterface>(L, 1);
-			obj.MonoSingletoninterfaceOnUninitialize();
+			Framework.MonoSingletonInterface obj = (Framework.MonoSingletonInterface)ToLua.CheckObject<Framework.MonoSingletonInterface>(L, 1);
+			obj.MonoSingletonInterfaceOnUninitialize();
 			return 0;
 		}
 		catch (Exception e)
@@ -76,7 +76,7 @@ public class Framework_MonoSingletoninterfaceWrap
 	static int op_Equality(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingletoninterface.op_Equality");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingletonInterface.op_Equality");
 #endif
 		try
 		{

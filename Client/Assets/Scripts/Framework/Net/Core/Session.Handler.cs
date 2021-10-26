@@ -4,25 +4,21 @@
 ** desc:  网络事件;
 *********************************************************************************/
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace Framework
 {
     public partial class Session
     {
-        //网络连接;
+        /// <summary> 网络连接; </summary>
         public delegate void SessionConnectedEventHandler(Session session, SessionParam args);
-        //网络关闭;
+        /// <summary> 网络关闭; </summary>
         public delegate void SessionClosedEventHandler(Session session);
-        //session错误;
+        /// <summary> session错误; </summary>
         public delegate void SessionErrorEventHandler(Session session, SessionErrorCode state, string error);
-        //通信错误;
+        /// <summary> 通信错误; </summary>
         public delegate void SessionCustomErrorEventHandler(Session session, object args);
-        //接收;
+        /// <summary> 接收; </summary>
         public delegate void SessionReceiveEventHandler(Session session, Packet packet);
-        //发送;
+        /// <summary> 发送; </summary>
         public delegate void SessionSendEventHandler(Session session, int count, SessionParam args);
     }
 }

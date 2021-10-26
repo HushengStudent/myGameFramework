@@ -34,8 +34,8 @@ public class DelegateFactory
 		dict.Add(typeof(UnityEngine.AudioClip.PCMSetPositionCallback), factory.UnityEngine_AudioClip_PCMSetPositionCallback);
 		dict.Add(typeof(System.Action<UnityEngine.AsyncOperation>), factory.System_Action_UnityEngine_AsyncOperation);
 		dict.Add(typeof(UnityEngine.RectTransform.ReapplyDrivenProperties), factory.UnityEngine_RectTransform_ReapplyDrivenProperties);
-		dict.Add(typeof(Framework.OnInitializeEventHandler), factory.Framework_OnInitializeEventHandler);
-		dict.Add(typeof(Framework.OnUninitializeEventHandler), factory.Framework_OnUninitializeEventHandler);
+		dict.Add(typeof(Framework.OnSingletonInitializeEventHandler), factory.Framework_OnSingletonInitializeEventHandler);
+		dict.Add(typeof(Framework.OnSingletonUninitializeEventHandler), factory.Framework_OnSingletonUninitializeEventHandler);
 		dict.Add(typeof(Framework.SceneLoadEventHandler), factory.Framework_SceneLoadEventHandler);
 		dict.Add(typeof(System.Action<float>), factory.System_Action_float);
 		dict.Add(typeof(System.Action<UnityEngine.SceneManagement.Scene>), factory.System_Action_UnityEngine_SceneManagement_Scene);
@@ -57,8 +57,8 @@ public class DelegateFactory
 		DelegateTraits<UnityEngine.AudioClip.PCMSetPositionCallback>.Init(factory.UnityEngine_AudioClip_PCMSetPositionCallback);
 		DelegateTraits<System.Action<UnityEngine.AsyncOperation>>.Init(factory.System_Action_UnityEngine_AsyncOperation);
 		DelegateTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Init(factory.UnityEngine_RectTransform_ReapplyDrivenProperties);
-		DelegateTraits<Framework.OnInitializeEventHandler>.Init(factory.Framework_OnInitializeEventHandler);
-		DelegateTraits<Framework.OnUninitializeEventHandler>.Init(factory.Framework_OnUninitializeEventHandler);
+		DelegateTraits<Framework.OnSingletonInitializeEventHandler>.Init(factory.Framework_OnSingletonInitializeEventHandler);
+		DelegateTraits<Framework.OnSingletonUninitializeEventHandler>.Init(factory.Framework_OnSingletonUninitializeEventHandler);
 		DelegateTraits<Framework.SceneLoadEventHandler>.Init(factory.Framework_SceneLoadEventHandler);
 		DelegateTraits<System.Action<float>>.Init(factory.System_Action_float);
 		DelegateTraits<System.Action<UnityEngine.SceneManagement.Scene>>.Init(factory.System_Action_UnityEngine_SceneManagement_Scene);
@@ -80,8 +80,8 @@ public class DelegateFactory
 		TypeTraits<UnityEngine.AudioClip.PCMSetPositionCallback>.Init(factory.Check_UnityEngine_AudioClip_PCMSetPositionCallback);
 		TypeTraits<System.Action<UnityEngine.AsyncOperation>>.Init(factory.Check_System_Action_UnityEngine_AsyncOperation);
 		TypeTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Init(factory.Check_UnityEngine_RectTransform_ReapplyDrivenProperties);
-		TypeTraits<Framework.OnInitializeEventHandler>.Init(factory.Check_Framework_OnInitializeEventHandler);
-		TypeTraits<Framework.OnUninitializeEventHandler>.Init(factory.Check_Framework_OnUninitializeEventHandler);
+		TypeTraits<Framework.OnSingletonInitializeEventHandler>.Init(factory.Check_Framework_OnSingletonInitializeEventHandler);
+		TypeTraits<Framework.OnSingletonUninitializeEventHandler>.Init(factory.Check_Framework_OnSingletonUninitializeEventHandler);
 		TypeTraits<Framework.SceneLoadEventHandler>.Init(factory.Check_Framework_SceneLoadEventHandler);
 		TypeTraits<System.Action<float>>.Init(factory.Check_System_Action_float);
 		TypeTraits<System.Action<UnityEngine.SceneManagement.Scene>>.Init(factory.Check_System_Action_UnityEngine_SceneManagement_Scene);
@@ -103,8 +103,8 @@ public class DelegateFactory
 		StackTraits<UnityEngine.AudioClip.PCMSetPositionCallback>.Push = factory.Push_UnityEngine_AudioClip_PCMSetPositionCallback;
 		StackTraits<System.Action<UnityEngine.AsyncOperation>>.Push = factory.Push_System_Action_UnityEngine_AsyncOperation;
 		StackTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Push = factory.Push_UnityEngine_RectTransform_ReapplyDrivenProperties;
-		StackTraits<Framework.OnInitializeEventHandler>.Push = factory.Push_Framework_OnInitializeEventHandler;
-		StackTraits<Framework.OnUninitializeEventHandler>.Push = factory.Push_Framework_OnUninitializeEventHandler;
+		StackTraits<Framework.OnSingletonInitializeEventHandler>.Push = factory.Push_Framework_OnSingletonInitializeEventHandler;
+		StackTraits<Framework.OnSingletonUninitializeEventHandler>.Push = factory.Push_Framework_OnSingletonUninitializeEventHandler;
 		StackTraits<Framework.SceneLoadEventHandler>.Push = factory.Push_Framework_SceneLoadEventHandler;
 		StackTraits<System.Action<float>>.Push = factory.Push_System_Action_float;
 		StackTraits<System.Action<UnityEngine.SceneManagement.Scene>>.Push = factory.Push_System_Action_UnityEngine_SceneManagement_Scene;
@@ -1200,10 +1200,10 @@ public class DelegateFactory
 		ToLua.Push(L, o);
 	}
 
-	class Framework_OnInitializeEventHandler_Event : LuaDelegate
+	class Framework_OnSingletonInitializeEventHandler_Event : LuaDelegate
 	{
-		public Framework_OnInitializeEventHandler_Event(LuaFunction func) : base(func) { }
-		public Framework_OnInitializeEventHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+		public Framework_OnSingletonInitializeEventHandler_Event(LuaFunction func) : base(func) { }
+		public Framework_OnSingletonInitializeEventHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
 
 		public void Call()
 		{
@@ -1219,44 +1219,44 @@ public class DelegateFactory
 		}
 	}
 
-	public Framework.OnInitializeEventHandler Framework_OnInitializeEventHandler(LuaFunction func, LuaTable self, bool flag)
+	public Framework.OnSingletonInitializeEventHandler Framework_OnSingletonInitializeEventHandler(LuaFunction func, LuaTable self, bool flag)
 	{
 		if (func == null)
 		{
-			Framework.OnInitializeEventHandler fn = delegate() { };
+			Framework.OnSingletonInitializeEventHandler fn = delegate() { };
 			return fn;
 		}
 
 		if(!flag)
 		{
-			Framework_OnInitializeEventHandler_Event target = new Framework_OnInitializeEventHandler_Event(func);
-			Framework.OnInitializeEventHandler d = target.Call;
+			Framework_OnSingletonInitializeEventHandler_Event target = new Framework_OnSingletonInitializeEventHandler_Event(func);
+			Framework.OnSingletonInitializeEventHandler d = target.Call;
 			target.method = d.Method;
 			return d;
 		}
 		else
 		{
-			Framework_OnInitializeEventHandler_Event target = new Framework_OnInitializeEventHandler_Event(func, self);
-			Framework.OnInitializeEventHandler d = target.CallWithSelf;
+			Framework_OnSingletonInitializeEventHandler_Event target = new Framework_OnSingletonInitializeEventHandler_Event(func, self);
+			Framework.OnSingletonInitializeEventHandler d = target.CallWithSelf;
 			target.method = d.Method;
 			return d;
 		}
 	}
 
-	bool Check_Framework_OnInitializeEventHandler(IntPtr L, int pos)
+	bool Check_Framework_OnSingletonInitializeEventHandler(IntPtr L, int pos)
 	{
-		return TypeChecker.CheckDelegateType(typeof(Framework.OnInitializeEventHandler), L, pos);
+		return TypeChecker.CheckDelegateType(typeof(Framework.OnSingletonInitializeEventHandler), L, pos);
 	}
 
-	void Push_Framework_OnInitializeEventHandler(IntPtr L, Framework.OnInitializeEventHandler o)
+	void Push_Framework_OnSingletonInitializeEventHandler(IntPtr L, Framework.OnSingletonInitializeEventHandler o)
 	{
 		ToLua.Push(L, o);
 	}
 
-	class Framework_OnUninitializeEventHandler_Event : LuaDelegate
+	class Framework_OnSingletonUninitializeEventHandler_Event : LuaDelegate
 	{
-		public Framework_OnUninitializeEventHandler_Event(LuaFunction func) : base(func) { }
-		public Framework_OnUninitializeEventHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+		public Framework_OnSingletonUninitializeEventHandler_Event(LuaFunction func) : base(func) { }
+		public Framework_OnSingletonUninitializeEventHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
 
 		public void Call()
 		{
@@ -1272,36 +1272,36 @@ public class DelegateFactory
 		}
 	}
 
-	public Framework.OnUninitializeEventHandler Framework_OnUninitializeEventHandler(LuaFunction func, LuaTable self, bool flag)
+	public Framework.OnSingletonUninitializeEventHandler Framework_OnSingletonUninitializeEventHandler(LuaFunction func, LuaTable self, bool flag)
 	{
 		if (func == null)
 		{
-			Framework.OnUninitializeEventHandler fn = delegate() { };
+			Framework.OnSingletonUninitializeEventHandler fn = delegate() { };
 			return fn;
 		}
 
 		if(!flag)
 		{
-			Framework_OnUninitializeEventHandler_Event target = new Framework_OnUninitializeEventHandler_Event(func);
-			Framework.OnUninitializeEventHandler d = target.Call;
+			Framework_OnSingletonUninitializeEventHandler_Event target = new Framework_OnSingletonUninitializeEventHandler_Event(func);
+			Framework.OnSingletonUninitializeEventHandler d = target.Call;
 			target.method = d.Method;
 			return d;
 		}
 		else
 		{
-			Framework_OnUninitializeEventHandler_Event target = new Framework_OnUninitializeEventHandler_Event(func, self);
-			Framework.OnUninitializeEventHandler d = target.CallWithSelf;
+			Framework_OnSingletonUninitializeEventHandler_Event target = new Framework_OnSingletonUninitializeEventHandler_Event(func, self);
+			Framework.OnSingletonUninitializeEventHandler d = target.CallWithSelf;
 			target.method = d.Method;
 			return d;
 		}
 	}
 
-	bool Check_Framework_OnUninitializeEventHandler(IntPtr L, int pos)
+	bool Check_Framework_OnSingletonUninitializeEventHandler(IntPtr L, int pos)
 	{
-		return TypeChecker.CheckDelegateType(typeof(Framework.OnUninitializeEventHandler), L, pos);
+		return TypeChecker.CheckDelegateType(typeof(Framework.OnSingletonUninitializeEventHandler), L, pos);
 	}
 
-	void Push_Framework_OnUninitializeEventHandler(IntPtr L, Framework.OnUninitializeEventHandler o)
+	void Push_Framework_OnSingletonUninitializeEventHandler(IntPtr L, Framework.OnSingletonUninitializeEventHandler o)
 	{
 		ToLua.Push(L, o);
 	}

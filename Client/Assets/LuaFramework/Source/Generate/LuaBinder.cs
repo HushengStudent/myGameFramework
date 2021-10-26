@@ -89,9 +89,9 @@ public static class LuaBinder
 		L.EndModule();
 		L.EndModule();
 		L.BeginModule("Framework");
-		Framework_MonoSingletoninterfaceWrap.Register(L);
+		Framework_MonoSingletonInterfaceWrap.Register(L);
 		Framework_MonoSingletonBaseWrap.Register(L);
-		Framework_SingletoninterfaceWrap.Register(L);
+		Framework_SingletonInterfaceWrap.Register(L);
 		Framework_SingletonBaseWrap.Register(L);
 		Framework_LuaMgrWrap.Register(L);
 		Framework_LuaUtilityWrap.Register(L);
@@ -106,8 +106,8 @@ public static class LuaBinder
 		Framework_Singleton_Framework_LuaUtilityWrap.Register(L);
 		Framework_Singleton_Framework_SceneMgrWrap.Register(L);
 		Framework_MonoSingleton_Framework_ResourceMgrWrap.Register(L);
-		L.RegFunction("OnInitializeEventHandler", Framework_OnInitializeEventHandler);
-		L.RegFunction("OnUninitializeEventHandler", Framework_OnUninitializeEventHandler);
+		L.RegFunction("OnSingletonInitializeEventHandler", Framework_OnSingletonInitializeEventHandler);
+		L.RegFunction("OnSingletonUninitializeEventHandler", Framework_OnSingletonUninitializeEventHandler);
 		L.RegFunction("SceneLoadEventHandler", Framework_SceneLoadEventHandler);
 		L.EndModule();
 		L.BeginModule("System");
@@ -381,10 +381,10 @@ public static class LuaBinder
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int Framework_OnInitializeEventHandler(IntPtr L)
+	static int Framework_OnSingletonInitializeEventHandler(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.Framework_OnInitializeEventHandler");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.Framework_OnSingletonInitializeEventHandler");
 #endif
 		try
 		{
@@ -393,13 +393,13 @@ public static class LuaBinder
 
 			if (count == 1)
 			{
-				Delegate arg1 = DelegateTraits<Framework.OnInitializeEventHandler>.Create(func);
+				Delegate arg1 = DelegateTraits<Framework.OnSingletonInitializeEventHandler>.Create(func);
 				ToLua.Push(L, arg1);
 			}
 			else
 			{
 				LuaTable self = ToLua.CheckLuaTable(L, 2);
-				Delegate arg1 = DelegateTraits<Framework.OnInitializeEventHandler>.Create(func, self);
+				Delegate arg1 = DelegateTraits<Framework.OnSingletonInitializeEventHandler>.Create(func, self);
 				ToLua.Push(L, arg1);
 			}
 			return 1;
@@ -411,10 +411,10 @@ public static class LuaBinder
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int Framework_OnUninitializeEventHandler(IntPtr L)
+	static int Framework_OnSingletonUninitializeEventHandler(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.Framework_OnUninitializeEventHandler");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.Framework_OnSingletonUninitializeEventHandler");
 #endif
 		try
 		{
@@ -423,13 +423,13 @@ public static class LuaBinder
 
 			if (count == 1)
 			{
-				Delegate arg1 = DelegateTraits<Framework.OnUninitializeEventHandler>.Create(func);
+				Delegate arg1 = DelegateTraits<Framework.OnSingletonUninitializeEventHandler>.Create(func);
 				ToLua.Push(L, arg1);
 			}
 			else
 			{
 				LuaTable self = ToLua.CheckLuaTable(L, 2);
-				Delegate arg1 = DelegateTraits<Framework.OnUninitializeEventHandler>.Create(func, self);
+				Delegate arg1 = DelegateTraits<Framework.OnSingletonUninitializeEventHandler>.Create(func, self);
 				ToLua.Push(L, arg1);
 			}
 			return 1;

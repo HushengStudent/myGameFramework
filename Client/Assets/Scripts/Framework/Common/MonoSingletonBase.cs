@@ -8,24 +8,24 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class MonoSingletoninterface : MonoBehaviour
+    public class MonoSingletonInterface : MonoBehaviour
     {
         public virtual void Launch() { }
-        public virtual void MonoSingletoninterfaceOnInitialize() { }
-        public virtual void MonoSingletoninterfaceOnUninitialize() { }
+        public virtual void MonoSingletonInterfaceOnInitialize() { }
+        public virtual void MonoSingletonInterfaceOnUninitialize() { }
     }
 
-    public class MonoSingletonBase : MonoSingletoninterface
+    public class MonoSingletonBase : MonoSingletonInterface
     {
-        public event OnInitializeEventHandler OnInitializeHandler;
-        public event OnUninitializeEventHandler OnUninitializeHandler;
+        public event OnSingletonInitializeEventHandler OnInitializeHandler;
+        public event OnSingletonUninitializeEventHandler OnUninitializeHandler;
 
         private bool isInit = false;
         private bool isUninit = false;
 
         public sealed override void Launch() { }
 
-        public sealed override void MonoSingletoninterfaceOnInitialize()
+        public sealed override void MonoSingletonInterfaceOnInitialize()
         {
             if (!isInit)
             {
@@ -35,7 +35,7 @@ namespace Framework
             }
         }
 
-        public sealed override void MonoSingletoninterfaceOnUninitialize()
+        public sealed override void MonoSingletonInterfaceOnUninitialize()
         {
             if (!isUninit)
             {

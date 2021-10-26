@@ -20,9 +20,9 @@ namespace Framework
                     lock (_lock)
                     {
                         _singleton = new T(); //调用构造函数;
-                        if (_singleton is Singletoninterface singleton)
+                        if (_singleton is SingletonInterface singleton)
                         {
-                            singleton.SingletoninterfaceOnInitialize();
+                            singleton.SingletonInterfaceOnInitialize();
                         }
                     }
                 }

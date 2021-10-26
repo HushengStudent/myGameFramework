@@ -7,27 +7,27 @@
 
 namespace Framework
 {
-    public delegate void OnInitializeEventHandler();
-    public delegate void OnUninitializeEventHandler();
+    public delegate void OnSingletonInitializeEventHandler();
+    public delegate void OnSingletonUninitializeEventHandler();
 
-    public class Singletoninterface
+    public class SingletonInterface
     {
         public virtual void Launch() { }
-        public virtual void SingletoninterfaceOnInitialize() { }
-        public virtual void SingletoninterfaceOnUninitialize() { }
+        public virtual void SingletonInterfaceOnInitialize() { }
+        public virtual void SingletonInterfaceOnUninitialize() { }
     }
 
-    public class SingletonBase : Singletoninterface
+    public class SingletonBase : SingletonInterface
     {
-        public event OnInitializeEventHandler OnInitializeHandler;
-        public event OnUninitializeEventHandler OnUninitializeHandler;
+        public event OnSingletonInitializeEventHandler OnInitializeHandler;
+        public event OnSingletonUninitializeEventHandler OnUninitializeHandler;
 
         private bool isInit = false;
         private bool isUninit = false;
 
         public sealed override void Launch() { }
 
-        public sealed override void SingletoninterfaceOnInitialize()
+        public sealed override void SingletonInterfaceOnInitialize()
         {
             if (!isInit)
             {
@@ -37,7 +37,7 @@ namespace Framework
             }
         }
 
-        public sealed override void SingletoninterfaceOnUninitialize()
+        public sealed override void SingletonInterfaceOnUninitialize()
         {
             if (!isUninit)
             {
