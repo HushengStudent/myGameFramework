@@ -4,7 +4,6 @@
 ** desc:  单例基类;
 *********************************************************************************/
 
-
 namespace Framework
 {
     public delegate void OnSingletonInitializeEventHandler();

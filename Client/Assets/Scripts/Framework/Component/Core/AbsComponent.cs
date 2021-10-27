@@ -62,7 +62,7 @@ namespace Framework
         public void UnInitialize()
         {
             InternalDetachObject();
-            OnDetachGameObject();
+            InternalDetachGameObject();
             EventUnsubscribe();
             UnInitializeEx();
             Enable = false;

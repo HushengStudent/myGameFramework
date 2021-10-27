@@ -18,6 +18,11 @@ namespace Framework
         /// EntityList;
         private List<AbsEntity> _entityList = new List<AbsEntity>();
 
+        /// Call Update EntityList;
+        private List<AbsEntity> _updateEntityList = new List<AbsEntity>();
+        /// Release at this frame;
+        private List<ulong> _releaseEntityUIDList = new List<ulong>();
+
         #endregion
 
         #region Unity api
@@ -25,11 +30,17 @@ namespace Framework
         protected override void FixedUpdateEx(float interval)
         {
             base.FixedUpdateEx(interval);
-            for (var i = 0; i < _entityList.Count; i++)
+
+            _updateEntityList.Clear();
+            _updateEntityList.AddRange(_entityList);
+            _releaseEntityUIDList.Clear();
+
+            for (var i = 0; i < _updateEntityList.Count; i++)
             {
-                if (_entityList[i].Enable)
+                var entity = _updateEntityList[i];
+                if (entity.Enable && !_releaseEntityUIDList.Contains(entity.UID))
                 {
-                    _entityList[i].FixedUpdateEx(interval);
+                    entity.FixedUpdateEx(interval);
                 }
             }
         }
@@ -37,11 +48,12 @@ namespace Framework
         protected override void UpdateEx(float interval)
         {
             base.UpdateEx(interval);
-            for (var i = 0; i < _entityList.Count; i++)
+            for (var i = 0; i < _updateEntityList.Count; i++)
             {
-                if (_entityList[i].Enable)
+                var entity = _updateEntityList[i];
+                if (entity.Enable && !_releaseEntityUIDList.Contains(entity.UID))
                 {
-                    _entityList[i].UpdateEx(interval);
+                    entity.UpdateEx(interval);
                 }
             }
         }
@@ -49,11 +61,12 @@ namespace Framework
         protected override void LateUpdateEx(float interval)
         {
             base.LateUpdateEx(interval);
-            for (var i = 0; i < _entityList.Count; i++)
+            for (var i = 0; i < _updateEntityList.Count; i++)
             {
-                if (_entityList[i].Enable)
+                var entity = _updateEntityList[i];
+                if (entity.Enable && !_releaseEntityUIDList.Contains(entity.UID))
                 {
-                    _entityList[i].LateUpdateEx(interval);
+                    entity.LateUpdateEx(interval);
                 }
             }
         }
@@ -87,7 +100,8 @@ namespace Framework
             }
             else
             {
-                LogHelper.PrintError($"[EntityMgr]CreateEntity {typeof(T).ToString()} error,entityId:{entityId},uid:{uid},name:{name}!");
+                LogHelper.PrintError($"[EntityMgr]CreateEntity:{typeof(T).ToString()} error,entityId:{entityId},uid:{uid},name:{name}.");
+                PoolMgr.singleton.ReleaseCsharpObject(entity);
                 return null;
             }
         }
@@ -101,7 +115,8 @@ namespace Framework
         {
             RemoveEntity(entity);
             entity.UnInitialize();
-            PoolMgr.singleton.ReleaseCsharpObject<T>(entity as T);
+            _releaseEntityUIDList.Add(entity.UID);
+            PoolMgr.singleton.ReleaseCsharpObject(entity as T);
         }
 
         /// <summary>
@@ -112,12 +127,14 @@ namespace Framework
         /// <returns></returns>
         public T GetEntity<T>(ulong uid) where T : AbsEntity, new()
         {
-            T target = null;
             if (_entityDict.TryGetValue(uid, out var temp))
             {
-                target = temp as T;
+                return temp as T;
             }
-            return target;
+            else
+            {
+                return null;
+            }
         }
 
         /// 添加Entity;

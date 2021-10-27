@@ -10,7 +10,7 @@ namespace Framework
 {
     public interface IPool //: IDisposable
     {
-        void OnGet(params Object[] args);
+        void OnGet(params object[] args);
         void OnRelease();
     }
 }

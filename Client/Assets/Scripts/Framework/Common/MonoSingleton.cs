@@ -26,7 +26,7 @@ namespace Framework
                         var singleton = _singleton as MonoSingletonInterface;
                         if (singleton != null)
                         {
-                            //OnInitialize晚于AwakeEx执行;
+                            /// OnInitialize晚于AwakeEx执行;
                             singleton.MonoSingletonInterfaceOnInitialize();
                         }
                     }
@@ -87,7 +87,7 @@ namespace Framework
             OnDisableEx();
         }
 
-        //MonoSingleton只有在ApplicationQuit时才会Destroy;
+        /// MonoSingleton只有在ApplicationQuit时才会Destroy;
         void OnApplicationQuit()
         {
             var singleton = _singleton as MonoSingletonInterface;

@@ -10,12 +10,15 @@ using UnityObject = UnityEngine.Object;
 
 namespace Framework
 {
-    public enum EntityType : byte
+    public enum EntityType : byte /// (curEntityType & EntityType.Role) > 0
     {
-        Non = 0,
-        Role = 1,
-        Player = 2,
-        Monster = 3,
+        Non = 1 << 0,
+
+        Role = 1 << 1,
+        Player = 1 << 2,
+
+        Monster = 1 << 3,
+        Boss = 1 << 4,
     }
 
     public abstract class AbsEntity : ObjectEx

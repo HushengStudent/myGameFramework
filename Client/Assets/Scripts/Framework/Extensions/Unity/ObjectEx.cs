@@ -18,9 +18,8 @@ namespace Framework
 
         private List<AbsComponent> _componentList = new List<AbsComponent>();
 
-        public bool Enable;
-
         public long ID { get; private set; }
+        public bool Enable { get; set; }
 
         protected void InternalInitialize()
         {
@@ -87,13 +86,12 @@ namespace Framework
         {
             for (var i = 0; i < _componentList.Count; i++)
             {
-                var target = _componentList[i];
-                if (target as T != null)
+                if (_componentList[i] is T target)
                 {
-                    return target as T;
+                    return target;
                 }
             }
-            LogHelper.PrintError($"[ObjectEx]GetComponent error,not find component:{typeof(T).ToString()}!");
+            /// LogHelper.PrintError($"[ObjectEx]GetComponent error,not find component:{typeof(T).ToString()}.");
             return null;
         }
 
@@ -108,7 +106,7 @@ namespace Framework
             {
                 if (_componentList[i] is T)
                 {
-                    LogHelper.PrintError($"[ObjectEx]AddComponent,{typeof(T).ToString()} repeat!");
+                    LogHelper.PrintError($"[ObjectEx]AddComponent,{typeof(T).ToString()} repeat.");
                     return null;
                 }
             }
@@ -127,15 +125,15 @@ namespace Framework
         {
             for (var i = 0; i < _componentList.Count; i++)
             {
-                if (_componentList[i] is T targetComp)
+                if (_componentList[i] is T target)
                 {
-                    targetComp.UnInitialize();
-                    PoolMgr.singleton.ReleaseCsharpObject(targetComp);
-                    _componentList.Remove(targetComp);
+                    target.UnInitialize();
+                    PoolMgr.singleton.ReleaseCsharpObject(target);
+                    _componentList.Remove(target);
                     return true;
                 }
             }
-            LogHelper.PrintError($"[ComponentMgr]ReleaseComponent {typeof(T).ToString()} error,can not find the component!");
+            LogHelper.PrintError($"[ComponentMgr]ReleaseComponent {typeof(T).ToString()} error,can not find the component.");
             return false;
         }
 
@@ -149,21 +147,21 @@ namespace Framework
         {
             if (comp as T == null)
             {
-                LogHelper.PrintError($"[ComponentMgr]ReleaseComponent error:comp as {typeof(T).ToString()} is null!");
+                LogHelper.PrintError($"[ComponentMgr]ReleaseComponent error:comp as {typeof(T).ToString()} is null.");
                 return false;
             }
             for (var i = 0; i < _componentList.Count; i++)
             {
-                var targetComp = _componentList[i];
-                if (targetComp == comp)
+                var target = _componentList[i];
+                if (target == comp)
                 {
                     comp.UnInitialize();
                     PoolMgr.singleton.ReleaseCsharpObject(comp as T);
-                    _componentList.Remove(targetComp);
+                    _componentList.Remove(target);
                     return true;
                 }
             }
-            LogHelper.PrintError($"[ComponentMgr]ReleaseComponent {typeof(T).ToString()} error,can not find the component!");
+            LogHelper.PrintError($"[ComponentMgr]ReleaseComponent {typeof(T).ToString()} error,can not find the component.");
             return false;
         }
 
@@ -176,8 +174,8 @@ namespace Framework
         {
             for (var i = 0; i < _componentList.Count; i++)
             {
-                var targetComp = _componentList[i];
-                if (targetComp == comp)
+                var target = _componentList[i];
+                if (target == comp)
                 {
                     comp.UnInitialize();
                     _componentList.Remove(comp);
@@ -192,7 +190,7 @@ namespace Framework
         /// 对象池Get;
         /// </summary>
         /// <param name="args"></param>
-        public virtual void OnGet(params System.Object[] args) { }
+        public virtual void OnGet(params object[] args) { }
 
         /// <summary>
         /// 对象池Release;

@@ -15,7 +15,7 @@ namespace Framework
         /// <summary>
         /// Csharp Object Pool;
         /// </summary>
-        private Dictionary<Type, Object> _csharpObjectPool = new Dictionary<Type, Object>();
+        private Dictionary<Type, object> _csharpObjectPool = new Dictionary<Type, object>();
 
         /// <summary>
         /// 获取Csharp对象池目标组件;
@@ -23,7 +23,7 @@ namespace Framework
         /// <typeparam name="T"></typeparam>
         /// <param name="args">初始化参数</param>
         /// <returns></returns>
-        public T GetCsharpObject<T>(params Object[] args) where T : new()
+        public T GetCsharpObject<T>(params object[] args) where T : new()
         {
             CsharpObjectPool<T> pool;
             if (_csharpObjectPool.TryGetValue(typeof(T), out var temp))
