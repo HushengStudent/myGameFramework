@@ -34,10 +34,6 @@ namespace Framework
 
         public abstract EntityType EntityType { get; }
 
-        public virtual void FixedUpdateEx(float interval) { }
-        public virtual void UpdateEx(float interval) { }
-        public virtual void LateUpdateEx(float interval) { }
-
         public event Action<AbsEntity> LoadFinishEventHandler;
 
         /// <summary>

@@ -4,64 +4,10 @@
 ** desc:  ECS组件管理;
 *********************************************************************************/
 
-using System.Collections.Generic;
-
 namespace Framework
 {
     public class ComponentMgr : MonoSingleton<ComponentMgr>
     {
-        #region Field
-
-        private List<AbsComponent> _componentList = new List<AbsComponent>();
-
-        #endregion
-
-        #region Unity api
-
-        protected override void OnInitialize()
-        {
-            base.OnInitialize();
-            _componentList.Clear();
-        }
-
-        protected override void FixedUpdateEx(float interval)
-        {
-            base.FixedUpdateEx(interval);
-            for (var i = 0; i < _componentList.Count; i++)
-            {
-                if (_componentList[i].Enable)
-                {
-                    _componentList[i].FixedUpdateEx(interval);
-                }
-            }
-        }
-
-        protected override void UpdateEx(float interval)
-        {
-            base.UpdateEx(interval);
-            for (var i = 0; i < _componentList.Count; i++)
-            {
-                if (_componentList[i].Enable)
-                {
-                    _componentList[i].UpdateEx(interval);
-                }
-            }
-        }
-
-        protected override void LateUpdateEx(float interval)
-        {
-            base.LateUpdateEx(interval);
-            for (var i = 0; i < _componentList.Count; i++)
-            {
-                if (_componentList[i].Enable)
-                {
-                    _componentList[i].LateUpdateEx(interval);
-                }
-            }
-        }
-
-        #endregion
-
         #region Function
 
         /// <summary>

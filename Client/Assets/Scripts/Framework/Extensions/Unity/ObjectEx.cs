@@ -18,8 +18,61 @@ namespace Framework
 
         private List<AbsComponent> _componentList = new List<AbsComponent>();
 
+        /// Call Update ComponentList;
+        private List<AbsComponent> _updateComponentList = new List<AbsComponent>();
+        /// Release at this frame;
+        private List<string> _releaseComponentUIDList = new List<string>();
+
         public long ID { get; private set; }
         public bool Enable { get; set; }
+
+        protected virtual void FixedUpdateEx(float interval) { }
+        protected virtual void UpdateEx(float interval) { }
+        protected virtual void LateUpdateEx(float interval) { }
+
+        public void FixedUpdate(float interval)
+        {
+            FixedUpdateEx(interval);
+
+            _updateComponentList.Clear();
+            _updateComponentList.AddRange(_componentList);
+            _releaseComponentUIDList.Clear();
+
+            for (var i = 0; i < _updateComponentList.Count; i++)
+            {
+                var target = _updateComponentList[i];
+                if (target.Enable && !_releaseComponentUIDList.Contains(target.UID))
+                {
+                    target.FixedUpdateEx(interval);
+                }
+            }
+        }
+
+        public void Update(float interval)
+        {
+            UpdateEx(interval);
+            for (var i = 0; i < _updateComponentList.Count; i++)
+            {
+                var target = _updateComponentList[i];
+                if (target.Enable && !_releaseComponentUIDList.Contains(target.UID))
+                {
+                    target.UpdateEx(interval);
+                }
+            }
+        }
+
+        public void LateUpdate(float interval)
+        {
+            LateUpdateEx(interval);
+            for (var i = 0; i < _updateComponentList.Count; i++)
+            {
+                var target = _updateComponentList[i];
+                if (target.Enable && !_releaseComponentUIDList.Contains(target.UID))
+                {
+                    target.LateUpdateEx(interval);
+                }
+            }
+        }
 
         protected void InternalInitialize()
         {
@@ -130,6 +183,7 @@ namespace Framework
                     target.UnInitialize();
                     PoolMgr.singleton.ReleaseCsharpObject(target);
                     _componentList.Remove(target);
+                    _releaseComponentUIDList.Add(target.UID);
                     return true;
                 }
             }
@@ -141,11 +195,11 @@ namespace Framework
         /// 移除组件;
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="comp"></param>
+        /// <param name="component"></param>
         /// <returns></returns>
-        public bool ReleaseComponent<T>(AbsComponent comp) where T : AbsComponent, new()
+        public bool ReleaseComponent<T>(AbsComponent component) where T : AbsComponent, new()
         {
-            if (comp as T == null)
+            if (component as T == null)
             {
                 LogHelper.PrintError($"[ComponentMgr]ReleaseComponent error:comp as {typeof(T).ToString()} is null.");
                 return false;
@@ -153,11 +207,12 @@ namespace Framework
             for (var i = 0; i < _componentList.Count; i++)
             {
                 var target = _componentList[i];
-                if (target == comp)
+                if (target == component)
                 {
-                    comp.UnInitialize();
-                    PoolMgr.singleton.ReleaseCsharpObject(comp as T);
+                    component.UnInitialize();
+                    PoolMgr.singleton.ReleaseCsharpObject(component as T);
                     _componentList.Remove(target);
+                    _releaseComponentUIDList.Add(target.UID);
                     return true;
                 }
             }
@@ -168,21 +223,22 @@ namespace Framework
         /// <summary>
         /// 销毁组件;
         /// </summary>
-        /// <param name="comp"></param>
+        /// <param name="component"></param>
         /// <returns></returns>
-        public bool DestroyComponent(AbsComponent comp)
+        public bool DestroyComponent(AbsComponent component)
         {
             for (var i = 0; i < _componentList.Count; i++)
             {
                 var target = _componentList[i];
-                if (target == comp)
+                if (target == component)
                 {
-                    comp.UnInitialize();
-                    _componentList.Remove(comp);
+                    component.UnInitialize();
+                    _componentList.Remove(component);
+                    _releaseComponentUIDList.Add(target.UID);
                     return true;
                 }
             }
-            LogHelper.PrintError($"[ComponentMgr]DestroyComponent {comp.GetType().ToString()} error,can not find the component!");
+            LogHelper.PrintError($"[ComponentMgr]DestroyComponent {component.GetType().ToString()} error,can not find the component!");
             return false;
         }
 

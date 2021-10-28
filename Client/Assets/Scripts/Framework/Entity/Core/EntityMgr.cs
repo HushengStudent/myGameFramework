@@ -40,7 +40,7 @@ namespace Framework
                 var entity = _updateEntityList[i];
                 if (entity.Enable && !_releaseEntityUIDList.Contains(entity.UID))
                 {
-                    entity.FixedUpdateEx(interval);
+                    entity.FixedUpdate(interval);
                 }
             }
         }
@@ -53,7 +53,7 @@ namespace Framework
                 var entity = _updateEntityList[i];
                 if (entity.Enable && !_releaseEntityUIDList.Contains(entity.UID))
                 {
-                    entity.UpdateEx(interval);
+                    entity.Update(interval);
                 }
             }
         }
@@ -66,7 +66,7 @@ namespace Framework
                 var entity = _updateEntityList[i];
                 if (entity.Enable && !_releaseEntityUIDList.Contains(entity.UID))
                 {
-                    entity.LateUpdateEx(interval);
+                    entity.LateUpdate(interval);
                 }
             }
         }
