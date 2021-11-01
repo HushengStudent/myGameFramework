@@ -39,6 +39,7 @@ namespace Framework
         [SerializeField]
         private GameObject _prefab;
         [Header("ScrollRect")]
+        [SerializeField]
         private ScrollRect _scrollRect;
         [Header("模板大小")]
         [SerializeField]
