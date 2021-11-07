@@ -68,17 +68,17 @@ namespace FrameworkEditor
             sb.Append("g ").Append(mesh.name).Append("\n");
             foreach (var v in mesh.vertices)
             {
-                sb.Append(string.Format("v {0} {1} {2}\n", v.x, v.y, v.z));
+                sb.Append($"v {v.x} {v.y} {v.z}\n");
             }
             sb.Append("\n");
             foreach (var v in mesh.normals)
             {
-                sb.Append(string.Format("vn {0} {1} {2}\n", v.x, v.y, v.z));
+                sb.Append($"vn {v.x} {v.y} {v.z}\n");
             }
             sb.Append("\n");
             foreach (var v in mesh.uv)
             {
-                sb.Append(string.Format("vt {0} {1}\n", v.x, v.y));
+                sb.Append($"vt {v.x} {v.y}\n");
             }
             for (var m = 0; m < mesh.subMeshCount; m++)
             {

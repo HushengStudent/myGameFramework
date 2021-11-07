@@ -194,10 +194,10 @@ namespace FrameworkEditor
                                 }
                                 catch (Exception e)
                                 {
-                                    LogHelper.PrintError(string.Format("打包失败:{0},{1}.", log, e.ToString()));
+                                    LogHelper.PrintError($"打包失败:{log},{e}.");
                                     return;
                                 }
-                                LogHelper.PrintError(string.Format("打包成功:{0}.", log));
+                                LogHelper.PrintError($"打包成功:{log}.");
                             };
                             Close();
                         }

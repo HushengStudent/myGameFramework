@@ -5,7 +5,6 @@
 *********************************************************************************/
 
 using UnityEngine;
-using System.Collections;
 
 namespace Framework
 {
@@ -30,7 +29,7 @@ namespace Framework
                     singleton.DrawItem("Device Type:", SystemInfo.deviceType.ToString());
                     singleton.DrawItem("Processor Type:", SystemInfo.processorType);
                     singleton.DrawItem("Processor Count:", SystemInfo.processorCount.ToString());
-                    singleton.DrawItem("Memory Size:", string.Format("{0} MB", SystemInfo.systemMemorySize.ToString()));
+                    singleton.DrawItem("Memory Size:", $"{SystemInfo.systemMemorySize} MB");
                 }
                 GUILayout.EndVertical();
                 GUILayout.Label("<b>显卡信息</b>");
@@ -38,7 +37,7 @@ namespace Framework
                 {
                     singleton.DrawItem("Device ID:", SystemInfo.graphicsDeviceID.ToString());
                     singleton.DrawItem("Device Name:", SystemInfo.graphicsDeviceName);
-                    singleton.DrawItem("Memory Size:", string.Format("{0} MB", SystemInfo.graphicsMemorySize.ToString()));
+                    singleton.DrawItem("Memory Size:", $"{SystemInfo.graphicsMemorySize} MB");
                     singleton.DrawItem("Shader Level:", GetShaderLevelString(SystemInfo.graphicsShaderLevel));
                     singleton.DrawItem("Supports Shadows:", SystemInfo.supportsShadows.ToString());
                     singleton.DrawItem("Supports Image Effects:", SystemInfo.supportsImageEffects.ToString());
@@ -58,7 +57,7 @@ namespace Framework
 
             private string GetShaderLevelString(int shaderLevel)
             {
-                return string.Format("Shader Model {0}.{1}", (shaderLevel / 10).ToString(), (shaderLevel % 10).ToString());
+                return $"Shader Model {shaderLevel / 10}.{shaderLevel % 10}";
             }
         }
     }

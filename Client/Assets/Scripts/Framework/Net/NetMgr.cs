@@ -70,7 +70,7 @@ namespace Framework
 
         private void OnError(Session session, SessionErrorCode state, string error)
         {
-            LogHelper.PrintError(string.Format("[NetMgr]Session error,Session Error Code: {0},info: {1}", state.ToString(), error.ToString()));
+            LogHelper.PrintError($"[NetMgr]Session error,Session Error Code: {state},info: {error}.");
         }
 
         private void OnClosed(Session session)
@@ -80,7 +80,7 @@ namespace Framework
 
         private void OnConnected(Session session, SessionParam args)
         {
-            LogHelper.Print(string.Format("[NetMgr]Session Connected!"));
+            LogHelper.Print("[NetMgr]Session Connected.");
             ProtoHelper.Register();
             if (!GameMgr.singleton.CheckUpdateState)
             {
@@ -97,7 +97,7 @@ namespace Framework
             }
             catch (Exception e)
             {
-                LogHelper.PrintError(string.Format("[NetMgr]Send {0} error!", e.ToString()));
+                LogHelper.PrintError($"[NetMgr]Send {e} error.");
                 _session.Dispose();
             }
         }
@@ -110,7 +110,7 @@ namespace Framework
             }
             catch (Exception e)
             {
-                LogHelper.PrintError(string.Format("[NetMgr]Send {0} error!", e.ToString()));
+                LogHelper.PrintError($"[NetMgr]Send {e} error.");
                 _session.Dispose();
             }
         }

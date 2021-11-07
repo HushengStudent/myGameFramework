@@ -26,13 +26,13 @@ namespace Framework
                 GUILayout.BeginVertical("box");
                 {
                     singleton.DrawItem("Supported:", Profiler.supported.ToString());
-                    singleton.DrawItem("Enable Binary Log:", Profiler.enableBinaryLog ? string.Format("True, {0}", Profiler.logFile) : "False");
-                    singleton.DrawItem("Mono Used Size:", string.Format("{0} MB", (Profiler.GetMonoUsedSizeLong() / (float)MBSize).ToString("F3")));
-                    singleton.DrawItem("Mono Heap Size:", string.Format("{0} MB", (Profiler.GetMonoHeapSizeLong() / (float)MBSize).ToString("F3")));
-                    singleton.DrawItem("Used Heap Size:", string.Format("{0} MB", (Profiler.usedHeapSizeLong / (float)MBSize).ToString("F3")));
-                    singleton.DrawItem("Total Allocated Memory:", string.Format("{0} MB", (Profiler.GetTotalAllocatedMemoryLong() / (float)MBSize).ToString("F3")));
-                    singleton.DrawItem("Total Reserved Memory:", string.Format("{0} MB", (Profiler.GetTotalReservedMemoryLong() / (float)MBSize).ToString("F3")));
-                    singleton.DrawItem("Total Unused Reserved Memory:", string.Format("{0} MB", (Profiler.GetTotalUnusedReservedMemoryLong() / (float)MBSize).ToString("F3")));
+                    singleton.DrawItem("Enable Binary Log:", Profiler.enableBinaryLog ? $"True, {Profiler.logFile}" : "False");
+                    singleton.DrawItem("Mono Used Size:", $"{(Profiler.GetMonoUsedSizeLong() / (float)MBSize).ToString("F3")} MB");
+                    singleton.DrawItem("Mono Heap Size:", $"{(Profiler.GetMonoHeapSizeLong() / (float)MBSize).ToString("F3")} MB");
+                    singleton.DrawItem("Used Heap Size:", $"{(Profiler.usedHeapSizeLong / (float)MBSize).ToString("F3")} MB");
+                    singleton.DrawItem("Total Allocated Memory:", $"{(Profiler.GetTotalAllocatedMemoryLong() / (float)MBSize).ToString("F3")} MB");
+                    singleton.DrawItem("Total Reserved Memory:", $"{(Profiler.GetTotalReservedMemoryLong() / (float)MBSize).ToString("F3")} MB");
+                    singleton.DrawItem("Total Unused Reserved Memory:", $"{(Profiler.GetTotalUnusedReservedMemoryLong() / (float)MBSize).ToString("F3")} MB");
                 }
                 GUILayout.EndVertical();
             }

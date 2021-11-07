@@ -5,12 +5,9 @@
 *********************************************************************************/
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using UnityEngine;
 
 namespace Framework
 {
@@ -24,8 +21,6 @@ namespace Framework
     {
         private int _defaultPacketLength = 4;//协议格式:4位长度+4位id+内容;此处指长度,4位;
         private int _defaultMaxPacketLength = 1024 * 64;
-
-        private readonly string _name;
         private Socket _socket;
         private SessionReceiver _receiver;
         private bool _disposed;
@@ -40,13 +35,13 @@ namespace Framework
         public SessionReceiveEventHandler ReceiveHandler = null;
         public SessionSendEventHandler SendHandler = null;
 
-        public string Name { get { return _name; } }
+        public string Name { get; }
         public SessionType Type { get; private set; }
         public bool Active { get; private set; }
 
         public Session(string name)
         {
-            _name = name ?? string.Empty;
+            Name = name ?? string.Empty;
             Type = SessionType.Unknown;
             _socket = null;
             _receiver = null;
@@ -516,18 +511,18 @@ namespace Framework
         {
             if (_receiver.ReceivedLength != _receiver.Length)
             {
-                throw new Exception(string.Format("Receive length '{0}' is not equal to length '{1}'.", _receiver.ReceivedLength.ToString(), _receiver.Length.ToString()));
+                throw new Exception($"Receive length '{_receiver.ReceivedLength}' is not equal to length '{_receiver.Length}'.");
             }
             if (_receiver.Length < _defaultPacketLength)
             {
-                throw new Exception(string.Format("Length '{0}' is smaller than length header.", _receiver.Length.ToString()));
+                throw new Exception($"Length '{_receiver.Length}' is smaller than length header.");
             }
             if (_receiver.Length == _defaultPacketLength)
             {
                 var packetLength = ConvertHelper.GetInt32(_receiver.GetBuffer());
                 if (packetLength <= 0)
                 {
-                    var errorMessage = string.Format("Packet length '{0}' is invalid.", packetLength.ToString());
+                    var errorMessage = $"Packet length '{packetLength}' is invalid.";
                     if (ErrorHandler != null)
                     {
                         ErrorHandler(this, SessionErrorCode.HeaderError, errorMessage);
@@ -538,7 +533,7 @@ namespace Framework
                 _receiver.Length += packetLength;
                 if (_receiver.Length > _receiver.BufferSize)
                 {
-                    var errorMessage = string.Format("Length '{0}' is larger than buffer size '{1}'.", _receiver.Length.ToString(), _receiver.BufferSize.ToString());
+                    var errorMessage = $"Length '{_receiver.Length}' is larger than buffer size '{_receiver.BufferSize}'.";
                     if (ErrorHandler != null)
                     {
                         ErrorHandler(this, SessionErrorCode.OutOfRangeError, errorMessage);//未接收完成,继续;

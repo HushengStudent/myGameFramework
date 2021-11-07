@@ -32,7 +32,7 @@ namespace Framework
             var result = false;
             for (var i = 0; i < triangles.Length; i += 3)
             {
-                LogHelper.Print(string.Format("{0},{1},{2}", triangles[i], triangles[i + 1], triangles[i + 2]));
+                LogHelper.Print($"{triangles[i]},{triangles[i + 1]},{triangles[i + 2]}");
                 if (IsInside(worldVectors[triangles[i]], worldVectors[triangles[i + 1]], worldVectors[triangles[i + 2]], target))
                 {
                     result = true;

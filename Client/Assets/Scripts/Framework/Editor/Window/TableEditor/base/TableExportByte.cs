@@ -17,7 +17,7 @@ namespace FrameworkEditor
     {
         public static Dictionary<int, TableFiledType> _tableTypeDict = new Dictionary<int, TableFiledType>();
         private static Dictionary<int, List<string>> _infoDict = new Dictionary<int, List<string>>();
-        private static string _targetPath = Application.dataPath.ToLower() + "/Resources/Bin/Table/";
+        private static string _targetPath = $"{Application.dataPath.ToLower()}/Resources/Bin/Table/";
         private static string _fileName = string.Empty;
 
         public static void ExportByte(string path)

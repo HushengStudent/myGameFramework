@@ -25,7 +25,7 @@ namespace Framework
             }
             catch (Exception e)
             {
-                LogHelper.PrintError(string.Format("[LuaNetUtility]Send2Lua error,id:{0},info:{1}.", id, e.ToString()));
+                LogHelper.PrintError($"[LuaNetUtility]Send2Lua error,id:{id},info:{e}.");
             }
         }
     }

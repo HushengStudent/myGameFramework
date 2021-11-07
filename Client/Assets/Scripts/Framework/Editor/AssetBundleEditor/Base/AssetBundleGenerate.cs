@@ -57,7 +57,7 @@ namespace FrameworkEditor
             }
             BuildPipeline.BuildAssetBundles(buildPath, list.ToArray(), AssetBuildDefine.options, AssetBuildDefine.buildTarget);
             watch.Stop();
-            LogHelper.PrintWarning(string.Format("GenerateAllAssetBundle Spend Time:{0}s", watch.Elapsed.TotalSeconds));
+            LogHelper.PrintWarning($"GenerateAllAssetBundle Spend Time:{watch.Elapsed.TotalSeconds}s.");
             AssetDatabase.Refresh();
             EditorUtility.UnloadUnusedAssetsImmediate();
         }
