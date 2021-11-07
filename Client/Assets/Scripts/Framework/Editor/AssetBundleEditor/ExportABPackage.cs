@@ -68,7 +68,7 @@ namespace FrameworkEditor
             }
             EditorUtility.ClearProgressBar();
 
-            var zipFile = $"{ZipABPath}/AssetBundle.zip";
+            var zipFile = $"{ZipABPath}/{AssetBundleZipFileName}";
             Framework.SharpZipLibHelper.Zip(new string[] { targetPath }, zipFile);
 
             if (Directory.Exists(TempABPath))
@@ -87,25 +87,15 @@ namespace FrameworkEditor
         [MenuItem("myGameFramework/AssetBundleTools/Decompress AssetBundle Zip", false, 42)]
         public static void DecompressAssetBundleZip()
         {
-            if (!File.Exists($"{ZipABPath}/{AssetBundleZipFileName}"))
+            var zipFile = $"{ZipABPath}/{AssetBundleZipFileName}";
+            if (!File.Exists(zipFile))
             {
                 return;
             }
             EditorUtility.ClearProgressBar();
-            var deCompressState = true;
-            var deCompressProgress = 0f;
-            ZipHelper.Decompress($"{ZipABPath}/{AssetBundleZipFileName}", $"{Application.dataPath}/StreamingAssets/AssetBundle", (progress) =>
-             {
-                 deCompressProgress = progress;
-                 if (deCompressProgress >= 1)
-                 {
-                     deCompressState = false;
-                 }
-             });
-            while (deCompressState)
-            {
-                EditorUtility.DisplayProgressBar("解压AssetBundle", "解压AssetBundle文件", deCompressProgress);
-            }
+
+            Framework.SharpZipLibHelper.UnzipFile(zipFile, $"{Application.dataPath}/StreamingAssets/AssetBundle");
+
             EditorUtility.ClearProgressBar();
 
             AssetDatabase.Refresh();
