@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
 using BackgroundDownloadimpl = Unity.Networking.BackgroundDownloadEditor;
 #elif UNITY_ANDROID
 using BackgroundDownloadimpl = Unity.Networking.BackgroundDownloadAndroid;

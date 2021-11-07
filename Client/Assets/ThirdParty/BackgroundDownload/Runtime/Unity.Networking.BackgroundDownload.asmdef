@@ -5,7 +5,16 @@
         "Android",
         "Editor",
         "iOS",
-        "WSA"
+        "WSA",
+        "WindowsStandalone32",
+        "WindowsStandalone64"
     ],
-    "excludePlatforms": []
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

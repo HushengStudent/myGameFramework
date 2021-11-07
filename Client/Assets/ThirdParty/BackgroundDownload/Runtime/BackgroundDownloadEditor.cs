@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
 
 using System.Collections.Generic;
 
