@@ -48,6 +48,14 @@ namespace FrameworkEditor
 
             EditorUtility.ClearProgressBar();
 
+
+            if (Directory.Exists(TempABPath))
+            {
+                Directory.Delete(TempABPath, true);
+            }
+            var targetPath = $"{TempABPath}/AssetBundle";
+            Directory.CreateDirectory(targetPath);
+
             var index = 0;
             var count = allABs.Count;
 
@@ -55,31 +63,13 @@ namespace FrameworkEditor
             {
                 index++;
                 EditorUtility.DisplayProgressBar("复制AssetBundle", "复制AssetBundle文件", index / (float)count);
-                var target = ab.Replace(FilePathHelper.AssetBundlePath, $"{TempABPath}/AssetBundle");
-                var targetPath = Path.GetDirectoryName(target);
-                if (!Directory.Exists(targetPath))
-                {
-                    Directory.CreateDirectory(targetPath);
-                    File.Copy(ab, target);
-                }
+                var target = ab.Replace(FilePathHelper.AssetBundlePath, targetPath);
+                File.Copy(ab, target);
             }
             EditorUtility.ClearProgressBar();
 
-            var compressState = true;
-            var compressProgress = 0f;
-            var zipFile = ZipHelper.Compress(TempABPath, ZipABPath, "AssetBundle", (progress) =>
-            {
-                compressProgress = progress;
-                if (compressProgress >= 1)
-                {
-                    compressState = false;
-                }
-            });
-            while (compressState)
-            {
-                EditorUtility.DisplayProgressBar("压缩AssetBundle", "压缩AssetBundle文件", compressProgress);
-            }
-            EditorUtility.ClearProgressBar();
+            var zipFile = $"{ZipABPath}/AssetBundle.zip";
+            Framework.SharpZipLibHelper.Zip(new string[] { targetPath }, zipFile);
 
             if (Directory.Exists(TempABPath))
             {
@@ -90,31 +80,34 @@ namespace FrameworkEditor
                 File.Delete(ZipStreamingAssetsPath);
             }
             File.Copy(zipFile, ZipStreamingAssetsPath);
+
+            AssetDatabase.Refresh();
         }
 
         [MenuItem("myGameFramework/AssetBundleTools/Decompress AssetBundle Zip", false, 42)]
         public static void DecompressAssetBundleZip()
         {
-            if (!File.Exists(ZipABPath + "/" + AssetBundleZipFileName))
+            if (!File.Exists($"{ZipABPath}/{AssetBundleZipFileName}"))
             {
                 return;
             }
             EditorUtility.ClearProgressBar();
-            bool deCompressState = true;
-            float deCompressProgress = 0f;
-            ZipHelper.Decompress(ZipABPath + "/" + AssetBundleZipFileName, Application.dataPath + "/StreamingAssets/AssetBundle", (progress) =>
-            {
-                deCompressProgress = progress;
-                if (deCompressProgress >= 1)
-                {
-                    deCompressState = false;
-                }
-            });
+            var deCompressState = true;
+            var deCompressProgress = 0f;
+            ZipHelper.Decompress($"{ZipABPath}/{AssetBundleZipFileName}", $"{Application.dataPath}/StreamingAssets/AssetBundle", (progress) =>
+             {
+                 deCompressProgress = progress;
+                 if (deCompressProgress >= 1)
+                 {
+                     deCompressState = false;
+                 }
+             });
             while (deCompressState)
             {
                 EditorUtility.DisplayProgressBar("解压AssetBundle", "解压AssetBundle文件", deCompressProgress);
             }
             EditorUtility.ClearProgressBar();
+
             AssetDatabase.Refresh();
         }
     }
