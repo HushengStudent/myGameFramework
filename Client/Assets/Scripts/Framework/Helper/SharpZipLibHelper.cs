@@ -6,7 +6,6 @@
 
 using ICSharpCode.SharpZipLib.Zip;
 using System.IO;
-using UnityEngine;
 
 namespace Framework
 {

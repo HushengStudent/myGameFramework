@@ -14,10 +14,16 @@ namespace FrameworkEditor
 {
     public class ExportABPackage
     {
-        public static readonly string TempABPath = FilePathHelper.AssetBundlePath + "/../tempABPath";
-        public static readonly string ZipABPath = FilePathHelper.AssetBundlePath + "/../AssetBundleZip";
+        public static readonly string TempABPath =
+            $"{FilePathHelper.AssetBundlePath}/../tempABPath";
+
+        public static readonly string ZipABPath =
+            $"{FilePathHelper.AssetBundlePath}/../AssetBundleZip";
+
         public static readonly string AssetBundleZipFileName = "AssetBundle.zip";
-        public static readonly string ZipStreamingAssetsPath = FilePathHelper.StreamingAssetsPath + "/" + AssetBundleZipFileName;
+
+        public static readonly string ZipStreamingAssetsPath =
+            $"{FilePathHelper.StreamingAssetsPath}/{AssetBundleZipFileName}";
 
         [MenuItem("myGameFramework/AssetBundleTools/Export AssetBundle Package", false, 41)]
         public static void ExportAssetBundlePackage()
@@ -26,25 +32,31 @@ namespace FrameworkEditor
             {
                 Directory.Delete(TempABPath, true);
             }
-            string[] allFile = Directory.GetFiles(FilePathHelper.AssetBundlePath, "*.*", SearchOption.AllDirectories);
+
+            var allFiles = Directory.GetFiles(FilePathHelper.AssetBundlePath, "*.*", SearchOption.AllDirectories);
             //剔除.manifest文件;
-            List<string> allAB = new List<string>();
-            foreach (string tempPath in allFile)
+            var allABs = new List<string>();
+            foreach (var tempPath in allFiles)
             {
-                string path = tempPath.Replace("\\", "/");
-                if (Path.GetExtension(path) == ".manifest") continue;
-                allAB.Add(path);
+                var path = tempPath.Replace("\\", "/");
+                if (Path.GetExtension(path) == ".manifest")
+                {
+                    continue;
+                }
+                allABs.Add(path);
             }
 
             EditorUtility.ClearProgressBar();
-            int index = 0;
-            int count = allAB.Count;
-            foreach (string ab in allAB)
+
+            var index = 0;
+            var count = allABs.Count;
+
+            foreach (var ab in allABs)
             {
                 index++;
-                EditorUtility.DisplayProgressBar("复制AssetBundle", "复制AssetBundle文件", (float)index / (float)count);
-                string target = ab.Replace(FilePathHelper.AssetBundlePath, TempABPath + "/AssetBundle");
-                string targetPath = Path.GetDirectoryName(target);
+                EditorUtility.DisplayProgressBar("复制AssetBundle", "复制AssetBundle文件", index / (float)count);
+                var target = ab.Replace(FilePathHelper.AssetBundlePath, $"{TempABPath}/AssetBundle");
+                var targetPath = Path.GetDirectoryName(target);
                 if (!Directory.Exists(targetPath))
                 {
                     Directory.CreateDirectory(targetPath);
@@ -53,9 +65,9 @@ namespace FrameworkEditor
             }
             EditorUtility.ClearProgressBar();
 
-            bool compressState = true;
-            float compressProgress = 0f;
-            string zipFile = ZipHelper.Compress(TempABPath, ZipABPath, "AssetBundle", (progress) =>
+            var compressState = true;
+            var compressProgress = 0f;
+            var zipFile = ZipHelper.Compress(TempABPath, ZipABPath, "AssetBundle", (progress) =>
             {
                 compressProgress = progress;
                 if (compressProgress >= 1)
