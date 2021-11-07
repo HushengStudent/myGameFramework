@@ -23,8 +23,8 @@ namespace FrameworkEditor
 
                 ToLuaMenu.CopyLuaFilesToBundles();
 
-                AssetDependenciesAnalysis analysiser = new AssetDependenciesAnalysis();
-                List<AssetBundleBuild> list = analysiser.AnalysisAllAsset();
+                var analysiser = new AssetDependenciesAnalysis();
+                var list = analysiser.AnalysisAllAsset();
 
                 //tips:Unity5.x Scripts not need to build AssetBundle
                 //analysiser.BuildAllScripts();
@@ -35,7 +35,7 @@ namespace FrameworkEditor
         [MenuItem("myGameFramework/AssetBundleTools/Delete AssetBundle", false, 1)]
         public static void DeleteAll()
         {
-            AssetDependenciesAnalysis analysiser = new AssetDependenciesAnalysis();
+            var analysiser = new AssetDependenciesAnalysis();
             analysiser.DeleteAllAssetBundle();
             AssetDatabase.Refresh();
         }
@@ -43,14 +43,14 @@ namespace FrameworkEditor
         [MenuItem("myGameFramework/AssetBundleTools/Clear AssetName", false, 2)]
         public static void ClearAll()
         {
-            AssetDependenciesAnalysis analysiser = new AssetDependenciesAnalysis();
+            var analysiser = new AssetDependenciesAnalysis();
             analysiser.ClearAllAssetBundleName();
             AssetDatabase.Refresh();
         }
 
         private static void GenerateAssetBundle(string buildPath, List<AssetBundleBuild> list)
         {
-            Stopwatch watch = Stopwatch.StartNew();//开启计时;
+            var watch = Stopwatch.StartNew();//开启计时;
             if (!Directory.Exists(buildPath))
             {
                 Directory.CreateDirectory(buildPath);

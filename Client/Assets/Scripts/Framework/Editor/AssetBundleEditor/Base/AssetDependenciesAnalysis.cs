@@ -52,40 +52,40 @@ namespace FrameworkEditor
         /// <returns></returns>
         public List<AssetBundleBuild> AnalysisAllAsset()
         {
-            Stopwatch watch = Stopwatch.StartNew();//开启计时;
+            var watch = Stopwatch.StartNew();//开启计时;
 
-            string[] allPath = Directory.GetFiles(FilePathHelper.resPath, "*.*", SearchOption.AllDirectories);
+            var allPaths = Directory.GetFiles(FilePathHelper.resPath, "*.*", SearchOption.AllDirectories);
 
             //剔除.meta文件;
-            List<string> allAssetPath = new List<string>();
-            foreach (string tempPath in allPath)
+            var allAssetPaths = new List<string>();
+            foreach (var tempPath in allPaths)
             {
-                string path = tempPath.Replace("\\", "/");
+                var path = tempPath.Replace("\\", "/");
                 if (Path.GetExtension(path) == ".meta")
                 {
                     continue;
                 }
-                allAssetPath.Add(path);
+                allAssetPaths.Add(path);
             }
 
             //开始分析资源依赖关系;
-            for (int i = 0; i < allAssetPath.Count; i++)
+            for (var i = 0; i < allAssetPaths.Count; i++)
             {
-                if (!CheckAssetNode(allAssetPath[i]))
+                if (!CheckAssetNode(allAssetPaths[i]))
                 {
                     continue;
                 }
 
                 //还未遍历到该资源;
-                if (!allAsset.ContainsKey(allAssetPath[i]))
+                if (!allAsset.ContainsKey(allAssetPaths[i]))
                 {
-                    allAsset[allAssetPath[i]] = CreateNewAssetNode(allAssetPath[i]);
+                    allAsset[allAssetPaths[i]] = CreateNewAssetNode(allAssetPaths[i]);
                 }
 
                 //获取依赖关系;
-                string[] allDirectDependencies = AssetDatabase.GetDependencies(allAssetPath[i], false);
+                var allDirectDependencies = AssetDatabase.GetDependencies(allAssetPaths[i], false);
 
-                foreach (string tempPath in allDirectDependencies)
+                foreach (var tempPath in allDirectDependencies)
                 {
                     if (!CheckAssetNode(tempPath))
                     {
@@ -93,13 +93,13 @@ namespace FrameworkEditor
                     }
 
                     //添加依赖的资源信息;
-                    allAsset[allAssetPath[i]].sonDependentAssets.Add(tempPath);
+                    allAsset[allAssetPaths[i]].sonDependentAssets.Add(tempPath);
                     //添加被依赖的资源信息;
                     if (!allAsset.ContainsKey(tempPath))
                     {
                         allAsset[tempPath] = CreateNewAssetNode(tempPath);
                     }
-                    allAsset[tempPath].parentDependentAssets.Add(allAssetPath[i]);
+                    allAsset[tempPath].parentDependentAssets.Add(allAssetPaths[i]);
                 }
             }
 
@@ -114,16 +114,16 @@ namespace FrameworkEditor
             }
 
             //TODO:AssetBundleBuild修改为可以包含多个资源.
-            List<AssetBundleBuild> builderList = new List<AssetBundleBuild>();
+            var builderList = new List<AssetBundleBuild>();
 
             foreach (var asset in independenceAsset)
             {
                 var node = asset.Value;
-                AssetBundleBuild build = new AssetBundleBuild
+                var build = new AssetBundleBuild
                 {
                     assetBundleName = FilePathHelper.GetAssetBundleFileName(node.assetPath)
                 };
-                List<string> assetLis = new List<string>
+                var assetLis = new List<string>
                 {
                     node.assetPath
                 };
@@ -138,11 +138,11 @@ namespace FrameworkEditor
                 builderList.Add(build);
             }
 
-            AssetBundleBuild shaderBuild = new AssetBundleBuild
+            var shaderBuild = new AssetBundleBuild
             {
                 assetBundleName = FilePathHelper.GetAssetBundleFileName(FilePathHelper.shaderAssetBundleName)
             };
-            List<string> shaderList = new List<string>();
+            var shaderList = new List<string>();
             foreach (var shader in allShaderAsset)
             {
                 shaderList.Add(shader);
@@ -150,11 +150,11 @@ namespace FrameworkEditor
             shaderBuild.assetNames = shaderList.ToArray();
             builderList.Add(shaderBuild);
 
-            AssetBundleBuild luaBuild = new AssetBundleBuild
+            var luaBuild = new AssetBundleBuild
             {
                 assetBundleName = FilePathHelper.GetAssetBundleFileName(FilePathHelper.luaAssetBundleName)
             };
-            List<string> luaList = new List<string>();
+            var luaList = new List<string>();
             foreach (var lua in allLuaAsset)
             {
                 luaList.Add(lua);
@@ -219,13 +219,13 @@ namespace FrameworkEditor
 
         public void ClearAllAssetBundleName()
         {
-            string[] allPath = Directory.GetFiles("Assets/", "*.*", SearchOption.AllDirectories);
+            var allPath = Directory.GetFiles("Assets/", "*.*", SearchOption.AllDirectories);
 
             //剔除.meta文件;
-            List<string> allAssetPath = new List<string>();
-            foreach (string tempPath in allPath)
+            var allAssetPath = new List<string>();
+            foreach (var tempPath in allPath)
             {
-                string path = tempPath.Replace("\\", "/");
+                var path = tempPath.Replace("\\", "/");
                 if (Path.GetExtension(path) == ".meta" || Path.GetExtension(path) == ".cs")
                 {
                     continue;
@@ -233,12 +233,12 @@ namespace FrameworkEditor
                 allAssetPath.Add(path);
             }
 
-            float i = 0;
+            var i = 0f;
             foreach (string str in allAssetPath)
             {
-                EditorUtility.DisplayProgressBar("AssetBundle打包提示", "删除AssetBundle Name", ((float)i / (float)allAssetPath.Count));
+                EditorUtility.DisplayProgressBar("AssetBundle打包提示", "删除AssetBundle Name", i / allAssetPath.Count);
                 i++;
-                AssetImporter importer = AssetImporter.GetAtPath(str);
+                var importer = AssetImporter.GetAtPath(str);
                 if (importer != null)
                 {
                     importer.assetBundleName = null;
@@ -250,8 +250,8 @@ namespace FrameworkEditor
 
         public void DeleteAllAssetBundle()
         {
-            string[] allPath = Directory.GetFiles(FilePathHelper.AssetBundlePath, "*.*", SearchOption.AllDirectories);
-            foreach (string str in allPath)
+            var allPath = Directory.GetFiles(FilePathHelper.AssetBundlePath, "*.*", SearchOption.AllDirectories);
+            foreach (var str in allPath)
             {
                 File.Delete(str);
             }
@@ -260,13 +260,13 @@ namespace FrameworkEditor
 
         private void SaveBuildInfo(List<AssetBundleBuild> info)
         {
-            StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < info.Count; i++)
+            var builder = new StringBuilder();
+            for (var i = 0; i < info.Count; i++)
             {
                 builder.AppendLine("");
                 builder.AppendLine(i.ToString());
                 builder.AppendLine(info[i].assetBundleName);
-                for (int j = 0; j < info[i].assetNames.Length; j++)
+                for (var j = 0; j < info[i].assetNames.Length; j++)
                 {
                     builder.AppendLine(info[i].assetNames[j]);
                 }
