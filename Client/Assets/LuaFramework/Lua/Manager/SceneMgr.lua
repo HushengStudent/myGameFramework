@@ -7,6 +7,11 @@ local SceneMgr = class("SceneMgr")
 local m_curCanvas
 
 function SceneMgr:ctor()
+
+end
+
+function SceneMgr:update()
+
 end
 
 function SceneMgr:OnEnterScene(id)

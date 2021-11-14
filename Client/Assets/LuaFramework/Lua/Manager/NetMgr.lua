@@ -8,6 +8,10 @@ function NetMgr:ctor()
 
 end
 
+function NetMgr:update()
+
+end
+
 function NetMgr:sendReq(msg)
 
 end

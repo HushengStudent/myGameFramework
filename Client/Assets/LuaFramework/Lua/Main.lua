@@ -14,6 +14,11 @@ function _onInitialize()
 
     import(".GlobalRegister")
 
+    UpdateBeat:Add(_update)
+    LateUpdateBeat:Add(_lateUpdate)
+    FixedUpdateBeat:Add(_fixedUpdate)
+    CoUpdateBeat:Add(_coUpdate)
+
     RegisterGlobal("g_helper", import(".Common.Helper"))
 
     RegisterGlobal("g_gameMgr", import(".Manager.GameMgr").new())
@@ -36,6 +41,25 @@ end
 function OnLevelWasLoaded(level)
     collectgarbage("collect")
     Time.timeSinceLevelLoad = 0
+end
+
+function _update()
+    g_gameMgr:update()
+    g_uiMgr:update()
+    g_sceneMgr:update()
+    g_netMgr:update()
+end
+
+function _lateUpdate()
+
+end
+
+function _fixedUpdate()
+
+end
+
+function _coUpdate()
+
 end
 
 ---=====================================================================================================================
@@ -85,34 +109,4 @@ end
 
 function Receive(id, buffer)
     Protol.ProtoProcess.Process(id, buffer)
-end
-
-function import(moduleName, currentModuleName)
-    local currentModuleNameParts
-    local moduleFullName = moduleName
-    local offset = 1
-
-    while true do
-        if string.byte(moduleName, offset) ~= 46 then
-            -- .
-            moduleFullName = string.sub(moduleName, offset)
-            if currentModuleNameParts and #currentModuleNameParts > 0 then
-                moduleFullName = table.concat(currentModuleNameParts, ".") .. "." .. moduleFullName
-            end
-            break
-        end
-        offset = offset + 1
-
-        if not currentModuleNameParts then
-            if not currentModuleName then
-                local n, v = debug.getlocal(3, 1)
-                currentModuleName = v
-            end
-
-            currentModuleNameParts = string.split(currentModuleName, ".")
-        end
-        table.remove(currentModuleNameParts, #currentModuleNameParts)
-    end
-
-    return require(moduleFullName)
 end

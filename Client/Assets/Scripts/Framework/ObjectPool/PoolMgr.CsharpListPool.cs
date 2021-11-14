@@ -15,7 +15,7 @@ namespace Framework
         /// <summary>
         /// Csharp List Pool;
         /// </summary>
-        private Dictionary<Type, Object> _csharpListPool = new Dictionary<Type, Object>();
+        private Dictionary<Type, object> _csharpListPool = new Dictionary<Type, object>();
 
         /// <summary>
         /// 获取对象池目标组件;
