@@ -10,28 +10,48 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class FxMgr : Singleton<FxMgr>
+    public class FxMgr : MonoSingleton<FxMgr>
     {
-        private Dictionary<string, GameObject> _fxDict = new Dictionary<string, GameObject>();
+        private int _fxID = 0;
+        public int FxID
+        {
+            get
+            {
+                if (_fxID == int.MaxValue)
+                {
+                    _fxID = 0;
+                }
+                return _fxID++;
+            }
+        }
+
+        private Dictionary<int, Fx> _fxDict = new Dictionary<int, Fx>();
 
         protected override void OnInitialize()
         {
             Clear();
         }
 
-        public void PlayFx(string fxName, bool usePool = false)
+        public Fx.FxData GetFxData()
         {
+            return PoolMgr.singleton.GetCsharpObject<Fx.FxData>();
+        }
 
+        public int PlayFx(Fx.FxData fxData)
+        {
+            var fx = PoolMgr.singleton.GetCsharpObject<Fx>(fxData);
+
+            return fx.ID;
         }
 
         private void Clear()
         {
             foreach (var temp in _fxDict)
             {
-                var target = temp.Value;
-                if (target)
+                var fx = temp.Value;
+                if (fx != null)
                 {
-                    Object.DestroyImmediate(target);
+                    fx.OnUninitialize();
                 }
             }
             _fxDict.Clear();

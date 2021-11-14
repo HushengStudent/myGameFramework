@@ -17,7 +17,6 @@ function _onInitialize()
     UpdateBeat:Add(_update)
     LateUpdateBeat:Add(_lateUpdate)
     FixedUpdateBeat:Add(_fixedUpdate)
-    CoUpdateBeat:Add(_coUpdate)
 
     RegisterGlobal("g_helper", import(".Common.Helper"))
 
@@ -55,10 +54,6 @@ function _lateUpdate()
 end
 
 function _fixedUpdate()
-
-end
-
-function _coUpdate()
 
 end
 

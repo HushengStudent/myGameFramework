@@ -13,13 +13,16 @@ namespace Framework
 {
     public static class UITweenHelper
     {
-        private static int _tweenId = 0;
-        private static int TweenId
+        private static int _tweenID = 0;
+        private static int TweenID
         {
             get
             {
-                _tweenId++;
-                return _tweenId;
+                if (_tweenID == int.MaxValue)
+                {
+                    _tweenID = 0;
+                }
+                return _tweenID++;
             }
         }
 
@@ -60,7 +63,7 @@ namespace Framework
                 onComplete?.Invoke(go);
             };
             tweener.PlayForward();
-            var tweenId = TweenId;
+            var tweenId = TweenID;
             _tweenerDict[tweenId] = tweener;
             return tweenId;
         }
@@ -83,7 +86,7 @@ namespace Framework
                 onComplete?.Invoke(go);
             };
             tweener.PlayForward();
-            var tweenId = TweenId;
+            var tweenId = TweenID;
             _tweenerDict[tweenId] = tweener;
             return tweenId;
         }
@@ -106,7 +109,7 @@ namespace Framework
                 onComplete?.Invoke(go);
             };
             tweener.PlayForward();
-            var tweenId = TweenId;
+            var tweenId = TweenID;
             _tweenerDict[tweenId] = tweener;
             return tweenId;
         }

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2019/08/18 15:39:05
-** desc:  Í¼¼¯;
+** desc:  å›¾é›†;
 *********************************************************************************/
 
 using System.Collections.Generic;
@@ -127,7 +127,7 @@ namespace Framework
             }
         }
 
-        /// ÇĞ³¡¾°Ê±Ğ¶ÔØÒ»´Î;
+        /// åˆ‡åœºæ™¯æ—¶å¸è½½ä¸€æ¬¡;
         public bool TryReleaseAtlas()
         {
             var list = PoolMgr.singleton.GetCsharpList<Object>();
