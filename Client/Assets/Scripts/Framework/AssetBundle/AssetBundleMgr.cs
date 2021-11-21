@@ -4,6 +4,7 @@
 ** desc:  AssetBundle管理;
 *********************************************************************************/
 
+using Framework.ObjectPool;
 using MEC;
 using System;
 using System.Collections.Generic;

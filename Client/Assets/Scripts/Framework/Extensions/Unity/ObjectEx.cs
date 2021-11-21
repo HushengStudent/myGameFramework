@@ -4,6 +4,7 @@
 ** desc:  Object¿©’π;
 *********************************************************************************/
 
+using Framework.ObjectPool;
 using System.Collections.Generic;
 
 namespace Framework

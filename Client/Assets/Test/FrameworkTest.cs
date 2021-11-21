@@ -5,7 +5,7 @@
 *********************************************************************************/
 
 using Framework;
-using System.Collections;
+using Framework.ObjectPool;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,24 +26,17 @@ public class FrameworkTest : MonoBehaviour
         Packet_LoginRequest req = new Packet_LoginRequest();
         req.Data.id = 1001;
         req.Data.name = "HushengStudent";
-        NetMgr.singleton.Send<Packet_LoginRequest>(req);
+        NetMgr.singleton.Send(req);
     }
 
     public void GetObjectFromPool()
     {
-        if (_go)
-        {
-            GameObject temp = PoolMgr.singleton.GetUnityObject(_go) as GameObject;
-            _goQueue.Enqueue(temp);
-        }
+        
     }
 
     public void ReleaseObject2Pool()
     {
-        if (_goQueue.Count > 0)
-        {
-            PoolMgr.singleton.ReleaseUnityObject(_goQueue.Dequeue());
-        }
+        
     }
 
     public void ClearPool()

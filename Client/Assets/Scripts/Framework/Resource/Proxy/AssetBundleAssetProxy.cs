@@ -4,6 +4,9 @@
 ** desc:  AssetBundle资源加载代理;
 *********************************************************************************/
 
+using Framework.ObjectPool;
+using UnityObject = UnityEngine.Object;
+
 namespace Framework
 {
     public class AssetBundleAssetProxy : AbsAssetProxy
@@ -20,7 +23,7 @@ namespace Framework
             {
                 return null;
             }
-            return PoolMgr.singleton.GetUnityObject(AssetObject) as T;
+            return UnityObject.Instantiate(AssetObject) as T;
         }
 
         public override void ReleaseInstantiateObject<T>(T t)

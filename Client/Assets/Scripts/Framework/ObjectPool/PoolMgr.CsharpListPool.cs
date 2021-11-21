@@ -6,9 +6,8 @@
 
 using System;
 using System.Collections.Generic;
-using Framework.ObjectPool;
 
-namespace Framework
+namespace Framework.ObjectPool
 {
     public partial class PoolMgr
     {

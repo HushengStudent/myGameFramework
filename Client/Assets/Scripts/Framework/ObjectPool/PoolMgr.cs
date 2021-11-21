@@ -5,11 +5,10 @@
 *********************************************************************************/
 
 using MEC;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Framework
+namespace Framework.ObjectPool
 {
     public partial class PoolMgr : MonoSingleton<PoolMgr>
     {
@@ -40,13 +39,10 @@ namespace Framework
         /// </summary>
         public IEnumerator<float> ClearPool()
         {
+            yield return Timing.WaitForOneFrame;
             _csharpObjectPool.Clear();
             _csharpListPool.Clear();
-            var itor = _unityObjectPool.ClearUnityObjectPool();
-            while (itor.MoveNext())
-            {
-                yield return Timing.WaitForOneFrame;
-            }
+            ReleaseAllGameObjectPool();
             ResourceMgr.singleton.UnloadUnusedAssets(() =>
             {
                 EventMgr.singleton.FireGlobalEvent(EventType.POOL_MGR_INIT, null);

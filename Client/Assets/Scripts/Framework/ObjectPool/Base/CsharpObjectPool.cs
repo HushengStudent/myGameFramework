@@ -5,23 +5,20 @@
 *********************************************************************************/
 
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Events;
 
 namespace Framework.ObjectPool
 {
     internal class CsharpObjectPool<T> where T : new()
     {
+        private readonly int _maxCount = 50;
         private readonly Stack<T> m_Stack = new Stack<T>();
         private readonly UnityAction<T> m_ActionOnGet;
         private readonly UnityAction<T> m_ActionOnRelease;
 
-        public int CountAll { get; private set; }
-        public int CountActive { get { return CountAll - CountInactive; } }
-        public int CountInactive { get { return m_Stack.Count; } }
-
-        public CsharpObjectPool(UnityAction<T> actionOnGet, UnityAction<T> actionOnRelease)
+        public CsharpObjectPool(UnityAction<T> actionOnGet, UnityAction<T> actionOnRelease, int maxCount = 50)
         {
+            _maxCount = maxCount;
             m_ActionOnGet = actionOnGet;
             m_ActionOnRelease = actionOnRelease;
         }
@@ -32,7 +29,6 @@ namespace Framework.ObjectPool
             if (m_Stack.Count == 0)
             {
                 element = new T();
-                CountAll++;
             }
             else
             {
@@ -44,9 +40,14 @@ namespace Framework.ObjectPool
 
         public void Release(T element)
         {
-            if (m_Stack.Count > 0 && ReferenceEquals(m_Stack.Peek(), element))
+            if (m_Stack.Count >= _maxCount)
             {
-                Debug.LogError("Internal error. Trying to destroy object that is already released to pool.");
+                return;
+            }
+            if (m_Stack.Contains(element))
+            {
+                LogHelper.PrintError("[CsharpObjectPool]Release error,trying to destroy object that is already released to pool.");
+                return;
             }
             m_ActionOnRelease?.Invoke(element);
             m_Stack.Push(element);

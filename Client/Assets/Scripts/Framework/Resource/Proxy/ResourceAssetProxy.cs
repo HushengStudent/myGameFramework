@@ -4,6 +4,7 @@
 ** desc:  Resource资源加载代理;
 *********************************************************************************/
 
+using Framework.ObjectPool;
 using UnityObject = UnityEngine.Object;
 
 namespace Framework

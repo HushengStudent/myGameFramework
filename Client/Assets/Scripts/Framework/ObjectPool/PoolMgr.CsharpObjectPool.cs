@@ -4,11 +4,10 @@
 ** desc:  Csharp对象池管理;
 *********************************************************************************/
 
-using Framework.ObjectPool;
 using System;
 using System.Collections.Generic;
 
-namespace Framework
+namespace Framework.ObjectPool
 {
     public partial class PoolMgr
     {
@@ -21,7 +20,7 @@ namespace Framework
         /// 获取Csharp对象池目标组件;
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="args">初始化参数</param>
+        /// <param name="args"></param>
         /// <returns></returns>
         public T GetCsharpObject<T>(params object[] args) where T : new()
         {
@@ -34,12 +33,12 @@ namespace Framework
             {
                 pool = CreateCsharpPool<T>();
             }
-            var t = pool.Get();
-            if (t is IPool target)
+            var value = pool.Get();
+            if (value is IPool target)
             {
                 target.OnGet(args);
             }
-            return t;
+            return value;
         }
 
         /// <summary>
@@ -65,7 +64,11 @@ namespace Framework
             pool.Release(value);
         }
 
+        /// <summary>
         /// 创建Csharp对象池;
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         private CsharpObjectPool<T> CreateCsharpPool<T>() where T : new()
         {
             if (_csharpObjectPool.TryGetValue(typeof(T), out var temp))

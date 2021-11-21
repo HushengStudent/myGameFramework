@@ -4,6 +4,7 @@
 ** desc:  CommandBuffer Render;
 *********************************************************************************/
 
+using Framework.ObjectPool;
 using System;
 using UnityEngine;
 
