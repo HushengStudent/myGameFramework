@@ -46,10 +46,10 @@ namespace Framework
         /// 释放Csharp对象池组件;
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="type"></param>
-        public void ReleaseCsharpObject<T>(T type) where T : new()
+        /// <param name="value"></param>
+        public void ReleaseCsharpObject<T>(T value) where T : new()
         {
-            if (type is IPool target)
+            if (value is IPool target)
             {
                 target.OnRelease();
             }
@@ -62,7 +62,7 @@ namespace Framework
             {
                 pool = CreateCsharpPool<T>();
             }
-            pool.Release(type);
+            pool.Release(value);
         }
 
         /// 创建Csharp对象池;
