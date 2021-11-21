@@ -49,18 +49,8 @@ public class Framework_ResourceMgrWrap
 			{
 				Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
 				string arg0 = ToLua.CheckString(L, 2);
-				bool arg1 = LuaDLL.luaL_checkboolean(L, 3);
-				Framework.AssetBundleAssetProxy o = obj.LoadAssetAsync(arg0, arg1);
-				ToLua.PushObject(L, o);
-				return 1;
-			}
-			else if (count == 4)
-			{
-				Framework.ResourceMgr obj = (Framework.ResourceMgr)ToLua.CheckObject<Framework.ResourceMgr>(L, 1);
-				string arg0 = ToLua.CheckString(L, 2);
 				System.Action<float> arg1 = (System.Action<float>)ToLua.CheckDelegate<System.Action<float>>(L, 3);
-				bool arg2 = LuaDLL.luaL_checkboolean(L, 4);
-				Framework.AssetBundleAssetProxy o = obj.LoadAssetAsync(arg0, arg1, arg2);
+				Framework.AssetBundleAssetProxy o = obj.LoadAssetAsync(arg0, arg1);
 				ToLua.PushObject(L, o);
 				return 1;
 			}

@@ -22,16 +22,13 @@ namespace Framework
         public bool IsCancel { get; protected set; }
         /// 是否卸载;
         public bool IsUnload { get; protected set; }
-        /// 是否使用对象池;
-        public bool IsUsePool { get; protected set; }
         /// 加载完成对象;
         protected UnityObject AssetObject { get; set; }
 
         /// 初始化;
-        public void Initialize(string path, bool isUsePool)
+        public void Initialize(string path)
         {
             AssetPath = path;
-            IsUsePool = isUsePool;
             IsCancel = false;
             IsFinish = false;
             IsUnload = false;

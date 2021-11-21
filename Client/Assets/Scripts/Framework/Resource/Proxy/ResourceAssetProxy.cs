@@ -10,11 +10,6 @@ namespace Framework
 {
     public class ResourceAssetProxy : AbsAssetProxy
     {
-        public void Initialize(string path)
-        {
-            Initialize(path, false);
-        }
-
         protected override void Unload()
         {
             ResourceMgr.singleton.DestroyUnityAsset(AssetObject);
@@ -23,12 +18,11 @@ namespace Framework
 
         protected override T GetInstantiateObjectEx<T>()
         {
-            T t = null;
-            if (AssetObject != null && CanInstantiate())
+            if (AssetObject == null || !CanInstantiate())
             {
-                t = UnityObject.Instantiate(AssetObject) as T;
+                return null;
             }
-            return t;
+            return UnityObject.Instantiate(AssetObject) as T;
         }
 
         public override void ReleaseInstantiateObject<T>(T t)
@@ -41,12 +35,11 @@ namespace Framework
 
         protected override T GetUnityAssetEx<T>()
         {
-            T t = null;
-            if (AssetObject != null && !CanInstantiate())
+            if (AssetObject == null || CanInstantiate())
             {
-                t = AssetObject as T;
+                return null;
             }
-            return t;
+            return AssetObject as T;
         }
     }
 }

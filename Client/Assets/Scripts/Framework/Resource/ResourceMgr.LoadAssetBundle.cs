@@ -51,21 +51,10 @@ namespace Framework
         /// <returns></returns>
         private AssetBundleAssetProxy LoadAssetSync(string path)
         {
-            return LoadAssetSync(path, false);
-        }
-
-        /// <summary>
-        /// 同步从AssetBundle加载资源;
-        /// </summary>
-        /// <param name="path"></param>
-        /// <param name="isUsePool"></param>
-        /// <returns></returns>
-        private AssetBundleAssetProxy LoadAssetSync(string path, bool isUsePool)
-        {
             path = $"Assets/Bundles/{path}";
 
             var proxy = PoolMgr.singleton.GetCsharpObject<AssetBundleAssetProxy>();
-            proxy.Initialize(path, isUsePool);
+            proxy.Initialize(path);
 
             UnityObject asset = null;
             var assetBundle = AssetBundleMgr.singleton.LoadFromFile(path);
@@ -94,18 +83,7 @@ namespace Framework
         /// <returns></returns>
         public AssetBundleAssetProxy LoadAssetAsync(string path)
         {
-            return LoadAssetAsync(path, null, false);
-        }
-
-        /// <summary>
-        /// 异步从AssetBundle加载资源;
-        /// </summary>
-        /// <param name="path"></param>
-        /// <param name="isUsePool"></param>
-        /// <returns></returns>
-        public AssetBundleAssetProxy LoadAssetAsync(string path, bool isUsePool)
-        {
-            return LoadAssetAsync(path, null, isUsePool);
+            return LoadAssetAsync(path, null);
         }
 
         /// <summary>
@@ -113,14 +91,13 @@ namespace Framework
         /// </summary>
         /// <param name="path"></param>
         /// <param name="progress"></param>
-        /// <param name="isUsePool"></param>
         /// <returns></returns>
-        public AssetBundleAssetProxy LoadAssetAsync(string path, Action<float> progress, bool isUsePool)
+        public AssetBundleAssetProxy LoadAssetAsync(string path, Action<float> progress)
         {
             path = $"Assets/Bundles/{path}";
 
             var proxy = PoolMgr.singleton.GetCsharpObject<AssetBundleAssetProxy>();
-            proxy.Initialize(path, isUsePool);
+            proxy.Initialize(path);
             CoroutineMgr.singleton.RunCoroutine(AssetLoader.LoadAssetAsync(path, proxy, progress));
             return proxy;
         }

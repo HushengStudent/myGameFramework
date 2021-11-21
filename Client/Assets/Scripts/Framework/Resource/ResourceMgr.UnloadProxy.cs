@@ -4,7 +4,6 @@
 ** desc:  资源加载代理;
 *********************************************************************************/
 
-using System;
 using System.Collections.Generic;
 using MEC;
 
