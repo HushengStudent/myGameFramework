@@ -4,12 +4,12 @@
 ** desc:  资源加载抽象父类;
 *********************************************************************************/
 
-using Framework.ObjectPoolManager;
+using Framework.ObjectPoolModule;
 using System;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 
-namespace Framework.ResourceManager
+namespace Framework.ResourceModule
 {
     public abstract class AbsAssetProxy : IPool
     {

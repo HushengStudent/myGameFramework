@@ -4,6 +4,7 @@
 ** desc:  人形状态机组件;
 *********************************************************************************/
 
+using Framework.ECSModule;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

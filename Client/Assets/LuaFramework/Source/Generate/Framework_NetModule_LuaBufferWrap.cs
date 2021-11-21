@@ -2,11 +2,11 @@
 using System;
 using LuaInterface;
 
-public class Framework_LuaBufferWrap
+public class Framework_NetModule_LuaBufferWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginClass(typeof(Framework.LuaBuffer), typeof(System.Object));
+		L.BeginClass(typeof(Framework.NetModule.LuaBuffer), typeof(System.Object));
 		L.RegFunction("Close", Close);
 		L.RegFunction("WriteByte", WriteByte);
 		L.RegFunction("WriteInt", WriteInt);
@@ -28,16 +28,16 @@ public class Framework_LuaBufferWrap
 		L.RegFunction("ReadBuffer", ReadBuffer);
 		L.RegFunction("ToBytes", ToBytes);
 		L.RegFunction("Flush", Flush);
-		L.RegFunction("New", _CreateFramework_LuaBuffer);
+		L.RegFunction("New", _CreateFramework_NetModule_LuaBuffer);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.EndClass();
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int _CreateFramework_LuaBuffer(IntPtr L)
+	static int _CreateFramework_NetModule_LuaBuffer(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ctor");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.ctor");
 #endif
 		try
 		{
@@ -45,20 +45,20 @@ public class Framework_LuaBufferWrap
 
 			if (count == 0)
 			{
-				Framework.LuaBuffer obj = new Framework.LuaBuffer();
+				Framework.NetModule.LuaBuffer obj = new Framework.NetModule.LuaBuffer();
 				ToLua.PushObject(L, obj);
 				return 1;
 			}
 			else if (count == 1)
 			{
 				byte[] arg0 = ToLua.CheckByteBuffer(L, 1);
-				Framework.LuaBuffer obj = new Framework.LuaBuffer(arg0);
+				Framework.NetModule.LuaBuffer obj = new Framework.NetModule.LuaBuffer(arg0);
 				ToLua.PushObject(L, obj);
 				return 1;
 			}
 			else
 			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: Framework.LuaBuffer.New");
+				return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: Framework.NetModule.LuaBuffer.New");
 			}
 		}
 		catch (Exception e)
@@ -71,12 +71,12 @@ public class Framework_LuaBufferWrap
 	static int Close(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.Close");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.Close");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			obj.Close();
 			return 0;
 		}
@@ -90,12 +90,12 @@ public class Framework_LuaBufferWrap
 	static int WriteByte(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.WriteByte");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.WriteByte");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			byte arg0 = (byte)LuaDLL.luaL_checknumber(L, 2);
 			obj.WriteByte(arg0);
 			return 0;
@@ -110,12 +110,12 @@ public class Framework_LuaBufferWrap
 	static int WriteInt(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.WriteInt");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.WriteInt");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
 			obj.WriteInt(arg0);
 			return 0;
@@ -130,12 +130,12 @@ public class Framework_LuaBufferWrap
 	static int WriteShort(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.WriteShort");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.WriteShort");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			ushort arg0 = (ushort)LuaDLL.luaL_checknumber(L, 2);
 			obj.WriteShort(arg0);
 			return 0;
@@ -150,12 +150,12 @@ public class Framework_LuaBufferWrap
 	static int WriteLong(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.WriteLong");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.WriteLong");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			long arg0 = LuaDLL.tolua_checkint64(L, 2);
 			obj.WriteLong(arg0);
 			return 0;
@@ -170,12 +170,12 @@ public class Framework_LuaBufferWrap
 	static int WriteFloat(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.WriteFloat");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.WriteFloat");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
 			obj.WriteFloat(arg0);
 			return 0;
@@ -190,12 +190,12 @@ public class Framework_LuaBufferWrap
 	static int WriteDouble(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.WriteDouble");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.WriteDouble");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			double arg0 = (double)LuaDLL.luaL_checknumber(L, 2);
 			obj.WriteDouble(arg0);
 			return 0;
@@ -210,12 +210,12 @@ public class Framework_LuaBufferWrap
 	static int WriteString(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.WriteString");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.WriteString");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			string arg0 = ToLua.CheckString(L, 2);
 			obj.WriteString(arg0);
 			return 0;
@@ -230,12 +230,12 @@ public class Framework_LuaBufferWrap
 	static int WriteBytes(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.WriteBytes");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.WriteBytes");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			byte[] arg0 = ToLua.CheckByteBuffer(L, 2);
 			obj.WriteBytes(arg0);
 			return 0;
@@ -250,12 +250,12 @@ public class Framework_LuaBufferWrap
 	static int WriteBuffer(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.WriteBuffer");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.WriteBuffer");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			LuaByteBuffer arg0 = new LuaByteBuffer(ToLua.CheckByteBuffer(L, 2));
 			obj.WriteBuffer(arg0);
 			return 0;
@@ -270,12 +270,12 @@ public class Framework_LuaBufferWrap
 	static int ReadByte(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ReadByte");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.ReadByte");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			byte o = obj.ReadByte();
 			LuaDLL.lua_pushnumber(L, o);
 			return 1;
@@ -290,12 +290,12 @@ public class Framework_LuaBufferWrap
 	static int ReadInt(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ReadInt");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.ReadInt");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			int o = obj.ReadInt();
 			LuaDLL.lua_pushinteger(L, o);
 			return 1;
@@ -310,12 +310,12 @@ public class Framework_LuaBufferWrap
 	static int ReadShort(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ReadShort");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.ReadShort");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			ushort o = obj.ReadShort();
 			LuaDLL.lua_pushnumber(L, o);
 			return 1;
@@ -330,12 +330,12 @@ public class Framework_LuaBufferWrap
 	static int ReadLong(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ReadLong");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.ReadLong");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			long o = obj.ReadLong();
 			LuaDLL.tolua_pushint64(L, o);
 			return 1;
@@ -350,12 +350,12 @@ public class Framework_LuaBufferWrap
 	static int ReadFloat(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ReadFloat");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.ReadFloat");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			float o = obj.ReadFloat();
 			LuaDLL.lua_pushnumber(L, o);
 			return 1;
@@ -370,12 +370,12 @@ public class Framework_LuaBufferWrap
 	static int ReadDouble(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ReadDouble");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.ReadDouble");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			double o = obj.ReadDouble();
 			LuaDLL.lua_pushnumber(L, o);
 			return 1;
@@ -390,12 +390,12 @@ public class Framework_LuaBufferWrap
 	static int ReadString(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ReadString");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.ReadString");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			string o = obj.ReadString();
 			LuaDLL.lua_pushstring(L, o);
 			return 1;
@@ -410,12 +410,12 @@ public class Framework_LuaBufferWrap
 	static int ReadBytes(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ReadBytes");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.ReadBytes");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			byte[] o = obj.ReadBytes();
 			ToLua.Push(L, o);
 			return 1;
@@ -430,12 +430,12 @@ public class Framework_LuaBufferWrap
 	static int ReadBuffer(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ReadBuffer");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.ReadBuffer");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			LuaInterface.LuaByteBuffer o = obj.ReadBuffer();
 			ToLua.Push(L, o);
 			return 1;
@@ -450,12 +450,12 @@ public class Framework_LuaBufferWrap
 	static int ToBytes(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.ToBytes");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.ToBytes");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			byte[] o = obj.ToBytes();
 			ToLua.Push(L, o);
 			return 1;
@@ -470,12 +470,12 @@ public class Framework_LuaBufferWrap
 	static int Flush(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaBuffer.Flush");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaBuffer.Flush");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			Framework.LuaBuffer obj = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 1);
+			Framework.NetModule.LuaBuffer obj = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 1);
 			obj.Flush();
 			return 0;
 		}

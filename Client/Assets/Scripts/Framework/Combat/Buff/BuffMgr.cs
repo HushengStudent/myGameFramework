@@ -4,6 +4,7 @@
 ** desc:  Buff管理;
 *********************************************************************************/
 
+using Framework.ECSModule;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

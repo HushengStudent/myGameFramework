@@ -4,7 +4,7 @@
 ** desc:  #####
 *********************************************************************************/
 
-using Framework.ObjectPoolManager;
+using Framework.ObjectPoolModule;
 using System.Collections.Generic;
 
 namespace UnityEngine.UI

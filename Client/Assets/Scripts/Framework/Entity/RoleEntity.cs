@@ -4,6 +4,8 @@
 ** desc:  RoleEntity;
 *********************************************************************************/
 
+using Framework.ECSModule;
+
 namespace Framework
 {
     public class RoleEntity : AbsEntity

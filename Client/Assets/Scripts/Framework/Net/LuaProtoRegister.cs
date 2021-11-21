@@ -6,7 +6,7 @@
 
 using System.Collections.Generic;
 
-namespace Framework
+namespace Framework.NetModule
 {
     public static class LuaProtoRegister
     {

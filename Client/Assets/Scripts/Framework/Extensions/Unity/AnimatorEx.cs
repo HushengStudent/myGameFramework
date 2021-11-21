@@ -4,7 +4,7 @@
 ** desc:  Animator¿©’π;
 *********************************************************************************/
 
-using Framework.ResourceManager;
+using Framework.ResourceModule;
 using System.Collections.Generic;
 using UnityEngine;
 

@@ -4,6 +4,7 @@
 ** desc:  GameObject扩展;
 *********************************************************************************/
 
+using Framework.ECSModule;
 using System;
 using UnityEngine;
 

@@ -4,7 +4,7 @@
 ** desc:  ECS组件管理;
 *********************************************************************************/
 
-namespace Framework
+namespace Framework.ECSModule
 {
     public class ComponentMgr : MonoSingleton<ComponentMgr>
     {

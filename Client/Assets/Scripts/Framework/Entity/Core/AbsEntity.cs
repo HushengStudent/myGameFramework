@@ -4,12 +4,12 @@
 ** desc:  ECS实体抽象基类;
 *********************************************************************************/
 
-using Framework.ObjectPoolManager;
+using Framework.ObjectPoolModule;
 using System;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 
-namespace Framework
+namespace Framework.ECSModule
 {
     public enum EntityType : byte /// (curEntityType & EntityType.Role) > 0
     {

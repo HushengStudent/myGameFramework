@@ -4,7 +4,7 @@
 ** desc:  网络事件;
 *********************************************************************************/
 
-namespace Framework
+namespace Framework.NetModule
 {
     public partial class Session
     {

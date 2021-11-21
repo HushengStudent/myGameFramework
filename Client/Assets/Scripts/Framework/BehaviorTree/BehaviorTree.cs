@@ -4,6 +4,8 @@
 ** desc:  行为树;
 *********************************************************************************/
 
+using Framework.ECSModule;
+
 namespace Framework
 {
     public sealed partial class BehaviorTree

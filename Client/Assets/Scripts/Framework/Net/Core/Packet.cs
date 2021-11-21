@@ -6,7 +6,7 @@
 
 using System.IO;
 
-namespace Framework
+namespace Framework.NetModule
 {
     public abstract class Packet
     {

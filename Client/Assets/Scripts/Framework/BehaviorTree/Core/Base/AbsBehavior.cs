@@ -4,6 +4,7 @@
 ** desc:  行为抽象基类;
 *********************************************************************************/
 
+using Framework.ECSModule;
 using System.Collections;
 
 namespace Framework

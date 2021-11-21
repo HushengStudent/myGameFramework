@@ -2,7 +2,7 @@
 using System;
 using LuaInterface;
 
-public class Framework_LuaNetHelperWrap
+public class Framework_NetModule_LuaNetHelperWrap
 {
 	public static void Register(LuaState L)
 	{
@@ -16,14 +16,14 @@ public class Framework_LuaNetHelperWrap
 	static int SendLuaReq(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaNetHelper.SendLuaReq");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaNetHelper.SendLuaReq");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
-			Framework.LuaBuffer arg1 = (Framework.LuaBuffer)ToLua.CheckObject<Framework.LuaBuffer>(L, 2);
-			Framework.LuaNetHelper.SendLuaReq(arg0, arg1);
+			Framework.NetModule.LuaBuffer arg1 = (Framework.NetModule.LuaBuffer)ToLua.CheckObject<Framework.NetModule.LuaBuffer>(L, 2);
+			Framework.NetModule.LuaNetHelper.SendLuaReq(arg0, arg1);
 			return 0;
 		}
 		catch (Exception e)
@@ -36,14 +36,14 @@ public class Framework_LuaNetHelperWrap
 	static int Send2Lua(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaNetHelper.Send2Lua");
+        ToluaProfiler.AddCallRecord("Framework.NetModule.LuaNetHelper.Send2Lua");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
 			byte[] arg1 = ToLua.CheckByteBuffer(L, 2);
-			Framework.LuaNetHelper.Send2Lua(arg0, arg1);
+			Framework.NetModule.LuaNetHelper.Send2Lua(arg0, arg1);
 			return 0;
 		}
 		catch (Exception e)

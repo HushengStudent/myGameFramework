@@ -9,7 +9,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 
-namespace Framework
+namespace Framework.NetModule
 {
     public enum ProtoType : int
     {

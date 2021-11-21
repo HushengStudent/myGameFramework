@@ -9,7 +9,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace Framework
+namespace Framework.NetModule
 {
     //参考LuaFramework;
     public class LuaBuffer

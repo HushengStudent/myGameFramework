@@ -6,7 +6,7 @@
 
 using System;
 
-namespace Framework
+namespace Framework.NetModule
 {
     //TODO:协议池+buff池自己实现,以解耦,或许更好;
     public class NetMgr : MonoSingleton<NetMgr>

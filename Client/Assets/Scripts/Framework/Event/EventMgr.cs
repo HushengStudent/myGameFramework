@@ -4,6 +4,7 @@
 ** desc:  事件系统;
 *********************************************************************************/
 
+using Framework.ECSModule;
 using System.Collections.Generic;
 
 namespace Framework

@@ -4,10 +4,10 @@
 ** desc:  ECS实体管理;
 *********************************************************************************/
 
-using Framework.ObjectPoolManager;
+using Framework.ObjectPoolModule;
 using System.Collections.Generic;
 
-namespace Framework
+namespace Framework.ECSModule
 {
     public class EntityMgr : MonoSingleton<EntityMgr>
     {

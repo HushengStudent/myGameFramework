@@ -4,6 +4,7 @@
 ** desc:  行为树管理;
 *********************************************************************************/
 
+using Framework.ECSModule;
 using System.Collections.Generic;
 
 namespace Framework

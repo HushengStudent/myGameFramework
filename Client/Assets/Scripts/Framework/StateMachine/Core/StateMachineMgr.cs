@@ -4,6 +4,7 @@
 ** desc:  状态机管理;
 *********************************************************************************/
 
+using Framework.ECSModule;
 using System.Collections.Generic;
 
 namespace Framework

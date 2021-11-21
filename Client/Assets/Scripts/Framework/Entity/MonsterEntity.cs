@@ -4,6 +4,8 @@
 ** desc:  MonsterEntity;
 *********************************************************************************/
 
+using Framework.ECSModule;
+
 namespace Framework
 {
     public class MonsterEntity : AbsEntity

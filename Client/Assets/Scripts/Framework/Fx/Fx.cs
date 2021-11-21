@@ -4,7 +4,7 @@
 ** desc:  ÌØÐ§;
 *********************************************************************************/
 
-using Framework.ObjectPoolManager;
+using Framework.ObjectPoolModule;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

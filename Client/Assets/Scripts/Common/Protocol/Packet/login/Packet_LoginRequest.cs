@@ -1,4 +1,4 @@
-using Framework;
+using Framework.NetModule;
 using Protocol;
 using System.IO;
 

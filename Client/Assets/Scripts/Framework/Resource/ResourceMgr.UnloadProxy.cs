@@ -7,7 +7,7 @@
 using System.Collections.Generic;
 using MEC;
 
-namespace Framework.ResourceManager
+namespace Framework.ResourceModule
 {
     public partial class ResourceMgr
     {

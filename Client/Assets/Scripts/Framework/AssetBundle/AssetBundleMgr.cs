@@ -4,16 +4,16 @@
 ** desc:  AssetBundle管理;
 *********************************************************************************/
 
-using Framework.ObjectPoolManager;
+using Framework.ObjectPoolModule;
 using MEC;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 using Framework;
-using Framework.ResourceManager;
+using Framework.ResourceModule;
 
-namespace Framework.AssetBundleManager
+namespace Framework.AssetBundleModule
 {
     /// <summary>
     /// 1.AssetBundle加载完成后再加载AssetBundle,或开始异步加载AssetBundle后再同步加载AssetBundle,都会报错;

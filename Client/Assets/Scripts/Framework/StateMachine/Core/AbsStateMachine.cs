@@ -4,7 +4,8 @@
 ** desc:  状态机基类;
 *********************************************************************************/
 
-using Framework.ResourceManager;
+using Framework.ECSModule;
+using Framework.ResourceModule;
 using System.Collections.Generic;
 using UnityEngine;
 

@@ -7,7 +7,7 @@
 using LuaInterface;
 using System;
 
-namespace Framework
+namespace Framework.NetModule
 {
     public static class LuaNetHelper
     {

@@ -4,6 +4,8 @@
 ** desc:  PlayerEntity;
 *********************************************************************************/
 
+using Framework.ECSModule;
+
 namespace Framework
 {
     public class PlayerEntity : RoleEntity

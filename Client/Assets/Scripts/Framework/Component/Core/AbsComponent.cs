@@ -4,7 +4,7 @@
 ** desc:  ECS组件抽象基类;
 *********************************************************************************/
 
-namespace Framework
+namespace Framework.ECSModule
 {
     /// <summary>
     /// 组件抽象基类;

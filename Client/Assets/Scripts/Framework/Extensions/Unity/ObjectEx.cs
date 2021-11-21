@@ -4,10 +4,10 @@
 ** desc:  Object¿©’π;
 *********************************************************************************/
 
-using Framework.ObjectPoolManager;
+using Framework.ObjectPoolModule;
 using System.Collections.Generic;
 
-namespace Framework
+namespace Framework.ECSModule
 {
     public class ObjectEx : IPool
     {

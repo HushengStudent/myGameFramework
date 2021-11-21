@@ -2,11 +2,11 @@
 using System;
 using LuaInterface;
 
-public class Framework_ResourceManager_ResourceMgrWrap
+public class Framework_ResourceModule_ResourceMgrWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginClass(typeof(Framework.ResourceManager.ResourceMgr), typeof(Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>));
+		L.BeginClass(typeof(Framework.ResourceModule.ResourceMgr), typeof(Framework.MonoSingleton<Framework.ResourceModule.ResourceMgr>));
 		L.RegFunction("LoadAssetAsync", LoadAssetAsync);
 		L.RegFunction("LoadResourceProxy", LoadResourceProxy);
 		L.RegFunction("LoadResourceAsync", LoadResourceAsync);
@@ -31,7 +31,7 @@ public class Framework_ResourceManager_ResourceMgrWrap
 	static int LoadAssetAsync(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceManager.ResourceMgr.Register");
+        ToluaProfiler.AddCallRecord("Framework.ResourceModule.ResourceMgr.Register");
 #endif
 		try
 		{
@@ -39,24 +39,24 @@ public class Framework_ResourceManager_ResourceMgrWrap
 
 			if (count == 2)
 			{
-				Framework.ResourceManager.ResourceMgr obj = (Framework.ResourceManager.ResourceMgr)ToLua.CheckObject<Framework.ResourceManager.ResourceMgr>(L, 1);
+				Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)ToLua.CheckObject<Framework.ResourceModule.ResourceMgr>(L, 1);
 				string arg0 = ToLua.CheckString(L, 2);
-				Framework.ResourceManager.AssetBundleAssetProxy o = obj.LoadAssetAsync(arg0);
+				Framework.ResourceModule.AssetBundleAssetProxy o = obj.LoadAssetAsync(arg0);
 				ToLua.PushObject(L, o);
 				return 1;
 			}
 			else if (count == 3)
 			{
-				Framework.ResourceManager.ResourceMgr obj = (Framework.ResourceManager.ResourceMgr)ToLua.CheckObject<Framework.ResourceManager.ResourceMgr>(L, 1);
+				Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)ToLua.CheckObject<Framework.ResourceModule.ResourceMgr>(L, 1);
 				string arg0 = ToLua.CheckString(L, 2);
 				System.Action<float> arg1 = (System.Action<float>)ToLua.CheckDelegate<System.Action<float>>(L, 3);
-				Framework.ResourceManager.AssetBundleAssetProxy o = obj.LoadAssetAsync(arg0, arg1);
+				Framework.ResourceModule.AssetBundleAssetProxy o = obj.LoadAssetAsync(arg0, arg1);
 				ToLua.PushObject(L, o);
 				return 1;
 			}
 			else
 			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to method: Framework.ResourceManager.ResourceMgr.LoadAssetAsync");
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: Framework.ResourceModule.ResourceMgr.LoadAssetAsync");
 			}
 		}
 		catch (Exception e)
@@ -69,14 +69,14 @@ public class Framework_ResourceManager_ResourceMgrWrap
 	static int LoadResourceProxy(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceManager.ResourceMgr.LoadResourceProxy");
+        ToluaProfiler.AddCallRecord("Framework.ResourceModule.ResourceMgr.LoadResourceProxy");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			Framework.ResourceManager.ResourceMgr obj = (Framework.ResourceManager.ResourceMgr)ToLua.CheckObject<Framework.ResourceManager.ResourceMgr>(L, 1);
+			Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)ToLua.CheckObject<Framework.ResourceModule.ResourceMgr>(L, 1);
 			string arg0 = ToLua.CheckString(L, 2);
-			Framework.ResourceManager.ResourceAssetProxy o = obj.LoadResourceProxy(arg0);
+			Framework.ResourceModule.ResourceAssetProxy o = obj.LoadResourceProxy(arg0);
 			ToLua.PushObject(L, o);
 			return 1;
 		}
@@ -90,7 +90,7 @@ public class Framework_ResourceManager_ResourceMgrWrap
 	static int LoadResourceAsync(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceManager.ResourceMgr.Register");
+        ToluaProfiler.AddCallRecord("Framework.ResourceModule.ResourceMgr.Register");
 #endif
 		try
 		{
@@ -98,24 +98,24 @@ public class Framework_ResourceManager_ResourceMgrWrap
 
 			if (count == 2)
 			{
-				Framework.ResourceManager.ResourceMgr obj = (Framework.ResourceManager.ResourceMgr)ToLua.CheckObject<Framework.ResourceManager.ResourceMgr>(L, 1);
+				Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)ToLua.CheckObject<Framework.ResourceModule.ResourceMgr>(L, 1);
 				string arg0 = ToLua.CheckString(L, 2);
-				Framework.ResourceManager.ResourceAssetProxy o = obj.LoadResourceAsync(arg0);
+				Framework.ResourceModule.ResourceAssetProxy o = obj.LoadResourceAsync(arg0);
 				ToLua.PushObject(L, o);
 				return 1;
 			}
 			else if (count == 3)
 			{
-				Framework.ResourceManager.ResourceMgr obj = (Framework.ResourceManager.ResourceMgr)ToLua.CheckObject<Framework.ResourceManager.ResourceMgr>(L, 1);
+				Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)ToLua.CheckObject<Framework.ResourceModule.ResourceMgr>(L, 1);
 				string arg0 = ToLua.CheckString(L, 2);
 				System.Action<float> arg1 = (System.Action<float>)ToLua.CheckDelegate<System.Action<float>>(L, 3);
-				Framework.ResourceManager.ResourceAssetProxy o = obj.LoadResourceAsync(arg0, arg1);
+				Framework.ResourceModule.ResourceAssetProxy o = obj.LoadResourceAsync(arg0, arg1);
 				ToLua.PushObject(L, o);
 				return 1;
 			}
 			else
 			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to method: Framework.ResourceManager.ResourceMgr.LoadResourceAsync");
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: Framework.ResourceModule.ResourceMgr.LoadResourceAsync");
 			}
 		}
 		catch (Exception e)
@@ -128,7 +128,7 @@ public class Framework_ResourceManager_ResourceMgrWrap
 	static int LoadSceneAsync(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceManager.ResourceMgr.Register");
+        ToluaProfiler.AddCallRecord("Framework.ResourceModule.ResourceMgr.Register");
 #endif
 		try
 		{
@@ -136,14 +136,14 @@ public class Framework_ResourceManager_ResourceMgrWrap
 
 			if (count == 2)
 			{
-				Framework.ResourceManager.ResourceMgr obj = (Framework.ResourceManager.ResourceMgr)ToLua.CheckObject<Framework.ResourceManager.ResourceMgr>(L, 1);
+				Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)ToLua.CheckObject<Framework.ResourceModule.ResourceMgr>(L, 1);
 				string arg0 = ToLua.CheckString(L, 2);
 				obj.LoadSceneAsync(arg0);
 				return 0;
 			}
 			else if (count == 3)
 			{
-				Framework.ResourceManager.ResourceMgr obj = (Framework.ResourceManager.ResourceMgr)ToLua.CheckObject<Framework.ResourceManager.ResourceMgr>(L, 1);
+				Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)ToLua.CheckObject<Framework.ResourceModule.ResourceMgr>(L, 1);
 				string arg0 = ToLua.CheckString(L, 2);
 				System.Action<float> arg1 = (System.Action<float>)ToLua.CheckDelegate<System.Action<float>>(L, 3);
 				obj.LoadSceneAsync(arg0, arg1);
@@ -151,7 +151,7 @@ public class Framework_ResourceManager_ResourceMgrWrap
 			}
 			else if (count == 4)
 			{
-				Framework.ResourceManager.ResourceMgr obj = (Framework.ResourceManager.ResourceMgr)ToLua.CheckObject<Framework.ResourceManager.ResourceMgr>(L, 1);
+				Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)ToLua.CheckObject<Framework.ResourceModule.ResourceMgr>(L, 1);
 				string arg0 = ToLua.CheckString(L, 2);
 				System.Action<UnityEngine.SceneManagement.Scene> arg1 = (System.Action<UnityEngine.SceneManagement.Scene>)ToLua.CheckDelegate<System.Action<UnityEngine.SceneManagement.Scene>>(L, 3);
 				System.Action<float> arg2 = (System.Action<float>)ToLua.CheckDelegate<System.Action<float>>(L, 4);
@@ -160,7 +160,7 @@ public class Framework_ResourceManager_ResourceMgrWrap
 			}
 			else
 			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to method: Framework.ResourceManager.ResourceMgr.LoadSceneAsync");
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: Framework.ResourceModule.ResourceMgr.LoadSceneAsync");
 			}
 		}
 		catch (Exception e)
@@ -173,7 +173,7 @@ public class Framework_ResourceManager_ResourceMgrWrap
 	static int UnloadSceneAsync(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceManager.ResourceMgr.Register");
+        ToluaProfiler.AddCallRecord("Framework.ResourceModule.ResourceMgr.Register");
 #endif
 		try
 		{
@@ -181,7 +181,7 @@ public class Framework_ResourceManager_ResourceMgrWrap
 
 			if (count == 3)
 			{
-				Framework.ResourceManager.ResourceMgr obj = (Framework.ResourceManager.ResourceMgr)ToLua.CheckObject<Framework.ResourceManager.ResourceMgr>(L, 1);
+				Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)ToLua.CheckObject<Framework.ResourceModule.ResourceMgr>(L, 1);
 				string arg0 = ToLua.CheckString(L, 2);
 				System.Action<UnityEngine.SceneManagement.Scene> arg1 = (System.Action<UnityEngine.SceneManagement.Scene>)ToLua.CheckDelegate<System.Action<UnityEngine.SceneManagement.Scene>>(L, 3);
 				obj.UnloadSceneAsync(arg0, arg1);
@@ -189,7 +189,7 @@ public class Framework_ResourceManager_ResourceMgrWrap
 			}
 			else if (count == 4)
 			{
-				Framework.ResourceManager.ResourceMgr obj = (Framework.ResourceManager.ResourceMgr)ToLua.CheckObject<Framework.ResourceManager.ResourceMgr>(L, 1);
+				Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)ToLua.CheckObject<Framework.ResourceModule.ResourceMgr>(L, 1);
 				string arg0 = ToLua.CheckString(L, 2);
 				System.Action<UnityEngine.SceneManagement.Scene> arg1 = (System.Action<UnityEngine.SceneManagement.Scene>)ToLua.CheckDelegate<System.Action<UnityEngine.SceneManagement.Scene>>(L, 3);
 				System.Action<float> arg2 = (System.Action<float>)ToLua.CheckDelegate<System.Action<float>>(L, 4);
@@ -198,7 +198,7 @@ public class Framework_ResourceManager_ResourceMgrWrap
 			}
 			else
 			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to method: Framework.ResourceManager.ResourceMgr.UnloadSceneAsync");
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: Framework.ResourceModule.ResourceMgr.UnloadSceneAsync");
 			}
 		}
 		catch (Exception e)
@@ -211,12 +211,12 @@ public class Framework_ResourceManager_ResourceMgrWrap
 	static int DestroyUnityAsset(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceManager.ResourceMgr.DestroyUnityAsset");
+        ToluaProfiler.AddCallRecord("Framework.ResourceModule.ResourceMgr.DestroyUnityAsset");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			Framework.ResourceManager.ResourceMgr obj = (Framework.ResourceManager.ResourceMgr)ToLua.CheckObject<Framework.ResourceManager.ResourceMgr>(L, 1);
+			Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)ToLua.CheckObject<Framework.ResourceModule.ResourceMgr>(L, 1);
 			UnityEngine.Object arg0 = (UnityEngine.Object)ToLua.CheckObject<UnityEngine.Object>(L, 2);
 			obj.DestroyUnityAsset(arg0);
 			return 0;
@@ -231,12 +231,12 @@ public class Framework_ResourceManager_ResourceMgrWrap
 	static int DestroyInstantiateObject(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceManager.ResourceMgr.DestroyInstantiateObject");
+        ToluaProfiler.AddCallRecord("Framework.ResourceModule.ResourceMgr.DestroyInstantiateObject");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			Framework.ResourceManager.ResourceMgr obj = (Framework.ResourceManager.ResourceMgr)ToLua.CheckObject<Framework.ResourceManager.ResourceMgr>(L, 1);
+			Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)ToLua.CheckObject<Framework.ResourceModule.ResourceMgr>(L, 1);
 			UnityEngine.Object arg0 = (UnityEngine.Object)ToLua.CheckObject<UnityEngine.Object>(L, 2);
 			obj.DestroyInstantiateObject(arg0);
 			return 0;
@@ -251,12 +251,12 @@ public class Framework_ResourceManager_ResourceMgrWrap
 	static int GameGC(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceManager.ResourceMgr.GameGC");
+        ToluaProfiler.AddCallRecord("Framework.ResourceModule.ResourceMgr.GameGC");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			Framework.ResourceManager.ResourceMgr obj = (Framework.ResourceManager.ResourceMgr)ToLua.CheckObject<Framework.ResourceManager.ResourceMgr>(L, 1);
+			Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)ToLua.CheckObject<Framework.ResourceModule.ResourceMgr>(L, 1);
 			obj.GameGC();
 			return 0;
 		}
@@ -270,12 +270,12 @@ public class Framework_ResourceManager_ResourceMgrWrap
 	static int UnloadUnusedAssets(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceManager.ResourceMgr.UnloadUnusedAssets");
+        ToluaProfiler.AddCallRecord("Framework.ResourceModule.ResourceMgr.UnloadUnusedAssets");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			Framework.ResourceManager.ResourceMgr obj = (Framework.ResourceManager.ResourceMgr)ToLua.CheckObject<Framework.ResourceManager.ResourceMgr>(L, 1);
+			Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)ToLua.CheckObject<Framework.ResourceModule.ResourceMgr>(L, 1);
 			System.Action arg0 = (System.Action)ToLua.CheckDelegate<System.Action>(L, 2);
 			obj.UnloadUnusedAssets(arg0);
 			return 0;
@@ -290,13 +290,13 @@ public class Framework_ResourceManager_ResourceMgrWrap
 	static int AddRemoveProxy(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceManager.ResourceMgr.AddRemoveProxy");
+        ToluaProfiler.AddCallRecord("Framework.ResourceModule.ResourceMgr.AddRemoveProxy");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 2);
-			Framework.ResourceManager.ResourceMgr obj = (Framework.ResourceManager.ResourceMgr)ToLua.CheckObject<Framework.ResourceManager.ResourceMgr>(L, 1);
-			Framework.ResourceManager.AbsAssetProxy arg0 = (Framework.ResourceManager.AbsAssetProxy)ToLua.CheckObject<Framework.ResourceManager.AbsAssetProxy>(L, 2);
+			Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)ToLua.CheckObject<Framework.ResourceModule.ResourceMgr>(L, 1);
+			Framework.ResourceModule.AbsAssetProxy arg0 = (Framework.ResourceModule.AbsAssetProxy)ToLua.CheckObject<Framework.ResourceModule.AbsAssetProxy>(L, 2);
 			obj.AddRemoveProxy(arg0);
 			return 0;
 		}
@@ -310,12 +310,12 @@ public class Framework_ResourceManager_ResourceMgrWrap
 	static int CancleAllProxy(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceManager.ResourceMgr.CancleAllProxy");
+        ToluaProfiler.AddCallRecord("Framework.ResourceModule.ResourceMgr.CancleAllProxy");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			Framework.ResourceManager.ResourceMgr obj = (Framework.ResourceManager.ResourceMgr)ToLua.CheckObject<Framework.ResourceManager.ResourceMgr>(L, 1);
+			Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)ToLua.CheckObject<Framework.ResourceModule.ResourceMgr>(L, 1);
 			System.Collections.Generic.IEnumerator<float> o = obj.CancleAllProxy();
 			ToLua.PushObject(L, o);
 			return 1;
@@ -330,7 +330,7 @@ public class Framework_ResourceManager_ResourceMgrWrap
 	static int op_Equality(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceManager.ResourceMgr.op_Equality");
+        ToluaProfiler.AddCallRecord("Framework.ResourceModule.ResourceMgr.op_Equality");
 #endif
 		try
 		{
@@ -351,14 +351,14 @@ public class Framework_ResourceManager_ResourceMgrWrap
 	static int get_MAX_LOAD_TIME(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceManager.ResourceMgr.MAX_LOAD_TIME");
+        ToluaProfiler.AddCallRecord("Framework.ResourceModule.ResourceMgr.MAX_LOAD_TIME");
 #endif
 		object o = null;
 
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			Framework.ResourceManager.ResourceMgr obj = (Framework.ResourceManager.ResourceMgr)o;
+			Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)o;
 			float ret = obj.MAX_LOAD_TIME;
 			LuaDLL.lua_pushnumber(L, ret);
 			return 1;
@@ -373,14 +373,14 @@ public class Framework_ResourceManager_ResourceMgrWrap
 	static int get_LOAD_BUNDLE_PRECENT(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceManager.ResourceMgr.LOAD_BUNDLE_PRECENT");
+        ToluaProfiler.AddCallRecord("Framework.ResourceModule.ResourceMgr.LOAD_BUNDLE_PRECENT");
 #endif
 		object o = null;
 
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			Framework.ResourceManager.ResourceMgr obj = (Framework.ResourceManager.ResourceMgr)o;
+			Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)o;
 			float ret = obj.LOAD_BUNDLE_PRECENT;
 			LuaDLL.lua_pushnumber(L, ret);
 			return 1;
@@ -395,14 +395,14 @@ public class Framework_ResourceManager_ResourceMgrWrap
 	static int get_LOAD_ASSET_PRECENT(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceManager.ResourceMgr.LOAD_ASSET_PRECENT");
+        ToluaProfiler.AddCallRecord("Framework.ResourceModule.ResourceMgr.LOAD_ASSET_PRECENT");
 #endif
 		object o = null;
 
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			Framework.ResourceManager.ResourceMgr obj = (Framework.ResourceManager.ResourceMgr)o;
+			Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)o;
 			float ret = obj.LOAD_ASSET_PRECENT;
 			LuaDLL.lua_pushnumber(L, ret);
 			return 1;
@@ -417,14 +417,14 @@ public class Framework_ResourceManager_ResourceMgrWrap
 	static int get_LuaAssetBundle(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.ResourceManager.ResourceMgr.LuaAssetBundle");
+        ToluaProfiler.AddCallRecord("Framework.ResourceModule.ResourceMgr.LuaAssetBundle");
 #endif
 		object o = null;
 
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			Framework.ResourceManager.ResourceMgr obj = (Framework.ResourceManager.ResourceMgr)o;
+			Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)o;
 			UnityEngine.AssetBundle ret = obj.LuaAssetBundle;
 			ToLua.Push(L, ret);
 			return 1;

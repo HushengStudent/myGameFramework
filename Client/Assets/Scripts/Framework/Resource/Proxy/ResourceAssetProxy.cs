@@ -4,10 +4,10 @@
 ** desc:  Resource资源加载代理;
 *********************************************************************************/
 
-using Framework.ObjectPoolManager;
+using Framework.ObjectPoolModule;
 using UnityObject = UnityEngine.Object;
 
-namespace Framework.ResourceManager
+namespace Framework.ResourceModule
 {
     public class ResourceAssetProxy : AbsAssetProxy
     {

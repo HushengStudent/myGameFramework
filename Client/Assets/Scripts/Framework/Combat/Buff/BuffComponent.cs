@@ -4,6 +4,7 @@
 ** desc:  Buff组件;
 *********************************************************************************/
 
+using Framework.ECSModule;
 using System.Collections.Generic;
 
 namespace Framework

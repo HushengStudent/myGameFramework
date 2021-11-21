@@ -4,6 +4,7 @@
 ** desc:  ×´Ì¬»ú×é¼þ;
 *********************************************************************************/
 
+using Framework.ECSModule;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

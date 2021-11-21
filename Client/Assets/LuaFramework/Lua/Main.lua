@@ -91,7 +91,7 @@ function TestSendPblua()
     ----------------------------------------------------------------
     local buffer = luaBuffer.New()
     buffer:WriteBuffer(msg)
-    LuaNetHelper.SendLuaReq(10011, buffer)
+    luaNetHelper.SendLuaReq(10011, buffer)
 end
 
 function TestProcessPblua(buffer)

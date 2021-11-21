@@ -7,7 +7,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Framework
+namespace Framework.NetModule
 {
     public class PacketFactory
     {

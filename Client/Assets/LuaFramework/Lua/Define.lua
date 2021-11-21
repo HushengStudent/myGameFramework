@@ -9,14 +9,15 @@ GameObject = UnityEngine.GameObject
 ---[Mgr]
 luaMgr = Framework.LuaMgr.singleton --luaMgr
 sceneMgr = Framework.SceneMgr.singleton
-resourceMgr = Framework.ResourceMgr.singleton
+resourceMgr = Framework.ResourceModule.ResourceMgr.singleton
 
 ---[Utility]
-luaUtility = Framework.LuaUtility.singleton --luaUtility
 logHelper = LogHelper
-luaBuffer = Framework.LuaBuffer
-LuaNetHelper = Framework.LuaNetHelper
+luaUtility = Framework.LuaUtility.singleton --luaUtility
 luaHelper = Framework.LuaHelper
+
+luaBuffer = Framework.NetModule.LuaBuffer
+luaNetHelper = Framework.NetModule.LuaNetHelper
 
 ---[Enum]
 --logColor = LogColor

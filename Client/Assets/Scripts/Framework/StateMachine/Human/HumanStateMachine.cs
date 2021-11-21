@@ -4,6 +4,8 @@
 ** desc:  ÈËÐÎ×´Ì¬»ú;
 *********************************************************************************/
 
+using Framework.ECSModule;
+
 namespace Framework
 {
     public partial class HumanStateMachine : AbsStateMachine

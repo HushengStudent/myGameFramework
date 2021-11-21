@@ -6,7 +6,7 @@
 
 using System;
 
-namespace Framework.ObjectPoolManager
+namespace Framework.ObjectPoolModule
 {
     public interface IPool //: IDisposable
     {

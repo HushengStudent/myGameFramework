@@ -4,12 +4,12 @@
 ** desc:  对象池管理;
 *********************************************************************************/
 
-using Framework.ResourceManager;
+using Framework.ResourceModule;
 using MEC;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Framework.ObjectPoolManager
+namespace Framework.ObjectPoolModule
 {
     public partial class PoolMgr : MonoSingleton<PoolMgr>
     {

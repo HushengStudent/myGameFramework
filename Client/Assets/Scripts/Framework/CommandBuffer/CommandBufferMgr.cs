@@ -4,7 +4,7 @@
 ** desc:  CommandBuffer Mgr;
 *********************************************************************************/
 
-using Framework.ObjectPoolManager;
+using Framework.ObjectPoolModule;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;

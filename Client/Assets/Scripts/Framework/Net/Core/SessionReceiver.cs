@@ -6,7 +6,7 @@
 
 using System;
 
-namespace Framework
+namespace Framework.NetModule
 {
     public class SessionReceiver
     {
