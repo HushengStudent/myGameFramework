@@ -4,6 +4,7 @@
 ** desc:  状态机基类;
 *********************************************************************************/
 
+using Framework.ResourceManager;
 using System.Collections.Generic;
 using UnityEngine;
 

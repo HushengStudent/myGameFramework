@@ -7,8 +7,9 @@
 using UnityEngine;
 using System;
 using UnityObject = UnityEngine.Object;
+using Framework.AssetBundleManager;
 
-namespace Framework
+namespace Framework.ResourceManager
 {
     public partial class ResourceMgr
     {

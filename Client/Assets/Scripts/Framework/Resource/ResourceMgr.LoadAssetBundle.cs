@@ -10,9 +10,10 @@ using System.Collections.Generic;
 using MEC;
 using UnityObject = UnityEngine.Object;
 using System.IO;
-using Framework.ObjectPool;
+using Framework.ObjectPoolManager;
+using Framework.AssetBundleManager;
 
-namespace Framework
+namespace Framework.ResourceManager
 {
     public partial class ResourceMgr
     {

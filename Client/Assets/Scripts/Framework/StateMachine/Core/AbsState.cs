@@ -4,6 +4,7 @@
 ** desc:  状态机状态基类;
 *********************************************************************************/
 
+using Framework.ResourceManager;
 using UnityEngine;
 
 namespace Framework

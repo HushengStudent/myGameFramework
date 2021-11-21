@@ -7,7 +7,7 @@
 using System.Collections.Generic;
 using UnityEngine.Events;
 
-namespace Framework.ObjectPool
+namespace Framework.ObjectPoolManager
 {
     internal class CsharpObjectPool<T> where T : new()
     {

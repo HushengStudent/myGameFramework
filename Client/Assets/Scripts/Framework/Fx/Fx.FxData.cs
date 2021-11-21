@@ -4,6 +4,7 @@
 ** desc:  ÌØÐ§;
 *********************************************************************************/
 
+using Framework.ObjectPoolManager;
 using UnityEngine;
 
 namespace Framework

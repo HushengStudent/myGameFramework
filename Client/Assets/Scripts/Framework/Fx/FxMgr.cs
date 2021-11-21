@@ -4,7 +4,7 @@
 ** desc:  特效管理;
 *********************************************************************************/
 
-using Framework.ObjectPool;
+using Framework.ObjectPoolManager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

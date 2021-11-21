@@ -4,9 +4,10 @@
 ** desc:  资源管理;
 *********************************************************************************/
 
+using Framework.AssetBundleManager;
 using UnityEngine;
 
-namespace Framework
+namespace Framework.ResourceManager
 {
     public partial class ResourceMgr : MonoSingleton<ResourceMgr>
     {

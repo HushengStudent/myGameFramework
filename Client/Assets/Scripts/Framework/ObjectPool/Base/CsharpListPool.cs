@@ -6,7 +6,7 @@
 
 using System.Collections.Generic;
 
-namespace Framework.ObjectPool
+namespace Framework.ObjectPoolManager
 {
     internal class CsharpListPool<T>
     {

@@ -10,8 +10,9 @@ using System.Collections.Generic;
 using MEC;
 using UnityEngine.SceneManagement;
 using System.IO;
+using Framework.AssetBundleManager;
 
-namespace Framework
+namespace Framework.ResourceManager
 {
     public partial class ResourceMgr
     {

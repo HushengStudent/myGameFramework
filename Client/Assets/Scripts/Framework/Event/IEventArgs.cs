@@ -4,6 +4,7 @@
 ** desc:  事件参数接口;
 *********************************************************************************/
 
+using Framework.ObjectPoolManager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

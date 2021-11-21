@@ -4,6 +4,7 @@
 ** desc:  相机管理;
 *********************************************************************************/
 
+using Framework.ResourceManager;
 using UnityEngine;
 
 namespace Framework

@@ -4,7 +4,7 @@
 ** desc:  ECS实体抽象基类;
 *********************************************************************************/
 
-using Framework.ObjectPool;
+using Framework.ObjectPoolManager;
 using System;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;

@@ -4,7 +4,7 @@
 ** desc:  图集管理;
 *********************************************************************************/
 
-using Framework.ObjectPool;
+using Framework.ObjectPoolManager;
 using System.Collections.Generic;
 using UnityEngine;
 

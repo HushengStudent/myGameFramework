@@ -4,7 +4,7 @@
 ** desc:  ECS实体管理;
 *********************************************************************************/
 
-using Framework.ObjectPool;
+using Framework.ObjectPoolManager;
 using System.Collections.Generic;
 
 namespace Framework

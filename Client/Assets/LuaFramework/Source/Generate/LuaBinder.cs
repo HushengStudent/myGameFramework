@@ -98,17 +98,19 @@ public static class LuaBinder
 		Framework_LuaUIPanelWrap.Register(L);
 		Framework_LuaUIComWrap.Register(L);
 		Framework_SceneMgrWrap.Register(L);
-		Framework_ResourceMgrWrap.Register(L);
 		Framework_LuaBufferWrap.Register(L);
 		Framework_LuaNetHelperWrap.Register(L);
 		Framework_LuaHelperWrap.Register(L);
 		Framework_MonoSingleton_Framework_LuaMgrWrap.Register(L);
 		Framework_Singleton_Framework_LuaUtilityWrap.Register(L);
 		Framework_Singleton_Framework_SceneMgrWrap.Register(L);
-		Framework_MonoSingleton_Framework_ResourceMgrWrap.Register(L);
+		Framework_MonoSingleton_Framework_ResourceManager_ResourceMgrWrap.Register(L);
 		L.RegFunction("OnSingletonInitializeEventHandler", Framework_OnSingletonInitializeEventHandler);
 		L.RegFunction("OnSingletonUninitializeEventHandler", Framework_OnSingletonUninitializeEventHandler);
 		L.RegFunction("SceneLoadEventHandler", Framework_SceneLoadEventHandler);
+		L.BeginModule("ResourceManager");
+		Framework_ResourceManager_ResourceMgrWrap.Register(L);
+		L.EndModule();
 		L.EndModule();
 		L.BeginModule("System");
 		L.RegFunction("Action", System_Action);
@@ -144,7 +146,7 @@ public static class LuaBinder
 	static int UnityEngine_Events_UnityAction(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.UnityEngine_Events_UnityAction");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.UnityEngine_Events_UnityAction");
 #endif
 		try
 		{
@@ -174,7 +176,7 @@ public static class LuaBinder
 	static int UnityEngine_Camera_CameraCallback(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.UnityEngine_Camera_CameraCallback");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.UnityEngine_Camera_CameraCallback");
 #endif
 		try
 		{
@@ -204,7 +206,7 @@ public static class LuaBinder
 	static int UnityEngine_Application_AdvertisingIdentifierCallback(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.UnityEngine_Application_AdvertisingIdentifierCallback");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.UnityEngine_Application_AdvertisingIdentifierCallback");
 #endif
 		try
 		{
@@ -234,7 +236,7 @@ public static class LuaBinder
 	static int UnityEngine_Application_LowMemoryCallback(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.UnityEngine_Application_LowMemoryCallback");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.UnityEngine_Application_LowMemoryCallback");
 #endif
 		try
 		{
@@ -264,7 +266,7 @@ public static class LuaBinder
 	static int UnityEngine_Application_LogCallback(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.UnityEngine_Application_LogCallback");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.UnityEngine_Application_LogCallback");
 #endif
 		try
 		{
@@ -294,7 +296,7 @@ public static class LuaBinder
 	static int UnityEngine_AudioClip_PCMReaderCallback(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.UnityEngine_AudioClip_PCMReaderCallback");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.UnityEngine_AudioClip_PCMReaderCallback");
 #endif
 		try
 		{
@@ -324,7 +326,7 @@ public static class LuaBinder
 	static int UnityEngine_AudioClip_PCMSetPositionCallback(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.UnityEngine_AudioClip_PCMSetPositionCallback");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.UnityEngine_AudioClip_PCMSetPositionCallback");
 #endif
 		try
 		{
@@ -354,7 +356,7 @@ public static class LuaBinder
 	static int UnityEngine_RectTransform_ReapplyDrivenProperties(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.UnityEngine_RectTransform_ReapplyDrivenProperties");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.UnityEngine_RectTransform_ReapplyDrivenProperties");
 #endif
 		try
 		{
@@ -384,7 +386,7 @@ public static class LuaBinder
 	static int Framework_OnSingletonInitializeEventHandler(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.Framework_OnSingletonInitializeEventHandler");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.Framework_OnSingletonInitializeEventHandler");
 #endif
 		try
 		{
@@ -414,7 +416,7 @@ public static class LuaBinder
 	static int Framework_OnSingletonUninitializeEventHandler(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.Framework_OnSingletonUninitializeEventHandler");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.Framework_OnSingletonUninitializeEventHandler");
 #endif
 		try
 		{
@@ -444,7 +446,7 @@ public static class LuaBinder
 	static int Framework_SceneLoadEventHandler(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.Framework_SceneLoadEventHandler");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.Framework_SceneLoadEventHandler");
 #endif
 		try
 		{
@@ -474,7 +476,7 @@ public static class LuaBinder
 	static int System_Action(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.System_Action");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.System_Action");
 #endif
 		try
 		{
@@ -504,7 +506,7 @@ public static class LuaBinder
 	static int System_Predicate_int(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.System_Predicate_int");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.System_Predicate_int");
 #endif
 		try
 		{
@@ -534,7 +536,7 @@ public static class LuaBinder
 	static int System_Action_int(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.System_Action_int");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.System_Action_int");
 #endif
 		try
 		{
@@ -564,7 +566,7 @@ public static class LuaBinder
 	static int System_Comparison_int(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.System_Comparison_int");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.System_Comparison_int");
 #endif
 		try
 		{
@@ -594,7 +596,7 @@ public static class LuaBinder
 	static int System_Func_int_int(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.System_Func_int_int");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.System_Func_int_int");
 #endif
 		try
 		{
@@ -624,7 +626,7 @@ public static class LuaBinder
 	static int System_Action_bool(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.System_Action_bool");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.System_Action_bool");
 #endif
 		try
 		{
@@ -654,7 +656,7 @@ public static class LuaBinder
 	static int System_Action_string(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.System_Action_string");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.System_Action_string");
 #endif
 		try
 		{
@@ -684,7 +686,7 @@ public static class LuaBinder
 	static int System_Func_bool(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.System_Func_bool");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.System_Func_bool");
 #endif
 		try
 		{
@@ -714,7 +716,7 @@ public static class LuaBinder
 	static int System_Action_UnityEngine_AsyncOperation(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.System_Action_UnityEngine_AsyncOperation");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.System_Action_UnityEngine_AsyncOperation");
 #endif
 		try
 		{
@@ -744,7 +746,7 @@ public static class LuaBinder
 	static int System_Action_float(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.System_Action_float");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.System_Action_float");
 #endif
 		try
 		{
@@ -774,7 +776,7 @@ public static class LuaBinder
 	static int System_Action_UnityEngine_SceneManagement_Scene(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceMgr>.System_Action_UnityEngine_SceneManagement_Scene");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceManager.ResourceMgr>.System_Action_UnityEngine_SceneManagement_Scene");
 #endif
 		try
 		{

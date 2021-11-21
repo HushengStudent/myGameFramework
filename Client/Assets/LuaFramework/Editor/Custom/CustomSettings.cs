@@ -10,6 +10,7 @@ using Framework;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using UnityEngine.EventSystems;
+using Framework.ResourceManager;
 
 public static class CustomSettings
 {

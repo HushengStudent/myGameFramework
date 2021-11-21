@@ -8,9 +8,9 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using MEC;
-using Framework.ObjectPool;
+using Framework.ObjectPoolManager;
 
-namespace Framework
+namespace Framework.ResourceManager
 {
     /// <summary>
     /// 调Resources.LoadAsync加载的同一帧,调Resources.Load加载同一资源会报错;

@@ -4,10 +4,11 @@
 ** desc:  AssetBundle资源加载代理;
 *********************************************************************************/
 
-using Framework.ObjectPool;
+using Framework.AssetBundleManager;
+using Framework.ObjectPoolManager;
 using UnityObject = UnityEngine.Object;
 
-namespace Framework
+namespace Framework.ResourceManager
 {
     public class AssetBundleAssetProxy : AbsAssetProxy
     {

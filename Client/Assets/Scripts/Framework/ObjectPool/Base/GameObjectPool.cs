@@ -4,12 +4,13 @@
 ** desc:  GameObjectPool对象池;
 *********************************************************************************/
 
+using Framework.ResourceManager;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
 
-namespace Framework.ObjectPool
+namespace Framework.ObjectPoolManager
 {
     public class GameObjectPool : IPool
     {

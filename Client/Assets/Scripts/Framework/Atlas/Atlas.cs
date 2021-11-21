@@ -4,7 +4,8 @@
 ** desc:  图集;
 *********************************************************************************/
 
-using Framework.ObjectPool;
+using Framework.ObjectPoolManager;
+using Framework.ResourceManager;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

@@ -4,6 +4,7 @@
 ** desc:  Lua管理;
 *********************************************************************************/
 
+using Framework.ResourceManager;
 using LuaInterface;
 using System.Collections.Generic;
 using UnityEngine;

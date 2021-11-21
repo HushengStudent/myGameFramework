@@ -4,6 +4,7 @@
 ** desc:  单个模型组件;
 *********************************************************************************/
 
+using Framework.ResourceManager;
 using UnityEngine;
 
 namespace Framework

@@ -4,6 +4,7 @@
 ** desc:  合并模型组件;
 *********************************************************************************/
 
+using Framework.ResourceManager;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;

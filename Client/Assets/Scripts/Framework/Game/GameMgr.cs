@@ -4,7 +4,8 @@
 ** desc:  游戏管理;
 *********************************************************************************/
 
-using Framework.ObjectPool;
+using Framework.ObjectPoolManager;
+using Framework.ResourceManager;
 using UnityEngine;
 
 namespace Framework
