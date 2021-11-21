@@ -243,16 +243,26 @@ namespace Framework
             return false;
         }
 
+        void IPool.OnGet(params object[] args)
+        {
+            OnGetEx(args);
+        }
+
+        void IPool.OnRelease()
+        {
+            OnReleaseEx();
+        }
+
         /// <summary>
         /// 对象池Get;
         /// </summary>
         /// <param name="args"></param>
-        public virtual void OnGet(params object[] args) { }
+        protected virtual void OnGetEx(params object[] args) { }
 
         /// <summary>
         /// 对象池Release;
         /// </summary>
-        public virtual void OnRelease() { }
+        protected virtual void OnReleaseEx() { }
 
         /// <summary>
         /// 添加事件;

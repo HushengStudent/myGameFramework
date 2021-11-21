@@ -150,11 +150,11 @@ namespace Framework
             return Deprecated;
         }
 
-        public void OnGet(params object[] args)
+        void IPool.OnGet(params object[] args)
         {
         }
 
-        public void OnRelease()
+        void IPool.OnRelease()
         {
         }
     }

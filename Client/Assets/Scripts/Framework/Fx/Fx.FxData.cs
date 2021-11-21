@@ -20,12 +20,12 @@ namespace Framework
 
             public Vector3 TargetPosition;
 
-            public void OnGet(params object[] args)
+            void IPool.OnGet(params object[] args)
             {
                 Reset();
             }
 
-            public void OnRelease()
+            void IPool.OnRelease()
             {
                 Reset();
             }

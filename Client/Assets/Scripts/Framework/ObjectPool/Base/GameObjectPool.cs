@@ -18,7 +18,6 @@ namespace Framework.ObjectPool
         private HashSet<int> _instanceIDHashSet;
         private GameObject _parent;
         private AssetBundleAssetProxy _assetBundleAssetProxy;
-        private Action<GameObjectPool> _onPoolInit = null;
 
         internal string AssetPath { get; private set; }
         internal HashSet<string> TagHashSet { get; private set; }
@@ -35,6 +34,28 @@ namespace Framework.ObjectPool
             {
                 TagHashSet.Add(tag);
             }
+        }
+
+        internal void AddTag(string tag)
+        {
+            if (string.IsNullOrWhiteSpace(tag) || TagHashSet.Contains(tag))
+            {
+                return;
+            }
+            TagHashSet.Add(tag);
+        }
+
+        public void SetPoolInitCallback(Action<GameObjectPool> action)
+        {
+            if (_assetBundleAssetProxy == null)
+            {
+                LogHelper.PrintError($"[GameObjectPool]SetPoolInitCallback error, pool:{AssetPath} assetProxy is null.");
+                return;
+            }
+            _assetBundleAssetProxy.AddLoadFinishCallBack(() =>
+            {
+                action?.Invoke(this);
+            });
         }
 
         public GameObject Get()
@@ -120,7 +141,6 @@ namespace Framework.ObjectPool
             AssetPath = string.Empty;
             _assetBundleAssetProxy.UnloadProxy();
             _assetBundleAssetProxy = null;
-            _onPoolInit = null;
         }
     }
 }

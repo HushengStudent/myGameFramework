@@ -102,13 +102,13 @@ namespace Framework
                 ResourceMgr.singleton.AddRemoveProxy(this);
             }
         }
-
-        public void OnGet(params object[] args)
+        
+        void IPool.OnGet(params object[] args)
         {
             OnGetEx(args);
         }
 
-        public void OnRelease()
+        void IPool.OnRelease()
         {
             _onLoadFinish = null;
             AssetPath = string.Empty;

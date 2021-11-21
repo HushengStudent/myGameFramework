@@ -35,16 +35,17 @@ namespace Framework.ObjectPool
                 targetPool.Initialize(assetPath, tag);
                 _poolDict[assetPath] = targetPool;
             }
+            targetPool.AddTag(tag);
             if (!string.IsNullOrWhiteSpace(tag))
             {
-                if (!_tagDict.TryGetValue(tag, out var poolList))
+                if (!_tagDict.TryGetValue(tag, out var poolHashSet))
                 {
-                    poolList = new HashSet<GameObjectPool>();
-                    _tagDict[tag] = poolList;
+                    poolHashSet = new HashSet<GameObjectPool>();
+                    _tagDict[tag] = poolHashSet;
                 }
-                if (!poolList.Contains(targetPool))
+                if (!poolHashSet.Contains(targetPool))
                 {
-                    poolList.Add(targetPool);
+                    poolHashSet.Add(targetPool);
                 }
             }
             return targetPool;
@@ -80,18 +81,57 @@ namespace Framework.ObjectPool
             _poolDict.Remove(assetPath);
             foreach (var tag in targetPool.TagHashSet)
             {
-                if (!_tagDict.TryGetValue(tag, out var poolList))
+                if (!_tagDict.TryGetValue(tag, out var poolHashSet))
                 {
                     continue;
                 }
-                if (poolList.Contains(targetPool))
+                if (poolHashSet.Contains(targetPool))
                 {
-                    poolList.Remove(targetPool);
+                    poolHashSet.Remove(targetPool);
                 }
             }
             ReleaseCsharpObject(targetPool);
+
+            var list = GetCsharpList<string>();
+            foreach (var temp in _tagDict)
+            {
+                if (temp.Value.Count < 1)
+                {
+                    list.Add(temp.Key);
+                }
+            }
+            foreach (var name in list)
+            {
+                _tagDict.Remove(name);
+            }
+            ReleaseCsharpList(list);
         }
 
+        /// <summary>
+        /// 释放GameObjectPool;
+        /// </summary>
+        /// <param name="tag"></param>
+        public void ReleaseGameObjectPoolByTag(string tag)
+        {
+            if (string.IsNullOrWhiteSpace(tag))
+            {
+                return;
+            }
+            if (!_tagDict.TryGetValue(tag, out var poolHashSet))
+            {
+                return;
+            }
+            foreach (var targetPool in poolHashSet)
+            {
+                _poolDict.Remove(targetPool.AssetPath);
+                ReleaseCsharpObject(targetPool);
+            }
+            _tagDict.Remove(tag);
+        }
+
+        /// <summary>
+        /// 释放全部GameObjectPool;
+        /// </summary>
         public void ReleaseAllGameObjectPool()
         {
             foreach (var temp in _poolDict)

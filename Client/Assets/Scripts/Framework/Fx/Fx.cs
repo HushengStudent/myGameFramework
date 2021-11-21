@@ -26,14 +26,14 @@ namespace Framework
 
         }
 
-        public void OnGet(params object[] args)
+        void IPool.OnGet(params object[] args)
         {
             var fxData = args[0] as FxData;
 
             ID = FxMgr.singleton.FxID;
         }
 
-        public void OnRelease()
+        void IPool.OnRelease()
         {
             ID = 0;
             PoolMgr.singleton.ReleaseCsharpObject(Data);
