@@ -11,9 +11,9 @@ namespace Framework
 {
     public class CommonModelComponent : ModelComponent
     {
-        private readonly string _skeletonPath = "Prefab/Models/Common/Skeleton.prefab";
+        private readonly string _skeletonPath = "Assets/Bundles/Prefab/Models/Common/Skeleton.prefab";
         private GameObject _skeleton;
-        private AssetBundleAssetProxy _skeletonProxy;
+        private AbsAssetProxy _skeletonProxy;
 
         protected override void InitializeEx()
         {

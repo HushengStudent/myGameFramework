@@ -24,7 +24,7 @@ namespace Framework.ResourceModule
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public ResourceAssetProxy LoadResourceProxy(string path)
+        private ResourceAssetProxy LoadResourceAssetSync(string path)
         {
             if (string.IsNullOrEmpty(path))
             {
@@ -47,13 +47,13 @@ namespace Framework.ResourceModule
         /// <typeparam name="T"></typeparam>
         /// <param name="path"></param>
         /// <returns></returns>
-        public ResourceAssetProxy LoadResourceAsync(string path)
+        private ResourceAssetProxy LoadResourceAssetAsync(string path)
         {
             if (string.IsNullOrEmpty(path))
             {
                 return null;
             }
-            return LoadResourceAsync(path, null);
+            return LoadResourceAssetAsync(path, null);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Framework.ResourceModule
         /// <param name="path"></param>
         /// <param name="progress"></param>
         /// <returns></returns>
-        public ResourceAssetProxy LoadResourceAsync(string path, Action<float> progress)
+        private ResourceAssetProxy LoadResourceAssetAsync(string path, Action<float> progress)
         {
             if (string.IsNullOrEmpty(path))
             {
@@ -70,12 +70,12 @@ namespace Framework.ResourceModule
             }
             var proxy = PoolMgr.singleton.GetCsharpObject<ResourceAssetProxy>();
             proxy.Initialize(path);
-            CoroutineMgr.singleton.RunCoroutine(LoadAsync(path, proxy, progress));
+            CoroutineMgr.singleton.RunCoroutine(LoadResourceAssetAsync(path, proxy, progress));
             return proxy;
         }
 
         /// Resource异步加载;
-        private IEnumerator<float> LoadAsync(string path, ResourceAssetProxy proxy, Action<float> progress)
+        private IEnumerator<float> LoadResourceAssetAsync(string path, ResourceAssetProxy proxy, Action<float> progress)
         {
             if (string.IsNullOrEmpty(path))
             {

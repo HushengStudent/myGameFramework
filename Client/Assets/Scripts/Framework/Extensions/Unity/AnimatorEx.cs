@@ -19,8 +19,8 @@ namespace Framework
         private AnimatorOverrideController _animatorOverrideController = null;
         private Dictionary<string, AnimationClip> _animationInfo = new Dictionary<string, AnimationClip>();
 
-        private AssetBundleAssetProxy _runtimeAnimatorProxy;
-        private AssetBundleAssetProxy _animationClipProxy;
+        private AbsAssetProxy _runtimeAnimatorProxy;
+        private AbsAssetProxy _animationClipProxy;
 
         public void Initialize(Animator animator, string path)
         {

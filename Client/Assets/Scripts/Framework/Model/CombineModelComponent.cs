@@ -23,11 +23,11 @@ namespace Framework
     public class CombineModelComponent : ModelComponent
     {
         private Dictionary<ModelPart, string> _partDataDict;
-        private Dictionary<ModelPart, AssetBundleAssetProxy> _partProxyDict;
-        private Dictionary<ModelPart, AssetBundleAssetProxy> _tempPartProxyDict;
-        private readonly string _skeletonPath = "Prefab/Models/Avatar/ch_pc_hou.prefab";
+        private Dictionary<ModelPart, AbsAssetProxy> _partProxyDict;
+        private Dictionary<ModelPart, AbsAssetProxy> _tempPartProxyDict;
+        private readonly string _skeletonPath = "Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou.prefab";
         private GameObject _skeleton;
-        private AssetBundleAssetProxy _skeletonProxy;
+        private AbsAssetProxy _skeletonProxy;
 
         protected override void InitializeEx()
         {
@@ -47,8 +47,8 @@ namespace Framework
                 _skeleton = _skeletonProxy.GetInstantiateObject<GameObject>();
                 OnLoaded();
             });
-            _partProxyDict = new Dictionary<ModelPart, AssetBundleAssetProxy>();
-            _tempPartProxyDict = new Dictionary<ModelPart, AssetBundleAssetProxy>();
+            _partProxyDict = new Dictionary<ModelPart, AbsAssetProxy>();
+            _tempPartProxyDict = new Dictionary<ModelPart, AbsAssetProxy>();
 
             foreach (var temp in _partDataDict)
             {

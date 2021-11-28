@@ -51,9 +51,12 @@ namespace Framework.ResourceModule
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        private AssetBundleAssetProxy LoadAssetSync(string path)
+        private AssetBundleAssetProxy LoadAssetBundleAssetSync(string path)
         {
-            path = $"Assets/Bundles/{path}";
+            if (!path.StartsWith("Assets/Bundles/"))
+            {
+                path = $"Assets/Bundles/{path}";
+            }
 
             var proxy = PoolMgr.singleton.GetCsharpObject<AssetBundleAssetProxy>();
             proxy.Initialize(path);
@@ -83,9 +86,9 @@ namespace Framework.ResourceModule
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public AssetBundleAssetProxy LoadAssetAsync(string path)
+        private AssetBundleAssetProxy LoadAssetBundleAssetAsync(string path)
         {
-            return LoadAssetAsync(path, null);
+            return LoadAssetBundleAssetAsync(path, null);
         }
 
         /// <summary>
@@ -94,13 +97,16 @@ namespace Framework.ResourceModule
         /// <param name="path"></param>
         /// <param name="progress"></param>
         /// <returns></returns>
-        public AssetBundleAssetProxy LoadAssetAsync(string path, Action<float> progress)
+        private AssetBundleAssetProxy LoadAssetBundleAssetAsync(string path, Action<float> progress)
         {
-            path = $"Assets/Bundles/{path}";
+            if (!path.StartsWith("Assets/Bundles/"))
+            {
+                path = $"Assets/Bundles/{path}";
+            }
 
             var proxy = PoolMgr.singleton.GetCsharpObject<AssetBundleAssetProxy>();
             proxy.Initialize(path);
-            CoroutineMgr.singleton.RunCoroutine(AssetLoader.LoadAssetAsync(path, proxy, progress));
+            CoroutineMgr.singleton.RunCoroutine(AssetLoader.LoadAssetBundleAssetAsync(path, proxy, progress));
             return proxy;
         }
 
@@ -110,12 +116,12 @@ namespace Framework.ResourceModule
 
         private interface IAssetLoader
         {
-            IEnumerator<float> LoadAssetAsync(string path, AssetBundleAssetProxy proxy, Action<float> progress);
+            IEnumerator<float> LoadAssetBundleAssetAsync(string path, AssetBundleAssetProxy proxy, Action<float> progress);
         }
 
         internal class AssetBundleAssetLoader : IAssetLoader
         {
-            public IEnumerator<float> LoadAssetAsync(string path, AssetBundleAssetProxy proxy, Action<float> progress)
+            public IEnumerator<float> LoadAssetBundleAssetAsync(string path, AssetBundleAssetProxy proxy, Action<float> progress)
             {
                 AssetBundle assetBundle = null;
 
@@ -164,7 +170,7 @@ namespace Framework.ResourceModule
 
         internal class EditorAssetLoader : IAssetLoader
         {
-            public IEnumerator<float> LoadAssetAsync(string path, AssetBundleAssetProxy proxy, Action<float> progress)
+            public IEnumerator<float> LoadAssetBundleAssetAsync(string path, AssetBundleAssetProxy proxy, Action<float> progress)
             {
                 UnityObject asset = null;
 #if UNITY_EDITOR

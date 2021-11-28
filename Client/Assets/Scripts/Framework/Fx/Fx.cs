@@ -5,9 +5,6 @@
 *********************************************************************************/
 
 using Framework.ObjectPoolModule;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace Framework
 {
@@ -26,10 +23,14 @@ namespace Framework
 
         }
 
+        public void Update()
+        {
+
+        }
+
         void IPool.OnGet(params object[] args)
         {
-            var fxData = args[0] as FxData;
-
+            Data = args[0] as FxData;
             ID = FxMgr.singleton.FxID;
         }
 
@@ -37,6 +38,7 @@ namespace Framework
         {
             ID = 0;
             PoolMgr.singleton.ReleaseCsharpObject(Data);
+            Data = null;
         }
     }
 }

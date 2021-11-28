@@ -18,7 +18,7 @@ namespace Framework.ObjectPoolModule
         private Stack<GameObject> _stack;
         private HashSet<int> _instanceIDHashSet;
         private GameObject _parent;
-        private AssetBundleAssetProxy _assetBundleAssetProxy;
+        private AbsAssetProxy _assetProxy;
 
         internal string AssetPath { get; private set; }
         internal HashSet<string> TagHashSet { get; private set; }
@@ -30,7 +30,7 @@ namespace Framework.ObjectPoolModule
             _instanceIDHashSet = new HashSet<int>();
             AssetPath = assetPath;
             TagHashSet = new HashSet<string>();
-            _assetBundleAssetProxy = ResourceMgr.singleton.LoadAssetAsync(assetPath);
+            _assetProxy = ResourceMgr.singleton.LoadAssetAsync(assetPath);
             if (!string.IsNullOrWhiteSpace(tag) && !TagHashSet.Contains(tag))
             {
                 TagHashSet.Add(tag);
@@ -48,12 +48,12 @@ namespace Framework.ObjectPoolModule
 
         public void SetPoolInitCallback(Action<GameObjectPool> action)
         {
-            if (_assetBundleAssetProxy == null)
+            if (_assetProxy == null)
             {
                 LogHelper.PrintError($"[GameObjectPool]SetPoolInitCallback error, pool:{AssetPath} assetProxy is null.");
                 return;
             }
-            _assetBundleAssetProxy.AddLoadFinishCallBack(() =>
+            _assetProxy.AddLoadFinishCallBack(() =>
             {
                 action?.Invoke(this);
             });
@@ -61,7 +61,7 @@ namespace Framework.ObjectPoolModule
 
         public GameObject Get()
         {
-            if (null == _assetBundleAssetProxy || _assetBundleAssetProxy.IsFinish)
+            if (null == _assetProxy || _assetProxy.IsFinish)
             {
                 LogHelper.PrintError($"[GameObjectPool]GetGameObject error, pool:{AssetPath} assetProxy is not finish.");
                 return null;
@@ -69,7 +69,7 @@ namespace Framework.ObjectPoolModule
             GameObject go;
             if (_stack.Count == 0)
             {
-                go = _assetBundleAssetProxy.GetInstantiateObject<GameObject>();
+                go = _assetProxy.GetInstantiateObject<GameObject>();
                 var instanceID = go.GetInstanceID();
                 _instanceIDHashSet.Add(instanceID);
             }
@@ -140,8 +140,8 @@ namespace Framework.ObjectPoolModule
             _instanceIDHashSet.Clear();
             TagHashSet.Clear();
             AssetPath = string.Empty;
-            _assetBundleAssetProxy.UnloadProxy();
-            _assetBundleAssetProxy = null;
+            _assetProxy.UnloadProxy();
+            _assetProxy = null;
         }
     }
 }

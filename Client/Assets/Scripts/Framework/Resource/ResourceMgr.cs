@@ -67,6 +67,34 @@ namespace Framework.ResourceModule
         }
 
         #endregion
+
+        #region Load
+
+        public AbsAssetProxy LoadAssetSync(string path)
+        {
+            if (!path.StartsWith("Assets/Bundles/"))
+            {
+                return LoadResourceAssetSync(path);
+            }
+            else
+            {
+                return LoadAssetBundleAssetSync(path);
+            }
+        }
+
+        public AbsAssetProxy LoadAssetAsync(string path)
+        {
+            if (!path.StartsWith("Assets/Bundles/"))
+            {
+                return LoadResourceAssetAsync(path);
+            }
+            else
+            {
+                return LoadAssetBundleAssetAsync(path);
+            }
+        }
+
+        #endregion
     }
 }
 

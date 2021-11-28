@@ -17,7 +17,7 @@ namespace Framework
         private Dictionary<string, Sprite> _spriteDict = new Dictionary<string, Sprite>();
         private Dictionary<Object, string> _objectRefDict = new Dictionary<Object, string>();
         private GameObject _atlasPrefab;
-        private AssetBundleAssetProxy _proxy;
+        private AbsAssetProxy _proxy;
 
         public string AtlasPath { get; private set; }
         public int RefCount { get; private set; }

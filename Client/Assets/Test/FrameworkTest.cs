@@ -70,7 +70,7 @@ public class FrameworkTest : MonoBehaviour
         var modelComponent = role.GameObjectEx.ModelComponent as CombineModelComponent;
         if (modelComponent != null)
         {
-            modelComponent.SetHead("Prefab/Models/Avatar/ch_pc_hou_008_tou.prefab");
+            modelComponent.SetHead("Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_008_tou.prefab");
         }
     }
 

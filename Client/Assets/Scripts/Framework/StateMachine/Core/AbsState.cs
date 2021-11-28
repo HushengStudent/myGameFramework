@@ -16,7 +16,7 @@ namespace Framework
         private float _animationLength;
         private string _animationPath;
         private AnimationClip _animationClip;
-        private AssetBundleAssetProxy _animationClipProxy;
+        private AbsAssetProxy _animationClipProxy;
 
         public AbsEntity Entity { get; private set; }
         public AbsStateMachine Machine { get; private set; }

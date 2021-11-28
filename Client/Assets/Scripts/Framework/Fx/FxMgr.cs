@@ -33,6 +33,19 @@ namespace Framework
             Clear();
         }
 
+        protected override void UpdateEx(float interval)
+        {
+            base.UpdateEx(interval);
+            foreach (var temp in _fxDict)
+            {
+                var fx = temp.Value;
+                if (fx != null)
+                {
+                    fx.Update();
+                }
+            }
+        }
+
         public Fx.FxData GetFxData()
         {
             return PoolMgr.singleton.GetCsharpObject<Fx.FxData>();
@@ -41,7 +54,7 @@ namespace Framework
         public int PlayFx(Fx.FxData fxData)
         {
             var fx = PoolMgr.singleton.GetCsharpObject<Fx>(fxData);
-
+            fx.OnInitialize();
             return fx.ID;
         }
 
@@ -53,6 +66,7 @@ namespace Framework
                 if (fx != null)
                 {
                     fx.OnUninitialize();
+                    PoolMgr.singleton.ReleaseCsharpObject(fx);
                 }
             }
             _fxDict.Clear();

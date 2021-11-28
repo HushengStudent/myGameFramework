@@ -39,7 +39,7 @@ namespace Framework
 
         protected List<AbsState> StateList { get; private set; }
 
-        private AssetBundleAssetProxy _runtimeAnimatorProxy;
+        private AbsAssetProxy _runtimeAnimatorProxy;
 
         public abstract string AssetPath { get; }
 
@@ -75,15 +75,15 @@ namespace Framework
                     {
                         var str = string.Empty;
                         if (state.StateName == StateNameEnum.Idle.ToString())
-                            str = "Animation/Skeleton/Idle.anim";
+                            str = "Assets/Bundles/Animation/Skeleton/Idle.anim";
                         if (state.StateName == StateNameEnum.Move.ToString())
-                            str = "Animation/Skeleton/Run.anim";
+                            str = "Assets/Bundles/Animation/Skeleton/Run.anim";
                         if (state.StateName == StateNameEnum.Skill.ToString())
-                            str = "Animation/Skeleton/Attack.anim";
+                            str = "Assets/Bundles/Animation/Skeleton/Attack.anim";
                         if (state.StateName == StateNameEnum.Special.ToString())
-                            str = "Animation/Skeleton/Damage.anim";
+                            str = "Assets/Bundles/Animation/Skeleton/Damage.anim";
                         if (state.StateName == StateNameEnum.Dead.ToString())
-                            str = "Animation/Skeleton/Death.anim";
+                            str = "Assets/Bundles/Animation/Skeleton/Death.anim";
                         state.Initialize(str);
                     }
                 }

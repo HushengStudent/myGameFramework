@@ -11,10 +11,10 @@ namespace Framework
 {
     public class CameraMgr : MonoSingleton<CameraMgr>
     {
-        private readonly string _uiRoot = "Prefab/UI/Common/UIRoot.prefab";
-        private readonly string _mainCamera = "Prefab/Common/MainCamera.prefab";
-        private AssetBundleAssetProxy _uiRootProxy;
-        private AssetBundleAssetProxy _mainCameraProxy;
+        private readonly string _uiRoot = "Assets/Bundles/Prefab/UI/Common/UIRoot.prefab";
+        private readonly string _mainCamera = "Assets/Bundles/Prefab/Common/MainCamera.prefab";
+        private AbsAssetProxy _uiRootProxy;
+        private AbsAssetProxy _mainCameraProxy;
 
         public Camera MainCamera { get; private set; }
         public Camera MainUICamera { get; private set; }
