@@ -5,8 +5,7 @@
 *********************************************************************************/
 
 using Framework.ResourceModule;
-using MEC;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 namespace Framework.ObjectPoolModule
@@ -38,9 +37,9 @@ namespace Framework.ObjectPoolModule
         /// <summary>
         /// 销毁对象池;
         /// </summary>
-        public IEnumerator<float> ClearPool()
+        public IEnumerator ClearPool()
         {
-            yield return Timing.WaitForOneFrame;
+            yield return CoroutineMgr.WaitForEndOfFrame;
             _csharpObjectPool.Clear();
             _csharpListPool.Clear();
             ReleaseAllGameObjectPool();

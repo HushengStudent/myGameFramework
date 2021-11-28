@@ -4,46 +4,29 @@
 ** desc:  协程管理;
 *********************************************************************************/
 
-using MEC;
-using System.Collections.Generic;
+using System.Collections;
+using UnityEngine;
 
 namespace Framework
 {
     public class CoroutineMgr : MonoSingleton<CoroutineMgr>
     {
-        public CoroutineHandle RunCoroutine(IEnumerator<float> coroutine)
+        private static WaitForEndOfFrame _waitForEndOfFrame;
+        public static WaitForEndOfFrame WaitForEndOfFrame
         {
-            return Timing.RunCoroutine(coroutine);
+            get
+            {
+                if (_waitForEndOfFrame == null)
+                {
+                    _waitForEndOfFrame = new WaitForEndOfFrame();
+                }
+                return _waitForEndOfFrame;
+            }
         }
 
-        public CoroutineHandle RunCoroutine(IEnumerator<float> coroutine, string tag)
+        public Coroutine RunCoroutine(IEnumerator coroutine)
         {
-            return Timing.RunCoroutine(coroutine, tag);
-        }
-
-        public CoroutineHandle RunCoroutine(IEnumerator<float> coroutine, Segment timing)
-        {
-            return Timing.RunCoroutine(coroutine, timing);
-        }
-
-        public CoroutineHandle RunCoroutine(IEnumerator<float> coroutine, Segment timing, string tag)
-        {
-            return Timing.RunCoroutine(coroutine, timing, tag);
-        }
-
-        public int KillAllCoroutines(string methodName)
-        {
-            return Timing.KillCoroutines();
-        }
-
-        public int KillCoroutines(CoroutineHandle handle)
-        {
-            return Timing.KillCoroutines(handle);
-        }
-
-        public int KillCoroutines(string tag)
-        {
-            return Timing.KillCoroutines(tag);
+            return StartCoroutine(coroutine);
         }
     }
 }

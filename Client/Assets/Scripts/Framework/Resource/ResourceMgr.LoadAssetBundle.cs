@@ -6,12 +6,11 @@
 
 using UnityEngine;
 using System;
-using System.Collections.Generic;
-using MEC;
 using UnityObject = UnityEngine.Object;
 using System.IO;
 using Framework.ObjectPoolModule;
 using Framework.AssetBundleModule;
+using System.Collections;
 
 namespace Framework.ResourceModule
 {
@@ -116,12 +115,12 @@ namespace Framework.ResourceModule
 
         private interface IAssetLoader
         {
-            IEnumerator<float> LoadAssetBundleAssetAsync(string path, AssetBundleAssetProxy proxy, Action<float> progress);
+            IEnumerator LoadAssetBundleAssetAsync(string path, AssetBundleAssetProxy proxy, Action<float> progress);
         }
 
         internal class AssetBundleAssetLoader : IAssetLoader
         {
-            public IEnumerator<float> LoadAssetBundleAssetAsync(string path, AssetBundleAssetProxy proxy, Action<float> progress)
+            public IEnumerator LoadAssetBundleAssetAsync(string path, AssetBundleAssetProxy proxy, Action<float> progress)
             {
                 AssetBundle assetBundle = null;
 
@@ -129,7 +128,7 @@ namespace Framework.ResourceModule
                 var itor = AssetBundleMgr.singleton.LoadFromFileAsync(path, bundle => { assetBundle = bundle; }, progress);
                 while (itor.MoveNext())
                 {
-                    yield return Timing.WaitForOneFrame;
+                    yield return CoroutineMgr.WaitForEndOfFrame;
                 }
                 var name = Path.GetFileNameWithoutExtension(path);
                 var request = assetBundle.LoadAssetAsync(name);
@@ -138,11 +137,11 @@ namespace Framework.ResourceModule
                 while (request.progress < 0.99f)
                 {
                     progress?.Invoke(singleton.LOAD_BUNDLE_PRECENT + singleton.LOAD_ASSET_PRECENT * request.progress);
-                    yield return Timing.WaitForOneFrame;
+                    yield return CoroutineMgr.WaitForEndOfFrame;
                 }
                 while (!request.isDone)
                 {
-                    yield return Timing.WaitForOneFrame;
+                    yield return CoroutineMgr.WaitForEndOfFrame;
                 }
                 if (null == request.asset)
                 {
@@ -155,7 +154,7 @@ namespace Framework.ResourceModule
                 }
 
                 //先等一帧;
-                yield return Timing.WaitForOneFrame;
+                yield return CoroutineMgr.WaitForEndOfFrame;
 
                 if (proxy != null)
                 {
@@ -170,14 +169,14 @@ namespace Framework.ResourceModule
 
         internal class EditorAssetLoader : IAssetLoader
         {
-            public IEnumerator<float> LoadAssetBundleAssetAsync(string path, AssetBundleAssetProxy proxy, Action<float> progress)
+            public IEnumerator LoadAssetBundleAssetAsync(string path, AssetBundleAssetProxy proxy, Action<float> progress)
             {
                 UnityObject asset = null;
 #if UNITY_EDITOR
                 asset = UnityEditor.AssetDatabase.LoadAssetAtPath<UnityObject>(path);
 #endif
                 //先等一帧;
-                yield return Timing.WaitForOneFrame;
+                yield return CoroutineMgr.WaitForEndOfFrame;
 
                 if (proxy != null)
                 {

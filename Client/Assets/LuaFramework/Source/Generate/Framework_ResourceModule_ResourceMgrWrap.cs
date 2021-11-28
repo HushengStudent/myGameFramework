@@ -218,8 +218,8 @@ public class Framework_ResourceModule_ResourceMgrWrap
 		{
 			ToLua.CheckArgsCount(L, 1);
 			Framework.ResourceModule.ResourceMgr obj = (Framework.ResourceModule.ResourceMgr)ToLua.CheckObject<Framework.ResourceModule.ResourceMgr>(L, 1);
-			System.Collections.Generic.IEnumerator<float> o = obj.CancleAllProxy();
-			ToLua.PushObject(L, o);
+			System.Collections.IEnumerator o = obj.CancleAllProxy();
+			ToLua.Push(L, o);
 			return 1;
 		}
 		catch (Exception e)

@@ -4,8 +4,7 @@
 ** desc:  Unity ”∆µ≤•∑≈;
 *********************************************************************************/
 
-using MEC;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -24,7 +23,7 @@ namespace Framework
         private bool _paused = false;
         private bool _running = false;
 
-        private IEnumerator<float> Run(string url)
+        private IEnumerator Run(string url)
         {
             _running = true;
 
@@ -47,7 +46,7 @@ namespace Framework
 
             while (!_videoPlayer.isPrepared)
             {
-                yield return Timing.WaitForOneFrame;
+                yield return CoroutineMgr.WaitForEndOfFrame;
             }
             rawImage.texture = _videoPlayer.texture;
 
@@ -56,11 +55,11 @@ namespace Framework
 
             while (_videoPlayer.isPlaying)
             {
-                yield return Timing.WaitForOneFrame;
+                yield return CoroutineMgr.WaitForEndOfFrame;
             }
         }
 
-        public IEnumerator<float> Play(string url)
+        public IEnumerator Play(string url)
         {
             if (_running && !_paused)
             {
@@ -79,7 +78,7 @@ namespace Framework
                 var itor = Play(url);
                 while (itor.MoveNext())
                 {
-                    yield return Timing.WaitForOneFrame;
+                    yield return CoroutineMgr.WaitForEndOfFrame;
                 }
             }
         }

@@ -13,6 +13,10 @@ function UIMgr:ctor()
     self._curState = self.stateEnum.Non
 end
 
+function UIMgr:update()
+
+end
+
 function UIMgr:startUI()
     self:OnEnterState(self.stateEnum.LoginState)
 end

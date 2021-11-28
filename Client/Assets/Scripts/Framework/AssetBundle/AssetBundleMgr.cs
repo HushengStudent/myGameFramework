@@ -5,13 +5,12 @@
 *********************************************************************************/
 
 using Framework.ObjectPoolModule;
-using MEC;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityObject = UnityEngine.Object;
-using Framework;
 using Framework.ResourceModule;
+using System.Collections;
 
 namespace Framework.AssetBundleModule
 {
@@ -256,7 +255,7 @@ namespace Framework.AssetBundleModule
         #region Async Load
 
         /// AssetBundle异步加载LoadFromFileAsync,www异步加载消耗大于LoadFromFileAsync;
-        private IEnumerator<float> LoadAsync(string path, Action<AssetBundle> action, Action<float> progress)
+        private IEnumerator LoadAsync(string path, Action<AssetBundle> action, Action<float> progress)
         {
             if (string.IsNullOrEmpty(path))
             {
@@ -265,7 +264,7 @@ namespace Framework.AssetBundleModule
             AssetBundle assetBundle = null;
             while (IsAssetBundleLoading(path))
             {
-                yield return Timing.WaitForOneFrame;
+                yield return CoroutineMgr.WaitForEndOfFrame;
             }
             if (!_assetBundleCache.ContainsKey(path))
             {
@@ -276,12 +275,12 @@ namespace Framework.AssetBundleModule
                 while (assetBundleReq.progress < 0.99)
                 {
                     progress?.Invoke(assetBundleReq.progress);
-                    yield return Timing.WaitForOneFrame;
+                    yield return CoroutineMgr.WaitForEndOfFrame;
                 }
 
                 while (!assetBundleReq.isDone)
                 {
-                    yield return Timing.WaitForOneFrame;
+                    yield return CoroutineMgr.WaitForEndOfFrame;
                 }
                 assetBundle = assetBundleReq.assetBundle;
                 if (assetBundle == null)
@@ -312,7 +311,7 @@ namespace Framework.AssetBundleModule
         /// <param name="action"></param>
         /// <param name="progress"></param>
         /// <returns></returns>
-        public IEnumerator<float> LoadFromFileAsync(string path, Action<AssetBundle> action, Action<float> progress)
+        public IEnumerator LoadFromFileAsync(string path, Action<AssetBundle> action, Action<float> progress)
         {
             if (string.IsNullOrEmpty(path))
             {
@@ -343,7 +342,7 @@ namespace Framework.AssetBundleModule
                 while (itor.MoveNext())
                 {
                     progress?.Invoke(unit * (index + dp));
-                    yield return Timing.WaitForOneFrame;
+                    yield return CoroutineMgr.WaitForEndOfFrame;
                 }
                 index++;
             }
@@ -353,7 +352,7 @@ namespace Framework.AssetBundleModule
             while (itorTarget.MoveNext())
             {
                 progress?.Invoke(unit * (count + p));
-                yield return Timing.WaitForOneFrame;
+                yield return CoroutineMgr.WaitForEndOfFrame;
             }
         }
 

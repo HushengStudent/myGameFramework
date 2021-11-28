@@ -4,8 +4,8 @@
 ** desc:  资源加载代理;
 *********************************************************************************/
 
+using System.Collections;
 using System.Collections.Generic;
-using MEC;
 
 namespace Framework.ResourceModule
 {
@@ -40,14 +40,14 @@ namespace Framework.ResourceModule
         /// 等待加载完删除;
         /// </summary>
         /// <returns></returns>
-        public IEnumerator<float> CancleAllProxy()
+        public IEnumerator CancleAllProxy()
         {
-            yield return Timing.WaitForOneFrame;
+            yield return CoroutineMgr.WaitForEndOfFrame;
             while (true)
             {
                 if (_removeList.Count > 0)
                 {
-                    yield return Timing.WaitForOneFrame;
+                    yield return CoroutineMgr.WaitForEndOfFrame;
                 }
                 else
                 {

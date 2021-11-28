@@ -23,7 +23,7 @@ namespace Framework
         {
             get
             {
-                return "Animator/Common/Player.controller";
+                return "Assets/Bundles/Animator/Common/Player.controller";
             }
         }
     }

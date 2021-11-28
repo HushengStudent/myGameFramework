@@ -6,9 +6,8 @@
 
 using UnityEngine;
 using System;
-using System.Collections.Generic;
-using MEC;
 using Framework.ObjectPoolModule;
+using System.Collections;
 
 namespace Framework.ResourceModule
 {
@@ -75,7 +74,7 @@ namespace Framework.ResourceModule
         }
 
         /// Resource异步加载;
-        private IEnumerator<float> LoadResourceAssetAsync(string path, ResourceAssetProxy proxy, Action<float> progress)
+        private IEnumerator LoadResourceAssetAsync(string path, ResourceAssetProxy proxy, Action<float> progress)
         {
             if (string.IsNullOrEmpty(path))
             {
@@ -85,11 +84,11 @@ namespace Framework.ResourceModule
             while (request.progress < 0.99f)
             {
                 progress?.Invoke(request.progress);
-                yield return Timing.WaitForOneFrame;
+                yield return CoroutineMgr.WaitForEndOfFrame;
             }
             while (!request.isDone)
             {
-                yield return Timing.WaitForOneFrame;
+                yield return CoroutineMgr.WaitForEndOfFrame;
             }
             if (null == request.asset)
             {
@@ -97,7 +96,7 @@ namespace Framework.ResourceModule
             }
 
             //先等一帧;
-            yield return Timing.WaitForOneFrame;
+            yield return CoroutineMgr.WaitForEndOfFrame;
 
             if (proxy != null)
             {

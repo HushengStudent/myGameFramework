@@ -4,10 +4,7 @@
 ** desc:  场景类;
 *********************************************************************************/
 
-using MEC;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace Framework
 {
@@ -15,15 +12,15 @@ namespace Framework
     {
         public int SceneID { get; private set; }
 
-        public IEnumerator<float> UnloadScene()
+        public IEnumerator UnloadScene()
         {
-            yield return Timing.WaitForOneFrame;
+            yield return CoroutineMgr.WaitForEndOfFrame;
         }
 
-        public IEnumerator<float> LoadScene(int id, SceneLoadEventHandler handler)
+        public IEnumerator LoadScene(int id, SceneLoadEventHandler handler)
         {
             SceneID = id;
-            yield return Timing.WaitForOneFrame;
+            yield return CoroutineMgr.WaitForEndOfFrame;
         }
     }
 }

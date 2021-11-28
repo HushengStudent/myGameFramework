@@ -11,30 +11,32 @@ namespace Framework
     [Serializable]
     public class GameException : Exception
     {
-        private string message;
-        private Exception innerException;
+        private string _name;
+        private string _message;
+        private Exception _innerException;
 
         public GameException() : base() { }
 
-        public GameException(string message) : base(message)
+        public GameException(string name, string message) : base(message)
         {
-
-            this.message = message;
+            _name = name;
+            _message = message;
         }
 
-        public GameException(string message, Exception innerException) : base(message, innerException)
+        public GameException(string name, string message, Exception innerException) : base(message, innerException)
         {
 
-            this.innerException = innerException;
-            this.message = message;
+            _name = name;
+            _message = message;
+            _innerException = innerException;
         }
 
         public void PrintException()
         {
-            LogHelper.PrintError($"[GameException]{message}");
-            if (innerException != null)
+            LogHelper.PrintError($"[{_name}]{_message}");
+            if (_innerException != null)
             {
-                LogHelper.PrintError($"[GameException]{innerException.Message.ToString()}");
+                LogHelper.PrintError($"[{_name}]{_innerException.Message.ToString()}");
             }
         }
     }

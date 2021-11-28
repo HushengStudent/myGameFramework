@@ -7,10 +7,10 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
-using MEC;
 using UnityEngine.SceneManagement;
 using System.IO;
 using Framework.AssetBundleModule;
+using System.Collections;
 
 namespace Framework.ResourceModule
 {
@@ -73,14 +73,14 @@ namespace Framework.ResourceModule
         }
 
         /// 加载场景;
-        private IEnumerator<float> LoadScene(string path, Action<UnityEngine.SceneManagement.Scene> onSceneLoaded
+        private IEnumerator LoadScene(string path, Action<UnityEngine.SceneManagement.Scene> onSceneLoaded
         , Action<float> progress)
         {
             path = $"Assets/Bundles/{path}";
             var itor = SceneLoader.LoadSceneAsync(path, onSceneLoaded, progress);
             while (itor.MoveNext())
             {
-                yield return Timing.WaitForOneFrame;
+                yield return CoroutineMgr.WaitForEndOfFrame;
             }
             LogHelper.Print($"[ResourceMgr]LoadSceneAsync success:{path}.");
         }
@@ -112,7 +112,7 @@ namespace Framework.ResourceModule
         }
 
         /// 卸载场景;
-        private IEnumerator<float> UnloadScene(string path, Action<UnityEngine.SceneManagement.Scene> onSceneUnloaded
+        private IEnumerator UnloadScene(string path, Action<UnityEngine.SceneManagement.Scene> onSceneUnloaded
         , Action<float> progress)
         {
             var name = Path.GetFileNameWithoutExtension(path);
@@ -122,11 +122,11 @@ namespace Framework.ResourceModule
             while (op.progress < 0.99f)
             {
                 progress?.Invoke(op.progress);
-                yield return Timing.WaitForOneFrame;
+                yield return CoroutineMgr.WaitForEndOfFrame;
             }
             while (!op.isDone)
             {
-                yield return Timing.WaitForOneFrame;
+                yield return CoroutineMgr.WaitForEndOfFrame;
             }
             LogHelper.Print($"[ResourceMgr]UnloadSceneAsync success:{path}.");
         }
@@ -137,7 +137,7 @@ namespace Framework.ResourceModule
 
         private interface ISceneLoader
         {
-            IEnumerator<float> LoadSceneAsync(string path, Action<UnityEngine.SceneManagement.Scene> onSceneLoaded
+            IEnumerator LoadSceneAsync(string path, Action<UnityEngine.SceneManagement.Scene> onSceneLoaded
         , Action<float> progress);
 
             void UnloadSceneAsync(string path, Action<UnityEngine.SceneManagement.Scene> onSceneUnloaded
@@ -147,7 +147,7 @@ namespace Framework.ResourceModule
 
         internal class AssetBundleSceneLoader : ISceneLoader
         {
-            public IEnumerator<float> LoadSceneAsync(string path, Action<UnityEngine.SceneManagement.Scene> onSceneLoaded, Action<float> progress)
+            public IEnumerator LoadSceneAsync(string path, Action<UnityEngine.SceneManagement.Scene> onSceneLoaded, Action<float> progress)
             {
                 if (singleton._sceneAssetBundleDict.TryGetValue(path, out var assetBundle))
                 {
@@ -162,7 +162,7 @@ namespace Framework.ResourceModule
                 var itor = AssetBundleMgr.singleton.LoadFromFileAsync(path, bundle => { assetBundle = bundle; }, progress);
                 while (itor.MoveNext())
                 {
-                    yield return Timing.WaitForOneFrame;
+                    yield return CoroutineMgr.WaitForEndOfFrame;
                 }
 
                 singleton._sceneAssetBundleDict[path] = assetBundle;
@@ -170,7 +170,7 @@ namespace Framework.ResourceModule
                 var name = Path.GetFileNameWithoutExtension(path);
 
                 //先等一帧;
-                yield return Timing.WaitForOneFrame;
+                yield return CoroutineMgr.WaitForEndOfFrame;
 
                 SceneManager.sceneLoaded += (scene, mode) =>
                 {
@@ -182,11 +182,11 @@ namespace Framework.ResourceModule
                 while (op.progress < 0.99f)
                 {
                     progress?.Invoke(0.9f + 0.1f * op.progress);
-                    yield return Timing.WaitForOneFrame;
+                    yield return CoroutineMgr.WaitForEndOfFrame;
                 }
                 while (!op.isDone)
                 {
-                    yield return Timing.WaitForOneFrame;
+                    yield return CoroutineMgr.WaitForEndOfFrame;
                 }
             }
 
@@ -205,10 +205,10 @@ namespace Framework.ResourceModule
 
         internal class EditorSceneLoader : ISceneLoader
         {
-            public IEnumerator<float> LoadSceneAsync(string path, Action<UnityEngine.SceneManagement.Scene> onSceneLoaded, Action<float> progress)
+            public IEnumerator LoadSceneAsync(string path, Action<UnityEngine.SceneManagement.Scene> onSceneLoaded, Action<float> progress)
             {
                 //先等一帧;
-                yield return Timing.WaitForOneFrame;
+                yield return CoroutineMgr.WaitForEndOfFrame;
 
                 SceneManager.sceneLoaded += (scene, mode) =>
                 {
@@ -226,11 +226,11 @@ namespace Framework.ResourceModule
                 while (op.progress < 0.99f)
                 {
                     progress?.Invoke(op.progress);
-                    yield return Timing.WaitForOneFrame;
+                    yield return CoroutineMgr.WaitForEndOfFrame;
                 }
                 while (!op.isDone)
                 {
-                    yield return Timing.WaitForOneFrame;
+                    yield return CoroutineMgr.WaitForEndOfFrame;
                 }
 #endif
             }

@@ -53,8 +53,8 @@ public class Framework_SceneMgrWrap
 			Framework.SceneMgr obj = (Framework.SceneMgr)ToLua.CheckObject<Framework.SceneMgr>(L, 1);
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
 			Framework.SceneLoadEventHandler arg1 = (Framework.SceneLoadEventHandler)ToLua.CheckDelegate<Framework.SceneLoadEventHandler>(L, 3);
-			System.Collections.Generic.IEnumerator<float> o = obj.TransToScene(arg0, arg1);
-			ToLua.PushObject(L, o);
+			System.Collections.IEnumerator o = obj.TransToScene(arg0, arg1);
+			ToLua.Push(L, o);
 			return 1;
 		}
 		catch (Exception e)

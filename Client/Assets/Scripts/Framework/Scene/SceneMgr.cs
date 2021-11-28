@@ -4,11 +4,7 @@
 ** desc:  场景管理;
 *********************************************************************************/
 
-using MEC;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 
 namespace Framework
 {
@@ -22,14 +18,14 @@ namespace Framework
             CurScene = null;
         }
 
-        public IEnumerator<float> TransToScene(int sceneId, SceneLoadEventHandler handler)
+        public IEnumerator TransToScene(int sceneId, SceneLoadEventHandler handler)
         {
             if (CurScene != null)
             {
                 var unloadItor = CurScene.UnloadScene();
                 while (unloadItor.MoveNext())
                 {
-                    yield return Timing.WaitForOneFrame;
+                    yield return CoroutineMgr.WaitForEndOfFrame;
                 }
             }
             else
@@ -39,7 +35,7 @@ namespace Framework
             var itor = CurScene.LoadScene(sceneId, handler);
             while (itor.MoveNext())
             {
-                yield return Timing.WaitForOneFrame;
+                yield return CoroutineMgr.WaitForEndOfFrame;
             }
         }
     }
