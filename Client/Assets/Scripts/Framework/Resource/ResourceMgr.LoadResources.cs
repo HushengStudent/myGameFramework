@@ -80,6 +80,7 @@ namespace Framework.ResourceModule
             {
                 yield break;
             }
+            var exception = PoolMgr.singleton.GetCsharpObject<GameException>();
             var request = Resources.LoadAsync(path);
             while (request.progress < 0.99f)
             {
@@ -92,7 +93,7 @@ namespace Framework.ResourceModule
             }
             if (null == request.asset)
             {
-                LogHelper.PrintError($"[ResourceMgr]LoadAsync load asset:{path} failure.");
+                exception.AppendMsg($"[ResourceMgr]LoadAsync load asset:{path} failure.");
             }
 
             //先等一帧;
@@ -104,7 +105,16 @@ namespace Framework.ResourceModule
             }
             else
             {
-                LogHelper.PrintError($"[ResourceMgr]LoadAsync proxy is null:{path}.");
+                exception.AppendMsg($"[ResourceMgr]LoadAsync proxy is null:{path}.");
+            }
+
+            if (exception.IsActive)
+            {
+                throw exception;
+            }
+            else
+            {
+                PoolMgr.singleton.ReleaseCsharpObject(exception);
             }
         }
 

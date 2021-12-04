@@ -4,40 +4,60 @@
 ** desc:  自定义异常;
 *********************************************************************************/
 
+using Framework.ObjectPoolModule;
 using System;
+using System.Diagnostics;
+using System.Text;
 
 namespace Framework
 {
     [Serializable]
-    public class GameException : Exception
+    public class GameException : Exception, IPool
     {
         private string _name;
-        private string _message;
+        private StringBuilder _messageBuilder = new StringBuilder();
         private Exception _innerException;
 
         public GameException() : base() { }
 
-        public GameException(string name, string message) : base(message)
+        public GameException(string name) : base()
         {
             _name = name;
-            _message = message;
         }
 
-        public GameException(string name, string message, Exception innerException) : base(message, innerException)
+        public void PrintException(StackTrace stackTrace = null)
         {
-
-            _name = name;
-            _message = message;
-            _innerException = innerException;
-        }
-
-        public void PrintException()
-        {
-            LogHelper.PrintError($"[{_name}]{_message}");
-            if (_innerException != null)
+            if (stackTrace != null)
             {
-                LogHelper.PrintError($"[{_name}]{_innerException.Message.ToString()}");
+                LogHelper.PrintError($"[{_name}]{_messageBuilder.ToString()}\r\n{stackTrace.ToString()}");
             }
+            else
+            {
+                LogHelper.PrintError($"[{_name}]{_messageBuilder.ToString()}");
+            }
+        }
+
+        public void AppendMsg(string msg)
+        {
+            _messageBuilder.AppendLine(msg);
+        }
+
+        public bool IsActive
+        {
+            get
+            {
+                return _messageBuilder.Length > 0;
+            }
+        }
+
+        void IPool.OnGet(params object[] args)
+        {
+        }
+
+        void IPool.OnRelease()
+        {
+            _name = string.Empty;
+            _messageBuilder.Clear();
         }
     }
 }

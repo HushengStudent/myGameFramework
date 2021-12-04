@@ -123,6 +123,7 @@ namespace Framework.ResourceModule
             public IEnumerator LoadAssetBundleAssetAsync(string path, AssetBundleAssetProxy proxy, Action<float> progress)
             {
                 AssetBundle assetBundle = null;
+                var exception = PoolMgr.singleton.GetCsharpObject<GameException>();
 
                 //此处加载占0.8;
                 var itor = AssetBundleMgr.singleton.LoadFromFileAsync(path, bundle => { assetBundle = bundle; }, progress);
@@ -146,7 +147,7 @@ namespace Framework.ResourceModule
                 if (null == request.asset)
                 {
                     AssetBundleMgr.singleton.UnloadAsset(path, null);
-                    LogHelper.PrintError($"[ResourceMgr]LoadFromFileAsync load asset:{path} failure.");
+                    exception.AppendMsg($"[ResourceMgr]LoadFromFileAsync load asset:{path} failure.");
                 }
                 else
                 {
@@ -162,7 +163,16 @@ namespace Framework.ResourceModule
                 }
                 else
                 {
-                    LogHelper.PrintError($"[ResourceMgr]LoadFromFileAsync proxy is null:{path}.");
+                    exception.AppendMsg($"[ResourceMgr]LoadFromFileAsync proxy is null:{path}.");
+                }
+
+                if (exception.IsActive)
+                {
+                    throw exception;
+                }
+                else
+                {
+                    PoolMgr.singleton.ReleaseCsharpObject(exception);
                 }
             }
         }
@@ -172,6 +182,8 @@ namespace Framework.ResourceModule
             public IEnumerator LoadAssetBundleAssetAsync(string path, AssetBundleAssetProxy proxy, Action<float> progress)
             {
                 UnityObject asset = null;
+                var exception = PoolMgr.singleton.GetCsharpObject<GameException>();
+
 #if UNITY_EDITOR
                 asset = UnityEditor.AssetDatabase.LoadAssetAtPath<UnityObject>(path);
 #endif
@@ -184,7 +196,16 @@ namespace Framework.ResourceModule
                 }
                 else
                 {
-                    LogHelper.PrintError($"[ResourceMgr]LoadFromFileAsync proxy is null:{path}.");
+                    exception.AppendMsg($"[ResourceMgr]LoadFromFileAsync proxy is null:{path}.");
+                }
+
+                if (exception.IsActive)
+                {
+                    throw exception;
+                }
+                else
+                {
+                    PoolMgr.singleton.ReleaseCsharpObject(exception);
                 }
             }
         }
