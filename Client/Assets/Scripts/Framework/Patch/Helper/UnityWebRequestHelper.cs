@@ -4,16 +4,13 @@
 ** desc:  UnityWebRequest下载工具;
 *********************************************************************************/
 
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Framework
+namespace Framework.PatchModule
 {
-    public class UnityWebRequestDownLoadHelper
+    public class UnityWebRequestHelper
     {
         public float Progress { get; private set; } = 0f;
 

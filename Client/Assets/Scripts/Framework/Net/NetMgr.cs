@@ -20,7 +20,7 @@ namespace Framework.NetModule
             _session = new Session("session");
             _checkUpdateState = false;
             InitHandler();
-            _session.Connect(GameConfig.ipAddress, GameConfig.port);
+            _session.Connect(GameConfig.IPAddress, GameConfig.Port);
         }
 
         protected override void UpdateEx(float interval)

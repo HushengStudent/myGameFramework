@@ -11,16 +11,20 @@ namespace Framework
 {
     public static class GameConfig
     {
-        public static string VersionFilePath = $"{Application.dataPath.ToLower()}/../Config/Version.xml";
-        public static string NetVersionFilePath = $"{Application.dataPath.ToLower()}/../Config/temp/Version.xml";
+        public static string LoaclAppVersionFilePath =
+            $"{Application.persistentDataPath.ToLower()}/version/version.xml";
+
+        public static string NetAppVersionFilePath =
+            $"{Application.persistentDataPath.ToLower()}/version/temp/version.xml";
+
+        public static string NetAppVersionUrl =
+            $"http://127.0.0.1/version.xml";
 
         public static int GameFrame = 60;
         public static float SyncInterval = 0.2f;
         public static MobileLevel MobileLevelValue = MobileLevel.High;
 
-        public static string applicationDataPath = Application.dataPath.ToLower();
-
-        public static IPAddress ipAddress = IPAddress.Parse("127.0.0.1");
-        public static int port = 10000;
+        public static IPAddress IPAddress = IPAddress.Parse("127.0.0.1");
+        public static int Port = 10000;
     }
 }

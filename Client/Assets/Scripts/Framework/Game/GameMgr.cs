@@ -8,6 +8,7 @@ using Framework.CameraModule;
 using Framework.ECSModule;
 using Framework.EventModule;
 using Framework.ObjectPoolModule;
+using Framework.PatchModule;
 using Framework.ResourceModule;
 using Framework.SceneModule;
 using Framework.UIModule;
@@ -127,7 +128,7 @@ namespace Framework
 
         public void CheckUpdate()
         {
-            UpdateMgr.singleton.Launch();
+            PatchMgr.singleton.Launch();
         }
 
         public void EnterGame()

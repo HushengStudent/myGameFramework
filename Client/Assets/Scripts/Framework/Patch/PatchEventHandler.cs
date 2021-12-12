@@ -4,22 +4,18 @@
 ** desc:  版本更新事件;
 *********************************************************************************/
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace Framework
+namespace Framework.PatchModule
 {
-    public enum UpdateCode : int
+    public enum PatchCode : int
     {
         ConnectUrlError = 0,
         DownloadInterrupt = 1,
         DiskSpaceNotEnough = 2,
     }
 
-    public delegate void UpdateStartEventHandler();
-    public delegate void UpdateErrorEventHandler(UpdateCode code);
-    public delegate void UpdateSuccessEventHandler();
+    public delegate void PatchStartEventHandler();
+    public delegate void PatchErrorEventHandler(PatchCode patchCode);
+    public delegate void PatchSuccessEventHandler();
 
     public delegate void DownLoadStartEventHandler();
     public delegate void DownLoadErrorEventHandler(string error);
