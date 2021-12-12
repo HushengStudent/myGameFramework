@@ -4,9 +4,11 @@
 ** desc:  对象池管理;
 *********************************************************************************/
 
+using Framework.EventModule;
 using Framework.ResourceModule;
 using System.Collections;
 using UnityEngine;
+using EventType = Framework.EventModule.EventType;
 
 namespace Framework.ObjectPoolModule
 {

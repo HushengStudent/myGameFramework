@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Framework
+namespace Framework.AtlasModule
 {
     public class Atlas : IPool
     {

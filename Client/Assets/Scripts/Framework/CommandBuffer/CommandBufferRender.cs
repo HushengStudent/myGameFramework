@@ -8,7 +8,7 @@ using Framework.ObjectPoolModule;
 using System;
 using UnityEngine;
 
-namespace Framework
+namespace Framework.CommandBufferModule
 {
     public class CommandBufferRender : IPool
     {

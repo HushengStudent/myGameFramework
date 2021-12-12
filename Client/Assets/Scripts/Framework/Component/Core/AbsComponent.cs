@@ -4,6 +4,8 @@
 ** desc:  ECS组件抽象基类;
 *********************************************************************************/
 
+using Framework.EventModule;
+
 namespace Framework.ECSModule
 {
     /// <summary>

@@ -7,7 +7,7 @@
 using Framework.ECSModule;
 using System.Collections.Generic;
 
-namespace Framework
+namespace Framework.BehaviorTreeModule
 {
     public enum BehaviorState : int
     {

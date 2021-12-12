@@ -7,7 +7,7 @@
 using Framework.ECSModule;
 using System.Collections.Generic;
 
-namespace Framework
+namespace Framework.EventModule
 {
     /// <summary>
     /// 事件委托;

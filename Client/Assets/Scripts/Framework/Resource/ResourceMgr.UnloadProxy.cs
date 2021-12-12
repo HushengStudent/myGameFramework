@@ -4,6 +4,7 @@
 ** desc:  资源加载代理;
 *********************************************************************************/
 
+using Framework.EventModule;
 using System.Collections;
 using System.Collections.Generic;
 

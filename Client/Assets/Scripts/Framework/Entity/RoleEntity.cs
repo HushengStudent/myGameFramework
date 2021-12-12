@@ -4,6 +4,7 @@
 ** desc:  RoleEntity;
 *********************************************************************************/
 
+using Framework.BuffModule;
 using Framework.ECSModule;
 
 namespace Framework

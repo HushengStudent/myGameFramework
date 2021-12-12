@@ -4,6 +4,7 @@
 ** desc:  Object¿©’π;
 *********************************************************************************/
 
+using Framework.EventModule;
 using Framework.ObjectPoolModule;
 using System.Collections.Generic;
 

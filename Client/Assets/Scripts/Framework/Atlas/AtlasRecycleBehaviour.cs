@@ -6,7 +6,7 @@
 
 using UnityEngine;
 
-namespace Framework
+namespace Framework.AtlasModule
 {
     public class AtlasRecycleBehaviour : MonoBehaviour
     {

@@ -7,7 +7,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Framework
+namespace Framework.BehaviorTreeModule
 {
     public class BTRandom : AbsComposite
     {

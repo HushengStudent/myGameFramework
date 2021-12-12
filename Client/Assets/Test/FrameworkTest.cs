@@ -5,6 +5,7 @@
 *********************************************************************************/
 
 using Framework;
+using Framework.BehaviorTreeModule;
 using Framework.ECSModule;
 using Framework.NetModule;
 using Framework.ObjectPoolModule;

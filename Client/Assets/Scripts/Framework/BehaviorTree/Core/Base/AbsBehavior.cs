@@ -7,7 +7,7 @@
 using Framework.ECSModule;
 using System.Collections;
 
-namespace Framework
+namespace Framework.BehaviorTreeModule
 {
     public abstract class AbsBehavior
     {

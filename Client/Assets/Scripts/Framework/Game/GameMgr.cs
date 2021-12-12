@@ -4,10 +4,13 @@
 ** desc:  游戏管理;
 *********************************************************************************/
 
+using Framework.CameraModule;
 using Framework.ECSModule;
+using Framework.EventModule;
 using Framework.ObjectPoolModule;
 using Framework.ResourceModule;
 using UnityEngine;
+using EventType = Framework.EventModule.EventType;
 
 namespace Framework
 {

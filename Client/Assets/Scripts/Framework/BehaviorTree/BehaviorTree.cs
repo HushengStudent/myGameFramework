@@ -6,7 +6,7 @@
 
 using Framework.ECSModule;
 
-namespace Framework
+namespace Framework.BehaviorTreeModule
 {
     public sealed partial class BehaviorTree
     {

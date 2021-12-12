@@ -4,11 +4,13 @@
 ** desc:  图集管理;
 *********************************************************************************/
 
+using Framework.EventModule;
 using Framework.ObjectPoolModule;
 using System.Collections.Generic;
 using UnityEngine;
+using EventType = Framework.EventModule.EventType;
 
-namespace Framework
+namespace Framework.AtlasModule
 {
     public class AtlasMgr : MonoSingleton<AtlasMgr>
     {

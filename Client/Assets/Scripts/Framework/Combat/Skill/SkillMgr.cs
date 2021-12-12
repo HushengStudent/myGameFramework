@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Framework
+namespace Framework.SkillModule
 {
     public class SkillMgr : Singleton<SkillMgr>
     {

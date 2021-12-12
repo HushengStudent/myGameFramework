@@ -7,7 +7,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Framework
+namespace Framework.BehaviorTreeModule
 {
     public abstract class AbsComposite : AbsBehavior
     {

@@ -4,6 +4,7 @@
 ** desc:  Lua帮助类;
 *********************************************************************************/
 
+using Framework.CameraModule;
 using UnityEngine;
 
 namespace Framework

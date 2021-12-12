@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace Framework
+namespace Framework.CommandBufferModule
 {
     public class CommandBufferMgr : MonoSingleton<CommandBufferMgr>
     {

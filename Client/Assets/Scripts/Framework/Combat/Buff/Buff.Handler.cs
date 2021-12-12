@@ -4,7 +4,7 @@
 ** desc:  buff委托;
 *********************************************************************************/
 
-namespace Framework
+namespace Framework.BuffModule
 {
     public partial class Buff
     {

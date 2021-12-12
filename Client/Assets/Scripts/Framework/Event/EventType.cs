@@ -4,7 +4,7 @@
 ** desc:  事件类型;
 *********************************************************************************/
 
-namespace Framework
+namespace Framework.EventModule
 {
     public enum EventType : int
     {

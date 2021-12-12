@@ -4,7 +4,7 @@
 ** desc:  行为树事件;
 *********************************************************************************/
 
-namespace Framework
+namespace Framework.BehaviorTreeModule
 {
     public partial class BehaviorTree
     {

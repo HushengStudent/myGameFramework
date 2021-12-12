@@ -1,5 +1,5 @@
 ### myGameFramework
-#### My game framework include client server and tools.
+#### 基础框架
 
 software：Unity2019.4.26/visual studio2017.
 

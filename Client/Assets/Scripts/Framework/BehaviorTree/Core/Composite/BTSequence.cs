@@ -6,7 +6,7 @@
 
 using System.Collections;
 
-namespace Framework
+namespace Framework.BehaviorTreeModule
 {
     public class BTSequence : AbsComposite
     {

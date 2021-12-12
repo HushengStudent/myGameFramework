@@ -4,10 +4,12 @@
 ** desc:  相机管理;
 *********************************************************************************/
 
+using Framework.EventModule;
 using Framework.ResourceModule;
 using UnityEngine;
+using EventType = Framework.EventModule.EventType;
 
-namespace Framework
+namespace Framework.CameraModule
 {
     public class CameraMgr : MonoSingleton<CameraMgr>
     {
