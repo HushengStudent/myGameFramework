@@ -4,6 +4,7 @@
 ** desc:  Lua加载工具;
 *********************************************************************************/
 
+using Framework.AssetBundleModule;
 using LuaInterface;
 using UnityEngine;
 
@@ -55,7 +56,7 @@ namespace Framework
 #endif
                 if (_zipFile == null)
                 {
-                    zipMap.TryGetValue(FilePathHelper.luaAssetBundleName, out _zipFile);
+                    zipMap.TryGetValue(AssetBundleHelper.LuaAssetBundleName, out _zipFile);
                 }
 
                 if (_zipFile != null)

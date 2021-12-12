@@ -98,7 +98,7 @@ namespace Framework.AssetBundleModule
         /// <returns>AssetBundle</returns>
         public AssetBundle LoadShaderAssetBundle()
         {
-            return LoadFromFile(FilePathHelper.shaderAssetBundleName);
+            return LoadFromFile(AssetBundleHelper.ShaderAssetBundleName);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Framework.AssetBundleModule
         /// <returns></returns>
         public AssetBundle LoadLuaAssetBundle()
         {
-            return LoadFromFile(FilePathHelper.luaAssetBundleName);
+            return LoadFromFile(AssetBundleHelper.LuaAssetBundleName);
         }
 
         /// <summary>
@@ -223,12 +223,12 @@ namespace Framework.AssetBundleModule
             {
                 return null;
             }
-            var assetBundlePath = FilePathHelper.GetAssetBundlePath(path);
+            var assetBundlePath = AssetBundleHelper.GetAssetBundlePath(path);
             if (assetBundlePath == null)
             {
                 return null;
             }
-            var assetBundleName = FilePathHelper.GetAssetBundleFileName(path);
+            var assetBundleName = AssetBundleHelper.GetAssetBundleFileName(path);
 
             var assetBundle = LoadSync(assetBundlePath);
             if (assetBundle == null)
@@ -239,8 +239,8 @@ namespace Framework.AssetBundleModule
             var dependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
             foreach (var tempAssetBundle in dependentAssetBundle)
             {
-                if (tempAssetBundle == FilePathHelper.GetAssetBundleFileName(FilePathHelper.shaderAssetBundleName) ||
-                    tempAssetBundle == FilePathHelper.GetAssetBundleFileName(FilePathHelper.luaAssetBundleName))
+                if (tempAssetBundle == AssetBundleHelper.GetAssetBundleFileName(AssetBundleHelper.ShaderAssetBundleName) ||
+                    tempAssetBundle == AssetBundleHelper.GetAssetBundleFileName(AssetBundleHelper.LuaAssetBundleName))
                 {
                     continue;
                 }
@@ -317,12 +317,12 @@ namespace Framework.AssetBundleModule
             {
                 yield break;
             }
-            var assetBundlePath = FilePathHelper.GetAssetBundlePath(path);
+            var assetBundlePath = AssetBundleHelper.GetAssetBundlePath(path);
             if (assetBundlePath == null)
             {
                 yield break;
             }
-            var assetBundleName = FilePathHelper.GetAssetBundleFileName(path);
+            var assetBundleName = AssetBundleHelper.GetAssetBundleFileName(path);
             //先加载依赖的AssetBundle;
             var dependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
             var count = dependentAssetBundle.Length;
@@ -332,8 +332,8 @@ namespace Framework.AssetBundleModule
             foreach (var tempAssetBundle in dependentAssetBundle)
             {
                 var dp = 0f;
-                if (tempAssetBundle == FilePathHelper.GetAssetBundleFileName(FilePathHelper.shaderAssetBundleName) ||
-                    tempAssetBundle == FilePathHelper.GetAssetBundleFileName(FilePathHelper.luaAssetBundleName))
+                if (tempAssetBundle == AssetBundleHelper.GetAssetBundleFileName(AssetBundleHelper.ShaderAssetBundleName) ||
+                    tempAssetBundle == AssetBundleHelper.GetAssetBundleFileName(AssetBundleHelper.LuaAssetBundleName))
                 {
                     continue;
                 }
@@ -388,19 +388,19 @@ namespace Framework.AssetBundleModule
                 }
             }
 
-            var assetBundleName = FilePathHelper.GetAssetBundleFileName(path);
+            var assetBundleName = AssetBundleHelper.GetAssetBundleFileName(path);
 
             var dependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
             foreach (var tempAssetBundle in dependentAssetBundle)
             {
-                if (tempAssetBundle == FilePathHelper.GetAssetBundleFileName(FilePathHelper.shaderAssetBundleName))
+                if (tempAssetBundle == AssetBundleHelper.GetAssetBundleFileName(AssetBundleHelper.ShaderAssetBundleName))
                 {
                     continue;
                 }
                 var tempPtah = FilePathHelper.AssetBundlePath + tempAssetBundle;
                 UnloadAsset(tempPtah, true);
             }
-            var assetBundlePath = FilePathHelper.GetAssetBundlePath(path);
+            var assetBundlePath = AssetBundleHelper.GetAssetBundlePath(path);
             if (assetBundlePath != null)
             {
                 UnloadAsset(assetBundlePath, true);
@@ -418,7 +418,7 @@ namespace Framework.AssetBundleModule
             {
                 return;
             }
-            var assetBundlePath = FilePathHelper.GetAssetBundlePath(path);
+            var assetBundlePath = AssetBundleHelper.GetAssetBundlePath(path);
             if (assetBundlePath != null)
             {
                 UnloadAsset(assetBundlePath, false);

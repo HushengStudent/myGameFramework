@@ -5,6 +5,7 @@
 *********************************************************************************/
 
 using Framework;
+using Framework.AssetBundleModule;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -54,7 +55,7 @@ namespace FrameworkEditor
         {
             var watch = Stopwatch.StartNew();//开启计时;
 
-            var allPaths = Directory.GetFiles(FilePathHelper.resPath, "*.*", SearchOption.AllDirectories);
+            var allPaths = Directory.GetFiles(AssetBundleHelper.ResPath, "*.*", SearchOption.AllDirectories);
 
             //剔除.meta文件;
             var allAssetPaths = new List<string>();
@@ -107,7 +108,7 @@ namespace FrameworkEditor
             {
                 if (tempAsset.Value.parentDependentAssets.Count == 0 ||//没有被依赖的资源;
                     tempAsset.Value.parentDependentAssets.Count > 1 ||//被超过一个资源依赖的资源;
-                    tempAsset.Key.Contains(FilePathHelper.resPath))//Bundles资源目录下的资源,允许加载所以单独打包;
+                    tempAsset.Key.Contains(AssetBundleHelper.ResPath))//Bundles资源目录下的资源,允许加载所以单独打包;
                 {
                     independenceAsset[tempAsset.Key] = tempAsset.Value;
                 }
@@ -121,7 +122,7 @@ namespace FrameworkEditor
                 var node = asset.Value;
                 var build = new AssetBundleBuild
                 {
-                    assetBundleName = FilePathHelper.GetAssetBundleFileName(node.assetPath)
+                    assetBundleName = AssetBundleHelper.GetAssetBundleFileName(node.assetPath)
                 };
                 var assetLis = new List<string>
                 {
@@ -140,7 +141,7 @@ namespace FrameworkEditor
 
             var shaderBuild = new AssetBundleBuild
             {
-                assetBundleName = FilePathHelper.GetAssetBundleFileName(FilePathHelper.shaderAssetBundleName)
+                assetBundleName = AssetBundleHelper.GetAssetBundleFileName(AssetBundleHelper.ShaderAssetBundleName)
             };
             var shaderList = new List<string>();
             foreach (var shader in allShaderAsset)
@@ -152,7 +153,7 @@ namespace FrameworkEditor
 
             var luaBuild = new AssetBundleBuild
             {
-                assetBundleName = FilePathHelper.GetAssetBundleFileName(FilePathHelper.luaAssetBundleName)
+                assetBundleName = AssetBundleHelper.GetAssetBundleFileName(AssetBundleHelper.LuaAssetBundleName)
             };
             var luaList = new List<string>();
             foreach (var lua in allLuaAsset)
@@ -199,7 +200,7 @@ namespace FrameworkEditor
                 allShaderAsset.Add(path);
                 return false;
             }
-            if (Path.GetExtension(path) == ".bytes" && path.Contains(FilePathHelper.luaPath))
+            if (Path.GetExtension(path) == ".bytes" && path.Contains(AssetBundleHelper.LuaPath))
             {
                 allLuaAsset.Add(path);
                 return false;

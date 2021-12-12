@@ -6,6 +6,12 @@
 
 namespace Framework.PatchModule
 {
+    /*
+     * 更新策略:
+     * Lua:每次涉及脚本更新,都出一个全量脚本更新补丁,更新全部脚本文件;
+     * Resource:每次有资源更新,都出上一个节点版本(lastStepVersion),到最新版本(newestVersion)之间的
+     * (newestVersion-lastStepVersion)个更新包;
+     */
     public class AppVersion
     {
         public AppVersion(int channel, int app, int resource, int lua)

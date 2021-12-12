@@ -4,6 +4,7 @@
 ** desc:  Lua管理;
 *********************************************************************************/
 
+using Framework.AssetBundleModule;
 using Framework.ResourceModule;
 using LuaInterface;
 using System.Collections.Generic;
@@ -92,7 +93,7 @@ namespace Framework
         {
             if (loader.beZip)
             {
-                var name = FilePathHelper.luaAssetBundleName;
+                var name = AssetBundleHelper.LuaAssetBundleName;
                 var ab = ResourceMgr.singleton.LuaAssetBundle;
                 loader.AddSearchBundle(name, ab);
             }
