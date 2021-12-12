@@ -6,7 +6,7 @@
 
 using System.Collections;
 
-namespace Framework
+namespace Framework.SceneModule
 {
     public class Scene
     {

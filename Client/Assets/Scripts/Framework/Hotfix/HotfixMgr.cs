@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Framework
+namespace Framework.HotfixModule
 {
     public class HotfixMgr : Singleton<HotfixMgr>
     {

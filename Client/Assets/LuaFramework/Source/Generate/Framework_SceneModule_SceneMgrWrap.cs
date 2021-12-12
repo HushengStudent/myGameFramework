@@ -2,23 +2,23 @@
 using System;
 using LuaInterface;
 
-public class Framework_SceneMgrWrap
+public class Framework_SceneModule_SceneMgrWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginClass(typeof(Framework.SceneMgr), typeof(Framework.Singleton<Framework.SceneMgr>));
+		L.BeginClass(typeof(Framework.SceneModule.SceneMgr), typeof(Framework.Singleton<Framework.SceneModule.SceneMgr>));
 		L.RegFunction("TransToScene", TransToScene);
-		L.RegFunction("New", _CreateFramework_SceneMgr);
+		L.RegFunction("New", _CreateFramework_SceneModule_SceneMgr);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("CurScene", get_CurScene, null);
 		L.EndClass();
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int _CreateFramework_SceneMgr(IntPtr L)
+	static int _CreateFramework_SceneModule_SceneMgr(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.SceneMgr.ctor");
+        ToluaProfiler.AddCallRecord("Framework.SceneModule.SceneMgr.ctor");
 #endif
 		try
 		{
@@ -26,13 +26,13 @@ public class Framework_SceneMgrWrap
 
 			if (count == 0)
 			{
-				Framework.SceneMgr obj = new Framework.SceneMgr();
+				Framework.SceneModule.SceneMgr obj = new Framework.SceneModule.SceneMgr();
 				ToLua.PushObject(L, obj);
 				return 1;
 			}
 			else
 			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: Framework.SceneMgr.New");
+				return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: Framework.SceneModule.SceneMgr.New");
 			}
 		}
 		catch (Exception e)
@@ -45,14 +45,14 @@ public class Framework_SceneMgrWrap
 	static int TransToScene(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.SceneMgr.TransToScene");
+        ToluaProfiler.AddCallRecord("Framework.SceneModule.SceneMgr.TransToScene");
 #endif
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
-			Framework.SceneMgr obj = (Framework.SceneMgr)ToLua.CheckObject<Framework.SceneMgr>(L, 1);
+			Framework.SceneModule.SceneMgr obj = (Framework.SceneModule.SceneMgr)ToLua.CheckObject<Framework.SceneModule.SceneMgr>(L, 1);
 			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
-			Framework.SceneLoadEventHandler arg1 = (Framework.SceneLoadEventHandler)ToLua.CheckDelegate<Framework.SceneLoadEventHandler>(L, 3);
+			Framework.SceneModule.SceneLoadEventHandler arg1 = (Framework.SceneModule.SceneLoadEventHandler)ToLua.CheckDelegate<Framework.SceneModule.SceneLoadEventHandler>(L, 3);
 			System.Collections.IEnumerator o = obj.TransToScene(arg0, arg1);
 			ToLua.Push(L, o);
 			return 1;
@@ -67,15 +67,15 @@ public class Framework_SceneMgrWrap
 	static int get_CurScene(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.SceneMgr.CurScene");
+        ToluaProfiler.AddCallRecord("Framework.SceneModule.SceneMgr.CurScene");
 #endif
 		object o = null;
 
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			Framework.SceneMgr obj = (Framework.SceneMgr)o;
-			Framework.Scene ret = obj.CurScene;
+			Framework.SceneModule.SceneMgr obj = (Framework.SceneModule.SceneMgr)o;
+			Framework.SceneModule.Scene ret = obj.CurScene;
 			ToLua.PushObject(L, ret);
 			return 1;
 		}

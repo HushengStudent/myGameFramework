@@ -2,11 +2,11 @@
 using System;
 using LuaInterface;
 
-public class Framework_Singleton_Framework_SceneMgrWrap
+public class Framework_Singleton_Framework_SceneModule_SceneMgrWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginClass(typeof(Framework.Singleton<Framework.SceneMgr>), typeof(Framework.SingletonBase), "Singleton_Framework_SceneMgr");
+		L.BeginClass(typeof(Framework.Singleton<Framework.SceneModule.SceneMgr>), typeof(Framework.SingletonBase), "Singleton_Framework_SceneModule_SceneMgr");
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("singleton", get_singleton, null);
 		L.EndClass();
@@ -16,11 +16,11 @@ public class Framework_Singleton_Framework_SceneMgrWrap
 	static int get_singleton(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.Singleton<Framework.SceneMgr>.singleton");
+        ToluaProfiler.AddCallRecord("Framework.Singleton<Framework.SceneModule.SceneMgr>.singleton");
 #endif
 		try
 		{
-			ToLua.PushObject(L, Framework.Singleton<Framework.SceneMgr>.singleton);
+			ToLua.PushObject(L, Framework.Singleton<Framework.SceneModule.SceneMgr>.singleton);
 			return 1;
 		}
 		catch (Exception e)

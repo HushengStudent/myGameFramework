@@ -36,7 +36,7 @@ public class DelegateFactory
 		dict.Add(typeof(UnityEngine.RectTransform.ReapplyDrivenProperties), factory.UnityEngine_RectTransform_ReapplyDrivenProperties);
 		dict.Add(typeof(Framework.OnSingletonInitializeEventHandler), factory.Framework_OnSingletonInitializeEventHandler);
 		dict.Add(typeof(Framework.OnSingletonUninitializeEventHandler), factory.Framework_OnSingletonUninitializeEventHandler);
-		dict.Add(typeof(Framework.SceneLoadEventHandler), factory.Framework_SceneLoadEventHandler);
+		dict.Add(typeof(Framework.SceneModule.SceneLoadEventHandler), factory.Framework_SceneModule_SceneLoadEventHandler);
 		dict.Add(typeof(System.Action<float>), factory.System_Action_float);
 		dict.Add(typeof(System.Action<UnityEngine.SceneManagement.Scene>), factory.System_Action_UnityEngine_SceneManagement_Scene);
 
@@ -59,7 +59,7 @@ public class DelegateFactory
 		DelegateTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Init(factory.UnityEngine_RectTransform_ReapplyDrivenProperties);
 		DelegateTraits<Framework.OnSingletonInitializeEventHandler>.Init(factory.Framework_OnSingletonInitializeEventHandler);
 		DelegateTraits<Framework.OnSingletonUninitializeEventHandler>.Init(factory.Framework_OnSingletonUninitializeEventHandler);
-		DelegateTraits<Framework.SceneLoadEventHandler>.Init(factory.Framework_SceneLoadEventHandler);
+		DelegateTraits<Framework.SceneModule.SceneLoadEventHandler>.Init(factory.Framework_SceneModule_SceneLoadEventHandler);
 		DelegateTraits<System.Action<float>>.Init(factory.System_Action_float);
 		DelegateTraits<System.Action<UnityEngine.SceneManagement.Scene>>.Init(factory.System_Action_UnityEngine_SceneManagement_Scene);
 
@@ -82,7 +82,7 @@ public class DelegateFactory
 		TypeTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Init(factory.Check_UnityEngine_RectTransform_ReapplyDrivenProperties);
 		TypeTraits<Framework.OnSingletonInitializeEventHandler>.Init(factory.Check_Framework_OnSingletonInitializeEventHandler);
 		TypeTraits<Framework.OnSingletonUninitializeEventHandler>.Init(factory.Check_Framework_OnSingletonUninitializeEventHandler);
-		TypeTraits<Framework.SceneLoadEventHandler>.Init(factory.Check_Framework_SceneLoadEventHandler);
+		TypeTraits<Framework.SceneModule.SceneLoadEventHandler>.Init(factory.Check_Framework_SceneModule_SceneLoadEventHandler);
 		TypeTraits<System.Action<float>>.Init(factory.Check_System_Action_float);
 		TypeTraits<System.Action<UnityEngine.SceneManagement.Scene>>.Init(factory.Check_System_Action_UnityEngine_SceneManagement_Scene);
 
@@ -105,7 +105,7 @@ public class DelegateFactory
 		StackTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Push = factory.Push_UnityEngine_RectTransform_ReapplyDrivenProperties;
 		StackTraits<Framework.OnSingletonInitializeEventHandler>.Push = factory.Push_Framework_OnSingletonInitializeEventHandler;
 		StackTraits<Framework.OnSingletonUninitializeEventHandler>.Push = factory.Push_Framework_OnSingletonUninitializeEventHandler;
-		StackTraits<Framework.SceneLoadEventHandler>.Push = factory.Push_Framework_SceneLoadEventHandler;
+		StackTraits<Framework.SceneModule.SceneLoadEventHandler>.Push = factory.Push_Framework_SceneModule_SceneLoadEventHandler;
 		StackTraits<System.Action<float>>.Push = factory.Push_System_Action_float;
 		StackTraits<System.Action<UnityEngine.SceneManagement.Scene>>.Push = factory.Push_System_Action_UnityEngine_SceneManagement_Scene;
 	}
@@ -1306,12 +1306,12 @@ public class DelegateFactory
 		ToLua.Push(L, o);
 	}
 
-	class Framework_SceneLoadEventHandler_Event : LuaDelegate
+	class Framework_SceneModule_SceneLoadEventHandler_Event : LuaDelegate
 	{
-		public Framework_SceneLoadEventHandler_Event(LuaFunction func) : base(func) { }
-		public Framework_SceneLoadEventHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+		public Framework_SceneModule_SceneLoadEventHandler_Event(LuaFunction func) : base(func) { }
+		public Framework_SceneModule_SceneLoadEventHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
 
-		public void Call(Framework.Scene param0)
+		public void Call(Framework.SceneModule.Scene param0)
 		{
 			func.BeginPCall();
 			func.PushObject(param0);
@@ -1319,7 +1319,7 @@ public class DelegateFactory
 			func.EndPCall();
 		}
 
-		public void CallWithSelf(Framework.Scene param0)
+		public void CallWithSelf(Framework.SceneModule.Scene param0)
 		{
 			func.BeginPCall();
 			func.Push(self);
@@ -1329,36 +1329,36 @@ public class DelegateFactory
 		}
 	}
 
-	public Framework.SceneLoadEventHandler Framework_SceneLoadEventHandler(LuaFunction func, LuaTable self, bool flag)
+	public Framework.SceneModule.SceneLoadEventHandler Framework_SceneModule_SceneLoadEventHandler(LuaFunction func, LuaTable self, bool flag)
 	{
 		if (func == null)
 		{
-			Framework.SceneLoadEventHandler fn = delegate(Framework.Scene param0) { };
+			Framework.SceneModule.SceneLoadEventHandler fn = delegate(Framework.SceneModule.Scene param0) { };
 			return fn;
 		}
 
 		if(!flag)
 		{
-			Framework_SceneLoadEventHandler_Event target = new Framework_SceneLoadEventHandler_Event(func);
-			Framework.SceneLoadEventHandler d = target.Call;
+			Framework_SceneModule_SceneLoadEventHandler_Event target = new Framework_SceneModule_SceneLoadEventHandler_Event(func);
+			Framework.SceneModule.SceneLoadEventHandler d = target.Call;
 			target.method = d.Method;
 			return d;
 		}
 		else
 		{
-			Framework_SceneLoadEventHandler_Event target = new Framework_SceneLoadEventHandler_Event(func, self);
-			Framework.SceneLoadEventHandler d = target.CallWithSelf;
+			Framework_SceneModule_SceneLoadEventHandler_Event target = new Framework_SceneModule_SceneLoadEventHandler_Event(func, self);
+			Framework.SceneModule.SceneLoadEventHandler d = target.CallWithSelf;
 			target.method = d.Method;
 			return d;
 		}
 	}
 
-	bool Check_Framework_SceneLoadEventHandler(IntPtr L, int pos)
+	bool Check_Framework_SceneModule_SceneLoadEventHandler(IntPtr L, int pos)
 	{
-		return TypeChecker.CheckDelegateType(typeof(Framework.SceneLoadEventHandler), L, pos);
+		return TypeChecker.CheckDelegateType(typeof(Framework.SceneModule.SceneLoadEventHandler), L, pos);
 	}
 
-	void Push_Framework_SceneLoadEventHandler(IntPtr L, Framework.SceneLoadEventHandler o)
+	void Push_Framework_SceneModule_SceneLoadEventHandler(IntPtr L, Framework.SceneModule.SceneLoadEventHandler o)
 	{
 		ToLua.Push(L, o);
 	}

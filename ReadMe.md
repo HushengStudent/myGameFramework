@@ -3,7 +3,7 @@
 
 software：Unity2019.4.26/visual studio2017.
 
-#### Client：Unity2019.4.26
+#### Client：
     Module：
     >> LOG.(Finish)
     >> ECS.(Finish)
@@ -80,11 +80,11 @@ software：Unity2019.4.26/visual studio2017.
     >> myGameFramework:(工程路径)如C:/myGameFramework/
     >> myGameFramework_protoc:(protoc.exe路径)如c:/protobuf-3.0.0/src/
 	
-#### Server：Visual Studio 2017
+#### Server：
     Reference：
     >> protobuf-net-r668：(protobuf-net-r668:https://github.com/mdavid/protobuf-net).
 	
-#### Tools：相关工具目录
+#### Tools：
     >> protoc-gen-lua.
     >> protoc-gen-csharp.
 	

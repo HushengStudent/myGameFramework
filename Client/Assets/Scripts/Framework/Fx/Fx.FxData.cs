@@ -7,7 +7,7 @@
 using Framework.ObjectPoolModule;
 using UnityEngine;
 
-namespace Framework
+namespace Framework.FxModule
 {
     public partial class Fx
     {

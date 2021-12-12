@@ -6,7 +6,7 @@
 
 using Framework.ObjectPoolModule;
 
-namespace Framework
+namespace Framework.FxModule
 {
     public partial class Fx : IPool
     {

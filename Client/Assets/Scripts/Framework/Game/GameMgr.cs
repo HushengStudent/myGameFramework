@@ -9,6 +9,7 @@ using Framework.ECSModule;
 using Framework.EventModule;
 using Framework.ObjectPoolModule;
 using Framework.ResourceModule;
+using Framework.SceneModule;
 using UnityEngine;
 using EventType = Framework.EventModule.EventType;
 

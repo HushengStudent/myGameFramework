@@ -97,15 +97,17 @@ public static class LuaBinder
 		Framework_LuaUtilityWrap.Register(L);
 		Framework_LuaUIPanelWrap.Register(L);
 		Framework_LuaUIComWrap.Register(L);
-		Framework_SceneMgrWrap.Register(L);
 		Framework_LuaHelperWrap.Register(L);
 		Framework_MonoSingleton_Framework_LuaMgrWrap.Register(L);
 		Framework_Singleton_Framework_LuaUtilityWrap.Register(L);
-		Framework_Singleton_Framework_SceneMgrWrap.Register(L);
+		Framework_Singleton_Framework_SceneModule_SceneMgrWrap.Register(L);
 		Framework_MonoSingleton_Framework_ResourceModule_ResourceMgrWrap.Register(L);
 		L.RegFunction("OnSingletonInitializeEventHandler", Framework_OnSingletonInitializeEventHandler);
 		L.RegFunction("OnSingletonUninitializeEventHandler", Framework_OnSingletonUninitializeEventHandler);
-		L.RegFunction("SceneLoadEventHandler", Framework_SceneLoadEventHandler);
+		L.BeginModule("SceneModule");
+		Framework_SceneModule_SceneMgrWrap.Register(L);
+		L.RegFunction("SceneLoadEventHandler", Framework_SceneModule_SceneLoadEventHandler);
+		L.EndModule();
 		L.BeginModule("ResourceModule");
 		Framework_ResourceModule_ResourceMgrWrap.Register(L);
 		L.EndModule();
@@ -445,10 +447,10 @@ public static class LuaBinder
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int Framework_SceneLoadEventHandler(IntPtr L)
+	static int Framework_SceneModule_SceneLoadEventHandler(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceModule.ResourceMgr>.Framework_SceneLoadEventHandler");
+        ToluaProfiler.AddCallRecord("Framework.MonoSingleton<Framework.ResourceModule.ResourceMgr>.Framework_SceneModule_SceneLoadEventHandler");
 #endif
 		try
 		{
@@ -457,13 +459,13 @@ public static class LuaBinder
 
 			if (count == 1)
 			{
-				Delegate arg1 = DelegateTraits<Framework.SceneLoadEventHandler>.Create(func);
+				Delegate arg1 = DelegateTraits<Framework.SceneModule.SceneLoadEventHandler>.Create(func);
 				ToLua.Push(L, arg1);
 			}
 			else
 			{
 				LuaTable self = ToLua.CheckLuaTable(L, 2);
-				Delegate arg1 = DelegateTraits<Framework.SceneLoadEventHandler>.Create(func, self);
+				Delegate arg1 = DelegateTraits<Framework.SceneModule.SceneLoadEventHandler>.Create(func, self);
 				ToLua.Push(L, arg1);
 			}
 			return 1;
