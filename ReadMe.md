@@ -12,6 +12,7 @@ software：Unity2019.4.26/visual studio2017.
     >> 定时器.(Finish)
     >> 配置表.(Finish)
     >> 热更新.(TODO)
+    >> 热重载.(TODO)
     >> 本地化.(TODO)
     >> 对象池.(Finish)
     >> AssetBundle.(Finish)

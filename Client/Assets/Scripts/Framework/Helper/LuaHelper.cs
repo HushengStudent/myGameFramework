@@ -5,6 +5,7 @@
 *********************************************************************************/
 
 using Framework.CameraModule;
+using Framework.UIModule;
 using UnityEngine;
 
 namespace Framework

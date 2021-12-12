@@ -4,7 +4,7 @@
 ** desc:  Lua UI编辑器;
 *********************************************************************************/
 
-using Framework;
+using Framework.UIModule;
 using System;
 using System.Collections.Generic;
 using System.IO;

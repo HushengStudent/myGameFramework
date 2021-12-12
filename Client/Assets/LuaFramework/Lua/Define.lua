@@ -8,7 +8,7 @@ GameObject = UnityEngine.GameObject
 
 ---[Mgr]
 luaMgr = Framework.LuaMgr.singleton --luaMgr
-sceneMgr = Framework.SceneMgr.singleton
+sceneMgr = Framework.SceneModule.SceneMgr.singleton
 resourceMgr = Framework.ResourceModule.ResourceMgr.singleton
 
 ---[Utility]

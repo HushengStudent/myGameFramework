@@ -10,6 +10,7 @@ using Framework.EventModule;
 using Framework.ObjectPoolModule;
 using Framework.ResourceModule;
 using Framework.SceneModule;
+using Framework.UIModule;
 using UnityEngine;
 using EventType = Framework.EventModule.EventType;
 

@@ -6,7 +6,7 @@
 
 using UnityEngine;
 
-namespace Framework
+namespace Framework.UIModule
 {
     public class UIMgr : MonoSingleton<UIMgr>
     {

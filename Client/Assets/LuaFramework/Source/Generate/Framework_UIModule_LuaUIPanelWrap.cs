@@ -2,11 +2,11 @@
 using System;
 using LuaInterface;
 
-public class Framework_LuaUIPanelWrap
+public class Framework_UIModule_LuaUIPanelWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginClass(typeof(Framework.LuaUIPanel), typeof(UnityEngine.MonoBehaviour));
+		L.BeginClass(typeof(Framework.UIModule.LuaUIPanel), typeof(UnityEngine.MonoBehaviour));
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("LuaUIComArray", get_LuaUIComArray, set_LuaUIComArray);
@@ -18,7 +18,7 @@ public class Framework_LuaUIPanelWrap
 	static int op_Equality(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaUIPanel.op_Equality");
+        ToluaProfiler.AddCallRecord("Framework.UIModule.LuaUIPanel.op_Equality");
 #endif
 		try
 		{
@@ -39,15 +39,15 @@ public class Framework_LuaUIPanelWrap
 	static int get_LuaUIComArray(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaUIPanel.LuaUIComArray");
+        ToluaProfiler.AddCallRecord("Framework.UIModule.LuaUIPanel.LuaUIComArray");
 #endif
 		object o = null;
 
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			Framework.LuaUIPanel obj = (Framework.LuaUIPanel)o;
-			Framework.LuaUICom[] ret = obj.LuaUIComArray;
+			Framework.UIModule.LuaUIPanel obj = (Framework.UIModule.LuaUIPanel)o;
+			Framework.UIModule.LuaUICom[] ret = obj.LuaUIComArray;
 			ToLua.Push(L, ret);
 			return 1;
 		}
@@ -61,15 +61,15 @@ public class Framework_LuaUIPanelWrap
 	static int get_LuaUITemplateArray(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaUIPanel.LuaUITemplateArray");
+        ToluaProfiler.AddCallRecord("Framework.UIModule.LuaUIPanel.LuaUITemplateArray");
 #endif
 		object o = null;
 
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			Framework.LuaUIPanel obj = (Framework.LuaUIPanel)o;
-			Framework.LuaUITemplate[] ret = obj.LuaUITemplateArray;
+			Framework.UIModule.LuaUIPanel obj = (Framework.UIModule.LuaUIPanel)o;
+			Framework.UIModule.LuaUITemplate[] ret = obj.LuaUITemplateArray;
 			ToLua.Push(L, ret);
 			return 1;
 		}
@@ -83,15 +83,15 @@ public class Framework_LuaUIPanelWrap
 	static int set_LuaUIComArray(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaUIPanel.LuaUIComArray");
+        ToluaProfiler.AddCallRecord("Framework.UIModule.LuaUIPanel.LuaUIComArray");
 #endif
 		object o = null;
 
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			Framework.LuaUIPanel obj = (Framework.LuaUIPanel)o;
-			Framework.LuaUICom[] arg0 = ToLua.CheckObjectArray<Framework.LuaUICom>(L, 2);
+			Framework.UIModule.LuaUIPanel obj = (Framework.UIModule.LuaUIPanel)o;
+			Framework.UIModule.LuaUICom[] arg0 = ToLua.CheckObjectArray<Framework.UIModule.LuaUICom>(L, 2);
 			obj.LuaUIComArray = arg0;
 			return 0;
 		}
@@ -105,15 +105,15 @@ public class Framework_LuaUIPanelWrap
 	static int set_LuaUITemplateArray(IntPtr L)
 	{
 #if UNITY_EDITOR
-        ToluaProfiler.AddCallRecord("Framework.LuaUIPanel.LuaUITemplateArray");
+        ToluaProfiler.AddCallRecord("Framework.UIModule.LuaUIPanel.LuaUITemplateArray");
 #endif
 		object o = null;
 
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			Framework.LuaUIPanel obj = (Framework.LuaUIPanel)o;
-			Framework.LuaUITemplate[] arg0 = ToLua.CheckObjectArray<Framework.LuaUITemplate>(L, 2);
+			Framework.UIModule.LuaUIPanel obj = (Framework.UIModule.LuaUIPanel)o;
+			Framework.UIModule.LuaUITemplate[] arg0 = ToLua.CheckObjectArray<Framework.UIModule.LuaUITemplate>(L, 2);
 			obj.LuaUITemplateArray = arg0;
 			return 0;
 		}

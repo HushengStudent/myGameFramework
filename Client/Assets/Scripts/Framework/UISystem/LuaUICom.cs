@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Framework
+namespace Framework.UIModule
 {
     public class LuaUICom : MonoBehaviour
     {

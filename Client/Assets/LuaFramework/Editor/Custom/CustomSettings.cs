@@ -13,6 +13,7 @@ using UnityEngine.EventSystems;
 using Framework.ResourceModule;
 using Framework.NetModule;
 using Framework.SceneModule;
+using Framework.UIModule;
 
 public static class CustomSettings
 {
