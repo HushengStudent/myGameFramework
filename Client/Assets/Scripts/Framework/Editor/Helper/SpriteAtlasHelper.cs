@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2019/10/20 20:43:53
-** desc:  SpriteAtlas¹¤¾ß;
+** desc:  SpriteAtlaså·¥å…·;
 *********************************************************************************/
 
 using UnityEngine;
@@ -13,34 +13,34 @@ namespace FrameworkEditor
     {
         /*
         SpriteAtlas spriteAtlas = new SpriteAtlas();
-        //Ñ¡ÖĞÒÔÔÚ¹¹½¨ÖĞ°üº¬Atlas Asset¡£Çë×¢Òâ£¬È¡ÏûÑ¡ÖĞ´ËÑ¡Ïî»áµ¼ÖÂÔÚ²¥·ÅÄ£Ê½ÆÚ¼ä²»³ÊÏÖÈÎºÎ´ò°üµÄ×Ê²ú¡£
-        //»áµ¼ÖÂ´ò°üÈßÓà  È¡ÏûºóĞèÒªÔÚ´úÂëÖĞ¼àÌıSpriteAtlasManager.atlasRequestedÊÂ¼şÀ´ÔÚ³ÌĞòÖĞ¼ÓÔØÌùÍ¼¼¯¡£
-        //²»È»»áµ¼ÖÂAB°üÊ×¸ö¼ÓÔØÍ¼Æ¬Îª¿Õ°× ResourceLoadÃ»ÎÊÌâ
+        //é€‰ä¸­ä»¥åœ¨æ„å»ºä¸­åŒ…å«Atlas Assetã€‚è¯·æ³¨æ„ï¼Œå–æ¶ˆé€‰ä¸­æ­¤é€‰é¡¹ä¼šå¯¼è‡´åœ¨æ’­æ”¾æ¨¡å¼æœŸé—´ä¸å‘ˆç°ä»»ä½•æ‰“åŒ…çš„èµ„äº§ã€‚
+        //ä¼šå¯¼è‡´æ‰“åŒ…å†—ä½™  å–æ¶ˆåéœ€è¦åœ¨ä»£ç ä¸­ç›‘å¬SpriteAtlasManager.atlasRequestedäº‹ä»¶æ¥åœ¨ç¨‹åºä¸­åŠ è½½è´´å›¾é›†ã€‚
+        //ä¸ç„¶ä¼šå¯¼è‡´ABåŒ…é¦–ä¸ªåŠ è½½å›¾ç‰‡ä¸ºç©ºç™½ ResourceLoadæ²¡é—®é¢˜
         spriteAtlas.SetIncludeInBuild(false);
         SpriteAtlasPackingSettings packSetting = new SpriteAtlasPackingSettings()
         {
-            //°üÆ«ÒÆ
+            //åŒ…åç§»
             blockOffset = 1,
-            //´ò°üÊ±ÊÇ·ñÖ§³Ö°üĞı×ª
+            //æ‰“åŒ…æ—¶æ˜¯å¦æ”¯æŒåŒ…æ—‹è½¬
             enableRotation = false,
-            //ÊÇ·ñ½ôÃÜ´ò°ü
+            //æ˜¯å¦ç´§å¯†æ‰“åŒ…
             enableTightPacking = false,
-            //±ß½çÌî³äÖµ
+            //è¾¹ç•Œå¡«å……å€¼
             padding = 2
         };
         spriteAtlas.SetPackingSettings(packSetting);
 
         SpriteAtlasTextureSettings textureSettings = new SpriteAtlasTextureSettings()
         {
-            //ÊÇ·ñ¿ªÆô¶ÁĞ´
+            //æ˜¯å¦å¼€å¯è¯»å†™
             readable = false,
-            //Point·ÖÀë¹ıÂËÄ£Ê½ µã¹ıÂË - ÎÆÀíÏñËØ±äµÃ¿é×´½ü¾àÀë¡£
-            //BilinearË«ÏßĞÔ¹ıÂË - ÎÆÀíÑù±¾µÄÆ½¾ùÖµ¡£
-            //TrilinearÈıÏßĞÔ¹ıÂË - ¶ÔÎÆÀíÑù±¾½øĞĞÆ½¾ù£¬²¢ÔÚmipmap¼¶±ğÖ®¼ä½øĞĞ»ìºÏ¡£
+            //Pointåˆ†ç¦»è¿‡æ»¤æ¨¡å¼ ç‚¹è¿‡æ»¤ - çº¹ç†åƒç´ å˜å¾—å—çŠ¶è¿‘è·ç¦»ã€‚
+            //BilinearåŒçº¿æ€§è¿‡æ»¤ - çº¹ç†æ ·æœ¬çš„å¹³å‡å€¼ã€‚
+            //Trilinearä¸‰çº¿æ€§è¿‡æ»¤ - å¯¹çº¹ç†æ ·æœ¬è¿›è¡Œå¹³å‡ï¼Œå¹¶åœ¨mipmapçº§åˆ«ä¹‹é—´è¿›è¡Œæ··åˆã€‚
             filterMode = FilterMode.Bilinear,
-            //ÊÇ·ñÆôÓÃmipmap
+            //æ˜¯å¦å¯ç”¨mipmap
             generateMipMaps = false,
-            //ÎÆÀí´æ´¢ÔÚÙ¤Âí¿Õ¼äÖĞ¡£
+            //çº¹ç†å­˜å‚¨åœ¨ä¼½é©¬ç©ºé—´ä¸­ã€‚
             sRGB = true
         };
 
@@ -49,23 +49,23 @@ namespace FrameworkEditor
 
         TextureImporterPlatformSettings textureImporterPlatformSettings = new TextureImporterPlatformSettings()
         {
-            //ÉèÖÃÀàĞÍÃû×Ö
+            //è®¾ç½®ç±»å‹åå­—
             name = "Android",
-            //ÊÇ·ñÖØĞ´
+            //æ˜¯å¦é‡å†™
             overridden = true,
-            //ÔÚ²»Ö§³ÖETC2µÄÊÖ»úÉÏ»ØÍË
+            //åœ¨ä¸æ”¯æŒETC2çš„æ‰‹æœºä¸Šå›é€€
             androidETC2FallbackOverride = AndroidETC2FallbackOverride.Quality16Bit,
             maxTextureSize = 1024,
-            //Ñ¹Ëõ¸ñÊ½ ÓÃÖ®Ç°ÈË¼Ò²âÊÔ×îºÃµÄÊÖÓÎÑ¹Ëõ¸ñÊ½
+            //å‹ç¼©æ ¼å¼ ç”¨ä¹‹å‰äººå®¶æµ‹è¯•æœ€å¥½çš„æ‰‹æ¸¸å‹ç¼©æ ¼å¼
             format = TextureImporterFormat.ASTC_RGBA_4x4,
-            //ÎÆÀí²»»á±»Ñ¹Ëõ¡£Î´Ñ¹ËõµÄ= 0,
-            //ÕªÒªÎÆÀí½«¸ù¾İÆ½Ì¨// (DXT, ASTC£¬¡­)Ê¹ÓÃ±ê×¼¸ñÊ½½øĞĞÑ¹Ëõ¡£Compressed= 1,
-            //ÕªÒªÎÆÀí½«¸ù¾İÆ½Ì¨ºÍ¿ÉÓÃĞÔ(BC7, ASTC4x4£¬¡­)Ê¹ÓÃ¸ßÖÊÁ¿µÄ¸ñÊ½½øĞĞÑ¹Ëõ¡£CompressedHQ = 2,
-            //ÕªÒª¸ù¾İÆ½Ì¨ºÍ¿ÉÓÃĞÔ(2bpp PVRTC, ASTC8x8£¬¡­)£¬ÎÆÀí½«Ê¹ÓÃµÍÖÊÁ¿µ«¸ßĞÔÄÜ¡¢¸ßÑ¹Ëõ/¸ñÊ½½øĞĞÑ¹Ëõ¡£CompressedLQ = 3
+            //çº¹ç†ä¸ä¼šè¢«å‹ç¼©ã€‚æœªå‹ç¼©çš„= 0,
+            //æ‘˜è¦çº¹ç†å°†æ ¹æ®å¹³å°// (DXT, ASTCï¼Œâ€¦)ä½¿ç”¨æ ‡å‡†æ ¼å¼è¿›è¡Œå‹ç¼©ã€‚Compressed= 1,
+            //æ‘˜è¦çº¹ç†å°†æ ¹æ®å¹³å°å’Œå¯ç”¨æ€§(BC7, ASTC4x4ï¼Œâ€¦)ä½¿ç”¨é«˜è´¨é‡çš„æ ¼å¼è¿›è¡Œå‹ç¼©ã€‚CompressedHQ = 2,
+            //æ‘˜è¦æ ¹æ®å¹³å°å’Œå¯ç”¨æ€§(2bpp PVRTC, ASTC8x8ï¼Œâ€¦)ï¼Œçº¹ç†å°†ä½¿ç”¨ä½è´¨é‡ä½†é«˜æ€§èƒ½ã€é«˜å‹ç¼©/æ ¼å¼è¿›è¡Œå‹ç¼©ã€‚CompressedLQ = 3
             textureCompression = TextureImporterCompression.CompressedHQ,
-            //¿ÉÊ¹ÓÃÊ±Ñ¹Ëõ
+            //å¯ä½¿ç”¨æ—¶å‹ç¼©
             crunchedCompression = true,
-            //Ñ¹ËõÎÆÀíÖÊÁ¿[0-100]
+            //å‹ç¼©çº¹ç†è´¨é‡[0-100]
             compressionQuality = 50,
         };
         spriteAtlas.SetPlatformSettings(textureImporterPlatformSettings);

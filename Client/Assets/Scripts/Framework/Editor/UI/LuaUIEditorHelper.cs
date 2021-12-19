@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2020/03/22 15:44:03
-** desc:  Lua UI±‡º≠∆˜;
+** desc:  Lua UIÁºñËæëÂô®;
 *********************************************************************************/
 
 using UnityEditor;
@@ -77,10 +77,10 @@ public class LuaUIEditorHelper
 
     public static string CheckName(string name)
     {
-        name = name.Replace(" ", "").Replace(".", "").Replace("°£", "")
-            .Replace("(", "").Replace("£®", "").Replace(")", "").Replace("£©", "")
+        name = name.Replace(" ", "").Replace(".", "").Replace("„ÄÇ", "")
+            .Replace("(", "").Replace("Ôºà", "").Replace(")", "").Replace("Ôºâ", "")
             .Replace("{", "").Replace("}", "").Replace("[", "").Replace("]", "")
-            .Replace("°æ", "").Replace("°ø", "").Replace("_", "");
+            .Replace("„Äê", "").Replace("„Äë", "").Replace("_", "");
         return $"{name.Substring(0, 1).ToLower()}{name.Substring(1)}";
     }
 

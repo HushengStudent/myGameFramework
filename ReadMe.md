@@ -4,7 +4,7 @@
 software：Unity2019.4.26/visual studio2017.
 
 #### Client：
-    Module：
+    模块：
     >> LOG.(Finish)
     >> ECS.(Finish)
     >> 单例.(Finish)
@@ -25,19 +25,23 @@ software：Unity2019.4.26/visual studio2017.
     >> 阴影.(Finish)
     >> Timeline.(TODO)
     >> Wwise.(TODO)
-    >> KCP.(TODO)
-    >> Jenkins.(TODO)
+    >> Jenkins[打包/打表].(TODO)
     >> 换装/染色.(TODO)
 	
     >> 寻路.(Finish)
     >> 技能.(TODO)
     >> Buff.(Finish)
-    >> AI：FSM、行为树.(Finish)
-    >> 网络同步机制：帧同步、状态同步.(TODO)
+    >> AI[FSM/行为树].(Finish)
+    >> 网络同步机制[帧同步/状态同步].(TODO)
 	
-    >> Editor：AI<行为树>、战斗<技能>、场景、打包.(TODO)
-    >> Lua：tolua、Class、Profiler、工具、方法、定时器、事件系统.(Finish)
-    >> UI：滑动列表、图文混排、超链、HUD、飘字、物品掉落.(TODO)
+    >> AI编辑器[行为树].(Finish)
+    >> 战斗编辑器[技能].(TODO)
+    >> 场景编辑器.(TODO)
+    >> 打包.(TODO)
+	
+    >> Lua[tolua/Class/Profiler/工具/方法/定时器/事件系统].(Finish)
+    >> lua-protobuf.(TODO)
+    >> UI[滑动列表/图文混排/超链/HUD/飘字/物品掉落].(TODO)
 	
     >> 项目优化.(TODO)
     >> 其他工具.(TODO)

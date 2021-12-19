@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/08/20 01:44:34
-** desc:  ObjectÀ©Õ¹;
+** desc:  Objectæ‰©å±•;
 *********************************************************************************/
 
 using Framework.EventModule;
@@ -98,42 +98,42 @@ namespace Framework.ECSModule
         }
 
         /// <summary>
-        /// ³õÊ¼»¯;
+        /// åˆå§‹åŒ–;
         /// </summary>
         protected virtual void InitializeEx() { }
         /// <summary>
-        /// ÖØÖÃ;
+        /// é‡ç½®;
         /// </summary>
         protected virtual void UnInitializeEx() { }
         /// <summary>
-        /// ×¢²á×é¼ş;
+        /// æ³¨å†Œç»„ä»¶;
         /// </summary>
         protected virtual void RegisterComponent() { }
         /// <summary>
-        /// É¾³ı×é¼ş;
+        /// åˆ é™¤ç»„ä»¶;
         /// </summary>
         protected virtual void UnRegisterComponent() { }
         /// <summary>
-        /// ×¢²áÊÂ¼ş;
+        /// æ³¨å†Œäº‹ä»¶;
         /// </summary>
         protected virtual void EventSubscribe() { }
         /// <summary>
-        /// ×¢ÏúÊÂ¼ş;
+        /// æ³¨é”€äº‹ä»¶;
         /// </summary>
         protected virtual void EventUnsubscribe() { }
         /// <summary>
-        /// ½øÈë³¡¾°;
+        /// è¿›å…¥åœºæ™¯;
         /// </summary>
         /// <param name="sceneId"></param>
         protected virtual void OnEnterScene(int sceneId) { }
         /// <summary>
-        /// Àë¿ª³¡¾°;
+        /// ç¦»å¼€åœºæ™¯;
         /// </summary>
         /// <param name="sceneId"></param>
         protected virtual void OnExitScene(int sceneId) { }
 
         /// <summary>
-        /// »ñÈ¡×é¼ş;
+        /// è·å–ç»„ä»¶;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
@@ -151,7 +151,7 @@ namespace Framework.ECSModule
         }
 
         /// <summary>
-        /// Ìí¼Ó×é¼ş;
+        /// æ·»åŠ ç»„ä»¶;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
@@ -172,7 +172,7 @@ namespace Framework.ECSModule
         }
 
         /// <summary>
-        /// ÒÆ³ı×é¼ş;
+        /// ç§»é™¤ç»„ä»¶;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
@@ -194,7 +194,7 @@ namespace Framework.ECSModule
         }
 
         /// <summary>
-        /// ÒÆ³ı×é¼ş;
+        /// ç§»é™¤ç»„ä»¶;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="component"></param>
@@ -223,7 +223,7 @@ namespace Framework.ECSModule
         }
 
         /// <summary>
-        /// Ïú»Ù×é¼ş;
+        /// é”€æ¯ç»„ä»¶;
         /// </summary>
         /// <param name="component"></param>
         /// <returns></returns>
@@ -255,18 +255,18 @@ namespace Framework.ECSModule
         }
 
         /// <summary>
-        /// ¶ÔÏó³ØGet;
+        /// å¯¹è±¡æ± Get;
         /// </summary>
         /// <param name="args"></param>
         protected virtual void OnGetEx(params object[] args) { }
 
         /// <summary>
-        /// ¶ÔÏó³ØRelease;
+        /// å¯¹è±¡æ± Release;
         /// </summary>
         protected virtual void OnReleaseEx() { }
 
         /// <summary>
-        /// Ìí¼ÓÊÂ¼ş;
+        /// æ·»åŠ äº‹ä»¶;
         /// </summary>
         /// <param name="type"></param>
         /// <param name="handler"></param>
@@ -276,7 +276,7 @@ namespace Framework.ECSModule
         }
 
         /// <summary>
-        /// ÒÆ³ıÊÂ¼ş;
+        /// ç§»é™¤äº‹ä»¶;
         /// </summary>
         /// <param name="type"></param>
         protected void RemoveEvent(EventType type)
@@ -285,7 +285,7 @@ namespace Framework.ECSModule
         }
 
         /// <summary>
-        /// ·¢ËÍÊÂ¼ş;
+        /// å‘é€äº‹ä»¶;
         /// </summary>
         /// <param name="type"></param>
         /// <param name="eventArgs"></param>

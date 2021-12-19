@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/12/16 20:34:27
-** desc:  GameObject¶ÔÏó³Ø¹ÜÀí;
+** desc:  GameObjectå¯¹è±¡æ± ç®¡ç†;
 *********************************************************************************/
 
 using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace Framework.ObjectPoolModule
             new Dictionary<string, HashSet<GameObjectPool>>();
 
         /// <summary>
-        /// »ñÈ¡GameObjectPool;
+        /// è·å–GameObjectPool;
         /// </summary>
         /// <param name="assetPath"></param>
         /// <param name="tag"></param>
@@ -52,7 +52,7 @@ namespace Framework.ObjectPoolModule
         }
 
         /// <summary>
-        /// ÊÍ·ÅGameObjectPool;
+        /// é‡Šæ”¾GameObjectPool;
         /// </summary>
         /// <param name="targetPool"></param>
         public void ReleaseGameObjectPool(GameObjectPool targetPool)
@@ -65,7 +65,7 @@ namespace Framework.ObjectPoolModule
         }
 
         /// <summary>
-        /// ÊÍ·ÅGameObjectPool;
+        /// é‡Šæ”¾GameObjectPool;
         /// </summary>
         /// <param name="assetPath"></param>
         public void ReleaseGameObjectPool(string assetPath)
@@ -108,7 +108,7 @@ namespace Framework.ObjectPoolModule
         }
 
         /// <summary>
-        /// ÊÍ·ÅGameObjectPool;
+        /// é‡Šæ”¾GameObjectPool;
         /// </summary>
         /// <param name="tag"></param>
         public void ReleaseGameObjectPoolByTag(string tag)
@@ -130,7 +130,7 @@ namespace Framework.ObjectPoolModule
         }
 
         /// <summary>
-        /// ÊÍ·ÅÈ«²¿GameObjectPool;
+        /// é‡Šæ”¾å…¨éƒ¨GameObjectPool;
         /// </summary>
         public void ReleaseAllGameObjectPool()
         {

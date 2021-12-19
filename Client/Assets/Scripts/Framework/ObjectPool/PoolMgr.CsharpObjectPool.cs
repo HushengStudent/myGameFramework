@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/12/16 20:34:27
-** desc:  Csharp¶ÔÏó³Ø¹ÜÀí;
+** desc:  Csharpå¯¹è±¡æ± ç®¡ç†;
 *********************************************************************************/
 
 using System;
@@ -17,7 +17,7 @@ namespace Framework.ObjectPoolModule
         private Dictionary<Type, object> _csharpObjectPool = new Dictionary<Type, object>();
 
         /// <summary>
-        /// »ñÈ¡Csharp¶ÔÏó³ØÄ¿±ê×é¼ş;
+        /// è·å–Csharpå¯¹è±¡æ± ç›®æ ‡ç»„ä»¶;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="args"></param>
@@ -42,7 +42,7 @@ namespace Framework.ObjectPoolModule
         }
 
         /// <summary>
-        /// ÊÍ·ÅCsharp¶ÔÏó³Ø×é¼ş;
+        /// é‡Šæ”¾Csharpå¯¹è±¡æ± ç»„ä»¶;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="value"></param>
@@ -65,7 +65,7 @@ namespace Framework.ObjectPoolModule
         }
 
         /// <summary>
-        /// ´´½¨Csharp¶ÔÏó³Ø;
+        /// åˆ›å»ºCsharpå¯¹è±¡æ± ;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>

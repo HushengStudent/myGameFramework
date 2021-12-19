@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/12/16 22:44:23
-** desc:  Hash¹¤¾ß;
+** desc:  Hashå·¥å…·;
 *********************************************************************************/
 
 using System;
@@ -20,10 +20,10 @@ namespace Framework
         }
 
         /// <summary>
-        /// ¼ÆËã¶ş½øÖÆÁ÷µÄMD5;
+        /// è®¡ç®—äºŒè¿›åˆ¶æµçš„MD5;
         /// </summary>
-        /// <param name="bytes">Ö¸¶¨µÄ¶ş½øÖÆÁ÷;</param>
-        /// <returns>¼ÆËãºóµÄMD5;</returns>
+        /// <param name="bytes">æŒ‡å®šçš„äºŒè¿›åˆ¶æµ;</param>
+        /// <returns>è®¡ç®—åçš„MD5;</returns>
         public static string GetMD5(byte[] bytes)
         {
             using (var alg = MD5.Create())
@@ -39,7 +39,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// ÎÄ¼şMD5;
+        /// æ–‡ä»¶MD5;
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
@@ -49,7 +49,7 @@ namespace Framework
             {
                 return string.Empty;
             }
-            var bufferSize = 1024 * 16;//»º³åÇø´óĞ¡16K,Ä¬ÈÏ4K
+            var bufferSize = 1024 * 16;//ç¼“å†²åŒºå¤§å°16K,é»˜è®¤4K
             var buffer = new byte[bufferSize];
             using (var stream = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
@@ -69,7 +69,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// ¼ÆËã×Ö·û´®µÄHash;
+        /// è®¡ç®—å­—ç¬¦ä¸²çš„Hash;
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -79,7 +79,7 @@ namespace Framework
         }
 
         /// <summary>
-        /// ¼ÆËãÀàĞÍÃûµÄHash;
+        /// è®¡ç®—ç±»å‹åçš„Hash;
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -89,10 +89,10 @@ namespace Framework
         }
 
         /// <summary>
-        /// ¼ÆËã¶ş½øÖÆÁ÷µÄHash;
+        /// è®¡ç®—äºŒè¿›åˆ¶æµçš„Hash;
         /// </summary>
-        /// <param name="bytes">Ö¸¶¨µÄ¶ş½øÖÆÁ÷;</param>
-        /// <returns>¼ÆËãºóµÄHash;</returns>
+        /// <param name="bytes">æŒ‡å®šçš„äºŒè¿›åˆ¶æµ;</param>
+        /// <returns>è®¡ç®—åçš„Hash;</returns>
         public static string GetHash(byte[] textBytes)
         {
             using (var algorithm = SHA256.Create())

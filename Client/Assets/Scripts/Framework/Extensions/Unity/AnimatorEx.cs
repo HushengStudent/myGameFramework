@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/08/20 01:45:07
-** desc:  Animator��չ;
+** desc:  Animator扩展;
 *********************************************************************************/
 
 using Framework.ResourceModule;
@@ -11,7 +11,7 @@ using UnityEngine;
 namespace Framework
 {
     /// <summary>
-    /// ״̬��;
+    /// 状态机;
     /// </summary>
     public class AnimatorEx
     {

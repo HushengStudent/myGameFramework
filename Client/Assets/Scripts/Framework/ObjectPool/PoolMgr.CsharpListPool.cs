@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2018/12/16 20:49:28
-** desc:  List¶ÔÏó³Ø;
+** desc:  Listå¯¹è±¡æ± ;
 *********************************************************************************/
 
 using System;
@@ -17,10 +17,10 @@ namespace Framework.ObjectPoolModule
         private Dictionary<Type, object> _csharpListPool = new Dictionary<Type, object>();
 
         /// <summary>
-        /// »ñÈ¡¶ÔÏó³ØÄ¿±ê×é¼ş;
+        /// è·å–å¯¹è±¡æ± ç›®æ ‡ç»„ä»¶;
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="args">³õÊ¼»¯²ÎÊı</param>
+        /// <param name="args">åˆå§‹åŒ–å‚æ•°</param>
         /// <returns></returns>
         public List<T> GetCsharpList<T>()
         {
@@ -37,7 +37,7 @@ namespace Framework.ObjectPoolModule
         }
 
         /// <summary>
-        /// ÊÍ·Å¶ÔÏó³Ø×é¼ş;
+        /// é‡Šæ”¾å¯¹è±¡æ± ç»„ä»¶;
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
@@ -55,7 +55,7 @@ namespace Framework.ObjectPoolModule
             pool.Release(list);
         }
 
-        /// ´´½¨¶ÔÏó³Ø;
+        /// åˆ›å»ºå¯¹è±¡æ± ;
         private CsharpListPool<T> CreateCsharpListPool<T>()
         {
             if (_csharpListPool.TryGetValue(typeof(T), out var temp))

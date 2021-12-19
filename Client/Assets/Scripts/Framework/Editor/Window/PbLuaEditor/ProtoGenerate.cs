@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2019/04/14 18:22:48
-** desc:  protoÉú³É;
+** desc:  protoç”Ÿæˆ;
 *********************************************************************************/
 
 using Framework;
@@ -40,7 +40,7 @@ namespace FrameworkEditor
         private static string Protoc = EnvVariableHelper.ProtocPath + "protoc.exe";
 
         /// <summary>
-        /// pbluaÄ¿Â¼;
+        /// pbluaç›®å½•;
         /// </summary>
         public static string PbluaPath
         {
@@ -51,7 +51,7 @@ namespace FrameworkEditor
         }
 
         /// <summary>
-        /// toolsÄ¿Â¼;
+        /// toolsç›®å½•;
         /// </summary>
         public static string ProtocGenPath
         {
@@ -62,7 +62,7 @@ namespace FrameworkEditor
         }
 
         /// <summary>
-        /// protogenÄ¿Â¼;
+        /// protogenç›®å½•;
         /// </summary>
         public static string ProtogenPath
         {
@@ -73,7 +73,7 @@ namespace FrameworkEditor
         }
 
         /// <summary>
-        /// Csharp¿Í»§¶ËÊä³öÄ¿Â¼;
+        /// Csharpå®¢æˆ·ç«¯è¾“å‡ºç›®å½•;
         /// </summary>
         public static string CsharpClientPath
         {
@@ -84,7 +84,7 @@ namespace FrameworkEditor
         }
 
         /// <summary>
-        /// Éú³ÉĞ­Òé¸ø·şÎñÆ÷;
+        /// ç”Ÿæˆåè®®ç»™æœåŠ¡å™¨;
         /// </summary>
         private static string CsharpServerPath
         {
@@ -95,7 +95,7 @@ namespace FrameworkEditor
         }
 
         /// <summary>
-        /// ³õÊ¼»¯ÉÏÏÂÎÄ;
+        /// åˆå§‹åŒ–ä¸Šä¸‹æ–‡;
         /// </summary>
         public static void InitContext()
         {
@@ -153,7 +153,7 @@ namespace FrameworkEditor
                 {
                     continue;
                 }
-                //Êä³öÄ¿Â¼;
+                //è¾“å‡ºç›®å½•;
                 var outPath = GetCsharpPath(f) + targetFileName;
                 if (null == outPath)
                 {
@@ -189,7 +189,7 @@ namespace FrameworkEditor
         }
 
         /// <summary>
-        /// ±éÀúÄ¿Â¼¼°Æä×ÓÄ¿Â¼;
+        /// éå†ç›®å½•åŠå…¶å­ç›®å½•;
         /// </summary>
         /// <param name="path"></param>
         private static void Recursive(string path)
@@ -213,7 +213,7 @@ namespace FrameworkEditor
         }
 
         /// <summary>
-        /// µÃµ½Ğ­ÒéC#Êä³öÄ¿Â¼;
+        /// å¾—åˆ°åè®®C#è¾“å‡ºç›®å½•;
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>

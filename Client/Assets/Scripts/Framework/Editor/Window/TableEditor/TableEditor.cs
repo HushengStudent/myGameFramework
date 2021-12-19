@@ -1,7 +1,7 @@
 /********************************************************************************
 ** auth:  https://github.com/HushengStudent
 ** date:  2019/04/05 22:42:02
-** desc:  ±í¸ñ±à¼­Æ÷;
+** desc:  è¡¨æ ¼ç¼–è¾‘å™¨;
 *********************************************************************************/
 
 using UnityEditor;
@@ -14,7 +14,7 @@ namespace FrameworkEditor
         [MenuItem("myGameFramework/Window/TableEditor &#t", false, 7)]
         static void ShowWindow()
         {
-            var window = GetWindowWithRect(typeof(TableEditor), new Rect(0, 0, 1280, 720), true, "±í¸ñ±à¼­Æ÷");
+            var window = GetWindowWithRect(typeof(TableEditor), new Rect(0, 0, 1280, 720), true, "è¡¨æ ¼ç¼–è¾‘å™¨");
             window.Show();
         }
 
