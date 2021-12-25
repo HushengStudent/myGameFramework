@@ -20,6 +20,9 @@ namespace Framework
         public static string NetAppVersionUrl =
             $"http://127.0.0.1/version.xml";
 
+        public static string AppVersionChangeListUrl =
+            $"http://127.0.0.1/changelist.xml";
+
         public static int GameFrame = 60;
         public static float SyncInterval = 0.2f;
         public static MobileLevel MobileLevelValue = MobileLevel.High;

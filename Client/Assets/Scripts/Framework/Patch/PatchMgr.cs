@@ -31,7 +31,10 @@ namespace Framework.PatchModule
             CheckNetVersion();
         }
 
-        public void CheckNetVersion()
+        /// <summary>
+        /// 拉取服务器上的版本信息;
+        /// </summary>
+        private void CheckNetVersion()
         {
             var unityWebRequest = new UnityWebRequestHelper
             {
@@ -51,30 +54,53 @@ namespace Framework.PatchModule
             CoroutineMgr.singleton.StartCoroutine(unityWebRequest.StartDownLoad(GameConfig.NetAppVersionUrl, GameConfig.NetAppVersionFilePath));
         }
 
-        public void CheckUpdate()
+        private void CheckUpdate()
         {
             var result = LoaclAppVersion.AppVersionCompare(NetAppVersion);
-            if (result == AppVersionCompareResult.Non)
+            if (result == AppVersionCheckResult.Non)
+            {
+                //没有更新;
+                SuccessHandler?.Invoke();
+                return;
+            }
+            if (result == AppVersionCheckResult.ChannelError)
             {
                 return;
             }
-            if (result == AppVersionCompareResult.ChannelError)
+            if (result == (AppVersionCheckResult.ResourceCanUpdate
+                | AppVersionCheckResult.LuaCanUpdate))
             {
                 return;
             }
-            if (result == (AppVersionCompareResult.ResourceCanUpdate
-                | AppVersionCompareResult.LuaCanUpdate))
+            if (result == AppVersionCheckResult.ResourceCanUpdate)
             {
                 return;
             }
-            if (result == AppVersionCompareResult.ResourceCanUpdate)
+            if (result == AppVersionCheckResult.LuaCanUpdate)
             {
                 return;
             }
-            if (result == AppVersionCompareResult.LuaCanUpdate)
-            {
-                return;
-            }
+        }
+
+        private void UpdateLua()
+        {
+            //下载;
+
+            //解压;
+        }
+
+        private void UpdateResource()
+        {
+            //下载;
+
+            //解压;
+        }
+
+        private bool CheckChangeList()
+        {
+            //根据服务器对比ChangeList;
+
+            return true;
         }
     }
 }

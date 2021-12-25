@@ -27,32 +27,32 @@ namespace Framework.PatchModule
         public int Resource { get; private set; }
         public int Lua { get; private set; }
 
-        public AppVersionCompareResult AppVersionCompare(AppVersion nextAppVersion)
+        public AppVersionCheckResult AppVersionCompare(AppVersion nextAppVersion)
         {
             if (null == nextAppVersion)
             {
                 LogHelper.PrintError("appVersion compare error.");
-                return AppVersionCompareResult.Non;
+                return AppVersionCheckResult.Non;
             }
             if (Channel != nextAppVersion.Channel)
             {
-                return AppVersionCompareResult.ChannelError;
+                return AppVersionCheckResult.ChannelError;
             }
             var resourceCanUpdate = Resource != nextAppVersion.Resource;
             var luaCanUpdate = Lua != nextAppVersion.Lua;
             if (resourceCanUpdate && luaCanUpdate)
             {
-                return AppVersionCompareResult.ResourceCanUpdate | AppVersionCompareResult.LuaCanUpdate;
+                return AppVersionCheckResult.ResourceCanUpdate | AppVersionCheckResult.LuaCanUpdate;
             }
             if (resourceCanUpdate)
             {
-                return AppVersionCompareResult.ResourceCanUpdate;
+                return AppVersionCheckResult.ResourceCanUpdate;
             }
             if (luaCanUpdate)
             {
-                return AppVersionCompareResult.LuaCanUpdate;
+                return AppVersionCheckResult.LuaCanUpdate;
             }
-            return AppVersionCompareResult.Non;
+            return AppVersionCheckResult.Non;
         }
     }
 }

@@ -6,7 +6,7 @@
 
 namespace Framework.PatchModule
 {
-    public enum AppVersionCompareResult : byte
+    public enum AppVersionCheckResult : byte
     {
         Non = 1 << 0,
         //渠道错误;
