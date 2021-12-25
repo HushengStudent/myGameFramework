@@ -14,8 +14,8 @@ namespace FrameworkEditor
 {
     public static class AssetBundleGenerate
     {
-        [MenuItem("myGameFramework/AssetBundleTools/Generate AssetBundle", false, 0)]
-        public static void GenerateAll()
+        [MenuItem("myGameFramework/AssetBundle/Build AssetBundle", false, 0)]
+        public static void BuildAll()
         {
             if (EditorUtility.DisplayDialog("AssetBundle Build", "开始打包AssetBundle？", "Build AssetBundle"))
             {
@@ -28,11 +28,11 @@ namespace FrameworkEditor
 
                 //tips:Unity5.x Scripts not need to build AssetBundle
                 //analysiser.BuildAllScripts();
-                GenerateAssetBundle(FilePathHelper.AssetBundlePath, list);
+                BuildAssetBundle(FilePathHelper.AssetBundlePath, list);
             }
         }
 
-        [MenuItem("myGameFramework/AssetBundleTools/Delete AssetBundle", false, 1)]
+        [MenuItem("myGameFramework/AssetBundle/Delete AssetBundle", false, 1)]
         public static void DeleteAll()
         {
             var analysiser = new AssetDependenciesAnalysis();
@@ -40,7 +40,7 @@ namespace FrameworkEditor
             AssetDatabase.Refresh();
         }
 
-        [MenuItem("myGameFramework/AssetBundleTools/Clear AssetName", false, 2)]
+        [MenuItem("myGameFramework/AssetBundle/Clear AssetName", false, 2)]
         public static void ClearAll()
         {
             var analysiser = new AssetDependenciesAnalysis();
@@ -48,7 +48,7 @@ namespace FrameworkEditor
             AssetDatabase.Refresh();
         }
 
-        private static void GenerateAssetBundle(string buildPath, List<AssetBundleBuild> list)
+        private static void BuildAssetBundle(string buildPath, List<AssetBundleBuild> list)
         {
             var watch = Stopwatch.StartNew();//开启计时;
             if (!Directory.Exists(buildPath))

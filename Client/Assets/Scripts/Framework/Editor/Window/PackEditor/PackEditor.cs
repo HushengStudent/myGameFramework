@@ -156,7 +156,7 @@ namespace FrameworkEditor
 
                                 if (_isBuildAssetBundle)
                                 {
-                                    AssetBundleGenerate.GenerateAll();
+                                    AssetBundleGenerate.BuildAll();
                                 }
                                 if (_isCompletePack)
                                 {

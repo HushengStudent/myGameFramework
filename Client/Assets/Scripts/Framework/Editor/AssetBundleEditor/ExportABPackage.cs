@@ -25,7 +25,7 @@ namespace FrameworkEditor
         public static readonly string ZipStreamingAssetsPath =
             $"{FilePathHelper.StreamingAssetsPath}/{AssetBundleZipFileName}";
 
-        [MenuItem("myGameFramework/AssetBundleTools/Export AssetBundle Package", false, 41)]
+        [MenuItem("myGameFramework/AssetBundle/Export AssetBundle Package", false, 41)]
         public static void ExportAssetBundlePackage()
         {
             if (Directory.Exists(TempABPath))
@@ -84,7 +84,7 @@ namespace FrameworkEditor
             AssetDatabase.Refresh();
         }
 
-        [MenuItem("myGameFramework/AssetBundleTools/Decompress AssetBundle Zip", false, 42)]
+        [MenuItem("myGameFramework/AssetBundle/Decompress AssetBundle Zip", false, 42)]
         public static void DecompressAssetBundleZip()
         {
             var zipFile = $"{ZipABPath}/{AssetBundleZipFileName}";
