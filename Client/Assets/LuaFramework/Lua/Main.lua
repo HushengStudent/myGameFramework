@@ -26,7 +26,7 @@ function _onInitialize()
     RegisterGlobal("g_netMgr", import(".Manager.NetMgr").new())
 
     --TODO
-    RegisterGlobal("g_hotupdat", import(".hotupdatemain"))
+    RegisterGlobal("g_hotUpdate", import(".hotupdatemain"))
 end
 
 --主入口函数。从这里开始lua逻辑

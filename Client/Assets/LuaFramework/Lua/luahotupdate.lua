@@ -50,7 +50,7 @@ function HU.InitFileMap(RootPath)
 	        	end
 	        	local luapath = string.sub(line, #rootpath+2, #line-4)
 				luapath = string.gsub(luapath, "\\", ".")
-				HU.LuaPathToSysPath[luapath] = SysPath
+				HU.LuaPathToSysPath[luapath] = line --SysPath
 	        	table.insert(HU.FileMap[FileName], {SysPath = line, LuaPath = luapath})
 	    	end
 	    end
@@ -399,6 +399,12 @@ function HU.Update()
 	for LuaPath, SysPath in pairs(HU.HUMap) do
 		HU.HotUpdateCode(LuaPath, SysPath)
 	end
+end
+
+---g_hotUpdate.UpdateSingleLua("Manager.UIMgr")
+function HU.UpdateSingleLua(luaPath)
+    HU.AddFileFromHUList()
+    HU.HotUpdateCode(luaPath, HU.LuaPathToSysPath[luaPath])
 end
 
 return HU
