@@ -12,8 +12,7 @@ software：Unity2019.4.26/visual studio2017.
     >> 定时器.(Finish)
     >> 配置表.(Finish)
     >> 热更新.(Finish)
-    >> 热重载.(TODO)
-    >> 本地化.(TODO)
+    >> 热重载.(Finish)
     >> 对象池.(Finish)
     >> AssetBundle.(Finish)
     >> 资源管理.(Finish)
@@ -23,21 +22,20 @@ software：Unity2019.4.26/visual studio2017.
     >> 网络系统.(Finish)
 	
     >> 阴影.(Finish)
-    >> Timeline.(TODO)
+    >> 天气.(TODO)
     >> Wwise.(TODO)
-    >> Jenkins[打包/打表].(TODO)
+    >> Timeline.(TODO)
     >> 换装/染色.(TODO)
-	
     >> 寻路.(Finish)
     >> 技能.(TODO)
     >> Buff.(Finish)
     >> AI[FSM/行为树].(Finish)
     >> 网络同步机制[帧同步/状态同步].(TODO)
-	
+
+    >> Jenkins[打包/打表].(TODO)
     >> AI编辑器[行为树].(Finish)
     >> 战斗编辑器[技能].(TODO)
     >> 场景编辑器.(TODO)
-    >> 打包.(TODO)
 	
     >> Lua[tolua/Class/Profiler/工具/方法/定时器/事件系统].(Finish)
     >> lua-protobuf.(TODO)
@@ -59,6 +57,7 @@ software：Unity2019.4.26/visual studio2017.
     >> Navigation：(https://github.com/LingJiJian/NavmeshExport).
     >> FancyScrollView：(https://github.com/setchi/FancyScrollView).
     >> UIEffect：(https://github.com/mob-sakai/UIEffect).
+    >> lua-protobuf：(https://github.com/starwing/lua-protobuf).
 	
     Third Party:
     >> Anima2D.
