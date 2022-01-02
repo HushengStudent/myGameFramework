@@ -29,35 +29,35 @@ software：Unity2019.4.26/visual studio2017.
     >> 寻路.(Finish)
     >> 技能.(TODO)
     >> Buff.(Finish)
-    >> AI(FSM/行为树).(Finish)
-    >> 网络同步机制(帧同步/状态同步).(TODO)
+    >> AI[FSM/行为树].(Finish)
+    >> 网络同步机制[帧同步/状态同步].(TODO)
 
-    >> Jenkins(打包/打表).(TODO)
-    >> AI编辑器(行为树).(Finish)
-    >> 战斗编辑器(技能).(TODO)
+    >> Jenkins[打包/打表].(TODO)
+    >> AI编辑器[行为树].(Finish)
+    >> 战斗编辑器[技能].(TODO)
     >> 场景编辑器.(TODO)
 	
-    >> Lua(tolua/Class/Profiler/工具/方法/定时器/事件系统).(Finish)
+    >> Lua[tolua/Class/Profiler/工具/方法/定时器/事件系统].(Finish)
     >> lua-protobuf.(TODO)
-    >> UI(滑动列表/图文混排/超链/HUD/飘字/物品掉落).(TODO)
+    >> UI[滑动列表/图文混排/超链/HUD/飘字/物品掉落].(TODO)
 	
     >> 项目优化.(TODO)
     >> 其他工具.(TODO)
 	
     Reference：
-    >> [tolua.](https://github.com/topameng/tolua)
-    >> [protoc-gen-lua.](https://github.com/topameng/protoc-gen-lua)
-    >> [AssetBundle.](https://github.com/HushengStudent/myAssetBundleTools)
-    >> [protobuf-net-r668.](https://github.com/mdavid/protobuf-net)
-    >> [ObjectPool.](https://github.com/HushengStudent/ugui)
-    >> [Mixed Text and Graphics.](https://github.com/zouchunyi/EmojiText)
-    >> [Table.](https://github.com/Ribosome2/ExcelUtilityWith-ExcelReader)
-    >> [NetWork.](https://github.com/EllanJiang/GameFramework)
-    >> [Lua Profiler.](https://github.com/yaukeywang/LuaMemorySnapshotDump)
-    >> [Navigation.](https://github.com/LingJiJian/NavmeshExport)
-    >> [FancyScrollView.](https://github.com/setchi/FancyScrollView)
-    >> [UIEffect.](https://github.com/mob-sakai/UIEffect)
-    >> [lua-protobuf.](https://github.com/starwing/lua-protobuf)
+    >> tolua：(https://github.com/topameng/tolua).
+    >> protoc-gen-lua：(https://github.com/topameng/protoc-gen-lua).
+    >> AssetBundle：(https://github.com/HushengStudent/myAssetBundleTools).
+    >> protobuf-net-r668：(https://github.com/mdavid/protobuf-net).
+    >> ObjectPool：(https://github.com/HushengStudent/ugui).
+    >> Mixed Text and Graphics：(https://github.com/zouchunyi/EmojiText).
+    >> Table：(https://github.com/Ribosome2/ExcelUtilityWith-ExcelReader).
+    >> NetWork：(https://github.com/EllanJiang/GameFramework).
+    >> Lua Profiler：(https://github.com/yaukeywang/LuaMemorySnapshotDump).
+    >> Navigation：(https://github.com/LingJiJian/NavmeshExport).
+    >> FancyScrollView：(https://github.com/setchi/FancyScrollView).
+    >> UIEffect：(https://github.com/mob-sakai/UIEffect).
+    >> lua-protobuf：(https://github.com/starwing/lua-protobuf).
 	
     Third Party:
     >> Anima2D.
@@ -86,7 +86,7 @@ software：Unity2019.4.26/visual studio2017.
 	
 #### Server：
     Reference：
-    >> [protobuf-net-r668.](protobuf-net-r668:https://github.com/mdavid/protobuf-net)
+    >> protobuf-net-r668：(protobuf-net-r668:https://github.com/mdavid/protobuf-net).
 	
 #### Tools：
     >> protoc-gen-lua.
