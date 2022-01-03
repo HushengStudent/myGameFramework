@@ -134,7 +134,9 @@ namespace Framework
         public void EnterGame()
         {
             ResourceMgr.singleton.LoadSceneAsync("Scene/Level01.unity");
-            EntityMgr.singleton.CreateEntity<PlayerEntity>(1, 1, "_entity_test");
+            var entity = EntityMgr.singleton.CreateEntity<PlayerEntity>(1, 1, "_entity_test");
+            entity.GameObjectEx.SetLocalRotation(0, 180, 0);
+            entity.GameObjectEx.SetLocalPosition(0, 0, 5);
         }
 
         /// 设置游戏配置;

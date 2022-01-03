@@ -188,37 +188,33 @@ namespace FrameworkEditor
                     File.Delete(ExportABPackage.ZipStreamingAssetsPath);
                 }
             }
-            var log = string.Empty;
-            try
+
+            var extensionName = string.Empty;
+            switch (_platform)
             {
-                var extensionName = string.Empty;
-                switch (_platform)
-                {
-                    case BuildPlatform.Android:
-                        extensionName = ".apk";
-                        break;
-                    case BuildPlatform.Windows64:
-                        extensionName = ".exe";
-                        break;
-                    default:
-                        break;
-                }
-                var buildPlayerOptions = new BuildPlayerOptions
-                {
-                    scenes = EditorBuildSettingsScene.GetActiveSceneList(EditorBuildSettings.scenes),
-                    locationPathName = _locationPathName + "/" + PlayerSettings.productName + extensionName,
-                    target = (BuildTarget)_platform,
-                    options = _buildOptions
-                };
-                var report = BuildPipeline.BuildPlayer(buildPlayerOptions);
-                log = report.ToString();
+                case BuildPlatform.Android:
+                    extensionName = ".apk";
+                    break;
+                case BuildPlatform.Windows64:
+                    extensionName = ".exe";
+                    break;
+                default:
+                    break;
             }
-            catch (Exception e)
+            var buildPlayerOptions = new BuildPlayerOptions
             {
-                LogHelper.PrintError($"打包失败:{log},{e}.");
+                scenes = EditorBuildSettingsScene.GetActiveSceneList(EditorBuildSettings.scenes),
+                locationPathName = _locationPathName + "/" + PlayerSettings.productName + extensionName,
+                target = (BuildTarget)_platform,
+                options = _buildOptions
+            };
+            var report = BuildPipeline.BuildPlayer(buildPlayerOptions);
+            if (report.summary.result == UnityEditor.Build.Reporting.BuildResult.Succeeded)
+            {
+                LogHelper.PrintError($"打包成功.");
                 return;
             }
-            LogHelper.PrintError($"打包成功:{log}.");
+            LogHelper.PrintError($"打包失败:{report.summary.totalErrors}.");
         }
     }
 }
