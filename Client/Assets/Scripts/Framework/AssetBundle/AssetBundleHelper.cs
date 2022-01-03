@@ -4,6 +4,9 @@
 ** desc:  #####
 *********************************************************************************/
 
+using System.IO;
+using UnityEngine;
+
 namespace Framework.AssetBundleModule
 {
     public static class AssetBundleHelper
@@ -59,7 +62,23 @@ namespace Framework.AssetBundleModule
             {
                 return null;
             }
-            return $"{FilePathHelper.AssetBundlePath}/{assetBundleName}";
+            return GetAssetBundlePathByName(assetBundleName);
+        }
+
+        public static string GetMainAssetBundlePath()
+        {
+            return GetAssetBundlePathByName("AssetBundle");
+        }
+
+        public static string GetAssetBundlePathByName(string assetBundleName)
+        {
+            var patchDirectory = $"{Application.persistentDataPath}/AssetBundle/";
+            var patchPath = $"{patchDirectory}/{assetBundleName}";
+            if (File.Exists(patchPath))
+            {
+                return patchPath;
+            }
+            return $"{FilePathHelper.StreamingAssetsPath}/AssetBundle/{assetBundleName}";
         }
     }
 }

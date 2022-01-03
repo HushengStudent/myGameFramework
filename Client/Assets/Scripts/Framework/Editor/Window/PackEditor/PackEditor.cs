@@ -11,6 +11,7 @@
 * 
 *********************************************************************************/
 
+using Framework;
 using System;
 using System.IO;
 using UnityEditor;
@@ -73,7 +74,7 @@ namespace FrameworkEditor
                 var menu = new GenericMenu();
                 menu.AddItem(new GUIContent("设置"), false, () =>
                 {
-                    LogHelper.PrintError("File->设置");
+                    //LogHelper.PrintError("File->设置");
                 });
                 menu.ShowAsContext();
             }
@@ -144,60 +145,7 @@ namespace FrameworkEditor
                             _locationPathName = EditorUtility.OpenFolderPanel("选择输出文件夹", _locationPathName, "");
                             EditorApplication.delayCall += () =>
                             {
-                                if (string.IsNullOrEmpty(_locationPathName))
-                                {
-                                    return;
-                                }
-                                if (Directory.Exists(_locationPathName))
-                                {
-                                    Directory.Delete(_locationPathName, true);
-                                }
-                                Directory.CreateDirectory(_locationPathName);
-
-                                if (_isBuildAssetBundle)
-                                {
-                                    AssetBundleGenerate.BuildAll();
-                                }
-                                if (_isCompletePack)
-                                {
-                                    ExportABPackage.ExportAssetBundlePackage();
-                                }
-                                else
-                                {
-                                    if (File.Exists(ExportABPackage.ZipStreamingAssetsPath))
-                                    {
-                                        File.Delete(ExportABPackage.ZipStreamingAssetsPath);
-                                    }
-                                }
-                                string log = string.Empty;
-                                try
-                                {
-                                    string extensionName = string.Empty;
-                                    switch (_platform)
-                                    {
-                                        case BuildPlatform.Android:
-                                            extensionName = ".apk";
-                                            break;
-                                        case BuildPlatform.Windows64:
-                                            extensionName = ".exe";
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                    BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
-                                    buildPlayerOptions.scenes = EditorBuildSettingsScene.GetActiveSceneList(EditorBuildSettings.scenes);
-                                    buildPlayerOptions.locationPathName = _locationPathName + "/" + PlayerSettings.productName + extensionName;
-                                    buildPlayerOptions.target = (BuildTarget)_platform;
-                                    buildPlayerOptions.options = _buildOptions;
-                                    var report = BuildPipeline.BuildPlayer(buildPlayerOptions);
-                                    log = report.ToString();
-                                }
-                                catch (Exception e)
-                                {
-                                    LogHelper.PrintError($"打包失败:{log},{e}.");
-                                    return;
-                                }
-                                LogHelper.PrintError($"打包成功:{log}.");
+                                BuildCommand();
                             };
                             Close();
                         }
@@ -211,6 +159,66 @@ namespace FrameworkEditor
                     GUILayout.Space(5);
                 }
             }
+        }
+
+        public void BuildCommand()
+        {
+            if (string.IsNullOrEmpty(_locationPathName))
+            {
+                return;
+            }
+            if (Directory.Exists(_locationPathName))
+            {
+                Directory.Delete(_locationPathName, true);
+            }
+            Directory.CreateDirectory(_locationPathName);
+
+            if (_isBuildAssetBundle)
+            {
+                AssetBundleGenerate.BuildAllCommand();
+            }
+            if (_isCompletePack)
+            {
+                ExportABPackage.CopyAssetBundle(FilePathHelper.StreamingAssetsPath);
+            }
+            else
+            {
+                if (File.Exists(ExportABPackage.ZipStreamingAssetsPath))
+                {
+                    File.Delete(ExportABPackage.ZipStreamingAssetsPath);
+                }
+            }
+            var log = string.Empty;
+            try
+            {
+                var extensionName = string.Empty;
+                switch (_platform)
+                {
+                    case BuildPlatform.Android:
+                        extensionName = ".apk";
+                        break;
+                    case BuildPlatform.Windows64:
+                        extensionName = ".exe";
+                        break;
+                    default:
+                        break;
+                }
+                var buildPlayerOptions = new BuildPlayerOptions
+                {
+                    scenes = EditorBuildSettingsScene.GetActiveSceneList(EditorBuildSettings.scenes),
+                    locationPathName = _locationPathName + "/" + PlayerSettings.productName + extensionName,
+                    target = (BuildTarget)_platform,
+                    options = _buildOptions
+                };
+                var report = BuildPipeline.BuildPlayer(buildPlayerOptions);
+                log = report.ToString();
+            }
+            catch (Exception e)
+            {
+                LogHelper.PrintError($"打包失败:{log},{e}.");
+                return;
+            }
+            LogHelper.PrintError($"打包成功:{log}.");
         }
     }
 }

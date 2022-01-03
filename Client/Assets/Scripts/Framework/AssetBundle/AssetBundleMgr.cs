@@ -43,11 +43,11 @@ namespace Framework.AssetBundleModule
             {
                 if (null == _mainAssetBundle)
                 {
-                    _mainAssetBundle = AssetBundle.LoadFromFile($"{FilePathHelper.AssetBundlePath}/AssetBundle");
+                    _mainAssetBundle = AssetBundle.LoadFromFile(AssetBundleHelper.GetMainAssetBundlePath());
                 }
                 if (_mainAssetBundle == null)
                 {
-                    LogHelper.PrintError($"[AssetBundleMgr]Load assetBundle:{FilePathHelper.AssetBundlePath} failure.");
+                    LogHelper.PrintError($"[AssetBundleMgr]Load assetBundle:{AssetBundleHelper.GetMainAssetBundlePath()} failure.");
                 }
                 return _mainAssetBundle;
             }
@@ -64,7 +64,7 @@ namespace Framework.AssetBundleModule
                 }
                 if (_manifest == null)
                 {
-                    LogHelper.PrintError($"[AssetBundleMgr]Load assetBundleManifest:{FilePathHelper.AssetBundlePath} failure.");
+                    LogHelper.PrintError($"[AssetBundleMgr]Load assetBundleManifest:{AssetBundleHelper.GetMainAssetBundlePath()} failure.");
                 }
                 return _manifest;
             }
@@ -244,7 +244,7 @@ namespace Framework.AssetBundleModule
                 {
                     continue;
                 }
-                var tempPtah = FilePathHelper.AssetBundlePath + tempAssetBundle;
+                var tempPtah = AssetBundleHelper.GetAssetBundlePathByName(tempAssetBundle);
                 LoadSync(tempPtah);
             }
             return assetBundle;
@@ -337,7 +337,7 @@ namespace Framework.AssetBundleModule
                 {
                     continue;
                 }
-                var tempPtah = $"{FilePathHelper.AssetBundlePath}/{tempAssetBundle}";
+                var tempPtah = AssetBundleHelper.GetAssetBundlePathByName(tempAssetBundle);
                 var itor = LoadAsync(tempPtah, null, (value) => { dp = value; });
                 while (itor.MoveNext())
                 {
@@ -397,7 +397,7 @@ namespace Framework.AssetBundleModule
                 {
                     continue;
                 }
-                var tempPtah = FilePathHelper.AssetBundlePath + tempAssetBundle;
+                var tempPtah = AssetBundleHelper.GetAssetBundlePathByName(tempAssetBundle);
                 UnloadAsset(tempPtah, true);
             }
             var assetBundlePath = AssetBundleHelper.GetAssetBundlePath(path);

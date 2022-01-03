@@ -28,11 +28,6 @@ namespace FrameworkEditor
         [MenuItem("myGameFramework/AssetBundle/Export AssetBundle Package", false, 41)]
         public static void ExportAssetBundlePackage()
         {
-            if (Directory.Exists(TempABPath))
-            {
-                Directory.Delete(TempABPath, true);
-            }
-
             var allFiles = Directory.GetFiles(FilePathHelper.AssetBundlePath, "*.*", SearchOption.AllDirectories);
             //剔除.manifest文件;
             var allABs = new List<string>();
@@ -98,6 +93,42 @@ namespace FrameworkEditor
 
             EditorUtility.ClearProgressBar();
 
+            AssetDatabase.Refresh();
+        }
+
+        public static void CopyAssetBundle(string destPath)
+        {
+            var allFiles = Directory.GetFiles(FilePathHelper.AssetBundlePath, "*.*", SearchOption.AllDirectories);
+            //剔除.manifest文件;
+            var allABs = new List<string>();
+            foreach (var tempPath in allFiles)
+            {
+                var path = tempPath.Replace("\\", "/");
+                if (Path.GetExtension(path) == ".manifest")
+                {
+                    continue;
+                }
+                allABs.Add(path);
+            }
+
+            var targetPath = $"{destPath}/AssetBundle";
+            if (Directory.Exists(targetPath))
+            {
+                Directory.Delete(targetPath, true);
+            }
+            Directory.CreateDirectory(targetPath);
+
+            var index = 0;
+            var count = allABs.Count;
+
+            foreach (var ab in allABs)
+            {
+                index++;
+                EditorUtility.DisplayProgressBar("复制AssetBundle", "复制AssetBundle文件", index / (float)count);
+                var target = ab.Replace(FilePathHelper.AssetBundlePath, targetPath);
+                File.Copy(ab, target);
+            }
+            EditorUtility.ClearProgressBar();
             AssetDatabase.Refresh();
         }
     }

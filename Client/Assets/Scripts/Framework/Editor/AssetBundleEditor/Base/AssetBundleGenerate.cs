@@ -19,17 +19,24 @@ namespace FrameworkEditor
         {
             if (EditorUtility.DisplayDialog("AssetBundle Build", "开始打包AssetBundle？", "Build AssetBundle"))
             {
-                //ToLuaMenu.BuildLuaToBundles();
-
-                ToLuaMenu.CopyLuaFilesToBundles();
-
-                var analysiser = new AssetDependenciesAnalysis();
-                var list = analysiser.AnalysisAllAsset();
-
-                //tips:Unity5.x Scripts not need to build AssetBundle
-                //analysiser.BuildAllScripts();
-                BuildAssetBundle(FilePathHelper.AssetBundlePath, list);
+                BuildAllCommand();
             }
+        }
+
+        public static void BuildAllCommand()
+        {
+            //ToLuaMenu.BuildLuaToBundles();
+
+            ToLuaMenu.CopyLuaFilesToBundles();
+
+            var analysiser = new AssetDependenciesAnalysis();
+            var list = analysiser.AnalysisAllAsset();
+
+            //tips:Unity5.x Scripts not need to build AssetBundle
+            //analysiser.BuildAllScripts();
+            BuildAssetBundle(FilePathHelper.AssetBundlePath, list);
+
+            ExportABPackage.CopyAssetBundle(FilePathHelper.StreamingAssetsPath);
         }
 
         [MenuItem("myGameFramework/AssetBundle/Delete AssetBundle", false, 1)]

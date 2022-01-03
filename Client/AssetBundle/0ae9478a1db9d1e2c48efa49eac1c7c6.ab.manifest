@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3111974138
+CRC: 2352533872
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: a7855472799a56744bd4d3d4e34ba0b3
+    Hash: 010fdf8f5a3e39f1e8b23ed91f504966
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -26,6 +26,7 @@ Assets:
 - Assets/Bundles/Lua/protobuf/text_format.lua.bytes
 - Assets/Bundles/Lua/Common/luabitop/md5test.lua.bytes
 - Assets/Bundles/Lua/jit/dis_arm64be.lua.bytes
+- Assets/Bundles/Lua/luahotupdate_lua53.lua.bytes
 - Assets/Bundles/Lua/UnityEngine/Vector4.lua.bytes
 - Assets/Bundles/Lua/Manager/SceneMgr.lua.bytes
 - Assets/Bundles/Lua/UI/BasePanel.lua.bytes
@@ -70,9 +71,11 @@ Assets:
 - Assets/Bundles/Lua/jit/dis_x64.lua.bytes
 - Assets/Bundles/Lua/Network/Protol/ProtoProcess.lua.bytes
 - Assets/Bundles/Lua/Network/Protol/ProtoDefine.lua.bytes
+- Assets/Bundles/Lua/hotupdatemain.lua.bytes
 - Assets/Bundles/Lua/Manager/UIMgr.lua.bytes
 - Assets/Bundles/Lua/jit/v.lua.bytes
 - Assets/Bundles/Lua/Event/eventlib.lua.bytes
+- Assets/Bundles/Lua/hotupdatelist.lua.bytes
 - Assets/Bundles/Lua/System/Reflection/BindingFlags.lua.bytes
 - Assets/Bundles/Lua/UI/Panel/Login/LoginPanel.lua.bytes
 - Assets/Bundles/Lua/Common/Class.lua.bytes
@@ -95,6 +98,7 @@ Assets:
 - Assets/Bundles/Lua/jit/zone.lua.bytes
 - Assets/Bundles/Lua/Common/cjson/test.lua.bytes
 - Assets/Bundles/Lua/jit/dis_mipsel.lua.bytes
+- Assets/Bundles/Lua/luahotupdate.lua.bytes
 - Assets/Bundles/Lua/UnityEngine/LayerMask.lua.bytes
 - Assets/Bundles/Lua/Panel/View/LoginPanel.lua.bytes
 - Assets/Bundles/Lua/socket/url.lua.bytes

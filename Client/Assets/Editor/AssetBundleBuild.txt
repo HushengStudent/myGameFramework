@@ -286,6 +286,7 @@ Assets/Bundles/Texture/test.png
 65
 ecee0a84af1bbe31d8aec4ce303fad9d.ab
 Assets/Bundles/Shaders/Emoji/EmojiFont.shader
+Assets/Bundles/Shaders/Builtin/Mobile-Diffuse.shader
 Assets/Bundles/Shaders/UI/UI_ETC 1.shader
 Assets/Bundles/Shaders/UI/UI_ETC 2.shader
 Assets/Bundles/Shaders/UI/UI_ETC 3.shader
@@ -305,8 +306,12 @@ Assets/Bundles/Lua/Define.lua.bytes
 Assets/Bundles/Lua/Enum.lua.bytes
 Assets/Bundles/Lua/event.lua.bytes
 Assets/Bundles/Lua/GlobalRegister.lua.bytes
+Assets/Bundles/Lua/hotupdatelist.lua.bytes
+Assets/Bundles/Lua/hotupdatemain.lua.bytes
 Assets/Bundles/Lua/list.lua.bytes
 Assets/Bundles/Lua/ltn12.lua.bytes
+Assets/Bundles/Lua/luahotupdate.lua.bytes
+Assets/Bundles/Lua/luahotupdate_lua53.lua.bytes
 Assets/Bundles/Lua/Main.lua.bytes
 Assets/Bundles/Lua/mime.lua.bytes
 Assets/Bundles/Lua/slot.lua.bytes
