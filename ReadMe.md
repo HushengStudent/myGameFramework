@@ -1,7 +1,7 @@
 ### myGameFramework
 #### 基础框架
 
-software：Unity2019.4.26/visual studio2017.
+software：Unity 2020.3.25f1c1/Visual Studio 2017.
 
 #### Client：
     模块：

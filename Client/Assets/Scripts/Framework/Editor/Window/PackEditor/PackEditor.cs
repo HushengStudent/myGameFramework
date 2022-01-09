@@ -194,9 +194,11 @@ namespace FrameworkEditor
             {
                 case BuildPlatform.Android:
                     extensionName = ".apk";
+                    EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
                     break;
                 case BuildPlatform.Windows64:
                     extensionName = ".exe";
+                    EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.StandaloneWindows64);
                     break;
                 default:
                     break;
@@ -204,7 +206,7 @@ namespace FrameworkEditor
             var buildPlayerOptions = new BuildPlayerOptions
             {
                 scenes = EditorBuildSettingsScene.GetActiveSceneList(EditorBuildSettings.scenes),
-                locationPathName = _locationPathName + "/" + PlayerSettings.productName + extensionName,
+                locationPathName = $"{_locationPathName}/{PlayerSettings.productName}{extensionName}",
                 target = (BuildTarget)_platform,
                 options = _buildOptions
             };

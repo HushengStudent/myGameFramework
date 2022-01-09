@@ -49,3 +49,4 @@
 /Client/Assets/StreamingAssets/AssetBundle.zip
 /Client/Assets/StreamingAssets/AssetBundle.zip.meta
 *.csproj
+/Client/.vsconfig
