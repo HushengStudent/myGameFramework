@@ -50,3 +50,5 @@
 /Client/Assets/StreamingAssets/AssetBundle.zip.meta
 *.csproj
 /Client/.vsconfig
+/Client/Assets/BuildReports
+/Client/Assets/BuildReports.meta

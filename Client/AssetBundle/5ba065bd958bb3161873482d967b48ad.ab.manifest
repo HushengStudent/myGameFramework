@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2500845270
+CRC: 2889300748
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f36f8db067e1bfdea9920aadd445ff3f
+    Hash: 230560fb574ab686bd0871bf2d891535
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 22357172b8cea85847937e8f62d0c077
+    Hash: 2ac4353984f9d013b83e89048e1ecdd0
 HashAppended: 0
 ClassTypes:
 - Class: 21
@@ -17,8 +17,8 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Art/Emoji/Output/emoji_data.png
 - Assets/Bundles/Material/Emoji/UGUIEmoji.mat
 - Assets/Art/Emoji/Output/emoji_tex.png
+- Assets/Art/Emoji/Output/emoji_data.png
 Dependencies:
 - C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/ecee0a84af1bbe31d8aec4ce303fad9d.ab

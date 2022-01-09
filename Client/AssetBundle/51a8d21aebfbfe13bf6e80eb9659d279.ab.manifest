@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2303981294
+CRC: 1847962356
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9f3814919569de6dc14ca283cf7984df
+    Hash: 6990162e42e7fa605e9c3dc5d7d20331
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 3b08d903c9ca3c88719044741ec14331
+    Hash: 8f0252db3c7fb55fc46c0286ed37380d
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -25,8 +25,8 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_006.prefab
 - Assets/Art/Model/Avatar/Character/ch_pc_hou_006.fbx
+- Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_006.prefab
 Dependencies:
 - C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/037375b405e1cca35a9a1ce6f3106d7f.ab
 - C:/Users/husheng/Desktop/myProject/4GameFramework/myGameFramework/Client/Assets/../AssetBundle/1115704e5c5b9d6e206296471844e0a9.ab

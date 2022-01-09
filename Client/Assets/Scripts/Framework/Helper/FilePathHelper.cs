@@ -11,6 +11,16 @@ namespace Framework
     public static class FilePathHelper
     {
         public static string AssetBundlePath { get; } = $"{Application.dataPath}/../AssetBundle";
-        public static string StreamingAssetsPath { get; } = $"{Application.dataPath}/StreamingAssets";
+        public static string StreamingAssetsPath
+        {
+            get
+            {
+#if UNITY_EDITOR
+                return $"{Application.dataPath}/StreamingAssets";
+#else
+                return Application.streamingAssetsPath;
+#endif
+            }
+        }
     }
 }

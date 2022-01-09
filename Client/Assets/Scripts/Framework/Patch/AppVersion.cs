@@ -7,10 +7,13 @@
 namespace Framework.PatchModule
 {
     /*
-     * 更新策略:
+     * 更新策略;
      * Lua:每次涉及脚本更新,都出一个全量脚本更新补丁,更新全部脚本文件;
-     * Resource:每次有资源更新,都出上一个节点版本(lastStepVersion),到最新版本(newestVersion)之间的
-     * (newestVersion-lastStepVersion)个更新包;
+     * Resource:每次有资源更新,都出上一个节点版本(lastStepVersion),到最新版本(newestVersion)之间的n个更新包;
+     * n = (newestVersion-lastStepVersion);
+     * 
+     * 感觉上面的版本管理有点麻烦;
+     * 可以直接下载所以的本地没有的新的AssetBundle就可,不用管中间版本;
      */
     public class AppVersion
     {

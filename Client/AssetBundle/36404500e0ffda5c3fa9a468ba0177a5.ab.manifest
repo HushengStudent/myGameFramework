@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3174577895
+CRC: 4101678462
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: bd1b45e9f47df130c254952f30a106a8
+    Hash: d1c6074144a8a5b6b5742ba20cf176dd
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 07353491aca6e6a29636b555171f2e48
+    Hash: 7a107dc2e5b91368bb715249dde775ee
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -28,6 +28,6 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Art/Model/Avatar/Materials/ch_we_one_hou_008_d.mat
-- Assets/Art/Model/Avatar/Character/ch_we_one_hou_008.fbx
 - Assets/Bundles/Prefab/Models/Avatar/ch_we_one_hou_008.prefab
+- Assets/Art/Model/Avatar/Character/ch_we_one_hou_008.fbx
 Dependencies: []

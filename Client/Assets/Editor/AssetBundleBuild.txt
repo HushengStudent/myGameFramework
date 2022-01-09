@@ -102,8 +102,8 @@ Assets/Bundles/Binary/Table/ItemTable.byte.txt
 25
 5ba065bd958bb3161873482d967b48ad.ab
 Assets/Bundles/Material/Emoji/UGUIEmoji.mat
-Assets/Art/Emoji/Output/emoji_data.png
 Assets/Art/Emoji/Output/emoji_tex.png
+Assets/Art/Emoji/Output/emoji_data.png
 
 26
 4dd24e584d71fadb1133928d850c4436.ab
@@ -126,16 +126,16 @@ d62fc569cfc035838f2a1212091711e4.ab
 Assets/Art/Model/Avatar/Materials/ch_pc_hou_004_shou_d.mat
 
 31
-6376c9d251b6e5c609042ca40f7edf8c.ab
-Assets/Art/Model/Avatar/Materials/ch_pc_hou_004_tou_d.mat
+0f09ccff2b746e350803c3e0eb5b2db8.ab
+Assets/Art/Model/Avatar/Materials/ch_pc_hou_004_jiao_d.mat
 
 32
 801dc83d61e56d0722712df4d5bfe2b4.ab
 Assets/Art/Model/Avatar/Materials/ch_pc_hou_004_shen_d.mat
 
 33
-0f09ccff2b746e350803c3e0eb5b2db8.ab
-Assets/Art/Model/Avatar/Materials/ch_pc_hou_004_jiao_d.mat
+6376c9d251b6e5c609042ca40f7edf8c.ab
+Assets/Art/Model/Avatar/Materials/ch_pc_hou_004_tou_d.mat
 
 34
 89b0d1ee7e7de223315146f3403cc6ab.ab
@@ -163,20 +163,20 @@ Assets/Bundles/Prefab/Models/Avatar/ch_pc_hou_006.prefab
 Assets/Art/Model/Avatar/Character/ch_pc_hou_006.fbx
 
 39
+52d28e49e9eb02df1b89a5bd5de0039e.ab
+Assets/Art/Model/Avatar/Materials/ch_pc_hou_006_shen_d.mat
+
+40
 7adeca29adab102e8080bb53d6ba2980.ab
 Assets/Art/Model/Avatar/Materials/ch_pc_hou_006_shou_d.mat
 
-40
+41
 037375b405e1cca35a9a1ce6f3106d7f.ab
 Assets/Art/Model/Avatar/Materials/ch_pc_hou_006_tou_d.mat
 
-41
+42
 1115704e5c5b9d6e206296471844e0a9.ab
 Assets/Art/Model/Avatar/Materials/ch_pc_hou_006_jiao_d.mat
-
-42
-52d28e49e9eb02df1b89a5bd5de0039e.ab
-Assets/Art/Model/Avatar/Materials/ch_pc_hou_006_shen_d.mat
 
 43
 e4c28150d9fa322f167bd421f2722fa0.ab
@@ -212,12 +212,12 @@ Assets/Art/Model/Avatar/Materials/ch_pc_hou_008_shen_d.mat
 Assets/Art/Model/Avatar/Materials/ch_pc_hou_008_shou_d.mat
 
 50
-7733409117a193175a347f9229bafd9f.ab
-Assets/Art/Model/Avatar/Materials/ch_pc_hou_008_tou_d.mat
-
-51
 f407aa738ecfdd6ddbb18737285ee1ae.ab
 Assets/Art/Model/Avatar/Materials/ch_pc_hou_008_jiao_d.mat
+
+51
+7733409117a193175a347f9229bafd9f.ab
+Assets/Art/Model/Avatar/Materials/ch_pc_hou_008_tou_d.mat
 
 52
 9351808dc0e1abdd91312e9e191d2b3b.ab
@@ -242,14 +242,14 @@ Assets/Art/Model/Avatar/Character/ch_pc_hou_008_tou.FBX
 56
 85051e5ef85238c1e665e11957944c29.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_we_one_hou_004.prefab
-Assets/Art/Model/Avatar/Character/ch_we_one_hou_004.fbx
 Assets/Art/Model/Avatar/Materials/ch_we_one_hou_004_d.mat
+Assets/Art/Model/Avatar/Character/ch_we_one_hou_004.fbx
 
 57
 8c1fb3815f1d3ca9b48995c742f2f6b1.ab
 Assets/Bundles/Prefab/Models/Avatar/ch_we_one_hou_006.prefab
-Assets/Art/Model/Avatar/Character/ch_we_one_hou_006.fbx
 Assets/Art/Model/Avatar/Materials/ch_we_one_hou_006_d.mat
+Assets/Art/Model/Avatar/Character/ch_we_one_hou_006.fbx
 
 58
 36404500e0ffda5c3fa9a468ba0177a5.ab
