@@ -30,7 +30,7 @@ namespace Framework.ECSModule
         public int EntityId { get; private set; }
         public string EntityName { get; private set; }
         public string AssetPath { get; private set; }
-        public GameObjectEx GameObjectEx { get; private set; }
+        public GameObjectEx GameObject { get; private set; }
         public Animator Animator { get; private set; }
 
         public abstract EntityType EntityType { get; }
@@ -49,17 +49,17 @@ namespace Framework.ECSModule
             EntityName = name;
             EntityId = entityId;
             Enable = true;
-            GameObjectEx = PoolMgr.singleton.GetCsharpObject<GameObjectEx>();
+            GameObject = PoolMgr.singleton.GetCsharpObject<GameObjectEx>();
 
             InternalInitialize();
-            GameObjectEx.AddLoadFinishHandler((goex) =>
+            GameObject.AddLoadFinishHandler((goex) =>
             {
                 InternalAttachGameObject(goex);
                 LoadFinishEventHandler?.Invoke(this);
                 LoadFinishEventHandler = null;
 
             });
-            GameObjectEx.Initialize(this);
+            GameObject.Initialize(this);
         }
 
         /// <summary>
@@ -74,18 +74,18 @@ namespace Framework.ECSModule
 
         private void InternalAttachGameObject(GameObjectEx go)
         {
-            GameObjectEx = go;
-            Animator = GameObjectEx.gameObject.GetComponent<Animator>();
-            UnityObject.DontDestroyOnLoad(GameObjectEx.gameObject);
+            GameObject = go;
+            Animator = GameObject.gameObject.GetComponent<Animator>();
+            UnityObject.DontDestroyOnLoad(GameObject.gameObject);
             OnAttachGameObject(go);
         }
 
         private void InternalDetachGameObject()
         {
             OnDetachGameObject();
-            GameObjectEx.UnInitialize();
-            PoolMgr.singleton.ReleaseCsharpObject(GameObjectEx);
-            GameObjectEx = null;
+            GameObject.UnInitialize();
+            PoolMgr.singleton.ReleaseCsharpObject(GameObject);
+            GameObject = null;
         }
 
         /// <summary>

@@ -42,15 +42,15 @@ namespace Framework.ECSModule
             InternalAttachObject(owner);
             if (Entity != null)
             {
-                if (Entity.GameObjectEx != null && Entity.GameObjectEx.gameObject != null)
+                if (Entity.GameObject != null && Entity.GameObject.gameObject != null)
                 {
-                    OnAttachGameObject(Entity.GameObjectEx);
+                    OnAttachGameObject(Entity.GameObject);
                 }
                 else
                 {
                     Entity.LoadFinishEventHandler += (entity) =>
                     {
-                        OnAttachGameObject(entity.GameObjectEx);
+                        OnAttachGameObject(entity.GameObject);
                     };
                 }
             }
@@ -86,9 +86,9 @@ namespace Framework.ECSModule
 
         private void InternalDetachGameObject()
         {
-            if (!Entity.GameObjectEx.IsLoadFinish)
+            if (!Entity.GameObject.IsLoadFinish)
             {
-                Entity.GameObjectEx.RemoveLoadFinishHandler(OnAttachGameObject);
+                Entity.GameObject.RemoveLoadFinishHandler(OnAttachGameObject);
             }
             OnDetachGameObject();
         }
