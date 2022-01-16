@@ -57,7 +57,6 @@ namespace FrameworkEditor
             var mesh = Object.Instantiate(skinnedMeshRenderer.sharedMesh);
             mesh.colors = null;
             mesh.tangents = null;
-            //mesh.normals = null;
             mesh.uv3 = null;
             mesh.uv4 = null;
             AssetDatabase.CreateAsset(mesh, $"{path}/{name}.asset");
