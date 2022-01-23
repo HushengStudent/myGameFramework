@@ -286,7 +286,7 @@ namespace Framework
             }
             if (_skeleton.transform.childCount > 0)
             {
-                _skeleton.transform.GetChild(0).hideFlags = HideFlags.HideInHierarchy;
+                //_skeleton.transform.GetChild(0).hideFlags = HideFlags.HideInHierarchy;
             }
         }
     }
