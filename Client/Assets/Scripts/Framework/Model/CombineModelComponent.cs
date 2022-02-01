@@ -243,7 +243,8 @@ namespace Framework
             }
 
             var UVList = new List<Vector2[]>();
-            var newMat = new Material(Shader.Find("Mobile/Diffuse"));
+            var shader = ResourceMgr.singleton.FindShader("Mobile/Diffuse");
+            var newMat = new Material(shader);
 
             var Textures = new List<Texture2D>();
             for (var i = 0; i < materials.Count; i++)

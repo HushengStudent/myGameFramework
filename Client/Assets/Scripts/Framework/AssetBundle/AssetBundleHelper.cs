@@ -72,7 +72,7 @@ namespace Framework.AssetBundleModule
 
         public static string GetAssetBundlePathByName(string assetBundleName)
         {
-            var patchDirectory = $"{Application.persistentDataPath}/AssetBundle/";
+            var patchDirectory = $"{FilePathHelper.PersistentDataPath}/AssetBundle/";
             var patchPath = $"{patchDirectory}/{assetBundleName}";
             if (File.Exists(patchPath))
             {

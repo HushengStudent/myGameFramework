@@ -32,10 +32,10 @@ namespace FrameworkEditor
         {
             Android = BuildTarget.Android,
             IOS = BuildTarget.iOS,
-            Windows64 = BuildTarget.StandaloneWindows64,
+            Windows = BuildTarget.StandaloneWindows64,
         }
 
-        private BuildPlatform _platform = BuildPlatform.Windows64;
+        private BuildPlatform _platform = BuildPlatform.Windows;
         private BuildOptions _buildOptions = BuildOptions.AllowDebugging | BuildOptions.Development;
         private string _locationPathName = string.Empty;
         private bool _isCompletePack = true;
@@ -196,7 +196,7 @@ namespace FrameworkEditor
                     extensionName = ".apk";
                     EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
                     break;
-                case BuildPlatform.Windows64:
+                case BuildPlatform.Windows:
                     extensionName = ".exe";
                     EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.StandaloneWindows64);
                     break;

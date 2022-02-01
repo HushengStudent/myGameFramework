@@ -15,6 +15,9 @@ namespace Framework.ResourceModule
 
         public AssetBundle LuaAssetBundle { get; private set; }
 
+        private Object[] _allLua;
+        private Object[] _allShader;
+
         /// <summary>
         /// 初始化;
         /// </summary>
@@ -38,7 +41,7 @@ namespace Framework.ResourceModule
             var shaderAssetBundle = AssetBundleMgr.singleton.LoadShaderAssetBundle();
             if (shaderAssetBundle != null)
             {
-                shaderAssetBundle.LoadAllAssets();
+                _allShader = shaderAssetBundle.LoadAllAssets();
                 Shader.WarmupAllShaders();
                 LogHelper.Print("[ResourceMgr]Load Shader and WarmupAllShaders Success!");
             }
@@ -56,7 +59,7 @@ namespace Framework.ResourceModule
             LuaAssetBundle = AssetBundleMgr.singleton.LoadLuaAssetBundle();
             if (LuaAssetBundle != null)
             {
-                LuaAssetBundle.LoadAllAssets();
+                _allLua = LuaAssetBundle.LoadAllAssets();
                 LogHelper.Print("[ResourceMgr]Load Lua Success!");
             }
             else
@@ -64,6 +67,29 @@ namespace Framework.ResourceModule
                 LogHelper.PrintError("[ResourceMgr]Load Lua failure!");
             }
             //AssetBundleMgr.Instance.UnloadMirroring(FilePathHelper.luaAssetBundleName);
+        }
+
+        protected override void OnDestroyEx()
+        {
+            base.OnDestroyEx();
+            _allLua = null;
+            _allShader = null;
+        }
+
+        public Shader FindShader(string name)
+        {
+            if (_allShader != null && _allShader.Length > 0)
+            {
+                foreach (var target in _allShader)
+                {
+                    var shader = target as Shader;
+                    if (shader && shader.name == name)
+                    {
+                        return shader;
+                    }
+                }
+            }
+            return Shader.Find(name);
         }
 
         #endregion

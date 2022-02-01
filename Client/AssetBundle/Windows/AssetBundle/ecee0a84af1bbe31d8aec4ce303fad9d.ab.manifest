@@ -1,0 +1,30 @@
+ManifestFileVersion: 0
+CRC: 3286296934
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a21689111c541232d867f739d89103f4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 79f786ec140312af9ec009eebd4de22e
+HashAppended: 0
+ClassTypes:
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Bundles/Shaders/Emoji/EmojiFont.shader
+- Assets/Bundles/Shaders/UI/UI_ETC_Gray 2.shader
+- Assets/Bundles/Shaders/UI/UI_ETC 1.shader
+- Assets/Bundles/Shaders/Builtin/Mobile-Diffuse.shader
+- Assets/Bundles/Shaders/UI/UI_ETC_Gray.shader
+- Assets/Bundles/Shaders/UI/UI_Gray 3.shader
+- Assets/Bundles/Shaders/UI/UI_Gray 2.shader
+- Assets/Bundles/Shaders/UI/UI_ETC_Gray 3.shader
+- Assets/Bundles/Shaders/UI/UI_ETC 2.shader
+- Assets/Bundles/Shaders/UI/UI_Gray.shader
+- Assets/Bundles/Shaders/UI/UI_ETC.shader
+- Assets/Bundles/Shaders/UI/UI_ETC 3.shader
+- Assets/Bundles/Shaders/UI/UI_ETC_Gray 1.shader
+- Assets/Bundles/Shaders/UI/UI_Gray 1.shader
+Dependencies: []

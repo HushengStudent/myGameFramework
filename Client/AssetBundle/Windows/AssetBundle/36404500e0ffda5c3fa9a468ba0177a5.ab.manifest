@@ -1,0 +1,33 @@
+ManifestFileVersion: 0
+CRC: 2935489592
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 3750f5c2748c1d06cae63a9e09509f73
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6e935cad40e8d56faed9d589efbfe208
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Art/Model/Avatar/Materials/ch_we_one_hou_008_d.mat
+- Assets/Bundles/Prefab/Models/Avatar/ch_we_one_hou_008.prefab
+- Assets/Art/Model/Avatar/Character/ch_we_one_hou_008.fbx
+Dependencies: []

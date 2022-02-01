@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 1446018743
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6884d96ed1b787c908f188fbb6470370
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b48f5048164b4cd7f73cc9f8cf76aa5d
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Art/Model/Avatar/Materials/ch_pc_hou_006_jiao_d.mat
+Dependencies: []

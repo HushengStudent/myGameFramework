@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 2381692040
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6cb475a7b50495d7eb9d5db395edbad4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: bb1c98fd3fd2df8fe937870a85fedf92
+HashAppended: 0
+ClassTypes:
+- Class: 850595691
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Bundles/Scene/Level01Settings.lighting
+Dependencies: []
