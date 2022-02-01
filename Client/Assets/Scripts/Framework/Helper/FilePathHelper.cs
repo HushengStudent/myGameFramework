@@ -10,15 +10,41 @@ namespace Framework
 {
     public static class FilePathHelper
     {
-#if UNITY_STANDALONE
-        public static string PlatformName = "Windows";
-#elif UNITY_ANDROID
-        public static string PlatformName = "Android";
-#elif UNITY_IPHONE
-        public static string PlatformName = "IOS";    
+        public static string PlatformName
+        {
+            get
+            {
+                var name = "Default";
+#if UNITY_EDITOR
+                switch (UnityEditor.EditorUserBuildSettings.activeBuildTarget)
+                {
+                    case UnityEditor.BuildTarget.Android:
+                        name = "Android";
+                        break;
+                    case UnityEditor.BuildTarget.iOS:
+                        name = "IOS";
+                        break;
+                    case UnityEditor.BuildTarget.StandaloneWindows64:
+                        name = "Windows";
+                        break;
+                }
 #else
-        public static string PlatformName = "Default";
+                switch (Application.platform)
+                {
+                    case RuntimePlatform.Android:
+                        name = "Android";
+                        break;
+                    case RuntimePlatform.IPhonePlayer:
+                        name = "IOS";
+                        break;
+                    case RuntimePlatform.WindowsPlayer:
+                        name = "Windows";
+                        break;
+                }
 #endif
+                return name;
+            }
+        }
 
         public static string AssetBundlePath
         {
