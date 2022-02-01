@@ -1,0 +1,31 @@
+ManifestFileVersion: 0
+CRC: 3237942065
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2bf2710968aad88aa862d1034ce18e1a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6e935cad40e8d56faed9d589efbfe208
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Art/Scene/RPGPP_LT/Prefabs/Structures/Parts/Wood_path/rpgpp_lt_wood_path_01a.prefab
+Dependencies: []

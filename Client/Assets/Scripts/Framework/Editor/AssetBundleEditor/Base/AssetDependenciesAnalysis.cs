@@ -108,7 +108,8 @@ namespace FrameworkEditor
             {
                 if (tempAsset.Value.parentDependentAssets.Count == 0 ||//没有被依赖的资源;
                     tempAsset.Value.parentDependentAssets.Count > 1 ||//被超过一个资源依赖的资源;
-                    tempAsset.Key.Contains(AssetBundleHelper.ResPath))//Bundles资源目录下的资源,允许加载所以单独打包;
+                    tempAsset.Key.Contains(AssetBundleHelper.ResPath) ||//Bundles资源目录下的资源,允许加载所以单独打包;
+                    tempAsset.Value.IsExistSceneInParent())
                 {
                     independenceAsset[tempAsset.Key] = tempAsset.Value;
                 }
@@ -295,5 +296,22 @@ namespace FrameworkEditor
         /// 依赖的全部资源节点信息;
         /// </summary>
         public HashSet<string> sonDependentAssets;
+
+        //Cannot mark assets and scenes in one AssetBundle.
+        public bool IsExistSceneInParent()
+        {
+            if (null == parentDependentAssets || parentDependentAssets.Count < 1)
+            {
+                return false;
+            }
+            foreach (var asset in parentDependentAssets)
+            {
+                if (Path.GetExtension(asset) == ".unity")
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3008176176
+CRC: 259253187
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 91a4de037dafb6073c7aff3aece57860
+    Hash: 0277bc44bff0a78abeeb787cd4e6173a
   TypeTreeHash:
     serializedVersion: 2
-    Hash: d57a68602acb0212ec7b71b39839cdd0
+    Hash: ccf12f375bb1004e159653726a50aca7
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -20,6 +20,8 @@ ClassTypes:
 - Class: 48
   Script: {instanceID: 0}
 - Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: a989dfa7525bbba478f3b34b2625f78c, type: 3}
@@ -27,8 +29,6 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 26cc75dcc48514f419441f0b66791b6b, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: b310211d93371404f92f7805dafcdf0b, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
@@ -37,23 +37,7 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 224
   Script: {instanceID: 0}
-SerializeReferenceClassIdentifiers:
-- AssemblyName: UnityEngine.CoreModule
-  ClassName: UnityEngine.Events.PersistentCallGroup
-- AssemblyName: UnityEngine.UI
-  ClassName: UnityEngine.UI.AnimationTriggers
-- AssemblyName: UnityEngine.UI
-  ClassName: UnityEngine.UI.Button/ButtonClickedEvent
-- AssemblyName: UnityEngine.UI
-  ClassName: UnityEngine.UI.ColorBlock
-- AssemblyName: UnityEngine.UI
-  ClassName: UnityEngine.UI.FontData
-- AssemblyName: UnityEngine.UI
-  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
-- AssemblyName: UnityEngine.UI
-  ClassName: UnityEngine.UI.Navigation
-- AssemblyName: UnityEngine.UI
-  ClassName: UnityEngine.UI.SpriteState
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Bundles/Prefab/UI/Common/Login.prefab
 Dependencies: []
