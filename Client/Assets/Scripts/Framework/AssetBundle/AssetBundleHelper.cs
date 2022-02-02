@@ -5,7 +5,6 @@
 *********************************************************************************/
 
 using System.IO;
-using UnityEngine;
 
 namespace Framework.AssetBundleModule
 {
