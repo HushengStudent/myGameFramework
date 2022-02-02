@@ -12,8 +12,10 @@
 *********************************************************************************/
 
 using Framework.EditorModule.AssetBundle;
+using System;
 using System.IO;
 using UnityEditor;
+using UnityEditor.Build;
 using UnityEngine;
 
 namespace Framework.EditorModule.Window
@@ -34,12 +36,13 @@ namespace Framework.EditorModule.Window
             Windows = BuildTarget.StandaloneWindows64,
         }
 
-        private BuildPlatform _platform = BuildPlatform.Windows;
-        private BuildOptions _buildOptions = BuildOptions.AllowDebugging | BuildOptions.Development;
-        private string _locationPathName = string.Empty;
-        private bool _isCompletePack = true;
-        private bool _isBuildAssetBundle = true;
-        private bool _isRelease = false;
+        private static BuildPlatform _buildPlatform = BuildPlatform.Windows;
+        private static BuildOptions _buildOptions =
+            BuildOptions.AllowDebugging | BuildOptions.Development;
+        private static string _locationPathName = string.Empty;
+        private static bool _isCompletePack = true;
+        private static bool _isBuildAssetBundle = true;
+        private static bool _isRelease = false;
 
         private void OnEnable()
         {
@@ -89,7 +92,7 @@ namespace Framework.EditorModule.Window
                     {
                         EditorGUILayout.LabelField("选择目标平台:", style);
                         GUILayout.Space(15);
-                        _platform = (BuildPlatform)EditorGUILayout.EnumPopup(_platform);
+                        _buildPlatform = (BuildPlatform)EditorGUILayout.EnumPopup(_buildPlatform);
                     }
                     GUILayout.Space(5);
                     using (var h = new EditorGUILayout.HorizontalScope())
@@ -160,8 +163,9 @@ namespace Framework.EditorModule.Window
             }
         }
 
-        public void CommandLineBuild()
+        public static void CommandLineBuild()
         {
+            Debug.Log("[PackEditor]start build.");
             if (string.IsNullOrEmpty(_locationPathName))
             {
                 return;
@@ -173,20 +177,55 @@ namespace Framework.EditorModule.Window
             Directory.CreateDirectory(_locationPathName);
 
             var extensionName = string.Empty;
-            switch (_platform)
+            SwitchActiveBuildTarget(() =>
+            {
+                BuildAssetBundle();
+                BuildPlayer();
+            });
+        }
+
+        private class ActiveBuildTargetListener : IActiveBuildTargetChanged
+        {
+            public int callbackOrder { get { return 0; } }
+            public void OnActiveBuildTargetChanged(BuildTarget previousTarget, BuildTarget newTarget)
+            {
+                Debug.Log("[PackEditor]Switched build target to " + newTarget);
+                BuildAssetBundle();
+                BuildPlayer();
+            }
+        }
+
+        private static void SwitchActiveBuildTarget(Action action)
+        {
+            Debug.Log("[PackEditor]switch build target.");
+            var callback = action;
+            switch (_buildPlatform)
             {
                 case BuildPlatform.Android:
-                    extensionName = ".apk";
-                    EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
+                    if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.Android)
+                    {
+                        new ActiveBuildTargetListener();
+                        callback = null;
+                        EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
+                    }
                     break;
                 case BuildPlatform.Windows:
-                    extensionName = ".exe";
-                    EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.StandaloneWindows64);
+                    if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.StandaloneWindows64)
+                    {
+                        new ActiveBuildTargetListener();
+                        callback = null;
+                        EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.StandaloneWindows64);
+                    }
                     break;
                 default:
                     break;
             }
+            callback?.Invoke();
+        }
 
+        private static void BuildAssetBundle()
+        {
+            Debug.Log("[PackEditor]build assetBundle.");
             if (_isBuildAssetBundle)
             {
                 AssetBundleGenerate.CommandLineBuildAll();
@@ -202,21 +241,41 @@ namespace Framework.EditorModule.Window
                     File.Delete(ExportABPackage.ZipStreamingAssetsPath);
                 }
             }
+        }
+
+        private static void BuildPlayer()
+        {
+            Debug.Log("[PackEditor]build player.");
+            var extensionName = string.Empty;
+            switch (EditorUserBuildSettings.activeBuildTarget)
+            {
+                case BuildTarget.Android:
+                    extensionName = ".apk";
+                    break;
+                case BuildTarget.StandaloneWindows64:
+                    extensionName = ".exe";
+                    break;
+                default:
+                    break;
+            }
 
             var buildPlayerOptions = new BuildPlayerOptions
             {
                 scenes = EditorBuildSettingsScene.GetActiveSceneList(EditorBuildSettings.scenes),
                 locationPathName = $"{_locationPathName}/{PlayerSettings.productName}{extensionName}",
-                target = (BuildTarget)_platform,
+                target = (BuildTarget)_buildPlatform,
                 options = _buildOptions
             };
+
             var report = BuildPipeline.BuildPlayer(buildPlayerOptions);
             if (report.summary.result == UnityEditor.Build.Reporting.BuildResult.Succeeded)
             {
                 LogHelper.PrintError($"打包成功.");
-                return;
             }
-            LogHelper.PrintError($"打包失败:{report.summary.totalErrors}.");
+            else
+            {
+                LogHelper.PrintError($"打包失败:{report.summary.totalErrors}.");
+            }
         }
     }
 }
