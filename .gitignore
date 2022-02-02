@@ -53,3 +53,8 @@
 /Client/Assets/BuildReports
 /Client/Assets/BuildReports.meta
 /Client/Logs
+/Client/AssetBundle
+/Client/Assets/StreamingAssets/Android/AssetBundle
+/Client/Assets/StreamingAssets/Android/AssetBundle.meta
+/Client/Assets/StreamingAssets/Windows/AssetBundle
+/Client/Assets/StreamingAssets/Windows/AssetBundle.meta

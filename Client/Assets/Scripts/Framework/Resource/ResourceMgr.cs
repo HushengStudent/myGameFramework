@@ -23,8 +23,12 @@ namespace Framework.ResourceModule
         /// </summary>
         protected override void OnInitialize()
         {
-            InitLua();
-            InitShader();
+            var assetBundleModel = GameMgr.AssetBundleModel;
+            if (assetBundleModel)
+            {
+                InitLua();
+                InitShader();
+            }
             CoroutineMgr.singleton.RunCoroutine(CancleAllProxy());
         }
 

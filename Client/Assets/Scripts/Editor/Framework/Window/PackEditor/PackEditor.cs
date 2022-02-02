@@ -144,7 +144,7 @@ namespace Framework.EditorModule.Window
                             _locationPathName = EditorUtility.OpenFolderPanel("选择输出文件夹", _locationPathName, "");
                             EditorApplication.delayCall += () =>
                             {
-                                BuildCommand();
+                                CommandLineBuild();
                             };
                             Close();
                         }
@@ -160,7 +160,7 @@ namespace Framework.EditorModule.Window
             }
         }
 
-        public void BuildCommand()
+        public void CommandLineBuild()
         {
             if (string.IsNullOrEmpty(_locationPathName))
             {
@@ -171,6 +171,21 @@ namespace Framework.EditorModule.Window
                 Directory.Delete(_locationPathName, true);
             }
             Directory.CreateDirectory(_locationPathName);
+
+            var extensionName = string.Empty;
+            switch (_platform)
+            {
+                case BuildPlatform.Android:
+                    extensionName = ".apk";
+                    EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
+                    break;
+                case BuildPlatform.Windows:
+                    extensionName = ".exe";
+                    EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.StandaloneWindows64);
+                    break;
+                default:
+                    break;
+            }
 
             if (_isBuildAssetBundle)
             {
@@ -188,20 +203,6 @@ namespace Framework.EditorModule.Window
                 }
             }
 
-            var extensionName = string.Empty;
-            switch (_platform)
-            {
-                case BuildPlatform.Android:
-                    extensionName = ".apk";
-                    EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
-                    break;
-                case BuildPlatform.Windows:
-                    extensionName = ".exe";
-                    EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.StandaloneWindows64);
-                    break;
-                default:
-                    break;
-            }
             var buildPlayerOptions = new BuildPlayerOptions
             {
                 scenes = EditorBuildSettingsScene.GetActiveSceneList(EditorBuildSettings.scenes),
