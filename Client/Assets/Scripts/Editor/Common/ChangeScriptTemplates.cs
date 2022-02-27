@@ -2,7 +2,7 @@ using System.IO;
 
 public class ChangeScriptTemplates : UnityEditor.AssetModificationProcessor
 {
-    private static string str =
+    private static readonly string str =
     "/********************************************************************************\r\n"
     + "** auth:  https://github.com/HushengStudent\r\n"
     + "** date:  #CreateTime#\r\n"

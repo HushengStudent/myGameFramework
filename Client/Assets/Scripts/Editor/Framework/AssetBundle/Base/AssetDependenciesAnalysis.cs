@@ -235,7 +235,7 @@ namespace Framework.EditorModule.AssetBundle
             }
 
             var i = 0f;
-            foreach (string str in allAssetPath)
+            foreach (var str in allAssetPath)
             {
                 EditorUtility.DisplayProgressBar("AssetBundle打包提示", "删除AssetBundle Name", i / allAssetPath.Count);
                 i++;
