@@ -216,6 +216,8 @@ namespace Framework.EditorModule.Window
             }
         }
 
+        //Unity Editor command line arguments
+        //https://docs.unity3d.com/Manual/EditorCommandLineArguments.html
         public static void CommandLineBuild()
         {
             Debug.Log("[PackEditor]start build.");

@@ -32,7 +32,7 @@ software：Unity 2020.2.7f1/Visual Studio 2017.
     >> AI[FSM/行为树].(Finish)
     >> 网络同步机制[帧同步/状态同步].(TODO)
 
-    >> Jenkins[打包/打表].(TODO)
+    >> Jenkins[打包/打表].(Finish)
     >> AI编辑器[行为树].(Finish)
     >> 战斗编辑器[技能].(TODO)
     >> 场景编辑器.(TODO)
