@@ -10,6 +10,7 @@ using System.IO;
 using UnityEditor;
 using UnityEditor.Build;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Framework.EditorModule.Window
 {
@@ -339,6 +340,50 @@ namespace Framework.EditorModule.Window
                 default:
                     break;
             }
+
+            PlayerSettings.companyName = "";
+            PlayerSettings.productName = "";
+
+            var applicationIdentifier = "";
+            PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, applicationIdentifier);
+            PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.iOS, applicationIdentifier);
+            PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Standalone, applicationIdentifier);
+
+            var graphicsDeviceType = new GraphicsDeviceType[] { GraphicsDeviceType.OpenGLES2 };
+            PlayerSettings.SetGraphicsAPIs(BuildTarget.Android, graphicsDeviceType);
+            PlayerSettings.SetGraphicsAPIs(BuildTarget.iOS, graphicsDeviceType);
+            PlayerSettings.SetGraphicsAPIs(BuildTarget.StandaloneWindows64, graphicsDeviceType);
+
+            PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
+            PlayerSettings.SetScriptingBackend(BuildTargetGroup.iOS, ScriptingImplementation.IL2CPP);
+            PlayerSettings.SetScriptingBackend(BuildTargetGroup.Standalone, ScriptingImplementation.IL2CPP);
+
+            var il2CppCompilerConfiguration = _isRelease ? Il2CppCompilerConfiguration.Release : Il2CppCompilerConfiguration.Debug;
+            PlayerSettings.SetIl2CppCompilerConfiguration(BuildTargetGroup.Android, il2CppCompilerConfiguration);
+            PlayerSettings.SetIl2CppCompilerConfiguration(BuildTargetGroup.iOS, il2CppCompilerConfiguration);
+            PlayerSettings.SetIl2CppCompilerConfiguration(BuildTargetGroup.Standalone, il2CppCompilerConfiguration);
+
+            PlayerSettings.SetApiCompatibilityLevel(BuildTargetGroup.Android, ApiCompatibilityLevel.NET_Standard_2_0);
+            PlayerSettings.SetApiCompatibilityLevel(BuildTargetGroup.iOS, ApiCompatibilityLevel.NET_Standard_2_0);
+            PlayerSettings.SetApiCompatibilityLevel(BuildTargetGroup.Standalone, ApiCompatibilityLevel.NET_Standard_2_0);
+
+            PlayerSettings.SetManagedStrippingLevel(BuildTargetGroup.Android, ManagedStrippingLevel.High);
+            PlayerSettings.SetManagedStrippingLevel(BuildTargetGroup.iOS, ManagedStrippingLevel.High);
+            PlayerSettings.SetManagedStrippingLevel(BuildTargetGroup.Standalone, ManagedStrippingLevel.High);
+
+            PlayerSettings.defaultInterfaceOrientation = UIOrientation.AutoRotation;
+            PlayerSettings.allowedAutorotateToPortrait = false;
+            PlayerSettings.allowedAutorotateToPortraitUpsideDown = false;
+            PlayerSettings.allowedAutorotateToLandscapeRight = true;
+            PlayerSettings.allowedAutorotateToLandscapeLeft = true;
+
+            PlayerSettings.Android.preferredInstallLocation = AndroidPreferredInstallLocation.Auto;
+            //PlayerSettings.Android.targetArchitectures = AndroidArchitecture.;
+            //PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.;
+            PlayerSettings.Android.forceInternetPermission = true;
+            PlayerSettings.Android.forceSDCardPermission = true;
+
+            //PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android,);
 
             var buildPlayerOptions = new BuildPlayerOptions
             {
