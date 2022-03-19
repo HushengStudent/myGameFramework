@@ -24,8 +24,7 @@ function _onInitialize()
     RegisterGlobal("g_uiMgr", import(".Manager.UIMgr").new())
     RegisterGlobal("g_sceneMgr", import(".Manager.SceneMgr").new())
     RegisterGlobal("g_netMgr", import(".Manager.NetMgr").new())
-
-    --TODO
+    RegisterGlobal("g_taskMgr", import(".Manager.TaskMgr").new())
     RegisterGlobal("g_hotUpdate", import(".hotupdatemain"))
 end
 
@@ -49,6 +48,7 @@ function _update()
     g_uiMgr:update()
     g_sceneMgr:update()
     g_netMgr:update()
+    g_taskMgr:update()
 end
 
 function _lateUpdate()
