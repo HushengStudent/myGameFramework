@@ -1,4 +1,4 @@
-local TaskMgr = {}
+local TaskMgr = class("TaskMgr")
 local yieldCo = {}
 local resumeCo = {}
 
