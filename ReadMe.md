@@ -1,7 +1,7 @@
 ### myGameFramework
 #### 基础框架
 
-software：Unity 2020.2.7f1/Visual Studio 2017.
+software：Unity 2020.2.7f1/Visual Studio 2019.
 
 #### Client：
     模块：
@@ -20,13 +20,14 @@ software：Unity 2020.2.7f1/Visual Studio 2017.
     >> SDK管理.(Finish)
     >> 事件系统.(Finish)
     >> 网络系统.(Finish)
+    >> 多线程.(Finish)
 	
-    >> 阴影.(Finish)
+    >> 阴影.(TODO)
     >> 天气.(TODO)
     >> Wwise.(TODO)
     >> Timeline.(TODO)
     >> 换装/染色.(TODO)
-    >> 寻路.(Finish)
+    >> 寻路.(TODO)
     >> 技能.(TODO)
     >> Buff.(Finish)
     >> AI[FSM/行为树].(Finish)
@@ -58,6 +59,7 @@ software：Unity 2020.2.7f1/Visual Studio 2017.
     >> FancyScrollView：(https://github.com/setchi/FancyScrollView).
     >> UIEffect：(https://github.com/mob-sakai/UIEffect).
     >> lua-protobuf：(https://github.com/starwing/lua-protobuf).
+    >> UnityUIExtensions：(https://bitbucket.org/UnityUIExtensions/unity-ui-extensions/src/release/).
 	
     Third Party:
     >> Anima2D.
@@ -66,7 +68,6 @@ software：Unity 2020.2.7f1/Visual Studio 2017.
     >> Build Report.
     >> Cinemachine.
     >> DOTween.
-    >> Effect Examples.
     >> Fast Shadow Projector.
     >> Node Editor.
     >> FlowCanvas/NodeCanvas.
@@ -75,7 +76,6 @@ software：Unity 2020.2.7f1/Visual Studio 2017.
     >> TexturePacker Importer.
     >> More Effective Coroutine.
     >> Behavior Designer.
-    >> Unity Particle Pack 5.x.
     >> Unity Logs Viewer.
     >> Odin Inspector and Serializer 2.1.	
     >> BackgroundDownload.	

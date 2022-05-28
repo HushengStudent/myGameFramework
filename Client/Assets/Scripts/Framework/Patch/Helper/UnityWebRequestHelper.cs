@@ -72,8 +72,7 @@ namespace Framework.PatchModule
                         }
                         yield return null;
                     }
-                    var isError = false;
-                    isError = request.isNetworkError;
+                    var isError = request.isNetworkError;
                     if (isError)
                     {
                         ErrorHandler?.Invoke(request.error);

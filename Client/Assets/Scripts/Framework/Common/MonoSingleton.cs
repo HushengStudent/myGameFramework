@@ -48,7 +48,7 @@ namespace Framework
         {
             if (null == _singleton)
             {
-                LogHelper.PrintGreen($"[MonoSingleton]{typeof(T).ToString()} singleton instance created.");
+                LogHelper.PrintGreen($"[MonoSingleton]{typeof(T)} singleton instance created.");
             }
         }
 

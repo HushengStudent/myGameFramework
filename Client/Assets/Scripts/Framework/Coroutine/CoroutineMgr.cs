@@ -38,7 +38,7 @@ namespace Framework
             var itor = coroutine;
             while (true)
             {
-                bool state = false;
+                bool state;
                 try
                 {
                     state = itor.MoveNext();

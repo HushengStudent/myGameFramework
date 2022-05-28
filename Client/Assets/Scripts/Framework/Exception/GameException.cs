@@ -15,8 +15,7 @@ namespace Framework
     public class GameException : Exception, IPool
     {
         private string _name;
-        private StringBuilder _messageBuilder = new StringBuilder();
-        private Exception _innerException;
+        private readonly StringBuilder _messageBuilder = new StringBuilder();
 
         public GameException() : base() { }
 
@@ -29,11 +28,11 @@ namespace Framework
         {
             if (stackTrace != null)
             {
-                LogHelper.PrintError($"[{_name}]{_messageBuilder.ToString()}\r\n{stackTrace.ToString()}");
+                LogHelper.PrintError($"[{_name}]{_messageBuilder}\r\n{stackTrace}");
             }
             else
             {
-                LogHelper.PrintError($"[{_name}]{_messageBuilder.ToString()}");
+                LogHelper.PrintError($"[{_name}]{_messageBuilder}");
             }
         }
 
