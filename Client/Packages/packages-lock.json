@@ -109,15 +109,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.doc_zh": {
-      "version": "0.1.0-preview.10",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.uiwidgets": "1.5.4-preview.12"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.editorcoroutines": {
       "version": "1.0.0",
       "depth": 0,
@@ -280,13 +271,6 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
-    },
-    "com.unity.uiwidgets": {
-      "version": "1.5.4-preview.12",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
     },
     "com.unity.xr.legacyinputhelpers": {
       "version": "2.1.8",
