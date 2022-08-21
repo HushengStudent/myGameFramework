@@ -4,8 +4,7 @@ using System.Collections.Generic;
 
 public partial class ProtoHelper
 {
-    private static Dictionary<int, PacketFactory> _factoryDict
-        = new Dictionary<int, PacketFactory>();
+    private static Dictionary<int, PacketFactory> _factoryDict = new Dictionary<int, PacketFactory>();
 
     private static readonly object _lock = new object();
 
@@ -24,7 +23,7 @@ public partial class ProtoHelper
         }
         else
         {
-            LogHelper.PrintError($"[ProtoHelper]RegisterProto:{type.ToString()} error.");
+            LogHelper.PrintError($"[ProtoHelper]RegisterProto:{type} error.");
         }
     }
 
@@ -38,7 +37,7 @@ public partial class ProtoHelper
             }
             else
             {
-                LogHelper.PrintError($"[ProtoHelper]GetPacket:{type.ToString()} error.");
+                LogHelper.PrintError($"[ProtoHelper]GetPacket:{type} error.");
                 return null;
             }
         }
@@ -55,7 +54,7 @@ public partial class ProtoHelper
             }
             else
             {
-                LogHelper.PrintError($"[ProtoHelper]ReturnPacket:{packetId.ToString()} error.");
+                LogHelper.PrintError($"[ProtoHelper]ReturnPacket:{packetId} error.");
             }
         }
     }
