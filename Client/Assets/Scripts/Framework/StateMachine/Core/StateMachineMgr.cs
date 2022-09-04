@@ -11,7 +11,7 @@ namespace Framework
 {
     public class StateMachineMgr : MonoSingleton<StateMachineMgr>
     {
-        private Dictionary<AbsEntity, AbsStateMachine> _stateMachineDict
+        private readonly Dictionary<AbsEntity, AbsStateMachine> _stateMachineDict
             = new Dictionary<AbsEntity, AbsStateMachine>();
 
         protected override void OnInitialize()

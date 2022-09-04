@@ -12,7 +12,7 @@ namespace Framework
 {
     public class SdkMgr : Singleton<SdkMgr>
     {
-        private Dictionary<string, Action<string>> _sdkCallbackDict = new Dictionary<string, Action<string>>();
+        private readonly Dictionary<string, Action<string>> _sdkCallbackDict = new Dictionary<string, Action<string>>();
 
         protected override void OnInitialize()
         {

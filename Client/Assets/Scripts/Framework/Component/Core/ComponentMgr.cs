@@ -24,7 +24,7 @@ namespace Framework.ECSModule
             }
             else
             {
-                LogHelper.PrintError($"[ComponentMgr]CreateComponent {typeof(T).ToString()} error!");
+                LogHelper.PrintError($"[ComponentMgr]CreateComponent {typeof(T)} error!");
                 return null;
             }
         }
@@ -54,10 +54,7 @@ namespace Framework.ECSModule
             {
                 return;
             }
-            if (comp.Owner.ReleaseComponent<T>(comp))
-            {
-                comp = null;
-            }
+            comp.Owner.ReleaseComponent<T>(comp);
         }
 
         /// <summary>

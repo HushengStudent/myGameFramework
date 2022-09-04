@@ -14,7 +14,7 @@ namespace Framework.ResourceModule
     {
         #region Proxy
 
-        private List<AbsAssetProxy> _removeList = new List<AbsAssetProxy>();
+        private readonly List<AbsAssetProxy> _removeList = new List<AbsAssetProxy>();
 
         /// <summary>
         /// 排队删除还没加载完就删除的Proxy;

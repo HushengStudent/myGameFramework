@@ -13,7 +13,7 @@ namespace Framework
     {
         private string _path = $"{Application.dataPath.ToLower()}/Bundles/Single/Table/";
 
-        private Dictionary<string, Table> _dbDict = new Dictionary<string, Table>();
+        private readonly Dictionary<string, Table> _dbDict = new Dictionary<string, Table>();
 
         protected override void OnInitialize()
         {

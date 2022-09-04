@@ -25,10 +25,10 @@ namespace Framework.AssetBundleModule
         #region Fields
 
         /// <summary> 加载出来的AssetBundle缓存; </summary>
-        private Dictionary<string, AssetBundle> _assetBundleCache = new Dictionary<string, AssetBundle>();
+        private readonly Dictionary<string, AssetBundle> _assetBundleCache = new Dictionary<string, AssetBundle>();
 
         /// <summary> 加载出来的AssetBundle引用计数; </summary>
-        private Dictionary<string, int> _assetBundleReference = new Dictionary<string, int>();
+        private readonly Dictionary<string, int> _assetBundleReference = new Dictionary<string, int>();
 
         /// <summary> 依赖关系AssetBundle; </summary>
         private AssetBundle _mainAssetBundle;

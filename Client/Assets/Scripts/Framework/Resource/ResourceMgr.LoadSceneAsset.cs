@@ -16,7 +16,7 @@ namespace Framework.ResourceModule
 {
     public partial class ResourceMgr
     {
-        private Dictionary<string, AssetBundle> _sceneAssetBundleDict =
+        private readonly Dictionary<string, AssetBundle> _sceneAssetBundleDict =
             new Dictionary<string, AssetBundle>();
 
         private ISceneLoader _sceneLoader;

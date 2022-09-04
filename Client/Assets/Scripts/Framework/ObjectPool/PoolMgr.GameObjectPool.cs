@@ -10,10 +10,10 @@ namespace Framework.ObjectPoolModule
 {
     public partial class PoolMgr
     {
-        private Dictionary<string, GameObjectPool> _poolDict =
+        private readonly Dictionary<string, GameObjectPool> _poolDict =
             new Dictionary<string, GameObjectPool>();
 
-        private Dictionary<string, HashSet<GameObjectPool>> _tagDict =
+        private readonly Dictionary<string, HashSet<GameObjectPool>> _tagDict =
             new Dictionary<string, HashSet<GameObjectPool>>();
 
         /// <summary>

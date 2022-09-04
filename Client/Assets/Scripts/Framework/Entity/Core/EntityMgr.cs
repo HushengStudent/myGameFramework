@@ -14,15 +14,15 @@ namespace Framework.ECSModule
         #region Fields
 
         /// EntityDict;
-        private Dictionary<ulong, AbsEntity> _entityDict = new Dictionary<ulong, AbsEntity>();
+        private readonly Dictionary<ulong, AbsEntity> _entityDict = new Dictionary<ulong, AbsEntity>();
 
         /// EntityList;
-        private List<AbsEntity> _entityList = new List<AbsEntity>();
+        private readonly List<AbsEntity> _entityList = new List<AbsEntity>();
 
         /// Call Update EntityList;
         private List<AbsEntity> _updateEntityList = new List<AbsEntity>();
         /// Release at this frame;
-        private List<ulong> _releaseEntityUIDList = new List<ulong>();
+        private readonly List<ulong> _releaseEntityUIDList = new List<ulong>();
 
         #endregion
 
@@ -101,7 +101,7 @@ namespace Framework.ECSModule
             }
             else
             {
-                LogHelper.PrintError($"[EntityMgr]CreateEntity:{typeof(T).ToString()} error,entityId:{entityId},uid:{uid},name:{name}.");
+                LogHelper.PrintError($"[EntityMgr]CreateEntity:{typeof(T)} error,entityId:{entityId},uid:{uid},name:{name}.");
                 PoolMgr.singleton.ReleaseCsharpObject(entity);
                 return null;
             }

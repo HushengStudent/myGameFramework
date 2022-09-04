@@ -14,7 +14,7 @@ namespace Framework.ObjectPoolModule
         /// <summary>
         /// Csharp Object Pool;
         /// </summary>
-        private Dictionary<Type, object> _csharpObjectPool = new Dictionary<Type, object>();
+        private readonly Dictionary<Type, object> _csharpObjectPool = new Dictionary<Type, object>();
 
         /// <summary>
         /// 获取Csharp对象池目标组件;

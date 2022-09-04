@@ -161,7 +161,7 @@ namespace Framework.ECSModule
             {
                 if (_componentList[i] is T)
                 {
-                    LogHelper.PrintError($"[ObjectEx]AddComponent,{typeof(T).ToString()} repeat.");
+                    LogHelper.PrintError($"[ObjectEx]AddComponent,{typeof(T)} repeat.");
                     return null;
                 }
             }
@@ -189,7 +189,7 @@ namespace Framework.ECSModule
                     return true;
                 }
             }
-            LogHelper.PrintError($"[ComponentMgr]ReleaseComponent {typeof(T).ToString()} error,can not find the component.");
+            LogHelper.PrintError($"[ComponentMgr]ReleaseComponent {typeof(T)} error,can not find the component.");
             return false;
         }
 
@@ -203,7 +203,7 @@ namespace Framework.ECSModule
         {
             if (component as T == null)
             {
-                LogHelper.PrintError($"[ComponentMgr]ReleaseComponent error:comp as {typeof(T).ToString()} is null.");
+                LogHelper.PrintError($"[ComponentMgr]ReleaseComponent error:comp as {typeof(T)} is null.");
                 return false;
             }
             for (var i = 0; i < _componentList.Count; i++)
@@ -218,7 +218,7 @@ namespace Framework.ECSModule
                     return true;
                 }
             }
-            LogHelper.PrintError($"[ComponentMgr]ReleaseComponent {typeof(T).ToString()} error,can not find the component.");
+            LogHelper.PrintError($"[ComponentMgr]ReleaseComponent {typeof(T)} error,can not find the component.");
             return false;
         }
 
@@ -240,7 +240,7 @@ namespace Framework.ECSModule
                     return true;
                 }
             }
-            LogHelper.PrintError($"[ComponentMgr]DestroyComponent {component.GetType().ToString()} error,can not find the component!");
+            LogHelper.PrintError($"[ComponentMgr]DestroyComponent {component.GetType()} error,can not find the component!");
             return false;
         }
 

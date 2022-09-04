@@ -20,7 +20,7 @@ namespace Framework
         protected override void OnInitialize()
         {
             var allMenory = GetAllMemory();
-            LogHelper.Print($"Used Heap Size: {allMenory.ToString("F3")} MB");
+            LogHelper.Print($"Used Heap Size: {allMenory:F3} MB");
         }
 
         protected override void AwakeEx()
@@ -44,12 +44,12 @@ namespace Framework
             var allMenory = GetAllMemory();
             if (allMenory > MaxMemoryUse)
             {
-                LogHelper.PrintError($"Used Heap Size: {allMenory.ToString("F3")} MB");
+                LogHelper.PrintError($"Used Heap Size: {allMenory:F3} MB");
                 FreeMemory();
             }
             else
             {
-                LogHelper.Print($"Used Heap Size: {allMenory.ToString("F3")} MB");
+                LogHelper.Print($"Used Heap Size: {allMenory:F3} MB");
             }
         }
 

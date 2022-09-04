@@ -24,8 +24,8 @@ public class ThreadMgr : MonoSingleton<ThreadMgr>
         }
     }
 
-    private Dictionary<int, Action> _onFinishDict = new Dictionary<int, Action>();
-    private Dictionary<int, string> _exceptionDict = new Dictionary<int, string>();
+    private readonly Dictionary<int, Action> _onFinishDict = new Dictionary<int, Action>();
+    private readonly Dictionary<int, string> _exceptionDict = new Dictionary<int, string>();
     private static readonly object _lock = new object();
 
     protected override void AwakeEx()

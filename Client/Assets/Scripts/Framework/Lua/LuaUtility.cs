@@ -114,7 +114,7 @@ namespace Framework
                         UnityObject.Destroy(ts[i]);
                     }
                 }
-                return go.gameObject.AddComponent<T>();
+                return go.AddComponent<T>();
             }
             return null;
         }
@@ -376,6 +376,5 @@ namespace Framework
         }
 
         #endregion
-
     }
 }

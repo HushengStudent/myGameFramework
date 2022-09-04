@@ -21,13 +21,13 @@ namespace Framework.EventModule
         /// <summary>
         /// 委托集合;
         /// </summary>
-        private Dictionary<ObjectEx, Dictionary<EventType, List<EventHandler>>> _eventDict
+        private readonly Dictionary<ObjectEx, Dictionary<EventType, List<EventHandler>>> _eventDict
             = new Dictionary<ObjectEx, Dictionary<EventType, List<EventHandler>>>();
 
         /// <summary>
         /// 委托集合;
         /// </summary>
-        private Dictionary<EventType, List<EventHandler>> _globalEventDict
+        private readonly Dictionary<EventType, List<EventHandler>> _globalEventDict
             = new Dictionary<EventType, List<EventHandler>>();
 
         protected override void OnInitialize()
@@ -103,7 +103,8 @@ namespace Framework.EventModule
                 LogHelper.PrintError("[EventMgr]RemoveEvent error,the receiver is null.");
                 return;
             }
-            if (_eventDict.TryGetValue(receiver, out var dict))
+
+            if (_eventDict.TryGetValue(receiver, out _))
             {
                 _eventDict.Remove(receiver);
             }
@@ -141,11 +142,11 @@ namespace Framework.EventModule
         /// <param name="callBack">事件回调</param>
         public void AddGlobalEvent(EventType type, EventHandler callBack)
         {
-            if (!_globalEventDict.TryGetValue(type, out var list))
+            if (!_globalEventDict.TryGetValue(type, out _))
             {
                 _globalEventDict[type] = new List<EventHandler>();
             }
-            list = _globalEventDict[type];
+            var list = _globalEventDict[type];
             if (list.Contains(callBack))
             {
                 LogHelper.PrintWarning($"[EventMgr]AddGlobalEvent repeat,EventType:{type.ToString()}.");
