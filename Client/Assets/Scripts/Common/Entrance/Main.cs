@@ -40,6 +40,5 @@ public class Main : MonoBehaviour
 #endif
 
         GameMgr.singleton.Launch();
-
     }
 }

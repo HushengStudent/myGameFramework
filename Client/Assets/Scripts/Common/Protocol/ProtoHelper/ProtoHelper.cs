@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public partial class ProtoHelper
 {
-    private static Dictionary<int, PacketFactory> _factoryDict = new Dictionary<int, PacketFactory>();
+    private static readonly Dictionary<int, PacketFactory> _factoryDict = new Dictionary<int, PacketFactory>();
 
     private static readonly object _lock = new object();
 

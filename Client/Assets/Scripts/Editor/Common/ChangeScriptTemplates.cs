@@ -19,7 +19,7 @@ public class ChangeScriptTemplates : UnityEditor.AssetModificationProcessor
             path = path.Replace(".meta", "");
             if (path.EndsWith(".cs"))
             {
-                string allText = str;
+                var allText = str;
                 allText += File.ReadAllText(path);
                 allText = allText.Replace("#CreateTime#", System.DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"));
                 File.WriteAllText(path, allText);
