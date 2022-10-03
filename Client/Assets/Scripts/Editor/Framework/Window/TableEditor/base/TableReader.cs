@@ -4,7 +4,6 @@
 ** desc:  读表工具;
 *********************************************************************************/
 
-using Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;

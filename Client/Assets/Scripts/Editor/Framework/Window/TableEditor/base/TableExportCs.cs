@@ -29,7 +29,7 @@ namespace Framework.EditorModule.Window
             {TableFiledType.BOOL,"        ReadBoolean(ref byteArr,ref bytePos,out {0});"}
         };
         private static Dictionary<int, List<string>> _infoDict = new Dictionary<int, List<string>>();
-        private static string _targetPath = Application.dataPath.ToLower() + "/Scripts/Common/Table/";
+        private static readonly string _targetPath = $"{Application.dataPath.ToLower()}/Scripts/Common/Table/";
         private static string _fileName = string.Empty;
         private static string _code = string.Empty;
 

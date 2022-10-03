@@ -4,7 +4,6 @@
 ** desc:  导表生成byte;
 *********************************************************************************/
 
-using Framework;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,7 +16,7 @@ namespace Framework.EditorModule.Window
     {
         public static Dictionary<int, TableFiledType> _tableTypeDict = new Dictionary<int, TableFiledType>();
         private static Dictionary<int, List<string>> _infoDict = new Dictionary<int, List<string>>();
-        private static string _targetPath = $"{Application.dataPath.ToLower()}/Resources/Bin/Table/";
+        private static readonly string _targetPath = $"{Application.dataPath.ToLower()}/Resources/Bin/Table/";
         private static string _fileName = string.Empty;
 
         public static void ExportByte(string path)

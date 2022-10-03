@@ -39,6 +39,9 @@ namespace Framework.EditorModule.Window
             Vivo = 2,
         }
 
+        private static readonly string _androidExtention = ".apk";
+        private static readonly string _windowsExtention = ".exe";
+
         private static BuildPlatform _buildPlatform = BuildPlatform.Windows;
         private static BuildOptions _buildOptions = BuildOptions.AllowDebugging | BuildOptions.Development;
         private static BuildChannel _buildChannel = BuildChannel.Oppo;
@@ -92,127 +95,123 @@ namespace Framework.EditorModule.Window
             }
             */
 
-            using (var v = new EditorGUILayout.VerticalScope(GUI.skin.window))
+            using var v = new EditorGUILayout.VerticalScope(GUI.skin.window);
+            using var vv = new EditorGUILayout.VerticalScope(GUI.skin.window);
+            using (var h = new EditorGUILayout.HorizontalScope())
             {
-                using (var vv = new EditorGUILayout.VerticalScope(GUI.skin.window))
+                EditorGUILayout.LabelField("选择渠道:", style);
+                GUILayout.Space(15);
+                _buildChannel = (BuildChannel)EditorGUILayout.EnumPopup(_buildChannel);
+            }
+
+            GUILayout.Space(5);
+            using (var h = new EditorGUILayout.HorizontalScope())
+            {
+                EditorGUILayout.LabelField("选择目标平台:", style);
+                GUILayout.Space(15);
+                _buildPlatform = (BuildPlatform)EditorGUILayout.EnumPopup(_buildPlatform);
+            }
+
+            GUILayout.Space(5);
+            using (var h = new EditorGUILayout.HorizontalScope())
+            {
+                EditorGUILayout.LabelField("版本号:", style);
+                GUILayout.Space(15);
+                var release = _isRelease ? "1" : "0";
+                var versionCode = $"{_buildVersionCode.ToString()}.{release}";
+                var textColor = style.normal.textColor;
+                style.normal.textColor = Color.red;
+                EditorGUILayout.LabelField(versionCode, style);
+                style.normal.textColor = textColor;
+            }
+
+            GUILayout.Space(10);
+            using (var vvv = new EditorGUILayout.VerticalScope(GUI.skin.window))
+            {
+                EditorGUILayout.LabelField("打游戏包", style);
+                GUILayout.Space(5);
+
+                using (var h = new EditorGUILayout.HorizontalScope())
                 {
-                    using (var h = new EditorGUILayout.HorizontalScope())
+                    EditorGUILayout.LabelField("打包选项:", style);
+                    GUILayout.Space(15);
+                    _buildOptions = (BuildOptions)EditorGUILayout.EnumFlagsField(_buildOptions);
+                }
+
+                GUILayout.Space(5);
+                using (var h = new EditorGUILayout.HorizontalScope())
+                {
+                    EditorGUILayout.LabelField("是否打Release包:", style);
+
+                    GUILayout.Space(15);
+                    bool curValue = _isRelease;
+                    _isRelease = EditorGUILayout.Toggle(_isRelease);
+                    if (_isRelease)
                     {
-                        EditorGUILayout.LabelField("选择渠道:", style);
-                        GUILayout.Space(15);
-                        _buildChannel = (BuildChannel)EditorGUILayout.EnumPopup(_buildChannel);
+                        _buildOptions = BuildOptions.None;
                     }
-
-                    GUILayout.Space(5);
-                    using (var h = new EditorGUILayout.HorizontalScope())
+                    else
                     {
-                        EditorGUILayout.LabelField("选择目标平台:", style);
-                        GUILayout.Space(15);
-                        _buildPlatform = (BuildPlatform)EditorGUILayout.EnumPopup(_buildPlatform);
-                    }
-
-                    GUILayout.Space(5);
-                    using (var h = new EditorGUILayout.HorizontalScope())
-                    {
-                        EditorGUILayout.LabelField("版本号:", style);
-                        GUILayout.Space(15);
-                        var release = _isRelease ? "1" : "0";
-                        var versionCode = $"{_buildVersionCode.ToString()}.{release}";
-                        var textColor = style.normal.textColor;
-                        style.normal.textColor = Color.red;
-                        EditorGUILayout.LabelField(versionCode, style);
-                        style.normal.textColor = textColor;
-                    }
-
-                    GUILayout.Space(10);
-                    using (var vvv = new EditorGUILayout.VerticalScope(GUI.skin.window))
-                    {
-                        EditorGUILayout.LabelField("打游戏包", style);
-                        GUILayout.Space(5);
-
-                        using (var h = new EditorGUILayout.HorizontalScope())
+                        if (curValue)
                         {
-                            EditorGUILayout.LabelField("打包选项:", style);
-                            GUILayout.Space(15);
-                            _buildOptions = (BuildOptions)EditorGUILayout.EnumFlagsField(_buildOptions);
+                            _buildOptions = BuildOptions.AllowDebugging | BuildOptions.Development;
                         }
-
-                        GUILayout.Space(5);
-                        using (var h = new EditorGUILayout.HorizontalScope())
-                        {
-                            EditorGUILayout.LabelField("是否打Release包:", style);
-
-                            GUILayout.Space(15);
-                            bool curValue = _isRelease;
-                            _isRelease = EditorGUILayout.Toggle(_isRelease);
-                            if (_isRelease)
-                            {
-                                _buildOptions = BuildOptions.None;
-                            }
-                            else
-                            {
-                                if (curValue)
-                                {
-                                    _buildOptions = BuildOptions.AllowDebugging | BuildOptions.Development;
-                                }
-                            }
-                        }
-
-                        GUILayout.Space(5);
-                        using (var h = new EditorGUILayout.HorizontalScope())
-                        {
-                            EditorGUILayout.LabelField("打包资源完整完整包体:", style);
-                            GUILayout.Space(15);
-                            _isCompleteBuild = EditorGUILayout.Toggle(_isCompleteBuild);
-                        }
-
-                        GUILayout.Space(5);
-                        using (var h = new EditorGUILayout.HorizontalScope())
-                        {
-                            EditorGUILayout.LabelField("重新打包AssetBundle:", style);
-                            GUILayout.Space(15);
-                            _isBuildAssetBundle = EditorGUILayout.Toggle(_isBuildAssetBundle);
-                            if (_isRelease)
-                            {
-                                _isBuildAssetBundle = true;
-                            }
-                        }
-
-                        GUILayout.Space(20);
-                        GUI.backgroundColor = Color.green;
-                        if (GUILayout.Button("开始打游戏包", GUILayout.Height(30)))
-                        {
-                            if (EditorUtility.DisplayDialog("提示", "确认开始打游戏包?", "确认"))
-                            {
-                                EditorApplication.delayCall += () =>
-                                {
-                                    CommandLineBuild();
-                                };
-                                Close();
-                            }
-                        }
-                        GUI.backgroundColor = color;
-                    }
-
-                    GUILayout.Space(10);
-                    using (var vvv = new EditorGUILayout.VerticalScope(GUI.skin.window))
-                    {
-                        EditorGUILayout.LabelField("打补丁包", style);
-                        GUILayout.Space(20);
-                        GUI.backgroundColor = Color.yellow;
-                        if (GUILayout.Button("开始打补丁包", GUILayout.Height(30)))
-                        {
-                            if (EditorUtility.DisplayDialog("提示", "确认开始打补丁包?", "确认"))
-                            {
-                                EditorApplication.delayCall += () =>
-                                {
-                                };
-                                Close();
-                            }
-                        }
-                        GUI.backgroundColor = color;
                     }
                 }
+
+                GUILayout.Space(5);
+                using (var h = new EditorGUILayout.HorizontalScope())
+                {
+                    EditorGUILayout.LabelField("打包资源完整完整包体:", style);
+                    GUILayout.Space(15);
+                    _isCompleteBuild = EditorGUILayout.Toggle(_isCompleteBuild);
+                }
+
+                GUILayout.Space(5);
+                using (var h = new EditorGUILayout.HorizontalScope())
+                {
+                    EditorGUILayout.LabelField("重新打包AssetBundle:", style);
+                    GUILayout.Space(15);
+                    _isBuildAssetBundle = EditorGUILayout.Toggle(_isBuildAssetBundle);
+                    if (_isRelease)
+                    {
+                        _isBuildAssetBundle = true;
+                    }
+                }
+
+                GUILayout.Space(20);
+                GUI.backgroundColor = Color.green;
+                if (GUILayout.Button("开始打游戏包", GUILayout.Height(30)))
+                {
+                    if (EditorUtility.DisplayDialog("提示", "确认开始打游戏包?", "确认"))
+                    {
+                        EditorApplication.delayCall += () =>
+                        {
+                            CommandLineBuild();
+                        };
+                        Close();
+                    }
+                }
+                GUI.backgroundColor = color;
+            }
+
+            GUILayout.Space(10);
+            using (var vvv = new EditorGUILayout.VerticalScope(GUI.skin.window))
+            {
+                EditorGUILayout.LabelField("打补丁包", style);
+                GUILayout.Space(20);
+                GUI.backgroundColor = Color.yellow;
+                if (GUILayout.Button("开始打补丁包", GUILayout.Height(30)))
+                {
+                    if (EditorUtility.DisplayDialog("提示", "确认开始打补丁包?", "确认"))
+                    {
+                        EditorApplication.delayCall += () =>
+                        {
+                        };
+                        Close();
+                    }
+                }
+                GUI.backgroundColor = color;
             }
         }
 
@@ -224,7 +223,7 @@ namespace Framework.EditorModule.Window
 
             var platform = _buildPlatform.ToString();
             var release = _isRelease ? "1" : "0";
-            var versionCode = $"{_buildVersionCode.ToString()}.{release}";
+            var versionCode = $"{_buildVersionCode}.{release}";
             var channel = _buildChannel.ToString();
             _buildOutputPath = $"{_buildOutputPath}/{platform}/{channel}/{versionCode}";
 
@@ -273,7 +272,7 @@ namespace Framework.EditorModule.Window
             public int callbackOrder { get { return 0; } }
             public void OnActiveBuildTargetChanged(BuildTarget previousTarget, BuildTarget newTarget)
             {
-                Debug.Log("[PackEditor]Switched build target to " + newTarget);
+                Debug.Log($"[PackEditor]Switched build target to {newTarget}");
                 BuildAssetBundle();
                 BuildPlayer();
             }
@@ -334,10 +333,10 @@ namespace Framework.EditorModule.Window
             switch (EditorUserBuildSettings.activeBuildTarget)
             {
                 case BuildTarget.Android:
-                    extensionName = ".apk";
+                    extensionName = _androidExtention;
                     break;
                 case BuildTarget.StandaloneWindows64:
-                    extensionName = ".exe";
+                    extensionName = _windowsExtention;
                     break;
                 default:
                     break;

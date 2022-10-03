@@ -18,6 +18,6 @@ namespace Framework.EditorModule.Window
 
     public static class TableConfig
     {
-        public static string TablePath { get; } = Application.dataPath.ToLower() + "/../../Table/";
+        public static string TablePath { get; } = $"{Application.dataPath.ToLower()}/../../Table/";
     }
 }
